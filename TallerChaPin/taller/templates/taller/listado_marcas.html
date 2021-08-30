@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{titulo}} {% endblock %}
+{% block container %}
+
+{# Or with the year in a template context variable: #}
+<h1>{{titulo}}</h1>
+<ul>
+{% for marca in marcas %}
+<li><a href="{% url 'modelosXmarcas' marca %}">{{marca}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

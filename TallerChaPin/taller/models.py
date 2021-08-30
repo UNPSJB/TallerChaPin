@@ -14,7 +14,7 @@ class Marca(models.Model):
 class Modelo(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     descripcion = models.CharField(max_length=200)
-    marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    marca = models.ForeignKey(Marca, related_name="modelos", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre

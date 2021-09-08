@@ -31,7 +31,9 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-3 col-sm-12 gx-0">
+
+        <!-- Primer columna (sidebar de gestiones) -->
+        <div class="col-3 mt-4">
 
           <div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
             <a
@@ -511,6 +513,57 @@
             </ul>
           </div>
         </div>
+
+        <!-- Segunda columna (formulario) -->
+        <div class="col-4">
+          
+          <form class="row g-3">
+            <h1 class="mt-5">Registrar un cliente</h1>
+            <hr>
+            <h2 class="mt-0">Cliente</h2>
+            <div class="col-md-6">
+              <label for="inputNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="inputNombre">
+            </div>
+            <div class="col-md-6">
+              <label for="inputApellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="inputApellido">
+            </div>
+            <div class="col-6">
+              <label for="inputDni" class="form-label">Número de documento</label>
+              <input type="text" class="form-control" id="inputDni" placeholder="12345678">
+            </div>
+            <div class="col-12">
+              <label for="inputDireccion" class="form-label">Dirección</label>
+              <input type="text" class="form-control" id="inputDireccion" placeholder="Calle 123">
+            </div>
+            <div class="col-md-6">
+              <label for="inputTelefono" class="form-label">Número de teléfono</label>
+              <input type="text" class="form-control" id="inputTelefono">
+            </div>
+            <br>
+            <hr>
+            <h2 class="mt-0">Vehículo</h2>
+            <div class="col-md-6">
+              <label for="inputPatente" class="form-label">Patente del vehículo</label>
+              <input type="text" class="form-control" id="inputPatente" placeholder="AAA### o AA###AA">
+            </div>
+            <br>
+            <div class="col-md-6">
+              <label for="inputPatentamiento" class="form-label">Año de patentamiento</label>
+              <input type="text" class="form-control" id="inputPatentamiento">
+            </div>
+            <div class="col-md-6">
+              <label for="inputNroChasis" class="form-label">Número de chasis</label>
+              <input type="text" class="form-control" id="inputNroChasis">
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+            </div>
+
+          </form>
+        </div>
+
       </div>
     </div>
   </body>

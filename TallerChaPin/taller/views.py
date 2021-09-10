@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.views.generic.list import ListView
 from .models import *
 # Create your views here.
 
@@ -24,3 +25,25 @@ def modelos_x_marcas(request, marca):
 
 def registrar_cliente(request):
     return render(request, 'taller/form_registrar_cliente.html', {"titulo": "Registrar Cliente"})
+
+
+class MarcaListView(ListView):
+
+    model = Marca
+    paginate_by = 100  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de Marcas"
+        return context
+
+
+class ModeloListView(ListView):
+
+    model = Modelo
+    paginate_by = 100  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de Modelos"
+        return context

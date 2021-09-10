@@ -531,12 +531,12 @@
             </div>
             <div class="col-6">
               <label for="inputDni" class="form-label">Número de documento</label>
-              <input type="text" class="form-control" id="inputDni" placeholder="12345678">
+              <input type="number" class="form-control" id="inputDni" placeholder="12345678">
               <!-- <small id="mensajeDni" class="form-text text-muted">Será usado como clave principal</small> -->
             </div>
             <div class="col-md-6">
               <label for="inputTelefono" class="form-label">Número de teléfono</label>
-              <input type="text" class="form-control" id="inputTelefono">
+              <input type="tel" class="form-control" id="inputTelefono">
             </div>
             <div class="col-12">
               <label for="inputDireccion" class="form-label">Dirección</label>
@@ -547,12 +547,12 @@
             <h2 class="mt-0 mb-0">Vehículo</h2>
             <div class="col-md-4">
               <label for="inputPatente" class="form-label">Patente</label>
-              <input type="text" class="form-control" id="inputPatente" placeholder="AAA### o AA###AA">
+              <input type="text" class="form-control" id="inputPatente" placeholder="AAA### o AA###AA" pattern="([A-Z]{2}-\d{3}-[A-Z]{2}|[A-Z]{3}-\d{3})">
             </div>
             <!-- <br> -->
             <div class="col-md-4">
               <label for="inputPatentamiento" class="form-label">Año de patentamiento</label>
-              <input type="text" class="form-control" id="inputPatentamiento">
+              <input type="number" class="form-control" id="inputPatentamiento">
               <!-- <small id="mensajeChasis" class="form-text text-muted">Menor a 12 años de antigüedad</small> -->
             </div>
             <div class="col-md-4">

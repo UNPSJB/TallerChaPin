@@ -20,3 +20,7 @@ def modelos_x_marcas(request, marca):
     print(marca.modelos.all())
     lista_modelos = [m for m in marca.modelos.all()]
     return render(request, 'taller/modelos_x_marca.html', context={"titulo": "modelos:", "modelos": lista_modelos})
+
+
+def registrar_cliente(request):
+    return render(request, 'taller/form_registrar_cliente.html', {"titulo": "Registrar Cliente"})

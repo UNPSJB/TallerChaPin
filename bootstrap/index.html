@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="sidebars.css" />
-    <title>Hello, world!</title>
+    <title>Taller ChaPin</title>
   </head>
 
   <body>
@@ -532,41 +532,39 @@
             <div class="col-6">
               <label for="inputDni" class="form-label">Número de documento</label>
               <input type="text" class="form-control" id="inputDni" placeholder="12345678">
-              <small id="mensajeDni" class="form-text text-muted">Será usado como clave principal</small>
-            </div>
-            <div class="col-12">
-              <label for="inputDireccion" class="form-label">Dirección</label>
-              <input type="text" class="form-control" id="inputDireccion" placeholder="Calle 123">
+              <!-- <small id="mensajeDni" class="form-text text-muted">Será usado como clave principal</small> -->
             </div>
             <div class="col-md-6">
               <label for="inputTelefono" class="form-label">Número de teléfono</label>
               <input type="text" class="form-control" id="inputTelefono">
             </div>
+            <div class="col-12">
+              <label for="inputDireccion" class="form-label">Dirección</label>
+              <input type="text" class="form-control" id="inputDireccion" placeholder="Calle 123">
+            </div>
             <br>
             <hr>
             <h2 class="mt-0 mb-0">Vehículo</h2>
-            <div class="col-md-6">
-              <label for="inputPatente" class="form-label">Patente del vehículo</label>
+            <div class="col-md-4">
+              <label for="inputPatente" class="form-label">Patente</label>
               <input type="text" class="form-control" id="inputPatente" placeholder="AAA### o AA###AA">
             </div>
-            <br>
-            <div class="col-md-6">
+            <!-- <br> -->
+            <div class="col-md-4">
               <label for="inputPatentamiento" class="form-label">Año de patentamiento</label>
               <input type="text" class="form-control" id="inputPatentamiento">
-              <small id="mensajeChasis" class="form-text text-muted">Menor a 12 años de antigüedad</small>
+              <!-- <small id="mensajeChasis" class="form-text text-muted">Menor a 12 años de antigüedad</small> -->
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <label for="inputNroChasis" class="form-label">Número de chasis</label>
               <input type="text" class="form-control" id="inputNroChasis">
-              <small id="mensajeChasis" class="form-text text-muted">Solo como referencia</small>
+              <!-- <small id="mensajeChasis" class="form-text text-muted">Solo como referencia</small> -->
             </div>
-            <div class="col-12">
+            <div class="col-12 d-flex flex-row-reverse">
               <button type="submit" class="btn btn-primary mt-3">Guardar</button>
             </div>
-
           </form>
         </div>
-
       </div>
     </div>
   </body>

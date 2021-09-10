@@ -1,13 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% load static %}
 
 {% block title %} {{titulo}} {% endblock %}
 
-{% block container %}
+{% block main %}
 
 <!-- Segunda columna (formulario) -->
-<div class="col-4">
-    
     <form class="row g-3">
     <h1 class="mt-4">Registrar un cliente</h1>
     <hr>
@@ -55,6 +53,5 @@
         <button type="submit" class="btn btn-primary mt-3">Guardar</button>
     </div>
     </form>
-</div>
 
 {% endblock %}

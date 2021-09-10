@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from TallerChaPin.views import home
+from TallerChaPin.views import home, login, logout
 
 urlpatterns = [
     path('', home),
+    path('login/', login, name='login'),
+    path('logout/', logout, name='logout'),
     path('taller/', include('taller.urls')),
     path('admin/', admin.site.urls),
 ]

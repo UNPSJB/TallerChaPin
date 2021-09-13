@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="sidebars.css" />
+    <title>Taller ChaPin</title>
+  </head>
+
+  <body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Taller ChaPin</a>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-between">
+
+        <!-- Primer columna (sidebar de gestiones) -->
+        <div class="col-2 mt-4">
+
+          <div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
+            <a
+              href="/"
+              class="
+                d-flex
+                align-items-center
+                pb-3
+                mb-3
+                link-dark
+                text-decoration-none
+                border-bottom
+              "
+            >
+              <svg class="bi me-2" width="30" height="24">
+                <use xlink:href="#bootstrap"></use>
+              </svg>
+              <span class="fs-5 fw-semibold">Gestiones</span>
+            </a>
+            <ul class="list-unstyled ps-0">
+
+              <!-- Presupuestos -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#presupuestos-collapse"
+                  aria-expanded="false"
+                >
+                  Presupuestos
+                </button>
+
+                <!-- Desplegable de presupuestos -->
+                <div class="collapse" id="presupuestos-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Crear presupuesto</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Confirmar presupuesto</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Ampliar presupuesto</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Ordenes y turnos -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#ordenes-collapse"
+                  aria-expanded="false"
+                >
+                  Ordenes y turnos
+                </button>
+
+                <!-- Desplegable de ordenes y turnos -->
+                <div class="collapse" id="ordenes-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Cambiar turno</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Cancelar orden</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar ingreso</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                      >Registrar entrega</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Pagos -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#pagos-collapse"
+                  aria-expanded="false"
+                >
+                  Pagos
+                </button>
+
+                <!-- Desplegable de pagos -->
+                <div class="collapse" id="pagos-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Facturar orden</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar pago</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Pagos -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#stock-collapse"
+                  aria-expanded="false"
+                >
+                  Stock
+                </button>
+
+                <!-- Desplegable de pagos -->
+                <div class="collapse" id="stock-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar stock de materiales</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar stock de repuestos</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Clientes -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#clientes-collapse"
+                  aria-expanded="false"
+                >
+                  Clientes
+                </button>
+
+                <!-- Desplegable de clientes -->
+                <div class="collapse" id="clientes-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Dar de alta un cliente</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Vehículos -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vehiculos-collapse"
+                  aria-expanded="false"
+                >
+                  Vehículos
+                </button>
+
+                <!-- Desplegable de vehículos -->
+                <div class="collapse" id="vehiculos-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Dar de alta un vehículo</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar vehículo</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar un vehículo</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Tareas -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#tareas-collapse"
+                  aria-expanded="false"
+                >
+                  Tareas
+                </button>
+
+                <!-- Desplegable de tareas -->
+                <div class="collapse" id="tareas-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar una tarea</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar una tarea</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar una tarea</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar un tipo de tarea</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar un tipo de tarea</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar un tipo de tarea</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Materiales -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#materiales-collapse"
+                  aria-expanded="false"
+                >
+                  Materiales
+                </button>
+
+                <!-- Desplegable de materiales -->
+                <div class="collapse" id="materiales-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar un material</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar un material</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar un material</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar un tipo de material</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar un tipo de material</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar un tipo de material</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Repuestos -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#repuestos-collapse"
+                  aria-expanded="false"
+                >
+                  Repuestos
+                </button>
+
+                <!-- Desplegable de repuestos -->
+                <div class="collapse" id="repuestos-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar un repuesto</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar un repuesto</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar un repuesto</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar un tipo de repuesto</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar un tipo de repuesto</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar un tipo de repuesto</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Empleados -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#empleados-collapse"
+                  aria-expanded="false"
+                >
+                  Empleados
+                </button>
+
+                <!-- Desplegable de empleados -->
+                <div class="collapse" id="empleados-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Dar de alta un empleado</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar un empleado</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Dar de baja un empleado</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Asociar un tipo de tarea con empleado</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Desasociar un tipo de tarea con empleado</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Modelos -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#modelos-collapse"
+                  aria-expanded="false"
+                >
+                  Modelos
+                </button>
+
+                <!-- Desplegable de modelos -->
+                <div class="collapse" id="modelos-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar un modelo</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar un modelo</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar un modelo</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Marcas -->
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#marcas-collapse"
+                  aria-expanded="false"
+                >
+                  Marcas
+                </button>
+
+                <!-- Desplegable de marcas -->
+                <div class="collapse" id="marcas-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Registrar una marca</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Modificar una marca</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" class="link-dark rounded"
+                        >Eliminar una marca</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Sesión -->
+              <li class="border-top my-3"></li>
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle align-items-center rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#sesion-collapse"
+                  aria-expanded="false"
+                >
+                  Sesión
+                </button>
+                <!-- Desplegable sesión -->
+                <div class="collapse" id="sesion-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark rounded">Perfil</a></li>
+                    <li><a href="#" class="link-dark rounded">Configuración</a></li>
+                    <li><a href="#" class="link-dark rounded">Salir</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Segunda columna (listado) -->
+        <div class="col-7">
+            <h1 class="mt-4">Listado de clientes</h1>
+            <div class="table-responsive">
+                <table class="table table-hover mt-4"> <!-- Se puede poner table-sm -->
+                    <thead>
+                        <tr>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Telefono</th>
+                        </tr>
+                    </thead>
+                    <!-- Datos cargados -->
+                    <tbody>
+                        <!-- <tr>
+                            <td>12345678</td>
+                            <td>Ramiro</td>
+                            <td>Canario</td>
+                            <td>Calle 123</td>
+                            <td>2804458854</td>
+                        </tr>
+                        <tr>
+                            <td>45884585</td>
+                            <td>Matias</td>
+                            <td>Barea</td>
+                            <td>Calle 558</td>
+                            <td>0280466589</td>
+                        </tr>
+                        <tr>
+                            <td>45587745</td>
+                            <td>Alexis</td>
+                            <td>Murillo</td>
+                            <td>Calle 774</td>
+                            <td>02804878511</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>Ramiro</td>
+                            <td>Canario</td>
+                            <td>Calle 123</td>
+                            <td>2804458854</td>
+                        </tr>
+                        <tr>
+                            <td>45884585</td>
+                            <td>Matias</td>
+                            <td>Barea</td>
+                            <td>Calle 558</td>
+                            <td>0280466589</td>
+                        </tr>
+                        <tr>
+                            <td>45587745</td>
+                            <td>Alexis</td>
+                            <td>Murillo</td>
+                            <td>Calle 774</td>
+                            <td>02804878511</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>Ramiro</td>
+                            <td>Canario</td>
+                            <td>Calle 123</td>
+                            <td>2804458854</td>
+                        </tr>
+                        <tr>
+                            <td>45884585</td>
+                            <td>Matias</td>
+                            <td>Barea</td>
+                            <td>Calle 558</td>
+                            <td>0280466589</td>
+                        </tr>
+                        <tr>
+                            <td>45587745</td>
+                            <td>Alexis</td>
+                            <td>Murillo</td>
+                            <td>Calle 774</td>
+                            <td>02804878511</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>Ramiro</td>
+                            <td>Canario</td>
+                            <td>Calle 123</td>
+                            <td>2804458854</td>
+                        </tr>
+                        <tr>
+                            <td>45884585</td>
+                            <td>Matias</td>
+                            <td>Barea</td>
+                            <td>Calle 558</td>
+                            <td>0280466589</td>
+                        </tr> -->
+                        <tr>
+                            <td>45587745</td>
+                            <td>Alexis</td>
+                            <td>Murillo</td>
+                            <td>Calle 774</td>
+                            <td>02804878511</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>Ramiro</td>
+                            <td>Canario</td>
+                            <td>Calle 123</td>
+                            <td>2804458854</td>
+                        </tr>
+                        <tr>
+                            <td>45884585</td>
+                            <td>Matias</td>
+                            <td>Barea</td>
+                            <td>Calle 558</td>
+                            <td>0280466589</td>
+                        </tr>
+                        <tr>
+                            <td>45587745</td>
+                            <td>Alexis</td>
+                            <td>Murillo</td>
+                            <td>Calle 774</td>
+                            <td>02804878511</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>Ramiro</td>
+                            <td>Canario</td>
+                            <td>Calle 123</td>
+                            <td>2804458854</td>
+                        </tr>
+                        <tr>
+                            <td>45884585</td>
+                            <td>Matias</td>
+                            <td>Barea</td>
+                            <td>Calle 558</td>
+                            <td>0280466589</td>
+                        </tr>
+                        <tr>
+                            <td>45587745</td>
+                            <td>Alexis</td>
+                            <td>Murillo</td>
+                            <td>Calle 774</td>
+                            <td>02804878511</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>Ramiro</td>
+                            <td>Canario</td>
+                            <td>Calle 123</td>
+                            <td>2804458854</td>
+                        </tr>
+                        <tr>
+                            <td>45884585</td>
+                            <td>Matias</td>
+                            <td>Barea</td>
+                            <td>Calle 558</td>
+                            <td>0280466589</td>
+                        </tr>
+                        <tr>
+                            <td>45587745</td>
+                            <td>Alexis</td>
+                            <td>Murillo</td>
+                            <td>Calle 774</td>
+                            <td>02804878511</td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td>Ramiro</td>
+                            <td>Canario</td>
+                            <td>Calle 123</td>
+                            <td>2804458854</td>
+                        </tr>
+                        <tr>
+                            <td>45884585</td>
+                            <td>Matias</td>
+                            <td>Barea</td>
+                            <td>Calle 558</td>
+                            <td>0280466589</td>
+                        </tr>
+                        <tr>
+                            <td>45587745</td>
+                            <td>Alexis</td>
+                            <td>Murillo</td>
+                            <td>Calle 774</td>
+                            <td>02804878511</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col-12 d-flex flex-row-reverse mb-4">
+                    <button type="submit" class="btn btn-primary mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                        </svg>
+                        Descargar listado</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tercer columna (ordenar/filtrar) -->
+        <div class="col-2 mt-5 mr-4">
+
+            <!-- Ordenar -->
+            <span class="fs-5 fw-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down" viewBox="0 0 16 16">
+                    <path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293V2.5zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+                </svg>
+                  Ordenar</span>
+
+            <!-- Radio buttons -->
+            <div class="form-check mt-2">
+                <input class="form-check-input" type="radio" name="flexRadioOrdenar" id="flexRadioDni" checked>
+                <label class="form-check-label" for="flexRadioDni">
+                  DNI
+                </label>
+            </div>
+            <div class="form-check mb-4">
+                <input class="form-check-input" type="radio" name="flexRadioOrdenar" id="flexRadioApellido">
+                <label class="form-check-label" for="flexRadioApellido">
+                  Apellido
+                </label>
+            </div>
+            <hr>
+
+            <!-- Filtrar -->
+            <span class="fs-5 fw-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+                </svg>
+                  Filtrar</span>
+
+            <!-- Inputs -->
+            <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">DNI</span>
+                </div>
+                <input type="number" class="form-control" placeholder="Sin filtrar">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Apellido</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Sin filtrar">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Nombre</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Sin filtrar">
+            </div>
+
+            <!-- Botón "Filtrar" -->
+            <div class="col-12 d-flex">
+                <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

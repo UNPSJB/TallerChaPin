@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block main %}
+<div class="col-5">
+    <h3>Registrar Marca</h3>
+    <form method="post">{% csrf_token %}
+            {{form.as_p}}
+        <input class="btn btn-primary float-end" type="submit" value="Guardar">
+    </form>
+</div>
+{% endblock %}

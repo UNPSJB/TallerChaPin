@@ -6,7 +6,6 @@ from .models import Marca, Modelo
 
 
 class MarcaAdmin(admin.ModelAdmin):
-    fields = ('name', 'title', 'view_birth_date')
     ordering = ('nombre', )
 
 

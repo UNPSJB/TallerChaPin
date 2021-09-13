@@ -1,6 +1,9 @@
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from .models import *
+from .forms import MarcaForm
 # Create your views here.
 
 
@@ -27,8 +30,13 @@ def registrar_cliente(request):
     return render(request, 'taller/form_registrar_cliente.html', {"titulo": "Registrar Cliente"})
 
 
-class MarcaListView(ListView):
+class MarcaCreateView(CreateView):
+    model = Marca
+    form_class = MarcaForm # configuración de los campos del form + estilos.
+    template_name = 'taller/marca_form.html' # template del form
+    success_url = reverse_lazy('crearMarca') # a donde vamos luego de guardar exitosamente?
 
+class MarcaListView(ListView):
     model = Marca
     paginate_by = 100  # if pagination is desired
 

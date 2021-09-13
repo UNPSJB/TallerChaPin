@@ -6,11 +6,14 @@ from .models import Marca, Modelo
 
 
 class MarcaAdmin(admin.ModelAdmin):
-    pass
+    fields = ('name', 'title', 'view_birth_date')
+    ordering = ('nombre', )
 
 
 class ModeloAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('nombre', 'marca', 'descripcion')
+    list_filter = ('marca',)
+    ordering = ('marca', 'nombre')
 
 
 admin.site.register(Marca, MarcaAdmin)

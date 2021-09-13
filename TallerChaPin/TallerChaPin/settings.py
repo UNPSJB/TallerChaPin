@@ -42,8 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'taller',
     'ordenes',
-    'facturas'
+    'facturas',
+    'crispy_forms',
+    "crispy_bootstrap5",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,3 +138,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TEST_RUNNER = "redgreenunittest.django.runner.RedGreenDiscoverRunner"

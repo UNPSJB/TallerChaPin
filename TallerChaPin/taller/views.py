@@ -10,16 +10,21 @@ from .forms import MarcaForm
 def index(request):
     return render(request, 'taller/listado_marcas.html')
 
+
 def listado_marcas(request):
-    marca = Marca(1,"ford", " ")
-    marca2 = Marca(2,"Fiat", " ")
+    marca = Marca(1, "ford", " ")
+    marca2 = Marca(2, "Fiat", " ")
     marca.save()
     marca2.save()
-    lista_marcas = [marca,marca2]
+    lista_marcas = [marca, marca2]
 
-    return render(request, 'taller/listado_marcas.html',context={"titulo": "marcas:", "marcas": lista_marcas})
+    return render(request, 'taller/listado_marcas.html', context={"titulo": "marcas:", "marcas": lista_marcas})
+
 
 def modelos_x_marcas(request, marca):
+    """
+        Obtiene los modelos de una marca
+    """
     marca = get_object_or_404(Marca, nombre=marca)
     print(marca.modelos.all())
     lista_modelos = [m for m in marca.modelos.all()]
@@ -32,9 +37,11 @@ def registrar_cliente(request):
 
 class MarcaCreateView(CreateView):
     model = Marca
-    form_class = MarcaForm # configuración de los campos del form + estilos.
-    template_name = 'taller/marca_form.html' # template del form
-    success_url = reverse_lazy('crearMarca') # a donde vamos luego de guardar exitosamente?
+    form_class = MarcaForm  # configuración de los campos del form + estilos.
+    template_name = 'taller/marca_form.html'  # template del form
+    # a donde vamos luego de guardar exitosamente?
+    success_url = reverse_lazy('crearMarca')
+
 
 class MarcaListView(ListView):
     model = Marca

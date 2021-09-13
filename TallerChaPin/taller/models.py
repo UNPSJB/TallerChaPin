@@ -2,20 +2,46 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+# http://....../?atributo__contains=valor
+# FILTRO = {'atributo__contains': valor}
+# ...?nombre__icontains=a&marca__exact=1
+
+
+def texto_to_query(texto):
+    filtros = dict([chunk.split("=") for chunk in texto.split("&")])
+    filtro = models.Q()
+    for attr, value in filtros.items():
+        if value.isdigit():
+            value = int(value)
+        filtro &= models.Q(**{attr: value})
+    return filtro
+
+
+class MarcaQuerySet(models.QuerySet):
+    def filtrar(self, texto):
+        return self.filter(texto_to_query(texto))
 
 
 class Marca(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     descripcion = models.CharField(max_length=200)
+    objects = MarcaQuerySet.as_manager()
 
     def __str__(self):
         return self.nombre
 
 
+class ModeloQuerySet(models.QuerySet):
+    def filtrar(self, texto):
+        return self.filter(texto_to_query(texto))
+
+
 class Modelo(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     descripcion = models.CharField(max_length=200)
-    marca = models.ForeignKey(Marca, related_name="modelos", on_delete=models.CASCADE)
+    marca = models.ForeignKey(
+        Marca, related_name="modelos", on_delete=models.CASCADE)
+    objects = ModeloQuerySet.as_manager()
 
     def __str__(self):
         return self.nombre

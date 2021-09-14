@@ -1,7 +1,7 @@
 {% extends 'main.html' %} {% load static %} {% block title %} {{titulo}} {%endblock %} {% block main %}
 <h1>{{titulo}}</h1>
 
-<div class="col-8">
+<div>
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
@@ -25,6 +25,14 @@
         {% endfor %}
       </tbody>
     </table>
+    <div class="col-12 d-flex flex-row-reverse mb-4">
+        <button type="submit" class="btn btn-primary mt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+          </svg>
+        Descargar listado</button>
+    </div>
   </div>
 </div>
 {% endblock %} 
@@ -57,7 +65,7 @@
         id="flexRadioNombre"
         checked
         />
-        <label class="form-check-label" for="flexRadioDni"> Nombre </label>
+        <label class="form-check-label" for="flexRadioNombre"> Nombre </label>
     </div>
     <div class="form-check">
         <input
@@ -65,9 +73,8 @@
         type="radio"
         name="flexRadioOrdenar"
         id="flexRadioDescripcion"
-        checked
         />
-        <label class="form-check-label" for="flexRadioDni"> Descripcion </label>
+        <label class="form-check-label" for="flexRadioDescripcion"> Descripcion </label>
     </div>
     <div class="form-check mb-4">
         <input
@@ -76,7 +83,7 @@
         name="flexRadioOrdenar"
         id="flexRadioMarca"
         />
-        <label class="form-check-label" for="flexRadioApellido"> Marca </label>
+        <label class="form-check-label" for="flexRadioMarca"> Marca </label>
     </div>
     <hr />
 

@@ -18,7 +18,7 @@ from django.urls import path, include
 from TallerChaPin.views import home, login, logout
 
 urlpatterns = [
-    path('', home),
+    path('', home, name="home"),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('taller/', include('taller.urls')),

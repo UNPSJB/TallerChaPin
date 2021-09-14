@@ -1,60 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %} {{titulo}} {% endblock %}
-{% block extracss %}
-<style>
-  html,
-  body {
-    height: 100%;
-  }
+{% block title %} {{ title }} {% endblock %}
+{% block extracss %} 
+  <link rel="stylesheet" href="../static/css/login.css">
+{% endblock %} 
 
-  body {
-    display: flex;
-    align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #f5f5f5;
-  }
+{% block container %} 
 
-  .form-signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
-  }
+  <main class="form-signin">
+    <h1 class="login-title">Taller ChaPin</h1>
+    <hr class="divider">
 
-  .form-signin .checkbox {
-    font-weight: 400;
-  }
+    {% if form.errors or no_user %}
+      <p class="error-message">Usuario y/o contraseña incorrecta. Intenta nuevamente.</p>
+    {% endif %} 
+    {% if next %} 
+      {% if user.is_authenticated %}
+        <p class="error-message">Tu cuenta no tiene acceso a esta página. Para continuar, por favor inicia sesión con una cuenta con permisos suficientes.</p>
+      {% else %}
+        <p class="error-message">Inicia sesión para ver esta página.</p>
+      {% endif %}
+    {% endif %}
 
-  .form-signin .form-floating:focus-within {
-    z-index: 2;
-  }
-
-  .form-signin input[type='email'] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .form-signin input[type='password'] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-</style>
-
-{% endblock %} {% block container %} {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %} {% if next %} {% if user.is_authenticated %}
-<p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
-{% else %}
-<p>Please login to see this page.</p>
-{% endif %} {% endif %}
-
-<main class="form-signin">
-  <h1>Taller ChaPin</h1>
-  {% crispy form form.helper %}
-</main>
+    {% crispy form form.helper %}
+  </main>
 {% endblock %}

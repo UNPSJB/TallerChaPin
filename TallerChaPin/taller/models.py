@@ -48,10 +48,20 @@ class Modelo(models.Model):
 
 
 class TipoTarea(models.Model):
+    nombre = models.CharField(max_length=50, unique=True)
+    descripcion = models.CharField(max_length=200)
+    # Requiere Material[si/no]
+    materiales = models.BooleanField(default=False)
+    # Requiere Repuesto[si/no]
+    repuestos = models.BooleanField(default=False)
+    # Requiere Planilla[si/no]
+    planilla = models.BooleanField(default=False)
     pass
 
 
 class Tarea(models.Model):
+    nombre = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=200)
     tipo = models.ForeignKey(TipoTarea, on_delete=models.CASCADE)
 
 
@@ -97,6 +107,7 @@ class Empleado(models.Model):
     legajo = models.IntegerField(null=False)
     nombre = models.CharField(max_length=100, null=False, blank=False)
     apellido = models.CharField(max_length=100, null=False, blank=False)
+    tareas = models.ManyToManyField(TipoTarea)
     usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
     def crear_usuario(self):

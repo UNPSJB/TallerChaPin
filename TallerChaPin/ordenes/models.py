@@ -1,7 +1,12 @@
-from TallerChaPin.taller.models import Empleado
+from taller.models import (
+    Empleado, 
+    Cliente, 
+    Vehiculo, 
+    Tarea, 
+    Material, 
+    Repuesto
+)
 from django.db import models
-from TallerChaPin.core.models import Cliente, Vehiculo, Tarea, Material, Repuesto
-
 # Create your models here.
 
 

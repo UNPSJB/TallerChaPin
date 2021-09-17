@@ -1,5 +1,5 @@
 from django.db import models
-from TallerChaPin.ordenes.models import DetalleOrdenDeTrabajo, OrdenDeTrabajo
+from ordenes.models import DetalleOrdenDeTrabajo, OrdenDeTrabajo
 
 # Create your models here.
 

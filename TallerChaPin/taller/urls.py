@@ -10,6 +10,7 @@ from .views import (
     ModeloListView,
     MarcaCreateView,
     EmpleadoCreateView,
+    EmpleadoUpdateView,
     EmpleadoListView
 )
 
@@ -22,7 +23,8 @@ urlpatterns = [
     #path('marcas/<slug:marca>/modelos', modelos_x_marcas, name="modelosXmarcas"),
     path('cliente/registrar', registrar_cliente, name="registrarCliente"),
     path('modelos/listar', ModeloListView.as_view(), name="listarModelos"),
-    path ('empleados/crear', EmpleadoCreateView.as_view(), name="crearEmpleado"),
+    path ('empleado/crear', EmpleadoCreateView.as_view(), name="crearEmpleado"),
+    path('empleado/modificar/<int:pk>', EmpleadoUpdateView.as_view(), name="modificarEmpleado"),
     path ('empleados/listar', EmpleadoListView.as_view(), name="listarEmpleados")
 
 ]

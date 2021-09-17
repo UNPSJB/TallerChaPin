@@ -1,6 +1,5 @@
-from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
 from .forms import MarcaForm, EmpleadoForm
@@ -25,7 +24,6 @@ class MarcaListView(ListView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de Marcas"
         return context
-
 
 # def listado_marcas(request):
 #     marca = Marca(1,"ford", " ")
@@ -61,7 +59,13 @@ class EmpleadoCreateView(CreateView):
     model = Empleado
     form_class = EmpleadoForm # configuración de los campos del form + estilos.
     template_name = 'taller/empleado_form.html' # template del form
-    success_url = reverse_lazy('crearEmpleado') # a donde vamos luego de guardar exitosamente?
+    success_url = reverse_lazy('crearEmpleado') 
+
+class EmpleadoUpdateView(UpdateView):
+    model = Empleado
+    form_class = EmpleadoForm
+    template_name = "taller/empleado_update_form.html"
+    success_url = reverse_lazy("crearEmpleado")
 
 class EmpleadoListView(ListView):
 
@@ -72,3 +76,5 @@ class EmpleadoListView(ListView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de Empleados"
         return context
+
+

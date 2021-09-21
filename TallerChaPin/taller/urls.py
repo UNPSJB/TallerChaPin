@@ -5,12 +5,13 @@ from .views import (
     # index, 
     # listado_marcas, 
     # modelos_x_marcas, 
-    registrar_cliente, 
+    # registrar_cliente, 
     MarcaListView, 
     ModeloListView,
     MarcaCreateView,
     EmpleadoCreateView,
     EmpleadoUpdateView,
+    EmpleadoDeleteView,
     EmpleadoListView
 )
 
@@ -21,10 +22,11 @@ urlpatterns = [
     path('marcas/crear', MarcaCreateView.as_view(), name="crearMarca"),
     path('marcas/listar', MarcaListView.as_view(), name="listarMarcas"),
     #path('marcas/<slug:marca>/modelos', modelos_x_marcas, name="modelosXmarcas"),
-    path('cliente/registrar', registrar_cliente, name="registrarCliente"),
+    #path('cliente/registrar', registrar_cliente, name="registrarCliente"),
     path('modelos/listar', ModeloListView.as_view(), name="listarModelos"),
     path ('empleado/crear', EmpleadoCreateView.as_view(), name="crearEmpleado"),
     path('empleado/modificar/<int:pk>', EmpleadoUpdateView.as_view(), name="modificarEmpleado"),
+    path('empleado/eliminar/<int:pk>', EmpleadoDeleteView.as_view(), name="eliminarEmpleado"),
     path ('empleados/listar', EmpleadoListView.as_view(), name="listarEmpleados")
 
 ]

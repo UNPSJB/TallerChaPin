@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
 from .forms import MarcaForm, EmpleadoForm
@@ -7,8 +7,6 @@ from .forms import MarcaForm, EmpleadoForm
 # Create your views here.
 
 
-# def index(request):
-#     return render(request, 'taller/listado_marcas.html')
 
 class MarcaCreateView(CreateView):
     model = Marca
@@ -25,23 +23,6 @@ class MarcaListView(ListView):
         context['titulo'] = "Listado de Marcas"
         return context
 
-# def listado_marcas(request):
-#     marca = Marca(1,"ford", " ")
-#     marca2 = Marca(2,"Fiat", " ")
-#     marca.save()
-#     marca2.save()
-#     lista_marcas = [marca,marca2]
-
-#     return render(request, 'taller/listado_marcas.html',context={"titulo": "marcas:", "marcas": lista_marcas})
-
-# def modelos_x_marcas(request, marca):
-#     marca = get_object_or_404(Marca, nombre=marca)
-#     print(marca.modelos.all())
-#     lista_modelos = [m for m in marca.modelos.all()]
-#     return render(request, 'taller/modelos_x_marca.html', context={"titulo": "modelos:", "modelos": lista_modelos})
-
-def registrar_cliente(request):
-    return render(request, 'taller/form_registrar_cliente.html', {"titulo": "Registrar Cliente"})
 
 
 class ModeloListView(ListView):
@@ -65,7 +46,13 @@ class EmpleadoUpdateView(UpdateView):
     model = Empleado
     form_class = EmpleadoForm
     template_name = "taller/empleado_update_form.html"
-    success_url = reverse_lazy("crearEmpleado")
+    success_url = reverse_lazy("listarEmpleado")
+
+class EmpleadoDeleteView(DeleteView):
+    model = Empleado
+    form_class= EmpleadoForm
+    teamplate_name = "taller/empleado_delete_form.html"
+    success_url = reverse_lazy("listarEmpleado")
 
 class EmpleadoListView(ListView):
 

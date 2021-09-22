@@ -50,8 +50,7 @@ class EmpleadoUpdateView(UpdateView):
 
 class EmpleadoDeleteView(DeleteView):
     model = Empleado
-    form_class= EmpleadoForm
-    teamplate_name = "taller/empleado_delete_form.html"
+   
     success_url = reverse_lazy("listarEmpleado")
 
 class EmpleadoListView(ListView):

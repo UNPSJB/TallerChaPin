@@ -19,9 +19,10 @@
           <td>{{ empleado.legajo}}</td>
           <td>{{ empleado.nombre }}</td>
           <td>{{ empleado.apellido }}</td> 
-          <td>{{ empleado.cuil }}</td> 
+          <td>{{ empleado.cuil }}</td>
           <td>
-            <a href="{% url 'empleado_update_form' empleado.pk %}">modificar</a>
+            <a href="{% url 'modificarEmpleado' empleado.pk %}" class= "btn btn-info btn-sm">modificar</a>
+            <a href="{% url 'eliminarEmpleado' empleado.pk %}" class= "btn btn-danger btn-sm">eliminar</a>
           </td> 
         </tr>
         {% empty %}

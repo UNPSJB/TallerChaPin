@@ -46,12 +46,15 @@ class EmpleadoUpdateView(UpdateView):
     model = Empleado
     form_class = EmpleadoForm
     template_name = "taller/empleado_update_form.html"
-    success_url = reverse_lazy("listarEmpleado")
+    success_url = reverse_lazy("listarEmpleados")
 
 class EmpleadoDeleteView(DeleteView):
     model = Empleado
-   
-    success_url = reverse_lazy("listarEmpleado")
+    success_url = reverse_lazy("listarEmpleados")
+    
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+    
 
 class EmpleadoListView(ListView):
 

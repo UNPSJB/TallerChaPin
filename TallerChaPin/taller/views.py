@@ -1,12 +1,11 @@
 from django.urls import reverse_lazy
+
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
 from .forms import MarcaForm, EmpleadoForm
 
 # Create your views here.
-
-
 
 class MarcaCreateView(CreateView):
     model = Marca
@@ -45,7 +44,6 @@ class EmpleadoCreateView(CreateView):
 class EmpleadoUpdateView(UpdateView):
     model = Empleado
     form_class = EmpleadoForm
-    template_name = "taller/empleado_update_form.html"
     success_url = reverse_lazy("listarEmpleados")
 
 class EmpleadoDeleteView(DeleteView):

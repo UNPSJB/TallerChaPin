@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block extracss %}
+{% extends 'main.html' %} {% load static %} {% block extracss %}
 <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
 
 {% endblock %} {% block container %} {% block nav %} {% include 'nav.html' %} {% endblock %}
@@ -6,7 +6,7 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-between">
     <div class="col-2 mt-4">
-      {% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+      {% block sidebar %} {% include 'sidebar_taller.html' %} {% endblock %}
     </div>
 
     <div class="col-7 mt-4">

@@ -41,6 +41,7 @@ class Modelo(models.Model):
     descripcion = models.CharField(max_length=200)
     marca = models.ForeignKey(
         Marca, related_name="modelos", on_delete=models.CASCADE)
+    anio = models.PositiveSmallIntegerField()
     objects = ModeloQuerySet.as_manager()
 
     def __str__(self):
@@ -56,29 +57,80 @@ class TipoTarea(models.Model):
     repuestos = models.BooleanField(default=False)
     # Requiere Planilla[si/no]
     planilla = models.BooleanField(default=False)
-    pass
+
+    def __str__(self):
+        return self.nombre
 
 
 class Tarea(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=200)
     tipo = models.ForeignKey(TipoTarea, on_delete=models.CASCADE)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.nombre
 
 
 class TipoRepuesto(models.Model):
+    # Ejemplos: Puesta Derecha, Puerta Izquierda, Guardabarros, Parabrisa.
+    # nombre
+    # descripcion
     pass
 
 
 class Repuesto(models.Model):
-    tipo = models.ForeignKey(TipoRepuesto, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=50)
+    modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
+    tipo = models.CharField(max_length=50)
+    cantidad = models.IntegerField(blank=True, null=True, default=0)
+    precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+
+    def __str__(self):
+        return self.nombre
 
 
 class TipoMaterial(models.Model):
-    pass
+    GRAMO = 1
+    CM3 = 2
+    LITRO = 3
+    UNIDAD = 4
+    KG = 5
+    METRO = 6
+    METRO2 = 7
+    UNIDADES_BASICAS = (
+        (GRAMO, "g"),
+        (CM3, "cm3"),
+        (UNIDAD, "unidad"),
+        (METRO, "metro"),
+        (METRO2, "metro2")
+    )
+    # Ejemplos: Remaches, Lijas, Fibra, Resina, Pintura, Masilla, Cinta
+    nombre = models.CharField(max_length=50)
+    unidad_medida = models.PositiveSmallIntegerField(choices=UNIDADES_BASICAS)
+
+    def __str__(self):
+        return self.nombre
 
 
 class Material(models.Model):
+    nombre = models.CharField(max_length=50)
     tipo = models.ForeignKey(TipoMaterial, on_delete=models.CASCADE)
+    cantidad = models.IntegerField(blank=True, null=True, default=0)
+    precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+
+    def __str__(self):
+        return f"{self.nombre} ({self.tipo})"
+
+    def menos_stock(self, cantidad):
+        self.cantidad -= cantidad
+        self.save()
+
+    def stock(self):
+        return self.cantidad
+
+    def calcular_precio(self, cantidad):
+        return self.precio * cantidad
 
 
 class Cliente(models.Model):
@@ -87,6 +139,9 @@ class Cliente(models.Model):
     apellido = models.CharField(max_length=100)
     direccion = models.CharField(max_length=100)
     telefono = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nombre
 
 
 class Vehiculo(models.Model):
@@ -117,3 +172,6 @@ class Empleado(models.Model):
         user.save()
         self.usuario = user
         return user
+
+    def __str__(self):
+        return self.nombre

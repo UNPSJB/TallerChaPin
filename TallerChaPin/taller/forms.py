@@ -1,5 +1,7 @@
 from django import forms
 from .models import Empleado, Marca
+from django.db.models.query import QuerySet
+from .models import Marca
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
@@ -61,3 +63,16 @@ class EmpleadoForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
+
+class ModeloFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    descripcion = forms.CharField(required=False)
+    marca = forms.ModelChoiceField(
+        queryset=Marca.objects.all(), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))

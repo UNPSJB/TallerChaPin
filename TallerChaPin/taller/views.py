@@ -4,14 +4,17 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
 from .forms import MarcaForm, EmpleadoForm
+from .forms import MarcaForm, ModeloFiltrosForm
 
 # Create your views here.
 
 class MarcaCreateView(CreateView):
     model = Marca
-    form_class = MarcaForm # configuración de los campos del form + estilos.
-    template_name = 'taller/marca_form.html' # template del form
-    success_url = reverse_lazy('crearMarca') # a donde vamos luego de guardar exitosamente?
+    form_class = MarcaForm  # configuración de los campos del form + estilos.
+    template_name = 'taller/marca_form.html'  # template del form
+    # a donde vamos luego de guardar exitosamente?
+    success_url = reverse_lazy('crearMarca')
+
 
 class MarcaListView(ListView):
     model = Marca
@@ -22,8 +25,6 @@ class MarcaListView(ListView):
         context['titulo'] = "Listado de Marcas"
         return context
 
-
-
 class ModeloListView(ListView):
 
     model = Modelo
@@ -31,7 +32,28 @@ class ModeloListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['filtros'] = ModeloFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Modelos"
+        return context
+   
+    def get_queryset(self):
+        # print(self.request.GET)
+        #{'nombre': ['Gol'], 'descripcion': [''], 'marca': [''], 'submit': ['Filtrar']}
+        #{'nombre': ['Punto'], 'descripcion': [''], 'marca': ['3'], 'submit': ['Filtrar']}
+        qs = super().get_queryset()
+        return qs
+        # return qs.filter(algo(self.request.GET))
+
+class ClienteListView(ListView):
+
+    model = Cliente
+
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['titulo'] = "Listado de Clientes"
         return context
 
 class EmpleadoCreateView(CreateView):
@@ -52,7 +74,6 @@ class EmpleadoDeleteView(DeleteView):
     
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
-    
 
 class EmpleadoListView(ListView):
 

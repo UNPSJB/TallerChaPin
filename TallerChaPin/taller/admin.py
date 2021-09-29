@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Permission
 
-from .models import Empleado, Marca, Material, Modelo, Cliente, Repuesto, Tarea, TipoMaterial, TipoTarea
+from .models import Empleado, Marca, Material, Modelo, Cliente, Repuesto, Tarea, TipoMaterial, TipoTarea, Vehiculo
 # Register your models here.
 
 
@@ -26,6 +26,7 @@ admin.site.register(TipoMaterial)
 admin.site.register(Material)
 admin.site.register(Repuesto)
 admin.site.register(Tarea)
+admin.site.register(Vehiculo)
 admin.site.register(TipoTarea)
 admin.site.register(Empleado)
 # admin.site.register(Permission)

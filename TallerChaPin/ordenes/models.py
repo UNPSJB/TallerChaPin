@@ -1,9 +1,9 @@
 from taller.models import (
-    Empleado, 
-    Cliente, 
-    Vehiculo, 
-    Tarea, 
-    Material, 
+    Empleado,
+    Cliente,
+    Vehiculo,
+    Tarea,
+    Material,
     Repuesto
 )
 from django.db import models
@@ -39,20 +39,25 @@ class OrdenDeTrabajo(models.Model):
     def ampliar_presupuesto(self, tareas, materiales, repuestos):
         return Presupuesto(tareas, materiales, repuestos, self)
 
+    def agregar_tarea(self, tarea):
+        return DetalleOrdenDeTrabajo(tarea=tarea, orden=self)
+
 
 class DetalleOrdenDeTrabajo(models.Model):
     orden = models.ForeignKey(
         OrdenDeTrabajo, related_name="detalles", on_delete=models.CASCADE)
     tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE)
-    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
+    empleado = models.ForeignKey(
+        Empleado, null=True, blank=True, on_delete=models.CASCADE)
     inicio = models.DateTimeField(null=True, blank=True)
     fin = models.DateTimeField(null=True, blank=True)
     exitosa = models.BooleanField(default=True)
-    detalles = models.CharField(max_length=200)
+    observaciones = models.CharField(max_length=200, null=True, blank=True)
 
     @classmethod
     def crear(cls, tarea):
-        return cls(tarea = tarea)
+        return cls(tarea=tarea)
+
 
 class Presupuesto(models.Model):
     cliente = models.ForeignKey(
@@ -64,34 +69,54 @@ class Presupuesto(models.Model):
     materiales = models.ManyToManyField(
         Material, through='PresupuestoMaterial')
     repuestos = models.ManyToManyField(Repuesto, through='PresupuestoRepuesto')
-    validez = models.PositiveIntegerField()
+    validez = models.PositiveIntegerField(default=60)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',
                               blank=True, on_delete=models.SET_NULL)
 
-    # def precio_estimado(self):
-    #    return self.tareas.all().aggregate(models.Sum('precio'))['precio__sum']
+    def agregar_tarea(self, tarea):
+        self.tareas.add(tarea)
+
+    def agregar_material(self, material, cantidad):
+        return PresupuestoMaterial.objects.create(material=material, presupuesto=self, cantidad=cantidad)
+
+    def agregar_repuesto(self, repuesto, cantidad=1):
+        return PresupuestoRepuesto.objects.create(repuesto=repuesto, presupuesto=self, cantidad=cantidad)
+
+    def precio_estimado(self):
+        tareas = self.tareas.all().aggregate(
+            models.Sum('precio'))['precio__sum']
+        materiales = sum([r.precio()
+                         for r in self.presupuesto_materiales.all()])
+        repuestos = sum([r.precio() for r in self.presupuesto_repuestos.all()])
+        return tareas + materiales + repuestos
 
     def confirmar(self):
-        orden = OrdenDeTrabajo()
-        tareas = [DetalleOrdenDeTrabajo.crear(t) for t in self.tareas.all()]
-        orden.tareas.add(tareas)
-        return orden
+        self.orden = OrdenDeTrabajo.objects.create()
+        for t in self.tareas.all():
+            self.orden.agregar_tarea(t)
+        return self.orden
 
 
 class PresupuestoMaterial(models.Model):
     material = models.ForeignKey(
         Material, on_delete=models.CASCADE, related_name='presupuestos')
     presupuesto = models.ForeignKey(
-        Presupuesto, on_delete=models.CASCADE)
+        Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_materiales')
     cantidad = models.PositiveBigIntegerField()
+
+    def precio(self):
+        return self.material.precio * self.cantidad
 
 
 class PresupuestoRepuesto(models.Model):
     repuesto = models.ForeignKey(
         Repuesto, on_delete=models.CASCADE, related_name='presupuestos')
     presupuesto = models.ForeignKey(
-        Presupuesto, on_delete=models.CASCADE)
+        Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_repuestos')
     cantidad = models.PositiveBigIntegerField()
+
+    def precio(self):
+        return self.repuesto.precio * self.cantidad
 
 
 class PlanillaDePintura(models.Model):

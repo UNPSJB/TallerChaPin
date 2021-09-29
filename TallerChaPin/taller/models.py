@@ -42,6 +42,8 @@ class Modelo(models.Model):
     marca = models.ForeignKey(
         Marca, related_name="modelos", on_delete=models.CASCADE)
     anio = models.PositiveSmallIntegerField()
+
+    # Manager de la clase Modelo
     objects = ModeloQuerySet.as_manager()
 
     def __str__(self):
@@ -80,9 +82,22 @@ class TipoRepuesto(models.Model):
 
 
 class Repuesto(models.Model):
+    TIPOS = (
+        (1, 'Puerta'),
+        (2, 'Guardabarros'),
+        (3, 'Parabrisa'),
+        (4, 'Cristal'),
+        (5, 'Bateria'),
+        (6, 'Rueda'),
+        (7, 'Mecanico'),
+        (8, 'Llanta'),
+        (9, 'Suspension'),
+        (10, 'Aire Acondicionado'),
+        (99, 'Otro'),
+    )
     nombre = models.CharField(max_length=50)
     modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
-    tipo = models.CharField(max_length=50)
+    tipo = models.PositiveSmallIntegerField(choices=TIPOS)
     cantidad = models.IntegerField(blank=True, null=True, default=0)
     precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 

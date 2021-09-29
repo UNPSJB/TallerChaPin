@@ -28,8 +28,10 @@ class OrdenDeTrabajo(models.Model):
         # (FINALIZADA, 'Finalizada'),    Cuando se entrega el vehiculo
         (FACTURADA, 'Facturada'),       # Cuando se entrega el vehiculo
     ]
-    materiales = models.ManyToManyField(Material)
-    repuestos = models.ManyToManyField(Repuesto)
+    materiales = models.ManyToManyField(
+        Material, through='MaterialOrdenDeTrabajo')
+    repuestos = models.ManyToManyField(
+        Repuesto, through='RepuestoOrdenDeTrabajo')
     turno = models.DateTimeField(auto_now_add=True)
     ingreso = models.DateTimeField(null=True, blank=True)
     egreso = models.DateTimeField(null=True, blank=True)
@@ -40,7 +42,13 @@ class OrdenDeTrabajo(models.Model):
         return Presupuesto(tareas, materiales, repuestos, self)
 
     def agregar_tarea(self, tarea):
-        return DetalleOrdenDeTrabajo(tarea=tarea, orden=self)
+        return DetalleOrdenDeTrabajo.objects.create(tarea=tarea, orden=self)
+
+    def agregar_material(self, material, cantidad):
+        return MaterialOrdenDeTrabajo.objects.create(material=material, orden=self, cantidad=cantidad)
+
+    def agregar_repuesto(self, repuesto, cantidad):
+        return RepuestoOrdenDeTrabajo.objects.create(repuesto=repuesto, orden=self, cantidad=cantidad)
 
 
 class DetalleOrdenDeTrabajo(models.Model):
@@ -57,6 +65,28 @@ class DetalleOrdenDeTrabajo(models.Model):
     @classmethod
     def crear(cls, tarea):
         return cls(tarea=tarea)
+
+
+class MaterialOrdenDeTrabajo(models.Model):
+    material = models.ForeignKey(
+        Material, on_delete=models.CASCADE, related_name='ordenes_de_trabajo')
+    orden = models.ForeignKey(
+        OrdenDeTrabajo, on_delete=models.CASCADE, related_name='orden_materiales')
+    cantidad = models.PositiveBigIntegerField()
+
+    def precio(self):
+        return self.material.precio * self.cantidad
+
+
+class RepuestoOrdenDeTrabajo(models.Model):
+    repuesto = models.ForeignKey(
+        Repuesto, on_delete=models.CASCADE, related_name='ordenes_de_trabajo')
+    orden = models.ForeignKey(
+        OrdenDeTrabajo, on_delete=models.CASCADE, related_name='orden_repuestos')
+    cantidad = models.PositiveBigIntegerField()
+
+    def precio(self):
+        return self.repuesto.precio * self.cantidad
 
 
 class Presupuesto(models.Model):
@@ -94,6 +124,10 @@ class Presupuesto(models.Model):
         self.orden = OrdenDeTrabajo.objects.create()
         for t in self.tareas.all():
             self.orden.agregar_tarea(t)
+        for m in self.presupuesto_materiales.all():
+            self.orden.agregar_material(m.material, m.cantidad)
+        for r in self.presupuesto_repuestos.all():
+            self.orden.agregar_repuesto(r.repuesto, r.cantidad)
         return self.orden
 
 

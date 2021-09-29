@@ -30,3 +30,5 @@ class PresupuestoTestCase(TestCase):
         self.presupuesto.confirmar()
         self.assertIsNotNone(self.presupuesto.orden)
         self.assertEqual(self.presupuesto.orden.detalles.count(), 1)
+        self.assertEqual(self.presupuesto.orden.materiales.count(), 1)
+        self.assertEqual(self.presupuesto.orden.repuestos.count(), 1)

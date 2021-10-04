@@ -19,22 +19,17 @@ class PresupuestoTestCase(TestCase):
 
     def test_crear_presupuesto(self):
         pintar = Tarea.objects.get(pk=3)
-        cambiar = Tarea.objects.get(pk=6)
         self.presupuesto.agregar_tarea(pintar)
-        self.presupuesto.agregar_tarea(cambiar)
         material = Material.objects.get(pk=1)
         self.presupuesto.agregar_material(material, 3)
-        repuesto = Repuesto.objects.get(pk=1)
-        self.presupuesto.agregar_repuesto(repuesto)
-        self.assertEqual(self.presupuesto.precio_estimado(), 630)
+        self.assertEqual(self.presupuesto.precio_estimado(), 150)
 
     def test_confirmar_presupuesto(self):
         self.test_crear_presupuesto()
         self.presupuesto.confirmar(now())
         self.assertIsNotNone(self.presupuesto.orden)
-        self.assertEqual(self.presupuesto.orden.detalles.count(), 2)
+        self.assertEqual(self.presupuesto.orden.detalles.count(), 1)
         self.assertEqual(self.presupuesto.orden.materiales.count(), 1)
-        self.assertEqual(self.presupuesto.orden.repuestos.count(), 1)
 
     def test_turno_orden(self):
         self.test_confirmar_presupuesto()
@@ -64,6 +59,21 @@ class PresupuestoTestCase(TestCase):
         detalle = tareas[0]
         detalle.crear_planilla_de_pintura(
             pintura, [("263gs", 100), ("27dgs6", 20), ("727ey", 5)])
-        orden.finalizar_tarea(tareas[0], True, "Todo bien", materiales=[
+        orden.finalizar_tarea(tareas[0], False, "Todo mal, hay que cambiar la puerta", materiales=[
                               (1, 1)], fecha=now())
-        self.assertNotEqual(orden.estado, OrdenDeTrabajo.FINALIZADA)
+        self.assertEqual(orden.estado, OrdenDeTrabajo.PAUSADA)
+
+    def test_ampliar_presupuesto(self):
+        self.test_orden_finalizar_trabajo()
+        orden = self.presupuesto.orden
+        presupuesto = orden.ampliar_presupuesto()
+        cambiar = Tarea.objects.get(pk=6)
+        presupuesto.agregar_tarea(cambiar)
+        repuesto = Repuesto.objects.get(pk=1)
+        presupuesto.agregar_repuesto(repuesto)
+        self.assertEqual(presupuesto.precio_estimado(), 480)
+        presupuesto.confirmar(now())
+        self.assertEqual(orden.estado, OrdenDeTrabajo.INICIADA)
+        self.assertEqual(orden.detalles.count(), 2)
+        self.assertEqual(orden.repuestos.count(), 1)
+        self.assertEqual(orden.presupuestos.count(), 2)

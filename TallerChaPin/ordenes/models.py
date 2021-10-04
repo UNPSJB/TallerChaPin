@@ -87,11 +87,11 @@ class OrdenDeTrabajo(models.Model):
 
     @property
     def cliente(self):
-        return self.presupuestos.first().cliente
+        return self.presupuestos.all().first().cliente
 
     @property
     def vehiculo(self):
-        return self.presupuestos.first().vehiculo
+        return self.presupuestos.all().first().vehiculo
 
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
@@ -128,9 +128,12 @@ class OrdenDeTrabajo(models.Model):
                 self.estado = OrdenDeTrabajo.FINALIZADA
             self.save()
 
-    def ampliar_presupuesto(self, tareas, materiales, repuestos):
-        presupuesto = Presupuesto(orden=self)
-        return presupuesto
+    def ampliar_presupuesto(self):
+        return Presupuesto.objects.create(
+            orden=self,
+            cliente=self.cliente,
+            vehiculo=self.vehiculo
+        )
 
 
 class DetalleOrdenDeTrabajo(models.Model):
@@ -234,6 +237,7 @@ class Presupuesto(models.Model):
             self.orden.agregar_material(m.material, m.cantidad)
         for r in self.presupuesto_repuestos.all():
             self.orden.agregar_repuesto(r.repuesto, r.cantidad)
+        self.save()
         return self.orden
 
 

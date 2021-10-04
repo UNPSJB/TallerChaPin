@@ -158,6 +158,15 @@ class Cliente(models.Model):
     def __str__(self):
         return self.nombre
 
+    def vip(self):
+        # Obtener ultimas tres facturas impagas del cliente
+        facturas = self.facturas.all()
+        if len(facturas) >= 3:
+            facturas = self.facturas.filter(
+                pagado=False).order_by('-fecha')[:3]
+            return len(facturas) <= 3
+        return False
+
 
 class Vehiculo(models.Model):
     # Ejemplo: ABC-123 o AC-123-AA
@@ -190,3 +199,6 @@ class Empleado(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    def puede_hacer(self, tipo_tarea):
+        return self.tareas.filter(id=tipo_tarea.id).exists()

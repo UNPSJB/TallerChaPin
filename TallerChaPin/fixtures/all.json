@@ -1,3638 +1,3648 @@
 [
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ],
-    "codename": "add_logentry"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ],
-    "codename": "change_logentry"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ],
-    "codename": "delete_logentry"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view log entry",
-    "content_type": [
-      "admin",
-      "logentry"
-    ],
-    "codename": "view_logentry"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ],
-    "codename": "add_permission"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ],
-    "codename": "change_permission"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ],
-    "codename": "delete_permission"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view permission",
-    "content_type": [
-      "auth",
-      "permission"
-    ],
-    "codename": "view_permission"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add group",
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "codename": "add_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change group",
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "codename": "change_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete group",
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "codename": "delete_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view group",
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "codename": "view_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add user",
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "codename": "add_user"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change user",
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "codename": "change_user"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete user",
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "codename": "delete_user"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view user",
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "codename": "view_user"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ],
-    "codename": "add_contenttype"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ],
-    "codename": "change_contenttype"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ],
-    "codename": "delete_contenttype"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view content type",
-    "content_type": [
-      "contenttypes",
-      "contenttype"
-    ],
-    "codename": "view_contenttype"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add session",
-    "content_type": [
-      "sessions",
-      "session"
-    ],
-    "codename": "add_session"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change session",
-    "content_type": [
-      "sessions",
-      "session"
-    ],
-    "codename": "change_session"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete session",
-    "content_type": [
-      "sessions",
-      "session"
-    ],
-    "codename": "delete_session"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view session",
-    "content_type": [
-      "sessions",
-      "session"
-    ],
-    "codename": "view_session"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add cliente",
-    "content_type": [
-      "taller",
-      "cliente"
-    ],
-    "codename": "add_cliente"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change cliente",
-    "content_type": [
-      "taller",
-      "cliente"
-    ],
-    "codename": "change_cliente"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete cliente",
-    "content_type": [
-      "taller",
-      "cliente"
-    ],
-    "codename": "delete_cliente"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view cliente",
-    "content_type": [
-      "taller",
-      "cliente"
-    ],
-    "codename": "view_cliente"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add marca",
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "codename": "add_marca"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change marca",
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "codename": "change_marca"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete marca",
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "codename": "delete_marca"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view marca",
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "codename": "view_marca"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add modelo",
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "codename": "add_modelo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change modelo",
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "codename": "change_modelo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete modelo",
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "codename": "delete_modelo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view modelo",
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "codename": "view_modelo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add repuesto",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "add_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change repuesto",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "change_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete repuesto",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "delete_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view repuesto",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "view_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo material",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "add_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo material",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "change_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo material",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "delete_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo material",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "view_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo repuesto",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "add_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo repuesto",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "change_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo repuesto",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "delete_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo repuesto",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "view_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo tarea",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "add_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo tarea",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "change_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo tarea",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "delete_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo tarea",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "view_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add vehiculo",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "add_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change vehiculo",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "change_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete vehiculo",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "delete_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view vehiculo",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "view_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tarea",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "add_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tarea",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "change_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tarea",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "delete_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tarea",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "view_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add material",
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "codename": "add_material"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change material",
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "codename": "change_material"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete material",
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "codename": "delete_material"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view material",
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "codename": "view_material"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add empleado",
-    "content_type": [
-      "taller",
-      "empleado"
-    ],
-    "codename": "add_empleado"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change empleado",
-    "content_type": [
-      "taller",
-      "empleado"
-    ],
-    "codename": "change_empleado"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete empleado",
-    "content_type": [
-      "taller",
-      "empleado"
-    ],
-    "codename": "delete_empleado"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view empleado",
-    "content_type": [
-      "taller",
-      "empleado"
-    ],
-    "codename": "view_empleado"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add detalle orden de trabajo",
-    "content_type": [
-      "ordenes",
-      "detalleordendetrabajo"
-    ],
-    "codename": "add_detalleordendetrabajo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change detalle orden de trabajo",
-    "content_type": [
-      "ordenes",
-      "detalleordendetrabajo"
-    ],
-    "codename": "change_detalleordendetrabajo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete detalle orden de trabajo",
-    "content_type": [
-      "ordenes",
-      "detalleordendetrabajo"
-    ],
-    "codename": "delete_detalleordendetrabajo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view detalle orden de trabajo",
-    "content_type": [
-      "ordenes",
-      "detalleordendetrabajo"
-    ],
-    "codename": "view_detalleordendetrabajo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add orden de trabajo",
-    "content_type": [
-      "ordenes",
-      "ordendetrabajo"
-    ],
-    "codename": "add_ordendetrabajo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change orden de trabajo",
-    "content_type": [
-      "ordenes",
-      "ordendetrabajo"
-    ],
-    "codename": "change_ordendetrabajo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete orden de trabajo",
-    "content_type": [
-      "ordenes",
-      "ordendetrabajo"
-    ],
-    "codename": "delete_ordendetrabajo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view orden de trabajo",
-    "content_type": [
-      "ordenes",
-      "ordendetrabajo"
-    ],
-    "codename": "view_ordendetrabajo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add presupuesto",
-    "content_type": [
-      "ordenes",
-      "presupuesto"
-    ],
-    "codename": "add_presupuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change presupuesto",
-    "content_type": [
-      "ordenes",
-      "presupuesto"
-    ],
-    "codename": "change_presupuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete presupuesto",
-    "content_type": [
-      "ordenes",
-      "presupuesto"
-    ],
-    "codename": "delete_presupuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view presupuesto",
-    "content_type": [
-      "ordenes",
-      "presupuesto"
-    ],
-    "codename": "view_presupuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add presupuesto repuesto",
-    "content_type": [
-      "ordenes",
-      "presupuestorepuesto"
-    ],
-    "codename": "add_presupuestorepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change presupuesto repuesto",
-    "content_type": [
-      "ordenes",
-      "presupuestorepuesto"
-    ],
-    "codename": "change_presupuestorepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete presupuesto repuesto",
-    "content_type": [
-      "ordenes",
-      "presupuestorepuesto"
-    ],
-    "codename": "delete_presupuestorepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view presupuesto repuesto",
-    "content_type": [
-      "ordenes",
-      "presupuestorepuesto"
-    ],
-    "codename": "view_presupuestorepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add presupuesto material",
-    "content_type": [
-      "ordenes",
-      "presupuestomaterial"
-    ],
-    "codename": "add_presupuestomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change presupuesto material",
-    "content_type": [
-      "ordenes",
-      "presupuestomaterial"
-    ],
-    "codename": "change_presupuestomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete presupuesto material",
-    "content_type": [
-      "ordenes",
-      "presupuestomaterial"
-    ],
-    "codename": "delete_presupuestomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view presupuesto material",
-    "content_type": [
-      "ordenes",
-      "presupuestomaterial"
-    ],
-    "codename": "view_presupuestomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add planilla de pintura",
-    "content_type": [
-      "ordenes",
-      "planilladepintura"
-    ],
-    "codename": "add_planilladepintura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change planilla de pintura",
-    "content_type": [
-      "ordenes",
-      "planilladepintura"
-    ],
-    "codename": "change_planilladepintura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete planilla de pintura",
-    "content_type": [
-      "ordenes",
-      "planilladepintura"
-    ],
-    "codename": "delete_planilladepintura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view planilla de pintura",
-    "content_type": [
-      "ordenes",
-      "planilladepintura"
-    ],
-    "codename": "view_planilladepintura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add detalle planilla de pintura",
-    "content_type": [
-      "ordenes",
-      "detalleplanilladepintura"
-    ],
-    "codename": "add_detalleplanilladepintura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change detalle planilla de pintura",
-    "content_type": [
-      "ordenes",
-      "detalleplanilladepintura"
-    ],
-    "codename": "change_detalleplanilladepintura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete detalle planilla de pintura",
-    "content_type": [
-      "ordenes",
-      "detalleplanilladepintura"
-    ],
-    "codename": "delete_detalleplanilladepintura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view detalle planilla de pintura",
-    "content_type": [
-      "ordenes",
-      "detalleplanilladepintura"
-    ],
-    "codename": "view_detalleplanilladepintura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add factura",
-    "content_type": [
-      "facturas",
-      "factura"
-    ],
-    "codename": "add_factura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change factura",
-    "content_type": [
-      "facturas",
-      "factura"
-    ],
-    "codename": "change_factura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete factura",
-    "content_type": [
-      "facturas",
-      "factura"
-    ],
-    "codename": "delete_factura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view factura",
-    "content_type": [
-      "facturas",
-      "factura"
-    ],
-    "codename": "view_factura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add pago",
-    "content_type": [
-      "facturas",
-      "pago"
-    ],
-    "codename": "add_pago"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change pago",
-    "content_type": [
-      "facturas",
-      "pago"
-    ],
-    "codename": "change_pago"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete pago",
-    "content_type": [
-      "facturas",
-      "pago"
-    ],
-    "codename": "delete_pago"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view pago",
-    "content_type": [
-      "facturas",
-      "pago"
-    ],
-    "codename": "view_pago"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add detalle factura",
-    "content_type": [
-      "facturas",
-      "detallefactura"
-    ],
-    "codename": "add_detallefactura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change detalle factura",
-    "content_type": [
-      "facturas",
-      "detallefactura"
-    ],
-    "codename": "change_detallefactura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete detalle factura",
-    "content_type": [
-      "facturas",
-      "detallefactura"
-    ],
-    "codename": "delete_detallefactura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view detalle factura",
-    "content_type": [
-      "facturas",
-      "detallefactura"
-    ],
-    "codename": "view_detallefactura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo repuesto",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "add_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo repuesto",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "change_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo repuesto",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "delete_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo repuesto",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "view_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo material",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "add_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo material",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "change_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo material",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "delete_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo material",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "view_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo tarea",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "add_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo tarea",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "change_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo tarea",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "delete_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo tarea",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "view_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add repuesto",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "add_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change repuesto",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "change_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete repuesto",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "delete_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view repuesto",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "view_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tarea",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "add_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tarea",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "change_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tarea",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "delete_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tarea",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "view_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add vehiculo",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "add_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change vehiculo",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "change_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete vehiculo",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "delete_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view vehiculo",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "view_vehiculo"
-  }
-},
-{
-  "model": "auth.group",
-  "fields": {
-    "name": "Administrativo",
-    "permissions": []
-  }
-},
-{
-  "model": "auth.group",
-  "fields": {
-    "name": "Jefe de Taller",
-    "permissions": []
-  }
-},
-{
-  "model": "auth.group",
-  "fields": {
-    "name": "Oficial Pintor",
-    "permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$260000$fe5PN1RcVbKP0CQB9t1LFl$Ugpe70boMwA6OCs/IrcWoNiFo+QJossvqAdy8TLQnA8=",
-    "last_login": "2021-09-27T21:19:28Z",
-    "is_superuser": true,
-    "username": "diego",
-    "first_name": "",
-    "last_name": "",
-    "email": "diego@diego.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-09-27T21:18:50Z",
-    "groups": [
-      [
-        "Administrativo"
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": [
+        "admin",
+        "logentry"
+      ],
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": [
+        "admin",
+        "logentry"
+      ],
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": [
+        "admin",
+        "logentry"
+      ],
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": [
+        "admin",
+        "logentry"
+      ],
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add permission",
+      "content_type": [
+        "auth",
+        "permission"
+      ],
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change permission",
+      "content_type": [
+        "auth",
+        "permission"
+      ],
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": [
+        "auth",
+        "permission"
+      ],
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view permission",
+      "content_type": [
+        "auth",
+        "permission"
+      ],
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add group",
+      "content_type": [
+        "auth",
+        "group"
+      ],
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change group",
+      "content_type": [
+        "auth",
+        "group"
+      ],
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete group",
+      "content_type": [
+        "auth",
+        "group"
+      ],
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view group",
+      "content_type": [
+        "auth",
+        "group"
+      ],
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add user",
+      "content_type": [
+        "auth",
+        "user"
+      ],
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change user",
+      "content_type": [
+        "auth",
+        "user"
+      ],
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete user",
+      "content_type": [
+        "auth",
+        "user"
+      ],
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view user",
+      "content_type": [
+        "auth",
+        "user"
+      ],
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add content type",
+      "content_type": [
+        "contenttypes",
+        "contenttype"
+      ],
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change content type",
+      "content_type": [
+        "contenttypes",
+        "contenttype"
+      ],
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": [
+        "contenttypes",
+        "contenttype"
+      ],
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view content type",
+      "content_type": [
+        "contenttypes",
+        "contenttype"
+      ],
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add session",
+      "content_type": [
+        "sessions",
+        "session"
+      ],
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change session",
+      "content_type": [
+        "sessions",
+        "session"
+      ],
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete session",
+      "content_type": [
+        "sessions",
+        "session"
+      ],
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view session",
+      "content_type": [
+        "sessions",
+        "session"
+      ],
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add cliente",
+      "content_type": [
+        "taller",
+        "cliente"
+      ],
+      "codename": "add_cliente"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change cliente",
+      "content_type": [
+        "taller",
+        "cliente"
+      ],
+      "codename": "change_cliente"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete cliente",
+      "content_type": [
+        "taller",
+        "cliente"
+      ],
+      "codename": "delete_cliente"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view cliente",
+      "content_type": [
+        "taller",
+        "cliente"
+      ],
+      "codename": "view_cliente"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add marca",
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "codename": "add_marca"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change marca",
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "codename": "change_marca"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete marca",
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "codename": "delete_marca"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view marca",
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "codename": "view_marca"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add modelo",
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "codename": "add_modelo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change modelo",
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "codename": "change_modelo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete modelo",
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "codename": "delete_modelo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view modelo",
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "codename": "view_modelo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add repuesto",
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "codename": "add_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change repuesto",
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "codename": "change_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete repuesto",
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "codename": "delete_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view repuesto",
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "codename": "view_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tipo material",
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "codename": "add_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tipo material",
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "codename": "change_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tipo material",
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "codename": "delete_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tipo material",
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "codename": "view_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tipo repuesto",
+      "content_type": [
+        "taller",
+        "tipotarea"
+      ],
+      "codename": "add_tiporepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tipo repuesto",
+      "content_type": [
+        "taller",
+        "tipotarea"
+      ],
+      "codename": "change_tiporepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tipo repuesto",
+      "content_type": [
+        "taller",
+        "tipotarea"
+      ],
+      "codename": "delete_tiporepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tipo repuesto",
+      "content_type": [
+        "taller",
+        "tipotarea"
+      ],
+      "codename": "view_tiporepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tipo tarea",
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "codename": "add_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tipo tarea",
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "codename": "change_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tipo tarea",
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "codename": "delete_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tipo tarea",
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "codename": "view_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add vehiculo",
+      "content_type": [
+        "taller",
+        "tarea"
+      ],
+      "codename": "add_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change vehiculo",
+      "content_type": [
+        "taller",
+        "tarea"
+      ],
+      "codename": "change_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete vehiculo",
+      "content_type": [
+        "taller",
+        "tarea"
+      ],
+      "codename": "delete_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view vehiculo",
+      "content_type": [
+        "taller",
+        "tarea"
+      ],
+      "codename": "view_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tarea",
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "codename": "add_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tarea",
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "codename": "change_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tarea",
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "codename": "delete_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tarea",
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "codename": "view_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add material",
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "codename": "add_material"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change material",
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "codename": "change_material"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete material",
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "codename": "delete_material"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view material",
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "codename": "view_material"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add empleado",
+      "content_type": [
+        "taller",
+        "empleado"
+      ],
+      "codename": "add_empleado"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change empleado",
+      "content_type": [
+        "taller",
+        "empleado"
+      ],
+      "codename": "change_empleado"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete empleado",
+      "content_type": [
+        "taller",
+        "empleado"
+      ],
+      "codename": "delete_empleado"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view empleado",
+      "content_type": [
+        "taller",
+        "empleado"
+      ],
+      "codename": "view_empleado"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add detalle orden de trabajo",
+      "content_type": [
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      "codename": "add_detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change detalle orden de trabajo",
+      "content_type": [
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      "codename": "change_detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete detalle orden de trabajo",
+      "content_type": [
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      "codename": "delete_detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view detalle orden de trabajo",
+      "content_type": [
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      "codename": "view_detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add orden de trabajo",
+      "content_type": [
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      "codename": "add_ordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change orden de trabajo",
+      "content_type": [
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      "codename": "change_ordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete orden de trabajo",
+      "content_type": [
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      "codename": "delete_ordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view orden de trabajo",
+      "content_type": [
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      "codename": "view_ordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add presupuesto",
+      "content_type": [
+        "ordenes",
+        "presupuesto"
+      ],
+      "codename": "add_presupuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change presupuesto",
+      "content_type": [
+        "ordenes",
+        "presupuesto"
+      ],
+      "codename": "change_presupuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete presupuesto",
+      "content_type": [
+        "ordenes",
+        "presupuesto"
+      ],
+      "codename": "delete_presupuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view presupuesto",
+      "content_type": [
+        "ordenes",
+        "presupuesto"
+      ],
+      "codename": "view_presupuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add presupuesto repuesto",
+      "content_type": [
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      "codename": "add_presupuestorepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change presupuesto repuesto",
+      "content_type": [
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      "codename": "change_presupuestorepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete presupuesto repuesto",
+      "content_type": [
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      "codename": "delete_presupuestorepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view presupuesto repuesto",
+      "content_type": [
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      "codename": "view_presupuestorepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add presupuesto material",
+      "content_type": [
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      "codename": "add_presupuestomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change presupuesto material",
+      "content_type": [
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      "codename": "change_presupuestomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete presupuesto material",
+      "content_type": [
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      "codename": "delete_presupuestomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view presupuesto material",
+      "content_type": [
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      "codename": "view_presupuestomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add planilla de pintura",
+      "content_type": [
+        "ordenes",
+        "planilladepintura"
+      ],
+      "codename": "add_planilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change planilla de pintura",
+      "content_type": [
+        "ordenes",
+        "planilladepintura"
+      ],
+      "codename": "change_planilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete planilla de pintura",
+      "content_type": [
+        "ordenes",
+        "planilladepintura"
+      ],
+      "codename": "delete_planilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view planilla de pintura",
+      "content_type": [
+        "ordenes",
+        "planilladepintura"
+      ],
+      "codename": "view_planilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add detalle planilla de pintura",
+      "content_type": [
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      "codename": "add_detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change detalle planilla de pintura",
+      "content_type": [
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      "codename": "change_detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete detalle planilla de pintura",
+      "content_type": [
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      "codename": "delete_detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view detalle planilla de pintura",
+      "content_type": [
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      "codename": "view_detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add factura",
+      "content_type": [
+        "facturas",
+        "factura"
+      ],
+      "codename": "add_factura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change factura",
+      "content_type": [
+        "facturas",
+        "factura"
+      ],
+      "codename": "change_factura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete factura",
+      "content_type": [
+        "facturas",
+        "factura"
+      ],
+      "codename": "delete_factura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view factura",
+      "content_type": [
+        "facturas",
+        "factura"
+      ],
+      "codename": "view_factura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add pago",
+      "content_type": [
+        "facturas",
+        "pago"
+      ],
+      "codename": "add_pago"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change pago",
+      "content_type": [
+        "facturas",
+        "pago"
+      ],
+      "codename": "change_pago"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete pago",
+      "content_type": [
+        "facturas",
+        "pago"
+      ],
+      "codename": "delete_pago"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view pago",
+      "content_type": [
+        "facturas",
+        "pago"
+      ],
+      "codename": "view_pago"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add detalle factura",
+      "content_type": [
+        "facturas",
+        "detallefactura"
+      ],
+      "codename": "add_detallefactura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change detalle factura",
+      "content_type": [
+        "facturas",
+        "detallefactura"
+      ],
+      "codename": "change_detallefactura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete detalle factura",
+      "content_type": [
+        "facturas",
+        "detallefactura"
+      ],
+      "codename": "delete_detallefactura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view detalle factura",
+      "content_type": [
+        "facturas",
+        "detallefactura"
+      ],
+      "codename": "view_detallefactura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tipo repuesto",
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "codename": "add_tiporepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tipo repuesto",
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "codename": "change_tiporepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tipo repuesto",
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "codename": "delete_tiporepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tipo repuesto",
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "codename": "view_tiporepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tipo material",
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "codename": "add_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tipo material",
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "codename": "change_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tipo material",
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "codename": "delete_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tipo material",
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "codename": "view_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tipo tarea",
+      "content_type": [
+        "taller",
+        "tipotarea"
+      ],
+      "codename": "add_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tipo tarea",
+      "content_type": [
+        "taller",
+        "tipotarea"
+      ],
+      "codename": "change_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tipo tarea",
+      "content_type": [
+        "taller",
+        "tipotarea"
+      ],
+      "codename": "delete_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tipo tarea",
+      "content_type": [
+        "taller",
+        "tipotarea"
+      ],
+      "codename": "view_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add repuesto",
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "codename": "add_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change repuesto",
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "codename": "change_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete repuesto",
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "codename": "delete_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view repuesto",
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "codename": "view_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tarea",
+      "content_type": [
+        "taller",
+        "tarea"
+      ],
+      "codename": "add_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tarea",
+      "content_type": [
+        "taller",
+        "tarea"
+      ],
+      "codename": "change_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tarea",
+      "content_type": [
+        "taller",
+        "tarea"
+      ],
+      "codename": "delete_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tarea",
+      "content_type": [
+        "taller",
+        "tarea"
+      ],
+      "codename": "view_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add vehiculo",
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "codename": "add_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change vehiculo",
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "codename": "change_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete vehiculo",
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "codename": "delete_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view vehiculo",
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "codename": "view_vehiculo"
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Administrativo",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Jefe de Taller",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Oficial Pintor",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$260000$fe5PN1RcVbKP0CQB9t1LFl$Ugpe70boMwA6OCs/IrcWoNiFo+QJossvqAdy8TLQnA8=",
+      "last_login": "2021-09-27T21:19:28Z",
+      "is_superuser": true,
+      "username": "diego",
+      "first_name": "",
+      "last_name": "",
+      "email": "diego@diego.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-09-27T21:18:50Z",
+      "groups": [
+        [
+          "Administrativo"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$260000$gvQ8nWFi5Gm0IliUnIWS3x$UUzc3BNW8O0x8JwBtA4QmvB+GofB/gDMPqRW5/ax1YI=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "juan",
+      "first_name": "",
+      "last_name": "",
+      "email": "juan@juan.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-09-27T22:18:59Z",
+      "groups": [
+        [
+          "Jefe de Taller"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$260000$OyC44FhvYza533wXa6sWHn$06gn3BPbSVzqPtUP0aw+hKEoxKf9AgxSXi6kdIzTNns=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "pedro",
+      "first_name": "",
+      "last_name": "",
+      "email": "pedro@pedro.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-09-27T22:19:20Z",
+      "groups": [
+        [
+          "Oficial Pintor"
+        ]
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "fgw4jxmt7hfz2gb99wvp8o7zzv5ng3ru",
+    "fields": {
+      "session_data": ".eJxVjDsOwyAQBe9CHSEDu4BTpvcZ0PILTiKQjF1FuXtsyUXSzsx7b-ZoW4vbelrcHNmVCXb5ZZ7CM9VDxAfVe-Oh1XWZPT8SftrOpxbT63a2fweFetnXORkYc4IMQ1RyRCWApJTZIhrwCFkjakDSwittggERSe005gGsAcs-X8TDNsg:1mUy24:LU0hPzcCWMMTcxeAxOB26v96XxHOtL5iuj8nuja0NtY",
+      "expire_date": "2021-10-11T21:19:28.587Z"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 1,
+    "fields": {
+      "nombre": "Ford",
+      "descripcion": "Ford"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 2,
+    "fields": {
+      "nombre": "Nissan",
+      "descripcion": "Nissan"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 3,
+    "fields": {
+      "nombre": "Toyota",
+      "descripcion": "Toyota"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 4,
+    "fields": {
+      "nombre": "Renault",
+      "descripcion": "Renault"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 5,
+    "fields": {
+      "nombre": "Chevrolet",
+      "descripcion": "Chevrolet"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 6,
+    "fields": {
+      "nombre": "Chery",
+      "descripcion": "Chery"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 7,
+    "fields": {
+      "nombre": "Fiat",
+      "descripcion": "Fiat"
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 1,
+    "fields": {
+      "nombre": "Tiggo",
+      "descripcion": "Tiggo",
+      "marca": 6,
+      "anio": 2010
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 2,
+    "fields": {
+      "nombre": "Punto",
+      "descripcion": "Punto",
+      "marca": 7,
+      "anio": 2010
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 3,
+    "fields": {
+      "nombre": "Fiesta",
+      "descripcion": "Fiesta",
+      "marca": 1,
+      "anio": 2010
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 4,
+    "fields": {
+      "nombre": "Cruze",
+      "descripcion": "Cruze",
+      "marca": 5,
+      "anio": 2010
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 5,
+    "fields": {
+      "nombre": "S10",
+      "descripcion": "S10",
+      "marca": 5,
+      "anio": 2010
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 6,
+    "fields": {
+      "nombre": "March",
+      "descripcion": "March",
+      "marca": 2,
+      "anio": 2010
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 7,
+    "fields": {
+      "nombre": "Hilux",
+      "descripcion": "Hilux",
+      "marca": 3,
+      "anio": 2010
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 8,
+    "fields": {
+      "nombre": "Kangoo",
+      "descripcion": "Kangoo",
+      "marca": 4,
+      "anio": 2010
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 9,
+    "fields": {
+      "nombre": "Clio",
+      "descripcion": "Clio Mio",
+      "marca": 4,
+      "anio": 2015
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Decapadar",
+      "descripcion": "Limpiar la chapa",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Pintar",
+      "descripcion": "Pintar una parte del vehículo",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": true
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Desabollar",
+      "descripcion": "Quitar bollos",
+      "materiales": false,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Masillar",
+      "descripcion": "Aplicar masilla",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 5,
+    "fields": {
+      "nombre": "Lijar",
+      "descripcion": "Lijar y preparar partes para pintura",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 6,
+    "fields": {
+      "nombre": "Soldar",
+      "descripcion": "Unir dos chapas",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 7,
+    "fields": {
+      "nombre": "Pulir",
+      "descripcion": "Sacar brillo",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 8,
+    "fields": {
+      "nombre": "Puertas y Portones",
+      "descripcion": "Colocación de puertas portones capot, etc",
+      "materiales": true,
+      "repuestos": true,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 9,
+    "fields": {
+      "nombre": "Interiores",
+      "descripcion": "Colocación de butacas tablero, baul, etc",
+      "materiales": true,
+      "repuestos": true,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Limpiar chapa",
+      "descripcion": "Quitar todas las impurezas de la chapa en torno al golpe",
+      "tipo": 1,
+      "precio": "30.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Reparación de Chapa hasta 20cm2",
+      "descripcion": "Reparación de Chapa",
+      "tipo": 3,
+      "precio": "50.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Pintar arreglo de hasta 100cm2",
+      "descripcion": "Pintar superficie",
+      "tipo": 2,
+      "precio": "120.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Masilla Chapa hasta 20cm2",
+      "descripcion": "Masillar Chapa",
+      "tipo": 4,
+      "precio": "70.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 5,
+    "fields": {
+      "nombre": "Pintar arreglo de hasta 50cm2",
+      "descripcion": "Pintar arreglo de hasta 50cm2",
+      "tipo": 2,
+      "precio": "80.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 6,
+    "fields": {
+      "nombre": "Cambiar puerta",
+      "descripcion": "Cambiar puerta",
+      "tipo": 8,
+      "precio": "80.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 1,
+    "fields": {
+      "nombre": "Puerta Derecha",
+      "modelo": 1,
+      "tipo": 1,
+      "cantidad": 2,
+      "precio": "400.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 2,
+    "fields": {
+      "nombre": "Puerta Izquierda",
+      "modelo": 1,
+      "tipo": 1,
+      "cantidad": 2,
+      "precio": "400.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 3,
+    "fields": {
+      "nombre": "Absorvedores",
+      "modelo": 9,
+      "tipo": 2,
+      "cantidad": 4,
+      "precio": "400.00"
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 1,
+    "fields": {
+      "nombre": "Pintura",
+      "unidad_medida": 1
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 2,
+    "fields": {
+      "nombre": "Remaches",
+      "unidad_medida": 4
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 3,
+    "fields": {
+      "nombre": "Broches",
+      "unidad_medida": 4
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 4,
+    "fields": {
+      "nombre": "Electrodos",
+      "unidad_medida": 4
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 5,
+    "fields": {
+      "nombre": "Lija 80",
+      "unidad_medida": 4
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 6,
+    "fields": {
+      "nombre": "Pasta de Pulir",
+      "unidad_medida": 1
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 7,
+    "fields": {
+      "nombre": "Fibra de Vidrio",
+      "unidad_medida": 6
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 8,
+    "fields": {
+      "nombre": "Resina",
+      "unidad_medida": 2
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 9,
+    "fields": {
+      "nombre": "Tiner",
+      "unidad_medida": 2
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 10,
+    "fields": {
+      "nombre": "Aguarraz",
+      "unidad_medida": 2
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 11,
+    "fields": {
+      "nombre": "Lija 120",
+      "unidad_medida": 4
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 12,
+    "fields": {
+      "nombre": "Masilla",
+      "unidad_medida": 1
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 1,
+    "fields": {
+      "nombre": "Blanco Polar",
+      "tipo": 1,
+      "cantidad": 3000,
+      "precio": "10.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 2,
+    "fields": {
+      "nombre": "Blanco",
+      "tipo": 1,
+      "cantidad": 2000,
+      "precio": "10.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 3,
+    "fields": {
+      "nombre": "Gris",
+      "tipo": 1,
+      "cantidad": 3000,
+      "precio": "10.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 4,
+    "fields": {
+      "nombre": "Azul",
+      "tipo": 1,
+      "cantidad": 2000,
+      "precio": "10.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 5,
+    "fields": {
+      "nombre": "Gris Urano",
+      "tipo": 1,
+      "cantidad": 3000,
+      "precio": "10.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 6,
+    "fields": {
+      "nombre": "Gris Grafito",
+      "tipo": 1,
+      "cantidad": 3000,
+      "precio": "10.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 7,
+    "fields": {
+      "nombre": "Gris Topo",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "10.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 8,
+    "fields": {
+      "nombre": "Galgo",
+      "tipo": 5,
+      "cantidad": 30,
+      "precio": "20.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 9,
+    "fields": {
+      "nombre": "Galgo",
+      "tipo": 11,
+      "cantidad": 30,
+      "precio": "20.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 10,
+    "fields": {
+      "nombre": "Durlok",
+      "tipo": 12,
+      "cantidad": 3000,
+      "precio": "10.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 11,
+    "fields": {
+      "nombre": "Alba",
+      "tipo": 7,
+      "cantidad": 100,
+      "precio": "0.50"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 1,
+    "fields": {
+      "dni": "36363633",
+      "nombre": "Pedro",
+      "apellido": "Paco",
+      "direccion": "Avenida Siempre Viva 123",
+      "telefono": "4343434"
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 1,
+    "fields": {
+      "cuil": "23-32323232-2",
+      "legajo": 1231,
+      "nombre": "Juan",
+      "apellido": "Jancho",
+      "usuario": [
+        "juan"
+      ],
+      "tareas": [
+        4,
+        5
       ]
-    ],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$260000$gvQ8nWFi5Gm0IliUnIWS3x$UUzc3BNW8O0x8JwBtA4QmvB+GofB/gDMPqRW5/ax1YI=",
-    "last_login": null,
-    "is_superuser": true,
-    "username": "juan",
-    "first_name": "",
-    "last_name": "",
-    "email": "juan@juan.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-09-27T22:18:59Z",
-    "groups": [
-      [
-        "Jefe de Taller"
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 2,
+    "fields": {
+      "cuil": "23-32323222-2",
+      "legajo": 232,
+      "nombre": "Pedro",
+      "apellido": "Pedro",
+      "usuario": [
+        "pedro"
+      ],
+      "tareas": [
+        2,
+        7,
+        9
       ]
-    ],
-    "user_permissions": []
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2021-09-27T21:23:31.835Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "1",
+      "object_repr": "TipoTarea object (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2021-09-27T21:24:08.426Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "2",
+      "object_repr": "TipoTarea object (2)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2021-09-27T21:24:44.418Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "3",
+      "object_repr": "TipoTarea object (3)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2021-09-27T21:24:56.111Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "4",
+      "object_repr": "TipoTarea object (4)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2021-09-27T21:25:17.747Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "5",
+      "object_repr": "TipoTarea object (5)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2021-09-27T21:26:06.266Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "1",
+      "object_repr": "Decapadar",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2021-09-27T21:26:30.952Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "6",
+      "object_repr": "Soldar",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2021-09-27T21:27:17.295Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "7",
+      "object_repr": "Pulir",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2021-09-27T21:29:58.077Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "8",
+      "object_repr": "Puertas y Portones",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2021-09-27T21:30:40.740Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "vehiculo"
+      ],
+      "object_id": "9",
+      "object_repr": "Interiores",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2021-09-27T21:31:18.606Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "1",
+      "object_repr": "TipoMaterial object (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+      "action_time": "2021-09-27T21:31:55.906Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "2",
+      "object_repr": "Remaches",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+      "action_time": "2021-09-27T21:32:02.333Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "3",
+      "object_repr": "Broches",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+      "action_time": "2021-09-27T21:32:12.762Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "4",
+      "object_repr": "Electrodos",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+      "action_time": "2021-09-27T21:32:29.097Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "5",
+      "object_repr": "Lija",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+      "action_time": "2021-09-27T21:32:47.321Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "6",
+      "object_repr": "Pasta de Pulir",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+      "action_time": "2021-09-27T21:32:56.400Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "7",
+      "object_repr": "Fibra de Vidrio",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+      "action_time": "2021-09-27T21:33:07.005Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "8",
+      "object_repr": "Resina",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+      "action_time": "2021-09-27T21:33:34.542Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "8",
+      "object_repr": "Resina",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+      "action_time": "2021-09-27T21:33:49.013Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "9",
+      "object_repr": "Tiner",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+      "action_time": "2021-09-27T21:34:02.202Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "10",
+      "object_repr": "Aguarraz",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+      "action_time": "2021-09-27T21:37:22.820Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "1",
+      "object_repr": "Material object (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+      "action_time": "2021-09-27T21:38:25.653Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "2",
+      "object_repr": "Blanco",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+      "action_time": "2021-09-27T21:38:37.635Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "3",
+      "object_repr": "Gris",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+      "action_time": "2021-09-27T21:38:54.403Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "4",
+      "object_repr": "Azul",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+      "action_time": "2021-09-27T21:39:10.917Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "5",
+      "object_repr": "Gris Urano",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+      "action_time": "2021-09-27T21:39:50.656Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "6",
+      "object_repr": "Gris Grafito",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+      "action_time": "2021-09-27T21:40:04.524Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "7",
+      "object_repr": "Gris Topo",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+      "action_time": "2021-09-27T21:41:11.793Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "8",
+      "object_repr": "Lija Galgo 80",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+      "action_time": "2021-09-27T21:41:42.443Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "5",
+      "object_repr": "Lija 80",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+      "action_time": "2021-09-27T21:42:01.389Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "11",
+      "object_repr": "Lija 120",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+      "action_time": "2021-09-27T21:42:08.086Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "9",
+      "object_repr": "Galgo",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+      "action_time": "2021-09-27T21:42:14.915Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "8",
+      "object_repr": "Galgo",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+      "action_time": "2021-09-27T21:44:30.824Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tiporepuesto"
+      ],
+      "object_id": "12",
+      "object_repr": "Masilla",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+      "action_time": "2021-09-27T21:44:45.173Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "10",
+      "object_repr": "Durlok (Masilla)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+      "action_time": "2021-09-27T21:45:30.311Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "material"
+      ],
+      "object_id": "11",
+      "object_repr": "Alba (Fibra de Vidrio)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+      "action_time": "2021-09-27T21:45:51.417Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "object_id": "1",
+      "object_repr": "Ford",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+      "action_time": "2021-09-27T21:46:05.066Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "object_id": "2",
+      "object_repr": "Nissan",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+      "action_time": "2021-09-27T21:46:11.311Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "object_id": "3",
+      "object_repr": "Toyota",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+      "action_time": "2021-09-27T21:46:30.803Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "object_id": "4",
+      "object_repr": "Renault",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+      "action_time": "2021-09-27T21:46:44.001Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "object_id": "5",
+      "object_repr": "Chevrolet",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+      "action_time": "2021-09-27T21:47:15.399Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "object_id": "6",
+      "object_repr": "Chery",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+      "action_time": "2021-09-27T21:47:22.421Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "1",
+      "object_repr": "Tiggo",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+      "action_time": "2021-09-27T21:47:44.557Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "marca"
+      ],
+      "object_id": "7",
+      "object_repr": "Fiat",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+      "action_time": "2021-09-27T21:47:45.884Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "2",
+      "object_repr": "Punto",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+      "action_time": "2021-09-27T21:47:56.198Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "3",
+      "object_repr": "Fiesta",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+      "action_time": "2021-09-27T21:48:14.474Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "4",
+      "object_repr": "Cruze",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+      "action_time": "2021-09-27T21:48:23.224Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "5",
+      "object_repr": "S10",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+      "action_time": "2021-09-27T21:48:34.502Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "6",
+      "object_repr": "March",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+      "action_time": "2021-09-27T21:48:45.775Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "7",
+      "object_repr": "Hilux",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+      "action_time": "2021-09-27T21:48:57.394Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "8",
+      "object_repr": "Kangoo",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+      "action_time": "2021-09-27T21:50:10.886Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "1",
+      "object_repr": "Limpiar chapa",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+      "action_time": "2021-09-27T21:50:58.033Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "2",
+      "object_repr": "Reparación de Chapa",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+      "action_time": "2021-09-27T21:51:59.142Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "3",
+      "object_repr": "Pintar",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+      "action_time": "2021-09-27T21:52:22.413Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "4",
+      "object_repr": "Masilla Chapa",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+      "action_time": "2021-09-27T21:53:20.997Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "3",
+      "object_repr": "Pintar arreglo de hasta 100cm2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+      "action_time": "2021-09-27T21:53:32.878Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "5",
+      "object_repr": "Pintar arreglo de hasta 50cm2",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+      "action_time": "2021-09-27T21:58:10.098Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "2",
+      "object_repr": "Reparación de Chapa",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+      "action_time": "2021-09-27T21:58:18.305Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "5",
+      "object_repr": "Pintar arreglo de hasta 50cm2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+      "action_time": "2021-09-27T21:58:25.241Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "3",
+      "object_repr": "Pintar arreglo de hasta 100cm2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+      "action_time": "2021-09-27T21:58:39.533Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "4",
+      "object_repr": "Masilla Chapa",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+      "action_time": "2021-09-27T21:59:40.659Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "1",
+      "object_repr": "Limpiar chapa",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+      "action_time": "2021-09-27T21:59:52.507Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "4",
+      "object_repr": "Masilla Chapa 20cm2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+      "action_time": "2021-09-27T22:00:03.329Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "4",
+      "object_repr": "Masilla Chapa hasta 20cm2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+      "action_time": "2021-09-27T22:00:13.058Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "2",
+      "object_repr": "Reparación de Chapa hasta 20cm2",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+      "action_time": "2021-09-27T22:02:22.991Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "object_id": "1",
+      "object_repr": "Repuesto object (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+      "action_time": "2021-09-27T22:05:40.180Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "object_id": "2",
+      "object_repr": "Puerta Izquierda",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+      "action_time": "2021-09-27T22:05:53.949Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "object_id": "1",
+      "object_repr": "Puerta Derecha",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+      "action_time": "2021-09-27T22:06:00.779Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "object_id": "2",
+      "object_repr": "Puerta Izquierda",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+      "action_time": "2021-09-27T22:06:03.966Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "tipomaterial"
+      ],
+      "object_id": "1",
+      "object_repr": "Puerta Derecha",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+      "action_time": "2021-09-27T22:16:57.854Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "cliente"
+      ],
+      "object_id": "1",
+      "object_repr": "Pedro",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+      "action_time": "2021-09-27T22:19:41.236Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "empleado"
+      ],
+      "object_id": "1",
+      "object_repr": "Empleado object (1)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+      "action_time": "2021-09-27T22:20:13.230Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "empleado"
+      ],
+      "object_id": "2",
+      "object_repr": "Empleado object (2)",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+      "action_time": "2021-09-27T22:21:24.571Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "auth",
+        "group"
+      ],
+      "object_id": "1",
+      "object_repr": "Administrativo",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+      "action_time": "2021-09-27T22:21:32.573Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "auth",
+        "group"
+      ],
+      "object_id": "2",
+      "object_repr": "Jefe de Taller",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+      "action_time": "2021-09-27T22:21:50.659Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "auth",
+        "group"
+      ],
+      "object_id": "3",
+      "object_repr": "Oficial Pintor",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+      "action_time": "2021-09-27T22:22:04.238Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "auth",
+        "user"
+      ],
+      "object_id": "3",
+      "object_repr": "pedro",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+      "action_time": "2021-09-27T22:22:11.681Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "auth",
+        "user"
+      ],
+      "object_id": "2",
+      "object_repr": "juan",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+      "action_time": "2021-09-27T22:22:22.869Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "auth",
+        "user"
+      ],
+      "object_id": "1",
+      "object_repr": "diego",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+      "action_time": "2021-09-29T21:31:07.045Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "modelo"
+      ],
+      "object_id": "9",
+      "object_repr": "Clio",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+      "action_time": "2021-09-29T21:31:25.520Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "3",
+      "object_repr": "Absorvedores",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+      "action_time": "2021-09-29T21:31:34.611Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "2",
+      "object_repr": "Puerta Izquierda",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Tipo\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+      "action_time": "2021-09-29T21:31:38.434Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "1",
+      "object_repr": "Puerta Derecha",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Tipo\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+      "action_time": "2021-09-29T21:31:42.061Z",
+      "user": [
+        "diego"
+      ],
+      "content_type": [
+        "taller",
+        "repuesto"
+      ],
+      "object_id": "3",
+      "object_repr": "Absorvedores",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
   }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$260000$OyC44FhvYza533wXa6sWHn$06gn3BPbSVzqPtUP0aw+hKEoxKf9AgxSXi6kdIzTNns=",
-    "last_login": null,
-    "is_superuser": true,
-    "username": "pedro",
-    "first_name": "",
-    "last_name": "",
-    "email": "pedro@pedro.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-09-27T22:19:20Z",
-    "groups": [
-      [
-        "Oficial Pintor"
-      ]
-    ],
-    "user_permissions": []
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "fgw4jxmt7hfz2gb99wvp8o7zzv5ng3ru",
-  "fields": {
-    "session_data": ".eJxVjDsOwyAQBe9CHSEDu4BTpvcZ0PILTiKQjF1FuXtsyUXSzsx7b-ZoW4vbelrcHNmVCXb5ZZ7CM9VDxAfVe-Oh1XWZPT8SftrOpxbT63a2fweFetnXORkYc4IMQ1RyRCWApJTZIhrwCFkjakDSwittggERSe005gGsAcs-X8TDNsg:1mUy24:LU0hPzcCWMMTcxeAxOB26v96XxHOtL5iuj8nuja0NtY",
-    "expire_date": "2021-10-11T21:19:28.587Z"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 1,
-  "fields": {
-    "nombre": "Ford",
-    "descripcion": "Ford"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 2,
-  "fields": {
-    "nombre": "Nissan",
-    "descripcion": "Nissan"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 3,
-  "fields": {
-    "nombre": "Toyota",
-    "descripcion": "Toyota"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 4,
-  "fields": {
-    "nombre": "Renault",
-    "descripcion": "Renault"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 5,
-  "fields": {
-    "nombre": "Chevrolet",
-    "descripcion": "Chevrolet"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 6,
-  "fields": {
-    "nombre": "Chery",
-    "descripcion": "Chery"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 7,
-  "fields": {
-    "nombre": "Fiat",
-    "descripcion": "Fiat"
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 1,
-  "fields": {
-    "nombre": "Tiggo",
-    "descripcion": "Tiggo",
-    "marca": 6,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 2,
-  "fields": {
-    "nombre": "Punto",
-    "descripcion": "Punto",
-    "marca": 7,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 3,
-  "fields": {
-    "nombre": "Fiesta",
-    "descripcion": "Fiesta",
-    "marca": 1,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 4,
-  "fields": {
-    "nombre": "Cruze",
-    "descripcion": "Cruze",
-    "marca": 5,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 5,
-  "fields": {
-    "nombre": "S10",
-    "descripcion": "S10",
-    "marca": 5,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 6,
-  "fields": {
-    "nombre": "March",
-    "descripcion": "March",
-    "marca": 2,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 7,
-  "fields": {
-    "nombre": "Hilux",
-    "descripcion": "Hilux",
-    "marca": 3,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 8,
-  "fields": {
-    "nombre": "Kangoo",
-    "descripcion": "Kangoo",
-    "marca": 4,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 9,
-  "fields": {
-    "nombre": "Clio",
-    "descripcion": "Clio Mio",
-    "marca": 4,
-    "anio": 2015
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 1,
-  "fields": {
-    "nombre": "Decapadar",
-    "descripcion": "Limpiar la chapa",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 2,
-  "fields": {
-    "nombre": "Pintar",
-    "descripcion": "Pintar una parte del vehículo",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": true
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 3,
-  "fields": {
-    "nombre": "Desabollar",
-    "descripcion": "Quitar bollos",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 4,
-  "fields": {
-    "nombre": "Masillar",
-    "descripcion": "Aplicar masilla",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 5,
-  "fields": {
-    "nombre": "Lijar",
-    "descripcion": "Lijar y preparar partes para pintura",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 6,
-  "fields": {
-    "nombre": "Soldar",
-    "descripcion": "Unir dos chapas",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 7,
-  "fields": {
-    "nombre": "Pulir",
-    "descripcion": "Sacar brillo",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 8,
-  "fields": {
-    "nombre": "Puertas y Portones",
-    "descripcion": "Colocación de puertas portones capot, etc",
-    "materiales": true,
-    "repuestos": true,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 9,
-  "fields": {
-    "nombre": "Interiores",
-    "descripcion": "Colocación de butacas tablero, baul, etc",
-    "materiales": true,
-    "repuestos": true,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tarea",
-  "pk": 1,
-  "fields": {
-    "nombre": "Limpiar chapa",
-    "descripcion": "Quitar todas las impurezas de la chapa en torno al golpe",
-    "tipo": 1,
-    "precio": "30.00"
-  }
-},
-{
-  "model": "taller.tarea",
-  "pk": 2,
-  "fields": {
-    "nombre": "Reparación de Chapa hasta 20cm2",
-    "descripcion": "Reparación de Chapa",
-    "tipo": 3,
-    "precio": "50.00"
-  }
-},
-{
-  "model": "taller.tarea",
-  "pk": 3,
-  "fields": {
-    "nombre": "Pintar arreglo de hasta 100cm2",
-    "descripcion": "Pintar superficie",
-    "tipo": 2,
-    "precio": "120.00"
-  }
-},
-{
-  "model": "taller.tarea",
-  "pk": 4,
-  "fields": {
-    "nombre": "Masilla Chapa hasta 20cm2",
-    "descripcion": "Masillar Chapa",
-    "tipo": 4,
-    "precio": "70.00"
-  }
-},
-{
-  "model": "taller.tarea",
-  "pk": 5,
-  "fields": {
-    "nombre": "Pintar arreglo de hasta 50cm2",
-    "descripcion": "Pintar arreglo de hasta 50cm2",
-    "tipo": 2,
-    "precio": "80.00"
-  }
-},
-{
-  "model": "taller.repuesto",
-  "pk": 1,
-  "fields": {
-    "nombre": "Puerta Derecha",
-    "modelo": 1,
-    "tipo": 1,
-    "cantidad": 2,
-    "precio": "400.00"
-  }
-},
-{
-  "model": "taller.repuesto",
-  "pk": 2,
-  "fields": {
-    "nombre": "Puerta Izquierda",
-    "modelo": 1,
-    "tipo": 1,
-    "cantidad": 2,
-    "precio": "400.00"
-  }
-},
-{
-  "model": "taller.repuesto",
-  "pk": 3,
-  "fields": {
-    "nombre": "Absorvedores",
-    "modelo": 9,
-    "tipo": 2,
-    "cantidad": 4,
-    "precio": "400.00"
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 1,
-  "fields": {
-    "nombre": "Pintura",
-    "unidad_medida": 1
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 2,
-  "fields": {
-    "nombre": "Remaches",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 3,
-  "fields": {
-    "nombre": "Broches",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 4,
-  "fields": {
-    "nombre": "Electrodos",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 5,
-  "fields": {
-    "nombre": "Lija 80",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 6,
-  "fields": {
-    "nombre": "Pasta de Pulir",
-    "unidad_medida": 1
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 7,
-  "fields": {
-    "nombre": "Fibra de Vidrio",
-    "unidad_medida": 6
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 8,
-  "fields": {
-    "nombre": "Resina",
-    "unidad_medida": 2
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 9,
-  "fields": {
-    "nombre": "Tiner",
-    "unidad_medida": 2
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 10,
-  "fields": {
-    "nombre": "Aguarraz",
-    "unidad_medida": 2
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 11,
-  "fields": {
-    "nombre": "Lija 120",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 12,
-  "fields": {
-    "nombre": "Masilla",
-    "unidad_medida": 1
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 1,
-  "fields": {
-    "nombre": "Blanco Polar",
-    "tipo": 1,
-    "cantidad": 3000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 2,
-  "fields": {
-    "nombre": "Blanco",
-    "tipo": 1,
-    "cantidad": 2000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 3,
-  "fields": {
-    "nombre": "Gris",
-    "tipo": 1,
-    "cantidad": 3000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 4,
-  "fields": {
-    "nombre": "Azul",
-    "tipo": 1,
-    "cantidad": 2000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 5,
-  "fields": {
-    "nombre": "Gris Urano",
-    "tipo": 1,
-    "cantidad": 3000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 6,
-  "fields": {
-    "nombre": "Gris Grafito",
-    "tipo": 1,
-    "cantidad": 3000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 7,
-  "fields": {
-    "nombre": "Gris Topo",
-    "tipo": 1,
-    "cantidad": 1000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 8,
-  "fields": {
-    "nombre": "Galgo",
-    "tipo": 5,
-    "cantidad": 30,
-    "precio": "20.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 9,
-  "fields": {
-    "nombre": "Galgo",
-    "tipo": 11,
-    "cantidad": 30,
-    "precio": "20.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 10,
-  "fields": {
-    "nombre": "Durlok",
-    "tipo": 12,
-    "cantidad": 3000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 11,
-  "fields": {
-    "nombre": "Alba",
-    "tipo": 7,
-    "cantidad": 100,
-    "precio": "0.50"
-  }
-},
-{
-  "model": "taller.cliente",
-  "pk": 1,
-  "fields": {
-    "dni": "36363633",
-    "nombre": "Pedro",
-    "apellido": "Paco",
-    "direccion": "Avenida Siempre Viva 123",
-    "telefono": "4343434"
-  }
-},
-{
-  "model": "taller.empleado",
-  "pk": 1,
-  "fields": {
-    "cuil": "23-32323232-2",
-    "legajo": 1231,
-    "nombre": "Juan",
-    "apellido": "Jancho",
-    "usuario": [
-      "juan"
-    ],
-    "tareas": [
-      4,
-      5
-    ]
-  }
-},
-{
-  "model": "taller.empleado",
-  "pk": 2,
-  "fields": {
-    "cuil": "23-32323222-2",
-    "legajo": 232,
-    "nombre": "Pedro",
-    "apellido": "Pedro",
-    "usuario": [
-      "pedro"
-    ],
-    "tareas": [
-      2,
-      7,
-      9
-    ]
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 1,
-  "fields": {
-    "action_time": "2021-09-27T21:23:31.835Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "1",
-    "object_repr": "TipoTarea object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 2,
-  "fields": {
-    "action_time": "2021-09-27T21:24:08.426Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "2",
-    "object_repr": "TipoTarea object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 3,
-  "fields": {
-    "action_time": "2021-09-27T21:24:44.418Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "3",
-    "object_repr": "TipoTarea object (3)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 4,
-  "fields": {
-    "action_time": "2021-09-27T21:24:56.111Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "4",
-    "object_repr": "TipoTarea object (4)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 5,
-  "fields": {
-    "action_time": "2021-09-27T21:25:17.747Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "5",
-    "object_repr": "TipoTarea object (5)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 6,
-  "fields": {
-    "action_time": "2021-09-27T21:26:06.266Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "1",
-    "object_repr": "Decapadar",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 7,
-  "fields": {
-    "action_time": "2021-09-27T21:26:30.952Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "6",
-    "object_repr": "Soldar",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 8,
-  "fields": {
-    "action_time": "2021-09-27T21:27:17.295Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "7",
-    "object_repr": "Pulir",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 9,
-  "fields": {
-    "action_time": "2021-09-27T21:29:58.077Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "8",
-    "object_repr": "Puertas y Portones",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 10,
-  "fields": {
-    "action_time": "2021-09-27T21:30:40.740Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "9",
-    "object_repr": "Interiores",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 11,
-  "fields": {
-    "action_time": "2021-09-27T21:31:18.606Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "TipoMaterial object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 12,
-  "fields": {
-    "action_time": "2021-09-27T21:31:55.906Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "Remaches",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 13,
-  "fields": {
-    "action_time": "2021-09-27T21:32:02.333Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Broches",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 14,
-  "fields": {
-    "action_time": "2021-09-27T21:32:12.762Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Electrodos",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 15,
-  "fields": {
-    "action_time": "2021-09-27T21:32:29.097Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "5",
-    "object_repr": "Lija",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 16,
-  "fields": {
-    "action_time": "2021-09-27T21:32:47.321Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "6",
-    "object_repr": "Pasta de Pulir",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 17,
-  "fields": {
-    "action_time": "2021-09-27T21:32:56.400Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "7",
-    "object_repr": "Fibra de Vidrio",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 18,
-  "fields": {
-    "action_time": "2021-09-27T21:33:07.005Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "8",
-    "object_repr": "Resina",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 19,
-  "fields": {
-    "action_time": "2021-09-27T21:33:34.542Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "8",
-    "object_repr": "Resina",
-    "action_flag": 2,
-    "change_message": "[]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 20,
-  "fields": {
-    "action_time": "2021-09-27T21:33:49.013Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "9",
-    "object_repr": "Tiner",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 21,
-  "fields": {
-    "action_time": "2021-09-27T21:34:02.202Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "10",
-    "object_repr": "Aguarraz",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 22,
-  "fields": {
-    "action_time": "2021-09-27T21:37:22.820Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "1",
-    "object_repr": "Material object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 23,
-  "fields": {
-    "action_time": "2021-09-27T21:38:25.653Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "2",
-    "object_repr": "Blanco",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 24,
-  "fields": {
-    "action_time": "2021-09-27T21:38:37.635Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "3",
-    "object_repr": "Gris",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 25,
-  "fields": {
-    "action_time": "2021-09-27T21:38:54.403Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "4",
-    "object_repr": "Azul",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 26,
-  "fields": {
-    "action_time": "2021-09-27T21:39:10.917Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "5",
-    "object_repr": "Gris Urano",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 27,
-  "fields": {
-    "action_time": "2021-09-27T21:39:50.656Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "6",
-    "object_repr": "Gris Grafito",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 28,
-  "fields": {
-    "action_time": "2021-09-27T21:40:04.524Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "7",
-    "object_repr": "Gris Topo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 29,
-  "fields": {
-    "action_time": "2021-09-27T21:41:11.793Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "8",
-    "object_repr": "Lija Galgo 80",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 30,
-  "fields": {
-    "action_time": "2021-09-27T21:41:42.443Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "5",
-    "object_repr": "Lija 80",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 31,
-  "fields": {
-    "action_time": "2021-09-27T21:42:01.389Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "11",
-    "object_repr": "Lija 120",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 32,
-  "fields": {
-    "action_time": "2021-09-27T21:42:08.086Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "9",
-    "object_repr": "Galgo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 33,
-  "fields": {
-    "action_time": "2021-09-27T21:42:14.915Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "8",
-    "object_repr": "Galgo",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 34,
-  "fields": {
-    "action_time": "2021-09-27T21:44:30.824Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "12",
-    "object_repr": "Masilla",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 35,
-  "fields": {
-    "action_time": "2021-09-27T21:44:45.173Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "10",
-    "object_repr": "Durlok (Masilla)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 36,
-  "fields": {
-    "action_time": "2021-09-27T21:45:30.311Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "11",
-    "object_repr": "Alba (Fibra de Vidrio)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 37,
-  "fields": {
-    "action_time": "2021-09-27T21:45:51.417Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "1",
-    "object_repr": "Ford",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 38,
-  "fields": {
-    "action_time": "2021-09-27T21:46:05.066Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "2",
-    "object_repr": "Nissan",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 39,
-  "fields": {
-    "action_time": "2021-09-27T21:46:11.311Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "3",
-    "object_repr": "Toyota",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 40,
-  "fields": {
-    "action_time": "2021-09-27T21:46:30.803Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "4",
-    "object_repr": "Renault",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 41,
-  "fields": {
-    "action_time": "2021-09-27T21:46:44.001Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "5",
-    "object_repr": "Chevrolet",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 42,
-  "fields": {
-    "action_time": "2021-09-27T21:47:15.399Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "6",
-    "object_repr": "Chery",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 43,
-  "fields": {
-    "action_time": "2021-09-27T21:47:22.421Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "1",
-    "object_repr": "Tiggo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 44,
-  "fields": {
-    "action_time": "2021-09-27T21:47:44.557Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "7",
-    "object_repr": "Fiat",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 45,
-  "fields": {
-    "action_time": "2021-09-27T21:47:45.884Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "2",
-    "object_repr": "Punto",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 46,
-  "fields": {
-    "action_time": "2021-09-27T21:47:56.198Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "3",
-    "object_repr": "Fiesta",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 47,
-  "fields": {
-    "action_time": "2021-09-27T21:48:14.474Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "4",
-    "object_repr": "Cruze",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 48,
-  "fields": {
-    "action_time": "2021-09-27T21:48:23.224Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "5",
-    "object_repr": "S10",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 49,
-  "fields": {
-    "action_time": "2021-09-27T21:48:34.502Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "6",
-    "object_repr": "March",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 50,
-  "fields": {
-    "action_time": "2021-09-27T21:48:45.775Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "7",
-    "object_repr": "Hilux",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 51,
-  "fields": {
-    "action_time": "2021-09-27T21:48:57.394Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "8",
-    "object_repr": "Kangoo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 52,
-  "fields": {
-    "action_time": "2021-09-27T21:50:10.886Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "Limpiar chapa",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 53,
-  "fields": {
-    "action_time": "2021-09-27T21:50:58.033Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "Reparación de Chapa",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 54,
-  "fields": {
-    "action_time": "2021-09-27T21:51:59.142Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Pintar",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 55,
-  "fields": {
-    "action_time": "2021-09-27T21:52:22.413Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Masilla Chapa",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 56,
-  "fields": {
-    "action_time": "2021-09-27T21:53:20.997Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Pintar arreglo de hasta 100cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 57,
-  "fields": {
-    "action_time": "2021-09-27T21:53:32.878Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "5",
-    "object_repr": "Pintar arreglo de hasta 50cm2",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 58,
-  "fields": {
-    "action_time": "2021-09-27T21:58:10.098Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "Reparación de Chapa",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 59,
-  "fields": {
-    "action_time": "2021-09-27T21:58:18.305Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "5",
-    "object_repr": "Pintar arreglo de hasta 50cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 60,
-  "fields": {
-    "action_time": "2021-09-27T21:58:25.241Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Pintar arreglo de hasta 100cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 61,
-  "fields": {
-    "action_time": "2021-09-27T21:58:39.533Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Masilla Chapa",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 62,
-  "fields": {
-    "action_time": "2021-09-27T21:59:40.659Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "Limpiar chapa",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 63,
-  "fields": {
-    "action_time": "2021-09-27T21:59:52.507Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Masilla Chapa 20cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 64,
-  "fields": {
-    "action_time": "2021-09-27T22:00:03.329Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Masilla Chapa hasta 20cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 65,
-  "fields": {
-    "action_time": "2021-09-27T22:00:13.058Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "Reparación de Chapa hasta 20cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 66,
-  "fields": {
-    "action_time": "2021-09-27T22:02:22.991Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "1",
-    "object_repr": "Repuesto object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 67,
-  "fields": {
-    "action_time": "2021-09-27T22:05:40.180Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "2",
-    "object_repr": "Puerta Izquierda",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 68,
-  "fields": {
-    "action_time": "2021-09-27T22:05:53.949Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "1",
-    "object_repr": "Puerta Derecha",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 69,
-  "fields": {
-    "action_time": "2021-09-27T22:06:00.779Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "2",
-    "object_repr": "Puerta Izquierda",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 70,
-  "fields": {
-    "action_time": "2021-09-27T22:06:03.966Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "1",
-    "object_repr": "Puerta Derecha",
-    "action_flag": 2,
-    "change_message": "[]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 71,
-  "fields": {
-    "action_time": "2021-09-27T22:16:57.854Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "cliente"
-    ],
-    "object_id": "1",
-    "object_repr": "Pedro",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 72,
-  "fields": {
-    "action_time": "2021-09-27T22:19:41.236Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "empleado"
-    ],
-    "object_id": "1",
-    "object_repr": "Empleado object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 73,
-  "fields": {
-    "action_time": "2021-09-27T22:20:13.230Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "empleado"
-    ],
-    "object_id": "2",
-    "object_repr": "Empleado object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 74,
-  "fields": {
-    "action_time": "2021-09-27T22:21:24.571Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "1",
-    "object_repr": "Administrativo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 75,
-  "fields": {
-    "action_time": "2021-09-27T22:21:32.573Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "2",
-    "object_repr": "Jefe de Taller",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 76,
-  "fields": {
-    "action_time": "2021-09-27T22:21:50.659Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "3",
-    "object_repr": "Oficial Pintor",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 77,
-  "fields": {
-    "action_time": "2021-09-27T22:22:04.238Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "3",
-    "object_repr": "pedro",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 78,
-  "fields": {
-    "action_time": "2021-09-27T22:22:11.681Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "2",
-    "object_repr": "juan",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 79,
-  "fields": {
-    "action_time": "2021-09-27T22:22:22.869Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "1",
-    "object_repr": "diego",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 80,
-  "fields": {
-    "action_time": "2021-09-29T21:31:07.045Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "9",
-    "object_repr": "Clio",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 81,
-  "fields": {
-    "action_time": "2021-09-29T21:31:25.520Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Absorvedores",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 82,
-  "fields": {
-    "action_time": "2021-09-29T21:31:34.611Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "Puerta Izquierda",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Tipo\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 83,
-  "fields": {
-    "action_time": "2021-09-29T21:31:38.434Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "Puerta Derecha",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Tipo\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 84,
-  "fields": {
-    "action_time": "2021-09-29T21:31:42.061Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Absorvedores",
-    "action_flag": 2,
-    "change_message": "[]"
-  }
-}
 ]

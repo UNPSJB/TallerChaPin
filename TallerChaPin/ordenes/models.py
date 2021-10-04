@@ -8,7 +8,17 @@ from taller.models import (
     Repuesto
 )
 from django.db import models
+from django.conf import settings
 # Create your models here.
+
+
+class OrdenDeTrabajoManager(models.Manager):
+    def para_el_dia(self, fecha):
+        return self.filter(turno__date=fecha.date())
+
+
+class OrdenDeTrabajoQuerySet(models.QuerySet):
+    pass
 
 
 class OrdenDeTrabajo(models.Model):
@@ -40,6 +50,7 @@ class OrdenDeTrabajo(models.Model):
     egreso = models.DateTimeField(null=True, blank=True)
     estado = models.PositiveSmallIntegerField(
         choices=ESTADOS_CHOICES, default=CREADA)
+    objects = OrdenDeTrabajoManager.from_queryset(OrdenDeTrabajoQuerySet)()
 
     def agregar_tarea(self, tarea):
         return DetalleOrdenDeTrabajo.objects.create(tarea=tarea, orden=self)
@@ -55,7 +66,11 @@ class OrdenDeTrabajo(models.Model):
         return RepuestoOrdenDeTrabajo.objects.create(repuesto=repuesto, orden=self, cantidad=cantidad)
 
     def cambiar_turno(self, fecha):
-        # TODO: Garantizar disponibilidad en el taller
+        otras = OrdenDeTrabajo.objects.para_el_dia(fecha)
+        otras = otras.exclude(pk=self.pk)
+        if len(otras) >= settings.CAPACIDAD_TALLER:
+            raise Exception(
+                'Ya existen vehiculos para esa fecha por sobre la capacidad del taller')
         self.turno = fecha
         self.save()
 

@@ -1,0 +1,215 @@
+[
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "turno": "2021-10-06T22:19:55Z",
+    "ingreso": "2021-10-06T22:30:28Z",
+    "egreso": null,
+    "estado": 4
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "orden": 1,
+    "tarea": 3,
+    "empleado": 1,
+    "inicio": "2021-10-06T22:30:39.551Z",
+    "fin": "2021-10-06T22:31:20.377Z",
+    "exitosa": true,
+    "observaciones": "Listo el pollo"
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "orden": 1,
+    "tarea": 6,
+    "empleado": null,
+    "inicio": null,
+    "fin": "2021-10-06T22:32:47.243Z",
+    "exitosa": true,
+    "observaciones": "Listo el pollo"
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "material": 7,
+    "orden": 1,
+    "cantidad": 10
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "material": 10,
+    "orden": 1,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 3,
+  "fields": {
+    "material": 9,
+    "orden": 1,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 4,
+  "fields": {
+    "material": 8,
+    "orden": 1,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.repuestoordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "repuesto": 1,
+    "orden": 1,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 1,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "Presupuesto",
+    "validez": 60,
+    "orden": 1,
+    "tareas": [
+      3,
+      6
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 1,
+  "fields": {
+    "material": 7,
+    "presupuesto": 1,
+    "cantidad": 10
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 2,
+  "fields": {
+    "material": 10,
+    "presupuesto": 1,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 3,
+  "fields": {
+    "material": 9,
+    "presupuesto": 1,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 4,
+  "fields": {
+    "material": 8,
+    "presupuesto": 1,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 1,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 1,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.planilladepintura",
+  "pk": 1,
+  "fields": {
+    "orden": 1,
+    "fecha": "2021-10-06T22:26:07.354Z",
+    "nombre_de_color": "Blanco Polar"
+  }
+},
+{
+  "model": "ordenes.planilladepintura",
+  "pk": 2,
+  "fields": {
+    "orden": 1,
+    "fecha": "2021-10-06T22:31:05.689Z",
+    "nombre_de_color": "Blanco Polar"
+  }
+},
+{
+  "model": "ordenes.detalleplanilladepintura",
+  "pk": 1,
+  "fields": {
+    "planilla": 1,
+    "formula": "263gs",
+    "cantidad": 100
+  }
+},
+{
+  "model": "ordenes.detalleplanilladepintura",
+  "pk": 2,
+  "fields": {
+    "planilla": 1,
+    "formula": "27dgs6",
+    "cantidad": 20
+  }
+},
+{
+  "model": "ordenes.detalleplanilladepintura",
+  "pk": 3,
+  "fields": {
+    "planilla": 1,
+    "formula": "727ey",
+    "cantidad": 5
+  }
+},
+{
+  "model": "ordenes.detalleplanilladepintura",
+  "pk": 4,
+  "fields": {
+    "planilla": 2,
+    "formula": "263gs",
+    "cantidad": 100
+  }
+},
+{
+  "model": "ordenes.detalleplanilladepintura",
+  "pk": 5,
+  "fields": {
+    "planilla": 2,
+    "formula": "27dgs6",
+    "cantidad": 20
+  }
+},
+{
+  "model": "ordenes.detalleplanilladepintura",
+  "pk": 6,
+  "fields": {
+    "planilla": 2,
+    "formula": "727ey",
+    "cantidad": 5
+  }
+}
+]

@@ -82,7 +82,7 @@ class OrdenDeTrabajo(models.Model):
     def registrar_egreso(self, fecha):
         if self.estado == OrdenDeTrabajo.FACTURADA or self.cliente.vip():
             self.egreso = fecha
-            self.estado = OrdenDeTrabajo.FINALIZADA
+            self.estado = OrdenDeTrabajo.FINALIZADA if self.estado == OrdenDeTrabajo.FACTURADA else self.estado
             self.save()
 
     @property
@@ -125,7 +125,7 @@ class OrdenDeTrabajo(models.Model):
             if un_problema:
                 self.estado = OrdenDeTrabajo.PAUSADA
             elif todo_terminado:
-                self.estado = OrdenDeTrabajo.FINALIZADA
+                self.estado = OrdenDeTrabajo.REALIZADA
             self.save()
 
     def ampliar_presupuesto(self):
@@ -169,6 +169,8 @@ class DetalleOrdenDeTrabajo(models.Model):
         for formula, cantidad in componentes:
             planilla.agregar(formula, cantidad)
 
+    def precio(self):
+        return self.tarea.precio
 
 class MaterialOrdenDeTrabajo(models.Model):
     material = models.ForeignKey(
@@ -179,7 +181,6 @@ class MaterialOrdenDeTrabajo(models.Model):
 
     def precio(self):
         return self.material.precio * self.cantidad
-
 
 class RepuestoOrdenDeTrabajo(models.Model):
     repuesto = models.ForeignKey(

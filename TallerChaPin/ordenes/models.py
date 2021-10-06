@@ -21,6 +21,12 @@ class OrdenDeTrabajoQuerySet(models.QuerySet):
     pass
 
 
+class NoEntregoVehiculoException(Exception):
+    def __init__(self, message, estado) -> None:
+        super().__init__(message)
+        self.estado = estado
+
+
 class OrdenDeTrabajo(models.Model):
     CREADA = 0
     ACTIVA = 1
@@ -84,6 +90,9 @@ class OrdenDeTrabajo(models.Model):
             self.egreso = fecha
             self.estado = OrdenDeTrabajo.FINALIZADA if self.estado == OrdenDeTrabajo.FACTURADA else self.estado
             self.save()
+        else:
+            raise NoEntregoVehiculoException(
+                'No se puede entregar el vehiculo o me pagas o sos vip', self.estado)
 
     @property
     def cliente(self):
@@ -172,6 +181,7 @@ class DetalleOrdenDeTrabajo(models.Model):
     def precio(self):
         return self.tarea.precio
 
+
 class MaterialOrdenDeTrabajo(models.Model):
     material = models.ForeignKey(
         Material, on_delete=models.CASCADE, related_name='ordenes_de_trabajo')
@@ -181,6 +191,7 @@ class MaterialOrdenDeTrabajo(models.Model):
 
     def precio(self):
         return self.material.precio * self.cantidad
+
 
 class RepuestoOrdenDeTrabajo(models.Model):
     repuesto = models.ForeignKey(

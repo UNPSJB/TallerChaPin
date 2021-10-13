@@ -1,38 +1,10 @@
-from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.shortcuts import render
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
+from .forms import MarcaForm, EmpleadoForm
 from .forms import MarcaForm, ModeloFiltrosForm
-# Create your views here.
-
-
-def index(request):
-    return render(request, 'taller/listado_marcas.html')
-
-
-def listado_marcas(request):
-    marca = Marca(1, "ford", " ")
-    marca2 = Marca(2, "Fiat", " ")
-    marca.save()
-    marca2.save()
-    lista_marcas = [marca, marca2]
-
-    return render(request, 'taller/listado_marcas.html', context={"titulo": "marcas:", "marcas": lista_marcas})
-
-
-def modelos_x_marcas(request, marca):
-    """
-        Obtiene los modelos de una marca
-    """
-    marca = get_object_or_404(Marca, nombre=marca)
-    print(marca.modelos.all())
-    lista_modelos = [m for m in marca.modelos.all()]
-    return render(request, 'taller/modelos_x_marca.html', context={"titulo": "modelos:", "modelos": lista_modelos})
-
-
-def registrar_cliente(request):
-    return render(request, 'taller/form_registrar_cliente.html', {"titulo": "Registrar Cliente"})
 
 def registrar_empleado(request):
     return render(request, 'taller/form_registrar_empleado.html', {"titulo": "Registrar Empleado"})
@@ -43,6 +15,7 @@ def registrar_modelo(request):
 def registrar_tipo_tarea(request):
     return render(request, 'taller/form_registrar_tipo_tarea.html', {"titulo": "Registrar Tipo de Tarea"})
 
+# Create your views here.
 
 class MarcaCreateView(CreateView):
     model = Marca
@@ -61,7 +34,6 @@ class MarcaListView(ListView):
         context['titulo'] = "Listado de Marcas"
         return context
 
-
 class ModeloListView(ListView):
 
     model = Modelo
@@ -72,7 +44,7 @@ class ModeloListView(ListView):
         context['filtros'] = ModeloFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Modelos"
         return context
-
+   
     def get_queryset(self):
         # print(self.request.GET)
         #{'nombre': ['Gol'], 'descripcion': [''], 'marca': [''], 'submit': ['Filtrar']}
@@ -93,9 +65,42 @@ class VehiculoListView(ListView):
 class ClienteListView(ListView):
 
     model = Cliente
+
     paginate_by = 100
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context['titulo'] = "Listado de Clientes"
         return context
+
+class EmpleadoCreateView(CreateView):
+
+    model = Empleado
+    form_class = EmpleadoForm # configuración de los campos del form + estilos.
+    template_name = 'taller/empleado_form.html' # template del form
+    success_url = reverse_lazy('crearEmpleado') 
+
+class EmpleadoUpdateView(UpdateView):
+    model = Empleado
+    form_class = EmpleadoForm
+    success_url = reverse_lazy("listarEmpleados")
+
+class EmpleadoDeleteView(DeleteView):
+    model = Empleado
+    success_url = reverse_lazy("listarEmpleados")
+    
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+
+class EmpleadoListView(ListView):
+
+    model = Empleado
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de Empleados"
+        return context
+
+

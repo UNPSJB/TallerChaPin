@@ -196,9 +196,3 @@ class Empleado(models.Model):
         user.save()
         self.usuario = user
         return user
-
-    def __str__(self):
-        return self.nombre
-
-    def puede_hacer(self, tipo_tarea):
-        return self.tareas.filter(id=tipo_tarea.id).exists()

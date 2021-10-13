@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Permission
 
-from .models import Marca, Modelo, Cliente
+from .models import Empleado, Marca, Material, Modelo, Cliente, Repuesto, Tarea, TipoMaterial, TipoTarea, Vehiculo
 # Register your models here.
 
 
@@ -14,6 +14,7 @@ class ModeloAdmin(admin.ModelAdmin):
     list_filter = ('marca',)
     ordering = ('marca', 'nombre')
 
+
 class ClienteAdmin(admin.ModelAdmin):
     ordering = ('dni', )
 
@@ -21,4 +22,11 @@ class ClienteAdmin(admin.ModelAdmin):
 admin.site.register(Marca, MarcaAdmin)
 admin.site.register(Modelo, ModeloAdmin)
 admin.site.register(Cliente, ClienteAdmin)
+admin.site.register(TipoMaterial)
+admin.site.register(Material)
+admin.site.register(Repuesto)
+admin.site.register(Tarea)
+admin.site.register(Vehiculo)
+admin.site.register(TipoTarea)
+admin.site.register(Empleado)
 # admin.site.register(Permission)

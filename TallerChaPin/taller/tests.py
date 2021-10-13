@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Modelo, Marca, Empleado
+from taller.models import Material, Modelo, Marca, Empleado
 
 # Create your tests here.
 
@@ -12,16 +12,16 @@ class MarcaTestCase(TestCase):
         modelos = Marca.objects.filtrar(
             "nombre__startswith=F")
         self.assertEqual(len(modelos), 1)
-        #try:
+        # try:
         #    raise ValueError()
-        #except (ValueError, TypeError) as e:
+        # except (ValueError, TypeError) as e:
         #    self.assertRaises(ValueError, e)
 
 
 class ModeloTestCase(TestCase):
     def setUp(self):
         Modelo.objects.create(
-            nombre='Focus', marca=Marca.objects.create(nombre='Ford'))
+            nombre='Focus', anio=2030, marca=Marca.objects.create(nombre='Ford'))
 
     def test_modelos_para_filtro_texto(self):
         modelos = Modelo.objects.filtrar(
@@ -47,3 +47,22 @@ class EmpleadoTestCase(TestCase):
         empleado.crear_usuario()
         self.assertIsNotNone(empleado.usuario)
         self.assertEqual(empleado.usuario.username, "pperez")
+
+
+class MaterialTestCase(TestCase):
+    fixtures = [
+        'taller/fixtures/tests.json'
+    ]
+
+    def test_marcas(self):
+        marcas = Marca.objects.all()
+        self.assertEqual(len(marcas), 7)
+
+    def test_decrementar_stock(self):
+        material = Material.objects.filter(cantidad=3000).first()
+        material.menos_stock(10)
+        self.assertEqual(material.stock(), 2990)
+
+    def test_calcular_precio(self):
+        material = Material.objects.filter(precio=10).first()
+        self.assertEqual(material.calcular_precio(2), 20)

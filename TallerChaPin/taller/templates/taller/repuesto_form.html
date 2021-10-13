@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block main %}
+<div class="col-5">
+    <h3>Registrar Repuesto</h3>
+    {% crispy form form.helper %}
+</div>
+{% endblock %}

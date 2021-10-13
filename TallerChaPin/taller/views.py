@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
-from .forms import MarcaForm, EmpleadoForm
+from .forms import MarcaForm, EmpleadoForm, TareaForm, TipoTareaForm, RepuestoForm
 from .forms import MarcaForm, ModeloFiltrosForm
 
 def registrar_empleado(request):
@@ -24,6 +24,23 @@ class MarcaCreateView(CreateView):
     # a donde vamos luego de guardar exitosamente?
     success_url = reverse_lazy('crearMarca')
 
+class RepuestoCreateView(CreateView):
+    model = Repuesto
+    form_class = RepuestoForm 
+    template_name = 'taller/repuesto_form.html'  
+    success_url = reverse_lazy('crearRepuesto')
+
+class TareaCreateView(CreateView):
+    model = Tarea
+    form_class = TareaForm
+    template_name = 'taller/tarea_form.html'  # template del form
+    success_url = reverse_lazy('crearTarea')
+
+class TipoTareaCreateView(CreateView):
+    model = TipoTarea
+    form_class = TipoTareaForm
+    template_name = 'taller/tipo-tarea_form.html' 
+    success_url = reverse_lazy('crearTipoTarea')
 
 class MarcaListView(ListView):
     model = Marca
@@ -32,6 +49,24 @@ class MarcaListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de Marcas"
+        return context
+
+class RepuestoListView(ListView):
+    model = Repuesto
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de Repuestos"
+        return context
+
+class TareaListView(ListView):
+    model = Tarea
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de Tareas"
         return context
 
 class ModeloListView(ListView):

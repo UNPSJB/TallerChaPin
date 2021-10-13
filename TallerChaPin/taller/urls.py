@@ -10,6 +10,8 @@ from .views import (
     ModeloListView,
     MarcaCreateView,
     ClienteListView,
+    RepuestoCreateView,
+    RepuestoListView,
     registrar_empleado,
     VehiculoListView,
     registrar_modelo,
@@ -17,7 +19,11 @@ from .views import (
     EmpleadoCreateView,
     EmpleadoUpdateView,
     EmpleadoDeleteView,
-    EmpleadoListView
+    EmpleadoListView,
+    TareaCreateView,
+    TipoTareaCreateView,
+    RepuestoListView,
+    TareaListView
 )
 
 
@@ -27,8 +33,13 @@ urlpatterns = [
     #path('marcas/<slug:marca>/modelos', modelos_x_marcas, name="modelosXmarcas"),
     #path('cliente/registrar', registrar_cliente, name="registrarCliente"),
     path('marcas/crear', MarcaCreateView.as_view(), name="crearMarca"),
+    path('tarea/crear', TareaCreateView.as_view(), name="crearTarea"),
+    path('tipo-tarea/crear', TipoTareaCreateView.as_view(), name="crearTipoTarea"),
+    path('repuesto/crear', RepuestoCreateView.as_view(), name="crearRepuesto"),
     path('marcas/listar', MarcaListView.as_view(), name="listarMarcas"),  
     path('modelos/listar', ModeloListView.as_view(), name="listarModelos"),
+    path('repuestos/listar', RepuestoListView.as_view(), name="listarRepuestos"),
+    path('tareas/listar', TareaListView.as_view(), name="listarTareas"),
     path('clientes/listar', ClienteListView.as_view(), name='listarClientes'),
     path('empleado/registrar', registrar_empleado, name="registrarEmpleado"),
     path('vehiculos/listar', VehiculoListView.as_view(), name="listarVehiculos"),
@@ -37,6 +48,5 @@ urlpatterns = [
     path ('empleado/crear', EmpleadoCreateView.as_view(), name="crearEmpleado"),
     path('empleado/modificar/<int:pk>', EmpleadoUpdateView.as_view(), name="modificarEmpleado"),
     path('empleado/eliminar/<int:pk>', EmpleadoDeleteView.as_view(), name="eliminarEmpleado"),
-    path ('empleados/listar', EmpleadoListView.as_view(), name="listarEmpleados")
-
+    path ('empleados/listar', EmpleadoListView.as_view(), name="listarEmpleados"),
 ]

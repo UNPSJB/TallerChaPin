@@ -9,7 +9,11 @@ from .views import (
     MarcaListView, 
     ModeloListView,
     MarcaCreateView,
-    ClienteListView
+    ClienteListView,
+    registrar_empleado,
+    VehiculoListView,
+    registrar_modelo,
+    registrar_tipo_tarea
 )
 
 
@@ -21,5 +25,9 @@ urlpatterns = [
     path('marcas/<slug:marca>/modelos', modelos_x_marcas, name="modelosXmarcas"),
     path('cliente/registrar', registrar_cliente, name="registrarCliente"),
     path('modelos/listar', ModeloListView.as_view(), name="listarModelos"),
-    path('clientes/listar', ClienteListView.as_view(), name='listarClientes')
+    path('clientes/listar', ClienteListView.as_view(), name='listarClientes'),
+    path('empleado/registrar', registrar_empleado, name="registrarEmpleado"),
+    path('vehiculos/listar', VehiculoListView.as_view(), name="listarVehiculos"),
+    path('modelo/registrar', registrar_modelo, name="registrarModelo"),
+    path('tipo-tarea/registrar', registrar_tipo_tarea, name="registrarTipoTarea")
 ]

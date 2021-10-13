@@ -34,6 +34,15 @@ def modelos_x_marcas(request, marca):
 def registrar_cliente(request):
     return render(request, 'taller/form_registrar_cliente.html', {"titulo": "Registrar Cliente"})
 
+def registrar_empleado(request):
+    return render(request, 'taller/form_registrar_empleado.html', {"titulo": "Registrar Empleado"})
+
+def registrar_modelo(request):
+    return render(request, 'taller/form_registrar_modelo.html', {"titulo": "Registrar Modelo"})
+
+def registrar_tipo_tarea(request):
+    return render(request, 'taller/form_registrar_tipo_tarea.html', {"titulo": "Registrar Tipo de Tarea"})
+
 
 class MarcaCreateView(CreateView):
     model = Marca
@@ -72,6 +81,14 @@ class ModeloListView(ListView):
         return qs
         # return qs.filter(algo(self.request.GET))
 
+class VehiculoListView(ListView):
+    model = Vehiculo
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de Vehiculos"
+        return context
 
 class ClienteListView(ListView):
 

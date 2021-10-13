@@ -1,5 +1,5 @@
 from django import forms
-from .models import Empleado, Marca
+from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from django.db.models.query import QuerySet
 from .models import Marca
 from crispy_forms.helper import FormHelper
@@ -41,6 +41,21 @@ class MarcaForm(forms.ModelForm):
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
+class ModeloForm(forms.ModelForm):
+    class Meta:
+        model = Modelo
+        fields = "__all__"
+
+    def save(self, commit=True):
+        modelo = super().save()
+        return modelo
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
 class EmpleadoForm(forms.ModelForm):
     
     class Meta:
@@ -76,3 +91,59 @@ class ModeloFiltrosForm(forms.Form):
         self.helper.form_method = 'get'
 
         self.helper.add_input(Submit('submit', 'Filtrar'))
+
+class MaterialFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    
+    tipo = forms.ModelChoiceField(
+        queryset=TipoMaterial.objects.all(), required=False)
+
+    cantidad = forms.IntegerField(required=False)
+    precio = forms.DecimalField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
+class MarcaFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    descripcion = forms.CharField(required=False)
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
+class EmpleadoFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    apellido = forms.CharField(required=False, label='Apellido', max_length=100)
+    legajo = forms.IntegerField(required=False)
+    cuil = forms.IntegerField(required=False)
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
+class MaterialForm(forms.Form):
+      class Meta:
+        model = Material
+        fields = '__all__'
+        
+        def save(self, commit=True):
+            material = super().save()
+            return material
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.helper = FormHelper()
+            
+            self.helper.add_input(Submit('submit', 'Guardar'))

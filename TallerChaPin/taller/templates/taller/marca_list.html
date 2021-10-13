@@ -1,5 +1,9 @@
-{% extends 'main.html' %} {% load static %} {% block title %} {{titulo}} {%endblock %} 
-
+{% extends 'template_taller.html' %}
+{% load static %} 
+{% load crispy_forms_tags %}
+{% block title %} 
+{{titulo}} 
+{% endblock %} 
 {% block main %}
   <h1>{{titulo}}</h1>
 
@@ -96,23 +100,7 @@
     >
 
     <!-- Inputs -->
-    <div class="input-group mb-3 mt-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Nombre</span>
-      </div>
-      <input type="text" class="form-control" placeholder="Sin filtrar" />
-    </div>
 
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Descripcion</span>
-      </div>
-      <input type="text" class="form-control" placeholder="Sin filtrar" />
-    </div>
-
-    <!-- Botón "Filtrar" -->
-    <div class="col-12 d-flex">
-      <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
-    </div>
+    {% crispy filtros filtros.helper %}
   </div>
 {% endblock %}

@@ -35,3 +35,13 @@ def login(request):
 def logout(request):
     django_logout(request)
     return redirect('/login')
+
+
+def template_taller(request):
+    return render(request, 'template_taller.html', {"title": "Gestion de Taller"})
+
+def template_ordenes(request):
+    return render(request, 'template_ordenes.html', {"title": "Gestion de Ordenes"})
+
+def template_facturas(request):
+    return render(request, 'template_facturas.html', {"title": "Gestion de Facturas"})

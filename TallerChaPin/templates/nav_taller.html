@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark mr-auto bg-primary">
-  <a class="navbar-brand" href="#">Taller ChaPin</a>
+  <a class="navbar-brand" href="{% url 'home' %}">Taller ChaPin</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,13 +8,13 @@
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
       <li class="nav-item active">
-        <a class="nav-link" href="#">Taller </a>
+        <a class="nav-link" href="{% url 'taller_home' %}">Taller </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">Ordenes</a>
+        <a class="nav-link active" href="{% url 'ordenes_home' %}">Ordenes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">Facturas</a>
+        <a class="nav-link active" href="{% url 'facturas_home' %}">Facturas</a>
       </li>
     </ul>
     <form class="form-inline my-1 my-sm-0">

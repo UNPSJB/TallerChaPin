@@ -1,23 +1,21 @@
-{% extends 'base.html' %} {% load static %} {% block extracss %}
+{% extends 'main.html' %} {% load static %} {% block extracss %}
 <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
 
-{% endblock %} {% block container %} {% block nav %} {% include 'nav_home.html' %} {% endblock %}
+{% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' %} {% endblock %}
 
 <div class="container-fluid">
   <div class="row d-flex justify-content-between">
     <div class="col-2 mt-4">
-      {% block sidebar %} 
-      {% include 'sidebar.html' %} 
-      {% endblock %}
+      {% block sidebar %} {% include 'sidebar_facturas.html' %} {% endblock %}
     </div>
 
-    <div class="col-7 mt-4 ">
+    <div class="col-7 mt-4">
       {% block main %}
       
       {% endblock %}
     </div>
 
-    <div class="col-3 mt-5 pr-4">
+    <div class="col-2 mt-5 mr-4">
       {% block filtros %} 
 
       {% endblock %}

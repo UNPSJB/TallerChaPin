@@ -1,8 +1,9 @@
 {% extends 'template_taller.html' %}
 {% load static %} 
-
-{% block title %} {{titulo}} {%endblock %} 
-
+{% load crispy_forms_tags %}
+{% block title %} 
+{{titulo}} 
+{% endblock %} 
 {% block main %}
   <h1>{{titulo}}</h1>
 
@@ -11,30 +12,24 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">DNI</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Dirección</th>
-            <th scope="col">Teléfono</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio</th>
           </tr>
         </thead>
         <tbody>
-          {% for cliente in object_list %}
+          {% for material in object_list %}
           <tr>
-            <td>{{ cliente.dni }}</td>
-            <td>{{ cliente.nombre }}</td>
-            <td>{{ cliente.apellido }}</td>
-            <td>{{ cliente.direccion }}</td>
-            <td>{{ cliente.telefono }}</td>
+            <td>{{ material.nombre }}</td>
+            <td>{{ material.tipo }}</td>
+            <td>{{ material.cantidad }}</td>
+            <td>{{ material.precio }}</td>
           </tr>
           {% empty %}
           <tr>
-            <td>No hay clientes</td>
-            <td>n/a</td>
-            <td>n/a</td>
-            <td>n/a</td>
-            <td>n/a</td>
-          </tr> 
+            <td>No hay materiales</td>
+          </tr>
           {% endfor %}
         </tbody>
       </table>
@@ -50,7 +45,7 @@
   </div>
 {% endblock %} 
 
-{% block filtros%}
+{% block filtros %}
   <div>
     <!-- Ordenar -->
     <span class="fs-5 fw-semibold">
@@ -75,17 +70,8 @@
         class="form-check-input"
         type="radio"
         name="flexRadioOrdenar"
-        id="flexRadioDni"
-        checked
-      />
-      <label class="form-check-label" for="flexRadioDni"> DNI </label>
-    </div>
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioOrdenar"
         id="flexRadioNombre"
+        checked
       />
       <label class="form-check-label" for="flexRadioNombre"> Nombre </label>
     </div>
@@ -94,27 +80,9 @@
         class="form-check-input"
         type="radio"
         name="flexRadioOrdenar"
-        id="flexRadioApellido"
+        id="flexRadioDescripcion"
       />
-      <label class="form-check-label" for="flexRadioApellido"> Apellido </label>
-    </div>
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioOrdenar"
-        id="flexRadioDireccion"
-      />
-      <label class="form-check-label" for="flexRadioDireccion"> Dirección </label>
-    </div>
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioOrdenar"
-        id="flexRadioTelefono"
-      />
-      <label class="form-check-label" for="flexRadioTelefono"> Telefono </label>
+      <label class="form-check-label" for="flexRadioOrdenar"> Descripcion </label>
     </div>
     <hr />
 
@@ -138,13 +106,6 @@
     <!-- Inputs -->
     <div class="input-group mb-3 mt-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">DNI</span>
-      </div>
-      <input type="text" class="form-control" placeholder="Sin filtrar" />
-    </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
         <span class="input-group-text">Nombre</span>
       </div>
       <input type="text" class="form-control" placeholder="Sin filtrar" />
@@ -152,21 +113,7 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Apellido</span>
-      </div>
-      <input type="text" class="form-control" placeholder="Sin filtrar" />
-    </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Dirección</span>
-      </div>
-      <input type="text" class="form-control" placeholder="Sin filtrar" />
-    </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Teléfono</span>
+        <span class="input-group-text">Descripcion</span>
       </div>
       <input type="text" class="form-control" placeholder="Sin filtrar" />
     </div>
@@ -175,5 +122,6 @@
     <div class="col-12 d-flex">
       <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
     </div>
+    {% crispy filtros filtros.helper %}
   </div>
 {% endblock %}

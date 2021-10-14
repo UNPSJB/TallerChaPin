@@ -1,37 +1,11 @@
 {% extends 'template_taller.html' %}
+{% load static %} 
+{% load crispy_forms_tags %}
 {% load static %}
 
-{% block title %} {{titulo}} {% endblock %}
-
 {% block main %}
-
-    <form class="row g-3">
-        <h1 class="mt-4">Registrar un Modelo</h1>
-        <hr>
-        <div class="col-md-6">
-            <label for="inputNombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="inputNombre">
-        </div>
-        <div class="col-md-6">
-            <label for="inputDescripcion" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="inputDescripcion">
-        </div>
-        <div class="col-md-6">
-            <label for="selectMarca" class="form-label">Marca</label>
-            <select class="form-select" name="select" id="selectMarca">
-                <option value="valor0" selected >Seleccione marca</option>
-                <option value="value1">Marca 1</option>
-                <option value="value2">Marca 2</option>
-                <option value="value3">Marca 3</option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <label for="inputAnio" class="form-label">Año</label>
-            <input type="number" class="form-control" id="inputAnio">
-        </div>
-        <div class="col-12 d-flex flex-row-reverse">
-            <button type="submit" class="btn btn-primary mt-3">Guardar</button>
-        </div>
-    </form>
-
+<div class="col-5">
+    <h3>Registrar Modelo</h3>
+    {% crispy form form.helper %}
+</div>
 {% endblock %}

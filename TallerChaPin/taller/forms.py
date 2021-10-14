@@ -64,6 +64,10 @@ class ModeloForm(forms.ModelForm):
         model = Modelo
         fields = "__all__"
 
+        labels = {
+            'anio': 'Año'
+        }
+
     def save(self, commit=True):
         modelo = super().save()
         return modelo

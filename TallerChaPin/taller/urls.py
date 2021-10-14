@@ -21,7 +21,13 @@ from .views import (
     RepuestoListView,
     TareaListView,
     MarcaUpdateView, 
-    MarcaDeleteView
+    MarcaDeleteView,
+    ModeloUpdateView,
+    ModeloDeleteView,
+    TipoTareaUpdateView,
+    TipoTareaDeleteView,
+    TipoTareaListView,
+
 )
 
 
@@ -36,12 +42,17 @@ urlpatterns = [
     path('tareas/listar', TareaListView.as_view(), name="listarTareas"),
     # ----------------- TIPOS TAREA -----------------
     path('tipo-tarea/crear', TipoTareaCreateView.as_view(), name="crearTipoTarea"),
+    path('tipo-tarea/modificar/<int:pk>', TipoTareaUpdateView.as_view(), name="modificarTipoTarea"),
+    path('tipo-tarea/eliminar/<int:pk>', TipoTareaDeleteView.as_view(), name="eliminarTipoTarea"),
+    path ('tipo-tarea/listar', TipoTareaListView.as_view(), name="listarTipoTarea"),
     # ----------------- REPUESTOS -----------------
     path('repuesto/crear', RepuestoCreateView.as_view(), name="crearRepuesto"),
     path('repuestos/listar', RepuestoListView.as_view(), name="listarRepuestos"),
      # ----------------- MODELO -----------------
     path('modelo/crear', ModeloCreateView.as_view(), name="crearModelo"),
     path('modelos/listar', ModeloListView.as_view(), name="listarModelos"),
+    path('modelo/modificar/<int:pk>', ModeloUpdateView.as_view(), name="modificarModelo"),
+    path('modelo/eliminar/<int:pk>', ModeloDeleteView.as_view(), name="eliminarModelo"),
     # ----------------- MATERIALES -----------------
     path('materiales/listar', MaterialListView.as_view(), name="listarMateriales"),
     # ----------------- CLIENTES -----------------

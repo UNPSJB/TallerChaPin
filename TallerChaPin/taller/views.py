@@ -15,6 +15,18 @@ class MarcaCreateView(CreateView):
     # a donde vamos luego de guardar exitosamente?
     success_url = reverse_lazy('crearMarca')
 
+class MarcaUpdateView(UpdateView):
+    model = Marca
+    form_class = MarcaForm
+    success_url = reverse_lazy("listarMarcas")
+
+class MarcaDeleteView(DeleteView):
+    model = Marca
+    success_url = reverse_lazy("listarMarcas")
+    
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+
 class MarcaListView(ListView):
     model = Marca
     paginate_by = 100  # if pagination is desired

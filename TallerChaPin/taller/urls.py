@@ -19,7 +19,9 @@ from .views import (
     TareaCreateView,
     TipoTareaCreateView,
     RepuestoListView,
-    TareaListView
+    TareaListView,
+    MarcaUpdateView, 
+    MarcaDeleteView
 )
 
 
@@ -41,4 +43,6 @@ urlpatterns = [
     path('empleado/modificar/<int:pk>', EmpleadoUpdateView.as_view(), name="modificarEmpleado"),
     path('empleado/eliminar/<int:pk>', EmpleadoDeleteView.as_view(), name="eliminarEmpleado"),
     path ('empleados/listar', EmpleadoListView.as_view(), name="listarEmpleados"),
+    path('marca/modificar/<int:pk>', MarcaUpdateView.as_view(), name="modificarMarca"),
+    path('marca/eliminar/<int:pk>', MarcaDeleteView.as_view(), name="eliminarMarca"),
 ]

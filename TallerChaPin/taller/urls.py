@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    ClienteCreateView,
     EmpleadoListView,
     MarcaListView,
     MaterialListView,
@@ -10,7 +11,6 @@ from .views import (
     ClienteListView,
     RepuestoCreateView,
     RepuestoListView,
-    registrar_empleado,
     VehiculoListView,
     EmpleadoCreateView,
     EmpleadoUpdateView,
@@ -35,6 +35,7 @@ urlpatterns = [
     path('tareas/listar', TareaListView.as_view(), name="listarTareas"),
     path('materiales/listar', MaterialListView.as_view(), name="listarMateriales"),
     path('clientes/listar', ClienteListView.as_view(), name='listarClientes'),
+    path('clientes/crear', ClienteCreateView.as_view(), name='crearCliente'),
     path('vehiculos/listar', VehiculoListView.as_view(), name="listarVehiculos"),
     path ('empleado/crear', EmpleadoCreateView.as_view(), name="crearEmpleado"),
     path('empleado/modificar/<int:pk>', EmpleadoUpdateView.as_view(), name="modificarEmpleado"),

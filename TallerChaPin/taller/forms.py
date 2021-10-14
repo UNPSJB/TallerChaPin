@@ -1,5 +1,7 @@
 from django import forms
-from .models import Empleado, Marca, Modelo, Repuesto, Tarea, TipoTarea
+from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
+from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from django.db.models.query import QuerySet
 from .models import Marca
@@ -7,6 +9,8 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
 
+
+# Marca Forms
 class MarcaForm(forms.ModelForm):
 
     class Meta:
@@ -42,6 +46,19 @@ class MarcaForm(forms.ModelForm):
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
+class MarcaFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    descripcion = forms.CharField(required=False)
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
+
+# Modelo Forms
 class ModeloForm(forms.ModelForm):
     class Meta:
         model = Modelo
@@ -57,6 +74,20 @@ class ModeloForm(forms.ModelForm):
         
         self.helper.add_input(Submit('submit', 'Guardar'))
 
+class ModeloFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    descripcion = forms.CharField(required=False)
+    marca = forms.ModelChoiceField(
+        queryset=Marca.objects.all(), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
+# Repuesto Forms
 class RepuestoForm(forms.ModelForm):
     class Meta:
         model = Repuesto
@@ -72,6 +103,76 @@ class RepuestoForm(forms.ModelForm):
         
         self.helper.add_input(Submit('submit', 'Guardar'))
 
+# Material Forms
+class MaterialForm(forms.Form):
+      class Meta:
+        model = Material
+        fields = '__all__'
+        
+        def save(self, commit=True):
+            material = super().save()
+            return material
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.helper = FormHelper()
+            
+            self.helper.add_input(Submit('submit', 'Guardar'))
+
+class MaterialFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    descripcion = forms.CharField(required=False)
+    cantidad = forms.DecimalField(required=False)
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
+# Tipo de tarea Forms
+class TipoTareaForm(forms.ModelForm):
+
+    class Meta:
+        model = TipoTarea
+        fields = "__all__"
+    
+        labels = {
+            'materiales': 'Requiere materiales',
+            'repuestos': 'Requiere repuestos',
+            'planilla': 'Requiere planilla de pintura'
+        }
+
+    def save(self, commit=True):
+        tipoTarea = super().save()
+        return tipoTarea
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
+# Tarea Forms
+class TareaForm(forms.ModelForm):
+
+    class Meta:
+        model = Tarea
+        fields = "__all__"
+
+    def save(self, commit=True):
+        tarea = super().save()
+        return tarea
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
+
+# Empleado Forms
 class EmpleadoForm(forms.ModelForm):
     
     class Meta:
@@ -95,83 +196,6 @@ class EmpleadoForm(forms.ModelForm):
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
-class TareaForm(forms.ModelForm):
-
-    class Meta:
-        model = Tarea
-        fields = "__all__"
-
-    def save(self, commit=True):
-        tarea = super().save()
-        return tarea
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        
-        self.helper.add_input(Submit('submit', 'Guardar'))
-
-class TipoTareaForm(forms.ModelForm):
-
-    class Meta:
-        model = TipoTarea
-        fields = "__all__"
-    
-        labels = {
-            'materiales': 'Requiere materiales',
-            'repuestos': 'Requiere repuestos',
-            'planilla': 'Requiere planilla de pintura'
-        }
-
-    def save(self, commit=True):
-        tipoTarea = super().save()
-        return tipoTarea
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        
-        self.helper.add_input(Submit('submit', 'Guardar'))
-
-class ModeloFiltrosForm(forms.Form):
-    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
-    descripcion = forms.CharField(required=False)
-    marca = forms.ModelChoiceField(
-        queryset=Marca.objects.all(), required=False)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'get'
-
-        self.helper.add_input(Submit('submit', 'Filtrar'))
-
-class MaterialFiltrosForm(forms.Form):
-    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
-    
-    tipo = forms.ModelChoiceField(
-        queryset=TipoMaterial.objects.all(), required=False)
-
-    cantidad = forms.IntegerField(required=False)
-    precio = forms.DecimalField(required=False)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'get'
-
-        self.helper.add_input(Submit('submit', 'Filtrar'))
-
-class MarcaFiltrosForm(forms.Form):
-    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
-    descripcion = forms.CharField(required=False)
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'get'
-
-        self.helper.add_input(Submit('submit', 'Filtrar'))
 
 class EmpleadoFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
@@ -187,17 +211,56 @@ class EmpleadoFiltrosForm(forms.Form):
 
         self.helper.add_input(Submit('submit', 'Filtrar'))
 
-class MaterialForm(forms.Form):
-      class Meta:
-        model = Material
-        fields = '__all__'
-        
-        def save(self, commit=True):
-            material = super().save()
-            return material
+# Cliente forms
 
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.helper = FormHelper()
-            
-            self.helper.add_input(Submit('submit', 'Guardar'))
+class ClienteForm(forms.ModelForm):
+    
+    class Meta:
+        model = Cliente
+        fields = "__all__"
+    
+    def save(self,commit=True):
+        cliente = super().save()
+        return cliente
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
+# Vehiculo Forms
+
+class VehiculoForm(forms.ModelForm):
+
+    class Meta:
+        model = Vehiculo
+        fields = "__all__"
+
+    def save(self,commit=True):
+        vehiculo = super().save()
+        return vehiculo
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+    
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
+
+class VehiculoFiltrosForm(forms.Form):
+    patente = forms.CharField(required=False, label='Patente', max_length=100)
+    modelo = forms.ModelChoiceField(
+        queryset=Modelo.objects.all(), required=False)
+    anio = forms.IntegerField(required=False)
+    chasis = forms.CharField(required=False)
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
+

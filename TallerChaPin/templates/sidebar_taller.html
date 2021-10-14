@@ -46,10 +46,10 @@
             <div class="collapse" id="clientes-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li>
-                        <a href="#" class="link-dark rounded">Listado de clientes</a>
+                        <a href="{% url 'listarClientes' %}" class="link-dark rounded">Listado de clientes</a>
                     </li>
                     <li>
-                        <a href="#" class="link-dark rounded">Registrar cliente</a>
+                        <a href="{% url 'crearCliente' %}" class="link-dark rounded">Registrar cliente</a>
                     </li>
                 </ul>
             </div>
@@ -69,7 +69,7 @@
                         <a href="#" class="link-dark rounded">Alta de vehículo</a>
                     </li>
                     <li>
-                        <a href="#" class="link-dark rounded">Listar vehículos</a>
+                        <a href="{% url 'listarVehiculos' %}" class="link-dark rounded">Listar vehículos</a>
                     </li>
                 </ul>
             </div>

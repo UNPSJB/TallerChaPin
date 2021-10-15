@@ -1,5 +1,5 @@
 from django.urls import path
-
+from .views import *
 from .views import (
     ClienteCreateView,
     EmpleadoListView,
@@ -55,6 +55,9 @@ urlpatterns = [
     path('modelo/eliminar/<int:pk>', ModeloDeleteView.as_view(), name="eliminarModelo"),
     # ----------------- MATERIALES -----------------
     path('materiales/listar', MaterialListView.as_view(), name="listarMateriales"),
+    path('materiales/crear', MaterialCreateView.as_view(), name="crearMateriales"),
+    path('materiales/eliminar/<int:pk>', MaterialDeleteView.as_view(), name="eliminarMaterial"),
+    path('materiales/modificar/<int:pk>', MaterialUpdateView.as_view(), name="modificarMaterial"),
     # ----------------- CLIENTES -----------------
     path('clientes/listar', ClienteListView.as_view(), name='listarClientes'),
     path('clientes/crear', ClienteCreateView.as_view(), name='crearCliente'),

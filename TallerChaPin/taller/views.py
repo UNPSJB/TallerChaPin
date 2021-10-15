@@ -9,23 +9,26 @@ from .forms import *
 
 # Marca Views
 
+
 class MarcaCreateView(CreateView):
     model = Marca
     form_class = MarcaForm  # configuración de los campos del form + estilos.
     # a donde vamos luego de guardar exitosamente?
     success_url = reverse_lazy('crearMarca')
 
+
 class MarcaUpdateView(UpdateView):
     model = Marca
     form_class = MarcaForm
     success_url = reverse_lazy("listarMarcas")
 
+
 class MarcaDeleteView(DeleteView):
     model = Marca
     success_url = reverse_lazy("listarMarcas")
-    
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
 
 class MarcaListView(ListView):
     model = Marca
@@ -40,23 +43,28 @@ class MarcaListView(ListView):
 # ---------------------------------------------------------------- #
 
 # Modelo View
+
+
 class ModeloCreateView(CreateView):
     model = Modelo
     form_class = ModeloForm
     # template_name = 'taller/form_registrar_modelo.html'
-    success_url = reverse_lazy ('crearModelo')
+    success_url = reverse_lazy('crearModelo')
+
 
 class ModeloUpdateView(UpdateView):
     model = Modelo
     form_class = ModeloForm
     success_url = reverse_lazy("listarModelos")
 
+
 class ModeloDeleteView(DeleteView):
     model = Modelo
     success_url = reverse_lazy("listarModelos")
-    
+
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
 
 class ModeloListView(ListView):
 
@@ -68,7 +76,7 @@ class ModeloListView(ListView):
         context['filtros'] = ModeloFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Modelos"
         return context
-   
+
     def get_queryset(self):
         # print(self.request.GET)
         #{'nombre': ['Gol'], 'descripcion': [''], 'marca': [''], 'submit': ['Filtrar']}
@@ -81,10 +89,11 @@ class ModeloListView(ListView):
 
 # Repuesto Views
 
+
 class RepuestoCreateView(CreateView):
     model = Repuesto
-    form_class = RepuestoForm 
-    template_name = 'taller/repuesto_form.html'  
+    form_class = RepuestoForm
+    template_name = 'taller/repuesto_form.html'
     success_url = reverse_lazy('crearRepuesto')
 
 
@@ -95,20 +104,24 @@ class RepuestoCreateView(CreateView):
 class TipoTareaCreateView(CreateView):
     model = TipoTarea
     form_class = TipoTareaForm
-    template_name = 'taller/tipo-tarea_form.html' 
+    template_name = 'taller/tipotarea_form.html'
     success_url = reverse_lazy('crearTipoTarea')
+
 
 class TipoTareaUpdateView(UpdateView):
     model = TipoTarea
     form_class = TipoTareaForm
+    template_name = 'taller/tipotarea_update_form.html'
     success_url = reverse_lazy("listarTipoTarea")
+
 
 class TipoTareaDeleteView(DeleteView):
     model = TipoTarea
     success_url = reverse_lazy("listarTipoTarea")
-    
+
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
 
 class TipoTareaListView(ListView):
 
@@ -125,11 +138,13 @@ class TipoTareaListView(ListView):
 
 # Tareas View
 
+
 class TareaCreateView(CreateView):
     model = Tarea
     form_class = TareaForm
-    template_name = 'taller/tarea_form.html'  
+    template_name = 'taller/tarea_form.html'
     success_url = reverse_lazy('crearTarea')
+
 
 class TareaListView(ListView):
     model = Tarea
@@ -156,15 +171,31 @@ class MaterialListView(ListView):
         context['titulo'] = "Listado de Materiales"
         return context
 
+
 class MaterialCreateView(CreateView):
     model = Material
-    form_class = MaterialForm 
+    form_class = MaterialForm
     # template_name = 'taller/form_registrar_material.html' # template del form
-    success_url = reverse_lazy('crearMaterial') 
+    success_url = reverse_lazy('crearMaterial')
 
+
+class MaterialUpdateView(UpdateView):
+    model = Material
+    form_class = MaterialForm
+    template_name = 'taller/material_update_form.html' 
+    success_url = reverse_lazy("listarMateriales")
+
+
+class MaterialDeleteView(DeleteView):
+    model = TipoTarea
+    success_url = reverse_lazy("listarMateriales")
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
 # ---------------------------------------------------------------- #
 
 # Repuesto View
+
 
 class RepuestoListView(ListView):
     model = Repuesto
@@ -179,25 +210,26 @@ class RepuestoListView(ListView):
 
 # Cliente View
 
+
 class ClienteCreateView(CreateView):
     model = Cliente
-    form_class = ClienteForm 
+    form_class = ClienteForm
     # template_name = 'taller/cliente_form.html' # template del form
-    success_url = reverse_lazy('crearCliente') 
-
-class ClienteDeleteView(DeleteView):
-
-    model = Cliente
-    success_url = reverse_lazy("listarClientes")
-    
-    def get(self, *args, **kwargs):
-        return self.post(*args, **kwargs)
+    success_url = reverse_lazy('crearCliente')
 
 class ClienteUpdateView(UpdateView):
 
     model = Cliente
     form_class = ClienteForm
     success_url = reverse_lazy("listarClientes")
+
+class ClienteDeleteView(DeleteView):
+
+    model = Cliente
+    success_url = reverse_lazy("listarClientes")
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
 
 
 class ClienteListView(ListView):
@@ -214,11 +246,25 @@ class ClienteListView(ListView):
 
 # Vehiculo View
 
+
 class VehiculoCreateView(CreateView):
     model = Vehiculo
-    form_class = VehiculoForm 
-    # template_name = 'taller/cliente_form.html' # template del form
-    success_url = reverse_lazy('crearVehiculo') 
+    form_class = VehiculoForm
+    success_url = reverse_lazy('crearVehiculo')
+
+class VehiculoUpdateView(UpdateView):
+
+    model = Vehiculo
+    form_class = VehiculoForm
+    success_url = reverse_lazy("listarVehiculos")
+
+class VehiculoDeleteView(DeleteView):
+
+    model = Vehiculo
+    success_url = reverse_lazy("listarVehiculos")
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
 
 class VehiculoListView(ListView):
     model = Vehiculo
@@ -232,24 +278,30 @@ class VehiculoListView(ListView):
 # ---------------------------------------------------------------- #
 
 # Empleado View
+
+
 class EmpleadoCreateView(CreateView):
 
     model = Empleado
-    form_class = EmpleadoForm # configuración de los campos del form + estilos.
+    # configuración de los campos del form + estilos.
+    form_class = EmpleadoForm
     # template_name = 'taller/empleado_form.html' # template del form
-    success_url = reverse_lazy('crearEmpleado') 
+    success_url = reverse_lazy('crearEmpleado')
+
 
 class EmpleadoUpdateView(UpdateView):
     model = Empleado
     form_class = EmpleadoForm
     success_url = reverse_lazy("listarEmpleados")
 
+
 class EmpleadoDeleteView(DeleteView):
     model = Empleado
     success_url = reverse_lazy("listarEmpleados")
-    
+
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
 
 class EmpleadoListView(ListView):
 

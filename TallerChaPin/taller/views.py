@@ -173,18 +173,26 @@ class TareaCreateView(CreateView):
     form_class = TareaForm
     template_name = 'taller/tarea_form.html'
     success_url = reverse_lazy('crearTarea')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar Tarea"
+        return context
+
+class TareaUpdateView(UpdateView):
+    model = Tarea
+    form_class = TareaForm
+    success_url = reverse_lazy("listarTareas")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Tarea"
+        return context
 
 
-class TipoTareaUpdateView(UpdateView):
+class TareaDeleteView(DeleteView):
     model = TipoTarea
-    form_class = TipoTareaForm
-    template_name = 'taller/tipotarea_update_form.html'
-    success_url = reverse_lazy("listarTipoTarea")
-
-
-class TipoTareaDeleteView(DeleteView):
-    model = TipoTarea
-    success_url = reverse_lazy("listarTipoTarea")
+    success_url = reverse_lazy("listarTareas")
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
@@ -227,8 +235,12 @@ class MaterialCreateView(CreateView):
 class MaterialUpdateView(UpdateView):
     model = Material
     form_class = MaterialForm
-    template_name = 'taller/material_update_form.html' 
     success_url = reverse_lazy("listarMateriales")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Material"
+        return context
 
 class MaterialDeleteView(DeleteView):
     model = Material

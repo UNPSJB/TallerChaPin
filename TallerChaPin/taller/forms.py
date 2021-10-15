@@ -158,6 +158,16 @@ class TipoTareaForm(forms.ModelForm):
         
         self.helper.add_input(Submit('submit', 'Guardar'))
 
+class TipoTareaFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
 # Tarea Forms
 class TareaForm(forms.ModelForm):
 

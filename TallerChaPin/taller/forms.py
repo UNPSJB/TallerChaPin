@@ -1,7 +1,7 @@
 from django import forms
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
-from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoTarea, Vehiculo
+from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoRepuesto, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from django.db.models.query import QuerySet
 from .models import Marca
@@ -106,6 +106,22 @@ class RepuestoForm(forms.ModelForm):
         self.helper = FormHelper()
         
         self.helper.add_input(Submit('submit', 'Guardar'))
+
+class RepuestoFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=50)
+    modelo = forms.ModelChoiceField(
+        queryset=Modelo.objects.all(), required=False, label='Modelo')
+    tipo = forms.ModelChoiceField(
+        queryset=TipoRepuesto.objects.all(), required=False, label='Tipo')
+    precio = forms.CharField(required=False, label='Precio', max_length=50)     # TODO: deberían ser campos numéricos
+    cantidad = forms.CharField(required=False, label='Cantidad', max_length=50)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
 
 # Material Forms
 class MaterialForm(forms.Form):

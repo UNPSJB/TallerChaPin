@@ -11,6 +11,8 @@ from .views import (
     ClienteListView,
     RepuestoCreateView,
     RepuestoListView,
+    RepuestoUpdateView,
+    RepuestoDeleteView,
     VehiculoListView,
     EmpleadoCreateView,
     EmpleadoUpdateView,
@@ -18,7 +20,6 @@ from .views import (
     EmpleadoListView,
     TareaCreateView,
     TipoTareaCreateView,
-    RepuestoListView,
     TareaListView,
     MarcaUpdateView, 
     MarcaDeleteView,
@@ -48,6 +49,8 @@ urlpatterns = [
     # ----------------- REPUESTOS -----------------
     path('repuesto/crear', RepuestoCreateView.as_view(), name="crearRepuesto"),
     path('repuestos/listar', RepuestoListView.as_view(), name="listarRepuestos"),
+    path('repuesto/modificar/<int:pk>', RepuestoUpdateView.as_view(), name="modificarRepuesto"),
+    path('repuesto/eliminar/<int:pk>', RepuestoDeleteView.as_view(), name="eliminarRepuesto"),
      # ----------------- MODELO -----------------
     path('modelo/crear', ModeloCreateView.as_view(), name="crearModelo"),
     path('modelos/listar', ModeloListView.as_view(), name="listarModelos"),

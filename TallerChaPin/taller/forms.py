@@ -124,7 +124,7 @@ class RepuestoFiltrosForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Filtrar'))
 
 # Material Forms
-class MaterialForm(forms.Form):
+class MaterialForm(forms.ModelForm):
       class Meta:
         model = Material
         fields = '__all__'
@@ -143,7 +143,7 @@ class MaterialFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     cantidad = forms.DecimalField(required=False)
-    
+    precio = forms.DecimalField(required=False)
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()

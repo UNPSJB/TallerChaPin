@@ -1,10 +1,11 @@
 {% extends 'template_taller.html' %}
+{% load static %} 
 {% load crispy_forms_tags %}
 {% load static %}
 
 {% block main %}
 <div class="col-5">
-    <h3>Modificar Empleado</h3>
+    <h3>{{ titulo }}</h3>
     {% crispy form form.helper %}
 </div>
 {% endblock %}

@@ -81,13 +81,11 @@ class ModeloListView(ListView):
         # print(self.request.GET)
         #{'nombre': ['Gol'], 'descripcion': [''], 'marca': [''], 'submit': ['Filtrar']}
         #{'nombre': ['Punto'], 'descripcion': [''], 'marca': ['3'], 'submit': ['Filtrar']}
+        filtros = ModeloFiltrosForm(self.request.GET)
+
         qs = super().get_queryset()
         #return qs
-        return qs.filter(
-            nombre=self.request.GET.get('nombre'),
-            descripcion=self.request.GET.get('descripcion'),
-            marca=self.request.GET.get('marca')
-        )
+        return filtros.apply(qs)
 
 # ---------------------------------------------------------------- #
 

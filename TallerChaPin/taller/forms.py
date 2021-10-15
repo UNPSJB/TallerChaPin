@@ -4,13 +4,26 @@ from django.views.generic.list import ListView
 from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoRepuesto, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from django.db.models.query import QuerySet
+from django.db.models import Q
 from .models import Marca
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
 
-
+def dict_to_query(filtros_dict):
+    filtro = Q()
+    for attr, value in filtros_dict.items():
+        if type(value) == str:
+            if value.isdigit():
+                value = int(value)
+            else:
+                attr = f'{attr}__icontains'
+        if value:
+            filtro &= Q(**{attr: value})
+    return filtro
 
 # Marca Forms
+
+
 class MarcaForm(forms.ModelForm):
 
     class Meta:
@@ -41,15 +54,16 @@ class MarcaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
+
         self.helper.add_input(Submit('submit', 'Guardar'))
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
+
 class MarcaFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -75,23 +89,69 @@ class ModeloForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
+
         self.helper.add_input(Submit('submit', 'Guardar'))
+
 
 class ModeloFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     marca = forms.ModelChoiceField(
         queryset=Marca.objects.all(), required=False)
+    
+    anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
+    anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
+
+    orden = forms.ChoiceField(choices=[
+            ("-nombre", "Nombre ↑"),
+            ("nombre", "Nombre ↓"),
+            ("descripcion", "Descripcion"),
+            ("marca", "Marca"),
+            ("anio", "Año")
+        ],
+        
+        required=False, 
+        widget=forms.RadioSelect()
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "nombre",
+                "descripcion",
+                "marca",
+                "anio__gte",
+                "anio__lte"
+            ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
 
-        self.helper.add_input(Submit('submit', 'Filtrar'))
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            ordering = cleaned_data.pop("orden") # separamos el campo de ordenamiento
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
 
 # Repuesto Forms
+
+
 class RepuestoForm(forms.ModelForm):
     class Meta:
         model = Repuesto
@@ -104,8 +164,9 @@ class RepuestoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
+
         self.helper.add_input(Submit('submit', 'Guardar'))
+
 
 class RepuestoFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=50)
@@ -113,7 +174,8 @@ class RepuestoFiltrosForm(forms.Form):
         queryset=Modelo.objects.all(), required=False, label='Modelo')
     tipo = forms.ModelChoiceField(
         queryset=TipoRepuesto.objects.all(), required=False, label='Tipo')
-    precio = forms.CharField(required=False, label='Precio', max_length=50)     # TODO: deberían ser campos numéricos
+    # TODO: deberían ser campos numéricos
+    precio = forms.CharField(required=False, label='Precio', max_length=50)
     cantidad = forms.CharField(required=False, label='Cantidad', max_length=50)
 
     def __init__(self, *args, **kwargs):
@@ -124,11 +186,13 @@ class RepuestoFiltrosForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Filtrar'))
 
 # Material Forms
+
+
 class MaterialForm(forms.Form):
-      class Meta:
+    class Meta:
         model = Material
         fields = '__all__'
-        
+
         def save(self, commit=True):
             material = super().save()
             return material
@@ -136,14 +200,15 @@ class MaterialForm(forms.Form):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.helper = FormHelper()
-            
+
             self.helper.add_input(Submit('submit', 'Guardar'))
+
 
 class MaterialFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     cantidad = forms.DecimalField(required=False)
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -152,12 +217,14 @@ class MaterialFiltrosForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Filtrar'))
 
 # Tipo de tarea Forms
+
+
 class TipoTareaForm(forms.ModelForm):
 
     class Meta:
         model = TipoTarea
         fields = "__all__"
-    
+
         labels = {
             'materiales': 'Requiere materiales',
             'repuestos': 'Requiere repuestos',
@@ -171,8 +238,9 @@ class TipoTareaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
+
         self.helper.add_input(Submit('submit', 'Guardar'))
+
 
 class TipoTareaFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
@@ -185,6 +253,8 @@ class TipoTareaFiltrosForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Filtrar'))
 
 # Tarea Forms
+
+
 class TareaForm(forms.ModelForm):
 
     class Meta:
@@ -198,19 +268,18 @@ class TareaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
+
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
 # Empleado Forms
 class EmpleadoForm(forms.ModelForm):
-    
+
     class Meta:
         model = Empleado
         # opcionalmente '__all__' en lugar de la lista.
-        fields = ['nombre', 'apellido','cuil','legajo']
+        fields = ['nombre', 'apellido', 'cuil', 'legajo']
         exclude = ['usuario']  # añadir campos a excluir
-
 
     def save(self, commit=True):
         empleado = super().save()
@@ -221,7 +290,7 @@ class EmpleadoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
+
         self.helper.add_input(Submit('submit', 'Guardar'))
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
@@ -233,7 +302,6 @@ class EmpleadoFiltrosForm(forms.Form):
     legajo = forms.IntegerField(required=False)
     cuil = forms.IntegerField(required=False)
 
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -243,23 +311,25 @@ class EmpleadoFiltrosForm(forms.Form):
 
 # Cliente forms
 
+
 class ClienteForm(forms.ModelForm):
-    
+
     class Meta:
         model = Cliente
         fields = "__all__"
-    
-    def save(self,commit=True):
+
+    def save(self, commit=True):
         cliente = super().save()
         return cliente
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
+
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 # Vehiculo Forms
+
 
 class VehiculoForm(forms.ModelForm):
 
@@ -267,14 +337,14 @@ class VehiculoForm(forms.ModelForm):
         model = Vehiculo
         fields = "__all__"
 
-    def save(self,commit=True):
+    def save(self, commit=True):
         vehiculo = super().save()
         return vehiculo
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-    
+
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
@@ -285,12 +355,9 @@ class VehiculoFiltrosForm(forms.Form):
     anio = forms.IntegerField(required=False)
     chasis = forms.CharField(required=False)
 
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
 
         self.helper.add_input(Submit('submit', 'Filtrar'))
-
-

@@ -1,0 +1,15 @@
+.custom-filter, .custom-ordering {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px
+}
+
+#div_id_orden > label {
+    display: none;
+}
+
+
+.filter-btn-container {
+    display: flex;
+    justify-content: center;
+}

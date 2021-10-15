@@ -93,10 +93,38 @@ class ModeloListView(ListView):
 class RepuestoCreateView(CreateView):
     model = Repuesto
     form_class = RepuestoForm
-    template_name = 'taller/repuesto_form.html'
     success_url = reverse_lazy('crearRepuesto')
 
 
+class RepuestoUpdateView(UpdateView):
+    model = Repuesto
+    form_class = RepuestoForm
+    success_url = reverse_lazy("listarRepuestos")
+
+
+class RepuestoDeleteView(DeleteView):
+    model = Repuesto
+    success_url = reverse_lazy("listarRepuestos")
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+
+
+class RepuestoListView(ListView):
+
+    model = Repuesto
+    paginate_by = 100  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filtros'] = RepuestoFiltrosForm(self.request.GET)
+        context['titulo'] = "Listado de Repuestos"
+        return context
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs
+       
 # ---------------------------------------------------------------- #
 
 # Tipo de tareas View
@@ -130,7 +158,7 @@ class TipoTareaListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = EmpleadoFiltrosForm(self.request.GET)
+        context['filtros'] = TipoTareaFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Tipos de Tarea"
         return context
 
@@ -145,6 +173,20 @@ class TareaCreateView(CreateView):
     template_name = 'taller/tarea_form.html'
     success_url = reverse_lazy('crearTarea')
 
+
+class TipoTareaUpdateView(UpdateView):
+    model = TipoTarea
+    form_class = TipoTareaForm
+    template_name = 'taller/tipotarea_update_form.html'
+    success_url = reverse_lazy("listarTipoTarea")
+
+
+class TipoTareaDeleteView(DeleteView):
+    model = TipoTarea
+    success_url = reverse_lazy("listarTipoTarea")
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
 
 class TareaListView(ListView):
     model = Tarea

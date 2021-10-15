@@ -153,6 +153,7 @@ class ModeloFiltrosForm(forms.Form):
 
 
 class RepuestoForm(forms.ModelForm):
+
     class Meta:
         model = Repuesto
         fields = "__all__"
@@ -186,22 +187,21 @@ class RepuestoFiltrosForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Filtrar'))
 
 # Material Forms
+class MaterialForm(forms.ModelForm):
 
-
-class MaterialForm(forms.Form):
     class Meta:
         model = Material
         fields = '__all__'
+        
+    def save(self, commit=True):
+        material = super().save()
+        return material
 
-        def save(self, commit=True):
-            material = super().save()
-            return material
-
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.helper = FormHelper()
-
-            self.helper.add_input(Submit('submit', 'Guardar'))
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        
+        self.helper.add_input(Submit('submit', 'Guardar'))
 
 
 class MaterialFiltrosForm(forms.Form):

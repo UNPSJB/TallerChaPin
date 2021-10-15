@@ -48,7 +48,6 @@ class MarcaListView(ListView):
 class ModeloCreateView(CreateView):
     model = Modelo
     form_class = ModeloForm
-    # template_name = 'taller/form_registrar_modelo.html'
     success_url = reverse_lazy('crearModelo')
 
 
@@ -215,13 +214,15 @@ class MaterialListView(ListView):
         context['titulo'] = "Listado de Materiales"
         return context
 
-
 class MaterialCreateView(CreateView):
     model = Material
     form_class = MaterialForm
-    # template_name = 'taller/form_registrar_material.html' # template del form
     success_url = reverse_lazy('crearMaterial')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar material"
+        return context
 
 class MaterialUpdateView(UpdateView):
     model = Material
@@ -229,9 +230,8 @@ class MaterialUpdateView(UpdateView):
     template_name = 'taller/material_update_form.html' 
     success_url = reverse_lazy("listarMateriales")
 
-
 class MaterialDeleteView(DeleteView):
-    model = TipoTarea
+    model = Material
     success_url = reverse_lazy("listarMateriales")
 
     def get(self, *args, **kwargs):

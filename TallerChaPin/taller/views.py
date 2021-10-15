@@ -82,8 +82,12 @@ class ModeloListView(ListView):
         #{'nombre': ['Gol'], 'descripcion': [''], 'marca': [''], 'submit': ['Filtrar']}
         #{'nombre': ['Punto'], 'descripcion': [''], 'marca': ['3'], 'submit': ['Filtrar']}
         qs = super().get_queryset()
-        return qs
-        # return qs.filter(algo(self.request.GET))
+        #return qs
+        return qs.filter(
+            nombre=self.request.GET.get('nombre'),
+            descripcion=self.request.GET.get('descripcion'),
+            marca=self.request.GET.get('marca')
+        )
 
 # ---------------------------------------------------------------- #
 
@@ -330,11 +334,20 @@ class EmpleadoCreateView(CreateView):
     # template_name = 'taller/empleado_form.html' # template del form
     success_url = reverse_lazy('crearEmpleado')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar empleado"
+        return context
 
 class EmpleadoUpdateView(UpdateView):
     model = Empleado
     form_class = EmpleadoForm
     success_url = reverse_lazy("listarEmpleados")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar empleado"
+        return context
 
 
 class EmpleadoDeleteView(DeleteView):

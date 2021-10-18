@@ -179,7 +179,7 @@ class Vehiculo(models.Model):
     chasis = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.modelo
+        return f"{self.modelo} - {self.patente}"
 
 class Empleado(models.Model):
     # Ejemplo: 21-17263542-2

@@ -332,8 +332,10 @@ class ClienteFiltrosForm(forms.Form): # Revisar
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(required=False, label='Apellido',max_length=100)
     dni = forms.IntegerField(required=False)
-    vehiculo = forms.ModelChoiceField(
-        queryset=Vehiculo.objects.all(), required=False)
+    vehiculos__modelo = forms.ModelChoiceField(
+        queryset=Modelo.objects.all(), required=False, label='Modelo vehiculo')
+    # vehiculo = forms.ModelChoiceField(
+    #     queryset=Vehiculo.objects.all(), required=False)
     telefono = forms.IntegerField(required=False)
     
     dni__gte = forms.IntegerField(label="Mayor o igual que", required=False)
@@ -365,7 +367,7 @@ class ClienteFiltrosForm(forms.Form): # Revisar
                     "dni",
                     "nombre",
                     "apellido",
-                    "vehiculo",
+                    "vehiculos__modelo",
                     "dni__gte",
                     "dni__lte"
             ),

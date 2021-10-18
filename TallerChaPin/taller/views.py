@@ -389,6 +389,16 @@ class ClienteListView(ListView):
         context['filtros'] = ClienteFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Clientes"
         return context
+
+    def get_queryset(self):
+        # print(self.request.GET)
+        #{'nombre': ['Gol'], 'descripcion': [''], 'marca': [''], 'submit': ['Filtrar']}
+        #{'nombre': ['Punto'], 'descripcion': [''], 'marca': ['3'], 'submit': ['Filtrar']}
+        filtros = ClienteFiltrosForm(self.request.GET)
+
+        qs = super().get_queryset()
+        # return qs
+        return filtros.apply(qs)
 # ---------------------------------------------------------------- #
 
 # Vehiculo View

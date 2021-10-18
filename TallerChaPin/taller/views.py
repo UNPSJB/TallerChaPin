@@ -6,6 +6,7 @@ from .models import *
 from .forms import *
 
 # Create your views here.
+# ---------------------------------------------------------------- #
 
 # Marca Views
 
@@ -16,16 +17,27 @@ class MarcaCreateView(CreateView):
     # a donde vamos luego de guardar exitosamente?
     success_url = reverse_lazy('crearMarca')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar Marca"
+        return context
+
 
 class MarcaUpdateView(UpdateView):
     model = Marca
     form_class = MarcaForm
     success_url = reverse_lazy("listarMarcas")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Marca"
+        return context
+
 
 class MarcaDeleteView(DeleteView):
     model = Marca
     success_url = reverse_lazy("listarMarcas")
+
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
@@ -50,11 +62,21 @@ class ModeloCreateView(CreateView):
     form_class = ModeloForm
     success_url = reverse_lazy('crearModelo')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar Modelo"
+        return context
+
 
 class ModeloUpdateView(UpdateView):
     model = Modelo
     form_class = ModeloForm
     success_url = reverse_lazy("listarModelos")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Modelo"
+        return context
 
 
 class ModeloDeleteView(DeleteView):
@@ -83,7 +105,7 @@ class ModeloListView(ListView):
         filtros = ModeloFiltrosForm(self.request.GET)
 
         qs = super().get_queryset()
-        #return qs
+        # return qs
         return filtros.apply(qs)
 
 # ---------------------------------------------------------------- #
@@ -96,11 +118,21 @@ class RepuestoCreateView(CreateView):
     form_class = RepuestoForm
     success_url = reverse_lazy('crearRepuesto')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar Repuesto"
+        return context
+
 
 class RepuestoUpdateView(UpdateView):
     model = Repuesto
     form_class = RepuestoForm
     success_url = reverse_lazy("listarRepuestos")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Vehiculo"
+        return context
 
 
 class RepuestoDeleteView(DeleteView):
@@ -125,23 +157,32 @@ class RepuestoListView(ListView):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs
-       
+
 # ---------------------------------------------------------------- #
 
 # Tipo de tareas View
 
+
 class TipoTareaCreateView(CreateView):
     model = TipoTarea
     form_class = TipoTareaForm
-    template_name = 'taller/tipotarea_form.html'
     success_url = reverse_lazy('crearTipoTarea')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar Tipo de Tarea"
+        return context
 
 
 class TipoTareaUpdateView(UpdateView):
     model = TipoTarea
     form_class = TipoTareaForm
-    template_name = 'taller/tipotarea_update_form.html'
     success_url = reverse_lazy("listarTipoTarea")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Tipo de Tarea"
+        return context
 
 
 class TipoTareaDeleteView(DeleteView):
@@ -173,11 +214,12 @@ class TareaCreateView(CreateView):
     form_class = TareaForm
     template_name = 'taller/tarea_form.html'
     success_url = reverse_lazy('crearTarea')
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar Tarea"
         return context
+
 
 class TareaUpdateView(UpdateView):
     model = Tarea
@@ -197,6 +239,7 @@ class TareaDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+
 class TareaListView(ListView):
     model = Tarea
     paginate_by = 100
@@ -208,8 +251,8 @@ class TareaListView(ListView):
 
 # ---------------------------------------------------------------- #
 
-
 # Material View
+
 
 class MaterialListView(ListView):
     model = Material
@@ -222,6 +265,7 @@ class MaterialListView(ListView):
         context['titulo'] = "Listado de Materiales"
         return context
 
+
 class MaterialCreateView(CreateView):
     model = Material
     form_class = MaterialForm
@@ -232,6 +276,7 @@ class MaterialCreateView(CreateView):
         context['titulo'] = "Registrar material"
         return context
 
+
 class MaterialUpdateView(UpdateView):
     model = Material
     form_class = MaterialForm
@@ -241,6 +286,7 @@ class MaterialUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar Material"
         return context
+
 
 class MaterialDeleteView(DeleteView):
     model = Material
@@ -253,12 +299,43 @@ class MaterialDeleteView(DeleteView):
 # Repuesto View
 
 
+class RepuestoCreateView(CreateView):
+    model = Repuesto
+    form_class = RepuestoForm
+    success_url = reverse_lazy('crearRepuesto')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar Repuesto"
+        return context
+
+
+class RepuestoUpdateView(UpdateView):
+    model = Repuesto
+    form_class = RepuestoForm
+    success_url = reverse_lazy("listarRepuestos")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Repuesto"
+        return context
+
+
+class RepuestoDeleteView(DeleteView):
+    model = Repuesto
+    success_url = reverse_lazy("listarRepuesto")
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+
+
 class RepuestoListView(ListView):
     model = Repuesto
     paginate_by = 100
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['filtros'] = RepuestoFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Repuestos"
         return context
 
@@ -273,11 +350,25 @@ class ClienteCreateView(CreateView):
     # template_name = 'taller/cliente_form.html' # template del form
     success_url = reverse_lazy('crearCliente')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['titulo'] = "Registrar cliente"
+        return context
+
+
 class ClienteUpdateView(UpdateView):
 
     model = Cliente
     form_class = ClienteForm
     success_url = reverse_lazy("listarClientes")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['titulo'] = "Modificar cliente"
+        return context
+
 
 class ClienteDeleteView(DeleteView):
 
@@ -295,7 +386,7 @@ class ClienteListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        context['filtros'] = ClienteFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Clientes"
         return context
 # ---------------------------------------------------------------- #
@@ -308,11 +399,23 @@ class VehiculoCreateView(CreateView):
     form_class = VehiculoForm
     success_url = reverse_lazy('crearVehiculo')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar Vehiculo"
+        return context
+
+
 class VehiculoUpdateView(UpdateView):
 
     model = Vehiculo
     form_class = VehiculoForm
     success_url = reverse_lazy("listarVehiculos")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar Vehiculo"
+        return context
+
 
 class VehiculoDeleteView(DeleteView):
 
@@ -321,6 +424,7 @@ class VehiculoDeleteView(DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
 
 class VehiculoListView(ListView):
     model = Vehiculo
@@ -348,6 +452,7 @@ class EmpleadoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar empleado"
         return context
+
 
 class EmpleadoUpdateView(UpdateView):
     model = Empleado

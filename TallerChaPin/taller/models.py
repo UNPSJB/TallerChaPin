@@ -178,6 +178,8 @@ class Vehiculo(models.Model):
     anio = models.IntegerField()
     chasis = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.modelo
 
 class Empleado(models.Model):
     # Ejemplo: 21-17263542-2

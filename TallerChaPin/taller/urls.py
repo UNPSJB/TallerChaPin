@@ -46,6 +46,7 @@ urlpatterns = [
          MarcaUpdateView.as_view(), name="modificarMarca"),
     path('marca/eliminar/<int:pk>',
          MarcaDeleteView.as_view(), name="eliminarMarca"),
+         
     # ----------------- TAREAS -----------------
 
     path('tarea/crear', TareaCreateView.as_view(), name="crearTarea"),

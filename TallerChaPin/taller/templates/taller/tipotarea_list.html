@@ -59,6 +59,10 @@
     </svg>
   Descargar listado</button>
 </div>
+{% endblock %}
 
-
+{% block filtros %}
+    <div>
+    {% crispy filtros filtros.helper %}
+    </div>
 {% endblock %}

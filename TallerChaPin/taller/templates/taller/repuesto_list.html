@@ -1,4 +1,7 @@
-{% extends 'template_taller.html' %} {% load static %} {% block title %} {{titulo}} {% endblock %} {% block main %}
+{% extends 'template_taller.html' %}
+{% load static %}
+{% load crispy_forms_tags %} 
+{% block title %} {{titulo}} {% endblock %} {% block main %}
 <h1>{{titulo}}</h1>
 
 <div class="col-6">
@@ -55,4 +58,10 @@
 </div>
 
 
+{% endblock %}
+
+{% block filtros %}
+  <div>
+    {% crispy filtros filtros.helper %}
+  </div>
 {% endblock %}

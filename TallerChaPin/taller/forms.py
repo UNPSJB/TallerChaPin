@@ -73,6 +73,7 @@ class MarcaFiltrosForm(forms.Form):
 
 
 # Modelo Forms
+
 class ModeloForm(forms.ModelForm):
     class Meta:
         model = Modelo
@@ -150,7 +151,6 @@ class ModeloFiltrosForm(forms.Form):
         return qs
 
 # Repuesto Forms
-
 
 class RepuestoForm(forms.ModelForm):
 
@@ -327,6 +327,67 @@ class ClienteForm(forms.ModelForm):
         self.helper = FormHelper()
 
         self.helper.add_input(Submit('submit', 'Guardar'))
+
+class ClienteFiltrosForm(forms.Form): # Revisar
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    apellido = forms.CharField(required=False, label='Apellido',max_length=100)
+    dni = forms.IntegerField(required=False)
+    vehiculo = forms.ModelChoiceField(
+        queryset=Vehiculo.objects.all(), required=False)
+    telefono = forms.IntegerField(required=False)
+    
+    dni__gte = forms.IntegerField(label="Mayor o igual que", required=False)
+    dni__lte = forms.IntegerField(label="Menor o igual que", required=False)
+
+    orden = forms.ChoiceField(choices=[
+            ("dni", "DNI"),
+            ("-nombre", "Nombre ↑"),
+            ("nombre", "Nombre ↓"),
+            ("-apellido", "Apellido ↑"),
+            ("apellido", "Apellido ↓"),
+            ("vehiculo", "vehiculo"),
+                       
+        ],
+        
+        required=False, 
+        widget=forms.RadioSelect()
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                    "dni",
+                    "nombre",
+                    "apellido",
+                    "vehiculo",
+                    "dni__gte",
+                    "dni__lte"
+            ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
+
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            ordering = cleaned_data.pop("orden") # separamos el campo de ordenamiento
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
 
 # Vehiculo Forms
 

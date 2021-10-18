@@ -11,6 +11,23 @@ from .forms import *
 # Marca Views
 
 
+class ListFilterView(ListView):
+    filtros = None
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.filtros:
+            context['filtros'] = self.filtros(self.request.GET)
+        return context
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if self.filtros:
+            filtros = self.filtros(self.request.GET)
+            return filtros.apply(qs)
+        return qs
+
+
 class MarcaCreateView(CreateView):
     model = Marca
     form_class = MarcaForm  # configuración de los campos del form + estilos.
@@ -42,13 +59,13 @@ class MarcaDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class MarcaListView(ListView):
+class MarcaListView(ListFilterView):
+    filtros = MarcaFiltrosForm
     model = Marca
     paginate_by = 100  # if pagination is desired
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = MarcaFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Marcas"
         return context
 
@@ -87,26 +104,15 @@ class ModeloDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class ModeloListView(ListView):
-
+class ModeloListView(ListFilterView):
+    filtros = ModeloFiltrosForm
     model = Modelo
     paginate_by = 100  # if pagination is desired
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = ModeloFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Modelos"
         return context
-
-    def get_queryset(self):
-        # print(self.request.GET)
-        #{'nombre': ['Gol'], 'descripcion': [''], 'marca': [''], 'submit': ['Filtrar']}
-        #{'nombre': ['Punto'], 'descripcion': [''], 'marca': ['3'], 'submit': ['Filtrar']}
-        filtros = ModeloFiltrosForm(self.request.GET)
-
-        qs = super().get_queryset()
-        # return qs
-        return filtros.apply(qs)
 
 # ---------------------------------------------------------------- #
 
@@ -143,20 +149,15 @@ class RepuestoDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class RepuestoListView(ListView):
-
+class RepuestoListView(ListFilterView):
+    filtros = RepuestoFiltrosForm
     model = Repuesto
     paginate_by = 100  # if pagination is desired
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = RepuestoFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Repuestos"
         return context
-
-    def get_queryset(self):
-        qs = super().get_queryset()
-        return qs
 
 # ---------------------------------------------------------------- #
 
@@ -193,14 +194,13 @@ class TipoTareaDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class TipoTareaListView(ListView):
-
+class TipoTareaListView(ListFilterView):
+    filtros = TipoTareaFiltrosForm
     model = TipoTarea
     paginate_by = 100
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = TipoTareaFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Tipos de Tarea"
         return context
 
@@ -254,14 +254,14 @@ class TareaListView(ListView):
 # Material View
 
 
-class MaterialListView(ListView):
+class MaterialListView(ListFilterView):
+    filtros = MaterialFiltrosForm
     model = Material
 
     paginate_by = 100
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = MaterialFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Materiales"
         return context
 
@@ -329,13 +329,13 @@ class RepuestoDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class RepuestoListView(ListView):
+class RepuestoListView(ListFilterView):
+    filtros = RepuestoFiltrosForm
     model = Repuesto
     paginate_by = 100
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = RepuestoFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Repuestos"
         return context
 
@@ -379,26 +379,16 @@ class ClienteDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class ClienteListView(ListView):
-
+class ClienteListView(ListFilterView):
+    filtros = ClienteFiltrosForm
     model = Cliente
     success_url = reverse_lazy('listarClientes')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = ClienteFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Clientes"
         return context
 
-    def get_queryset(self):
-        # print(self.request.GET)
-        #{'nombre': ['Gol'], 'descripcion': [''], 'marca': [''], 'submit': ['Filtrar']}
-        #{'nombre': ['Punto'], 'descripcion': [''], 'marca': ['3'], 'submit': ['Filtrar']}
-        filtros = ClienteFiltrosForm(self.request.GET)
-
-        qs = super().get_queryset()
-        # return qs
-        return filtros.apply(qs)
 # ---------------------------------------------------------------- #
 
 # Vehiculo View
@@ -436,15 +426,16 @@ class VehiculoDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class VehiculoListView(ListView):
+class VehiculoListView(ListFilterView):
+    filtros = VehiculoFiltrosForm
     model = Vehiculo
     paginate_by = 100
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = VehiculoFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Vehiculos"
         return context
+
 # ---------------------------------------------------------------- #
 
 # Empleado View
@@ -483,14 +474,13 @@ class EmpleadoDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class EmpleadoListView(ListView):
-
+class EmpleadoListView(ListFilterView):
+    filtros = EmpleadoFiltrosForm
     model = Empleado
     paginate_by = 100
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = EmpleadoFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de Empleados"
         return context
 

@@ -9,6 +9,7 @@ from .models import Marca
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
 
+
 def dict_to_query(filtros_dict):
     filtro = Q()
     for attr, value in filtros_dict.items():
@@ -99,19 +100,18 @@ class ModeloFiltrosForm(forms.Form):
     descripcion = forms.CharField(required=False)
     marca = forms.ModelChoiceField(
         queryset=Marca.objects.all(), required=False)
-    
+
     anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
     orden = forms.ChoiceField(choices=[
-            ("-nombre", "Nombre ↑"),
-            ("nombre", "Nombre ↓"),
-            ("descripcion", "Descripcion"),
-            ("marca", "Marca"),
-            ("anio", "Año")
-        ],
-        
-        required=False, 
+        ("nombre", "Nombre"),
+        ("descripcion", "Descripcion"),
+        ("marca", "Marca"),
+        ("anio", "Año")
+    ],
+
+        required=False,
         widget=forms.RadioSelect()
     )
 
@@ -143,7 +143,8 @@ class ModeloFiltrosForm(forms.Form):
     def apply(self, qs):
         if self.is_valid():
             cleaned_data = self.cleaned_data
-            ordering = cleaned_data.pop("orden") # separamos el campo de ordenamiento
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
             qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
             if ordering:
                 for o in ordering.split(','):
@@ -151,6 +152,7 @@ class ModeloFiltrosForm(forms.Form):
         return qs
 
 # Repuesto Forms
+
 
 class RepuestoForm(forms.ModelForm):
 
@@ -187,12 +189,14 @@ class RepuestoFiltrosForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Filtrar'))
 
 # Material Forms
+
+
 class MaterialForm(forms.ModelForm):
 
     class Meta:
         model = Material
         fields = '__all__'
-        
+
     def save(self, commit=True):
         material = super().save()
         return material
@@ -200,15 +204,37 @@ class MaterialForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
+
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class MaterialFiltrosForm(forms.Form):
+class FiltrosForm(forms.Form):
+    orden = forms.CharField(required=False)
+
+    def filter(self, qs):
+        return qs
+
+    def sort(self, qs):
+        cleaned_data = self.cleaned_data
+        ordering = cleaned_data.pop("orden")
+        if ordering:
+            for o in ordering.split(','):
+                qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
+
+    def apply(self, qs):
+        if self.is_valid():
+            qs = self.filter(qs)
+            qs = self.sort(qs)
+        return qs
+
+
+class MaterialFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     cantidad = forms.DecimalField(required=False)
     precio = forms.DecimalField(required=False)
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -298,7 +324,8 @@ class EmpleadoForm(forms.ModelForm):
 
 class EmpleadoFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
-    apellido = forms.CharField(required=False, label='Apellido', max_length=100)
+    apellido = forms.CharField(
+        required=False, label='Apellido', max_length=100)
     legajo = forms.IntegerField(required=False)
     cuil = forms.IntegerField(required=False)
 
@@ -328,30 +355,32 @@ class ClienteForm(forms.ModelForm):
 
         self.helper.add_input(Submit('submit', 'Guardar'))
 
-class ClienteFiltrosForm(forms.Form): # Revisar
+
+class ClienteFiltrosForm(forms.Form):  # Revisar
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
-    apellido = forms.CharField(required=False, label='Apellido',max_length=100)
+    apellido = forms.CharField(
+        required=False, label='Apellido', max_length=100)
     dni = forms.IntegerField(required=False)
     vehiculos__modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo vehiculo')
     # vehiculo = forms.ModelChoiceField(
     #     queryset=Vehiculo.objects.all(), required=False)
     telefono = forms.IntegerField(required=False)
-    
+
     dni__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     dni__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
     orden = forms.ChoiceField(choices=[
-            ("dni", "DNI"),
-            ("-nombre", "Nombre ↑"),
-            ("nombre", "Nombre ↓"),
-            ("-apellido", "Apellido ↑"),
-            ("apellido", "Apellido ↓"),
-            ("vehiculo", "vehiculo"),
-                       
-        ],
-        
-        required=False, 
+        ("dni", "DNI"),
+        ("-nombre", "Nombre ↑"),
+        ("nombre", "Nombre ↓"),
+        ("-apellido", "Apellido ↑"),
+        ("apellido", "Apellido ↓"),
+        ("vehiculo", "vehiculo"),
+
+    ],
+
+        required=False,
         widget=forms.RadioSelect()
     )
 
@@ -364,12 +393,12 @@ class ClienteFiltrosForm(forms.Form): # Revisar
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                    "dni",
-                    "nombre",
-                    "apellido",
-                    "vehiculos__modelo",
-                    "dni__gte",
-                    "dni__lte"
+                "dni",
+                "nombre",
+                "apellido",
+                "vehiculos__modelo",
+                "dni__gte",
+                "dni__lte"
             ),
             HTML('<hr class="divider"/>'),
             Fieldset(
@@ -384,7 +413,8 @@ class ClienteFiltrosForm(forms.Form): # Revisar
     def apply(self, qs):
         if self.is_valid():
             cleaned_data = self.cleaned_data
-            ordering = cleaned_data.pop("orden") # separamos el campo de ordenamiento
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
             qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
             if ordering:
                 for o in ordering.split(','):

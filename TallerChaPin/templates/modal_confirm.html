@@ -1,0 +1,18 @@
+{% extends 'modal.html' %}
+
+{% load static %}
+
+{% block modal_title %} Modal de confirmación {% endblock %}
+
+{% block modal_body %}
+    <div>
+        <p> El modal de confirmación le consulta al usuario si está seguro de querer realizar una acción en particular y ofrece dos opciones: Cancelar o Aceptar. </p>
+    </div>
+{% endblock %}
+
+{% block modal_footer %}
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <a id="ok-button" href="#" class="btn btn-primary">Aceptar</a>
+{% endblock %}
+
+{% block extrajs %}{% endblock %}

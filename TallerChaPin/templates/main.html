@@ -1,28 +1,36 @@
-{% extends 'base.html' %} {% load static %} {% block extracss %}
-<link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
+{% extends 'base.html' %}
+{% load static %}
 
-{% endblock %} {% block container %} {% block nav %} {% include 'nav_home.html' %} {% endblock %}
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
+{% endblock %} 
 
-<div class="container-fluid">
-  <div class="row d-flex justify-content-between">
-    <div class="col-2 mt-4">
-      {% block sidebar %} 
-      {% include 'sidebar.html' %} 
-      {% endblock %}
-    </div>
+{% block container %}
+  {% block nav %}
+    {% include 'nav_home.html' %}
+  {% endblock %}
 
-    <div class="col-7 mt-4 ">
-      {% block main %}
-      
-      {% endblock %}
-    </div>
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-between">
+      <div class="col-2 mt-4">
+        {% block sidebar %} 
+        {% include 'sidebar.html' %} 
+        {% endblock %}
+      </div>
 
-    <div class="col-3 mt-5 pr-4">
-      {% block filtros %} 
+      <div class="col-7 mt-4 ">
+        {% block main %}
+        
+        {% endblock %}
+      </div>
 
-      {% endblock %}
+      <div class="col-3 mt-5 pr-4">
+        {% block filtros %} 
+
+        {% endblock %}
+      </div>
     </div>
   </div>
-</div>
-{% block modals %} {% endblock %}
 {% endblock %}
+
+{% block modals %} {% endblock %}

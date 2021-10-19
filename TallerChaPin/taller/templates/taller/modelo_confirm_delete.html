@@ -1,4 +1,4 @@
-{% extends 'modal.html' %}
+{% extends 'modal_confirm.html' %}
 
 {% load static %}
 
@@ -8,26 +8,4 @@
     <p id="modal-msj"></p>
 {% endblock %}
 
-{% block modal_footer %}
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <a id="delete-button" href="#" class="btn btn-primary">Aceptar</a>
-{% endblock %}
-
-{% block extrajs %}
-<script>
-    let modal = document.getElementById('customModal')
-    modal.addEventListener('show.bs.modal', (e) => {
-
-        let delete_button = document.getElementById('delete-button')
-        let button = e.relatedTarget
-        
-        let pk = button.dataset.bsPk
-        let url = button.dataset.bsUrl
-        delete_button.href = url
-
-        let nombre = button.dataset.bsNombre
-        let msj = `¿Estás seguro/a de querer eliminar el modelo "${nombre}"?`
-        document.getElementById('modal-msj').innerText = msj
-    })
-</script>
-{% endblock %}
+{% block extrajs %} {% endblock %}

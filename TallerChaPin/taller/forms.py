@@ -81,7 +81,7 @@ class MarcaForm(forms.ModelForm):
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
 
-class MarcaFiltrosForm(forms.Form):
+class MarcaFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
 
@@ -115,7 +115,7 @@ class ModeloForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class ModeloFiltrosForm(forms.Form):
+class ModeloFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     marca = forms.ModelChoiceField(
@@ -270,7 +270,7 @@ class TipoTareaForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class TipoTareaFiltrosForm(forms.Form):
+class TipoTareaFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
 
     def __init__(self, *args, **kwargs):
@@ -324,7 +324,7 @@ class EmpleadoForm(forms.ModelForm):
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
 
-class EmpleadoFiltrosForm(forms.Form):
+class EmpleadoFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
@@ -358,7 +358,7 @@ class ClienteForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class ClienteFiltrosForm(forms.Form):  # Revisar
+class ClienteFiltrosForm(FiltrosForm):  # Revisar
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
@@ -443,7 +443,7 @@ class VehiculoForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class VehiculoFiltrosForm(forms.Form):
+class VehiculoFiltrosForm(FiltrosForm):
     patente = forms.CharField(required=False, label='Patente', max_length=100)
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False)

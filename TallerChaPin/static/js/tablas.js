@@ -9,12 +9,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
   ths.forEach(th => {
     const field = th.dataset.sField;
     const nombre = th.textContent;
-    const i = orden.indexOf(field) + 1;
-    const j = orden.indexOf(`-${field}`) + 1;
     if (orden.includes(field)) {
-      th.innerHTML = `${nombre}&nbsp;<small>${i}</small>&nbsp;<i class="fas fa-sort-up"></i>`;
+      th.innerHTML = `${nombre}&nbsp;<i class="fas fa-sort-up"></i>`;
     } else if (orden.includes(`-${field}`)) {
-      th.innerHTML = `${nombre}&nbsp;<small>${j}</small>&nbsp;<i class="fas fa-sort-down"></i>`;
+      th.innerHTML = `${nombre}&nbsp;<i class="fas fa-sort-down"></i>`;
     }
 
     th.addEventListener("click", (event) => {
@@ -29,7 +27,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
       } else {
         orden.push(field);
       }
-      console.log(orden);
       url.searchParams.set('orden', orden.join(","));
       window.location.href = decodeURIComponent(url.href);
     });

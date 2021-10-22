@@ -10,6 +10,26 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
 
 
+class FiltrosForm(forms.Form):
+    orden = forms.CharField(required=False)
+
+    def filter(self, qs):
+        return qs
+
+    def sort(self, qs):
+        cleaned_data = self.cleaned_data
+        ordering = cleaned_data.pop("orden")
+        if ordering:
+            for o in ordering.split(','):
+                qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
+
+    def apply(self, qs):
+        if self.is_valid():
+            qs = self.filter(qs)
+            qs = self.sort(qs)
+        return qs
+
 def dict_to_query(filtros_dict):
     filtro = Q()
     for attr, value in filtros_dict.items():
@@ -171,7 +191,7 @@ class RepuestoForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class RepuestoFiltrosForm(forms.Form):
+class RepuestoFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=50)
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo')
@@ -208,25 +228,7 @@ class MaterialForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class FiltrosForm(forms.Form):
-    orden = forms.CharField(required=False)
 
-    def filter(self, qs):
-        return qs
-
-    def sort(self, qs):
-        cleaned_data = self.cleaned_data
-        ordering = cleaned_data.pop("orden")
-        if ordering:
-            for o in ordering.split(','):
-                qs = qs.order_by(o)  # aplicamos ordenamiento
-        return qs
-
-    def apply(self, qs):
-        if self.is_valid():
-            qs = self.filter(qs)
-            qs = self.sort(qs)
-        return qs
 
 
 class MaterialFiltrosForm(FiltrosForm):

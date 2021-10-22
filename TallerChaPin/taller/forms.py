@@ -249,7 +249,19 @@ class MaterialFiltrosForm(FiltrosForm):
         self.helper = FormHelper()
         self.helper.form_method = 'get'
 
-        self.helper.add_input(Submit('submit', 'Filtrar'))
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "nombre",
+                "descripcion",
+                "cantidad",
+                "precio"
+               
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
 
 # Tipo de tarea Forms
 

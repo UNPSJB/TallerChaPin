@@ -9,14 +9,11 @@
 
 <div>
   <div class="table-responsive">
-    <table class="table table-hover{% if filtros.sort %} sortable{% endif %}">
+    <table class="table table-hover{% if filtros %} sortable{% endif %}">
       <thead>
         <tr>
           {% for sortable in filtros.sortables %}
-          <th class="sortable" data-s-field="nombre" scope="col">Nombre</th>
-          <th class="sortable" data-s-field="tipo" scope="col">Tipo</th>
-          <th class="sortable" data-s-field="cantidad" scope="col">Cantidad</th>
-          <th class="sortable" data-s-field="precio" scope="col">Precio</th>
+          <th class="sortable" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
           {% endfor %}
           <th scope="col">Opciones</th>
         </tr>

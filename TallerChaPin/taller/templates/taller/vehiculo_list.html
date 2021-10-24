@@ -41,8 +41,12 @@
                 </path>
               </svg>
               </svg></a>
-            <a href="{% url 'eliminarVehiculo' vehiculo.pk %}"
-              class="btn btn-light btn-sm">
+            <a href="#"
+               data-bs-toggle="modal" 
+               data-bs-target="#customModal"
+               data-bs-nombre="{{vehiculo.patente}}" 
+               data-bs-url="{% url 'eliminarVehiculo' vehiculo.pk %}" 
+              class="btn btn-light btn-sm btn-eliminar">
               <svg xmlns="http://www.w3.org/2000/svg"
                 width="16" height="16" fill="currentColor"
                 class="bi bi-download" viewBox="0 0 16 16">
@@ -75,4 +79,14 @@
     <div>
     {% crispy filtros filtros.helper %}
     </div>
+{% endblock %}
+
+{% block modals %} 
+{% include './vehiculo_confirm_delete.html' %}
+{% endblock %}
+
+{% block extrajs %} 
+<script>
+  conectarBotonesAModal('.btn-eliminar')
+</script>
 {% endblock %}

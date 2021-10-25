@@ -214,7 +214,7 @@ class Presupuesto(models.Model):
     materiales = models.ManyToManyField(
         Material, through='PresupuestoMaterial')
     repuestos = models.ManyToManyField(Repuesto, through='PresupuestoRepuesto')
-    validez = models.PositiveIntegerField(default=60)
+    validez = models.PositiveIntegerField(default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',
                               blank=True, on_delete=models.SET_NULL)
 

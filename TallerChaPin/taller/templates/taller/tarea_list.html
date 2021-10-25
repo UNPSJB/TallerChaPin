@@ -1,16 +1,16 @@
-{% extends 'template_taller.html' %} 
+{% extends 'template_taller.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %} {{titulo}} {% endblock %} {% block main %}
 <h1>{{titulo}}</h1>
 
 <div class="col-6">
-  <table class="table table-hover">
+  <table class="table table-hover {% if filtros %} sortable{% endif %}">
     <thead>
       <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Precio</th>
+        {% for sortable in filtros.sortables %}
+          <th class="sortable" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
+        {% endfor %}
         <th scope="col">Opciones</th>
       </tr>
     </thead>
@@ -32,13 +32,18 @@
               </path>
             </svg>
             </svg></a>
-          <a href="{% url 'eliminarTarea' tarea.pk %}" class="btn btn-light btn-sm">
+          <a href="#" 
+          data-bs-toggle="modal" 
+          data-bs-target="#customModal" 
+          data-bs-nombre="{{modelo.nombre}}"
+            data-bs-url="{% url 'eliminarTarea' tarea.pk %}" class="btn btn-light btn-sm btn-eliminar">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
               viewBox="0 0 16 16">
               <path
                 d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
               </path>
-            </svg></a>
+            </svg>
+          </a>
         </td>
       </tr>
       {% empty %}
@@ -66,7 +71,17 @@
 {% endblock %}
 
 {% block filtros %}
-  <div>
-    {% crispy filtros filtros.helper %}
-  </div>
+<div>
+  {% crispy filtros filtros.helper %}
+</div>
+{% endblock %}
+
+{% block modals %}
+{% include './tarea_confirm_delete.html' %}
+{% endblock %}
+
+{% block extrajs %}
+<script>
+  conectarBotonesAModal('.btn-eliminar')
+</script>
 {% endblock %}

@@ -6,9 +6,6 @@ from .models import *
 from .forms import *
 
 # Create your views here.
-# ---------------------------------------------------------------- #
-
-# Marca Views
 
 
 class ListFilterView(ListView):
@@ -27,6 +24,9 @@ class ListFilterView(ListView):
             return filtros.apply(qs)
         return qs
 
+# ---------------------------------------------------------------- #
+
+# Marca Views
 
 class MarcaCreateView(CreateView):
     model = Marca
@@ -39,7 +39,6 @@ class MarcaCreateView(CreateView):
         context['titulo'] = "Registrar Marca"
         return context
 
-
 class MarcaUpdateView(UpdateView):
     model = Marca
     form_class = MarcaForm
@@ -49,7 +48,6 @@ class MarcaUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar Marca"
         return context
-
 
 class MarcaDeleteView(DeleteView):
     model = Marca
@@ -72,7 +70,6 @@ class MarcaListView(ListFilterView):
 # ---------------------------------------------------------------- #
 
 # Modelo View
-
 
 class ModeloCreateView(CreateView):
     model = Modelo
@@ -240,7 +237,8 @@ class TareaDeleteView(DeleteView):
         return self.post(*args, **kwargs)
 
 
-class TareaListView(ListView):
+class TareaListView(ListFilterView):
+    filtros = TareaFiltrosForm
     model = Tarea
     paginate_by = 100
 
@@ -323,7 +321,7 @@ class RepuestoUpdateView(UpdateView):
 
 class RepuestoDeleteView(DeleteView):
     model = Repuesto
-    success_url = reverse_lazy("listarRepuesto")
+    success_url = reverse_lazy("listarRepuestos")
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)

@@ -4,15 +4,14 @@
 {% block title %} {{titulo}} {% endblock %} {% block main %}
 <h1>{{titulo}}</h1>
 
-<div class="col-6">
-      <table class="table table-hover">
+
+  <div class="table-responsive">
+    <table class="table table-hover {% if filtros %} sortable{% endif %}">
       <thead>
         <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Modelo</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Precio</th>
+          {% for sortable in filtros.sortables %}
+            <th class="sortable" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
+          {% endfor %}
             <th scope="col">Opciones</th>
         </tr>
       </thead>
@@ -64,4 +63,14 @@
   <div>
     {% crispy filtros filtros.helper %}
   </div>
+{% endblock %}
+
+{% block modals %} 
+{% include './repuesto_confirm_delete.html' %}
+{% endblock %}
+
+{% block extrajs %} 
+<script>
+  conectarBotonesAModal('.btn-eliminar')
+</script>
 {% endblock %}

@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoRepuesto, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from django.db.models.query import QuerySet
-from django.db.models import Q, Model
+from django.db.models import Q
 from .models import Marca
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
@@ -13,46 +13,35 @@ from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, D
 def dict_to_query(filtros_dict):
     filtro = Q()
     for attr, value in filtros_dict.items():
-        if not value:
-            continue
         if type(value) == str:
             if value.isdigit():
-                prev_value = value
                 value = int(value)
-                filtro &= Q(**{attr: value}) | Q(**
-                                                 {f'{attr}__icontains': prev_value})
             else:
                 attr = f'{attr}__icontains'
-                filtro &= Q(**{attr: value})
-        elif isinstance(value, Model):
-            filtro &= Q(**{attr: value})
-        elif isinstance(value, int):
+        if value:
             filtro &= Q(**{attr: value})
     return filtro
+
 
 class FiltrosForm(forms.Form):
     orden = forms.CharField(required=False)
 
-    def filter(self, qs, filters):
-        return qs.filter(dict_to_query(filters))  # aplicamos filtros
+    def filter(self, qs):
+        return qs
 
-    def sort(self, qs, ordering):
-        for o in ordering.split(','):
-            qs = qs.order_by(o)  # aplicamos ordenamiento
+    def sort(self, qs):
+        cleaned_data = self.cleaned_data
+        ordering = cleaned_data.pop("orden")
+        if ordering:
+            for o in ordering.split(','):
+                qs = qs.order_by(o)  # aplicamos ordenamiento
         return qs
 
     def apply(self, qs):
         if self.is_valid():
-            cleaned_data = self.cleaned_data
-            ordering = cleaned_data.pop("orden", None)
-            if len(cleaned_data) > 0:
-                qs = self.filter(qs, cleaned_data)
-            if ordering: 
-                qs = self.sort(qs, ordering)
+            qs = self.filter(qs)
+            qs = self.sort(qs)
         return qs
-
-    def sortables(self):
-        return self.fields['orden'].choices
 
 # Marca Forms
 
@@ -93,16 +82,53 @@ class MarcaForm(forms.ModelForm):
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
 
-class MarcaFiltrosForm(FiltrosForm):
+class MarcaFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
+
+
+    orden = forms.ChoiceField(choices=[
+            ("nombre", "Nombre"),
+            ("descripcion", "Descripcion")
+        ],
+
+            required=False,
+            widget=forms.RadioSelect()
+        )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "nombre",
+                "descripcion"
+                
+            ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
 
-        self.helper.add_input(Submit('submit', 'Filtrar'))
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
 
 
 # Modelo Forms
@@ -127,14 +153,7 @@ class ModeloForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class ModeloFiltrosForm(FiltrosForm):
-    ORDEN_CHOICES = [
-        ("nombre", "Nombre"),
-        ("descripcion", "Descripcion"),
-        ("marca", "Marca"),
-        ("anio", "Año")
-    ]
-
+class ModeloFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     marca = forms.ModelChoiceField(
@@ -143,9 +162,15 @@ class ModeloFiltrosForm(FiltrosForm):
     anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
-        required=False
+    orden = forms.ChoiceField(choices=[
+        ("nombre", "Nombre"),
+        ("descripcion", "Descripcion"),
+        ("marca", "Marca"),
+        ("anio", "Año")
+    ],
+
+        required=False,
+        widget=forms.RadioSelect()
     )
 
     def __init__(self, *args, **kwargs):
@@ -163,8 +188,26 @@ class ModeloFiltrosForm(FiltrosForm):
                 "anio__gte",
                 "anio__lte"
             ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
+
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
 
 # Repuesto Forms
 
@@ -186,22 +229,68 @@ class RepuestoForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class RepuestoFiltrosForm(FiltrosForm):
+class RepuestoFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=50)
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo')
-    tipo = forms.ModelChoiceField(
-        queryset=TipoRepuesto.objects.all(), required=False, label='Tipo')
+    tipo = forms.CharField(required=False, label='Tipo', max_length=50)
     # TODO: deberían ser campos numéricos
-    precio = forms.CharField(required=False, label='Precio', max_length=50)
-    cantidad = forms.CharField(required=False, label='Cantidad', max_length=50)
+       
+    precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
+    precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
+
+    cantidad__gte = forms.IntegerField(label="Mayor o igual que", required=False)
+    cantidad__lte = forms.IntegerField(label="Menor o igual que", required=False)
+
+    orden = forms.ChoiceField(choices=[
+        ("nombre", "Nombre"),
+        ("modelo", "Modelo"),
+        ("tipo", "Tipo"),
+        ("precio", "Precio"),
+        ("cantidad", "Cantidad"),
+    ],
+
+        required=False,
+        widget=forms.RadioSelect()
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "nombre",
+                "modelo",
+                "tipo",
+                "precio__gte",
+                "precio__lte",
+                "cantidad__gte",
+                "cantidad__lte"
+            ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
 
-        self.helper.add_input(Submit('submit', 'Filtrar'))
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
 
 # Material Forms
 
@@ -225,43 +314,18 @@ class MaterialForm(forms.ModelForm):
 
 
 
-
 class MaterialFiltrosForm(FiltrosForm):
-    ORDEN_CHOICES = [
-        ("nombre", "Nombre"),
-        ("descripcion", "Descripcion"),
-        ("cantidad", "Cantidad"),
-        ("precio", "Precio")
-    ]
-
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     cantidad = forms.DecimalField(required=False)
     precio = forms.DecimalField(required=False)
-
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
 
-        self.helper.layout = Layout(
-            Fieldset(
-                "",
-                HTML(
-                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "nombre",
-                "descripcion",
-                "cantidad",
-                "precio"
-               
-            ),
-            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
-        )
+        self.helper.add_input(Submit('submit', 'Filtrar'))
 
 # Tipo de tarea Forms
 
@@ -289,15 +353,50 @@ class TipoTareaForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class TipoTareaFiltrosForm(FiltrosForm):
+class TipoTareaFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+
+    orden = forms.ChoiceField(choices=[
+        ("nombre", "Nombre"),
+    ],
+
+        required=False,
+        widget=forms.RadioSelect()
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "nombre",
+                "anio__gte",
+                "anio__lte"
+            ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
 
-        self.helper.add_input(Submit('submit', 'Filtrar'))
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
 
 # Tarea Forms
 
@@ -318,6 +417,61 @@ class TareaForm(forms.ModelForm):
 
         self.helper.add_input(Submit('submit', 'Guardar'))
 
+class TareaFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    descripcion = forms.CharField(required=False)
+    tipo = forms.ModelChoiceField(
+        queryset=TipoTarea.objects.all(), required=False)
+       
+    precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
+    precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
+
+    orden = forms.ChoiceField(choices=[
+        ("nombre", "Nombre"),
+        ("descripcion", "Descripcion"),
+        ("tipo", "Tipo"),
+        ("precio", "Precio")
+    ],
+
+        required=False,
+        widget=forms.RadioSelect()
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "nombre",
+                "descripcion",
+                "tipo",
+                "precio__gte",
+                "precio__lte"
+            ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
+
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
 
 # Empleado Forms
 class EmpleadoForm(forms.ModelForm):
@@ -343,19 +497,64 @@ class EmpleadoForm(forms.ModelForm):
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
 
-class EmpleadoFiltrosForm(FiltrosForm):
+class EmpleadoFiltrosForm(forms.Form):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
     legajo = forms.IntegerField(required=False)
-    cuil = forms.IntegerField(required=False)
+    
+    cuil__gte = forms.IntegerField(label="Mayor o igual que", required=False)
+    cuil__lte = forms.IntegerField(label="Menor o igual que", required=False)
+
+
+    orden = forms.ChoiceField(choices=[
+        ("nombre", "Nombre"),
+        ("apellido", "Apellido"),
+        ("legajo", "Legajo"),
+        ("cuil", "CUIL"),
+        
+    ],
+
+        required=False,
+        widget=forms.RadioSelect()
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "nombre",
+                "apellido",
+                "legajo",
+                "cuil__gte",
+                "cuil__lte"
+            ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
 
-        self.helper.add_input(Submit('submit', 'Filtrar'))
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
+
 
 # Cliente forms
 
@@ -377,11 +576,11 @@ class ClienteForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class ClienteFiltrosForm(FiltrosForm):  # Revisar
+class ClienteFiltrosForm(forms.Form):  # Revisar
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
-    dni = forms.CharField(required=False, max_length=8)
+    dni = forms.IntegerField(required=False)
     vehiculos__modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo vehiculo')
     # vehiculo = forms.ModelChoiceField(
@@ -393,11 +592,16 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
 
     orden = forms.ChoiceField(choices=[
         ("dni", "DNI"),
-        ("nombre", "Nombre"),
-        ("apellido", "Apellido"),
+        ("-nombre", "Nombre ↑"),
+        ("nombre", "Nombre ↓"),
+        ("-apellido", "Apellido ↑"),
+        ("apellido", "Apellido ↓"),
+        ("vehiculo", "vehiculo"),
+
     ],
 
-        required=False
+        required=False,
+        widget=forms.RadioSelect()
     )
 
     def __init__(self, *args, **kwargs):
@@ -416,8 +620,26 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
                 "dni__gte",
                 "dni__lte"
             ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
+
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs
 
 # Vehiculo Forms
 
@@ -439,16 +661,58 @@ class VehiculoForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-class VehiculoFiltrosForm(FiltrosForm):
+class VehiculoFiltrosForm(forms.Form):
     patente = forms.CharField(required=False, label='Patente', max_length=100)
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False)
-    anio = forms.IntegerField(required=False)
     chasis = forms.CharField(required=False)
+
+    anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
+    anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
+
+    orden = forms.ChoiceField(choices=[
+        ("patente", "Patente"),
+        ("modelo", "Modelo"),
+        ("chasis", "Chasis"),
+        ("anio", "Año"),
+    ],
+
+        required=False,
+        widget=forms.RadioSelect()
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "patente",
+                "modelo",
+                "chasis",
+                "anio__gte",
+                "anio__lte"
+            ),
+            HTML('<hr class="divider"/>'),
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-ordering"><i class="fas fa-sort-amount-up-alt"></i> Ordenar</div>'),
+                Field("orden")
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
 
-        self.helper.add_input(Submit('submit', 'Filtrar'))
+    def apply(self, qs):
+        if self.is_valid():
+            cleaned_data = self.cleaned_data
+            # separamos el campo de ordenamiento
+            ordering = cleaned_data.pop("orden")
+            qs = qs.filter(dict_to_query(cleaned_data))  # aplicamos filtros
+            if ordering:
+                for o in ordering.split(','):
+                    qs = qs.order_by(o)  # aplicamos ordenamiento
+        return qs

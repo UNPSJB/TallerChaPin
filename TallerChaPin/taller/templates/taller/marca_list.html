@@ -1,20 +1,20 @@
 {% extends 'template_taller.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %}
-{{titulo}}
+{% block title %} 
+  {{titulo}}
 {% endblock %}
 {% block main %}
-<h1>{{titulo}}</h1>
 
+<h1>{{titulo}}</h1>
 
 <div class="table-responsive">
   <table class="table table-hover {% if filtros %} sortable{% endif %}">
     <thead>
       <tr>
-      {% for sortable in filtros.sortables %}
-        <th class="sortable" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
-      {% endfor %}
+        {% for sortable in filtros.sortables %}
+          <th class="sortable" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
+        {% endfor %}
         <th scope="col">Opciones</th>
       </tr>
     </thead>
@@ -78,10 +78,10 @@
 </div>
 {% endblock %}
 
-{% block filtros%}
-</div>
-  {% crispy filtros filtros.helper %}
-</div>
+{% block filtros %}
+  <div>
+    {% crispy filtros filtros.helper %}
+  </div>
 {% endblock %}
 
 {% block modals %} 

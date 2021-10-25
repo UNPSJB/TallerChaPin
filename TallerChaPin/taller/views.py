@@ -3,8 +3,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
-from .forms import *
-
+from .forms import * 
 # Create your views here.
 
 
@@ -292,6 +291,51 @@ class MaterialDeleteView(DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+# ---------------------------------------------------------------- #
+
+# Tipo Material View
+
+class TipoMaterialCreateView(CreateView):
+    model = TipoMaterial
+    form_class = TipoMaterialForm
+    template_name = 'taller/tipo-material_form.html'  
+    success_url = reverse_lazy('crearTipoMaterial')
+
+     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar tipo material"
+        return context
+
+class TipoMaterialListView(ListView):
+    model = TipoMaterial
+
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filtros'] = TipoMaterialFiltrosForm(self.request.GET)
+        context['titulo'] = "Listado de Tipos Materiales"
+        return context
+
+class TipoMaterialUpdateView(UpdateView):
+    model = TipoMaterial
+    form_class = TipoMaterialForm
+    success_url = reverse_lazy("listarTipoMateriales")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar tipo Material"
+        return context
+
+
+class TipoMaterialDeleteView(DeleteView):
+    model = TipoMaterial
+    success_url = reverse_lazy("listarTipoMateriales")
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+
 # ---------------------------------------------------------------- #
 
 # Repuesto View

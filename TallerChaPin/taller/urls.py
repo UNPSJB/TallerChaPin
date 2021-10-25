@@ -34,6 +34,9 @@ from .views import (
     TareaUpdateView,
     TareaDeleteView,
     TareaListView,
+    MarcaUpdateView, 
+    MarcaDeleteView,
+    TipoMaterialCreateView
 )
 
 
@@ -92,6 +95,15 @@ urlpatterns = [
     path('materiales/modificar/<int:pk>',
          MaterialUpdateView.as_view(), name="modificarMaterial"),
 
+    # ----------------- TIPOS MTERIALES -----------------
+    
+    path('tipos-materiales/crear', TipoMaterialCreateView.as_view(), name="crearTipoMaterial"),
+    path('tipos-materiales/listar', TipoMaterialListView.as_view(), name="listarTipoMateriales"),
+    path('tipos-materiales/modificar/<int:pk>',
+        TipoMaterialUpdateView .as_view(), name="modificarTipoMaterial"),
+    path('tipos-materiales/eliminar/<int:pk>',
+         TipoMaterialDeleteView.as_view(), name="eliminarTipoMaterial"),
+    
     # ----------------- CLIENTES -----------------
 
     path('clientes/listar', ClienteListView.as_view(), name='listarClientes'),

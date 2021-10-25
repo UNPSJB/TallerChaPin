@@ -327,6 +327,35 @@ class MaterialFiltrosForm(FiltrosForm):
 
         self.helper.add_input(Submit('submit', 'Filtrar'))
 
+# Tipo de Material Forms
+class TipoMaterialForm(forms.ModelForm):
+
+        class Meta:
+            model = TipoMaterial
+            fields = '__all__'
+        
+        def save(self, commit=True):
+            TipoMaterial = super().save()
+            return TipoMaterial
+
+        def __init__(self, *args, **kwargs):
+                super().__init__(*args, **kwargs)
+                self.helper = FormHelper()
+                
+                self.helper.add_input(Submit('submit', 'Guardar'))
+
+
+class TipoMaterialFiltrosForm(forms.Form):
+    nombre = forms.CharField(required=False, label='nombre', max_length=50)
+       
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.add_input(Submit('submit', 'Filtrar'))
+
+
 # Tipo de tarea Forms
 
 

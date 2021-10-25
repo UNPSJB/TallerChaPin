@@ -22,7 +22,7 @@
           {% for tipoMaterial in object_list %}
           <tr>
             <td>{{ tipoMaterial.nombre }}</td>
-            <td>{{ tipoMaterial.unidad_medida }}</td>
+            <td>{{ tipoMaterial.get_unidad_medida_display }}</td>
             <td>
               <a href="{% url 'modificarTipoMaterial' tipoMaterial.pk %}" class= "btn btn-light btn-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

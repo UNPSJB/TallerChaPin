@@ -4,24 +4,11 @@ from django.views.generic.list import ListView
 from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoRepuesto, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from django.db.models.query import QuerySet
-from django.db.models import Q
+from django.db.models import Q, Model
 from .models import Marca
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
-
-
-def dict_to_query(filtros_dict):
-    filtro = Q()
-    for attr, value in filtros_dict.items():
-        if type(value) == str:
-            if value.isdigit():
-                value = int(value)
-            else:
-                attr = f'{attr}__icontains'
-        if value:
-            filtro &= Q(**{attr: value})
-    return filtro
-
+from decimal import Decimal
 
 def dict_to_query(filtros_dict):
     filtro = Q()
@@ -37,14 +24,13 @@ def dict_to_query(filtros_dict):
             else:
                 attr = f'{attr}__icontains'
                 filtro &= Q(**{attr: value})
-        elif isinstance(value, Model):
-            filtro &= Q(**{attr: value})
-        elif isinstance(value, int):
+        elif isinstance(value, Model) or isinstance(value, int) or isinstance(value, Decimal):
             filtro &= Q(**{attr: value})
     return filtro
 
 
 class FiltrosForm(forms.Form):
+    ORDEN_CHOICES = []
     orden = forms.CharField(required=False)
 
     def filter(self, qs, filters):
@@ -56,6 +42,7 @@ class FiltrosForm(forms.Form):
         return qs
 
     def apply(self, qs):
+        print(self.is_valid())
         if self.is_valid():
             cleaned_data = self.cleaned_data
             ordering = cleaned_data.pop("orden", None)
@@ -66,7 +53,7 @@ class FiltrosForm(forms.Form):
         return qs
 
     def sortables(self):
-        return self.fields['orden'].choices
+        return self.ORDEN_CHOICES
 
 # Marca Forms
 
@@ -115,8 +102,7 @@ class MarcaFiltrosForm(FiltrosForm):
     
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
+    orden = forms.CharField(
         required=False
     )
 
@@ -173,8 +159,7 @@ class ModeloFiltrosForm(FiltrosForm):
     anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
-    orden = forms.ChoiceField(
-        choices= ORDEN_CHOICES,
+    orden = forms.CharField(
         required=False
     )
 
@@ -228,7 +213,8 @@ class RepuestoFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=50)
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo')
-    tipo = forms.CharField(required=False, label='Tipo', max_length=50)
+    
+    tipo = forms.ChoiceField(choices=Repuesto.TIPOS, required=False, label='Tipo')
     # TODO: deberían ser campos numéricos
        
     precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
@@ -237,8 +223,7 @@ class RepuestoFiltrosForm(FiltrosForm):
     cantidad__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     cantidad__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
+    orden = forms.CharField(
         required=False
     )
 
@@ -303,8 +288,7 @@ class MaterialFiltrosForm(FiltrosForm):
     material__tipo = forms.ModelChoiceField(
         queryset=TipoMaterial.objects.all(), required=False, label='Tipo Material')
     
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES, 
+    orden = forms.CharField(
         required=False
     )
 
@@ -368,8 +352,7 @@ class TipoMaterialFiltrosForm(FiltrosForm):
         label="Unidad de medida"
     )
 
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
+    orden = forms.CharField(
         required=False
     )
 
@@ -427,8 +410,7 @@ class TipoTareaFiltrosForm(FiltrosForm):
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
 
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
+    orden = forms.CharField(
         required=False
     )
 
@@ -481,8 +463,7 @@ class TareaFiltrosForm(FiltrosForm):
     precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
     precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
 
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
+    orden = forms.CharField(
         required=False
     )
 
@@ -546,8 +527,7 @@ class EmpleadoFiltrosForm(FiltrosForm):
     cuil__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     cuil__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
+    orden = forms.CharField(
         required=False
     )
 
@@ -612,9 +592,8 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
     dni__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     dni__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
-        required=False,
+    orden = forms.CharField(
+        required=False
     )
 
     def __init__(self, *args, **kwargs):
@@ -673,8 +652,7 @@ class VehiculoFiltrosForm(FiltrosForm):
     anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
-    orden = forms.ChoiceField(
-        choices=ORDEN_CHOICES,
+    orden = forms.CharField(
         required=False
     )
 

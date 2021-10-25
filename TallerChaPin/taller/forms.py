@@ -42,7 +42,6 @@ class FiltrosForm(forms.Form):
         return qs
 
     def apply(self, qs):
-        print(self.is_valid())
         if self.is_valid():
             cleaned_data = self.cleaned_data
             ordering = cleaned_data.pop("orden", None)
@@ -403,9 +402,9 @@ class TipoTareaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("nombre", "Nombre"),
         ("descripcion", "Descripción"),
-        ("materiales", "Requiere materiales"),
-        ("repuestos", "Requiere repuestos"),
-        ("planilla", "Requiere planilla"),
+        ("materiales", "Materiales?"),
+        ("repuestos", "Repuestos?"),
+        ("planilla", "Planilla?"),
     ]
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)

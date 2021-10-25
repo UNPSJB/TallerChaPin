@@ -22,26 +22,10 @@
         <tr>
           <td>{{ tipotarea.nombre}}</td>
           <td>{{ tipotarea.descripcion }}</td>
+          <td>{{ tipotarea.materiales | yesno:"Si,No" }}</td>
+          <td>{{ tipotarea.repuesto | yesno:"Si,No" }}</td>
+          <td>{{ tipotarea.planilla | yesno:"Si,No" }}</td>
           
-          {% if tipotarea.materiales %}
-            <td>Si</td> 
-          {% else %}
-            <td>No</td> 
-          {% endif %}
-          
-          {% if tipotarea.repuestos %}
-            <td>Si</td> 
-          {% else %}
-            <td>No</td> 
-          {% endif %}
-
-
-          {% if tipotarea.planilla %}
-            <td>Si</td> 
-          {% else %}
-            <td>No</td> 
-          {% endif %}
-
           <td>
             <a href="{% url 'modificarTipoTarea' tipotarea.pk %}" class= "btn btn-light btn-sm">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

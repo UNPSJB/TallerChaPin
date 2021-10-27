@@ -22,7 +22,7 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('taller/', include('taller.urls')),
-    # path('ordenes/', include('ordenes.urls')),
+    path('ordenes/', include('ordenes.urls')),
     # path('facturas/', include('facturas.urls')),
     path('taller/', template_taller, name='taller_home'),
     path('ordenes/', template_ordenes, name='ordenes_home'),

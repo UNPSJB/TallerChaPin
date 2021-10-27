@@ -4,7 +4,7 @@ from .views import *
 
 urlpatterns = [
     # ----------------- Presupuesto -----------------
-
+     # path('/',)
     path('presupuesto/crear', PresupuestoCreateView.as_view(), name="crearPresupuesto"),
     path('presupuesto/listar', PresupuestoListView.as_view(), name="listarPresupuestos"),
     path('presupuesto/modificar/<int:pk>',

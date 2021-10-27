@@ -41,10 +41,14 @@ class PresupuestoCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['presupuesto_material_formset'] = PresupuestoMaterialInline()
+        context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
         context['titulo'] = "Registrar presupuesto"
         return context
 
-class PresupuestoUpdateView():
+    
+
+class PresupuestoUpdateView(UpdateView):
 
     model = Presupuesto
     form_class = PresupuestoForm
@@ -55,7 +59,7 @@ class PresupuestoUpdateView():
         context['titulo'] = "Modificar presupuesto"
         return context
 
-class PresupuestoDeleteView():
+class PresupuestoDeleteView(DeleteView):
 
     model = Presupuesto
     success_url = reverse_lazy('listarPresupuestos')

@@ -20,10 +20,13 @@
     <tbody>
       {% for presupuesto in object_list %}
       <tr>
-        <td>{{ presupuesto.nombre }}</td>
-        <td>{{ presupuesto.apellido }}</td> 
-        <td>{{ presupuesto.legajo}}</td>
-        <td>{{ presupuesto.cuil }}</td>
+        <td>{{ presupuesto.cliente }}</td>
+        <td>{{ presupuesto.vehiculo }}</td> 
+        <td>{{ presupuesto.detalles}}</td>
+        <td>{{ presupuesto.tareas|default_if_none:"No especificado" }}</td>
+        <td>{{ presupuesto.repuestos|default_if_none:"No especificado" }}</td>
+        <td>{{ presupuesto.materiales.count}}</td>
+        <td>{{ presupuesto.validez}}</td>
         <td>
           <a href="{% url 'modificarPresupuesto' presupuesto.pk %}" class= "btn btn-light btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

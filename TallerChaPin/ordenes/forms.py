@@ -6,6 +6,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
 from decimal import Decimal
 from django.conf import settings
+from django.forms import inlineformset_factory
 
 def dict_to_query(filtros_dict):
     filtro = Q()
@@ -51,26 +52,68 @@ class FiltrosForm(forms.Form):
     def sortables(self):
         return self.ORDEN_CHOICES
 
+
+
+
 # Presupuesto
 
 class PresupuestoForm(forms.ModelForm):
     class Meta:
         model = Presupuesto
         fields = "__all__"
+        exclude = ["orden","materiales","repuestos"]
 
         labels = {
 
         }
+        widgets = {
+            "tareas": forms.CheckboxSelectMultiple(),
+           
+        }
 
-        def save(self, commit=True):
-            presupuesto = super().save()
-            return presupuesto
-        
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.helper = FormHelper()
+    def save(self, commit=True):
+        presupuesto = super().save()
+        return presupuesto
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.add_input(Submit('submit', 'Guardar'))
 
-            self.helper.add_input(Submit('submit', 'Guardar'))
+class PresupuestoMaterialForm(forms.ModelForm):
+    class Meta:
+        model = PresupuestoMaterial
+        fields = ("material",
+                "cantidad")
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
+PresupuestoMaterialInline = inlineformset_factory(
+    Presupuesto,
+    PresupuestoMaterial,
+    form=PresupuestoMaterialForm,
+    extra=1,
+    # max_num=5,
+    # fk_name=None,
+    # fields=None, exclude=None, can_order=False,
+    # can_delete=True, max_num=None, formfield_callback=None,
+    # widgets=None, validate_max=False, localized_fields=None,
+    # labels=None, help_texts=None, error_messages=None,
+    # min_num=None, validate_min=False, field_classes=None
+)
+
+class PresupuestoMaterialFormSetHelper(FormHelper):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.form_method = 'post'
+        self.template = 'bootstrap5/table_inline_formset.html'
+        self.layout = Layout(
+            'material',
+            'cantidad'            
+        )
+        self.render_required_fields = True
 
 class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -79,7 +122,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
         ("detalles", "Detalles"),
         ("tareas", "Tareas"),
         ("repuestos", "Repuestos"),
-        ("validez", "Validez"),
+        ("materiales", "Materiales"),
         ("validez", "Validez"),
 
     ]

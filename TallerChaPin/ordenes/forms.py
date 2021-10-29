@@ -79,6 +79,7 @@ class PresupuestoForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_tag = False
 
+# Presupuesto - Material
 
 class PresupuestoMaterialForm(forms.ModelForm):
     class Meta:
@@ -120,6 +121,49 @@ class PresupuestoMaterialFormSetHelper(FormHelper):
         self.render_required_fields = True
         self.add_input(Submit('submit', 'Guardar'))
 
+# Presupuesto - Repuesto
+
+class PresupuestoRepuestoForm(forms.ModelForm):
+    class Meta:
+        model = PresupuestoRepuesto
+        fields = ("repuesto",
+                  "cantidad")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
+
+PresupuestoRepuestosInline = inlineformset_factory(
+    Presupuesto,
+    PresupuestoRepuesto,
+    form=PresupuestoRepuestoForm,
+    extra=1,
+    # max_num=5,
+    # fk_name=None,
+    # fields=None, exclude=None, can_order=False,
+    # can_delete=True, max_num=None, formfield_callback=None,
+    # widgets=None, validate_max=False, localized_fields=None,
+    # labels=None, help_texts=None, error_messages=None,
+    # min_num=None, validate_min=False, field_classes=None
+)
+
+
+class PresupuestoRepuestoFormSetHelper(FormHelper):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.form_method = 'post'
+        self.form_tag = False
+        self.template = 'bootstrap5/table_inline_formset.html'
+        self.layout = Layout(
+            'repuesto',
+            'cantidad'
+        )
+        self.render_required_fields = True
+        self.add_input(Submit('submit', 'Guardar'))
+
+# Presupuesto - Filtro
 
 class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [

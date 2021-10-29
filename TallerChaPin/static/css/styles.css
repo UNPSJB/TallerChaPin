@@ -13,14 +13,12 @@
     justify-content: center;
 }
 
-@keyframes fondo{
-    from{background-color: white;}
-    to{background-color: rgb(236, 232, 232);}
+.pointer{
+    cursor: pointer;
 }
 
-.encabezado-listado:hover{
-    cursor: pointer;
-    background-color: rgb(236, 232, 232);
-    animation: fondo 0.25s;
-    border-radius: 0.3rem;
+.bg-transition:hover{
+    background-color: #ECECEC;
+    transition: background-color 0.25s;
+    border-radius: 0.2rem;
 }

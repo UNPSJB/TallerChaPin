@@ -12,14 +12,14 @@
       <thead>
         <tr>
             {% for sortable in filtros.sortables %}
-              <th class="sortable encabezado-listado" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
+              <th class="sortable bg-transition pointer" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
             {% endfor %}
             <th scope="col">Opciones</th>
         </tr>
       </thead>
       <tbody>
         {% for tipotarea in object_list %}
-        <tr>
+        <tr class="bg-transition">
           <td>{{ tipotarea.nombre}}</td>
           <td>{{ tipotarea.descripcion }}</td>
           <td>{{ tipotarea.materiales | yesno:"Si,No" }}</td>

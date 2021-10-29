@@ -5,10 +5,15 @@
 {% block main %}
 <div class="col-5">
     <h3>{{ titulo }}</h3>
-    
+
     {{ presupuesto_material_formset.management_form }}
-    {% crispy form form.helper %}
-    {% crispy presupuesto_material_formset presupuesto_material_formset_helper %}
-    {% crispy presupuesto_material_formset.empty_form presupuesto_material_formset_helper %}
+    <form action="{% url 'crearPresupuesto' %}" method="post">
+        {% crispy form form.helper %}
+        <div data-formset="presupuesto_materiales">
+            {% crispy presupuesto_material_formset presupuesto_material_formset_helper %}
+        </div>
+        <div data-formset="presupuesto_repuestos">
+        </div>
+    </form>
 </div>
 {% endblock %}

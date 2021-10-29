@@ -8,6 +8,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.forms import inlineformset_factory
 
+
 def dict_to_query(filtros_dict):
     filtro = Q()
     for attr, value in filtros_dict.items():
@@ -53,42 +54,43 @@ class FiltrosForm(forms.Form):
         return self.ORDEN_CHOICES
 
 
-
-
 # Presupuesto
 
 class PresupuestoForm(forms.ModelForm):
     class Meta:
         model = Presupuesto
         fields = "__all__"
-        exclude = ["orden","materiales","repuestos"]
+        exclude = ["orden", "materiales", "repuestos"]
 
         labels = {
 
         }
         widgets = {
             "tareas": forms.CheckboxSelectMultiple(),
-           
+
         }
 
     def save(self, commit=True):
         presupuesto = super().save()
         return presupuesto
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.form_tag = False
+
 
 class PresupuestoMaterialForm(forms.ModelForm):
     class Meta:
         model = PresupuestoMaterial
         fields = ("material",
-                "cantidad")
+                  "cantidad")
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.add_input(Submit('submit', 'Guardar'))
+
 
 PresupuestoMaterialInline = inlineformset_factory(
     Presupuesto,
@@ -104,16 +106,20 @@ PresupuestoMaterialInline = inlineformset_factory(
     # min_num=None, validate_min=False, field_classes=None
 )
 
+
 class PresupuestoMaterialFormSetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.form_method = 'post'
+        self.form_tag = False
         self.template = 'bootstrap5/table_inline_formset.html'
         self.layout = Layout(
             'material',
             'cantidad'
         )
         self.render_required_fields = True
+        self.add_input(Submit('submit', 'Guardar'))
+
 
 class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -138,7 +144,8 @@ class PresupuestoFiltrosForm(FiltrosForm):
         queryset=Material.objects.all(), required=False)
     repuestos = forms.ModelChoiceField(
         queryset=Repuesto.objects.all(), required=False)
-    validez = forms.IntegerField(min_value=0,max_value=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
+    validez = forms.IntegerField(
+        min_value=0, max_value=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
 
     orden = forms.CharField(
         required=False

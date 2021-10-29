@@ -1,6 +1,6 @@
  'use strict';
  {
-     const $ = django.jQuery;
+    //  const $ = django.jQuery;
      $.fn.formset = function(opts) {
          const options = $.extend({}, $.fn.formset.defaults, opts);
          const $this = $(this);

@@ -111,7 +111,7 @@ class PresupuestoMaterialFormSetHelper(FormHelper):
         self.template = 'bootstrap5/table_inline_formset.html'
         self.layout = Layout(
             'material',
-            'cantidad'            
+            'cantidad'
         )
         self.render_required_fields = True
 

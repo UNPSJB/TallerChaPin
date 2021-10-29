@@ -6,6 +6,7 @@
 <div class="col-5">
     <h3>{{ titulo }}</h3>
     
+    {{ presupuesto_material_formset.management_form }}
     {% crispy form form.helper %}
     {% crispy presupuesto_material_formset presupuesto_material_formset_helper %}
     {% crispy presupuesto_material_formset.empty_form presupuesto_material_formset_helper %}

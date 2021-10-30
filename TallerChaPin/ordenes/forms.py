@@ -67,7 +67,6 @@ class PresupuestoForm(forms.ModelForm):
         }
         widgets = {
             "tareas": forms.CheckboxSelectMultiple(),
-
         }
 
     def save(self, commit=True):
@@ -107,7 +106,6 @@ PresupuestoMaterialInline = inlineformset_factory(
     # min_num=None, validate_min=False, field_classes=None
 )
 
-
 class PresupuestoMaterialFormSetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -135,7 +133,7 @@ class PresupuestoRepuestoForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-PresupuestoRepuestosInline = inlineformset_factory(
+PresupuestoRepuestoInline = inlineformset_factory(
     Presupuesto,
     PresupuestoRepuesto,
     form=PresupuestoRepuestoForm,

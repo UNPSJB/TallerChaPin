@@ -43,9 +43,9 @@ class PresupuestoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['presupuesto_material_formset'] = PresupuestoMaterialInline()
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = PresupuestoMaterialInline()
-        context['presupuesto_repuesto_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['titulo'] = "Registrar presupuesto"
+        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline()
+        context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
+        context['titulo'] = "Registrar Presupuesto"
         return context
 
     

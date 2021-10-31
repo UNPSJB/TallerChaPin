@@ -40,9 +40,8 @@ class PresupuestoDetailView(DetailView):
     model = Presupuesto
 
     def get_context_data(self, **kwargs):
-        presupuesto = super().get_object
         context = super().get_context_data(**kwargs)
-        context['titulo'] = f'Presupuesto del cliente: {""}'
+        context['titulo'] = f'Presupuesto del cliente: {""}' # Pasarle el nombre del cliente
         return context
 
 class PresupuestoCreateView(CreateView):

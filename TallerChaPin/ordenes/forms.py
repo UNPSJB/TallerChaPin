@@ -169,8 +169,8 @@ class PresupuestoFiltrosForm(FiltrosForm):
         ("detalles", "Detalles"),
         ("tareas", "Tareas"),
         ("repuestos", "Repuestos"),
-        ("materiales", "Materiales"),
-        ("validez", "Validez"),
+        ("materiales", "Materiales")
+        # ("validez", "Validez"),
 
     ]
 
@@ -185,8 +185,8 @@ class PresupuestoFiltrosForm(FiltrosForm):
         queryset=Material.objects.all(), required=False)
     repuestos = forms.ModelChoiceField(
         queryset=Repuesto.objects.all(), required=False)
-    validez = forms.IntegerField(
-        min_value=0, max_value=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
+    # validez = forms.IntegerField(
+    #     min_value=0, max_value=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
 
     orden = forms.CharField(
         required=False
@@ -207,7 +207,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
                 "tareas",
                 "materiales",
                 "repuestos",
-                "validez",
+                # "validez",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

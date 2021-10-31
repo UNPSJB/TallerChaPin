@@ -19,6 +19,7 @@ const addInlineDeleteButton = function (row, prefix) {
   });
 };
 
+
 const inlineDeleteHandler = function (e1, prefix) {
   e1.preventDefault();
   const deleteButton = $(e1.target);
@@ -46,7 +47,7 @@ const inlineFormset = function ($context) {
   const tbody = $('tbody', table);
 
   const agregarRenglon = $('<tfoot><tr><td colspan="3"><a>Agregar</a></td></tr></tfoot>');
-
+  
   $('a', agregarRenglon).click(() => {
     const totalForms = $('#id_' + prefix + '-TOTAL_FORMS').prop('autocomplete', 'off');
     let nextIndex = Number(totalForms.val());

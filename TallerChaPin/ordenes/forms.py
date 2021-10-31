@@ -89,7 +89,7 @@ class PresupuestoMaterialForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        
 
 
 PresupuestoMaterialInline = inlineformset_factory(
@@ -117,8 +117,7 @@ class PresupuestoMaterialFormSetHelper(FormHelper):
             'cantidad'
         )
         self.render_required_fields = True
-        self.add_input(Submit('submit', 'Guardar'))
-
+       
 # Presupuesto - Repuesto
 
 class PresupuestoRepuestoForm(forms.ModelForm):

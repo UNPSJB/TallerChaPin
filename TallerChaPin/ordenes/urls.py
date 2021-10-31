@@ -7,6 +7,8 @@ urlpatterns = [
      # path('/',)
     path('presupuesto/crear', PresupuestoCreateView.as_view(), name="crearPresupuesto"),
     path('presupuesto/listar', PresupuestoListView.as_view(), name="listarPresupuestos"),
+    path('presupuesto/detalle/<int:pk>',
+         PresupuestoDetailView.as_view(), name="detallesPresupuesto"),
     path('presupuesto/modificar/<int:pk>',
          PresupuestoUpdateView.as_view(), name="modificarPresupuesto"),
     path('presupuesto/eliminar/<int:pk>',

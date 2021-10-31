@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy
 from django.shortcuts import render
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
@@ -32,6 +33,16 @@ class PresupuestoListView(ListFilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de presupuestos"
+        return context
+
+class PresupuestoDetailView(DetailView):
+
+    model = Presupuesto
+
+    def get_context_data(self, **kwargs):
+        presupuesto = super().get_object
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = f'Presupuesto del cliente: {""}'
         return context
 
 class PresupuestoCreateView(CreateView):

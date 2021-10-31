@@ -6,6 +6,24 @@
 <div class="col-6">
     <h3>{{ titulo }}</h3>
 
-    <p>{{ presupuesto.content }}</p>
+    <tbody>
+        {% for presupuesto in object_content %}
+        <tr>
+            <td>{{ presupuesto.cliente }}</td>
+            <td>{{ presupuesto.vehiculo }}</td>
+            <td>{{ presupuesto.detalles}}</td>
+            <td>{{ presupuesto.tareas|default_if_none:"No especificado" }}</td>
+            <td>{{ presupuesto.repuestos|default_if_none:"No especificado" }}</td>
+            <td>{{ presupuesto.materiales.count}}</td>
+            <td>{{ presupuesto.validez}}</td>
+            <td>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td>Sin detalles (implementar) </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </div>
 {% endblock %}

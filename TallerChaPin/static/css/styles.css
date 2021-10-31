@@ -12,3 +12,13 @@
     display: flex;
     justify-content: center;
 }
+
+.pointer{
+    cursor: pointer;
+}
+
+.bg-transition:hover{
+    background-color: #ECECEC;
+    transition: background-color 0.25s;
+    border-radius: 0.2rem;
+}

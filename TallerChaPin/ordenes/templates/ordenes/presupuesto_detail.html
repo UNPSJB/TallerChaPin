@@ -3,7 +3,201 @@
 {% load static %}
 
 {% block main %}
-<div class="py-5 text-center">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <span class="pull-right">(<strong>{{object.tareas.all.count}}</strong>) elementos</span>   
+                    <!-- <h5>Detalles del presupuesto</h5> -->
+                    <h1 class="mb-4">Presupuesto</h1>
+                </div>
+
+                <!-- Cliente, vehiculo -->
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table">
+                            <tbody>
+                            <tr class="border border-primary rounded">
+                                <td width="90">
+                                    <div class="cart-product-imitation">
+                                    </div>
+                                </td>
+                                <td class="desc">
+                                    <h3>
+                                        {{ object.cliente.nombre }}, {{ object.cliente.apellido }}
+                                    </h3>
+                                    <span>
+                                        Vehículo: {{ object.vehiculo.patente }} ({{ object.vehiculo.modelo}} {{ object.vehiculo.modelo.marca.nombre }}) <br>
+                                        Presupuesto válido por {{ object.validez}} días
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tareas -->
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table">
+                            <tbody>
+                                {% for tarea in object.tareas.all %}
+                                    <tr>
+                                        <td width="90">
+                                            <div class="cart-product-imitation">
+                                            </div>
+                                        </td>
+                                        <td class="desc w-50">
+                                            <small><i class="fas fa-thumbtack"></i> Tarea | ${{ tarea.precio }} c/u</small>
+                                            <h3>
+                                                {{ tarea.nombre }}
+                                            </h3>
+                                            <p class="small">
+                                                {{ tarea.descripcion }}
+                                            </p>
+                                        </td>
+
+                                        <!-- <td class="d-flex justify-content-end">
+                                            <span>
+                                                
+                                            </span>
+                                        </td> -->
+                                        <td width="65">
+                                            <input type="text" class="form-control" placeholder="1" disabled>
+                                        </td>
+                                        <td>
+                                            <h4>
+                                                ${{ tarea.precio }}
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Repuestos -->
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table">
+                            <tbody>
+                                {% for repuesto in object.repuestos.all %}
+                                    <tr>
+                                        <td width="90">
+                                            <div class="cart-product-imitation">
+                                            </div>
+                                        </td>
+                                        <td class="desc">
+                                            <small><i class="fas fa-cog"></i> Repuesto | ${{ repuesto.precio }} c/u</small>
+                                            <h3>
+                                                {{ repuesto.nombre }}
+                                            </h3>
+                                            <p class="small">
+                                                Tipo de repuesto: {{ repuesto.tipo }}
+                                            </p>
+                                        </td>
+                                        <td width="65">
+                                            <input type="text" class="form-control" placeholder="1" disabled>
+                                        </td>
+                                        <td>
+                                            <h4 class="text-right">
+                                                {{ repuesto.precio }}
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <div class="alert alert-primary m-0" role="alert">
+                                        No se han cargado repuestos
+                                    </div>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Materiales -->
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table">
+                            <tbody>
+                                {% for material in object.materiales.all %}
+                                    <tr>
+                                        <td width="90">
+                                            <div class="cart-product-imitation">
+                                            </div>
+                                        </td>
+                                        <td class="desc">
+                                            <small><i class="fas fa-box-open"></i> Material | ${{ material.precio }} c/u</small>
+                                            <h3>
+                                                {{ material.nombre }}
+                                            </h3>
+                                            <p class="small">
+                                                Tipo de material: {{ material.tipo }}
+                                            </p>
+                                        </td>
+                                        <td width="65">
+                                            <input type="text" class="form-control" placeholder="1" disabled>
+                                        </td>
+                                        <td>
+                                            <h4 class="text-right">
+                                                {{ material.precio }}
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <div class="alert alert-primary" role="alert">
+                                        No se han cargado materiales
+                                    </div>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Parte de abajo -->
+                <div class="ibox-content">
+                    <button class="btn btn-primary pull-right"><i class="fa fa-print" aria-hidden="true"></i> Imprimir</button>
+                    <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Volver</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Parte derecha del total -->
+        <div class="col-md-3">
+            <div class="ibox border border-primary rounded p-3">
+                <div class="ibox-title">
+                    <h5> Total estimado</h5>
+                </div>
+                <div class="ibox-content">
+                    <h2 class="font-bold text-primary">
+                        <i class="fas fa-dollar-sign"></i> 390,00
+                    </h2>
+                </div>
+            </div>
+            <hr>
+            <div class="border border-primary rounded p-3">
+                <h5>Acciones</h5>
+                <button class="btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
+                <button class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </button>
+                <button class="btn btn-primary m-1 w-100"><i class="fas fa-plus-circle"></i> Ampliar </button>
+                <button class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </button>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+<!-- <div class="py-5 text-center">
     <img class="d-block mx-auto mb-4">
     <h3>{{ titulo }}</h3>
     <p class="lead">.</p>
@@ -122,5 +316,4 @@
             </td>
         </tr>
     </tbody>
-</div>
-{% endblock %}
+</div> -->

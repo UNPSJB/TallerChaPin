@@ -252,6 +252,9 @@ class Presupuesto(models.Model):
         self.save()
         return self.orden
 
+    def cantidad_detalles(self):
+        return self.tareas.count() + self.materiales.count() + self.repuestos.count()
+
 
 class PresupuestoMaterial(models.Model):
     material = models.ForeignKey(

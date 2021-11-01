@@ -73,6 +73,7 @@ const inlineFormset = function ($context) {
 $(document).ready(() => {
   $('[data-formset]').each(function (index, el) {
     $('.checkboxinput').remove(); // quita el checkbox 
+    
     inlineFormset($(el));
   });
   

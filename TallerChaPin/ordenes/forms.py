@@ -69,10 +69,20 @@ class PresupuestoForm(forms.ModelForm):
             "tareas": forms.CheckboxSelectMultiple(),
         }
 
-    def save(self, commit=True):
+    def save(self, materiales, repuestos):
         # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
-
         presupuesto = super().save()
+        print(repuestos)
+        for material in materiales:
+            if "material" in material:
+                matObj = material["material"]
+                matCantidad = material["cantidad"]
+                presupuesto.agregar_material(matObj,matCantidad)
+        for repuesto in repuestos:
+            if "repuesto" in repuesto:
+                repObj = repuesto["repuesto"]
+                repCantidad = repuesto["cantidad"]
+                presupuesto.agregar_repuesto(repObj,repCantidad)
         return presupuesto
 
     def __init__(self, *args, **kwargs):

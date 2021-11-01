@@ -1,5 +1,6 @@
+from django.http.response import HttpResponse
 from django.urls import reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
@@ -58,13 +59,14 @@ class PresupuestoCreateView(CreateView):
         context['titulo'] = "Registrar Presupuesto"
         return context
 
-    def post(self):
+    def post(self, *args, **kwargs):
         pmi = PresupuestoMaterialInline(self.request.POST)
         pri = PresupuestoRepuestoInline(self.request.POST)
         form = PresupuestoForm(self.request.POST)
         if pmi.is_valid() and pri.is_valid() and form.is_valid():
             # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
-            presupuesto = form.save(materiales, repuestos)
+            presupuesto = form.save(pmi.cleaned_data, pri.cleaned_data)
+        return redirect ('detallesPresupuesto',presupuesto.pk)
 
 
 
@@ -76,6 +78,11 @@ class PresupuestoUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        print(self.get_object().presupuesto_materiales.all().values())
+        context['presupuesto_material_formset'] = PresupuestoMaterialInline(initial = self.get_object().presupuesto_materiales.all().values()) #pasarle las lineas previas
+        context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
+        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(initial = self.get_object().presupuesto_repuestos.all().values()) #pasarle las lineas previas
+        context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         context['titulo'] = "Modificar presupuesto"
         return context
 

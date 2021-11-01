@@ -58,7 +58,15 @@ class PresupuestoCreateView(CreateView):
         context['titulo'] = "Registrar Presupuesto"
         return context
 
-    
+    def post(self):
+        pmi = PresupuestoMaterialInline(self.request.POST)
+        pri = PresupuestoRepuestoInline(self.request.POST)
+        form = PresupuestoForm(self.request.POST)
+        if pmi.is_valid() and pri.is_valid() and form.is_valid():
+            # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
+            presupuesto = form.save(materiales, repuestos)
+
+
 
 class PresupuestoUpdateView(UpdateView):
 

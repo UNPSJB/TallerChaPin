@@ -70,6 +70,8 @@ class PresupuestoForm(forms.ModelForm):
         }
 
     def save(self, commit=True):
+        # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
+
         presupuesto = super().save()
         return presupuesto
 

@@ -13,10 +13,12 @@ const updateElementIndex = function (el, prefix, ndx) {
 };
 
 const addInlineDeleteButton = function (row, prefix) {
+  
   row.append('<td><a class="quitar" href="#">Quitar</a></td>');
   row.find('a.quitar').on('click', function (event) {
     inlineDeleteHandler(event, prefix);
   });
+  
 };
 
 
@@ -27,7 +29,7 @@ const inlineDeleteHandler = function (e1, prefix) {
   const tbody = deleteButton.closest('tbody');
   const trs = $('tr', tbody);
   row.remove();
-
+  
   $('#id_' + prefix + '-TOTAL_FORMS').val(trs.length);
 
   $('tr', tbody).each(function (i, tr) {
@@ -45,13 +47,12 @@ const inlineFormset = function ($context) {
   const row = $('.d-none.empty-form', $context).clone(true);
   const table = $('.d-none.empty-form', $context).parents('table');
   const tbody = $('tbody', table);
-
+  
   const agregarRenglon = $('<tfoot><tr><td colspan="3"><a>Agregar</a></td></tr></tfoot>');
   
   $('a', agregarRenglon).click(() => {
     const totalForms = $('#id_' + prefix + '-TOTAL_FORMS').prop('autocomplete', 'off');
     let nextIndex = Number(totalForms.val());
-
     const newRow = row.clone(true);
 
     addInlineDeleteButton(newRow, prefix);
@@ -64,13 +65,15 @@ const inlineFormset = function ($context) {
     const trs = $('tr', tbody);
     $('#id_' + prefix + '-TOTAL_FORMS').val(trs.length);
   });
-
+  
   table.append(agregarRenglon);
 };
 
 // Go bitch!
 $(document).ready(() => {
   $('[data-formset]').each(function (index, el) {
+    $('.checkboxinput').remove(); // quita el checkbox 
     inlineFormset($(el));
   });
+  
 });

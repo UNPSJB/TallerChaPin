@@ -1,5 +1,5 @@
 {% extends 'template_taller.html' %}
-{% load static %} 
+{% load static %}
 {% load crispy_forms_tags %}
 {% block title %} {{titulo}} {%endblock %}
 {% block main %}
@@ -11,7 +11,7 @@
       <thead>
         <tr>
           {% for sortable in filtros.sortables %}
-            <th class="sortable bg-transition pointer" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
+          <th class="sortable bg-transition pointer" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
           {% endfor %}
           <th scope="col">Opciones</th>
         </tr>
@@ -25,12 +25,9 @@
           <td>{{ vehiculo.cliente }}</td>
           <td>{{ vehiculo.chasis }}</td>
           <td>
-            <a href="{% url 'modificarVehiculo' vehiculo.pk %}"
-              class="btn btn-light btn-sm">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                width="16" height="16" fill="currentColor"
-                class="bi bi-pencil-square"
-                viewBox="0 0 16 16">
+            <a href="{% url 'modificarVehiculo' vehiculo.pk %}" class="btn btn-light btn-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path
                   d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z">
                 </path>
@@ -39,15 +36,10 @@
                 </path>
               </svg>
               </svg></a>
-            <a href="#"
-               data-bs-toggle="modal" 
-               data-bs-target="#customModal"
-               data-bs-nombre="{{vehiculo.patente}}" 
-               data-bs-url="{% url 'eliminarVehiculo' vehiculo.pk %}" 
-              class="btn btn-light btn-sm btn-eliminar">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                width="16" height="16" fill="currentColor"
-                class="bi bi-download" viewBox="0 0 16 16">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#customModal" data-bs-nombre="{{vehiculo.patente}}"
+              data-bs-url="{% url 'eliminarVehiculo' vehiculo.pk %}" class="btn btn-light btn-sm btn-eliminar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
+                viewBox="0 0 16 16">
                 <path
                   d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z">
                 </path>
@@ -62,11 +54,14 @@
       </tbody>
     </table>
     <div class="col-12 d-flex flex-row-reverse mb-4">
-        <button type="submit" class="btn btn-primary mt-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-          </svg>
+      <button type="submit" class="btn btn-primary mt-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
+          viewBox="0 0 16 16">
+          <path
+            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+          <path
+            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+        </svg>
         Descargar listado</button>
     </div>
   </div>
@@ -74,16 +69,16 @@
 {% endblock %}
 
 {% block filtros %}
-    <div>
-    {% crispy filtros filtros.helper %}
-    </div>
+<div>
+  {% crispy filtros filtros.helper %}
+</div>
 {% endblock %}
 
-{% block modals %} 
+{% block modals %}
 {% include './vehiculo_confirm_delete.html' %}
 {% endblock %}
 
-{% block extrajs %} 
+{% block extrajs %}
 <script>
   conectarBotonesAModal('.btn-eliminar')
 </script>

@@ -3,17 +3,120 @@
 {% load static %}
 
 {% block main %}
-<div class="col-6">
+<div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4">
     <h3>{{ titulo }}</h3>
+    <p class="lead">.</p>
+</div>
+<div class="row g-5">
+    <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Total</span>
+            <span class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">Tareas</h6>
+                    <small class="text-muted">Insertar las tareas..</small>
+                </div>
+                <span class="text-muted">Precio de las tareas</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">Repuestos</h6>
+                    <small class="text-muted">Insertar repuestos</small>
+                </div>
+                <span class="text-muted">Precio de los repuestos</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">Materiales</h6>
+                    <small class="text-muted">Insertar materiales</small>
+                </div>
+                <span class="text-muted">Precio de los materiales (en dolares porfa)</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-light">
+                <div class="text-success">
+                    <h6 class="my-0">Descuento de cliente favorito (ejemplo)</h6>
+                    <small>EXAMPLECODE</small>
+                </div>
+                <span class="text-success">−$5</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Total (USD)</span>
+                <strong>precio final</strong>
+            </li>
+        </ul>
+
+        <form class="card p-2">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Promo code">
+                <button type="submit" class="btn btn-secondary">Redeem</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Presupuesto del cliente</h4>
+        <form class="needs-validation" novalidate="">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <h5>{{ object.cliente.nombre }}</h5>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <h5>{{ object.cliente.apellido }}</h5>
+            </div>
+    </div>
+
+    <div class="col-12">
+        <h5>{{ object.vehiculo }}</h5>
+    </div>
+</div>
+<hr class="my-4">
+<div class="col-12">
+
+</div>
+<td>{{ object.detalles}}</td>
+</div>
+<hr class="my-4">
+<div class="col-12">
+
+</div>
+<td>{{ object.tareas.all| join:" <br /> " | safe }}</td>
+</div>
+<hr class="my-4">
+<div class="col-12">
+
+</div>
+    <td>{{ object.repuestos.all| join:" <br /> " | safe }}</td>
+</div>
+
+<hr class="my-4">
+<div class="col-md-5">
+
+</div>
+<td>{{ object.materiales.all| join:" <br /> " | safe}}</td>
+</div>
+
+
+
+
+</form>
+</div>
+</div>
+</div>
+<div class="col-6">
 
     <tbody>
         <tr>
             <td>{{ object.cliente }}</td>
             <td>{{ object.vehiculo }}</td>
             <td>{{ object.detalles}}</td>
-            <td>{{ object.tareas.all| join:" <br/> " | safe }}</td>
-            <td>{{ object.repuestos.all| join:" <br/> " | safe }}</td>
-            <td>{{ object.materiales.count}}</td>
+            <td>{{ object.tareas.all| join:" <br /> " | safe }}</td>
+            <td>{{ object.repuestos.all| join:" <br /> " | safe }}</td>
+            <td>{{ object.materiales.all| join:" <br /> " | safe}}</td>
             <td>{{ object.validez}}</td>
             <td>
             </td>

@@ -1,10 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 # http://....../?atributo__contains=valor
 # FILTRO = {'atributo__contains': valor}
 # ...?nombre__icontains=a&marca__exact=1
+
+def validacion_nombre_unico(modelo,campo,value):
+    aux= dict([(f"{campo}__iregex",f'^{value}$')])
+    if modelo.objects.filter(**aux).exists():
+       raise ValidationError({"nombre": "nombre ya existe"})
+   # return validateeven
+            
 
 
 def texto_to_query(texto):
@@ -30,6 +38,9 @@ class Marca(models.Model):
     def __str__(self):
         return self.nombre
 
+    def clean(self) -> None:
+        validacion_nombre_unico(Marca,"nombre",self.nombre)
+        return super().clean()
 
 class ModeloQuerySet(models.QuerySet):
     def filtrar(self, texto):
@@ -49,6 +60,9 @@ class Modelo(models.Model):
     def __str__(self):
         return self.nombre
 
+    def clean(self) -> None:
+        validacion_nombre_unico(Modelo,"nombre",self.nombre)
+        return super().clean()
 
 class TipoTarea(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
@@ -63,6 +77,9 @@ class TipoTarea(models.Model):
     def __str__(self):
         return self.nombre
 
+    def clean(self) -> None:
+        validacion_nombre_unico(TipoTarea,"nombre",self.nombre)
+        return super().clean()
 
 class Tarea(models.Model):
     nombre = models.CharField(max_length=50)
@@ -97,7 +114,7 @@ class Repuesto(models.Model):
     )
     nombre = models.CharField(max_length=50)
     modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
-    tipo = models.CharField(max_length=50)
+    tipo = models.PositiveSmallIntegerField(choices=TIPOS)
     cantidad = models.IntegerField(blank=True, null=True, default=0)
     precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
     
@@ -121,12 +138,16 @@ class TipoMaterial(models.Model):
         (METRO2, "metro2")
     )
     # Ejemplos: Remaches, Lijas, Fibra, Resina, Pintura, Masilla, Cinta
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50, unique=True)
     unidad_medida = models.PositiveSmallIntegerField(choices=UNIDADES_BASICAS)
 
     def __str__(self):
         return self.nombre
 
+    def clean(self) -> None:
+        validacion_nombre_unico(TipoMaterial,"nombre",self.nombre)
+        return super().clean()
+     
 
 class Material(models.Model):
     nombre = models.CharField(max_length=50)
@@ -198,3 +219,4 @@ class Empleado(models.Model):
         user.save()
         self.usuario = user
         return user
+

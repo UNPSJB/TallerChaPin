@@ -298,7 +298,6 @@ class MaterialDeleteView(DeleteView):
 class TipoMaterialCreateView(CreateView):
     model = TipoMaterial
     form_class = TipoMaterialForm
-    template_name = 'taller/tipo-material_form.html'  
     success_url = reverse_lazy('crearTipoMaterial')
 
      
@@ -306,6 +305,7 @@ class TipoMaterialCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar tipo material"
         return context
+
 
 class TipoMaterialListView(ListView):
     model = TipoMaterial
@@ -327,6 +327,7 @@ class TipoMaterialUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar tipo Material"
         return context
+
 
 
 class TipoMaterialDeleteView(DeleteView):

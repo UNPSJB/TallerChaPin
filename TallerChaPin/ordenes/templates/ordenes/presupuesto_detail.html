@@ -11,7 +11,6 @@
             <div class="ibox">
                 <div class="ibox-title">
                     <span class="pull-right">(<strong>{{object.tareas.all.count}}</strong>) elementos</span>   
-                    <!-- <h5>Detalles del presupuesto</h5> -->
                     <h1 class="mb-4">Ver presupuesto</h1>
                 </div>
 
@@ -60,12 +59,6 @@
                                                 {{ tarea.descripcion }}
                                             </p>
                                         </td>
-
-                                        <!-- <td class="d-flex justify-content-end">
-                                            <span>
-                                                
-                                            </span>
-                                        </td> -->
                                         <td width="65">
                                             <input type="text" class="form-control" placeholder="1" disabled>
                                         </td>
@@ -76,16 +69,7 @@
                                         </td>
                                     </tr>
                                 {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
 
-                <!-- Repuestos -->
-                <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table shoping-cart-table">
-                            <tbody>
                                 {% for repuesto in object.repuestos.all %}
                                     <tr>
                                         <td width="90">
@@ -98,7 +82,7 @@
                                                 {{ repuesto.nombre }}
                                             </h3>
                                             <p class="small">
-                                                Tipo de repuesto: {{ repuesto.tipo }}
+                                                {{ repuesto.tipo }}
                                             </p>
                                         </td>
                                         <td width="65">
@@ -106,7 +90,7 @@
                                         </td>
                                         <td>
                                             <h4 class="text-right">
-                                                {{ repuesto.precio }}
+                                                ${{ repuesto.precio }}
                                             </h4>
                                         </td>
                                     </tr>
@@ -115,16 +99,7 @@
                                         No se han cargado repuestos
                                     </div>
                                 {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
 
-                <!-- Materiales -->
-                <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table shoping-cart-table">
-                            <tbody>
                                 {% for material in object.materiales.all %}
                                     <tr>
                                         <td width="90">
@@ -137,7 +112,7 @@
                                                 {{ material.nombre }}
                                             </h3>
                                             <p class="small">
-                                                Tipo de material: {{ material.tipo }}
+                                                {{ material.tipo }}
                                             </p>
                                         </td>
                                         <td width="65">
@@ -145,7 +120,7 @@
                                         </td>
                                         <td>
                                             <h4 class="text-right">
-                                                {{ material.precio }}
+                                                ${{ material.precio }}
                                             </h4>
                                         </td>
                                     </tr>
@@ -175,7 +150,7 @@
                 </div>
                 <div class="ibox-content">
                     <h2 class="font-bold text-primary">
-                        <i class="fas fa-dollar-sign"></i> 390,00
+                        <i class="fas fa-dollar-sign"></i> {{presupuesto.precio_estimado}}
                     </h2>
                 </div>
             </div>

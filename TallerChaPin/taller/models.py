@@ -58,7 +58,7 @@ class Modelo(models.Model):
     objects = ModeloQuerySet.as_manager()
 
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre}, {self.marca}"
 
     def clean(self) -> None:
         validacion_nombre_unico(Modelo,"nombre",self.nombre)
@@ -119,7 +119,7 @@ class Repuesto(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
     
     def __str__(self):
-        return self.nombre
+        return f"{self.nombre}, {self.modelo}"
 
 
 class TipoMaterial(models.Model):

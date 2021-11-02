@@ -97,6 +97,10 @@ class PresupuestoMaterialForm(forms.ModelForm):
         model = PresupuestoMaterial
         fields = ("material",
                   "cantidad")
+                
+        widgets = {
+            'material': forms.Select(attrs={'autocomplete': 'off'})
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

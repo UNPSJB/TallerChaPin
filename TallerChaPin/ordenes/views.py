@@ -78,10 +78,16 @@ class PresupuestoUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(self.get_object().presupuesto_materiales.all().values())
-        context['presupuesto_material_formset'] = PresupuestoMaterialInline(initial = self.get_object().presupuesto_materiales.all().values()) #pasarle las lineas previas
+        initial_materiales = [
+            {'material': pm["material_id"], "cantidad": pm["cantidad"]} for pm in self.get_object().presupuesto_materiales.all().values()]
+        initial_repuestos = [
+            {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in self.get_object().presupuesto_repuestos.all().values()]
+
+        print(f"{initial_materiales=}")
+        print(f"{initial_repuestos=}")
+        context['presupuesto_material_formset'] = PresupuestoMaterialInline(initial = initial_materiales) #pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(initial = self.get_object().presupuesto_repuestos.all().values()) #pasarle las lineas previas
+        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(initial = initial_repuestos) #pasarle las lineas previas
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         context['titulo'] = "Modificar presupuesto"
         return context

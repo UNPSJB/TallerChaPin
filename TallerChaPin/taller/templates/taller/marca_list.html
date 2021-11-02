@@ -25,7 +25,7 @@
         <td>{{ marca.descripcion }}</td>
         <td>
           <a href="{% url 'modificarMarca' marca.pk %}"
-            class="btn btn-light btn-sm">
+            class="btn-listado btn-modificar">
             <svg xmlns="http://www.w3.org/2000/svg"
               width="16" height="16" fill="currentColor"
               class="bi bi-pencil-square"
@@ -44,7 +44,7 @@
             data-bs-target="#customModal"
             data-bs-nombre="{{marca.nombre}}" 
             data-bs-url="{% url 'eliminarMarca' marca.pk %}" 
-            class="btn btn-light btn-sm btn-eliminar">
+            class="btn-eliminar btn-listado">
             <svg xmlns="http://www.w3.org/2000/svg"
               width="16" height="16" fill="currentColor"
               class="bi bi-download" viewBox="0 0 16 16">

@@ -79,9 +79,9 @@
                                             {{ repuesto.nombre }}
                                         </h4>
                                         <p class="small">
-                                            {{ repuesto.tipo }}
+                                            {{repuesto.get_tipo_display}}
                                         </p>
-                                    </td>
+                                </td>
                                     <td width="65" class="align-middle">
                                         <input type="text" class="form-control" placeholder="1" disabled>
                                     </td>
@@ -140,7 +140,7 @@
                 data-bs-nombre="{{presupuesto.cliente.apellido}}" 
                 data-bs-url="{% url 'eliminarPresupuesto' presupuesto.pk %}" 
                 class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
-                
+
                 <button class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </button>
                 <button class="btn btn-primary m-1 w-100"><i class="fas fa-plus-circle"></i> Ampliar </button>
                 <button class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </button>

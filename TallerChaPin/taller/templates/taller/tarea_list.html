@@ -22,7 +22,7 @@
         <td>{{ tarea.tipo }}</td>
         <td>{{ tarea.precio }}</td>
         <td>
-          <a href="{% url 'modificarTarea' tarea.pk %}" class="btn btn-light btn-sm">
+          <a href="{% url 'modificarTarea' tarea.pk %}" class="btn-listado btn-modificar">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-pencil-square" viewBox="0 0 16 16">
               <path
@@ -37,7 +37,7 @@
           data-bs-toggle="modal" 
           data-bs-target="#customModal" 
           data-bs-nombre="{{tarea.nombre}}"
-            data-bs-url="{% url 'eliminarTarea' tarea.pk %}" class="btn btn-light btn-sm btn-eliminar">
+            data-bs-url="{% url 'eliminarTarea' tarea.pk %}" class="btn-listado btn-eliminar">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
               viewBox="0 0 16 16">
               <path

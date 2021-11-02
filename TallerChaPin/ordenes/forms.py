@@ -112,7 +112,7 @@ PresupuestoMaterialInline = inlineformset_factory(
     Presupuesto,
     PresupuestoMaterial,
     form=PresupuestoMaterialForm,
-    extra=1,
+    # extra=1,
     # max_num=5,
     # fk_name=None,
     # fields=None, exclude=None, can_order=False,
@@ -142,6 +142,10 @@ class PresupuestoRepuestoForm(forms.ModelForm):
         fields = ("repuesto",
                   "cantidad")
 
+        widgets = {
+            'repuesto': forms.Select(attrs={'autocomplete': 'off'})
+        }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -152,7 +156,7 @@ PresupuestoRepuestoInline = inlineformset_factory(
     Presupuesto,
     PresupuestoRepuesto,
     form=PresupuestoRepuestoForm,
-    extra=1,
+    # extra=1,
     # max_num=5,
     # fk_name=None,
     # fields=None, exclude=None, can_order=False,

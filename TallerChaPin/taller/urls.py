@@ -108,6 +108,10 @@ urlpatterns = [
 
     path('clientes/listar', ClienteListView.as_view(), name='listarClientes'),
     path('clientes/crear', ClienteCreateView.as_view(), name='crearCliente'),
+        path('clientes/modificar/<int:pk>',
+        ClienteUpdateView .as_view(), name="modificarCliente"),
+    path('clientes/eliminar/<int:pk>',
+         ClienteDeleteView.as_view(), name="eliminarCliente"),
 
     # ----------------- VEHICULOS -----------------
 

@@ -52,17 +52,18 @@ class PresupuestoCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['presupuesto_material_formset'] = PresupuestoMaterialInline()
+        context['presupuesto_material_formset'] = PresupuestoMaterialInline()()
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline()
+        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline()()
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         context['titulo'] = "Registrar Presupuesto"
         return context
 
     def post(self, *args, **kwargs):
-        pmi = PresupuestoMaterialInline(self.request.POST)
-        pri = PresupuestoRepuestoInline(self.request.POST)
+        pmi = PresupuestoMaterialInline()(self.request.POST)
+        pri = PresupuestoRepuestoInline()(self.request.POST)
         form = PresupuestoForm(self.request.POST)
+        print(pmi.cleaned_data,pri.cleaned_data)
         if pmi.is_valid() and pri.is_valid() and form.is_valid():
             # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
             presupuesto = form.save(pmi.cleaned_data, pri.cleaned_data)
@@ -85,9 +86,9 @@ class PresupuestoUpdateView(UpdateView):
 
         print(f"{initial_materiales=}")
         print(f"{initial_repuestos=}")
-        context['presupuesto_material_formset'] = PresupuestoMaterialInline(initial = initial_materiales) #pasarle las lineas previas
+        context['presupuesto_material_formset'] = PresupuestoMaterialInline(len(initial_materiales))(initial = initial_materiales) #pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(initial = initial_repuestos) #pasarle las lineas previas
+        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(len(initial_repuestos))(initial = initial_repuestos) #pasarle las lineas previas
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         context['titulo'] = "Modificar presupuesto"
         return context

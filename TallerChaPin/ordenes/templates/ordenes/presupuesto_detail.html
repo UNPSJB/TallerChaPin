@@ -141,7 +141,7 @@
                 data-bs-url="{% url 'eliminarPresupuesto' presupuesto.pk %}" 
                 class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
 
-                <button class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </button>
+                <a href="{% url 'modificarPresupuesto' presupuesto.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
                 <button class="btn btn-primary m-1 w-100"><i class="fas fa-plus-circle"></i> Ampliar </button>
                 <button class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </button>
             </div>

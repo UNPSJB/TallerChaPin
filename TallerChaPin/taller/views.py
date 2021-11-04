@@ -1,11 +1,15 @@
 from django.urls import reverse_lazy
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import render,get_object_or_404
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
 from .forms import * 
 # Create your views here.
 
+def UnidadesDeMedida(request,pk):
+    material=get_object_or_404(Material, pk=pk)
+    return JsonResponse({'material': material.tipo.get_unidad_medida_display()})
 
 class ListFilterView(ListView):
     filtros = None

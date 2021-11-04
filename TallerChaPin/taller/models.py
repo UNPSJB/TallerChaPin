@@ -156,7 +156,7 @@ class Material(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 
     def __str__(self):
-        return f"{self.nombre} ({self.tipo})"
+        return f"{self.nombre} ({self.tipo}) {self.tipo.get_unidad_medida_display()}"
 
     def menos_stock(self, cantidad):
         self.cantidad -= cantidad

@@ -96,7 +96,8 @@ class PresupuestoMaterialForm(forms.ModelForm):
     class Meta:
         model = PresupuestoMaterial
         fields = ("material",
-                  "cantidad")
+                  "cantidad",
+                  )
                 
         widgets = {
             'material': forms.Select(attrs={'autocomplete': 'off'})
@@ -108,19 +109,20 @@ class PresupuestoMaterialForm(forms.ModelForm):
         
 
 
-PresupuestoMaterialInline = inlineformset_factory(
-    Presupuesto,
-    PresupuestoMaterial,
-    form=PresupuestoMaterialForm,
-    # extra=1,
-    # max_num=5,
-    # fk_name=None,
-    # fields=None, exclude=None, can_order=False,
-    # can_delete=True, max_num=None, formfield_callback=None,
-    # widgets=None, validate_max=False, localized_fields=None,
-    # labels=None, help_texts=None, error_messages=None,
-    # min_num=None, validate_min=False, field_classes=None
-)
+def PresupuestoMaterialInline(extra=1): 
+    return inlineformset_factory(
+        Presupuesto,
+        PresupuestoMaterial,
+        form=PresupuestoMaterialForm,
+        extra=extra,
+        # max_num=10,
+        # fk_name=None,
+        # fields=None, exclude=None, can_order=False,
+        # can_delete=True, max_num=None, formfield_callback=None,
+        # widgets=None, validate_max=False, localized_fields=None,
+        # labels=None, help_texts=None, error_messages=None,
+        # min_num=None, validate_min=False, field_classes=None
+    )
 
 class PresupuestoMaterialFormSetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
@@ -152,19 +154,20 @@ class PresupuestoRepuestoForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-PresupuestoRepuestoInline = inlineformset_factory(
-    Presupuesto,
-    PresupuestoRepuesto,
-    form=PresupuestoRepuestoForm,
-    # extra=1,
-    # max_num=5,
-    # fk_name=None,
-    # fields=None, exclude=None, can_order=False,
-    # can_delete=True, max_num=None, formfield_callback=None,
-    # widgets=None, validate_max=False, localized_fields=None,
-    # labels=None, help_texts=None, error_messages=None,
-    # min_num=None, validate_min=False, field_classes=None
-)
+def PresupuestoRepuestoInline(extra=1):
+    return inlineformset_factory(
+        Presupuesto,
+        PresupuestoRepuesto,
+        form=PresupuestoRepuestoForm,
+        extra=extra,
+        # max_num=5,
+        # fk_name=None,
+        # fields=None, exclude=None, can_order=False,
+        # can_delete=True, max_num=None, formfield_callback=None,
+        # widgets=None, validate_max=False, localized_fields=None,
+        # labels=None, help_texts=None, error_messages=None,
+        # min_num=None, validate_min=False, field_classes=None
+    )
 
 
 class PresupuestoRepuestoFormSetHelper(FormHelper):

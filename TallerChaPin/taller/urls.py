@@ -1,46 +1,10 @@
 from django.urls import path
 from .views import *
-from .views import (
-    ClienteCreateView,
-    EmpleadoListView,
-    MarcaListView,
-    MaterialListView,
-    MaterialCreateView,
-    MaterialUpdateView,
-    MaterialDeleteView,
-    ModeloCreateView, 
-    ModeloListView,
-    MarcaCreateView,
-    ClienteListView,
-    RepuestoCreateView,
-    RepuestoListView,
-    RepuestoUpdateView,
-    RepuestoDeleteView,
-    VehiculoListView,
-    EmpleadoCreateView,
-    EmpleadoUpdateView,
-    EmpleadoDeleteView,
-    EmpleadoListView,
-    TareaCreateView,
-    MarcaUpdateView,
-    MarcaDeleteView,
-    ModeloUpdateView,
-    ModeloDeleteView,
-    TipoTareaCreateView,
-    TipoTareaUpdateView,
-    TipoTareaDeleteView,
-    TipoTareaListView,
-    TareaListView,
-    TareaUpdateView,
-    TareaDeleteView,
-    TareaListView,
-    MarcaUpdateView, 
-    MarcaDeleteView,
-    TipoMaterialCreateView
-)
 
 
 urlpatterns = [
+
+    path('materiales/unidades_de_medida/<int:pk>', UnidadesDeMedida),
     # ----------------- MARCAS -----------------
 
     path('marcas/crear', MarcaCreateView.as_view(), name="crearMarca"),
@@ -49,7 +13,7 @@ urlpatterns = [
          MarcaUpdateView.as_view(), name="modificarMarca"),
     path('marca/eliminar/<int:pk>',
          MarcaDeleteView.as_view(), name="eliminarMarca"),
-         
+
     # ----------------- TAREAS -----------------
 
     path('tarea/crear', TareaCreateView.as_view(), name="crearTarea"),
@@ -96,20 +60,22 @@ urlpatterns = [
          MaterialUpdateView.as_view(), name="modificarMaterial"),
 
     # ----------------- TIPOS MTERIALES -----------------
-    
-    path('tipos-materiales/crear', TipoMaterialCreateView.as_view(), name="crearTipoMaterial"),
-    path('tipos-materiales/listar', TipoMaterialListView.as_view(), name="listarTipoMateriales"),
+
+    path('tipos-materiales/crear', TipoMaterialCreateView.as_view(),
+         name="crearTipoMaterial"),
+    path('tipos-materiales/listar', TipoMaterialListView.as_view(),
+         name="listarTipoMateriales"),
     path('tipos-materiales/modificar/<int:pk>',
-        TipoMaterialUpdateView .as_view(), name="modificarTipoMaterial"),
+         TipoMaterialUpdateView .as_view(), name="modificarTipoMaterial"),
     path('tipos-materiales/eliminar/<int:pk>',
          TipoMaterialDeleteView.as_view(), name="eliminarTipoMaterial"),
-    
+
     # ----------------- CLIENTES -----------------
 
     path('clientes/listar', ClienteListView.as_view(), name='listarClientes'),
     path('clientes/crear', ClienteCreateView.as_view(), name='crearCliente'),
-        path('clientes/modificar/<int:pk>',
-        ClienteUpdateView .as_view(), name="modificarCliente"),
+    path('clientes/modificar/<int:pk>',
+         ClienteUpdateView .as_view(), name="modificarCliente"),
     path('clientes/eliminar/<int:pk>',
          ClienteDeleteView.as_view(), name="eliminarCliente"),
 

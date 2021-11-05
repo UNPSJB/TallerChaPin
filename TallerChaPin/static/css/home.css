@@ -56,3 +56,7 @@
 .facturas:hover{
     background-color: rgb(116, 197, 113);
 }
+
+.btn-salir{
+    margin-top: 10rem;
+}

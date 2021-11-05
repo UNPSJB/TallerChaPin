@@ -2,9 +2,7 @@
 {% load static %} 
 
 {% block container %} 
-    {% block nav %} 
-        {% include 'nav_home.html' %} 
-    {% endblock %}
+    
 
     <div class="contenedor">
         <div class="encabezado shadow-lg">
@@ -56,6 +54,12 @@
                     <p>
                         <a class="btn btn-primary w-100" href="{% url 'facturas_home' %}" role="button">Acceder »</a>
                     </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{% url 'logout' %}" class="btn btn-outline-danger w-100 btn-salir" role="button">Salir <i class="fas fa-sign-out-alt"></i></a>
                 </div>
             </div>
         </div>

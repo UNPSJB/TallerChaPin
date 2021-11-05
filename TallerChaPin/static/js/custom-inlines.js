@@ -48,7 +48,7 @@ const inlineFormset = function ($context) {
   const table = $('.d-none.empty-form', $context).parents('table');
   const tbody = $('tbody', table);
   
-  const agregarRenglon = $('<tfoot><tr><td colspan="3"><a class="btn btn-sm btn-warning ">Agregar</a></td></tr></tfoot>');
+  const agregarRenglon = $('<tfoot><tr><td colspan="4"><a class="btn btn-sm btn-warning ">Agregar</a></td></tr></tfoot>');
   
   $('a', agregarRenglon).click(() => {
     const totalForms = $('#id_' + prefix + '-TOTAL_FORMS').prop('autocomplete', 'off');

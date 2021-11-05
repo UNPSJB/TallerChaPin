@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from taller.models import TipoMaterial
 from django.db.models.query import QuerySet
 from django.db.models import Q, Model, fields
 from crispy_forms.helper import FormHelper
@@ -93,6 +94,10 @@ class PresupuestoForm(forms.ModelForm):
 # Presupuesto - Material
 
 class PresupuestoMaterialForm(forms.ModelForm):
+    unidad_medida = forms.ChoiceField(
+        choices=TipoMaterial.UNIDADES_BASICAS,
+        widget=forms.Select(attrs={'disabled':''}))
+
     class Meta:
         model = PresupuestoMaterial
         fields = ("material",

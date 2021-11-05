@@ -49,3 +49,12 @@
     transition: color 0.25s;
     color: #10770d;
 }
+
+.unidad-medida {
+    width: 100%;
+    text-align: center;
+}
+
+th[for$="cantidad"]{
+    width: 100px;
+}

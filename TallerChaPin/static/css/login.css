@@ -7,10 +7,8 @@ body {
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: rgba(13, 110, 253, .5);
-    /* background-image: url('../images/background.jpg'); */
+    background-image: url('../images/taller-blur.jpg');
     background-repeat: no-repeat;
-    background-blend-mode: luminosity;
     background-size: cover;
 }
 
@@ -58,4 +56,19 @@ body {
 .divider {
     height: 1px;
     color:rgba(0, 0, 0, .4)
+}
+
+.logo{
+    width: 100%;
+    padding: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.efecto{
+    transition: all 0.2s ease;
+}
+
+.efecto:hover{
+    transform: scale(1.05);
 }

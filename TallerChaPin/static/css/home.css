@@ -37,12 +37,10 @@
     justify-content: space-between;
 
     background-color: white;
-    /* transition: background-color .5s; */
     transition: all 0.2s ease;
 }
 
 .seccion:hover{
-    /* transition: background-color .5s; */
     box-shadow: 5px 6px 6px 2px #e9ecef;
     transform: scale(1.05);
     border-radius: .3rem;

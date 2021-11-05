@@ -6,18 +6,27 @@
 }
 
 .encabezado{
-    padding: 2rem;
-    background-color: rgb(190, 189, 189);
+    padding: 1.5rem;
+    background-color: #0D6EFD;
     transition: background-color .5s;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.encabezado *{
+    color: white;
 }
 
 .encabezado:hover{
-    background-color: white;
+    background-color: #0B5ED7;
     transition: background-color .5s;
 }
 
 .secciones{
-    margin-top: 10rem;
+    margin-top: 8rem;
 }
 
 .seccion{
@@ -28,11 +37,15 @@
     justify-content: space-between;
 
     background-color: white;
-    transition: background-color .5s;
+    /* transition: background-color .5s; */
+    transition: all 0.2s ease;
 }
 
 .seccion:hover{
-    transition: background-color .5s;
+    /* transition: background-color .5s; */
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    transform: scale(1.05);
+    border-radius: .3rem;
 }
 
 .taller{
@@ -58,5 +71,14 @@
 }
 
 .btn-salir{
-    margin-top: 10rem;
+    margin-top: 6rem;
+}
+
+.logo{
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-bottom: 2rem;
 }

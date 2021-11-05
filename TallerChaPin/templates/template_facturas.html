@@ -1,5 +1,7 @@
 {% extends 'main.html' %} {% load static %} {% block extracss %}
 <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
+<link rel="stylesheet" href="{% static 'css/accesos-directos.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
 {% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' %} {% endblock %}
 
@@ -11,6 +13,44 @@
 
     <div class="col-7 mt-4">
       {% block main %}
+        <h1 class="mt-3">
+          <a href="{% url 'home' %}"><i class="fas fa-arrow-left atras"></i></a>
+          Accesos directos
+        </h1>
+
+        <div class="row mt-4 d-flex justify-content-center align-items-center">
+
+          <a href="#" class="col-md-3 shadow-lg acceso">
+            <h2><i class="fas fa-file-invoice-dollar"></i></i> Facturar órden</h2>
+            <p>
+              <i class="fas fa-th-list listar"></i> Realizar la factura correspondiente a una órden de trabajo.
+            </p>
+          </a>
+          
+          <a href="#" class="col-md-3 shadow-lg acceso">
+            <h2><i class="fas fa-file-invoice-dollar"></i></i> Ver facturas</h2>
+            <p>
+              <i class="fas fa-th-list listar"></i> Abrir el listado de facturas.
+            </p>
+          </a>
+        </div>
+
+        <div class="row mt-4 d-flex justify-content-center align-items-center">
+            
+          <a href="#" class="col-md-3 shadow-lg acceso">
+            <h2><i class="fas fa-file-alt"></i> Registrar pago</h2>
+            <p>
+              <i class="fas fa-plus-circle agregar"></i> Registrar el pago de una factura.
+            </p>
+          </a>
+            
+          <a href="#" class="col-md-3 shadow-lg acceso">
+            <h2><i class="fas fa-user"></i> Ver clientes</h2>
+            <p>
+              <i class="fas fa-th-list listar"></i> Abrir el listado de clientes.
+            </p>
+          </a>
+        </div>
       
       {% endblock %}
     </div>

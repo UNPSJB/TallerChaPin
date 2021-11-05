@@ -1,0 +1,40 @@
+.logo-navbar{
+    height: 3rem;
+    margin-left: 2rem;
+}
+
+.navbar{
+    padding: 0;
+}
+
+.nav-link{
+    color: white
+}
+
+.nav-link:focus, .nav-link:hover{
+    color: white;
+}
+
+.secciones-nav{
+    background-color: #0B5ED7;
+    border-radius: .3rem;
+    margin-left: 1rem;
+}
+
+.secciones-nav a{
+    border-radius: .3rem;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    height: 100%;
+}
+
+.secciones-nav .nav-link:hover{
+    background-color: #0647a8;
+}
+
+.seccion-nav{
+    border-radius: .3rem;
+    border: 1px solid #0647a8;
+    margin: 0 .5rem;
+}

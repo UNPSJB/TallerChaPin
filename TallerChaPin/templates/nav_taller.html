@@ -1,25 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-dark mr-auto bg-primary">
-  <a class="navbar-brand" href="{% url 'home' %}">Taller ChaPin</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'taller_home' %}">Taller </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="{% url 'ordenes_home' %}">Ordenes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="{% url 'facturas_home' %}">Facturas</a>
-      </li>
-    </ul>
-    <form class="form-inline my-1 my-sm-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+  <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{% static 'images/chapin-icon.png' %}"" alt="Taller ChaPin" class="logo-navbar">
+  </a>
+  <div class="collapse navbar-collapse h-100" id="navbarCollapse">
 
-    </form>
+    <div class="secciones-nav d-flex align-items-center">
+      <a class="nav-link" href="{% url 'taller_home' %}"><i class="fas fa-wrench"></i> Taller </a>
+      <a class="nav-link" href="{% url 'ordenes_home' %}"><i class="fas fa-receipt"></i> Ordenes</a>
+      <a class="nav-link" href="{% url 'facturas_home' %}"><i class="fas fa-file-invoice-dollar"></i> Facturas</a>
+    </div>
+    
+    <!-- <div class="secciones-nav d-flex">
+      <a class="nav-link" href="{% url 'listarClientes' %}"><i class="fas fa-th-list"></i> Clientes</a>
+      <a class="nav-link" href="{% url 'crearCliente' %}"><i class="fas fa-plus-circle"></i> Cliente</a>
+    </div>
+
+    <div class="d-flex secciones-nav">
+      <a class="nav-link" href="{% url 'listarVehiculos' %}"><i class="fas fa-th-list"></i> Vehículos</a>
+      <a class="nav-link" href="{% url 'crearVehiculo' %}"><i class="fas fa-plus-circle"></i> Vehiculo</a>
+    </div>
+
+    <div class="d-flex secciones-nav">
+      <a class="nav-link" href="{% url 'listarMateriales' %}"><i class="fas fa-th-list"></i> Materiales</a>
+      <a class="nav-link" href="{% url 'crearMaterial' %}"><i class="fas fa-plus-circle"></i> Material</a>
+    </div>
+
+    <div class="d-flex secciones-nav">
+      <a class="nav-link" href="{% url 'listarRepuestos' %}"><i class="fas fa-th-list"></i> Repuestos</a>
+      <a class="nav-link" href="{% url 'crearRepuesto' %}"><i class="fas fa-plus-circle"></i> Repuesto</a>
+    </div> -->
+
+    <!-- <a class="nav-link" href="{% url 'listarRepuestos' %}"><i class="fas fa-th-list"></i> Empleados</a> -->
   </div>
 </nav>

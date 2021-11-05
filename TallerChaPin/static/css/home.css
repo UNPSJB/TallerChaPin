@@ -1,0 +1,58 @@
+.contenedor{
+    background-image: url('../images/taller-blur.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.encabezado{
+    padding: 2rem;
+    background-color: rgb(190, 189, 189);
+    transition: background-color .5s;
+}
+
+.encabezado:hover{
+    background-color: white;
+    transition: background-color .5s;
+}
+
+.secciones{
+    margin-top: 10rem;
+}
+
+.seccion{
+    padding: 1.3rem 1rem 0rem 1rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: white;
+    transition: background-color .5s;
+}
+
+.seccion:hover{
+    transition: background-color .5s;
+}
+
+.taller{
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+}
+
+.facturas{
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+}
+
+.taller:hover{
+    background-color: rgb(139, 183, 219);
+}
+
+.ordenes:hover{
+    background-color: rgb(241, 79, 79);
+}
+
+.facturas:hover{
+    background-color: rgb(116, 197, 113);
+}

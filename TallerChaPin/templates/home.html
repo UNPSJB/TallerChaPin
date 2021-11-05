@@ -1,5 +1,65 @@
-{% extends 'main.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
-{% block main %}
-{% endblock %}
+{% block container %} 
+    {% block nav %} 
+        {% include 'nav_home.html' %} 
+    {% endblock %}
+
+    <div class="contenedor">
+        <div class="encabezado shadow-lg">
+            <div class="container">
+                <h1 class="display-1 mb-2">Taller ChaPin</h1>
+                <p>
+                    Taller ChaPin es un taller de reparaciones generales relacionadas a la
+                    carrocería de vehículos (chapa, pintura, faros, cristales, tren delantero,
+                    etc.) y algunos trabajos de mecánica. Cuenta con personal especializado en
+                    cada tarea, y con áreas definidas (Administración, Chapa, Pintura y
+                    Mecánica). Su clientela está compuesta por particulares que desean
+                    realizar reparaciones a sus vehículos.
+                </p>
+                <span><i class="fas fa-map-pin"></i> Trelew, Chubut</span>
+            </div>
+        </div>
+        
+        <div class="container secciones">
+            <div class="row mt-4">
+                <div class="col-md-4 seccion taller">
+                    <h2><i class="fas fa-wrench"></i> Taller</h2>
+                    <p>
+                        Sección del sistema en donde se gestiona stock, clientes, vehículos,
+                        tareas, materiales, repuestos, empleados, modelos y marcas.
+                    </p>
+                    <p>
+                        <a class="btn btn-primary w-100" href="{% url 'taller_home' %}" role="button">Acceder »</a>
+                    </p>
+                </div>
+                
+                <div class="col-md-4 seccion ordenes">
+                    <h2><i class="fas fa-receipt"></i> Órdenes</h2>
+                    <p>
+                        Sección del sistema donde se crean, confirman y amplían presupuestos; se
+                        modifican turnos; se cancelan órdenes de trabajo; y se registra el
+                        ingreso/egreso de vehículos.
+                    </p>
+                    <p>
+                        <a class="btn btn-primary w-100" href="{% url 'ordenes_home' %}" role="button">Acceder »</a>
+                    </p>
+                </div>
+                
+                <div class="col-md-4 seccion facturas">
+                    <h2><i class="fas fa-file-invoice-dollar"></i> Facturas</h2>
+                    <p>
+                        Sección del sistema donde se facturan órdenes de trabajo, se registran
+                        pagos, se listan los clientes y se verifican los pagos pendientes.
+                    </p>
+                    <p>
+                        <a class="btn btn-primary w-100" href="{% url 'facturas_home' %}" role="button">Acceder »</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        {% endblock %}
+        

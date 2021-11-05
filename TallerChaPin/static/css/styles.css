@@ -42,7 +42,7 @@
 
 .btn-eliminar:hover{
     transition: color 0.25s;
-    color: #d11a1a
+    color: #d11a1a;
 }
 
 .btn-ver:hover{

@@ -8,7 +8,8 @@
 }
 
 .nav-link{
-    color: white
+    color: white;
+    padding: 0.5rem 0.8rem;
 }
 
 .nav-link:focus, .nav-link:hover{
@@ -25,8 +26,20 @@
     border-radius: .3rem;
     text-decoration: none;
     color: white;
-    display: inline-block;
-    height: 100%;
+}
+
+.primero:hover{
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.ultimo:hover{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.medio:hover{
+    border-radius: 0;
 }
 
 .secciones-nav .nav-link:hover{

@@ -1,11 +1,11 @@
 from django.urls import path
 from .views import *
-from django.conf.urls.defaults import url, patterns
+# from django.conf.urls.defaults import url, patterns
 from wkhtmltopdf.views import PDFTemplateView
 
-urlpatterns = patterns('',
-
-)
+# urlpatterns = patterns('',
+# Esto generaba errores!!!
+# )
 
 urlpatterns = [
     # ----------------- Presupuesto -----------------

@@ -29,6 +29,5 @@ urlpatterns = [
          OrdenTrabajoDeleteView.as_view(), name="eliminarOrden"), # No se elimina como tal, se cambia el estado a cancelado
 
      # ----------------PDF-------------------------
-     #     url(r'^pdf/$', PDFTemplateView.as_view(template_name='my_template.html',
-     #                                       filename='my_pdf.pdf'), name='pdf'),
+     path(r'^pdf/$', PDFTemplateView.as_view(template_name='template_pdf.html', filename='my_pdf.pdf'), name='pdf'),
 ]

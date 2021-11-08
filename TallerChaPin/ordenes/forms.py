@@ -231,11 +231,93 @@ class PresupuestoFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "cliente",
                 "vehiculo",
-                "detalles",
+            "detalles",
                 "tareas",
                 "materiales",
                 "repuestos",
                 # "validez",
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
+
+# Orden de trabajo - Form
+
+class OrdenForm(forms.ModelForm):
+
+    class Meta:
+            model = OrdenDeTrabajo
+            fields = "__all__"
+            # exclude = [""]
+
+            # labels = {
+
+            # }
+            widgets = {
+                "tareas": forms.CheckboxSelectMultiple(),
+            }
+
+    def save(self, materiales, repuestos):
+        # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
+        orden = super().save()
+        for material in materiales:
+            if "material" in material:
+                matObj = material["material"]
+                matCantidad = material["cantidad"]
+                orden.agregar_material(matObj,matCantidad)
+        for repuesto in repuestos:
+            if "repuesto" in repuesto:
+                repObj = repuesto["repuesto"]
+                repCantidad = repuesto["cantidad"]
+                orden.agregar_repuesto(repObj,repCantidad)
+        return orden
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+
+class OrdenTrabajoFiltrosForm(FiltrosForm):
+    ORDEN_CHOICES = [
+        ("cliente", "Cliente"),
+        ("vehiculo", "Vehiculo"),
+        ("detalles", "Detalles"),
+        ("tareas", "Tareas"),
+        ("repuestos", "Repuestos"),
+        ("materiales", "Materiales")
+    ]
+
+    cliente = forms.ModelChoiceField(
+        queryset=Cliente.objects.all(), required=False)
+    vehiculo = forms.ModelChoiceField(
+        queryset=Vehiculo.objects.all(), required=False)
+    detalles = forms.CharField(required=False, max_length=200)
+    tareas = forms.ModelChoiceField(
+        queryset=Tarea.objects.all(), required=False)
+    materiales = forms.ModelChoiceField(
+        queryset=Material.objects.all(), required=False)
+    repuestos = forms.ModelChoiceField(
+        queryset=Repuesto.objects.all(), required=False)
+
+    orden = forms.CharField(
+        required=False
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "cliente",
+                "vehiculo",
+            "detalles",
+                "tareas",
+                "materiales",
+                "repuestos",
+                
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

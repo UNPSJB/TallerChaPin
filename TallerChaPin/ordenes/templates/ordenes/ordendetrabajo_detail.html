@@ -34,7 +34,7 @@
                 </div>
                 <div class="ibox-content">
                     <h2 class="font-bold text-primary">
-                        <i class="fas fa-dollar-sign"></i> {{Orden.precio_estimado}}
+                        <i class="fas fa-dollar-sign"></i> {{object.precio_estimado}}
                     </h2>
                 </div>
             </div>
@@ -137,11 +137,11 @@
                 <button href="#" 
                 data-bs-toggle="modal" 
                 data-bs-target="#customModal"
-                data-bs-nombre="{{orden.cliente.apellido}}" 
-                data-bs-url="{% url 'eliminarOrden' orden.pk %}" 
+                data-bs-nombre="{{object.cliente.apellido}}" 
+                data-bs-url="{% url 'eliminarOrden' object.pk %}" 
                 class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
 
-                <a href="{% url 'modificarOrden' orden.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
+                <a href="{% url 'modificarOrden' object.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
                 <button class="btn btn-primary m-1 w-100"><i class="fas fa-plus-circle"></i> Ampliar </button>
                 <button class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </button>
             </div>

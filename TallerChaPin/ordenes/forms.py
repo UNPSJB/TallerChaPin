@@ -73,7 +73,6 @@ class PresupuestoForm(forms.ModelForm):
     def save(self, materiales, repuestos):
         # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
         presupuesto = super().save()
-        print(repuestos)
         for material in materiales:
             if "material" in material:
                 matObj = material["material"]
@@ -247,17 +246,19 @@ class OrdenForm(forms.ModelForm):
     class Meta:
             model = OrdenDeTrabajo
             fields = "__all__"
-            # exclude = [""]
+            exclude = ["egreso", "estado", "ingreso","materiales","repuestos"]
 
             # labels = {
 
             # }
             widgets = {
                 "tareas": forms.CheckboxSelectMultiple(),
+                "turno": forms.DateTimeInput( format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
             }
 
-    def save(self, materiales, repuestos):
+    def save(self, repuestos, materiales, turno):
         # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
+        print(self.data, self.cleaned_data)
         orden = super().save()
         for material in materiales:
             if "material" in material:
@@ -270,11 +271,13 @@ class OrdenForm(forms.ModelForm):
                 repCantidad = repuesto["cantidad"]
                 orden.agregar_repuesto(repObj,repCantidad)
         return orden
+        
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_tag = False
+        # self.helper.form_tag = False
+        self.helper.add_input(Submit('submit', 'Guardar'))
 
 class OrdenTrabajoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [

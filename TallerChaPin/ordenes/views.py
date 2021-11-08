@@ -132,15 +132,16 @@ class OrdenTrabajoCreateView(CreateView):
         context['titulo'] = "Registrar Orden"
         return context
 
-    # def post(self, *args, **kwargs):
-    #     pmi = PresupuestoMaterialInline()(self.request.POST)
-    #     pri = PresupuestoRepuestoInline()(self.request.POST)
-    #     form = PresupuestoForm(self.request.POST)
-        
-    #     if pmi.is_valid() and pri.is_valid() and form.is_valid():
-    #         # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
-    #         orden = form.save(pmi.cleaned_data, pri.cleaned_data)
-    #     return redirect ('detallesOrden',orden.pk)
+    def post(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        presupuesto = Presupuesto.objects.get(pk=pk)
+        form = OrdenForm(self.request.POST)
+        if form.is_valid():
+            # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
+            turno = form.cleaned_data.get('turno')
+            orden = presupuesto.confirmar(turno)
+            return redirect ('detallesOrden', orden.pk)
+        return redirect('crearOrden', presupuesto.pk)
 
 
 

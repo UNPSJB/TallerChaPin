@@ -11,11 +11,12 @@ from wkhtmltopdf.views import PDFTemplateView
 
 
 class MyPDF(PDFTemplateView):
-    filename = 'my_pdf.pdf'
-    template_name = 'template_pdf.html'
+    filename = 'ordenes/my_pdf.pdf'
+    template_name = 'ordenes/template_pdf.html'
     cmd_options = {
         'margin-top': 3,
     }
+    #TODO: pasarle cosas por contexto
 
 #Clase repetida... 
 class ListFilterView(ListView):

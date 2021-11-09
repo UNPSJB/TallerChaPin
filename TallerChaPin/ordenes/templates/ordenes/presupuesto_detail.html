@@ -127,7 +127,9 @@
                 </div>
             </div>
             <div class="ibox-content mb-4">
-                <button class="btn btn-primary pull-right"><i class="fa fa-print" aria-hidden="true"></i> Imprimir</button>
+                <a href="{% url 'imprimirPresupuesto' object.pk %}" class="btn btn-primary pull-right">
+                    <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                </a>
                 <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Volver</button>
             </div>
         </div>

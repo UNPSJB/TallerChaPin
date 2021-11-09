@@ -10,13 +10,20 @@ from .forms import *
 from wkhtmltopdf.views import PDFTemplateView
 
 
-class MyPDF(PDFTemplateView):
-    filename = 'ordenes/my_pdf.pdf'
+class imprimirPresupuesto(PDFTemplateView):
+    #filename = 'presupuesto_pedro.pdf'
     template_name = 'ordenes/template_pdf.html'
     cmd_options = {
         'margin-top': 3,
     }
-    #TODO: pasarle cosas por contexto
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = kwargs.get('pk')
+        presupuesto = Presupuesto.objects.get(pk=pk)
+        self.filename = presupuesto.cliente.nombre + '.pdf' # definimos el nombre del pdf con datos del cliente.
+        context["presupuesto"] = presupuesto # pasamos el objeto presupuesto para usarlo en el template.
+        return context
 
 #Clase repetida... 
 class ListFilterView(ListView):

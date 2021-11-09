@@ -1,5 +1,9 @@
 from django.urls import path
 from .views import *
+<<<<<<< HEAD
+=======
+from wkhtmltopdf.views import PDFTemplateView
+>>>>>>> 4ae9364cd24411e6f0d6632a379901984e9b521f
 
 urlpatterns = [
     # ----------------- Presupuesto -----------------
@@ -23,6 +27,5 @@ urlpatterns = [
          OrdenTrabajoDeleteView.as_view(), name="eliminarOrden"), # No se elimina como tal, se cambia el estado a cancelado
 
      # ----------------PDF-------------------------
-     #     url(r'^pdf/$', PDFTemplateView.as_view(template_name='my_template.html',
-     #                                       filename='my_pdf.pdf'), name='pdf'),
+    path('pdf/', MyPDF.as_view(), name='pdf'),
 ]

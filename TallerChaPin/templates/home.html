@@ -7,7 +7,10 @@
     <div class="contenedor">
         <div class="encabezado shadow-lg">
             <div class="container">
-                <!-- <h1 class="display-1 mb-2">Taller ChaPin</h1> -->
+                <span class="mt-3">
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt logo-salir"></i></a>
+                    <!-- Cerrar sesion -->
+                </span>
                 <img src="{% static '/images/chapin1.png' %}" alt="Taller ChaPin" class="logo-home">
                 <p>
                     Taller ChaPin es un taller de reparaciones generales relacionadas a la
@@ -58,11 +61,25 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-4 justify-content-center">
+                <div class="col-md-4 seccion trabajos shadow-lg">
+                    <h2><i class="fas fa-tools"></i> Trabajos</h2>
+                    <p>
+                        Sección del sistema en donde se seleccionan las distintas tareas disponibles, permitiendo registrar el inicio y fin de trabajos.
+                    </p>
+                    <p>
+                        <a class="btn btn-primary w-100" href="https://i.pinimg.com/originals/37/cf/8d/37cf8df9e4dd9dc4b1b0311ad2f5ef2c.gif" role="button">Acceder »</a>
+                        <!-- TODO: Hacer listado y agregar el enlace!! -->
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- <div class="row">
                 <div class="col-md-2">
                     <a href="{% url 'logout' %}" class="btn btn-outline-danger w-100 btn-salir" role="button">Salir <i class="fas fa-sign-out-alt"></i></a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
         

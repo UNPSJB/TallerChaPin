@@ -56,6 +56,11 @@
     border-bottom-right-radius: .3rem;
 }
 
+.trabajos{
+    border-radius: .3rem;
+    margin-bottom: 5rem;
+}
+
 .taller:hover{
     background-color: rgb(139, 183, 219);
 }
@@ -68,8 +73,18 @@
     background-color: rgb(116, 197, 113);
 }
 
-.btn-salir{
-    margin-top: 6rem;
+.trabajos:hover{
+    background-color: rgb(223, 152, 71);
+}
+
+.logo-salir{
+    font-size: 2rem;
+    transition: all 0.2s ease;
+}
+
+.logo-salir:hover{
+    transform: scale(1.15);
+    color: #C82333;
 }
 
 .logo-home{

@@ -15,6 +15,10 @@ class imprimirPresupuesto(PDFTemplateView):
     template_name = 'ordenes/template_pdf.html'
     cmd_options = {
         'margin-top': 3,
+        'enable-local-file-access': True,
+        'enable-internal-links': True,
+        'resolve-relative-links': True,
+        'quiet': False
     }
 
     def get_context_data(self, **kwargs):

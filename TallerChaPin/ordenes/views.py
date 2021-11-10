@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
 from .forms import * 
+from datetime import date
 
 from wkhtmltopdf.views import PDFTemplateView
 
@@ -25,7 +26,7 @@ class imprimirPresupuesto(PDFTemplateView):
         context = super().get_context_data(**kwargs)
         pk = kwargs.get('pk')
         presupuesto = Presupuesto.objects.get(pk=pk)
-        self.filename = presupuesto.cliente.nombre + '.pdf' # definimos el nombre del pdf con datos del cliente.
+        self.filename = presupuesto.cliente.nombre + '-' + presupuesto.cliente.apellido + '-'+ str(date.today()) + '.pdf' # definimos el nombre del pdf con datos del cliente.
         context["presupuesto"] = presupuesto # pasamos el objeto presupuesto para usarlo en el template.
         return context
 

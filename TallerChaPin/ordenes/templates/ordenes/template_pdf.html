@@ -16,7 +16,8 @@
             }
 
             .encabezado, .total{
-                background-color: rgb(235, 235, 235);
+                /* background-color: rgb(235, 235, 235); */
+                background-color: #bad5fd;
                 padding: .5rem 1rem 1rem 1rem;
                 border: 1px solid black;
             }
@@ -41,7 +42,8 @@
             }
 
             th{
-                background-color:rgb(235, 235, 235);
+                /* background-color:rgb(235, 235, 235); */
+                background-color: #bad5fd;
             }
 
             .descripcion{
@@ -57,6 +59,11 @@
                 text-align: center;
             }
 
+            .separador-encabezado{
+                margin-top: 1rem;
+                border-color: #91bdff;
+            }
+
             .separador{
                 margin-top: 1rem;
             }
@@ -69,14 +76,14 @@
         <div class="encabezado">
             <h2>Taller ChaPin</h2>
             <span>Dirección: Calle 123, Trelew, Chubut.</span> <br>
-            <hr>
+            <hr class="separador-encabezado">
             <h2>Nro. presupuesto: XXXXX</h2>
             <span>Fecha de emisión: XX/XX/XX</span> <br>
-            <span>Presupuesto válido por XX días.</span>
+            <span>Presupuesto válido por {{presupuesto.validez}} días.</span>
         </div>
         <h3>Datos del cliente</h3>
-        <span> Nombre: {{ presupuesto.cliente.nombre }} {{ presupuesto.cliente.apellido }}</span>  <br>  
-        <span> Vehiculo: {{ presupuesto.vehiculo.marca }} {{ presupuesto.vehiculo.modelo }}</span> <br>
+        <span><b>Nombre:</b> {{ presupuesto.cliente.nombre }} {{ presupuesto.cliente.apellido }}</span>  <br>  
+        <span><b>Vehículo:</b> {{ presupuesto.vehiculo.marca }} {{ presupuesto.vehiculo.modelo }}, modelo {{presupuesto.vehiculo.anio}} | Patente: {{presupuesto.vehiculo.patente}}</span> 
         <hr class="separador">
 
         <table>
@@ -85,24 +92,37 @@
               <th class="cantidad">Cant.</th>
               <th class="subtotal">Subtotal</th>
             </tr>
-            <tr>
-              <td>Tarea 1</td>
-              <td class="cantidad">1</td>
-              <td class="subtotal">$1000</td>
-            </tr>
-            <tr>
-                <td>Tarea 1</td>
+            {% for tarea in presupuesto.tareas.all %}
+                <tr>
+                <td>{{ tarea.nombre }}</td>
                 <td class="cantidad">1</td>
-                <td class="subtotal">$1000</td>
-            </tr>
-            <tr>
-                <td>Tarea 1</td>
-                <td class="cantidad">1</td>
-                <td class="subtotal">$1000</td>
-            </tr>
+                <td class="subtotal">${{ tarea.precio}}</td>
+                </tr>
+            {% endfor %}
+
+            {% for repuesto in presupuesto.repuestos.all %}
+                <tr>
+                <td>{{ repuesto.nombre }}</td>
+                <td class="cantidad">{{ repuesto.cantidad }}</td>
+                <td class="subtotal">${{ repuesto.precio}}</td>
+                </tr>
+            {% empty %}
+            {% endfor %}
+            
+
+            {% for material in presupuesto.materiales.all %}
+                <tr>
+                <td>{{ material.nombre }}</td>
+                <td class="cantidad">{{ material.cantidad}} {{ material.tipo.get_unidad_medida_display }}</td>
+                <td class="subtotal">${{ material.precio }}</td>
+                <!-- TODO: tiene que ser el subtotal en lugar de material.precio -->
+                </tr>
+            {% empty %}
+            {% endfor %}
+            
         </table> 
         <div class="total">
-            <h2>Total estimado: $1234,00</h2>
+            <h2>Total estimado: ${{ presupuesto.precio_estimado }}</h2>
         </div>
 
     </body>

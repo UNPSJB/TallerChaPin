@@ -98,22 +98,21 @@
                 </tr>
             {% endfor %}
 
-            {% for repuesto in presupuesto.repuestos.all %}
+            {% for detalle in presupuesto.presupuesto_repuestos.all %}
                 <tr>
-                <td>{{ repuesto.nombre }}</td>
-                <td class="cantidad">{{ repuesto.cantidad }}</td>
-                <td class="subtotal">${{ repuesto.precio}}</td>
+                <td>{{ detalle.repuesto.nombre }}</td>
+                <td class="cantidad">{{ detalle.cantidad }}</td>
+                <td class="subtotal">${{ detalle.precio}}</td>
                 </tr>
             {% empty %}
             {% endfor %}
             
 
-            {% for material in presupuesto.materiales.all %}
+            {% for detalle in presupuesto.presupuesto_materiales.all %}
                 <tr>
-                <td>{{ material.nombre }}</td>
-                <td class="cantidad">{{ material.cantidad}} {{ material.tipo.get_unidad_medida_display }}</td>
-                <td class="subtotal">${{ material.precio }}</td>
-                <!-- TODO: tiene que ser el subtotal en lugar de material.precio -->
+                <td>{{ detalle.material.nombre }}</td>
+                <td class="cantidad">{{ detalle.cantidad}} {{ detalle.material.tipo.get_unidad_medida_display }}</td>
+                <td class="subtotal">${{ detalle.precio }}</td>
                 </tr>
             {% empty %}
             {% endfor %}

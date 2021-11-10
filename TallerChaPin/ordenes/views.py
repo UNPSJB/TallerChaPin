@@ -17,8 +17,6 @@ class imprimirPresupuesto(PDFTemplateView):
     cmd_options = {
         'margin-top': 3,
         'enable-local-file-access': True,
-        'enable-internal-links': True,
-        'resolve-relative-links': True,
         'quiet': False
     }
 
@@ -28,6 +26,8 @@ class imprimirPresupuesto(PDFTemplateView):
         presupuesto = Presupuesto.objects.get(pk=pk)
         self.filename = presupuesto.cliente.nombre + '-' + presupuesto.cliente.apellido + '-'+ str(date.today()) + '.pdf' # definimos el nombre del pdf con datos del cliente.
         context["presupuesto"] = presupuesto # pasamos el objeto presupuesto para usarlo en el template.
+        context["styles"] = 'http://127.0.0.1:8000/static/ordenes/css/presupuesto_pdf.css'
+        context["logo"] = 'http://127.0.0.1:8000/static/images/chapin2.png'
         return context
 
 #Clase repetida... 

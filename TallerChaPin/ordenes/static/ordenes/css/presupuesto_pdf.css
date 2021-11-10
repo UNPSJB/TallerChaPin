@@ -1,3 +1,20 @@
-body {
+.container {
+    padding: 20px;
     background-color: pink;
+    display: flex;
+    justify-content: space-between;
+}
+
+.a {
+    height: 100px;
+    flex-grow: 3;
+    background-color: skyblue;
+    padding: 10px;
+}
+
+.b {
+    height: 100px;
+    flex-grow: 1;
+    background-color: aquamarine;
+    padding: 10px;
 }

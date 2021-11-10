@@ -132,10 +132,10 @@ class TipoMaterial(models.Model):
     METRO2 = 7
     UNIDADES_BASICAS = (
         (GRAMO, "g"),
-        (CM3, "cm3"),
-        (UNIDAD, "unidad"),
-        (METRO, "metro"),
-        (METRO2, "metro2")
+        (CM3, "CM3"), 
+        (UNIDAD, "Unidad/es"), # Por unidad 
+        (METRO, "Metro/s"),
+        (METRO2, "Metro2")
     )
     # Ejemplos: Remaches, Lijas, Fibra, Resina, Pintura, Masilla, Cinta
     nombre = models.CharField(max_length=50, unique=True)

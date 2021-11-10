@@ -1,9 +1,6 @@
 from django.urls import path
 from .views import *
-<<<<<<< HEAD
-=======
 from wkhtmltopdf.views import PDFTemplateView
->>>>>>> 4ae9364cd24411e6f0d6632a379901984e9b521f
 
 urlpatterns = [
     # ----------------- Presupuesto -----------------

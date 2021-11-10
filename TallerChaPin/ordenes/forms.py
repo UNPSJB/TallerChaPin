@@ -252,14 +252,15 @@ class OrdenForm(forms.ModelForm):
 
             # }
             widgets = {
-                "tareas": forms.CheckboxSelectMultiple(),
                 "turno": forms.DateTimeInput( format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
             }
 
-    def save(self, repuestos, materiales, turno):
+    def save(self, tareas, repuestos, materiales, turno):
         # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
         print(self.data, self.cleaned_data)
         orden = super().save()
+        for tarea in tareas:
+            orden.agregar_tarea(tarea)
         for material in materiales:
             if "material" in material:
                 matObj = material["material"]

@@ -58,6 +58,13 @@ class OrdenDeTrabajo(models.Model):
         choices=ESTADOS_CHOICES, default=CREADA)
     objects = OrdenDeTrabajoManager.from_queryset(OrdenDeTrabajoQuerySet)()
 
+    class Meta:
+        permissions = [
+            ('can_registrar_ingreso',
+             'Puede registrar el ingreso de un vehiculo al taller'),
+            ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
+        ]
+
     def agregar_tarea(self, tarea):
         return DetalleOrdenDeTrabajo.objects.create(tarea=tarea, orden=self)
 
@@ -145,16 +152,40 @@ class OrdenDeTrabajo(models.Model):
         )
 
 
+class DetalleOrdenDeTrabajoManager(models.Manager):
+    def para_empleado(self, empleado):
+        no_tiene_empleado = models.Q(empleado__isnull=True)
+        tiene_empleado = models.Q(empleado__isnull=False)
+        soy_empleado = models.Q(empleado__pk=empleado.pk)
+        no_iniciada = models.Q(inicio__isnull=True)
+        orden_pausada = models.Q(orden__estado=OrdenDeTrabajo.PAUSADA)
+        empleado_realiza_tarea = models.Q(tarea__tipo__empleados=empleado)
+        return self.filter(
+            (no_tiene_empleado | orden_pausada |
+             (tiene_empleado & soy_empleado & no_iniciada))
+            & empleado_realiza_tarea
+        ).order_by('orden__turno')
+
+    def para_empleado_hoy(self, empleado):
+        return self.para_empleado(empleado).filter(inicio__date=now().date())
+
+
+class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
+    pass
+
+
 class DetalleOrdenDeTrabajo(models.Model):
     orden = models.ForeignKey(
         OrdenDeTrabajo, related_name="detalles", on_delete=models.CASCADE)
     tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE)
     empleado = models.ForeignKey(
-        Empleado, null=True, blank=True, on_delete=models.CASCADE)
+        Empleado, null=True, blank=True, related_name="trabajo", on_delete=models.CASCADE)
     inicio = models.DateTimeField(null=True, blank=True)
     fin = models.DateTimeField(null=True, blank=True)
     exitosa = models.BooleanField(default=True)
     observaciones = models.CharField(max_length=200, null=True, blank=True)
+    objects = DetalleOrdenDeTrabajoManager.from_queryset(
+        DetalleOrdenDeTrabajoQuerySet)()
 
     @classmethod
     def crear(cls, tarea):
@@ -163,6 +194,10 @@ class DetalleOrdenDeTrabajo(models.Model):
     def iniciar(self, empleado, fecha=now()):
         self.empleado = empleado
         self.inicio = fecha
+        self.save()
+
+    def asignar(self, empleado):
+        self.empleado = empleado
         self.save()
 
     def finalizar(self, exitosa, observaciones, fecha=now()):
@@ -214,7 +249,8 @@ class Presupuesto(models.Model):
     materiales = models.ManyToManyField(
         Material, through='PresupuestoMaterial')
     repuestos = models.ManyToManyField(Repuesto, through='PresupuestoRepuesto')
-    validez = models.PositiveIntegerField(default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
+    validez = models.PositiveIntegerField(
+        default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',
                               blank=True, on_delete=models.SET_NULL)
 

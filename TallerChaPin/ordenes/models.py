@@ -243,6 +243,7 @@ class Presupuesto(models.Model):
             self.orden.estado = OrdenDeTrabajo.INICIADA
             self.orden.detalles.all().update(exitosa=True)
             self.orden.save()
+            print(self.tareas.all())
         for t in self.tareas.all():
             self.orden.agregar_tarea(t)
         for m in self.presupuesto_materiales.all():

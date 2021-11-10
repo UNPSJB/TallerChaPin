@@ -2,18 +2,108 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'ordenes/css/presupuesto_pdf.css' %}" type="text/css">
-    <title>A PDF!</title>
-</head>
-<body>
-    <h1>{{ presupuesto.cliente }}</h1>
-    <p class="text-primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit illum quisquam sapiente ipsum vitae voluptate illo. Repellat autem enim excepturi dolorem et. Inventore soluta ipsum dignissimos molestias, placeat quidem tenetur ab fugit. Ducimus provident labore modi eius, enim reiciendis possimus officiis, consequuntur quod officia nulla dolor ea accusantium, iusto esse eligendi aut doloremque alias magnam eos iste tenetur perferendis suscipit est? Quis aperiam quaerat, reprehenderit quisquam dolore dignissimos assumenda? Aut qui sunt quos, fugit accusantium reiciendis vero libero ullam! Obcaecati dolor iusto animi, modi dolorem fuga! Architecto nam libero beatae laborum aspernatur dicta repellendus veniam, accusantium, cum quis, consequatur culpa?</p>
-    <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui est fuga libero dignissimos doloremque quis modi sequi, repudiandae magni, tenetur error iure cupiditate voluptatibus alias aliquam repellendus quisquam assumenda soluta dolorem deserunt, rem labore molestiae! Dolores iusto est, illo atque incidunt beatae odio debitis minus dolorem inventore repudiandae veritatis perspiciatis reiciendis dignissimos necessitatibus similique fugit, officiis eaque tenetur perferendis enim magni pariatur eos saepe? Itaque deserunt modi illo nobis aut rerum quia esse labore accusantium praesentium! Incidunt, corrupti!</p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'ordenes/css/presupuesto_pdf.css' %}" type="text/css"> -->
+        <title>Presupuesto</title>
+        <style>
+
+            body{
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            .encabezado, .total{
+                background-color: rgb(235, 235, 235);
+                padding: .5rem 1rem 1rem 1rem;
+                border: 1px solid black;
+            }
+
+            .total{
+                margin-top: 2rem;
+                text-align: right;
+            }
+
+            table{
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            td, th{
+                padding: .3rem;
+            }
+
+            th{
+                background-color:rgb(235, 235, 235);
+            }
+
+            .descripcion{
+                width: 70%;
+            }
+
+            .cantidad{
+                text-align: center;
+            }
+
+            .subtotal{
+                width: 20%;
+                text-align: center;
+            }
+
+            .separador{
+                margin-top: 1rem;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h1>Presupuesto</h1>
+        <div class="encabezado">
+            <h2>Taller ChaPin</h2>
+            <span>Dirección: Calle 123, Trelew, Chubut.</span> <br>
+            <hr>
+            <h2>Nro. presupuesto: XXXXX</h2>
+            <span>Fecha de emisión: XX/XX/XX</span> <br>
+            <span>Presupuesto válido por XX días.</span>
+        </div>
+        <h3>Datos del cliente</h3>
+        <span> Nombre: {{ presupuesto.cliente.nombre }} {{ presupuesto.cliente.apellido }}</span>  <br>  
+        <span> Vehiculo: {{ presupuesto.vehiculo.marca }} {{ presupuesto.vehiculo.modelo }}</span> <br>
+        <hr class="separador">
+
+        <table>
+            <tr>
+              <th class="descripcion">Descripción</th>
+              <th class="cantidad">Cant.</th>
+              <th class="subtotal">Subtotal</th>
+            </tr>
+            <tr>
+              <td>Tarea 1</td>
+              <td class="cantidad">1</td>
+              <td class="subtotal">$1000</td>
+            </tr>
+            <tr>
+                <td>Tarea 1</td>
+                <td class="cantidad">1</td>
+                <td class="subtotal">$1000</td>
+            </tr>
+            <tr>
+                <td>Tarea 1</td>
+                <td class="cantidad">1</td>
+                <td class="subtotal">$1000</td>
+            </tr>
+        </table> 
+        <div class="total">
+            <h2>Total estimado: $1234,00</h2>
+        </div>
+
+    </body>
 </html>

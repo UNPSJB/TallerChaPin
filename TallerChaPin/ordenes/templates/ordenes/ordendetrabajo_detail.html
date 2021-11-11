@@ -38,16 +38,19 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                                {% for tarea in object.tareas.all %}
+                                {% for detalle in object.detalles.all %}
                                 <tr>
                                     <td class="desc w-75">
                                         <small> <span class="text-primary"><i class="fas fa-thumbtack"></i> Tarea</span>
-                                            | ${{ tarea.precio }} c/u</small>
+                                            | ${{ detalle.precio }} c/u</small>
                                         <h4>
-                                            {{ tarea.nombre }}
+                                            {{ detalle.tarea.nombre }}
                                         </h4>
                                         <p class="small">
-                                            {{ tarea.descripcion }}
+                                            {{ detalle.tarea.descripcion}}
+                                        </p>
+                                        <p class="small">
+                                            {{ detalle.observaciones }}
                                         </p>
                                     </td>
                                 </tr>

@@ -239,6 +239,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
+<<<<<<< Updated upstream
 # Orden de trabajo - Form
 
 class OrdenForm(forms.ModelForm):
@@ -325,3 +326,22 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
+=======
+
+# Registrar Ingreso Vehiculo
+
+class RegistrarIngresoVehiculoForm(forms.ModelForm):
+
+        class Meta:
+            model = RegistrarIngresoVehiculo
+            fields = "__all__"
+
+        def save(self, commit=True):
+            RegistrarIngresoVehiculo = super().save()
+            return RegistrarIngresoVehiculo
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.helper = FormHelper()
+            self.helper.add_input(Submit('submit', 'Guardar'))
+>>>>>>> Stashed changes

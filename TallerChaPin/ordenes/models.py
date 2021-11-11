@@ -331,3 +331,9 @@ class DetallePlanillaDePintura(models.Model):
         PlanillaDePintura, related_name="detalles", on_delete=models.CASCADE)
     formula = models.CharField(max_length=100)
     cantidad = models.PositiveIntegerField()  # en gramos
+
+#Registrar ingreso vehiculo
+
+class RegistrarIngresoVehiculo(models.Model):
+    vehiculo = models.ForeignKey(
+        Vehiculo, related_name='registraringresovehiculo', on_delete=models.CASCADE)

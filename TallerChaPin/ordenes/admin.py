@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (OrdenDeTrabajo, DetalleOrdenDeTrabajo, MaterialOrdenDeTrabajo, RepuestoOrdenDeTrabajo,
-                     Presupuesto, PlanillaDePintura, DetallePlanillaDePintura, PresupuestoMaterial, PresupuestoRepuesto)
+                     Presupuesto, PlanillaDePintura, DetallePlanillaDePintura, PresupuestoMaterial, PresupuestoRepuesto, RegistrarIngresoVehiculo)
 # Register your models here.
 
 
@@ -27,3 +27,5 @@ admin.site.register(PlanillaDePintura)
 admin.site.register(DetallePlanillaDePintura)
 admin.site.register(PresupuestoMaterial)
 admin.site.register(PresupuestoRepuesto)
+admin.site.register(RegistrarIngresoVehiculo)
+

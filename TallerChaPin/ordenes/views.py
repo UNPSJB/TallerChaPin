@@ -124,6 +124,7 @@ class PresupuestoDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+<<<<<<< Updated upstream
 # Orden de trabajo
 
 class OrdenTrabajoListView(ListFilterView):
@@ -186,6 +187,7 @@ class OrdenTrabajoDeleteView(DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+<<<<<<< Updated upstream
 
 # Detalle de orden
 class DetalleOrdenDeTrabajoListView(ListFilterView):
@@ -198,3 +200,16 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context['titulo'] = "Listado de detalles de Orden de Trabajo"
         return context
 
+=======
+=======
+class RegistrarIngresoVehiculoCreateView(CreateView):
+    
+    model=RegistrarIngresoVehiculo
+    form_class = RegistrarIngresoVehiculoForm
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "registraringresovehiculo"
+        return context
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes

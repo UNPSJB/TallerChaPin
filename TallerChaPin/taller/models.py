@@ -7,12 +7,12 @@ from django.core.exceptions import ValidationError
 # FILTRO = {'atributo__contains': valor}
 # ...?nombre__icontains=a&marca__exact=1
 
-def validacion_nombre_unico(modelo,campo,value):
-    aux= dict([(f"{campo}__iregex",f'^{value}$')])
+
+def validacion_nombre_unico(modelo, campo, value):
+    aux = dict([(f"{campo}__iregex", f'^{value}$')])
     if modelo.objects.filter(**aux).exists():
-       raise ValidationError({"nombre": "nombre ya existe"})
-   # return validateeven
-            
+        raise ValidationError({"nombre": "nombre ya existe"})
+    # return validateeven
 
 
 def texto_to_query(texto):
@@ -39,8 +39,9 @@ class Marca(models.Model):
         return self.nombre
 
     def clean(self) -> None:
-        validacion_nombre_unico(Marca,"nombre",self.nombre)
+        validacion_nombre_unico(Marca, "nombre", self.nombre)
         return super().clean()
+
 
 class ModeloQuerySet(models.QuerySet):
     def filtrar(self, texto):
@@ -61,8 +62,9 @@ class Modelo(models.Model):
         return f"{self.nombre}, {self.marca}"
 
     def clean(self) -> None:
-        validacion_nombre_unico(Modelo,"nombre",self.nombre)
+        validacion_nombre_unico(Modelo, "nombre", self.nombre)
         return super().clean()
+
 
 class TipoTarea(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
@@ -78,8 +80,9 @@ class TipoTarea(models.Model):
         return self.nombre
 
     def clean(self) -> None:
-        validacion_nombre_unico(TipoTarea,"nombre",self.nombre)
+        validacion_nombre_unico(TipoTarea, "nombre", self.nombre)
         return super().clean()
+
 
 class Tarea(models.Model):
     nombre = models.CharField(max_length=50)
@@ -117,7 +120,7 @@ class Repuesto(models.Model):
     tipo = models.PositiveSmallIntegerField(choices=TIPOS)
     cantidad = models.IntegerField(blank=True, null=True, default=0)
     precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
-    
+
     def __str__(self):
         return f"{self.nombre}, {self.modelo}"
 
@@ -132,8 +135,8 @@ class TipoMaterial(models.Model):
     METRO2 = 7
     UNIDADES_BASICAS = (
         (GRAMO, "g"),
-        (CM3, "CM3"), 
-        (UNIDAD, "Unidad/es"), # Por unidad 
+        (CM3, "CM3"),
+        (UNIDAD, "Unidad/es"),  # Por unidad
         (METRO, "Metro/s"),
         (METRO2, "Metro2")
     )
@@ -145,9 +148,9 @@ class TipoMaterial(models.Model):
         return self.nombre
 
     def clean(self) -> None:
-        validacion_nombre_unico(TipoMaterial,"nombre",self.nombre)
+        validacion_nombre_unico(TipoMaterial, "nombre", self.nombre)
         return super().clean()
-     
+
 
 class Material(models.Model):
     nombre = models.CharField(max_length=50)
@@ -202,6 +205,7 @@ class Vehiculo(models.Model):
     def __str__(self):
         return f"{self.modelo} - {self.patente}"
 
+
 class Empleado(models.Model):
     # Ejemplo: 21-17263542-2
     # TODO: Validar con patrones y digito verificador
@@ -209,7 +213,7 @@ class Empleado(models.Model):
     legajo = models.IntegerField(null=False)
     nombre = models.CharField(max_length=100, null=False, blank=False)
     apellido = models.CharField(max_length=100, null=False, blank=False)
-    tareas = models.ManyToManyField(TipoTarea)
+    tareas = models.ManyToManyField(TipoTarea, related_name="empleados")
     usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
     def crear_usuario(self):
@@ -220,3 +224,8 @@ class Empleado(models.Model):
         self.usuario = user
         return user
 
+    def puede_hacer(self, tipo):
+        return self.tareas.filter(id=tipo.id).exists()
+
+    def __str__(self):
+        return f"{self.apellido}, {self.nombre}"

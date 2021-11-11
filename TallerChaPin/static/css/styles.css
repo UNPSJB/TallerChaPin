@@ -50,6 +50,21 @@
     color: #10770d;
 }
 
+.btn-finalizar:hover{
+    transition: color 0.25s;
+    color: #10770d;
+}
+
+.btn-cancelar:hover{
+    transition: color 0.25s;
+    color: #d11a1a;
+}
+
+.btn-tomar:hover{
+    transition: color 0.25s;
+    color: #0D6EFD;
+}
+
 .unidad-medida {
     width: 100%;
     text-align: center;

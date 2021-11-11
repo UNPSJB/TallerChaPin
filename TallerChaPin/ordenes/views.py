@@ -186,3 +186,15 @@ class OrdenTrabajoDeleteView(DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
+# Detalle de orden
+class DetalleOrdenDeTrabajoListView(ListFilterView):
+    # filtros = OrdenTrabajoFiltrosForm
+    model = DetalleOrdenDeTrabajo
+    paginate_by = 100 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de detalles de Orden de Trabajo"
+        return context
+

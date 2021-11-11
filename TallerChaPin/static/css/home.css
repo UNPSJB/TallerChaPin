@@ -26,7 +26,7 @@
 }
 
 .secciones{
-    margin-top: 8rem;
+    margin-top: 3rem;
 }
 
 .seccion{
@@ -94,4 +94,13 @@
     margin-right: auto;
 
     margin-bottom: 2rem;
+}
+
+.mensaje{
+    font-size: 2rem;
+    display: inline;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: #0D6EFD;
+    border-radius: .3rem;
 }

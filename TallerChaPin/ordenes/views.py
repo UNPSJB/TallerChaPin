@@ -216,7 +216,7 @@ class RegistrarIngresoVehiculoCreateView(CreateView):
             fecha_ingreso = form.cleaned_data.get('ingreso')
             orden = form.cleaned_data.get('orden')
             
-            #TODO: hacer algo con los datos del form.
+            
             orden.registrar_ingreso(fecha_ingreso)
 
             return redirect ('detallesOrden', orden.pk)
@@ -230,16 +230,17 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar egreso de Vehiculo"
+        context['vehiculo'] = self.model.vehiculo
         return context
 
     def post(self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        orden = OrdenDeTrabajo.objects.get(pk=pk)
         form = RegistrarEgresoVehiculoForm(self.request.POST)
-        print(form)
         if form.is_valid():
-            fecha = form.cleaned_data.get('fecha')
-            orden = orden.registrar_egreso(fecha)
+            fecha_egreso = form.cleaned_data.get('egreso')
+            orden = form.cleaned_data.get('orden')
+            
+            orden.registrar_egreso(fecha_egreso)
+
             return redirect ('detallesOrden', orden.pk)
-        return redirect ('registrarEgresoDeVehiculo')
+        return redirect ('registrarIngresoDeVehiculo')
 

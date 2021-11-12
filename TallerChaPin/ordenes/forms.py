@@ -370,6 +370,13 @@ class RegistrarIngresoVehiculoForm(forms.ModelForm):
 
 class RegistrarEgresoVehiculoForm(forms.ModelForm):
 
+    orden = forms.ModelChoiceField(
+        queryset = OrdenDeTrabajo.objects.all(), 
+        required = True,
+        widget = forms.Select(),
+        label= "Orden de trabajo" #TODO: verificar que el layout muestre un label
+    )
+
     class Meta:
         model = OrdenDeTrabajo
         fields = "__all__"
@@ -386,4 +393,11 @@ class RegistrarEgresoVehiculoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                "orden",
+                "egreso"
+            ),
+            Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
+        )

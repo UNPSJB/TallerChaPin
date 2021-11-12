@@ -163,15 +163,21 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_iniciada = models.Q(inicio__isnull=True)
         orden_pausada = models.Q(orden__estado=OrdenDeTrabajo.PAUSADA)
         empleado_realiza_tarea = models.Q(tarea__tipo__empleados=empleado)
-        return self.filter(
-            (no_tiene_empleado | orden_pausada |
+
+        qs = self.filter(
+            ((no_tiene_empleado | orden_pausada |
              (tiene_empleado & soy_empleado & no_iniciada))
-            & empleado_realiza_tarea
+            & empleado_realiza_tarea)
         ).order_by('orden__turno')
+
+        return qs
 
     def para_empleado_hoy(self, empleado):
         return self.para_empleado(empleado).filter(inicio__date=now().date())
 
+    def para_asignar(self):
+        # TODO: definir qs para que un jefe de taller vea las tareas para hacer y que puedan ser asignadas.
+        pass
 
 class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
     pass
@@ -218,6 +224,15 @@ class DetalleOrdenDeTrabajo(models.Model):
 
     def precio(self):
         return self.tarea.precio
+
+    def puedo_iniciar(self):
+        return self.inicio is None
+    
+    def puedo_finalizar(self):
+        return self.inicio is not None and self.fin is None
+
+    def puedo_asignar(self):
+        return self.empleado is None
 
 
 class MaterialOrdenDeTrabajo(models.Model):

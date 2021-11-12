@@ -1190,50 +1190,6 @@
 {
   "model": "auth.permission",
   "fields": {
-    "name": "Can add detalle factura",
-    "content_type": [
-      "facturas",
-      "detallefactura"
-    ],
-    "codename": "add_detallefactura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change detalle factura",
-    "content_type": [
-      "facturas",
-      "detallefactura"
-    ],
-    "codename": "change_detallefactura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete detalle factura",
-    "content_type": [
-      "facturas",
-      "detallefactura"
-    ],
-    "codename": "delete_detallefactura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view detalle factura",
-    "content_type": [
-      "facturas",
-      "detallefactura"
-    ],
-    "codename": "view_detallefactura"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
     "name": "Can add pago",
     "content_type": [
       "facturas",
@@ -1273,6 +1229,50 @@
       "pago"
     ],
     "codename": "view_pago"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add detalle factura",
+    "content_type": [
+      "facturas",
+      "detallefactura"
+    ],
+    "codename": "add_detallefactura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change detalle factura",
+    "content_type": [
+      "facturas",
+      "detallefactura"
+    ],
+    "codename": "change_detallefactura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete detalle factura",
+    "content_type": [
+      "facturas",
+      "detallefactura"
+    ],
+    "codename": "delete_detallefactura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view detalle factura",
+    "content_type": [
+      "facturas",
+      "detallefactura"
+    ],
+    "codename": "view_detallefactura"
   }
 },
 {
@@ -1540,6 +1540,28 @@
   }
 },
 {
+  "model": "auth.permission",
+  "fields": {
+    "name": "Puede registrar el ingreso de un vehiculo al taller",
+    "content_type": [
+      "ordenes",
+      "ordendetrabajo"
+    ],
+    "codename": "can_registrar_ingreso"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Puede asignar trabajo a empleados",
+    "content_type": [
+      "ordenes",
+      "ordendetrabajo"
+    ],
+    "codename": "can_asignar_trabajo"
+  }
+},
+{
   "model": "auth.group",
   "fields": {
     "name": "Administrativo",
@@ -1550,21 +1572,86 @@
   "model": "auth.group",
   "fields": {
     "name": "Jefe de Taller",
-    "permissions": []
+    "permissions": [
+      [
+        "can_asignar_trabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "can_registrar_ingreso",
+        "ordenes",
+        "ordendetrabajo"
+      ]
+    ]
   }
 },
 {
   "model": "auth.group",
   "fields": {
     "name": "Oficial Pintor",
-    "permissions": []
+    "permissions": [
+      [
+        "add_detalleplanilladepintura",
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      [
+        "change_detalleplanilladepintura",
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      [
+        "view_detalleplanilladepintura",
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      [
+        "add_planilladepintura",
+        "ordenes",
+        "planilladepintura"
+      ],
+      [
+        "change_planilladepintura",
+        "ordenes",
+        "planilladepintura"
+      ],
+      [
+        "view_planilladepintura",
+        "ordenes",
+        "planilladepintura"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Empleado de Taller",
+    "permissions": [
+      [
+        "add_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      [
+        "change_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      [
+        "view_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ]
+    ]
   }
 },
 {
   "model": "auth.user",
   "fields": {
     "password": "pbkdf2_sha256$260000$fe5PN1RcVbKP0CQB9t1LFl$Ugpe70boMwA6OCs/IrcWoNiFo+QJossvqAdy8TLQnA8=",
-    "last_login": "2021-09-27T21:19:28Z",
+    "last_login": "2021-11-10T22:43:43.847Z",
     "is_superuser": true,
     "username": "diego",
     "first_name": "",
@@ -1585,8 +1672,8 @@
   "model": "auth.user",
   "fields": {
     "password": "pbkdf2_sha256$260000$gvQ8nWFi5Gm0IliUnIWS3x$UUzc3BNW8O0x8JwBtA4QmvB+GofB/gDMPqRW5/ax1YI=",
-    "last_login": null,
-    "is_superuser": true,
+    "last_login": "2021-11-10T22:56:40.790Z",
+    "is_superuser": false,
     "username": "juan",
     "first_name": "",
     "last_name": "",
@@ -1597,6 +1684,9 @@
     "groups": [
       [
         "Jefe de Taller"
+      ],
+      [
+        "Empleado de Taller"
       ]
     ],
     "user_permissions": []
@@ -1606,8 +1696,8 @@
   "model": "auth.user",
   "fields": {
     "password": "pbkdf2_sha256$260000$OyC44FhvYza533wXa6sWHn$06gn3BPbSVzqPtUP0aw+hKEoxKf9AgxSXi6kdIzTNns=",
-    "last_login": null,
-    "is_superuser": true,
+    "last_login": "2021-11-10T22:57:42.935Z",
+    "is_superuser": false,
     "username": "pedro",
     "first_name": "",
     "last_name": "",
@@ -1618,6 +1708,9 @@
     "groups": [
       [
         "Oficial Pintor"
+      ],
+      [
+        "Empleado de Taller"
       ]
     ],
     "user_permissions": []
@@ -1629,6 +1722,30 @@
   "fields": {
     "session_data": ".eJxVjDsOwyAQBe9CHSEDu4BTpvcZ0PILTiKQjF1FuXtsyUXSzsx7b-ZoW4vbelrcHNmVCXb5ZZ7CM9VDxAfVe-Oh1XWZPT8SftrOpxbT63a2fweFetnXORkYc4IMQ1RyRCWApJTZIhrwCFkjakDSwittggERSe005gGsAcs-X8TDNsg:1mUy24:LU0hPzcCWMMTcxeAxOB26v96XxHOtL5iuj8nuja0NtY",
     "expire_date": "2021-10-11T21:19:28.587Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ni10r9vkxwdavsu18toxpyfow2wu6mcr",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSEDu4BTpvcZ0PILTiKQjF1FuXtsyUXSzsx7b-ZoW4vbelrcHNmVCXb5ZZ7CM9VDxAfVe-Oh1XWZPT8SftrOpxbT63a2fweFetnXORkYc4IMQ1RyRCWApJTZIhrwCFkjakDSwittggERSe005gGsAcs-X8TDNsg:1mcZH3:S0-zA4rPwA6aixu0rmNr9kUBotc7pOo8OfsmojFtmVI",
+    "expire_date": "2021-11-01T20:30:21.313Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "un66todyetvx1k2tvsl0ero6bibs9rvi",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYrS1CE1S_Y9Q-XENimgRupnhbg7VOoCtm9m3ssMtK1l2BaZh5HNxbTm9Lslyg-ZdsB3mm7V5jqt85jsrtiDLravLM_r4f4dFFrKt8bAUThjqxIJYyeN10iJBBGAUtSOFABa9DmyYvbswPlGIMA5qFPz_gAFRThS:1mkwXG:ZR2x57mALym1fRAj0XyWNoJQPabLEXtaEoHuZC-DZEA",
+    "expire_date": "2021-11-24T22:57:42.942Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zvqb0jhyl0uwib56fwby7yifm4angjpl",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSEDu4BTpvcZ0PILTiKQjF1FuXtsyUXSzsx7b-ZoW4vbelrcHNmVCXb5ZZ7CM9VDxAfVe-Oh1XWZPT8SftrOpxbT63a2fweFetnXORkYc4IMQ1RyRCWApJTZIhrwCFkjakDSwittggERSe005gGsAcs-X8TDNsg:1mj66s:qrFbHo5g52EpVtMvafMhurli0U7Q_rOFFAVrmVVdpVE",
+    "expire_date": "2021-11-19T20:46:50.188Z"
   }
 },
 {
@@ -2097,16 +2214,6 @@
 },
 {
   "model": "taller.material",
-  "pk": 4,
-  "fields": {
-    "nombre": "Azul",
-    "tipo": 1,
-    "cantidad": 2000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
   "pk": 5,
   "fields": {
     "nombre": "Gris Urano",
@@ -2325,6 +2432,38 @@
     "tareas": [
       3,
       6
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 2,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "Presupuesto",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 3,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "Presupuesto",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      1,
+      2,
+      3,
+      5
     ]
   }
 },
@@ -4099,6 +4238,150 @@
     "object_repr": "OrdenDeTrabajo object (1)",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2021-11-10T22:09:18.762Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "pedro",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2021-11-10T22:09:25.022Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "juan",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2021-11-10T22:11:37.491Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "3",
+    "object_repr": "Oficial Pintor",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2021-11-10T22:31:37.188Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "Jefe de Taller",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2021-11-10T22:44:34.791Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "4",
+    "object_repr": "Empleado de Taller",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2021-11-10T22:44:48.697Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "juan",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2021-11-10T22:44:56.144Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "pedro",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2021-11-10T22:46:56.900Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "4",
+    "object_repr": "Empleado de Taller",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
   }
 }
 ]

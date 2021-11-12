@@ -141,7 +141,7 @@ class OrdenDeTrabajo(models.Model):
             if un_problema:
                 self.estado = OrdenDeTrabajo.PAUSADA
             elif todo_terminado:
-                self.estado = OrdenDeTrabajo.REALIZADA
+                self.estado = OrdenDeTrabajo.REALIZADA # VER ESTO
             self.save()
 
     def ampliar_presupuesto(self):
@@ -332,8 +332,8 @@ class DetallePlanillaDePintura(models.Model):
     formula = models.CharField(max_length=100)
     cantidad = models.PositiveIntegerField()  # en gramos
 
-#Registrar ingreso vehiculo
+# # Registrar ingreso vehiculo
 
-class RegistrarIngresoVehiculo(models.Model):
-    vehiculo = models.ForeignKey(
-        Vehiculo, related_name='registraringresovehiculo', on_delete=models.CASCADE)
+# class RegistrarIngresoVehiculo(models.Model):
+#     vehiculo = models.ForeignKey(
+#         Vehiculo, related_name='registraringresovehiculo', on_delete=models.CASCADE)

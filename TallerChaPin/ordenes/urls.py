@@ -1,15 +1,7 @@
 from django.urls import path
 from .views import *
-<<<<<<< Updated upstream
 from wkhtmltopdf.views import PDFTemplateView
 
-=======
-#from wkhtmltopdf.views import PDFTemplateView
-
-
-
-
->>>>>>> Stashed changes
 urlpatterns = [
     # ----------------- Presupuesto -----------------
      # path('/',)
@@ -30,21 +22,11 @@ urlpatterns = [
          OrdenTrabajoUpdateView.as_view(), name="modificarOrden"),
     path('orden/eliminar/<int:pk>',
          OrdenTrabajoDeleteView.as_view(), name="eliminarOrden"), # No se elimina como tal, se cambia el estado a cancelado
-<<<<<<< Updated upstream
      # ------------------ Detalle de Orden de Trabajo -----------------
     path('detalles-orden/listar', DetalleOrdenDeTrabajoListView.as_view(), name="listarDetallesOrden"),
-=======
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
      # ----------------PDF-------------------------
     path('presupuesto/pdf/<int:pk>', imprimirPresupuesto.as_view(), name='imprimirPresupuesto'),
-=======
-      #----------------PDF-------------------------
-       #   url(r'^pdf/$', PDFTemplateView.as_view(template_name='my_template.html',
-        #                                    filename='my_pdf.pdf'), name='pdf'),
-
      # ----------------- Ordenes y Turnos -----------------
-     path ('ordenesTurnos/RegistrarIngresoVehiculo', RegistrarIngresoVehiculoCreateView.as_view(), name="RegistrarIngresoVehiculo")
->>>>>>> Stashed changes
+     path ('ordenesTurnos/registrarIngresoVehiculo', RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),
+     path ('ordenesTurnos/registrarEgresoVehiculo', RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo")
 ]

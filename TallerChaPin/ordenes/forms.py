@@ -77,12 +77,12 @@ class PresupuestoForm(forms.ModelForm):
             if "material" in material:
                 matObj = material["material"]
                 matCantidad = material["cantidad"]
-                presupuesto.agregar_material(matObj,matCantidad)
+                presupuesto.agregar_material(matObj, matCantidad)
         for repuesto in repuestos:
             if "repuesto" in repuesto:
                 repObj = repuesto["repuesto"]
                 repCantidad = repuesto["cantidad"]
-                presupuesto.agregar_repuesto(repObj,repCantidad)
+                presupuesto.agregar_repuesto(repObj, repCantidad)
         return presupuesto
 
     def __init__(self, *args, **kwargs):
@@ -92,17 +92,18 @@ class PresupuestoForm(forms.ModelForm):
 
 # Presupuesto - Material
 
+
 class PresupuestoMaterialForm(forms.ModelForm):
     unidad_medida = forms.ChoiceField(
         choices=TipoMaterial.UNIDADES_BASICAS,
-        widget=forms.Select(attrs={'disabled':''}))
+        widget=forms.Select(attrs={'disabled': ''}))
 
     class Meta:
         model = PresupuestoMaterial
         fields = ("material",
                   "cantidad",
                   )
-                
+
         widgets = {
             'material': forms.Select(attrs={'autocomplete': 'off'})
         }
@@ -110,10 +111,9 @@ class PresupuestoMaterialForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        
 
 
-def PresupuestoMaterialInline(extra=1): 
+def PresupuestoMaterialInline(extra=1):
     return inlineformset_factory(
         Presupuesto,
         PresupuestoMaterial,
@@ -128,6 +128,7 @@ def PresupuestoMaterialInline(extra=1):
         # min_num=None, validate_min=False, field_classes=None
     )
 
+
 class PresupuestoMaterialFormSetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -139,8 +140,9 @@ class PresupuestoMaterialFormSetHelper(FormHelper):
             'cantidad'
         )
         self.render_required_fields = True
-       
+
 # Presupuesto - Repuesto
+
 
 class PresupuestoRepuestoForm(forms.ModelForm):
     class Meta:
@@ -189,6 +191,7 @@ class PresupuestoRepuestoFormSetHelper(FormHelper):
 
 # Presupuesto - Filtro
 
+
 class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
@@ -230,7 +233,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "cliente",
                 "vehiculo",
-            "detalles",
+                "detalles",
                 "tareas",
                 "materiales",
                 "repuestos",
@@ -239,22 +242,22 @@ class PresupuestoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-<<<<<<< Updated upstream
 # Orden de trabajo - Form
+
 
 class OrdenForm(forms.ModelForm):
 
     class Meta:
-            model = OrdenDeTrabajo
-            fields = "__all__"
-            exclude = ["egreso", "estado", "ingreso","materiales","repuestos"]
+        model = OrdenDeTrabajo
+        fields = "__all__"
+        exclude = ["egreso", "estado", "ingreso", "materiales", "repuestos"]
 
-            # labels = {
+        # labels = {
 
-            # }
-            widgets = {
-                "turno": forms.DateTimeInput( format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
-            }
+        # }
+        widgets = {
+            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+        }
 
     def save(self, tareas, repuestos, materiales, turno):
         # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
@@ -266,20 +269,20 @@ class OrdenForm(forms.ModelForm):
             if "material" in material:
                 matObj = material["material"]
                 matCantidad = material["cantidad"]
-                orden.agregar_material(matObj,matCantidad)
+                orden.agregar_material(matObj, matCantidad)
         for repuesto in repuestos:
             if "repuesto" in repuesto:
                 repObj = repuesto["repuesto"]
                 repCantidad = repuesto["cantidad"]
-                orden.agregar_repuesto(repObj,repCantidad)
+                orden.agregar_repuesto(repObj, repCantidad)
         return orden
-        
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         # self.helper.form_tag = False
         self.helper.add_input(Submit('submit', 'Guardar'))
+
 
 class OrdenTrabajoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -318,30 +321,56 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "cliente",
                 "vehiculo",
-            "detalles",
+                "detalles",
                 "tareas",
                 "materiales",
                 "repuestos",
-                
+
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
-=======
 
 # Registrar Ingreso Vehiculo
 
+
 class RegistrarIngresoVehiculoForm(forms.ModelForm):
 
-        class Meta:
-            model = RegistrarIngresoVehiculo
-            fields = "__all__"
+    class Meta:
+        model = OrdenDeTrabajo
+        fields = "__all__"
+        exclude = ["egreso", "estado", "turno", "materiales", "repuestos"]
 
-        def save(self, commit=True):
-            RegistrarIngresoVehiculo = super().save()
-            return RegistrarIngresoVehiculo
+        widgets = {
+            "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+        }
 
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.helper = FormHelper()
-            self.helper.add_input(Submit('submit', 'Guardar'))
->>>>>>> Stashed changes
+    def save(self, commit=True):
+        registrarIngresoVehiculo = super().save()
+        return registrarIngresoVehiculo
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
+# Registrar egreso Vehiculo
+
+class RegistrarEgresoVehiculoForm(forms.ModelForm):
+
+    class Meta:
+        model = OrdenDeTrabajo
+        fields = "__all__"
+        exclude = ["ingreso", "estado", "turno", "materiales", "repuestos"]
+
+        widgets = {
+            "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+        }
+
+    def save(self, commit=True):
+        registrarEgresoVehiculo = super().save()
+        return registrarEgresoVehiculo
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.add_input(Submit('submit', 'Guardar'))

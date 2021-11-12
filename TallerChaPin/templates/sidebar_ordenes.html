@@ -53,11 +53,11 @@
           </li>
           {% if perms.ordenes.can_registrar_ingreso %}
           <li>
-            <a href="{% url 'RegistrarIngresoVehiculo' %}" class="link-dark rounded">Registrar ingreso de vehiculo</a>
+            <a href="{% url 'registrarIngresoVehiculo' %}" class="link-dark rounded">Registrar ingreso de vehiculo</a>
           </li>
           {% endif %}
           <li>
-            <a href="#" class="link-dark rounded">Registrar entrega de vehiculo</a>
+            <a href="{% url 'registrarEgresoVehiculo' %}" class="link-dark rounded">Registrar entrega de vehiculo</a>
           </li>
         </ul>
       </div>

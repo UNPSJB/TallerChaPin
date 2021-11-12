@@ -124,7 +124,6 @@ class PresupuestoDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
-<<<<<<< Updated upstream
 # Orden de trabajo
 
 class OrdenTrabajoListView(ListFilterView):
@@ -187,7 +186,6 @@ class OrdenTrabajoDeleteView(DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
-<<<<<<< Updated upstream
 
 # Detalle de orden
 class DetalleOrdenDeTrabajoListView(ListFilterView):
@@ -200,16 +198,46 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context['titulo'] = "Listado de detalles de Orden de Trabajo"
         return context
 
-=======
-=======
+
 class RegistrarIngresoVehiculoCreateView(CreateView):
     
-    model=RegistrarIngresoVehiculo
+    model= OrdenDeTrabajo
     form_class = RegistrarIngresoVehiculoForm
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "registraringresovehiculo"
+        context['titulo'] = "Registrar Ingreso de Vehiculo"
         return context
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
+    def post(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        orden = OrdenDeTrabajo.objects.get(pk=pk)
+        form = RegistrarIngresoVehiculoForm(self.request.POST)
+        print(form)
+        if form.is_valid():
+            fecha = form.cleaned_data.get('fecha')
+            orden = orden.registrar_ingreso(fecha)
+            return redirect ('detallesOrden', orden.pk)
+        return redirect ('registrarIngresoDeVehiculo')
+
+class RegistrarEgresoVehiculoCreateView(CreateView):
+    
+    model= OrdenDeTrabajo
+    form_class = RegistrarEgresoVehiculoForm
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar egreso de Vehiculo"
+        return context
+
+    def post(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        orden = OrdenDeTrabajo.objects.get(pk=pk)
+        form = RegistrarEgresoVehiculoForm(self.request.POST)
+        print(form)
+        if form.is_valid():
+            fecha = form.cleaned_data.get('fecha')
+            orden = orden.registrar_egreso(fecha)
+            return redirect ('detallesOrden', orden.pk)
+        return redirect ('registrarEgresoDeVehiculo')
+

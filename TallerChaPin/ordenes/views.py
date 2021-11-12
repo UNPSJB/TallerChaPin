@@ -7,7 +7,7 @@ from django.views.generic.list import ListView
 from .models import *
 from .forms import * 
 from datetime import date
-
+from django.core.exceptions import ObjectDoesNotExist
 from wkhtmltopdf.views import PDFTemplateView
 
 
@@ -192,6 +192,16 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
     # filtros = OrdenTrabajoFiltrosForm
     model = DetalleOrdenDeTrabajo
     paginate_by = 100 
+
+    def get_queryset(self):
+        user = self.request.user
+        try:
+            return DetalleOrdenDeTrabajo.objects.para_empleado(user.empleado)
+        except ObjectDoesNotExist:
+            if user.is_superuser:
+                return super().get_queryset()
+            else:
+                return DetalleOrdenDeTrabajo.objects.none()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

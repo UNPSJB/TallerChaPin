@@ -21,41 +21,45 @@
       </tr>
     </thead>
     <tbody>
-      {% for orden in object_list %}
+      {% for detalle_orden in object_list %}
       <tr>
-        <td>{{ orden.tarea }}</td>
+        <td>{{ detalle_orden.tarea }}</td>
         <td>
-            {% if orden.empleado != None %}
-                {{ orden.empleado }}
+            {% if detalle_orden.empleado != None %}
+                {{ detalle_orden.empleado }}
             {% else %}
                 Sin tomar
             {% endif %}
         </td>
         <td>
-            {% if orden.inicio != None %}
-                {{ orden.inicio }}
+            {% if detalle_orden.inicio != None %}
+                {{ detalle_orden.inicio }}
             {% else %}
                 Sin iniciar
             {% endif %}
         </td>
         <td>
-            {% if orden.fin != None %}
-                {{ orden.fin }}
+            {% if detalle_orden.fin != None %}
+                {{ detalle_orden.fin }}
             {% else %}
                 Sin terminar
             {% endif %}
         </td>
         <td class="text-center">
-            {% if orden.exitosa %}
+            {% if detalle_orden.exitosa %}
                 <i class="fas fa-thumbs-up text-success"></i>
             {% else %}
                 <i class="fas fa-thumbs-down text-danger"></i>
             {% endif %}
         </td>
-        <td>{{ orden.observaciones }}</td>
+        <td>{{ detalle_orden.observaciones }}</td>
         
         <td class="text-center">
-            {% if orden.empleado == None %}
+            {% comment %} {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puede_asignar  %}
+              TODO: agregar icono para que el jefe de taller asigne un trabajo
+            {% endif %} {% endcomment %}
+
+            {% if detalle_orden.empleado == None %}
                 <a href="#" class="btn-listado btn-tomar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tomar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
                         <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
@@ -78,7 +82,7 @@
       </tr>
       {% empty %}
       <tr>
-        <td>No hay ordenes</td>
+        <td>No hay detalle_ordenes</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -104,7 +108,7 @@
 {% endblock %}
 
 {% block modals %}
-{% include './orden_confirm_delete.html' %}
+{% include './detalle_orden_confirm_delete.html' %}
 {% endblock %}
 
 {% block extrajs %}

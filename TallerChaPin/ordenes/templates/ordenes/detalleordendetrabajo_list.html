@@ -1,118 +1,76 @@
-{% extends 'template_ordenes.html' %}
-{% load static %}
-{% load crispy_forms_tags %}
-{% block title %}
-{{titulo}}
-{% endblock %}
+{% extends 'template_ordenes.html' %} {% load static %} {% block extracss %}
+<link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
+<link rel="stylesheet" href="{% static 'ordenes/css/detalles-orden.css' %}" />
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+{% endblock %} {% load crispy_forms_tags %} {% block title %} {{titulo}} {%endblock %} 
+
 {% block main %}
 <h1>{{titulo}}</h1>
 
-<div class="table-responsive">
-  <table class="table table-hover {% if filtros %} sortable{% endif %}">
-    <thead>
-      <tr>
-        <th scope="col">Tarea</th>
-        <th scope="col">Empleado</th>
-        <th scope="col">Inicio</th>
-        <th scope="col">Fin</th>
-        <th class="text-center" scope="col">Exitosa?</th>
-        <th scope="col">Observaciones</th>
-        <th class="text-center" scope="col">Opciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for detalle_orden in object_list %}
-      <tr>
-        <td>{{ detalle_orden.tarea }}</td>
-        <td>
+<div class="row row-cols-1 row-cols-md-3 g-4 tablero">
+  {% for detalle_orden in object_list %}
+    <div class="col">
+      <div class="card shadow-lg">
+        <!-- <div class="card-header">Tarea</div> -->
+        <div class="card-body">
+          <h5 class="card-title">{{detalle_orden.tarea}}</h5>
+          <p class="card-text">{{detalle_orden.observaciones}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="fas fa-user"></i> 
             {% if detalle_orden.empleado != None %}
-                {{ detalle_orden.empleado }}
+              {{detalle_orden.empleado}}
             {% else %}
-                Sin tomar
+              Sin asignar
             {% endif %}
-        </td>
-        <td>
+          </li>
+          <li class="list-group-item">
+            Inicio: 
             {% if detalle_orden.inicio != None %}
-                {{ detalle_orden.inicio }}
+              {{detalle_orden.inicio}}
             {% else %}
-                Sin iniciar
+              Sin comenzar
             {% endif %}
-        </td>
-        <td>
+          </li>
+          <li class="list-group-item">
+            Fin: 
             {% if detalle_orden.fin != None %}
-                {{ detalle_orden.fin }}
+              {{detalle_orden.fin}}
             {% else %}
-                Sin terminar
+              Sin terminar
             {% endif %}
-        </td>
-        <td class="text-center">
+          </li>
+          <li class="list-group-item">
             {% if detalle_orden.exitosa %}
-                <i class="fas fa-thumbs-up text-success"></i>
+              Finalización exitosa
             {% else %}
-                <i class="fas fa-thumbs-down text-danger"></i>
+              Finalización no exitosa
             {% endif %}
-        </td>
-        <td>{{ detalle_orden.observaciones }}</td>
-        
-        <td class="text-center">
-            {% comment %} {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puede_asignar  %}
-              TODO: agregar icono para que el jefe de taller asigne un trabajo
-            {% endif %} {% endcomment %}
-
+          </li>
+          <li class="list-group-item text-center">
+            {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puede_asignar %}
+              <a href="#" class="btn btn-primary">
+                <i class="fas fa-thumbtack"></i><i class="fas fa-user-plus"></i> Asignar
+              </a>
+            {% endif %}
             {% if detalle_orden.empleado == None %}
-                <a href="#" class="btn-listado btn-tomar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tomar">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
-                        <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
-                    </svg>
-                </a>
+              <!-- <a href="#" class="btn btn-primary">
+                <i class="fas fa-thumbtack"></i> Tomar
+              </a> -->
             {% else %}
-                <a href="#" class="btn-listado btn-finalizar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Finalizar">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                    </svg>
-                </a>
-                <a href="#" class="btn-listado btn-cancelar data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cancelar"">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                    </svg>
-                </a>
+              <a href="#" class="btn btn-danger">
+                <i class="fas fa-times"></i> Cancelar
+              </a>
+              <a href="#" class="btn btn-success">
+                <i class="fas fa-check"></i> Finalizar
+              </a>
             {% endif %}
-            <!-- Si el detalle tiene fecha de fin, no se debería poder hacer ninguna de las tres opciones de arriba  -->
-        </td>
-      </tr>
-      {% empty %}
-      <tr>
-        <td>No hay detalle_ordenes</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+          </li>
+        </ul>
+      </div>
+    </div>
+  {%endfor%}
 </div>
 
-<div class="col-12 d-flex flex-row-reverse mb-4">
-  <button type="submit" class="btn btn-primary mt-3">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
-      viewBox="0 0 16 16">
-      <path
-        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-      <path
-        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-    </svg>
-    Descargar listado</button>
-</div>
-
-
-{% endblock %}
-
-{% block filtros%}
-{% endblock %}
-
-{% block modals %}
-{% include './detalle_orden_confirm_delete.html' %}
-{% endblock %}
-
-{% block extrajs %}
-<!-- <script>
-  conectarBotonesAModal('.btn-eliminar')
-</script> -->
 {% endblock %}

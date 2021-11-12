@@ -151,6 +151,9 @@ class OrdenDeTrabajo(models.Model):
             vehiculo=self.vehiculo
         )
 
+    def __str__(self):
+        return f"{self.pk} | {self.cliente.nombre} - {self.vehiculo.modelo.marca} {self.vehiculo.modelo.nombre} ({self.vehiculo.patente})"
+
 
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):

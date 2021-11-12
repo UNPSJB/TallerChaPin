@@ -1,15 +1,17 @@
 from django.urls import reverse_lazy
 from django.http import JsonResponse
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
-from .forms import * 
+from .forms import *
 # Create your views here.
 
-def UnidadesDeMedida(request,pk):
-    material=get_object_or_404(Material, pk=pk)
+
+def UnidadesDeMedida(request, pk):
+    material = get_object_or_404(Material, pk=pk)
     return JsonResponse({'material': material.tipo.get_unidad_medida_display()})
+
 
 class ListFilterView(ListView):
     filtros = None
@@ -31,6 +33,7 @@ class ListFilterView(ListView):
 
 # Marca Views
 
+
 class MarcaCreateView(CreateView):
     model = Marca
     form_class = MarcaForm  # configuración de los campos del form + estilos.
@@ -42,6 +45,7 @@ class MarcaCreateView(CreateView):
         context['titulo'] = "Registrar Marca"
         return context
 
+
 class MarcaUpdateView(UpdateView):
     model = Marca
     form_class = MarcaForm
@@ -51,6 +55,7 @@ class MarcaUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar Marca"
         return context
+
 
 class MarcaDeleteView(DeleteView):
     model = Marca
@@ -73,6 +78,7 @@ class MarcaListView(ListFilterView):
 # ---------------------------------------------------------------- #
 
 # Modelo View
+
 
 class ModeloCreateView(CreateView):
     model = Modelo
@@ -299,12 +305,12 @@ class MaterialDeleteView(DeleteView):
 
 # Tipo Material View
 
+
 class TipoMaterialCreateView(CreateView):
     model = TipoMaterial
     form_class = TipoMaterialForm
     success_url = reverse_lazy('crearTipoMaterial')
 
-     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar tipo material"
@@ -322,6 +328,7 @@ class TipoMaterialListView(ListView):
         context['titulo'] = "Listado de Tipos Materiales"
         return context
 
+
 class TipoMaterialUpdateView(UpdateView):
     model = TipoMaterial
     form_class = TipoMaterialForm
@@ -331,7 +338,6 @@ class TipoMaterialUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar tipo Material"
         return context
-
 
 
 class TipoMaterialDeleteView(DeleteView):
@@ -392,16 +398,35 @@ class RepuestoListView(ListFilterView):
 
 
 class ClienteCreateView(CreateView):
+
     model = Cliente
     form_class = ClienteForm
     # template_name = 'taller/cliente_form.html' # template del form
     success_url = reverse_lazy('crearCliente')
 
     def get_context_data(self, **kwargs):
+        print(kwargs)
         context = super().get_context_data(**kwargs)
 
         context['titulo'] = "Registrar cliente"
         return context
+
+    def post(self, *args, **kwargs):
+        self.object = None
+        cliente_form = self.get_form()
+        vehiculo_form = ClienteVehiculoForm(self.request.POST)
+
+        if cliente_form.is_valid() and vehiculo_form.is_valid():
+            cliente = cliente_form.save()
+            vehiculo = vehiculo_form.save(commit=False)
+            vehiculo.cliente = cliente
+            vehiculo.save()
+            return redirect('home')
+        # return self.render_to_response(self.get_context_data(form=cliente_form))
+        else:
+            print(cliente_form.errors)
+            print(vehiculo_form.errors)
+        return self.form_invalid(form=cliente_form)
 
 
 class ClienteUpdateView(UpdateView):

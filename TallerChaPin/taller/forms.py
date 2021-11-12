@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import widgets
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoRepuesto, TipoTarea, Vehiculo
@@ -551,6 +552,12 @@ class EmpleadoFiltrosForm(FiltrosForm):
 # Cliente forms
 class ClienteForm(forms.ModelForm):
 
+    # patente = forms.CharField(required=True, label='Patente', max_length=7)
+    # modelo = forms.ModelChoiceField(
+    # queryset=Modelo.objects.all(), required=True)
+    # chasis = forms.CharField(required=True)
+    # anio = forms.IntegerField(required=True)
+
     class Meta:
         model = Cliente
         fields = "__all__"
@@ -562,8 +569,25 @@ class ClienteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "dni",
+                "nombre",
+                "apellido",
+                "direccion",
+                "telefono",
+                HTML(
+                    '<div> <label class="form-label">Datos del vehiculo:</label> <div/> <hr/>' ),
+                "patente",
+                "modelo",
+                "chasis",
+                "anio"
+            ),
+            Div(Submit('submit', 'Guardar'), css_class='submit-btn-container')
+        )
 
 
 class ClienteFiltrosForm(FiltrosForm):  # Revisar
@@ -615,6 +639,15 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
         )
 
 # Vehiculo Forms
+class ClienteVehiculoForm(forms.ModelForm):
+
+    class Meta:
+        model = Vehiculo
+        fields = "__all__"
+        exclude = ["cliente"]
+
+ClienteForm.base_fields.update(ClienteVehiculoForm.base_fields)
+
 
 
 class VehiculoForm(forms.ModelForm):

@@ -7,70 +7,31 @@
 {% block main %}
 <h1>{{titulo}}</h1>
 
-<div class="row row-cols-1 row-cols-md-3 g-4 tablero">
-  {% for detalle_orden in object_list %}
-    <div class="col">
-      <div class="card shadow-lg">
-        <!-- <div class="card-header">Tarea</div> -->
-        <div class="card-body">
-          <h5 class="card-title">{{detalle_orden.tarea}}</h5>
-          <p class="card-text">{{detalle_orden.observaciones}}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <i class="fas fa-user"></i> 
-            {% if detalle_orden.empleado != None %}
-              {{detalle_orden.empleado}}
-            {% else %}
-              Sin asignar
-            {% endif %}
-          </li>
-          <li class="list-group-item">
-            Inicio: 
-            {% if detalle_orden.inicio != None %}
-              {{detalle_orden.inicio}}
-            {% else %}
-              Sin comenzar
-            {% endif %}
-          </li>
-          <li class="list-group-item">
-            Fin: 
-            {% if detalle_orden.fin != None %}
-              {{detalle_orden.fin}}
-            {% else %}
-              Sin terminar
-            {% endif %}
-          </li>
-          <li class="list-group-item">
-            {% if detalle_orden.exitosa %}
-              Finalización exitosa
-            {% else %}
-              Finalización no exitosa
-            {% endif %}
-          </li>
-          <li class="list-group-item text-center">
-            {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puedo_asignar %}
-              <a href="#" class="btn btn-primary">
-                <i class="fas fa-thumbtack"></i><i class="fas fa-user-plus"></i> Asignar
-              </a>
-            {% endif %}
-            {% if detalle_orden.empleado == None %}
-              <!-- <a href="#" class="btn btn-primary">
-                <i class="fas fa-thumbtack"></i> Tomar
-              </a> -->
-            {% else %}
-              <a href="#" class="btn btn-danger">
-                <i class="fas fa-times"></i> Cancelar
-              </a>
-              <a href="#" class="btn btn-success">
-                <i class="fas fa-check"></i> Finalizar
-              </a>
-            {% endif %}
-          </li>
-        </ul>
-      </div>
-    </div>
-  {%endfor%}
+<ul class="nav nav-tabs nav-fill mt-5" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active text-primary" id="home-tab" data-bs-toggle="tab" data-bs-target="#sin-asignar" type="button" role="tab" aria-controls="sin-asignar" aria-selected="true">Sin asignar</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link text-primary" id="profile-tab" data-bs-toggle="tab" data-bs-target="#sin-finalizar" type="button" role="tab" aria-controls="sin-finalizar" aria-selected="false">Sin finalizar</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link text-primary" id="contact-tab" data-bs-toggle="tab" data-bs-target="#finalizados" type="button" role="tab" aria-controls="finalizados" aria-selected="false">Finalizados</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link text-primary" id="contact-tab" data-bs-toggle="tab" data-bs-target="#todos" type="button" role="tab" aria-controls="todos" aria-selected="false">Ver todos</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="sin-asignar" role="tabpanel" aria-labelledby="home-tab">
+    {% include './detalleordentrabajoestado_list.html' with listado=sinAsignar %}
+  </div>
+  <div class="tab-pane fade" id="sin-finalizar" role="tabpanel" aria-labelledby="profile-tab"> Sin finalizar!!!</div>
+  <div class="tab-pane fade" id="finalizados" role="tabpanel" aria-labelledby="contact-tab">Finalizados</div>
+  <div class="tab-pane fade" id="todos" role="tabpanel" aria-labelledby="contact-tab">
+    {% include './detalleordentrabajoestado_list.html' with listado=object_list %}
+  </div>
 </div>
+
+
 
 {% endblock %}

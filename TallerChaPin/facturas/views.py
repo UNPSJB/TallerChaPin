@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 
 # Create your views here.
 
-class imprimirPresupuesto(PDFTemplateView):
+class imprimirFactura(PDFTemplateView):
     #filename = 'presupuesto_pedro.pdf'
     template_name = 'facturas/factura_pdf.html'
     cmd_options = {
@@ -55,7 +55,7 @@ class FacturaListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de presupuestos"
+        context['titulo'] = "Listado de facturas"
         return context
 
 class FacturaDetailView(DetailView):
@@ -67,15 +67,10 @@ class FacturaDetailView(DetailView):
         context['titulo'] = "TallerChaPin"
         return context
 
-class FacturaCreateView(CreateView): 
-    model = Factura
-    form_class = FacturaForm
-    success_url = reverse_lazy('crearFactura')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
+def crearFactura(request, pk):
+    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    factura = Factura.facturar_orden(orden)
+    return redirect ('detallesFactura', factura.pk)
 
 class FacturaUpdateView(UpdateView):
 

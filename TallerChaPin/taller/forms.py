@@ -2,7 +2,7 @@ from django import forms
 from django.forms import widgets
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
-from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoRepuesto, TipoTarea, Vehiculo
+from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from django.db.models.query import QuerySet
 from django.db.models import Q, Model

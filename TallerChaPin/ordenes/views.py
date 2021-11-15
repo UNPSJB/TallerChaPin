@@ -72,25 +72,29 @@ class PresupuestoCreateView(CreateView):
     model = Presupuesto
     form_class = PresupuestoForm
     success_url = reverse_lazy('crearPresupuesto')
+    material_form = None
+    repuesto_form = None
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['presupuesto_material_formset'] = PresupuestoMaterialInline()()
+        context['presupuesto_material_formset'] = self.material_form or PresupuestoMaterialInline()()
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline()()
+        context['presupuesto_repuesto_formset'] = self.repuesto_form or PresupuestoRepuestoInline()()
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         context['titulo'] = "Registrar Presupuesto"
         return context
 
     def post(self, *args, **kwargs):
-        pmi = PresupuestoMaterialInline()(self.request.POST)
-        pri = PresupuestoRepuestoInline()(self.request.POST)
+        self.object = None
+        self.material_form = PresupuestoMaterialInline()(self.request.POST)
+        self.repuesto_form = PresupuestoRepuestoInline()(self.request.POST)
         form = PresupuestoForm(self.request.POST)
-        print(pmi.cleaned_data,pri.cleaned_data)
-        if pmi.is_valid() and pri.is_valid() and form.is_valid():
+        if self.repuesto_form.is_valid() and self.material_form.is_valid() and form.is_valid():
+            print(self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
             # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
-            presupuesto = form.save(pmi.cleaned_data, pri.cleaned_data)
-        return redirect ('detallesPresupuesto',presupuesto.pk)
+            presupuesto = form.save(self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
+            return redirect ('detallesPresupuesto',presupuesto.pk)
+        return self.form_invalid(form=form)
 
 
 
@@ -160,7 +164,6 @@ class OrdenTrabajoCreateView(CreateView):
         presupuesto = Presupuesto.objects.get(pk=pk)
         form = OrdenForm(self.request.POST)
         if form.is_valid():
-            # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
             turno = form.cleaned_data.get('turno')
             orden = presupuesto.confirmar(turno)
             return redirect ('detallesOrden', orden.pk)

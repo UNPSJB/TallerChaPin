@@ -93,14 +93,6 @@ class Tarea(models.Model):
     def __str__(self):
         return self.nombre
 
-
-class TipoRepuesto(models.Model):
-    # Ejemplos: Puesta Derecha, Puerta Izquierda, Guardabarros, Parabrisa.
-    # nombre
-    # descripcion
-    pass
-
-
 class Repuesto(models.Model):
     TIPOS = (
         (1, 'Puerta'),

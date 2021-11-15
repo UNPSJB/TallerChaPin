@@ -65,6 +65,12 @@ class OrdenDeTrabajo(models.Model):
             ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
         ]
 
+    def precio_total_presupuestado(self):
+        return sum([p.precio_estimado() for p in self.presupuestos.all()])
+
+    def precio_total(self):
+        return 0
+
     def agregar_tarea(self, tarea):
         return DetalleOrdenDeTrabajo.objects.create(tarea=tarea, orden=self)
 
@@ -101,6 +107,9 @@ class OrdenDeTrabajo(models.Model):
             raise NoEntregoVehiculoException(
                 'No se puede entregar el vehiculo o me pagas o sos vip', self.estado)
 
+    def puede_facturar(self):
+        pass
+    
     @property
     def cliente(self):
         return self.presupuestos.all().first().cliente
@@ -178,6 +187,8 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_asignar(self):
         # TODO: definir qs para que un jefe de taller vea las tareas para hacer y que puedan ser asignadas.
         pass
+
+
 
 class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
     pass

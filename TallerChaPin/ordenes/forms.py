@@ -71,7 +71,6 @@ class PresupuestoForm(forms.ModelForm):
         }
 
     def save(self, materiales, repuestos):
-        # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
         presupuesto = super().save()
         for material in materiales:
             if "material" in material:
@@ -94,7 +93,8 @@ class PresupuestoForm(forms.ModelForm):
 
 
 class PresupuestoMaterialForm(forms.ModelForm):
-    unidad_medida = forms.ChoiceField(
+    # Amigabilidad 10/10
+    unidad_medida = forms.ChoiceField(required=False,
         choices=TipoMaterial.UNIDADES_BASICAS,
         widget=forms.Select(attrs={'disabled': ''}))
 
@@ -257,11 +257,10 @@ class OrdenForm(forms.ModelForm):
         # }
         widgets = {
             "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+            
         }
 
-    def save(self, tareas, repuestos, materiales, turno):
-        # TODO: Recibir listado de materiales y repuestos para hacer el save aquí.
-        print(self.data, self.cleaned_data)
+    def save(self, tareas, repuestos, materiales):
         orden = super().save()
         for tarea in tareas:
             orden.agregar_tarea(tarea)

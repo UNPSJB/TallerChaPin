@@ -6,6 +6,7 @@ from django.db.models import Q, Model, fields
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
 from decimal import Decimal
+from datetime import datetime
 
 def dict_to_query(filtros_dict):
     filtro = Q()
@@ -58,21 +59,23 @@ class FacturaForm(forms.ModelForm):
     class Meta:
         model = Factura
         fields = "__all__"
-        # exclude = [""]
+        exclude = ["orden"]
 
         labels = {
 
         }
         widgets = {
-
+            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local','readonly': 'readonly'})
         }
 
-    def save(self, materiales, repuestos):
+    def save(self):
         factura = super().save()
         return factura
 
     def __init__(self, *args, **kwargs):
+        kwargs.update( initial = { 'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M') } )
         super().__init__(*args, **kwargs)
+        print(kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = False
 
@@ -92,7 +95,7 @@ class FacturaFiltrosForm(FiltrosForm):
     ]
     fecha = forms.DateField(required=False)
     orden = forms.ModelChoiceField(
-        queryset=OrdenDeTrabajo.objects.all(), required=False)
+        queryset=OrdenDeTrabajo.objects.all(), required=False, label="Orden de Trabajo")
     cliente = forms.ModelChoiceField(
         queryset=Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
@@ -104,9 +107,6 @@ class FacturaFiltrosForm(FiltrosForm):
     repuestos = forms.ModelChoiceField(
         queryset=Repuesto.objects.all(), required=False)
 
-    orden = forms.CharField(
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

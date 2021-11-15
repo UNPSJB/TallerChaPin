@@ -3,6 +3,7 @@ from .views import *
 
 
 urlpatterns = [
+    path('facturas/crear/<int:pk>', crearFactura , name="crearFactura"), 
     path('facturas/listar', FacturaListView.as_view(), name="listarFacturas"),
     path('facturas/detalle/<int:pk>',
          FacturaDetailView.as_view(), name="detallesFactura"),

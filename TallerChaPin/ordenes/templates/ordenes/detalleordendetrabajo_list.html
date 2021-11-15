@@ -27,7 +27,9 @@
   </div>
   <div class="tab-pane fade" id="sin-finalizar" role="tabpanel" aria-labelledby="profile-tab"> Sin finalizar!!!</div>
   <div class="tab-pane fade" id="finalizados" role="tabpanel" aria-labelledby="contact-tab">Finalizados</div>
-  <div class="tab-pane fade" id="todos" role="tabpanel" aria-labelledby="contact-tab">Todos!!!!</div>
+  <div class="tab-pane fade" id="todos" role="tabpanel" aria-labelledby="contact-tab">
+    {% include './detalleordentrabajoestado_list.html' with listado=object_list %}
+  </div>
 </div>
 
 

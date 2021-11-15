@@ -1,5 +1,5 @@
 .tablero{
-    margin-top: 2rem;
+    margin-top: .5rem;
 }
 
 .card{
@@ -8,4 +8,14 @@
 
 .card:hover{
     transform: scale(1.05);
+}
+
+.finalizacion{
+    font-weight: bold;
+}
+
+.filtros {
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -234,6 +234,15 @@ class DetalleOrdenDeTrabajo(models.Model):
     def puedo_asignar(self):
         return self.empleado is None
 
+    def esta_sin_iniciar(self):
+        return self.inicio is None
+
+    def esta_en_proceso(self):
+        return self.inicio is not None and self.fin is None
+
+    def esta_finalizado(self):
+        return self.fin is not None
+
 
 class MaterialOrdenDeTrabajo(models.Model):
     material = models.ForeignKey(

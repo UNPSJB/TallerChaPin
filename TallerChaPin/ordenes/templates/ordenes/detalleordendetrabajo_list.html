@@ -6,12 +6,31 @@
 
 {% block main %}
 <h1>{{titulo}}</h1>
+<hr>
+<div class="contenedor d-flex">
+  <div class="btn-group filtros" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary">Detalles sin asignar</button>
+    <button type="button" class="btn btn-primary">Detalles sin terminar</button>
+    <button type="button" class="btn btn-primary">Detalles terminados</button>
+    <button type="button" class="btn btn-primary">Ver todos</button>
+  </div>
+</div>
 
 <div class="row row-cols-1 row-cols-md-3 g-4 tablero mb-5">
   {% for detalle_orden in object_list %}
     <div class="col">
       <div class="card shadow-lg">
-        <!-- <div class="card-header">Tarea</div> -->
+
+        {% if detalle_orden.esta_sin_iniciar %}
+          <div class="card-header text-light bg-danger"><i class="fas fa-times"></i> Sin iniciar</div>
+        {% elif detalle_orden.esta_en_proceso %}
+          <div class="card-header text-light bg-primary"><i class="fas fa-tools"></i> En proceso</div>
+        {% elif detalle_orden.esta_finalizado and detalle_orden.exitosa %}
+          <div class="card-header text-light bg-success"><i class="fas fa-check"></i> Finalizado correctamente</div>
+        {% elif detalle_orden.esta_finalizado and not detalle_orden.exitosa %}
+          <div class="card-header text-light bg-warning"><i class="fas fa-check"></i> Finalizado no correctamente</div>
+        {% endif %}
+
         <div class="card-body">
           <h5 class="card-title">{{detalle_orden.tarea}}</h5>
           {% if detalle_orden.observaciones != None %}
@@ -19,6 +38,7 @@
           {% endif %}
         </div>
         <ul class="list-group list-group-flush">
+          
           <li class="list-group-item">
             <i class="fas fa-user"></i> 
             {% if detalle_orden.empleado != None %}
@@ -27,6 +47,7 @@
               Sin asignar
             {% endif %}
           </li>
+
           <li class="list-group-item">
             Inicio: 
             {% if detalle_orden.inicio != None %}
@@ -35,6 +56,7 @@
               Sin comenzar
             {% endif %}
           </li>
+
           <li class="list-group-item">
             Fin: 
             {% if detalle_orden.fin != None %}
@@ -43,13 +65,7 @@
               Sin terminar
             {% endif %}
           </li>
-          <li class="list-group-item">
-            {% if detalle_orden.exitosa %}
-              Finalización exitosa
-            {% else %}
-              Finalización no exitosa
-            {% endif %}
-          </li>
+
           <li class="list-group-item text-center">
 
             {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puedo_asignar %}

@@ -2,6 +2,14 @@ from django.utils.timezone import now
 from datetime import datetime, time
 from django.db import models
 from ordenes.models import DetalleOrdenDeTrabajo, OrdenDeTrabajo
+from taller.models import (
+    Empleado,
+    Cliente,
+    Vehiculo,
+    Tarea,
+    Material,
+    Repuesto
+)
 
 # Create your models here.
 

@@ -1,0 +1,45 @@
+{% extends 'template_facturas.html' %}
+<!-- Este template hereda de un html distinto al resto -->
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block main %}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="ibox-title">
+            <h1 class="mb-4">Ver Factura</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-9">
+                <div class="ibox border border-primary rounded p-3 h-100 p-4">
+                    <h3>
+                        {{ object.orden.cliente.nombre }}, {{ object.orden.cliente.apellido }}
+                    </h3>
+                    <span>
+                        <i class="fas fa-car-side"></i> {{ object.orden.vehiculo.patente }} ({{ object.orden.vehiculo.modelo}}) <br>
+
+                    </span>
+
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6 mt-2">
+                    <div class="ibox-content">
+                        <div>
+
+                        <div class="ibox-content mb-4">
+                            <button class="btn btn-primary pull-right"><i class="fa fa-print" aria-hidden="true"></i>
+                                Imprimir</button>
+                            <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Volver</button>
+                        </div>
+                    </div>
+ 
+                </div>
+                {% endblock %}

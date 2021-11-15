@@ -648,8 +648,6 @@ class ClienteVehiculoForm(forms.ModelForm):
 
 ClienteForm.base_fields.update(ClienteVehiculoForm.base_fields)
 
-
-
 class VehiculoForm(forms.ModelForm):
 
     class Meta:

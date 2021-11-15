@@ -179,6 +179,11 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         # TODO: definir qs para que un jefe de taller vea las tareas para hacer y que puedan ser asignadas.
         pass
 
+    def sin_asignar(self):
+        no_tiene_empleado = models.Q(empleado__isnull=True)
+        qs = self.filter(no_tiene_empleado).order_by('orden__turno')
+        return qs
+
 class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
     pass
 

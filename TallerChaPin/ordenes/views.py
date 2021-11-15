@@ -206,6 +206,7 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de detalles de Orden de Trabajo"
+        context['sinAsignar'] = DetalleOrdenDeTrabajo.objects.sin_asignar()
         return context
 
 

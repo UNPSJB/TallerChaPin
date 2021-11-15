@@ -7,14 +7,16 @@
 {% block main %}
 <h1>{{titulo}}</h1>
 
-<div class="row row-cols-1 row-cols-md-3 g-4 tablero">
+<div class="row row-cols-1 row-cols-md-3 g-4 tablero mb-5">
   {% for detalle_orden in object_list %}
     <div class="col">
       <div class="card shadow-lg">
         <!-- <div class="card-header">Tarea</div> -->
         <div class="card-body">
           <h5 class="card-title">{{detalle_orden.tarea}}</h5>
-          <p class="card-text">{{detalle_orden.observaciones}}</p>
+          {% if detalle_orden.observaciones != None %}
+            <p class="card-text">{{detalle_orden.observaciones}}</p>
+          {% endif %}
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
@@ -49,22 +51,28 @@
             {% endif %}
           </li>
           <li class="list-group-item text-center">
+
             {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puedo_asignar %}
               <a href="#" class="btn btn-primary">
-                <i class="fas fa-thumbtack"></i><i class="fas fa-user-plus"></i> Asignar
+                <i class="fas fa-user-plus"></i> Asignar
               </a>
             {% endif %}
-            {% if detalle_orden.empleado == None %}
-              <!-- <a href="#" class="btn btn-primary">
-                <i class="fas fa-thumbtack"></i> Tomar
-              </a> -->
-            {% else %}
-              <a href="#" class="btn btn-danger">
-                <i class="fas fa-times"></i> Cancelar
-              </a>
-              <a href="#" class="btn btn-success">
-                <i class="fas fa-check"></i> Finalizar
-              </a>
+
+            {% if detalle_orden.empleado != None %}
+              {% if detalle_orden.puedo_iniciar %}
+                <a href="#" class="btn btn-success">
+                  <i class="fas fa-times"></i> Comenzar
+                </a>
+              {% endif %}
+
+              {% if detalle_orden.puedo_finalizar %}
+                <a href="#" class="btn btn-success">
+                  <i class="fas fa-check"></i> Finalizar
+                </a>
+                <a href="#" class="btn btn-danger">
+                  <i class="fas fa-times"></i> Finalizar mal
+                </a>
+              {% endif %}
             {% endif %}
           </li>
         </ul>

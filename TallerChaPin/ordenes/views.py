@@ -212,6 +212,9 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de detalles de Orden de Trabajo"
         context['sinAsignar'] = DetalleOrdenDeTrabajo.objects.sin_asignar()
+        context['sinFinalizar'] = DetalleOrdenDeTrabajo.objects.sin_finalizar()
+        context['enProceso'] = DetalleOrdenDeTrabajo.objects.en_proceso()
+        context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados()
         return context
 
 

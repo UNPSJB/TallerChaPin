@@ -44,7 +44,7 @@
             {% if detalle_orden.fin != None %}
               {{detalle_orden.fin}}
             {% else %}
-              Sin terminar
+              Sin finalizar
             {% endif %}
           </li>
 
@@ -75,6 +75,10 @@
           </li>
         </ul>
       </div>
+    </div>
+  {% empty %}
+    <div class="alert alert-primary w-100 text-center" role="alert">
+      No hay detalles que coincidan con el estado seleccionado
     </div>
   {%endfor%}
 </div>

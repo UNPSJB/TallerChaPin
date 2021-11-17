@@ -193,6 +193,24 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         qs = self.filter(no_tiene_empleado).order_by('orden__turno')
         return qs
 
+    def sin_finalizar(self):
+        no_esta_finalizado = models.Q(fin__isnull=True)
+        qs = self.filter(no_esta_finalizado).order_by('orden__turno')
+        return qs
+
+    def en_proceso(self):
+        esta_empezado = models.Q(inicio__isnull=False)
+        no_esta_finalizado = models.Q(fin__isnull=True)
+        qs = self.filter(esta_empezado & no_esta_finalizado).order_by('orden__turno')
+        return qs
+    
+    def finalizados(self):
+        esta_finalizado = models.Q(fin__isnull=False)
+        qs = self.filter(esta_finalizado).order_by('orden__turno')
+        return qs
+    
+
+
 class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
     pass
 

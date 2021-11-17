@@ -14,9 +14,9 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link text-primary" id="profile-tab" data-bs-toggle="tab" data-bs-target="#sin-finalizar" type="button" role="tab" aria-controls="sin-finalizar" aria-selected="false">Sin finalizar <span class="badge rounded-pill bg-primary">{{sinFinalizar.count}}</span></button>
   </li>
-  <li class="nav-item" role="presentation">
+  <!-- <li class="nav-item" role="presentation">
     <button class="nav-link text-primary" id="profile-tab" data-bs-toggle="tab" data-bs-target="#en-proceso" type="button" role="tab" aria-controls="en-proceso" aria-selected="false">En proceso <span class="badge rounded-pill bg-primary">{{enProceso.count}}</span></button>
-  </li>
+  </li> -->
   <li class="nav-item" role="presentation">
     <button class="nav-link text-primary" id="contact-tab" data-bs-toggle="tab" data-bs-target="#finalizados" type="button" role="tab" aria-controls="finalizados" aria-selected="false">Finalizados <span class="badge rounded-pill bg-primary">{{finalizados.count}}</span></button>
   </li>
@@ -31,9 +31,9 @@
   <div class="tab-pane fade" id="sin-finalizar" role="tabpanel" aria-labelledby="profile-tab">
     {% include './detalleordentrabajoestado_list.html' with listado=sinFinalizar %}
   </div>
-  <div class="tab-pane fade" id="en-proceso" role="tabpanel" aria-labelledby="profile-tab">
+  <!-- <div class="tab-pane fade" id="en-proceso" role="tabpanel" aria-labelledby="profile-tab">
     {% include './detalleordentrabajoestado_list.html' with listado=enProceso %}
-  </div>
+  </div> -->
   <div class="tab-pane fade" id="finalizados" role="tabpanel" aria-labelledby="contact-tab">
     {% include './detalleordentrabajoestado_list.html' with listado=finalizados %}
   </div>

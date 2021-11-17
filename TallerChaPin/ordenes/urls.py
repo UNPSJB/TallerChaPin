@@ -28,5 +28,6 @@ urlpatterns = [
     path('presupuesto/pdf/<int:pk>', imprimirPresupuesto.as_view(), name='imprimirPresupuesto'),
      # ----------------- Ordenes y Turnos -----------------
      path ('ordenesTurnos/registrarIngresoVehiculo', RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),
-     path ('ordenesTurnos/registrarEgresoVehiculo', RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo")
+     path ('ordenesTurnos/registrarEgresoVehiculo', RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo"),
+     path ('ordenesTurnos/listarTurnos', ListarTurnosListView.as_view(), name="calendarioTurnos")
 ]

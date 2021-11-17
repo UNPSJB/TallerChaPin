@@ -263,3 +263,15 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
             return redirect ('detallesOrden', orden.pk)
         return redirect ('registrarIngresoDeVehiculo')
 
+class ListarTurnosListView(ListFilterView):
+    model = OrdenDeTrabajo
+    template_name = "ordenes/calendarioturno_list.html"
+    filtros = TurnosFiltrosForm
+    paginate_by = 100
+   
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Calendario de Turnos"
+        return context
+ 
+    

@@ -1,4 +1,5 @@
 from django import forms
+from django.db.models import query
 from .models import *
 from taller.models import TipoMaterial
 from django.db.models.query import QuerySet
@@ -400,3 +401,48 @@ class RegistrarEgresoVehiculoForm(forms.ModelForm):
             ),
             Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
         )
+
+# listar turno
+
+class TurnosFiltrosForm(FiltrosForm):
+    ORDEN_CHOICES = [
+        ("turno", "Turno"),
+        ("cliente", "Cliente"),
+        ("vehiculo", "Vehiculo"),
+        ]
+
+    
+    turno = forms.DateTimeField(required=False)
+    cliente = forms.ModelChoiceField(
+        queryset=Cliente.objects.all(), required=False)
+    vehiculo = forms.ModelChoiceField(
+        queryset=Vehiculo.objects.all(), required=False)
+
+   
+    
+    turno__gte = forms.DateTimeField(label="Mayor o igual que", required=False)
+    turno__lte = forms.DateTimeField(label="Menor o igual que", required=False)
+   
+   
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "turno",
+                "cliente",
+                "vehiculo",
+                "turno__gte",
+                "turno__lte"
+                
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
+    
+
+   

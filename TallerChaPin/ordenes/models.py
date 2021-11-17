@@ -117,6 +117,8 @@ class OrdenDeTrabajo(models.Model):
     @property
     def vehiculo(self):
         return self.presupuestos.all().first().vehiculo
+    
+    
 
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
@@ -391,8 +393,10 @@ class DetallePlanillaDePintura(models.Model):
     formula = models.CharField(max_length=100)
     cantidad = models.PositiveIntegerField()  # en gramos
 
-# # Registrar ingreso vehiculo
 
-# class RegistrarIngresoVehiculo(models.Model):
-#     vehiculo = models.ForeignKey(
-#         Vehiculo, related_name='registraringresovehiculo', on_delete=models.CASCADE)
+class turnoOrden(models.Model):
+    
+    cliente = models.ForeignKey(
+        Cliente, related_name='Turno', on_delete=models.CASCADE)
+    vehiculo = models.ForeignKey(
+        Vehiculo, related_name='Turno', on_delete=models.CASCADE)

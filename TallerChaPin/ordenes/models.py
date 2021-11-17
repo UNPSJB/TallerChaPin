@@ -199,7 +199,7 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         tiene_empleado = models.Q(empleado__isnull=False)
         esta_iniciado = models.Q(inicio__isnull=False)
         no_esta_finalizado = models.Q(fin__isnull=True)
-        qs = self.filter(tiene_empleado & no_esta_finalizado).order_by('orden__turno')
+        qs = self.filter(tiene_empleado & no_esta_finalizado & esta_iniciado).order_by('orden__turno')
         return qs
 
     def en_proceso(self):

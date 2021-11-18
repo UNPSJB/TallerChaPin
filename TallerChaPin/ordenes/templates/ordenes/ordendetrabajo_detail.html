@@ -4,7 +4,16 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+
 {% block main %}
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
@@ -28,7 +37,6 @@
 
                     <span>
                         <i class="far fa-flag"></i> ESTADO: {{ object.get_estado_display}} <br>
-
                     </span>
 
                 </div>
@@ -176,7 +184,10 @@
                             </button>
                             <a href="{% url 'modificarOrden' object.pk %}" class="btn btn-primary m-1 w-100"><i
                                     class="fas fa-pencil-alt"></i> Modificar </a>
-                            <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Facturar Orden </a>
+                            <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
+                                <i class="fas fa-check-circle"></i> Facturar Orden
+                            </a>
+
                         </div>
                     </div>
                 </div>

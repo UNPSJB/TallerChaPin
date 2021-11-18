@@ -12,6 +12,7 @@
     </div>
 
     <div class="col-10 mt-4">
+
       {% block main %}
       
       {% endblock %}
@@ -19,6 +20,14 @@
   </div>
 </div>
 {% endblock %}
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
 {% block modals %}
 

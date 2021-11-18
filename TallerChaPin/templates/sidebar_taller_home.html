@@ -1,3 +1,4 @@
+
 <div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
     <a href="/" class="
         d-flex
@@ -15,47 +16,6 @@
     </a>
     <ul class="list-unstyled ps-0">
 
-        
-        <!-- Clientes -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#clientes-collapse" aria-expanded="false">
-                Clientes
-            </button>
-
-            <!-- Desplegable de clientes -->
-            <div class="collapse" id="clientes-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'listarClientes' %}" class="link-dark rounded">Listado de clientes</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'crearCliente' %}" class="link-dark rounded">Registrar cliente</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
-        <!-- Vehículos -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#vehiculos-collapse" aria-expanded="false">
-                Vehículos
-            </button>
-
-            <!-- Desplegable de vehículos -->
-            <div class="collapse" id="vehiculos-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'crearVehiculo' %}" class="link-dark rounded">Alta de vehículo</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarVehiculos' %}" class="link-dark rounded">Listar vehículos</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
         <!-- Tareas -->
         <li class="mb-1">
             <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
@@ -66,12 +26,6 @@
             <!-- Desplegable de tareas -->
             <div class="collapse" id="tareas-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'crearTarea' %}" class="link-dark rounded">Registrar una tarea</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarTareas' %}" class="link-dark rounded">Listar tareas</a>
-                    </li>
                     <li>
                         <a href="{% url 'crearTipoTarea' %}" class="link-dark rounded">Registrar un tipo de tarea</a>
                     </li>
@@ -92,12 +46,6 @@
             <!-- Desplegable de materiales -->
             <div class="collapse" id="materiales-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'crearMaterial' %}" class="link-dark rounded">Registrar un material</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarMateriales' %}" class="link-dark rounded">Listar Materiales</a>
-                    </li>
                     <li>
                         <a href="{% url 'crearTipoMaterial' %}" class="link-dark rounded">Registrar un tipo de material</a>
                     </li>
@@ -122,12 +70,6 @@
             <div class="collapse" id="repuestos-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li>
-                        <a href="{% url 'crearRepuesto' %}" class="link-dark rounded">Registrar un repuesto</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarRepuestos' %}" class="link-dark rounded">Listar repuestos</a>
-                    </li>
-                    <li>
                         <a href="#" class="link-dark rounded">Modificar stock de repuestos</a>
                     </li>
                  </ul>
@@ -144,12 +86,7 @@
             <!-- Desplegable de empleados -->
             <div class="collapse" id="empleados-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'crearEmpleado' %}" class="link-dark rounded"> Alta de empleado</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarEmpleados' %}" class="link-dark rounded"> Lista de empleados</a>
-                    </li>
+
                     <li>
                         <a href="#" class="link-dark rounded">Asociar un tipo de tarea con empleado</a>
                     </li>

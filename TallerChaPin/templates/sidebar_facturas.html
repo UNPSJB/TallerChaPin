@@ -26,10 +26,10 @@
             <div class="collapse" id="pagos-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li>
-                        <a href="#" class="link-dark rounded">Facturar orden</a>
+                        <a href="{% url 'listarOrdenes' %}" class="link-dark rounded">Facturar ordenes </a>
                     </li>
-                    <li>
-                        <a href="#" class="link-dark rounded">Registrar pago</a>
+                    <li> 
+                        <a href="{% url 'listarFacturas' %}" class="link-dark rounded">Listado de facturas realizadas</a>
                     </li>
                 </ul>
             </div>
@@ -47,9 +47,6 @@
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li>
                 <a href="#" class="link-dark rounded">Listado de clientes</a>
-            </li>
-            <li>
-                <a href="#" class="link-dark rounded">Clientes pendientes de pago</a>
             </li>
         </ul>
     </div>

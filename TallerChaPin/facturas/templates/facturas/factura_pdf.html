@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" /-->
+    <link rel="stylesheet" href="{{ styles }}" type="text/css">
+    <title>Factura</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .encabezado,
+        .total {
+            background-color: #bad5fd;
+            padding: .5rem 1rem 1rem 1rem;
+            border: 1px solid black;
+        }
+
+        .total {
+            margin-top: 2rem;
+            text-align: right;
+        }
+
+        table {
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: .3rem;
+        }
+
+        th {
+            background-color: #bad5fd;
+        }
+
+        .descripcion {
+            width: 70%;
+        }
+
+        .cantidad {
+            text-align: center;
+        }
+
+        .subtotal {
+            width: 20%;
+            text-align: center;
+        }
+
+        .separador-encabezado {
+            margin-top: 1rem;
+            border-color: #91bdff;
+        }
+
+        .separador {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="{{logo}}" alt="" height="100">
+    <div class="encabezado">
+        <h2 class="text-primary">Taller ChaPin</h2>
+        <span>Dirección: Calle Falsa 123, Trelew, Chubut.</span> <br>
+        <hr class="separador-encabezado">
+        <h2>Nro. Factura: B0000{{ factura.pk }}</h2>
+        <span>Fecha de emisión: {{ factura.fecha }}</span> <br>
+
+    </div>
+    <h3>Datos del cliente</h3>
+    <span><b>Nombre:</b> {{ factura.orden.cliente.nombre }} {{ factura.orden.cliente.apellido }}</span> <br>
+    <span><b>Vehículo:</b> {{ factura.orden.vehiculo.marca }} {{ factura.orden.vehiculo.modelo }}, modelo
+        {{factura.orden.vehiculo.anio}} | Patente: {{factura.orden.vehiculo.patente}}</span>
+    <hr class="separador">
+
+
+    <h4>Tareas realizadas</h4>
+    <table>
+        <tr>
+            <th class="descripcion">Descripción</th>
+            <th class="subtotal">Subtotal</th>
+        </tr>
+
+        {% for detalle in factura.orden.detalles.all %}
+        <tr>
+            <td>{{ detalle.tarea.nombre }}</td>
+
+            <td class="subtotal">${{ detalle.tarea.precio}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr class="separador">
+    <h4>Repuestos utilizados</h4>
+    <table>
+        <tr>
+            <th class="descripcion">Descripción</th>
+            <th class="cantidad">Cant.</th>
+            <th class="subtotal">Subtotal</th>
+        </tr>
+
+
+        {% for repuesto in factura.orden.orden_repuestos.all %}
+        <tr>
+            <td>{{ repuesto.repuesto.nombre }}</td>
+            <td class="cantidad">{{ repuesto.cantidad }}</td>
+            <td class="subtotal">${{ repuesto.precio}}</td>
+        </tr>
+        {% empty %}
+        {% endfor %}
+
+    </table>
+    <hr class="separador">
+    <h4>Materiales utilizados</h4>
+    <table>
+        <tr>
+            <th class="descripcion">Descripción</th>
+            <th class="cantidad">Cant.</th>
+            <th class="subtotal">Subtotal</th>
+        </tr>
+
+        {% for material in factura.orden.orden_materiales.all %}
+        <tr>
+            <td>{{ material.material.nombre }}</td>
+            <td class="cantidad">{{ material.cantidad}} {{ detalle.material.tipo.get_unidad_medida_display }}</td>
+            <td class="subtotal">${{ material.precio }}</td>
+        </tr>
+        {% empty %}
+        {% endfor %}
+    </table>
+
+
+    <div class="total">
+        <h2>Total: ${{ factura.orden.precio_total }}</h2>
+    </div>
+
+</body>
+
+</html>

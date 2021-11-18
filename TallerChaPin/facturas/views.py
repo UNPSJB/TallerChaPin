@@ -7,6 +7,7 @@ from datetime import date
 from .models import *
 from .forms import * 
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 # Create your views here.
 
@@ -69,8 +70,11 @@ class FacturaDetailView(DetailView):
 
 def crearFactura(request, pk):
     orden = OrdenDeTrabajo.objects.get(pk=pk)
-    factura = Factura.facturar_orden(orden)
-    return redirect ('detallesFactura', factura.pk)
+    if orden.estado == OrdenDeTrabajo.REALIZADA:
+        factura = Factura.facturar_orden(orden)
+        return redirect ('detallesFactura', factura.pk)
+    messages.add_message(request, messages.WARNING, 'La orden de trabajo no esta terminada')
+    return redirect ('detallesOrden', orden.pk)
 
 class FacturaUpdateView(UpdateView):
 
@@ -80,18 +84,6 @@ class FacturaUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # initial_materiales = [
-        #     {'material': pm["material_id"], "cantidad": pm["cantidad"]} for pm in self.get_object().presupuesto_materiales.all().values()]
-        # initial_repuestos = [
-        #     {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in self.get_object().presupuesto_repuestos.all().values()]
-
-        # print(f"{initial_materiales=}")
-        # print(f"{initial_repuestos=}")
-        # context['presupuesto_material_formset'] = PresupuestoMaterialInline(len(initial_materiales))(initial = initial_materiales) #pasarle las lineas previas
-        # context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        # context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(len(initial_repuestos))(initial = initial_repuestos) #pasarle las lineas previas
-        # context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
-        # context['titulo'] = "Modificar presupuesto"
         return context
 
 class FacturaDeleteView(DeleteView):
@@ -102,3 +94,21 @@ class FacturaDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+class imprimirFactura(PDFTemplateView):
+ 
+    template_name = 'facturas/factura_pdf.html'
+    cmd_options = {
+        'margin-top': 3,
+        'enable-local-file-access': True,
+        'quiet': False
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = kwargs.get('pk')
+        factura = Factura.objects.get(pk=pk)
+        self.filename = factura.orden.cliente.nombre + '-' + factura.orden.cliente.apellido + '-'+ str(date.today()) + '.pdf' # definimos el nombre del pdf con datos del cliente.
+        context["factura"] = factura # pasamos el objeto presupuesto para usarlo en el template.
+        context["styles"] = 'http://127.0.0.1:8000/static/ordenes/css/presupuesto_pdf.css'
+        context["logo"] = 'http://127.0.0.1:8000/static/images/chapin2.png'
+        return context

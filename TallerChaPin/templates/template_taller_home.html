@@ -8,17 +8,10 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-between">
     <div class="col-2 mt-4">
-      {% block sidebar %} {% include 'sidebar_taller.html' %} {% endblock %}
+      {% block sidebar %} {% include 'sidebar_taller_home.html' %} {% endblock %}
     </div>
 
     <div class="col-8 mt-4">
-      {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-          {% endfor %}
-      </ul>
-      {% endif %}
       {% block main %}
 
       <h2 class="mt-3">

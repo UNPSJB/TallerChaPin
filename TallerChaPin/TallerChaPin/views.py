@@ -38,10 +38,10 @@ def logout(request):
 
 
 def template_taller(request):
-    return render(request, 'template_taller.html', {"title": "Gestion de Taller"})
+    return render(request, 'template_taller_home.html', {"title": "Gestion de Taller"})
 
 def template_ordenes(request):
-    return render(request, 'template_ordenes.html', {"title": "Gestion de Ordenes"})
+    return render(request, 'template_ordenes_home.html', {"title": "Gestion de Ordenes"})
 
 def template_facturas(request):
-    return render(request, 'template_facturas.html', {"title": "Gestion de Facturas"})
+    return render(request, 'template_facturas_home.html', {"title": "Gestion de Facturas"})

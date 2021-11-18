@@ -63,7 +63,7 @@ const inlineFormset = function ($context) {
 
     $(tbody).append(newRow);
     const trs = $('tr', tbody);
-    console.log($(trs));
+    // console.log($(trs));
     $('#id_' + prefix + '-TOTAL_FORMS').val(trs.length);
   });
   

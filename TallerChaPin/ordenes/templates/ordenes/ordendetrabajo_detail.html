@@ -9,9 +9,9 @@
 
 {% if messages %}
 <ul class="messages">
-  {% for message in messages %}
-  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-    {% endfor %}
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
 </ul>
 {% endif %}
 
@@ -82,6 +82,7 @@
 
                                                     </label>
                                             </td>
+
                                         </tr>
                                     </tbody>
                             </div>
@@ -140,7 +141,8 @@
                                         <tbody>
                                             {% for material in object.materiales.all %}
                                             <tr class="bg-transition">
-                                                <td> {{ material.cantidad }} {{ material.tipo.get_unidad_medida_display }}</td>
+                                                <td>{{ material.cantidad }} {{ material.tipo.get_unidad_medida_display}}
+                                                </td>
                                                 <td>{{ material.nombre }}</td>
                                                 <td>{{ material.tipo }}</td>
                                                 </td>
@@ -148,9 +150,7 @@
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" value=""
                                                             id="flexCheckDisabled" disabled>
-                                                        <label class="form-check-label" for="flexCheckDisabled">
-
-                                                        </label>
+                                                        <label class="form-check-label" for="flexCheckDisabled"></label>
                                                 </td>
                                             </tr>
 
@@ -177,15 +177,16 @@
                     <div class="col-md-3">
                         <div class="border border-primary rounded p-3">
                             <h5>Acciones</h5>
-                            <button href="#" data-bs-toggle="modal" data-bs-target="#customModal"
-                                data-bs-nombre="{{object.cliente.apellido}}"
-                                data-bs-url="{% url 'eliminarOrden' object.pk %}"
-                                class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar
-                            </button>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#customModal"
+                                data-bs-nombre="{{object.cliente}}" data-bs-url="{% url 'eliminarOrden' object.pk %}"
+                                class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
+                                Cancelar</a>
                             <a href="{% url 'modificarOrden' object.pk %}" class="btn btn-primary m-1 w-100"><i
-                                    class="fas fa-pencil-alt"></i> Modificar </a>
-                            <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
-                                <i class="fas fa-check-circle"></i> Facturar Orden
+                                    class="fas fa-pencil-alt"></i> Modificar </a> 
+                            <div id="liveAlertPlaceholder"></div>
+                            <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100"
+                                id="liveAlertBtn">
+                                <i class="fas fa-check-circle"></i> Facturar Orden</a>
                             </a>
 
                         </div>
@@ -195,10 +196,11 @@
 
                 {% block modals %}
                 {% include './orden_confirm_delete.html' %}
+                
                 {% endblock %}
 
                 {% block extrajs %}
                 <script>
-                    conectarBotonesAModal('.btn-eliminar')
+                    conectarBotonesAModal('.btn-eliminar btn btn-danger m-1 w-100')
                 </script>
                 {% endblock %}

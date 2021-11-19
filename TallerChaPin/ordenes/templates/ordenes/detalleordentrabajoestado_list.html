@@ -51,9 +51,9 @@
           <li class="list-group-item text-center">
 
             {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puedo_asignar %}
-              <a href="#" class="btn btn-primary">
+              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#asignar">
                 <i class="fas fa-user-plus"></i> Asignar
-              </a>
+              </button>
             {% endif %}
 
             {% if detalle_orden.empleado != None %}
@@ -82,3 +82,5 @@
     </div>
   {%endfor%}
 </div>
+
+{% include "./asignar-tarea.html" with idModal='asignar'%}

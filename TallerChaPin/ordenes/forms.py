@@ -444,5 +444,14 @@ class TurnosFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
     
+class AsignarEmpleadoForm(forms.Form):
+    empleado = forms.ModelChoiceField(queryset=Empleado.objects.all(), required=True)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(Fieldset("", HTML('<p> Probando </p>')),
+            Div(Submit('submit', 'Botón!!!'), css_class='filter-btn-container'))
 
    

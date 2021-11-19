@@ -215,7 +215,16 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context['sinFinalizar'] = DetalleOrdenDeTrabajo.objects.sin_finalizar()
         context['enProceso'] = DetalleOrdenDeTrabajo.objects.en_proceso()
         context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados()
+        # Pasar formulario por contexto
         return context
+
+    def post(self, *args, **kwargs):
+        # form = AsignarEmpleadoForm(self.request.POST)
+        # if form.is_valid():
+        #     empleado = form.cleaned_data.get('empleado')
+        #     detalle = form.cleaned_data.get()
+        pass
+
 
 
 class RegistrarIngresoVehiculoCreateView(CreateView):

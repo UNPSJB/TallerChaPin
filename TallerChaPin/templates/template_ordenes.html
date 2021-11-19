@@ -1,16 +1,17 @@
-{% extends 'main.html' %} {% load static %} {% block extracss %}
+{% extends 'main.html' %} 
+{% load static %} 
+
+{% block extracss %}
 <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
 <link rel="stylesheet" href="{% static 'css/accesos-directos.css' %}">
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
-{% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' %} {% endblock %}
+{% endblock %} 
 
-<div class="container-fluid">
-  <div class="row d-flex justify-content-between">
-    <div class="col-2 mt-4">
-      {% block sidebar %} {% include 'sidebar_ordenes.html' %} {% endblock %}
-    </div>
+{% block container %} 
+  {% block nav %} {% include 'nav_taller.html' %} {% endblock %}
 
+<<<<<<< HEAD
     <div class="col-7 mt-4">
 
       {% block main %}
@@ -82,6 +83,82 @@
       {% endblock %}
 
 
+=======
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-between">
+      <div class="col-2 mt-4">
+        {% block sidebar %} {% include 'sidebar_ordenes.html' %} {% endblock %}
+      </div>
+
+      <div class="col-7 mt-4">
+        {% block main %}
+          <h1 class="mt-3">
+            <a href="{% url 'home' %}"><i class="fas fa-arrow-left atras"></i></a>
+            Accesos directos
+          </h1>
+
+          <div class="row mt-4 d-flex justify-content-evenly align-items-center">
+
+            <a href="{% url 'listarPresupuestos' %}" class="col-md-3 shadow-lg acceso">
+              <h2><i class="fas fa-file-alt"></i> Ver presupuestos</h2>
+              <p>
+                <i class="fas fa-th-list listar"></i> Abrir el listado de presupuestos.
+              </p>
+            </a>
+            
+            <a href="{% url 'crearPresupuesto' %}" class="col-md-3 shadow-lg acceso">
+              <h2><i class="fas fa-file-alt"></i> Crear presupuesto</h2>
+              <p>
+                <i class="fas fa-plus-circle agregar"></i> Dar de alta un nuevo presupuesto.
+              </p>
+            </a>
+
+            <a href="{% url 'listarOrdenes' %}" class="col-md-3 shadow-lg acceso">
+              <h2><i class="fas fa-receipt"></i> Ver órdenes de trabajo</h2>
+              <p>
+                <i class="fas fa-th-list listar"></i> Abrir el listado de órdenes de trabajo.
+              </p>
+            </a>
+
+            <a href="#" class="col-md-3 shadow-lg acceso">
+              <h2><i class="fas fa-calendar-check"></i> Ver turnos</h2>
+              <p>
+                <i class="fas fa-th-list listar"></i> Abrir el listado de turnos.
+              </p>
+            </a>
+
+            <a href="#" class="col-md-3 shadow-lg acceso">
+              <h2><i class="fas fa-car"></i> Registrar ingreso</h2>
+              <p>
+                <i class="fas fa-plus-circle agregar"></i> Registrar ingreso de un vehículo al taller.
+              </p>
+            </a>
+
+            <a href="#" class="col-md-3 shadow-lg acceso">
+              <h2><i class="fas fa-car"></i> Registrar entrega</h2>
+              <p>
+                <i class="fas fa-plus-circle agregar"></i> Registrar la entrega de un vehículo.
+              </p>
+            </a>
+
+            <a href="#" class="col-md-3 shadow-lg acceso">
+              <h2><i class="fas fa-tasks"></i> Registrar inicio de tarea</h2>
+              <p>
+                <i class="fas fa-plus-circle agregar"></i> Registrar el comienzo de una tarea por parte de un empleado.
+              </p>
+            </a>
+
+            <a href="#" class="col-md-3 shadow-lg acceso">
+              <h2><i class="fas fa-tasks"></i> Registrar fin de tarea</h2>
+              <p>
+                <i class="fas fa-plus-circle agregar"></i> Registrar que un empleado ha finalizado una tarea.
+              </p>
+            </a>
+
+          </div>
+        
+        {% endblock %}
+>>>>>>> asignar-detalle-empleado
     </div>
 
     <div class="col-2 mt-5 mr-4">
@@ -97,6 +174,10 @@
     </div>
   </div>
 </div>
-{% endblock %}
 
 {% block modals %} {% endblock %}
+<<<<<<< HEAD
+=======
+
+{% endblock %}
+>>>>>>> asignar-detalle-empleado

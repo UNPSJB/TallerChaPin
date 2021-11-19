@@ -51,7 +51,7 @@
           <li class="list-group-item text-center">
 
             {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puedo_asignar %}
-              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#asignar">
+              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#asignar" data-id-tarea={{detalle_orden.pk}}>
                 <i class="fas fa-user-plus"></i> Asignar
               </button>
             {% endif %}
@@ -61,6 +61,13 @@
                 <a href="#" class="btn btn-success">
                   <i class="fas fa-times"></i> Comenzar
                 </a>
+
+                {% if perms.ordenes.can_asignar_trabajo %}
+                  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#asignar" data-id-tarea={{detalle_orden.pk}}>
+                    <i class="fas fa-user-plus"></i> Reasignar
+                  </button>
+                {% endif %}
+
               {% endif %}
 
               {% if detalle_orden.puedo_finalizar %}
@@ -82,5 +89,3 @@
     </div>
   {%endfor%}
 </div>
-
-{% include "./asignar-tarea.html" with idModal='asignar'%}

@@ -1,7 +1,7 @@
 from django import forms
 from django.db.models import query
-from .models import *
-from taller.models import TipoMaterial
+from . import models as ordenes
+import taller.models as taller 
 from django.db.models.query import QuerySet
 from django.db.models import Q, Model, fields
 from crispy_forms.helper import FormHelper
@@ -60,7 +60,7 @@ class FiltrosForm(forms.Form):
 
 class PresupuestoForm(forms.ModelForm):
     class Meta:
-        model = Presupuesto
+        model = ordenes.Presupuesto
         fields = "__all__"
         exclude = ["orden", "materiales", "repuestos"]
 
@@ -96,11 +96,11 @@ class PresupuestoForm(forms.ModelForm):
 class PresupuestoMaterialForm(forms.ModelForm):
     # Amigabilidad 10/10
     unidad_medida = forms.ChoiceField(required=False,
-        choices=TipoMaterial.UNIDADES_BASICAS,
+        choices=taller.TipoMaterial.UNIDADES_BASICAS,
         widget=forms.Select(attrs={'disabled': ''}))
 
     class Meta:
-        model = PresupuestoMaterial
+        model = ordenes.PresupuestoMaterial
         fields = ("material",
                   "cantidad",
                   )
@@ -116,8 +116,8 @@ class PresupuestoMaterialForm(forms.ModelForm):
 
 def PresupuestoMaterialInline(extra=1):
     return inlineformset_factory(
-        Presupuesto,
-        PresupuestoMaterial,
+        ordenes.Presupuesto,
+        ordenes.PresupuestoMaterial,
         form=PresupuestoMaterialForm,
         extra=extra,
         # max_num=10,
@@ -147,7 +147,7 @@ class PresupuestoMaterialFormSetHelper(FormHelper):
 
 class PresupuestoRepuestoForm(forms.ModelForm):
     class Meta:
-        model = PresupuestoRepuesto
+        model = ordenes.PresupuestoRepuesto
         fields = ("repuesto",
                   "cantidad")
 
@@ -163,8 +163,8 @@ class PresupuestoRepuestoForm(forms.ModelForm):
 
 def PresupuestoRepuestoInline(extra=1):
     return inlineformset_factory(
-        Presupuesto,
-        PresupuestoRepuesto,
+        ordenes.Presupuesto,
+        ordenes.PresupuestoRepuesto,
         form=PresupuestoRepuestoForm,
         extra=extra,
         # max_num=5,
@@ -206,16 +206,16 @@ class PresupuestoFiltrosForm(FiltrosForm):
     ]
 
     cliente = forms.ModelChoiceField(
-        queryset=Cliente.objects.all(), required=False)
+        queryset=taller.Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
-        queryset=Vehiculo.objects.all(), required=False)
+        queryset=taller.Vehiculo.objects.all(), required=False)
     detalles = forms.CharField(required=False, max_length=200)
     tareas = forms.ModelChoiceField(
-        queryset=Tarea.objects.all(), required=False)
+        queryset=taller.Tarea.objects.all(), required=False)
     materiales = forms.ModelChoiceField(
-        queryset=Material.objects.all(), required=False)
+        queryset=taller.Material.objects.all(), required=False)
     repuestos = forms.ModelChoiceField(
-        queryset=Repuesto.objects.all(), required=False)
+        queryset=taller.Repuesto.objects.all(), required=False)
     # validez = forms.IntegerField(
     #     min_value=0, max_value=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
 
@@ -249,7 +249,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
 class OrdenForm(forms.ModelForm):
 
     class Meta:
-        model = OrdenDeTrabajo
+        model = ordenes.OrdenDeTrabajo
         fields = "__all__"
         exclude = ["egreso", "estado", "ingreso", "materiales", "repuestos"]
 
@@ -295,16 +295,16 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
     ]
 
     cliente = forms.ModelChoiceField(
-        queryset=Cliente.objects.all(), required=False)
+        queryset=taller.Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
-        queryset=Vehiculo.objects.all(), required=False)
+        queryset=taller.Vehiculo.objects.all(), required=False)
     detalles = forms.CharField(required=False, max_length=200)
     tareas = forms.ModelChoiceField(
-        queryset=Tarea.objects.all(), required=False)
+        queryset=taller.Tarea.objects.all(), required=False)
     materiales = forms.ModelChoiceField(
-        queryset=Material.objects.all(), required=False)
+        queryset=taller.Material.objects.all(), required=False)
     repuestos = forms.ModelChoiceField(
-        queryset=Repuesto.objects.all(), required=False)
+        queryset=taller.Repuesto.objects.all(), required=False)
 
     orden = forms.CharField(
         required=False
@@ -335,14 +335,14 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
 
 class RegistrarIngresoVehiculoForm(forms.ModelForm):
     orden = forms.ModelChoiceField(
-        queryset = OrdenDeTrabajo.objects.all(), 
+        queryset = ordenes.OrdenDeTrabajo.objects.all(), 
         required = True,
         widget = forms.Select(),
         label="Orden de trabajo" #TODO: verificar que el layout muestre un label
     )
 
     class Meta:
-        model = OrdenDeTrabajo
+        model = ordenes.OrdenDeTrabajo
         fields = "__all__"
         exclude = ["egreso", "estado", "turno", "materiales", "repuestos"]
 
@@ -371,14 +371,14 @@ class RegistrarIngresoVehiculoForm(forms.ModelForm):
 class RegistrarEgresoVehiculoForm(forms.ModelForm):
 
     orden = forms.ModelChoiceField(
-        queryset = OrdenDeTrabajo.objects.all(), 
+        queryset = ordenes.OrdenDeTrabajo.objects.all(), 
         required = True,
         widget = forms.Select(),
         label= "Orden de trabajo" #TODO: verificar que el layout muestre un label
     )
 
     class Meta:
-        model = OrdenDeTrabajo
+        model = ordenes.OrdenDeTrabajo
         fields = "__all__"
         exclude = ["ingreso", "estado", "turno", "materiales", "repuestos"]
 
@@ -414,9 +414,9 @@ class TurnosFiltrosForm(FiltrosForm):
     
     turno = forms.DateTimeField(required=False)
     cliente = forms.ModelChoiceField(
-        queryset=Cliente.objects.all(), required=False)
+        queryset=taller.Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
-        queryset=Vehiculo.objects.all(), required=False)
+        queryset=taller.Vehiculo.objects.all(), required=False)
 
    
     
@@ -443,15 +443,33 @@ class TurnosFiltrosForm(FiltrosForm):
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
-    
+
 class AsignarEmpleadoForm(forms.Form):
-    empleado = forms.ModelChoiceField(queryset=Empleado.objects.all(), required=True)
+
+    empleado = forms.ModelChoiceField(
+        queryset=taller.Empleado.objects.all(),
+        required=True, 
+        label="Asignar tarea a: "
+    )
+
+    tarea = forms.IntegerField(widget=forms.HiddenInput())
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
-        self.helper.layout = Layout(Fieldset("", HTML('<p> Probando </p>')),
-            Div(Submit('submit', 'Botón!!!'), css_class='filter-btn-container'))
+        self.helper.form_id = 'asignarEmpleadoForm'
+        self.helper.form_action = 'listarDetallesOrden'
+        self.helper.layout = Layout(
+            Fieldset(
+                "", 
+                "empleado",
+                "tarea"
+            )
+        )
 
-   
+    def asignar(self):
+        empleado = self.cleaned_data.get('empleado')
+        detalle_tarea_pk = self.cleaned_data.get('tarea')
+        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk = detalle_tarea_pk)
+        detalle.asignar(empleado)

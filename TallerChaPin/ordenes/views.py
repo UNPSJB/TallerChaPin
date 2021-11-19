@@ -216,14 +216,14 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context['enProceso'] = DetalleOrdenDeTrabajo.objects.en_proceso()
         context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados()
         # Pasar formulario por contexto
+        context['asignarEmpleadoForm'] = AsignarEmpleadoForm()
         return context
 
     def post(self, *args, **kwargs):
-        # form = AsignarEmpleadoForm(self.request.POST)
-        # if form.is_valid():
-        #     empleado = form.cleaned_data.get('empleado')
-        #     detalle = form.cleaned_data.get()
-        pass
+        form = AsignarEmpleadoForm(self.request.POST)
+        if form.is_valid():
+            form.asignar()
+        return redirect('listarDetallesOrden')
 
 
 

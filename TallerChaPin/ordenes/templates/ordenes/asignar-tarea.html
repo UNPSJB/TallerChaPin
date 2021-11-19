@@ -1,28 +1,31 @@
 {% extends 'modal.html' %}
+{% load crispy_forms_tags %}
 
 {% block modal_title %} Asignar tarea a empleado {% endblock %}
 
-{% block modal_body %} Probando 123 {% endblock %}
-
-{% block modal_footer %}
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+{% block modal_body %} 
+  {% crispy form form.helper %} 
 {% endblock %}
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="asignar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Asignar empleado a la tarea</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
+{% block modal_footer %}
+    <a id="btn-asignar" href="#" class="btn btn-primary" data-bs-dismiss="modal">Seleccionar</a>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript"> 
+document.addEventListener('DOMContentLoaded', () => {
+  const element = document.getElementById('asignar');
+
+  // configuramos el contenido del modal
+  element.addEventListener('show.bs.modal', (e) => {
+    const btn = e.explicitOriginalTarget;
+    $('#id_tarea').val(btn.dataset.idTarea);
+  })
+
+  $('#btn-asignar').on('click', (e) => {
+    e.preventDefault();
+    $('#asignarEmpleadoForm').submit();
+  });
+})
+</script>
+{% endblock %}

@@ -66,10 +66,10 @@ class OrdenDeTrabajo(models.Model):
         ]
 
     def precio_total_presupuestado(self):
-        return sum([p.precio_estimado() for p in self.presupuestos.all()])
+        return self.presupuestos.first().precio_estimado() # Toma el valor del primer presupuesto realizado 
 
     def precio_total(self):
-        return 0
+        return sum([p.precio_estimado() for p in self.presupuestos.all()]) # Toma el valor del presupuesto + sus ampliaciones realizadas
 
     def agregar_tarea(self, tarea):
         return DetalleOrdenDeTrabajo.objects.create(tarea=tarea, orden=self)

@@ -75,7 +75,6 @@ class FacturaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         kwargs.update( initial = { 'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M') } )
         super().__init__(*args, **kwargs)
-        print(kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = False
 
@@ -125,6 +124,62 @@ class FacturaFiltrosForm(FiltrosForm):
                 "tareas",
                 "materiales",
                 "repuestos",
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
+
+# Pago - Form
+
+class PagoForm(forms.ModelForm):
+    class Meta:
+        model = Pago
+        fields = "__all__"
+        exclude = ["factura"]
+
+        labels = {
+
+        }
+        widgets = {
+            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local','readonly': 'readonly'})
+        }
+
+    def save(self, factura):
+        pago = super().save()
+        pago = factura
+        return pago
+
+    def __init__(self, *args, **kwargs):
+        kwargs.update( initial = { 'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M') } )
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+        self.helper.add_input(Submit('submit', 'Pagar'))
+
+# Pago - Filtros
+
+class PagoFiltrosForm(FiltrosForm):
+    ORDEN_CHOICES = [
+        ("fecha", "fecha"),
+        ("monto", "monto"),
+        ("tipo","tipo"),
+    ]
+    fecha = forms.DateField(required=False)
+    monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
+    tipo = forms.ModelChoiceField(
+        queryset=Pago.objects.all(), required=False, label="Tipo de pago")
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "fecha",
+                "monto",
+                "tipo",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

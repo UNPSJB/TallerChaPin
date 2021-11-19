@@ -94,7 +94,7 @@ class FacturaDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
-class imprimirFactura(PDFTemplateView):
+class ImprimirFactura(PDFTemplateView):
  
     template_name = 'facturas/factura_pdf.html'
     cmd_options = {
@@ -111,4 +111,44 @@ class imprimirFactura(PDFTemplateView):
         context["factura"] = factura # pasamos el objeto presupuesto para usarlo en el template.
         context["styles"] = 'http://127.0.0.1:8000/static/ordenes/css/presupuesto_pdf.css'
         context["logo"] = 'http://127.0.0.1:8000/static/images/chapin2.png'
+        return context
+
+class PagoCreateView(CreateView):
+
+    model = Pago
+    form_class = PagoForm
+    success_url = reverse_lazy ('crearFactura')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+    
+    def post(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        factura = Factura.objects.get(pk=pk)
+        form = PagoForm(self.request.POST)
+        if form.is_valid():
+            form.save(factura)
+            return redirect ('listarPagos')
+        return self.form_invalid(form=form)
+
+
+class PagoUpdateView(UpdateView):
+
+    model = Factura
+    form_class = FacturaForm
+    success_url = reverse_lazy('crearFactura')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+class PagoListView(ListFilterView):
+    filtros = PagoFiltrosForm
+    model = Pago
+    paginate_by = 100  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de pagos"
         return context

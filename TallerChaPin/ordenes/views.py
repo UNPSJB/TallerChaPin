@@ -179,7 +179,7 @@ class OrdenTrabajoUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Modificar Orden de trabajo"
+        context['titulo'] = "Cambiar turno de la orden de trabajo"
         return context
 
 class OrdenTrabajoDeleteView(DeleteView):

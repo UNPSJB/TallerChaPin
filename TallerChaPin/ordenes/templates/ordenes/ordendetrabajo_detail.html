@@ -7,14 +7,6 @@
 
 {% block main %}
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show messages">
-            <p style="margin-bottom: 0" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endfor %}
-{% endif %}
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
@@ -184,9 +176,8 @@
                                 Cancelar orden de trabajo</a>
                             <a href="{% url 'modificarOrden' object.pk %}" class="btn btn-primary m-1 w-100"><i
                                     class="fas fa-pencil-alt"></i> Modificar fecha de turno </a> 
-                            <div id="liveAlertPlaceholder"></div>
-                            <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100"
-                                id="liveAlertBtn">
+                            
+                            <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
                                 <i class="fas fa-check-circle"></i> Facturar Orden</a>
                             </a>
 

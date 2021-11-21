@@ -11,7 +11,9 @@
     <svg class="bi me-2" width="30" height="24">
       <use xlink:href="#bootstrap"></use>
     </svg>
-    <span class="fs-5 fw-semibold">Gestion de Ordenes</span>
+    <span class="fs-5 fw-semibold">
+      Gestion de Ordenes
+    </span>
   </a>
   <ul class="list-unstyled ps-0">
 
@@ -65,9 +67,6 @@
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li>
             <a href="{% url 'calendarioTurnos' %}" class="link-dark rounded">Calendario de turnos</a>
-          </li>
-          <li>
-            <a href="{% url 'listarOrdenes' %}" class="link-dark rounded">Listar ordenes</a>
           </li>
           {% if perms.ordenes.can_registrar_ingreso %}
           <li>

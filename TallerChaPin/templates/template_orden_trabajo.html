@@ -1,34 +1,64 @@
-{% extends 'main.html' %} {% load static %} {% block extracss %}
+{% extends 'main.html' %}
+{% load static %}
+{% block extracss %}
 <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
 <link rel="stylesheet" href="{% static 'css/accesos-directos.css' %}">
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% endblock %}
+{% block container %}
+{% block nav %}
+{% include 'nav_taller.html' %}
+{% endblock %}
 
-{% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' %} {% endblock %}
 
 <div class="container-fluid">
-  <div class="row d-flex justify-content-between">
-    <div class="col-2 mt-4">
-      {% block sidebar %} {% include 'sidebar_ordenes.html' %} {% endblock %}
-    </div>
+    <div class="row d-flex justify-content-between">
+        <div class="col-2 mt-4">
+            {% block sidebar %}
+            {% include 'sidebar_ordenes.html' %}
+            {% endblock %}
+        </div>
 
-    <div class="col-10 mt-4">
+        <div class="col-10 mt-4">
 
-      {% block main %}
-      
-      {% endblock %}
+            <div class="col-9 mt-4">
+                {% if messages %} {% for message in messages %}
+                {% if message.level == WARNING %}
+                <div class="alert alert-warning alert-dismissible fade show messages">
+                    <p style="width: 24rem" {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                        <i class="fas fa-exclamation-circle"></i> <strong>{{ message }}</strong>
+                    </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+                {% if message.tags == messages.INFO %}
+                <div class="alert alert-info alert-dismissible fade show messages">
+                    <p style="width: 24rem" {% if message.tags %} class="{{ message.tags }}" {% endif %}><i
+                            class="fas fa-exclamation-circle"></i> <strong>{{ message }}</strong>
+                    </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+
+                {% if message.tags == messages.ERROR %}
+                <div class="alert alert-danger alert-dismissible fade show messages">
+                    <p style="width: 24rem" {% if message.tags %} class="{{ message.tags }}" {% endif %}><i
+                            class="fas fa-exclamation-circle"></i> <strong>{{ message }}</strong>
+                    </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% block main %}
+
+
+            {% endblock %}
+
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}
 
-{% if messages %}
-<ul class="messages">
-  {% for message in messages %}
-  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-{% block modals %}
-
-{% endblock %}
+{% block modals %} {% endblock %}

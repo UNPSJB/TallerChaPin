@@ -58,9 +58,9 @@
 
             {% if detalle_orden.empleado != None %}
               {% if detalle_orden.puedo_iniciar %}
-                <a href="#" class="btn btn-success">
-                  <i class="fas fa-times"></i> Comenzar
-                </a>
+                <button class="btn btn-success" type='button' data-bs-toggle="modal" data-bs-target="#comenzar">
+                  <i class="fas fa-play-circle"></i> Comenzar
+                </button>
 
                 {% if perms.ordenes.can_asignar_trabajo %}
                   <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#asignar" data-id-tarea={{detalle_orden.pk}}>

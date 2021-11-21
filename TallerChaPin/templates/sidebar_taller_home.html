@@ -1,157 +1,188 @@
-
 <div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
-    <a href="/" class="
-        d-flex
-        align-items-center
-        pb-3
-        mb-3
-        link-dark
-        text-decoration-none
-        border-bottom
-        ">
-        <svg class="bi me-2" width="30" height="24">
-            <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="fs-5 fw-semibold">Gestion de taller</span>
-    </a>
-    <ul class="list-unstyled ps-0">
+  <a
+    href="/"
+    class="
+      d-flex
+      align-items-center
+      pb-3
+      mb-3
+      link-dark
+      text-decoration-none
+      border-bottom
+    "
+  >
+    <svg class="bi me-2" width="30" height="24">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-5 fw-semibold">Gestion de taller</span>
+  </a>
+  <ul class="list-unstyled ps-0">
+    <!-- Tareas -->
+    <li class="mb-1">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#tareas-collapse"
+        aria-expanded="false"
+      >
+        Tareas
+      </button>
 
-        <!-- Tareas -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#tareas-collapse" aria-expanded="false">
-                Tareas
-            </button>
+      <!-- Desplegable de tareas -->
+      <div class="collapse" id="tareas-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li>
+            <a href="{% url 'crearTipoTarea' %}" class="link-dark rounded"
+              >Registrar un tipo de tarea</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'listarTipoTarea' %}" class="link-dark rounded"
+              >Listar tipos de tareas</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
 
-            <!-- Desplegable de tareas -->
-            <div class="collapse" id="tareas-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'crearTipoTarea' %}" class="link-dark rounded">Registrar un tipo de tarea</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarTipoTarea' %}" class="link-dark rounded">Listar tipos de tareas</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+    <!-- Materiales -->
+    <li class="mb-1">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#materiales-collapse"
+        aria-expanded="false"
+      >
+        Materiales
+      </button>
 
-        <!-- Materiales -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#materiales-collapse" aria-expanded="false">
-                Materiales
-            </button>
+      <!-- Desplegable de materiales -->
+      <div class="collapse" id="materiales-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li>
+            <a href="{% url 'crearTipoMaterial' %}" class="link-dark rounded"
+              >Registrar un tipo de material</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'listarTipoMateriales' %}" class="link-dark rounded"
+              >Listar tipos de materiales</a
+            >
+          </li>
+          <li>
+            <a href="#" class="link-dark rounded"
+              >Modificar stock de materiales</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
 
-            <!-- Desplegable de materiales -->
-            <div class="collapse" id="materiales-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'crearTipoMaterial' %}" class="link-dark rounded">Registrar un tipo de material</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarTipoMateriales' %}" class="link-dark rounded">Listar tipos de materiales</a>
-                    </li>
-                    <li>
-                        <a href="#" class="link-dark rounded">Modificar stock de materiales</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+    <!-- Repuestos -->
+    <li class="mb-1">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#repuestos-collapse"
+        aria-expanded="false"
+      >
+        Repuestos
+      </button>
 
-        <!-- Repuestos -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#repuestos-collapse" aria-expanded="false">
-                Repuestos
-            </button>
+      <!-- Desplegable de repuestos -->
+      <div class="collapse" id="repuestos-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li>
+            <a href="#" class="link-dark rounded"
+              >Modificar stock de repuestos</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
 
-            <!-- Desplegable de repuestos -->
-            <div class="collapse" id="repuestos-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="#" class="link-dark rounded">Modificar stock de repuestos</a>
-                    </li>
-                 </ul>
-            </div>
-        </li>
+    <!-- Empleados -->
+    <li class="mb-1">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#empleados-collapse"
+        aria-expanded="false"
+      >
+        Empleados
+      </button>
 
-        <!-- Empleados -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#empleados-collapse" aria-expanded="false">
-                Empleados
-            </button>
+      <!-- Desplegable de empleados -->
+      <div class="collapse" id="empleados-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li>
+            <a href="#" class="link-dark rounded"
+              >Asociar un tipo de tarea con empleado</a
+            >
+          </li>
+          <li>
+            <a href="#" class="link-dark rounded"
+              >Desasociar un tipo de tarea con empleado</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
 
-            <!-- Desplegable de empleados -->
-            <div class="collapse" id="empleados-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+    <!-- Modelos -->
+    <li class="mb-1">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#modelos-collapse"
+        aria-expanded="false"
+      >
+        Modelos
+      </button>
 
-                    <li>
-                        <a href="#" class="link-dark rounded">Asociar un tipo de tarea con empleado</a>
-                    </li>
-                    <li>
-                        <a href="#" class="link-dark rounded">Desasociar un tipo de tarea con empleado</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+      <!-- Desplegable de modelos -->
+      <div class="collapse" id="modelos-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li>
+            <a href="{% url 'crearModelo' %}" class="link-dark rounded"
+              >Registrar un modelo</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'listarModelos' %}" class="link-dark rounded"
+              >Listar modelos</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
 
-        <!-- Modelos -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#modelos-collapse" aria-expanded="false">
-                Modelos
-            </button>
+    <!-- Marcas -->
+    <li class="mb-1">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#marcas-collapse"
+        aria-expanded="false"
+      >
+        Marcas
+      </button>
 
-            <!-- Desplegable de modelos -->
-            <div class="collapse" id="modelos-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'crearModelo' %}" class="link-dark rounded">Registrar un modelo</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarModelos' %}" class="link-dark rounded">Listar modelos</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
-        <!-- Marcas -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#marcas-collapse" aria-expanded="false">
-                Marcas
-            </button>
-
-            <!-- Desplegable de marcas -->
-            <div class="collapse" id="marcas-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'crearMarca' %}" class="link-dark rounded">Registrar una marca</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'listarMarcas' %}" class="link-dark rounded">Listar marcas</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
-        <!-- Sesión -->
-        <li class="border-top my-3"></li>
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#sesion-collapse" aria-expanded="false">
-                Sesión
-            </button>
-            <!-- Desplegable sesión -->
-            <div class="collapse" id="sesion-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="link-dark rounded">Perfil</a></li>
-                    <li><a href="#" class="link-dark rounded">Configuración</a></li>
-                    <li><a href="{% url 'logout' %}" class="link-dark rounded">Salir</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
+      <!-- Desplegable de marcas -->
+      <div class="collapse" id="marcas-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li>
+            <a href="{% url 'crearMarca' %}" class="link-dark rounded"
+              >Registrar una marca</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'listarMarcas' %}" class="link-dark rounded"
+              >Listar marcas</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </div>

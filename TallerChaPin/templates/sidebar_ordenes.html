@@ -1,24 +1,30 @@
 <div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
-  <a href="/" class="
-        d-flex
-        align-items-center
-        pb-3
-        mb-3
-        link-dark
-        text-decoration-none
-        border-bottom
-        ">
+  <a
+    href="/"
+    class="
+      d-flex
+      align-items-center
+      pb-3
+      mb-3
+      link-dark
+      text-decoration-none
+      border-bottom
+    "
+  >
     <svg class="bi me-2" width="30" height="24">
       <use xlink:href="#bootstrap"></use>
     </svg>
-    <span class="fs-5 fw-semibold">Gestion de Ordenes</span>
+    <span class="fs-5 fw-semibold">Gestion de Órdenes</span>
   </a>
   <ul class="list-unstyled ps-0">
-
     <!-- Presupuestos -->
     <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#presupuestos-collapse" aria-expanded="false">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#presupuestos-collapse"
+        aria-expanded="false"
+      >
         Presupuestos
       </button>
 
@@ -26,74 +32,57 @@
       <div class="collapse" id="presupuestos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li>
-            <a href="{% url 'listarPresupuestos' %}" class="link-dark rounded">Listar presupuestos</a>
+            <a href="{% url 'listarPresupuestos' %}" class="link-dark rounded"
+              >Listar presupuestos</a
+            >
           </li>
           <li>
-            <a href="{% url 'crearPresupuesto' %}" class="link-dark rounded">Crear presupuesto</a>
+            <a href="{% url 'crearPresupuesto' %}" class="link-dark rounded"
+              >Crear presupuesto</a
+            >
           </li>
         </ul>
       </div>
     </li>
-
-    <!-- Ordenes -->
     <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#ordenes-collapse" aria-expanded="false">
-        Ordenes
-      </button>
-
-      <!-- Desplegable de ordenes-->
-      <div class="collapse" id="ordenes-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li>
-            <a href="{% url 'listarOrdenes' %}" class="link-dark rounded">Listado de ordenes</a>
-          </li>
-
-        </ul>
-      </div>
-    </li>
-
-    <!-- Turnos -->
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#ordenes-collapse" aria-expanded="false">
-        Turnos
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#turnos-collapse"
+        aria-expanded="false"
+      >
+        Turnos y órdenes
       </button>
 
       <!-- Desplegable de turnos-->
-      <div class="collapse" id="ordenes-collapse">
+      <div class="collapse" id="turnos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li>
-            <a href="{% url 'calendarioTurnos' %}" class="link-dark rounded">Calendario de turnos</a>
+            <a href="{% url 'calendarioTurnos' %}" class="link-dark rounded"
+              >Calendario de turnos</a
+            >
           </li>
           <li>
-            <a href="{% url 'listarOrdenes' %}" class="link-dark rounded">Listar ordenes</a>
+            <a href="{% url 'listarOrdenes' %}" class="link-dark rounded"
+              >Listar ordenes</a
+            >
           </li>
           {% if perms.ordenes.can_registrar_ingreso %}
           <li>
-            <a href="{% url 'registrarIngresoVehiculo' %}" class="link-dark rounded">Registrar ingreso de vehiculo</a>
+            <a
+              href="{% url 'registrarIngresoVehiculo' %}"
+              class="link-dark rounded"
+              >Registrar ingreso de vehiculo</a
+            >
           </li>
           {% endif %}
           <li>
-            <a href="{% url 'registrarEgresoVehiculo' %}" class="link-dark rounded">Registrar entrega de vehiculo</a>
+            <a
+              href="{% url 'registrarEgresoVehiculo' %}"
+              class="link-dark rounded"
+              >Registrar entrega de vehiculo</a
+            >
           </li>
-        </ul>
-      </div>
-    </li>
-
-    <!-- Sesión -->
-    <li class="border-top my-3"></li>
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#sesion-collapse" aria-expanded="false">
-        Sesión
-      </button>
-      <!-- Desplegable sesión -->
-      <div class="collapse" id="sesion-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">Perfil</a></li>
-          <li><a href="#" class="link-dark rounded">Configuración</a></li>
-          <li><a href="{% url 'logout' %}" class="link-dark rounded">Salir</a></li>
         </ul>
       </div>
     </li>

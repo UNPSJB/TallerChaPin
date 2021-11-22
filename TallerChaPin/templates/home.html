@@ -39,7 +39,9 @@
         </h1>
     
         <div class="row mt-4">
+            {% if perms.taller %}
             <div class="col-md-4 seccion taller shadow-lg">
+                
                 <h2><i class="fas fa-wrench"></i> Taller</h2>
                 <p>
                     Sección del sistema en donde se gestiona stock, clientes, vehículos,
@@ -49,7 +51,9 @@
                     <a class="btn btn-primary w-100" href="{% url 'taller_home' %}" role="button">Acceder »</a>
                 </p>
             </div>
+            {% endif %}
 
+            {% if perms.ordenes %}
             <div class="col-md-4 seccion ordenes shadow-lg">
                 <h2><i class="fas fa-receipt"></i> Órdenes</h2>
                 <p>
@@ -61,7 +65,9 @@
                     <a class="btn btn-primary w-100" href="{% url 'ordenes_home' %}" role="button">Acceder »</a>
                 </p>
             </div>
+            {% endif %}
 
+            {% if perms.facturas %}
             <div class="col-md-4 seccion facturas shadow-lg">
                 <h2><i class="fas fa-file-invoice-dollar"></i> Facturas</h2>
                 <p>
@@ -72,8 +78,9 @@
                     <a class="btn btn-primary w-100" href="{% url 'facturas_home' %}" role="button">Acceder »</a>
                 </p>
             </div>
+            {% endif %}
         </div>
-        
+
         <div class="row mt-4 justify-content-center">
             <div class="col-md-4 seccion trabajos shadow-lg">
                 <h2><i class="fas fa-tools"></i> Trabajos</h2>

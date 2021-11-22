@@ -35,6 +35,19 @@
     <div class="d-flex secciones-nav">
       <a class="nav-link" href="#"><i class="fas fa-th-list"></i> Turnos</a>
     </div>
+  
+    <ul class="navbar-nav sesion dropstart">
+      <li class="nav-item dropdown active">
+        <a class="nav-link text-light" href="#" id="dropDownSesion" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle"></i> Sesión
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropDownSesion">
+          <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Opciones</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+        </ul>
+      </li>
+    </ul>
 
   </div>
 </nav>

@@ -1,76 +1,76 @@
 <div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
-    <a href="/" class="
-        d-flex
-        align-items-center
-        pb-3
-        mb-3
-        link-dark
-        text-decoration-none
-        border-bottom   
-        ">
-        <svg class="bi me-2" width="30" height="24">
-            <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="fs-5 fw-semibold">Gestion de facturas</span>
-    </a>
-    <ul class="list-unstyled ps-0">
+  <a
+    href="/"
+    class="
+      d-flex
+      align-items-center
+      pb-3
+      mb-3
+      link-dark
+      text-decoration-none
+      border-bottom
+    "
+  >
+    <svg class="bi me-2" width="30" height="24">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-5 fw-semibold">Gestion de facturas</span>
+  </a>
+  <ul class="list-unstyled ps-0">
+    <!-- Pagos -->
+    <li class="mb-1">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#pagos-collapse"
+        aria-expanded="false"
+      >
+        Pagos
+      </button>
 
-        <!-- Pagos -->
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#pagos-collapse" aria-expanded="false">
-                Pagos
-            </button>
-
-            <!-- Desplegable de pagos -->
-            <div class="collapse" id="pagos-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li>
-                        <a href="{% url 'listarOrdenes' %}" class="link-dark rounded">Facturar ordenes </a>
-                    </li>
-                    <li> 
-                        <a href="{% url 'listarFacturas' %}" class="link-dark rounded">Listado de facturas realizadas</a>
-                    </li>
-                    <li> 
-                        <a href="{% url 'listarPagos' %}" class="link-dark rounded">Listado de pagos realizados</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
- <!-- Clientes -->
- <li class="mb-1">
-    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#clientes-collapse" aria-expanded="false">
-        Clientes
-    </button>
-
-    <!-- Desplegable de clientes -->
-    <div class="collapse" id="clientes-collapse">
+      <!-- Desplegable de pagos -->
+      <div class="collapse" id="pagos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li>
-                <a href="#" class="link-dark rounded">Listado de clientes</a>
-            </li>
+          <li>
+            <a href="{% url 'listarOrdenes' %}" class="link-dark rounded"
+              >Facturar ordenes
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'listarFacturas' %}" class="link-dark rounded"
+              >Listado de facturas</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'listarPagos' %}" class="link-dark rounded"
+              >Listado de pagos</a
+            >
+          </li>
         </ul>
-    </div>
-</li>
+      </div>
+    </li>
 
+    <!-- Clientes -->
+    <li class="mb-1">
+      <button
+        class="btn btn-toggle align-items-center rounded collapsed"
+        data-bs-toggle="collapse"
+        data-bs-target="#clientes-collapse"
+        aria-expanded="false"
+      >
+        Clientes
+      </button>
 
-        <!-- Sesión -->
-        <li class="border-top my-3"></li>
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                data-bs-target="#sesion-collapse" aria-expanded="false">
-                Sesión
-            </button>
-            <!-- Desplegable sesión -->
-            <div class="collapse" id="sesion-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="link-dark rounded">Perfil</a></li>
-                    <li><a href="#" class="link-dark rounded">Configuración</a></li>
-                    <li><a href="{% url 'logout' %}" class="link-dark rounded">Salir</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
+      <!-- Desplegable de clientes -->
+      <div class="collapse" id="clientes-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li>
+            <a href="{% url 'listarClientes' %}" class="link-dark rounded"
+              >Listado de clientes</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </div>

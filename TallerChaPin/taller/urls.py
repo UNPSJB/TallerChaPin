@@ -59,7 +59,7 @@ urlpatterns = [
     path('materiales/modificar/<int:pk>',
          MaterialUpdateView.as_view(), name="modificarMaterial"),
 
-    # ----------------- TIPOS MTERIALES -----------------
+    # ----------------- TIPOS MATERIALES -----------------
 
     path('tipos-materiales/crear', TipoMaterialCreateView.as_view(),
          name="crearTipoMaterial"),

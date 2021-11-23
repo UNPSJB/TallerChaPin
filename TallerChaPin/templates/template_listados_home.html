@@ -8,7 +8,8 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-between">
     <div class="col-2 mt-4">
-      {% block sidebar %} {% include 'sidebar_taller_home.html' %} {% endblock %}
+      {% block sidebar %}
+      {% endblock %}
     </div>
 
     <div class="col-8 mt-4">
@@ -16,22 +17,15 @@
 
       <h2 class="mt-3">
         <a href="{% url 'home' %}"><i class="fas fa-arrow-left atras"></i></a>
-        Accesos directos
+        Listados
       </h2>
 
-      <div class="row mt-4 d-flex justify-content-evenly align-items-center">
+      <div class="row mt-4 d-flex justify-content-evenly align-items-center mb-4">
 
         <a href="{% url 'listarClientes' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-user"></i> Ver clientes</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de clientes.
-          </p>
-        </a>
-        
-        <a href="{% url 'crearCliente' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-user"></i> Registrar cliente</h2>
-          <p>
-            <i class="fas fa-plus-circle agregar"></i> Dar de alta un nuevo cliente.
           </p>
         </a>
 
@@ -42,24 +36,38 @@
           </p>
         </a>
 
-        <a href="{% url 'crearVehiculo' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-car"></i> Registrar vehículo</h2>
+        <a href="{% url 'listarEmpleados' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-users"></i> Ver empleados</h2>
           <p>
-            <i class="fas fa-plus-circle agregar"></i> Dar de alta un nuevo vehículo a un cliente.
+            <i class="fas fa-th-list listar"></i> Abrir el listado de empleados.
           </p>
         </a>
-      
+
+        <a href="{% url 'listarMarcas' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-car"></i> Ver marcas</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de marcas.
+          </p>
+        </a>
+        
+        <a href="{% url 'listarModelos' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-car"></i> Ver modelos</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de modelos.
+          </p>
+        </a>
+
         <a href="{% url 'listarMateriales' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-box-open"></i> Ver materiales</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de materiales.
           </p>
         </a>
-
-        <a href="{% url 'crearMaterial' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-box-open"></i> Registrar material</h2>
+        
+        <a href="{% url 'listarTipoMateriales' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-box-open"></i> Ver tipos de material</h2>
           <p>
-            <i class="fas fa-plus-circle agregar"></i> Dar de alta un material.
+            <i class="fas fa-th-list listar"></i> Abrir el listado de los tipos de material.
           </p>
         </a>
 
@@ -70,40 +78,62 @@
           </p>
         </a>
 
-        <a href="{% url 'crearRepuesto' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-cog"></i> Registrar repuesto</h2>
-          <p>
-            <i class="fas fa-plus-circle agregar"></i> Dar de alta un repuesto.
-          </p>
-        </a>
-
-        <a href="{% url 'crearEmpleado' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-user"></i> Registrar empleado</h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Dar de alta un nuevo empleado.
-          </p>
-        </a>
-
-        <a href="{% url 'listarEmpleados' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-user"></i> Ver empleados</h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Abrir el listado de empleados.
-          </p>
-        </a>
-
-        <a href="{% url 'crearTarea' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-tools"></i></i> Crear Tarea </h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Registrar una nueva tarea.
-          </p>
-        </a>
-
         <a href="{% url 'listarTareas' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-tools"></i></i> Listar tareas</h2>
+          <h2><i class="fas fa-thumbtack"></i> Ver tareas</h2>
           <p>
-            <i class="fas fa-th-list listar"></i> Abrir el listado de todas las tareas.
+            <i class="fas fa-th-list listar"></i> Abrir el listado de tareas.
           </p>
         </a>
+
+        <a href="{% url 'listarTipoTarea' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-thumbtack"></i> Ver tipos de tarea</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de los tipos de tarea.
+          </p>
+        </a>
+
+        <a href="{% url 'listarPresupuestos' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-file-alt"></i> Ver Presupuestos</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de presupuestos.
+          </p>
+        </a>
+
+        <a href="{% url 'calendarioTurnos' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="far fa-calendar-alt"></i> Ver turnos</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de turnos.
+          </p>
+        </a>
+
+        <a href="{% url 'listarOrdenes' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-receipt"></i> Ver órdenes de trabajo</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de órdenes de trabajo.
+          </p>
+        </a>
+
+        <a href="{% url 'listarDetallesOrden' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-receipt"></i> Ver detalles de órdenes de trabajo</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de detalles de órdenes de trabajo.
+          </p>
+        </a>
+
+        <a href="{% url 'listarFacturas' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-file-invoice-dollar"></i> Ver facturas</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de facturas.
+          </p>
+        </a>
+
+        <a href="{% url 'listarPagos' %}" class="col-md-3 shadow-lg acceso">
+          <h2><i class="fas fa-money-bill-wave"></i> Ver pagos</h2>
+          <p>
+            <i class="fas fa-th-list listar"></i> Abrir el listado de pagos.
+          </p>
+        </a>
+        
       </div>
       
       {% endblock %}

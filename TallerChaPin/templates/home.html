@@ -38,9 +38,9 @@
             {% endif %}
         </h1>
     
-        <div class="row mt-4">
+        <div class="row mt-4 justify-content-center">
             {% if perms.taller %}
-            <div class="col-md-4 seccion taller shadow-lg">
+            <div class="seccion taller shadow-lg">
                 
                 <h2><i class="fas fa-wrench"></i> Taller</h2>
                 <p>
@@ -54,8 +54,8 @@
             {% endif %}
 
             {% if perms.ordenes %}
-            <div class="col-md-4 seccion ordenes shadow-lg">
-                <h2><i class="fas fa-receipt"></i> Órdenes</h2>
+            <div class="seccion ordenes shadow-lg">
+                <h2><i class="fas fa-receipt"></i> Presupuestos</h2>
                 <p>
                     Sección del sistema donde se crean, confirman y amplían presupuestos; se
                     modifican turnos; se cancelan órdenes de trabajo; y se registra el
@@ -68,7 +68,7 @@
             {% endif %}
 
             {% if perms.facturas %}
-            <div class="col-md-4 seccion facturas shadow-lg">
+            <div class="seccion facturas shadow-lg">
                 <h2><i class="fas fa-file-invoice-dollar"></i> Facturas</h2>
                 <p>
                     Sección del sistema donde se facturan órdenes de trabajo, se registran
@@ -79,10 +79,18 @@
                 </p>
             </div>
             {% endif %}
-        </div>
 
-        <div class="row mt-4 justify-content-center">
-            <div class="col-md-4 seccion trabajos shadow-lg">
+            <div class="seccion shadow-lg">
+                <h2><i class="fas fa-eye"></i> Listados</h2>
+                <p>
+                    Sección del sistema en donde se pueden visualizar todos los listados de las clases correspondientes a 'taller', 'presupuestos' y 'facturas'.
+                </p>
+                <p>
+                    <a class="btn btn-primary w-100" href="{% url 'listados_home' %}" role="button">Acceder »</a>
+                </p>
+            </div>
+
+            <div class="seccion trabajos shadow-lg">
                 <h2><i class="fas fa-tools"></i> Trabajos</h2>
                 <p>
                     Sección del sistema en donde se seleccionan las distintas tareas disponibles, permitiendo registrar el inicio y fin de trabajos.
@@ -91,7 +99,11 @@
                     <a class="btn btn-primary w-100" href="{% url 'listarDetallesOrden' %}" role="button">Acceder »</a>
                 </p>
             </div>
+            
         </div>
+
+        <!-- <div class="row mt-4 justify-content-center">
+        </div> -->
     </div>
 </div>
 

@@ -9,7 +9,13 @@ from .forms import *
 from datetime import date
 from django.core.exceptions import ObjectDoesNotExist
 from wkhtmltopdf.views import PDFTemplateView
+from django.contrib import messages
 
+def iniciarTarea(request, pk):
+    detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
+    detalle.iniciar(detalle.empleado)
+    messages.add_message(request, messages.WARNING, 'prueba de info')
+    return redirect ('listarDetallesOrden')
 
 class imprimirPresupuesto(PDFTemplateView):
     #filename = 'presupuesto_pedro.pdf'

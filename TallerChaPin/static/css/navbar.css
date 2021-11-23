@@ -7,52 +7,11 @@
     padding: 0;
 }
 
-.nav-link{
-    color: white;
-    padding: 0.5rem 0.8rem;
-}
-
-.nav-link:focus, .nav-link:hover{
-    color: white;
-}
-
-.secciones-nav{
-    background-color: #0B5ED7;
-    border-radius: .3rem;
-    margin-left: 1rem;
-}
-
-.secciones-nav a{
-    border-radius: .3rem;
-    text-decoration: none;
-    color: white;
-}
-
-.primero:hover{
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-}
-
-.ultimo:hover{
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-}
-
-.medio:hover{
-    border-radius: 0;
-}
-
-.secciones-nav .nav-link:hover{
-    background-color: #0647a8;
-}
-
-.seccion-nav{
-    border-radius: .3rem;
-    border: 1px solid #0647a8;
-    margin: 0 .5rem;
+.btn-group {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sesion{
-    margin-left: auto;
     margin-right: 1rem;
 }

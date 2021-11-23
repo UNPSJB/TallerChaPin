@@ -27,5 +27,6 @@ urlpatterns = [
     path('taller/', template_taller, name='taller_home'),
     path('ordenes/', template_ordenes, name='ordenes_home'),
     path('facturas/', template_facturas, name='facturas_home'),
+    path('listados/', template_listados, name='listados_home'),
     path('admin/', admin.site.urls),
 ]

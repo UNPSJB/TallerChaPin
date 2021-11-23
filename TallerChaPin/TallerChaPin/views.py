@@ -45,3 +45,6 @@ def template_ordenes(request):
 
 def template_facturas(request):
     return render(request, 'template_facturas_home.html', {"title": "Gestion de Facturas"})
+
+def template_listados(request):
+    return render(request, 'template_listados_home.html', {"title": "Visualización de listados"})

@@ -71,12 +71,12 @@
               {% endif %}
 
               {% if detalle_orden.puedo_finalizar %}
-                <a href="#" class="btn btn-success">
+              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#finalizar" data-id-tarea={{detalle_orden.pk}}>
                   <i class="fas fa-check"></i> Finalizar
-                </a>
-                <a href="#" class="btn btn-danger">
+              </button>
+                <!-- <a href="#" class="btn btn-danger">
                   <i class="fas fa-times"></i> Finalizar mal
-                </a>
+                </a> -->
               {% endif %}
             {% endif %}
           </li>

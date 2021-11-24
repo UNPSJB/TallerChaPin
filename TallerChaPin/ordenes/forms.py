@@ -473,3 +473,20 @@ class AsignarEmpleadoForm(forms.Form):
         detalle_tarea_pk = self.cleaned_data.get('tarea')
         detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk = detalle_tarea_pk)
         detalle.asignar(empleado)
+
+
+class finalizarTareaForm(forms.Form):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        # self.helper.form_id = 'asignarEmpleadoForm'
+        # self.helper.form_action = 'listarDetallesOrden'
+        # self.helper.layout = Layout(
+        #     Fieldset(
+        #         "", 
+        #         "empleado",
+        #         "tarea"
+        #     )
+        # )

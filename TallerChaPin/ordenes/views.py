@@ -227,9 +227,12 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
 
 def iniciar_tarea(request, pk):
     detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
-    detalle.iniciar(detalle.empleado)
-    messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
-    return redirect('listarDetallesOrden')
+    if detalle.tarea.tipo.planilla:
+        redirect('cargarPlanillaParaTarea', detalle.pk)
+    else:
+        detalle.iniciar(detalle.empleado)
+        messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
+        return redirect('listarDetallesOrden')
 
 def asignar_empleado(request):
     form = AsignarEmpleadoForm(request.POST)
@@ -252,6 +255,16 @@ def finalizar_tarea(request):
         messages.add_message(request, messages.WARNING,
                              'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
+
+
+class PlanillaCreateView(CreateView):
+    model = PlanillaDePintura
+    #form_class = PlanillaDePinturaForm # TODO
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["titulo"] = "Crear Planilla de pintura"
+        return context
 
 
 class RegistrarIngresoVehiculoCreateView(CreateView):

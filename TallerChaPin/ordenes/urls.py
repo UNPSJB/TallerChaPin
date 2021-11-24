@@ -32,6 +32,9 @@ urlpatterns = [
      path('detalles-orden/asignar_empleado', asignar_empleado, name="asignarEmpleado"),
      path('detalles-orden/finalizar',
           finalizar_tarea, name="finalizarTarea"),
+     path('detalles-orden/<int:pk>/planilla/crear',
+         PlanillaCreateView.as_view(), name="cargarPlanillaParaTarea"),
+     
 
 
      # ----------------- Ingreso y Entrega de vehiculo -----------------

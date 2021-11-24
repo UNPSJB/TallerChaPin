@@ -11,11 +11,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from wkhtmltopdf.views import PDFTemplateView
 from django.contrib import messages
 
-def iniciarTarea(request, pk):
-    detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
-    detalle.iniciar(detalle.empleado)
-    messages.add_message(request, messages.WARNING, 'prueba de info')
-    return redirect ('listarDetallesOrden')
 
 class imprimirPresupuesto(PDFTemplateView):
     #filename = 'presupuesto_pedro.pdf'
@@ -223,14 +218,40 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados()
         # Pasar formulario por contexto
         context['asignarEmpleadoForm'] = AsignarEmpleadoForm()
+        context['finalizarTareaForm'] = FinalizarTareaForm()
         return context
 
     def post(self, *args, **kwargs):
-        form = AsignarEmpleadoForm(self.request.POST)
-        if form.is_valid():
-            form.asignar()
-        return redirect('listarDetallesOrden')
+        pass
 
+
+def iniciar_tarea(request, pk):
+    detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
+    detalle.iniciar(detalle.empleado)
+    messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
+    return redirect('listarDetallesOrden')
+
+def asignar_empleado(request):
+    form = AsignarEmpleadoForm(request.POST)
+    if form.is_valid():
+        form.asignar()
+        messages.add_message(request, messages.SUCCESS,
+                             'La tarea se asignó a un empleado exitosamente! :D')
+    else:
+        messages.add_message(request, messages.WARNING, 'El formulario tiene errores.')  # TODO: mostrar form.errors
+    return redirect('listarDetallesOrden')
+
+def finalizar_tarea(request):
+    form = FinalizarTareaForm(request.POST)
+    if form.is_valid():
+        form.finalizar()
+        messages.add_message(request, messages.SUCCESS,
+                             'La tarea finalizó exitosamente! :D')
+    else:
+        print(form.errors)
+        messages.add_message(request, messages.WARNING,
+                             'El formulario tiene errores.')  # TODO: mostrar form.errors
+    return redirect('listarDetallesOrden')
 
 
 class RegistrarIngresoVehiculoCreateView(CreateView):

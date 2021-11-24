@@ -27,7 +27,12 @@ urlpatterns = [
      # ------------------ Detalle de Orden de Trabajo -----------------
      path('detalles-orden/listar', DetalleOrdenDeTrabajoListView.as_view(),
           name="listarDetallesOrden"),
-     path('detalles-orden/iniciar/<int:pk>', iniciarTarea, name="iniciarTarea"),
+     path('detalles-orden/iniciar/<int:pk>',
+          iniciar_tarea, name="iniciarTarea"),
+     path('detalles-orden/asignar_empleado', asignar_empleado, name="asignarEmpleado"),
+     path('detalles-orden/finalizar',
+          finalizar_tarea, name="finalizarTarea"),
+
 
      # ----------------- Ingreso y Entrega de vehiculo -----------------
      path('ordenesTurnos/registrarIngresoVehiculo',

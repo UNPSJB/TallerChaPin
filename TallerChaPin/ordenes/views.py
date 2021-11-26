@@ -9,6 +9,7 @@ from .forms import *
 from datetime import date
 from django.core.exceptions import ObjectDoesNotExist
 from wkhtmltopdf.views import PDFTemplateView
+from django.contrib import messages
 
 
 class imprimirPresupuesto(PDFTemplateView):
@@ -217,14 +218,53 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados()
         # Pasar formulario por contexto
         context['asignarEmpleadoForm'] = AsignarEmpleadoForm()
+        context['finalizarTareaForm'] = FinalizarTareaForm()
         return context
 
     def post(self, *args, **kwargs):
-        form = AsignarEmpleadoForm(self.request.POST)
-        if form.is_valid():
-            form.asignar()
+        pass
+
+
+def iniciar_tarea(request, pk):
+    detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
+    if detalle.tarea.tipo.planilla:
+        redirect('cargarPlanillaParaTarea', detalle.pk)
+    else:
+        detalle.iniciar(detalle.empleado)
+        messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
         return redirect('listarDetallesOrden')
 
+def asignar_empleado(request):
+    form = AsignarEmpleadoForm(request.POST)
+    if form.is_valid():
+        form.asignar()
+        messages.add_message(request, messages.SUCCESS,
+                             'La tarea se asignó a un empleado exitosamente! :D')
+    else:
+        messages.add_message(request, messages.WARNING, 'El formulario tiene errores.')  # TODO: mostrar form.errors
+    return redirect('listarDetallesOrden')
+
+def finalizar_tarea(request):
+    form = FinalizarTareaForm(request.POST)
+    if form.is_valid():
+        form.finalizar()
+        messages.add_message(request, messages.SUCCESS,
+                             'La tarea finalizó exitosamente! :D')
+    else:
+        print(form.errors)
+        messages.add_message(request, messages.WARNING,
+                             'El formulario tiene errores.')  # TODO: mostrar form.errors
+    return redirect('listarDetallesOrden')
+
+
+class PlanillaCreateView(CreateView):
+    model = PlanillaDePintura
+    #form_class = PlanillaDePinturaForm # TODO
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["titulo"] = "Crear Planilla de pintura"
+        return context
 
 
 class RegistrarIngresoVehiculoCreateView(CreateView):
@@ -272,8 +312,8 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
             return redirect ('detallesOrden', orden.pk)
         return redirect ('registrarIngresoDeVehiculo')
 
-class ListarTurnosListView(ListFilterView):
-    filtros = TurnosFiltrosForm
+class ListarTurnosListView(ListView):
+    
     model = OrdenDeTrabajo
     template_name = "ordenes/calendarioturno_list.html"
  

@@ -445,7 +445,6 @@ class TurnosFiltrosForm(FiltrosForm):
         )
 
 class AsignarEmpleadoForm(forms.Form):
-
     empleado = forms.ModelChoiceField(
         queryset=taller.Empleado.objects.all(),
         required=True, 
@@ -455,11 +454,12 @@ class AsignarEmpleadoForm(forms.Form):
     tarea = forms.IntegerField(widget=forms.HiddenInput())
 
     def __init__(self, *args, **kwargs):
+        kwargs['prefix'] = 'asignar'
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.form_id = 'asignarEmpleadoForm'
-        self.helper.form_action = 'listarDetallesOrden'
+        self.helper.form_action = 'asignarEmpleado'
         self.helper.layout = Layout(
             Fieldset(
                 "", 
@@ -473,3 +473,39 @@ class AsignarEmpleadoForm(forms.Form):
         detalle_tarea_pk = self.cleaned_data.get('tarea')
         detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk = detalle_tarea_pk)
         detalle.asignar(empleado)
+
+
+class FinalizarTareaForm(forms.Form):
+    exitosa = forms.ChoiceField(
+        choices=[(1, 'exitosa'), (2, 'no exitosa')], 
+        widget=forms.RadioSelect, 
+        label="Finalización:")
+    observaciones = forms.CharField(
+        widget=forms.Textarea(), 
+        label='Observaciones:')
+    tarea = forms.IntegerField(widget=forms.HiddenInput())
+
+    def __init__(self, *args, **kwargs):
+        kwargs['prefix'] = 'finalizar'
+        kwargs['initial'] = {'exitosa': 1}
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_id = 'finalizarTareaForm'
+        self.helper.form_action = 'finalizarTarea'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                "exitosa",
+                "observaciones",
+                "tarea"
+            )
+        )
+
+    def finalizar(self):
+        exitosa = self.cleaned_data.get('exitosa')
+        exitosa = int(exitosa) == 1
+        observaciones = self.cleaned_data.get('observaciones')
+        detalle_tarea_pk = self.cleaned_data.get('tarea')
+        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk=detalle_tarea_pk)
+        detalle.finalizar(exitosa, observaciones)

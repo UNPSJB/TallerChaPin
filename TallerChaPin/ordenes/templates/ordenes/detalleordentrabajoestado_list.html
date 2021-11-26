@@ -10,7 +10,7 @@
         {% elif detalle_orden.esta_finalizado and detalle_orden.exitosa %}
           <div class="card-header text-light bg-success"><i class="fas fa-check"></i> Finalizado correctamente</div>
         {% elif detalle_orden.esta_finalizado and not detalle_orden.exitosa %}
-          <div class="card-header text-light bg-warning"><i class="fas fa-check"></i> Finalizado no correctamente</div>
+          <div class="card-header text-dark bg-warning"><i class="fas fa-check"></i> Finalizado no correctamente</div>
         {% endif %}
 
         <div class="card-body">
@@ -58,9 +58,9 @@
 
             {% if detalle_orden.empleado != None %}
               {% if detalle_orden.puedo_iniciar %}
-                <button class="btn btn-success" type='button' data-bs-toggle="modal" data-bs-target="#comenzar">
+                <a class="btn btn-success" href="{% url 'iniciarTarea' detalle_orden.pk %}">
                   <i class="fas fa-play-circle"></i> Comenzar
-                </button>
+                </a>
 
                 {% if perms.ordenes.can_asignar_trabajo %}
                   <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#asignar" data-id-tarea={{detalle_orden.pk}}>
@@ -71,11 +71,17 @@
               {% endif %}
 
               {% if detalle_orden.puedo_finalizar %}
-                <a href="#" class="btn btn-success">
+              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#finalizar" data-id-tarea={{detalle_orden.pk}}>
                   <i class="fas fa-check"></i> Finalizar
-                </a>
-                <a href="#" class="btn btn-danger">
+              </button>
+                <!-- <a href="#" class="btn btn-danger">
                   <i class="fas fa-times"></i> Finalizar mal
+                </a> -->
+              {% endif %}
+
+              {% if detalle_orden.esta_finalizado %}
+                <a class="btn btn-primary" href={% url 'detallesOrden' detalle_orden.orden.pk %}>
+                  <i class="fas fa-eye"></i> Ver orden
                 </a>
               {% endif %}
             {% endif %}

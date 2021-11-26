@@ -1,183 +1,43 @@
-{% extends 'main.html' %} {% load static %} {% block extracss %}
-<link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
-<link rel="stylesheet" href="{% static 'css/accesos-directos.css' %}">
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% extends 'main.html' %} 
+{% load static %} 
 
-{% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' %} {% endblock %}
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/accesos-directos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% endblock %} 
 
-<div class="container-fluid">
-  <div class="row d-flex justify-content-between">
-    <div class="col-2 mt-4">
-      {% block sidebar %} {% include 'sidebar_taller.html' %} {% endblock %}
-    </div>
+{% block container %} 
 
-    <div class="col-8 mt-4">
-      {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-          {% endfor %}
-      </ul>
-      {% endif %}
-      {% block main %}
+  {% block nav %} 
+    {% include 'nav_taller.html' %} 
+  {% endblock %}
 
-        <h1 class="mt-3">
-          <a href="{% url 'home' %}"><i class="fas fa-arrow-left atras"></i></a>
-          Accesos directos
-        </h1>
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-between">
 
-        <div class="row mt-4 d-flex justify-content-evenly align-items-center">
-
-          <a href="{% url 'listarClientes' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-user"></i> Ver clientes</h2>
-            <p>
-              <i class="fas fa-th-list listar"></i> Abrir el listado de clientes.
-            </p>
-          </a>
-          
-          <a href="{% url 'crearCliente' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-user"></i> Registrar cliente</h2>
-            <p>
-              <i class="fas fa-plus-circle agregar"></i> Dar de alta un cliente.
-            </p>
-          </a>
-
-          <a href="{% url 'listarVehiculos' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-car"></i> Ver vehículos</h2>
-            <p>
-              <i class="fas fa-th-list listar"></i> Abrir el listado de vehículos.
-            </p>
-          </a>
-
-          <a href="{% url 'crearVehiculo' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-car"></i> Registrar vehículo</h2>
-            <p>
-              <i class="fas fa-plus-circle agregar"></i> Dar de alta un vehículo.
-            </p>
-          </a>
-        
-          <a href="{% url 'listarMateriales' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-box-open"></i> Ver materiales</h2>
-            <p>
-              <i class="fas fa-th-list listar"></i> Abrir el listado de materiales.
-            </p>
-          </a>
-
-          <a href="{% url 'crearMaterial' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-box-open"></i> Registrar material</h2>
-            <p>
-              <i class="fas fa-plus-circle agregar"></i> Dar de alta un material.
-            </p>
-          </a>
-
-          <a href="{% url 'listarRepuestos' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-cog"></i> Ver repuestos</h2>
-            <p>
-              <i class="fas fa-th-list listar"></i> Abrir el listado de repuestos.
-            </p>
-          </a>
-
-          <a href="{% url 'crearRepuesto' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-cog"></i> Registrar repuesto</h2>
-            <p>
-              <i class="fas fa-plus-circle agregar"></i> Dar de alta un repuesto.
-            </p>
-          </a>
-
-          <a href="{% url 'listarEmpleados' %}" class="col-md-3 shadow-lg acceso">
-            <h2><i class="fas fa-user"></i> Ver empleados</h2>
-            <p>
-              <i class="fas fa-th-list listar"></i> Abrir el listado de empleados.
-            </p>
-          </a>
-        </div>
-        
-        <a href="{% url 'crearCliente' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-user"></i> Registrar cliente</h2>
-          <p>
-            <i class="fas fa-plus-circle agregar"></i> Dar de alta un nuevo cliente.
-          </p>
-        </a>
-
-        <a href="{% url 'listarVehiculos' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-car"></i> Ver vehículos</h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Abrir el listado de vehículos.
-          </p>
-        </a>
-
-        <a href="{% url 'crearVehiculo' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-car"></i> Registrar vehículo</h2>
-          <p>
-            <i class="fas fa-plus-circle agregar"></i> Dar de alta un nuevo vehículo a un cliente.
-          </p>
-        </a>
-      
-        <a href="{% url 'listarMateriales' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-box-open"></i> Ver materiales</h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Abrir el listado de materiales.
-          </p>
-        </a>
-
-        <a href="{% url 'crearMaterial' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-box-open"></i> Registrar material</h2>
-          <p>
-            <i class="fas fa-plus-circle agregar"></i> Dar de alta un material.
-          </p>
-        </a>
-
-        <a href="{% url 'listarRepuestos' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-cog"></i> Ver repuestos</h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Abrir el listado de repuestos.
-          </p>
-        </a>
-
-        <a href="{% url 'crearRepuesto' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-cog"></i> Registrar repuesto</h2>
-          <p>
-            <i class="fas fa-plus-circle agregar"></i> Dar de alta un repuesto.
-          </p>
-        </a>
-
-        <a href="{% url 'crearEmpleado' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-user"></i> Registrar empleado</h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Dar de alta un nuevo empleado.
-          </p>
-        </a>
-
-        <a href="{% url 'listarEmpleados' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-user"></i> Ver empleados</h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Abrir el listado de empleados.
-          </p>
-        </a>
-
-        <a href="{% url 'crearTarea' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-tools"></i></i> Crear Tarea </h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Registrar una nueva tarea.
-          </p>
-        </a>
-
-        <a href="{% url 'listarTareas' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-tools"></i></i> Listar tareas</h2>
-          <p>
-            <i class="fas fa-th-list listar"></i> Abrir el listado de todas las tareas.
-          </p>
-        </a>
-      </div>
-
-      <div class="col-2 mt-5 mr-4">
-        {% block filtros %} 
-
+      <div class="col-2 mt-4">
+        {% block sidebar %} 
+          {% include 'sidebar_taller.html' %} 
         {% endblock %}
       </div>
+
+      <div class="col-8 mt-4">
+        {% block main %}
+            
+        {% endblock %}
+      </div>
+          
+      <div class="col-2 mt-5 mr-4">
+        {% block filtros %} 
+        
+        {% endblock %}
+      </div>
+
     </div>
   </div>
-
-  {% block modals %} {% endblock %}
-
 {% endblock %}
+
+{% block modals %} {% endblock %}
+      
+      

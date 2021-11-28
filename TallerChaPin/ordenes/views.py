@@ -285,7 +285,7 @@ class PlanillaCreateView(CreateView):
             planilla = form.save(self.detalle_planilla_form.cleaned_data)
             messages.add_message(self.request, messages.INFO, 'Planilla Creada')
             return redirect ('listarDetallesOrden')
-        return redirect ('listarDetallesOrden') and self.form_invalid(form=form)
+        return self.form_invalid(form=form)
 
 
 class RegistrarIngresoVehiculoCreateView(CreateView):

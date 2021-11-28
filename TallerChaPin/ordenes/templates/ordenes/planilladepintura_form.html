@@ -1,0 +1,17 @@
+{% extends 'template_ordenes.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block main %}
+<div class="col-8">
+    <h3>{{ titulo }}</h3>
+    
+    <form action="{% url 'cargarPlanillaParaTarea' %}" method="post">
+        {% crispy form form.helper %}
+        <div data-formset="detalle_planilla">
+            {% crispy detalle_planilla_formset detalle_planilla_formset_helper %}
+        </div>
+        <input type="submit" class="btn btn-primary mt-3" value="Guardar"/>
+    </form>
+</div>
+{% endblock %}

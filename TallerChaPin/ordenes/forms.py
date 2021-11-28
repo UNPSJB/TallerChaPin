@@ -509,3 +509,75 @@ class FinalizarTareaForm(forms.Form):
         detalle_tarea_pk = self.cleaned_data.get('tarea')
         detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk=detalle_tarea_pk)
         detalle.finalizar(exitosa, observaciones)
+
+class PlanillaDePinturaForm (forms.ModelForm):
+    class Meta:
+        model = ordenes.PlanillaDePintura
+        fields = "__all__"
+        exclude = ["orden","fecha"]
+
+        # labels = {
+
+        # }
+        # widgets = {
+                        
+        # }
+
+    def save(self, detalle_planilla):
+        planilla = super().save()
+        print(detalle_planilla)
+        cantidadDetalle = detalle_planilla["cantidad"]
+        formulaDetalle = detalle_planilla ["formula"]
+        planilla.agregar(formulaDetalle, cantidadDetalle)
+        return planilla
+
+    def __init__(self, *args, **kwargs):
+        detalle = kwargs.pop('detalle')
+        kwargs['initial']['nombre_de_color']= detalle.color_de_pintura()
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+
+class DetallePlanillaForm(forms.ModelForm):
+
+    class Meta:
+        model = ordenes.DetallePlanillaDePintura
+        fields = ("formula",
+                  "cantidad",
+                  )
+        # widgets = {
+            
+        # }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+
+
+def DetallePlanillaInline(extra=1):
+    return inlineformset_factory(
+        ordenes.PlanillaDePintura,
+        ordenes.DetallePlanillaDePintura,
+        form=DetallePlanillaForm,
+        extra=extra,
+        # max_num=10,
+        # fk_name=None,
+        # fields=None, exclude=None, can_order=False,
+        # can_delete=True, max_num=None, formfield_callback=None,
+        # widgets=None, validate_max=False, localized_fields=None,
+        # labels=None, help_texts=None, error_messages=None,
+        # min_num=None, validate_min=False, field_classes=None
+    )
+
+class DetallePlanillaFormSetHelper(FormHelper):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.form_method = 'post'
+        self.form_tag = False
+        self.template = 'bootstrap5/table_inline_formset.html'
+        self.layout = Layout(
+            'formula',
+            'cantidad'
+        )
+        self.render_required_fields = True

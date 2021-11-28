@@ -74,8 +74,6 @@ def crearFactura(request, pk):
         factura = Factura.facturar_orden(orden)
         return redirect ('detallesFactura', factura.pk)
     messages.add_message(request, messages.WARNING, 'La orden de trabajo no esta terminada')
-    messages.add_message(request, messages.INFO, 'prueba de info')
-    messages.add_message(request, messages.ERROR, 'prueba de ERROR')
     return redirect ('detallesOrden', orden.pk)
 
 class FacturaUpdateView(UpdateView):

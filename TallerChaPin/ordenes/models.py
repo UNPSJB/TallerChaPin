@@ -183,6 +183,7 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
 
         return qs
 
+
     def para_empleado_hoy(self, empleado):
         return self.para_empleado(empleado).filter(inicio__date=now().date())
 
@@ -258,6 +259,10 @@ class DetalleOrdenDeTrabajo(models.Model):
         for formula, cantidad in componentes:
             planilla.agregar(formula, cantidad)
 
+    def color_de_pintura (self):
+        return self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first().nombre
+
+
     def precio(self):
         return self.tarea.precio
 
@@ -265,7 +270,14 @@ class DetalleOrdenDeTrabajo(models.Model):
         return self.inicio is None
     
     def puedo_finalizar(self):
-        return self.inicio is not None and self.fin is None
+        requiere_planilla = self.tarea.tipo.planilla
+        tiene_planilla = self.planillas.exists()
+        esta_iniciada = self.inicio is not None
+        no_esta_finalizada = self.fin is None
+        return no_esta_finalizada and esta_iniciada and (requiere_planilla and tiene_planilla or not requiere_planilla)
+    
+    def requiere_planilla (self):
+        return self.tarea.tipo.planilla
 
     def puedo_asignar(self):
         return self.empleado is None

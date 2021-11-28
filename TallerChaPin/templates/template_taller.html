@@ -1,36 +1,43 @@
-{% extends 'main.html' %} {% load static %} {% block extracss %}
-<link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
-<link rel="stylesheet" href="{% static 'css/accesos-directos.css' %}">
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% extends 'main.html' %} 
+{% load static %} 
 
-{% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' %} {% endblock %}
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/accesos-directos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% endblock %} 
 
-<div class="container-fluid">
-  <div class="row d-flex justify-content-between">
-    <div class="col-2 mt-4">
-      {% block sidebar %} {% include 'sidebar_taller.html' %} {% endblock %}
-    </div>
+{% block container %} 
 
-    <div class="col-8 mt-4">
-      {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-          {% endfor %}
-      </ul>
-      {% endif %}
-      {% block main %}
+  {% block nav %} 
+    {% include 'nav_taller.html' %} 
+  {% endblock %}
 
-      {% endblock %}
-    </div>
-      <div class="col-2 mt-5 mr-4">
-        {% block filtros %} 
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-between">
 
+      <div class="col-2 mt-4">
+        {% block sidebar %} 
+          {% include 'sidebar_taller.html' %} 
         {% endblock %}
       </div>
-    
+
+      <div class="col-8 mt-4">
+        {% block main %}
+            
+        {% endblock %}
+      </div>
+          
+      <div class="col-2 mt-5 mr-4">
+        {% block filtros %} 
+        
+        {% endblock %}
+      </div>
+
+    </div>
   </div>
-
-  {% block modals %} {% endblock %}
-
 {% endblock %}
+
+{% block modals %} {% endblock %}
+      
+      

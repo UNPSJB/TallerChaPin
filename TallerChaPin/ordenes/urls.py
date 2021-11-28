@@ -32,20 +32,19 @@ urlpatterns = [
      path('detalles-orden/asignar_empleado', asignar_empleado, name="asignarEmpleado"),
      path('detalles-orden/finalizar',
           finalizar_tarea, name="finalizarTarea"),
+     # ------------------ Planilla de pintura ----------------- 
      path('detalles-orden/<int:pk>/planilla/crear',
          PlanillaCreateView.as_view(), name="cargarPlanillaParaTarea"),
-     
-
 
      # ----------------- Ingreso y Entrega de vehiculo -----------------
      path('ordenesTurnos/registrarIngresoVehiculo',
           RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),
      path('ordenesTurnos/registrarEgresoVehiculo',
           RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo"),
-     # ----------------- Turnos -----------------
+     # ----------------- Turnos -------------------
      path('ordenesTurnos/listarTurnos',
           ListarTurnosListView.as_view(), name="calendarioTurnos"),
-     # ----------------PDF-------------------------
+     # ----------------PDF--------------------------
      path('presupuesto/pdf/<int:pk>', imprimirPresupuesto.as_view(),
           name='imprimirPresupuesto')
 ]

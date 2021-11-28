@@ -91,8 +91,6 @@ class PresupuestoCreateView(CreateView):
         self.repuesto_form = PresupuestoRepuestoInline()(self.request.POST)
         form = PresupuestoForm(self.request.POST)
         if self.repuesto_form.is_valid() and self.material_form.is_valid() and form.is_valid():
-            print(self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
-            # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
             presupuesto = form.save(self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
             return redirect ('detallesPresupuesto',presupuesto.pk)
         return self.form_invalid(form=form)
@@ -225,14 +223,12 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         pass
 
 
+
 def iniciar_tarea(request, pk):
     detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
-    if detalle.tarea.tipo.planilla:
-        redirect('cargarPlanillaParaTarea', detalle.pk)
-    else:
-        detalle.iniciar(detalle.empleado)
-        messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
-        return redirect('listarDetallesOrden')
+    detalle.iniciar(detalle.empleado)
+    messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
+    return redirect('listarDetallesOrden')
 
 def asignar_empleado(request):
     form = AsignarEmpleadoForm(request.POST)
@@ -241,7 +237,7 @@ def asignar_empleado(request):
         messages.add_message(request, messages.SUCCESS,
                              'La tarea se asignó a un empleado exitosamente! :D')
     else:
-        messages.add_message(request, messages.WARNING, 'El formulario tiene errores.')  # TODO: mostrar form.errors
+        messages.add_message(request, messages.ERROR, 'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
 
 def finalizar_tarea(request):
@@ -259,12 +255,37 @@ def finalizar_tarea(request):
 
 class PlanillaCreateView(CreateView):
     model = PlanillaDePintura
-    #form_class = PlanillaDePinturaForm # TODO
+    form_class = PlanillaDePinturaForm
+    success_url = reverse_lazy('listarDetallesOrden')
+    detalle_planilla_form = None
 
-    def get_context_data(self, **kwargs):
+    def get_form_kwargs(self,*args,**kwargs) :
+        print(args,kwargs)
+        kw = super().get_form_kwargs()
+        kw['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('pk'))
+        print(kw)
+        return kw
+
+    def get_context_data(self,*args, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['detalle_planilla_formset'] = DetallePlanillaInline()()
+        context['detalle_planilla_formset_helper'] = DetallePlanillaFormSetHelper()
         context["titulo"] = "Crear Planilla de pintura"
+        context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('pk'))
         return context
+        
+
+    def post(self, *args, **kwargs):
+        self.object = None
+        self.detalle_planilla_form = DetallePlanillaInline()(self.request.POST)
+        form = PlanillaDePinturaForm(self.request.POST)        
+        detalle = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('pk'))
+        print(detalle)
+        if self.detalle_planilla_form.is_valid() and form.is_valid():
+            planilla = form.save(self.detalle_planilla_form.cleaned_data)
+            messages.add_message(self.request, messages.INFO, 'Planilla Creada')
+            return redirect ('listarDetallesOrden')
+        return redirect ('listarDetallesOrden') and self.form_invalid(form=form)
 
 
 class RegistrarIngresoVehiculoCreateView(CreateView):

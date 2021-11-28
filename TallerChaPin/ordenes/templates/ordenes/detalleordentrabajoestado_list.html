@@ -71,12 +71,18 @@
               {% endif %}
 
               {% if detalle_orden.puedo_finalizar %}
-              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#finalizar" data-id-tarea={{detalle_orden.pk}}>
+                  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#finalizar" data-id-tarea={{detalle_orden.pk}}>
                   <i class="fas fa-check"></i> Finalizar
               </button>
                 <!-- <a href="#" class="btn btn-danger">
                   <i class="fas fa-times"></i> Finalizar mal
                 </a> -->
+              {% endif %}
+
+              {% if detalle_orden.requiere_planilla %}
+              <a class="btn btn-primary" href="{% url 'cargarPlanillaParaTarea' detalle_orden.pk %}" type="button" >
+              <i class="fas fa-check"></i> Crear Planilla
+              </a>
               {% endif %}
 
               {% if detalle_orden.esta_finalizado %}

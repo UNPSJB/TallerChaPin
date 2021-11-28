@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
 from .forms import *
+from django.contrib import messages
 # Create your views here.
 
 
@@ -301,6 +302,18 @@ class MaterialDeleteView(DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
+def modificar_cantidad(request):
+    form = ModificarCantidadForm(request.POST)
+    if form.is_valid():
+        form.finalizar()
+        messages.add_message(request, messages.SUCCESS,
+                             'Se ha modificado la cantidad del material.')
+    else:
+        print(form.errors)
+        messages.add_message(request, messages.WARNING,
+                             'No se ha podido modificar la cantidad del material.')
+    return redirect('listarMateriales')
 # ---------------------------------------------------------------- #
 
 # Tipo Material View

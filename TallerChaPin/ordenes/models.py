@@ -279,6 +279,9 @@ class DetalleOrdenDeTrabajo(models.Model):
     def esta_finalizado(self):
         return self.fin is not None
 
+    def requiere_planilla(self):
+        return self.tarea.tipo.planilla
+
 
 class MaterialOrdenDeTrabajo(models.Model):
     material = models.ForeignKey(

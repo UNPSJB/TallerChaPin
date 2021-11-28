@@ -321,6 +321,22 @@ class MaterialFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
+class ModificarCantidadForm(forms.ModelForm):       # TODO VER
+    cantidad = forms.IntegerField(min_value=0, required=True)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_id = 'modificarCantidadForm'
+        self.helper.form_action = 'modificarCantidad'
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                "cantidad"
+            )
+        )
+
 # Tipo de Material Forms
 class TipoMaterialForm(forms.ModelForm):
 

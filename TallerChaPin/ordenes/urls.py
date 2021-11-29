@@ -33,7 +33,7 @@ urlpatterns = [
      path('detalles-orden/finalizar',
           finalizar_tarea, name="finalizarTarea"),
      # ------------------ Planilla de pintura ----------------- 
-     path('detalles-orden/<int:pk>/planilla/crear',
+     path('detalles-orden/<int:detalle>/planilla/crear',
          PlanillaCreateView.as_view(), name="cargarPlanillaParaTarea"),
 
      # ----------------- Ingreso y Entrega de vehiculo -----------------

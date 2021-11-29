@@ -511,6 +511,8 @@ class FinalizarTareaForm(forms.Form):
         detalle.finalizar(exitosa, observaciones)
 
 class PlanillaDePinturaForm (forms.ModelForm):
+    
+
     class Meta:
         model = ordenes.PlanillaDePintura
         fields = "__all__"
@@ -523,17 +525,21 @@ class PlanillaDePinturaForm (forms.ModelForm):
                         
         # }
 
-    def save(self, detalle_planilla):
-        planilla = super().save()
-        print(detalle_planilla)
-        cantidadDetalle = detalle_planilla["cantidad"]
-        formulaDetalle = detalle_planilla ["formula"]
-        planilla.agregar(formulaDetalle, cantidadDetalle)
+    def save(self, detalle_planilla, detalle_orden):
+        planilla = super().save(commit=False)
+        planilla.orden = detalle_orden
+        planilla.save()
+        for detalle in detalle_planilla:
+            cantidadDetalle = detalle["cantidad"]
+            formulaDetalle = detalle["formula"]
+            planilla.agregar(formulaDetalle, cantidadDetalle)
         return planilla
 
     def __init__(self, *args, **kwargs):
-        detalle = kwargs.pop('detalle')
-        kwargs['initial']['nombre_de_color']= detalle.color_de_pintura()
+        print(kwargs)
+        if "detalle" in kwargs:
+            detalle = kwargs.pop('detalle')
+            kwargs['initial']['nombre_de_color']= detalle.color_de_pintura()
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = False

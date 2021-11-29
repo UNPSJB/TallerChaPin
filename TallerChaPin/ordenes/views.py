@@ -95,8 +95,6 @@ class PresupuestoCreateView(CreateView):
             return redirect ('detallesPresupuesto',presupuesto.pk)
         return self.form_invalid(form=form)
 
-
-
 class PresupuestoUpdateView(UpdateView):
 
     model = Presupuesto
@@ -110,8 +108,6 @@ class PresupuestoUpdateView(UpdateView):
         initial_repuestos = [
             {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in self.get_object().presupuesto_repuestos.all().values()]
 
-        print(f"{initial_materiales=}")
-        print(f"{initial_repuestos=}")
         context['presupuesto_material_formset'] = PresupuestoMaterialInline(len(initial_materiales))(initial = initial_materiales) #pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
         context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(len(initial_repuestos))(initial = initial_repuestos) #pasarle las lineas previas
@@ -260,10 +256,10 @@ class PlanillaCreateView(CreateView):
     detalle_planilla_form = None
 
     def get_form_kwargs(self,*args,**kwargs) :
-        print(args,kwargs)
+        # print(args,kwargs)
         kw = super().get_form_kwargs()
-        kw['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('pk'))
-        print(kw)
+        kw['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
+        # print(kw)
         return kw
 
     def get_context_data(self,*args, **kwargs):
@@ -271,20 +267,23 @@ class PlanillaCreateView(CreateView):
         context['detalle_planilla_formset'] = DetallePlanillaInline()()
         context['detalle_planilla_formset_helper'] = DetallePlanillaFormSetHelper()
         context["titulo"] = "Crear Planilla de pintura"
-        context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('pk'))
+        context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         return context
         
 
     def post(self, *args, **kwargs):
+        print(self.request.POST)
         self.object = None
         self.detalle_planilla_form = DetallePlanillaInline()(self.request.POST)
         form = PlanillaDePinturaForm(self.request.POST)        
-        detalle = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('pk'))
-        print(detalle)
+        detalle_orden = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
+        # print(detalle)
         if self.detalle_planilla_form.is_valid() and form.is_valid():
-            planilla = form.save(self.detalle_planilla_form.cleaned_data)
+            planilla = form.save(self.detalle_planilla_form.cleaned_data, detalle_orden)
             messages.add_message(self.request, messages.INFO, 'Planilla Creada')
             return redirect ('listarDetallesOrden')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
         return self.form_invalid(form=form)
 
 

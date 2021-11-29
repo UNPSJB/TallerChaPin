@@ -91,8 +91,6 @@ class PresupuestoCreateView(CreateView):
         self.repuesto_form = PresupuestoRepuestoInline()(self.request.POST)
         form = PresupuestoForm(self.request.POST)
         if self.repuesto_form.is_valid() and self.material_form.is_valid() and form.is_valid():
-            print(self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
-            # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
             presupuesto = form.save(self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
             return redirect ('detallesPresupuesto',presupuesto.pk)
         return self.form_invalid(form=form)
@@ -170,8 +168,6 @@ class OrdenTrabajoCreateView(CreateView):
             return redirect ('detallesOrden', orden.pk)
         return redirect('crearOrden', presupuesto.pk)
 
-
-
 class OrdenTrabajoUpdateView(UpdateView):
 
     model = OrdenDeTrabajo
@@ -241,7 +237,7 @@ def asignar_empleado(request):
         messages.add_message(request, messages.SUCCESS,
                              'La tarea se asignó a un empleado exitosamente! :D')
     else:
-        messages.add_message(request, messages.WARNING, 'El formulario tiene errores.')  # TODO: mostrar form.errors
+        messages.add_message(request, messages.ERRORS, 'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
 
 def finalizar_tarea(request):
@@ -252,7 +248,7 @@ def finalizar_tarea(request):
                              'La tarea finalizó exitosamente! :D')
     else:
         print(form.errors)
-        messages.add_message(request, messages.WARNING,
+        messages.add_message(request, messages.ERROR,
                              'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
 

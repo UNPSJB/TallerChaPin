@@ -72,10 +72,12 @@ def crearFactura(request, pk):
     orden = OrdenDeTrabajo.objects.get(pk=pk)
     if orden.estado == OrdenDeTrabajo.REALIZADA:
         factura = Factura.facturar_orden(orden)
+        messages.add_message(request, messages.INFO, 'Factura Creada')
         return redirect ('detallesFactura', factura.pk)
-    messages.add_message(request, messages.WARNING, 'La orden de trabajo no esta terminada')
-    messages.add_message(request, messages.INFO, 'prueba de info')
-    messages.add_message(request, messages.ERROR, 'prueba de ERROR')
+    if orden.estado == OrdenDeTrabajo.FACTURADA:
+        messages.add_message(request, messages.WARNING, 'La orden ya ha sido facturada')
+        return redirect ('detallesOrden', orden.pk)
+    messages.add_message(request, messages.WARNIG, 'La orden de trabajo no esta terminada')
     return redirect ('detallesOrden', orden.pk)
 
 class FacturaUpdateView(UpdateView):
@@ -123,14 +125,17 @@ class PagoCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['titulo'] = "Ingresar Monto a Pagar"
         return context
     
     def post(self, *args, **kwargs):
         pk = kwargs.get('pk')
         factura = Factura.objects.get(pk=pk)
         form = PagoForm(self.request.POST)
+        monto = form.cleaned_data.get('monto')
+        print(monto)
         if form.is_valid():
-            form.save(factura)
+            pago = factura.pagar(monto)
             return redirect ('listarPagos')
         return self.form_invalid(form=form)
 

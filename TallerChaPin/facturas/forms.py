@@ -8,6 +8,7 @@ from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, D
 from decimal import Decimal
 from datetime import datetime
 
+
 def dict_to_query(filtros_dict):
     filtro = Q()
     for attr, value in filtros_dict.items():
@@ -65,7 +66,7 @@ class FacturaForm(forms.ModelForm):
 
         }
         widgets = {
-            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local','readonly': 'readonly'})
+            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'})
         }
 
     def save(self):
@@ -73,7 +74,8 @@ class FacturaForm(forms.ModelForm):
         return factura
 
     def __init__(self, *args, **kwargs):
-        kwargs.update( initial = { 'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M') } )
+        kwargs.update(
+            initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = False
@@ -106,7 +108,6 @@ class FacturaFiltrosForm(FiltrosForm):
     repuestos = forms.ModelChoiceField(
         queryset=Repuesto.objects.all(), required=False)
 
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -130,6 +131,7 @@ class FacturaFiltrosForm(FiltrosForm):
 
 # Pago - Form
 
+
 class PagoForm(forms.ModelForm):
     class Meta:
         model = Pago
@@ -137,23 +139,26 @@ class PagoForm(forms.ModelForm):
         exclude = ["factura"]
 
         labels = {
-
+            
+            # "tipo": forms.ModelChoiceField(queryset=Pago.objects.all(), label="Pagar al/con:")
         }
         widgets = {
-            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local','readonly': 'readonly'})
+            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
+            
         }
 
-    def save(self, factura):
+    def save(self):
         pago = super().save()
-        pago = factura
         return pago
 
     def __init__(self, *args, **kwargs):
-        kwargs.update( initial = { 'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M') } )
+        kwargs.update(
+            initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_tag = False
-        self.helper.add_input(Submit('submit', 'Pagar'))
+        # self.helper.form_tag = False
+        self.helper.add_input(Submit('submit', 'Guardar'))
+        
 
 # Pago - Filtros
 
@@ -161,13 +166,13 @@ class PagoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("fecha", "fecha"),
         ("monto", "monto"),
-        ("tipo","tipo"),
+        ("tipo", "tipo"),
     ]
     fecha = forms.DateField(required=False)
     monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
     tipo = forms.ModelChoiceField(
         queryset=Pago.objects.all(), required=False, label="Tipo de pago")
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()

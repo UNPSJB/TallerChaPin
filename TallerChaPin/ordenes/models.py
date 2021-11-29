@@ -119,7 +119,6 @@ class OrdenDeTrabajo(models.Model):
         return self.presupuestos.all().first().vehiculo
     
     
-
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 

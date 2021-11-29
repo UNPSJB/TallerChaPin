@@ -404,45 +404,8 @@ class RegistrarEgresoVehiculoForm(forms.ModelForm):
 
 # listar turno
 
-class TurnosFiltrosForm(FiltrosForm):
-    ORDEN_CHOICES = [
-        ("turno", "Turno"),
-        ("cliente", "Cliente"),
-        ("vehiculo", "Vehículo"),
-        ]
 
-    
-    turno = forms.DateTimeField(required=False)
-    cliente = forms.ModelChoiceField(
-        queryset=taller.Cliente.objects.all(), required=False)
-    vehiculo = forms.ModelChoiceField(
-        queryset=taller.Vehiculo.objects.all(), required=False)
 
-   
-    
-    turno__gte = forms.DateTimeField(label="Mayor o igual que", required=False)
-    turno__lte = forms.DateTimeField(label="Menor o igual que", required=False)
-   
-   
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'get'
-        self.helper.layout = Layout(
-            Fieldset(
-                "",
-                HTML(
-                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "turno",
-                "cliente",
-                "vehiculo",
-                "turno__gte",
-                "turno__lte"
-                
-            ),
-            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
-        )
 
 class AsignarEmpleadoForm(forms.Form):
     empleado = forms.ModelChoiceField(

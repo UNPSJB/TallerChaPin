@@ -6,28 +6,33 @@
 {% endblock %}
 {% block main %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'libs/fullcalendar/lib/main.css' %}" />
-{% endblock extra_css %}
-<h1>{{titulo}}</h1>
+  {% block extra_css %}
+      <link rel="stylesheet" href="{% static 'libs/fullcalendar/lib/main.css' %}" />
+  {% endblock extra_css %}
+  <h1>{{titulo}}</h1>
 
 
-<div id='calendar'></div>
-
+  <div id='calendar'></div>
+  
+  
 
 
 
 
 {% endblock %}
 
-{% block modals %}
-{% include './orden_confirm_delete.html' %}
+{% block filtros%}
+  <div id='datos'>
+
+  </div>
 {% endblock %}
+
 
 {% block extrajs %}
 <script>
   conectarBotonesAModal('.btn-eliminar')
 </script>
+
 <script src="{% static 'libs/fullcalendar/lib/main.js' %}"> </script>
 <script src="{% static 'libs/fullcalendar/lib/locales-all' %}"> </script>
     <script>
@@ -52,7 +57,7 @@
                 {
                 title: "{{orden.cliente}}",
                 start: "{{orden.turno | date:'c'}}",
-                url: 'http://127.0.0.1:8000/ordenes/orden/detalle/{{orden.pk}}'
+                url: '/ordenes/ordenesTurnos/listarTurnos/detalleTurno/{{orden.pk}}'
                 },
               {% endfor %}
             // etc...
@@ -63,7 +68,7 @@
            info.jsEvent.preventDefault(); // don't let the browser navigate
 
             if (info.event.url) {
-                window.open(info.event.url);
+              $('#datos').load(info.event.url)
             }
           },   
             

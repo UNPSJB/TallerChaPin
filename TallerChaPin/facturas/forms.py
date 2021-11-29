@@ -86,15 +86,13 @@ class FacturaForm(forms.ModelForm):
 
 class FacturaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
-        ("fecha", "fecha"),
-        ("orden", "orden"),
+        ("fecha", "Fecha"),
+        ("orden", "Orden"),
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
-        ("repuestos", "Repuestos"),
-        ("materiales", "Materiales")
 
     ]
-    fecha = forms.DateField(required=False)
+    fecha = forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'})
     orden = forms.ModelChoiceField(
         queryset=OrdenDeTrabajo.objects.all(), required=False, label="Orden de Trabajo")
     cliente = forms.ModelChoiceField(
@@ -119,12 +117,6 @@ class FacturaFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "fecha",
                 "orden",
-                "cliente",
-                "vehiculo",
-                "detalles",
-                "tareas",
-                "materiales",
-                "repuestos",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

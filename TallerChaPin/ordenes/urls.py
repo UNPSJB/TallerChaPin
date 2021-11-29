@@ -44,7 +44,8 @@ urlpatterns = [
      # ----------------- Turnos -------------------
      path('ordenesTurnos/listarTurnos',
           ListarTurnosListView.as_view(), name="calendarioTurnos"),
-     # ----------------PDF--------------------------
+     path('ordenesTurnos/listarTurnos/detalleTurno/<int:pk>',datoPlantilla, name="datoPlantilla"),
+     # ----------------PDF-------------------------
      path('presupuesto/pdf/<int:pk>', imprimirPresupuesto.as_view(),
           name='imprimirPresupuesto')
 ]

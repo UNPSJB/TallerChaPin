@@ -34,11 +34,18 @@ class Factura(models.Model):
         orden.save()
         return factura
 
+    def no_pagada(self):
+        return self.orden.estado !=  OrdenDeTrabajo.FINALIZADA
+    
+    def adeuda(self):
+        print(self.saldo())
+        return self.saldo() > 0
+
     def agregar_detalle(self, descripcion, precio):
         return DetalleFactura.objects.create(factura=self, descripcion=descripcion, precio=precio)
 
-    def pagar(self, monto):
-        return Pago.objects.create(factura=self, monto=monto, tipo=Pago.CONTADO)
+    def pagar(self, monto, tipo):
+        return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
 
     def saldo(self):
         return self.total() - self.pagos.aggregate(total=models.Sum('monto'))['total']

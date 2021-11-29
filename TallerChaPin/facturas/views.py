@@ -77,7 +77,7 @@ def crearFactura(request, pk):
     if orden.estado == OrdenDeTrabajo.FACTURADA:
         messages.add_message(request, messages.WARNING, 'La orden ya ha sido facturada')
         return redirect ('detallesOrden', orden.pk)
-    messages.add_message(request, messages.WARNIG, 'La orden de trabajo no esta terminada')
+    messages.add_message(request, messages.WARNING, 'La orden de trabajo no esta terminada')
     return redirect ('detallesOrden', orden.pk)
 
 class FacturaUpdateView(UpdateView):
@@ -132,10 +132,10 @@ class PagoCreateView(CreateView):
         pk = kwargs.get('pk')
         factura = Factura.objects.get(pk=pk)
         form = PagoForm(self.request.POST)
-        monto = form.cleaned_data.get('monto')
-        print(monto)
         if form.is_valid():
-            pago = factura.pagar(monto)
+            monto = form.cleaned_data.get('monto')
+            tipo = form.cleaned_data.get('tipo')
+            factura.pagar(monto,tipo)
             return redirect ('listarPagos')
         return self.form_invalid(form=form)
 

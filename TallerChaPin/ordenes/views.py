@@ -220,6 +220,7 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         # Pasar formulario por contexto
         context['asignarEmpleadoForm'] = AsignarEmpleadoForm()
         context['finalizarTareaForm'] = FinalizarTareaForm()
+        context['asignarCantidadForm'] = AsignarCantidadForm()
         return context
 
     def post(self, *args, **kwargs):

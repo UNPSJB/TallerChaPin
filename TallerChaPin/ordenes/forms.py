@@ -498,7 +498,7 @@ class FinalizarTareaForm(forms.Form):
                 "",
                 "exitosa",
                 "observaciones",
-                "tarea"
+                "tarea",
             )
         )
 
@@ -509,3 +509,56 @@ class FinalizarTareaForm(forms.Form):
         detalle_tarea_pk = self.cleaned_data.get('tarea')
         detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk=detalle_tarea_pk)
         detalle.finalizar(exitosa, observaciones)
+
+class AsignarCantidadForm(forms.Form):
+
+    material = forms.ModelChoiceField(
+        queryset=taller.Material.objects.all(),
+        required=True, 
+        label="Material"
+    )
+    cantidad_material = tarea = forms.IntegerField(
+        label="Cantidad utilizada"
+    )
+
+    repuesto = forms.ModelChoiceField(
+        queryset=taller.Repuesto.objects.all(),
+        required=True, 
+        label="Repuesto"
+    )
+    cantidad_repuesto = tarea = forms.IntegerField(
+        label="Cantidad utilizada"
+    )
+
+    tarea = forms.IntegerField(widget=forms.HiddenInput())
+
+    def __init__(self, *args, **kwargs):
+        # kwargs['prefix'] = 'asignar'
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_id = 'asignarCantidadForm'
+        self.helper.form_action = 'asignarCantidad'
+        self.helper.layout = Layout(
+            Fieldset(
+                "", 
+                "material",
+                "cantidad_material",
+                HTML('<hr>'),
+                "repuesto",
+                "cantidad_repuesto",
+                "tarea"
+            )
+        )
+
+    def actualizar_cantidad(self):
+        material = self.cleaned_data.get('material')
+        cantidad_material = self.cleaned_data.get('cantidad_material')
+
+        repuesto = self.cleaned_data.get('repuesto')
+        cantidad_repuesto = self.cleaned_data.get('cantidad_repuesto')
+
+        detalle_tarea_pk = self.cleaned_data.get('tarea')
+        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk=detalle_tarea_pk)
+        print('Se ha actualizado la cantidad (test)')
+        # detalle.finalizar(exitosa, observaciones)

@@ -1,0 +1,31 @@
+{% extends 'modal.html' %}
+{% load crispy_forms_tags %}
+
+{% block modal_title %} Asignar cantidad {% endblock %}
+
+{% block modal_body %} 
+  {% crispy form form.helper %} 
+{% endblock %}
+
+{% block modal_footer %}
+    <a id="btn-asignar" href="#" class="btn btn-primary" data-bs-dismiss="modal">Guardar</a>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript"> 
+document.addEventListener('DOMContentLoaded', () => {
+  const element = document.getElementById('asignar');
+
+  // configuramos el contenido del modal
+  element.addEventListener('show.bs.modal', (e) => {
+    const btn = e.explicitOriginalTarget;
+    $('#id_asignar-tarea').val(btn.dataset.idTarea);
+  })
+
+  $('#btn-asignar').on('click', (e) => {
+    e.preventDefault();
+    $('#asignarCantidadForm').submit();
+  });
+})
+</script>
+{% endblock %}

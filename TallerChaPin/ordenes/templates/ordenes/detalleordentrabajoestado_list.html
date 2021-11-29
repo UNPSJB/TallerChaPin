@@ -76,6 +76,12 @@
                 </button>
               {% endif %}
 
+              {% if detalle_orden.tarea.tipo.repuestos or detalle_orden.tarea.tipo.materiales %}
+                <button class="btn btn-primary m-1" type="button" data-bs-toggle="modal" data-bs-target="#cantidad" data-id-tarea={{detalle_orden.pk}}>
+                  Cantidad
+                </button>
+              {% endif %}
+
               {% if detalle_orden.puedo_finalizar %}
               <button class="btn btn-primary m-1" type="button" data-bs-toggle="modal" data-bs-target="#finalizar" data-id-tarea={{detalle_orden.pk}}>
                   <i class="fas fa-check"></i> Finalizar

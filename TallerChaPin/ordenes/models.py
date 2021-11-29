@@ -240,7 +240,7 @@ class DetalleOrdenDeTrabajo(models.Model):
         return cls(tarea=tarea)
 
     def iniciar(self, empleado, fecha=now()):
-        self.empleado = empleado      # El empleado se asigna con el método asignar(). Hace falta acá también?
+        self.empleado = empleado
         self.inicio = fecha
         self.save()
 

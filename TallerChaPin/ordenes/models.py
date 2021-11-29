@@ -186,13 +186,16 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado_hoy(self, empleado):
         return self.para_empleado(empleado).filter(inicio__date=now().date())
 
-    def para_asignar(self):
-        # TODO: definir qs para que un jefe de taller vea las tareas para hacer y que puedan ser asignadas.
-        pass
-
     def sin_asignar(self):
         no_tiene_empleado = models.Q(empleado__isnull=True)
         qs = self.filter(no_tiene_empleado).order_by('orden__turno')
+        return qs
+
+    def asignados(self):
+        tiene_empleado = models.Q(empleado__isnull=False)
+        no_esta_iniciado = models.Q(inicio__isnull=True)
+
+        qs=self.filter(tiene_empleado & no_esta_iniciado).order_by('orden__turno')
         return qs
 
     def sin_finalizar(self):
@@ -202,11 +205,11 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         qs = self.filter(tiene_empleado & no_esta_finalizado & esta_iniciado).order_by('orden__turno')
         return qs
 
-    def en_proceso(self):
-        esta_empezado = models.Q(inicio__isnull=False)
-        no_esta_finalizado = models.Q(fin__isnull=True)
-        qs = self.filter(esta_empezado & no_esta_finalizado).order_by('orden__turno')
-        return qs
+    # def en_proceso(self):
+    #     esta_empezado = models.Q(inicio__isnull=False)
+    #     no_esta_finalizado = models.Q(fin__isnull=True)
+    #     qs = self.filter(esta_empezado & no_esta_finalizado).order_by('orden__turno')
+    #     return qs
     
     def finalizados(self):
         esta_finalizado = models.Q(fin__isnull=False)

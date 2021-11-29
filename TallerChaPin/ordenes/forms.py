@@ -1,7 +1,7 @@
 from django import forms
 from django.db.models import query
 from . import models as ordenes
-import taller.models as taller 
+import taller.models as taller
 from django.db.models.query import QuerySet
 from django.db.models import Q, Model, fields
 from crispy_forms.helper import FormHelper
@@ -96,8 +96,8 @@ class PresupuestoForm(forms.ModelForm):
 class PresupuestoMaterialForm(forms.ModelForm):
     # Amigabilidad 10/10
     unidad_medida = forms.ChoiceField(required=False,
-        choices=taller.TipoMaterial.UNIDADES_BASICAS,
-        widget=forms.Select(attrs={'disabled': ''}))
+                                      choices=taller.TipoMaterial.UNIDADES_BASICAS,
+                                      widget=forms.Select(attrs={'disabled': ''}))
 
     class Meta:
         model = ordenes.PresupuestoMaterial
@@ -258,7 +258,7 @@ class OrdenForm(forms.ModelForm):
         # }
         widgets = {
             "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
-            
+
         }
 
     def save(self, tareas, repuestos, materiales):
@@ -335,10 +335,10 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
 
 class RegistrarIngresoVehiculoForm(forms.ModelForm):
     orden = forms.ModelChoiceField(
-        queryset = ordenes.OrdenDeTrabajo.objects.all(), 
-        required = True,
-        widget = forms.Select(),
-        label="Orden de trabajo" #TODO: verificar que el layout muestre un label
+        queryset=ordenes.OrdenDeTrabajo.objects.all(),
+        required=True,
+        widget=forms.Select(),
+        label="Orden de trabajo"  # TODO: verificar que el layout muestre un label
     )
 
     class Meta:
@@ -368,13 +368,14 @@ class RegistrarIngresoVehiculoForm(forms.ModelForm):
 
 # Registrar egreso Vehiculo
 
+
 class RegistrarEgresoVehiculoForm(forms.ModelForm):
 
     orden = forms.ModelChoiceField(
-        queryset = ordenes.OrdenDeTrabajo.objects.all(), 
-        required = True,
-        widget = forms.Select(),
-        label= "Orden de trabajo" #TODO: verificar que el layout muestre un label
+        queryset=ordenes.OrdenDeTrabajo.objects.all(),
+        required=True,
+        widget=forms.Select(),
+        label="Orden de trabajo"  # TODO: verificar que el layout muestre un label
     )
 
     class Meta:
@@ -404,26 +405,22 @@ class RegistrarEgresoVehiculoForm(forms.ModelForm):
 
 # listar turno
 
+
 class TurnosFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("turno", "Turno"),
         ("cliente", "Cliente"),
         ("vehiculo", "Vehiculo"),
-        ]
+    ]
 
-    
     turno = forms.DateTimeField(required=False)
     cliente = forms.ModelChoiceField(
         queryset=taller.Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
         queryset=taller.Vehiculo.objects.all(), required=False)
 
-   
-    
     turno__gte = forms.DateTimeField(label="Mayor o igual que", required=False)
     turno__lte = forms.DateTimeField(label="Menor o igual que", required=False)
-   
-   
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -439,15 +436,16 @@ class TurnosFiltrosForm(FiltrosForm):
                 "vehiculo",
                 "turno__gte",
                 "turno__lte"
-                
+
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
+
 class AsignarEmpleadoForm(forms.Form):
     empleado = forms.ModelChoiceField(
         queryset=taller.Empleado.objects.all(),
-        required=True, 
+        required=True,
         label="Asignar tarea a: "
     )
 
@@ -462,7 +460,7 @@ class AsignarEmpleadoForm(forms.Form):
         self.helper.form_action = 'asignarEmpleado'
         self.helper.layout = Layout(
             Fieldset(
-                "", 
+                "",
                 "empleado",
                 "tarea"
             )
@@ -471,17 +469,18 @@ class AsignarEmpleadoForm(forms.Form):
     def asignar(self):
         empleado = self.cleaned_data.get('empleado')
         detalle_tarea_pk = self.cleaned_data.get('tarea')
-        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk = detalle_tarea_pk)
+        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(
+            pk=detalle_tarea_pk)
         detalle.asignar(empleado)
 
 
 class FinalizarTareaForm(forms.Form):
     exitosa = forms.ChoiceField(
-        choices=[(1, 'exitosa'), (2, 'no exitosa')], 
-        widget=forms.RadioSelect, 
+        choices=[(1, 'exitosa'), (2, 'no exitosa')],
+        widget=forms.RadioSelect,
         label="Finalización:")
     observaciones = forms.CharField(
-        widget=forms.Textarea(), 
+        widget=forms.Textarea(),
         label='Observaciones:')
     tarea = forms.IntegerField(widget=forms.HiddenInput())
 
@@ -507,41 +506,46 @@ class FinalizarTareaForm(forms.Form):
         exitosa = int(exitosa) == 1
         observaciones = self.cleaned_data.get('observaciones')
         detalle_tarea_pk = self.cleaned_data.get('tarea')
-        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk=detalle_tarea_pk)
+        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(
+            pk=detalle_tarea_pk)
         detalle.finalizar(exitosa, observaciones)
+
 
 class AsignarCantidadForm(forms.Form):
 
     material = forms.ModelChoiceField(
         queryset=taller.Material.objects.all(),
-        required=True, 
+        required=False,
         label="Material"
     )
-    cantidad_material = tarea = forms.IntegerField(
-        label="Cantidad utilizada"
+    cantidad_material = forms.IntegerField(
+        required=False,
+        label="Cantidad utilizada",
     )
 
     repuesto = forms.ModelChoiceField(
         queryset=taller.Repuesto.objects.all(),
-        required=True, 
+        required=False,
         label="Repuesto"
     )
     cantidad_repuesto = tarea = forms.IntegerField(
+        required=False,
         label="Cantidad utilizada"
     )
 
     tarea = forms.IntegerField(widget=forms.HiddenInput())
 
     def __init__(self, *args, **kwargs):
-        # kwargs['prefix'] = 'asignar'
+        kwargs['prefix'] = 'cantidad'
+        kwargs['initial'] = {'cantidad_material': 0, 'cantidad_repuesto': 0}
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
-        self.helper.form_id = 'asignarCantidadForm'
+        self.helper.form_id = 'cantidadForm'
         self.helper.form_action = 'asignarCantidad'
         self.helper.layout = Layout(
             Fieldset(
-                "", 
+                "",
                 "material",
                 "cantidad_material",
                 HTML('<hr>'),
@@ -559,6 +563,7 @@ class AsignarCantidadForm(forms.Form):
         cantidad_repuesto = self.cleaned_data.get('cantidad_repuesto')
 
         detalle_tarea_pk = self.cleaned_data.get('tarea')
-        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(pk=detalle_tarea_pk)
-        print('Se ha actualizado la cantidad (test)')
-        # detalle.finalizar(exitosa, observaciones)
+        detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(
+            pk=detalle_tarea_pk)
+        detalle.actualizar_cantidad(
+            material, cantidad_material, repuesto, cantidad_repuesto)

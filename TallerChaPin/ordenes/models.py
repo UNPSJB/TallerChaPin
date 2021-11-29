@@ -66,10 +66,12 @@ class OrdenDeTrabajo(models.Model):
         ]
 
     def precio_total_presupuestado(self):
-        return self.presupuestos.first().precio_estimado() # Toma el valor del primer presupuesto realizado 
+        # Toma el valor del primer presupuesto realizado
+        return self.presupuestos.first().precio_estimado()
 
     def precio_total(self):
-        return sum([p.precio_estimado() for p in self.presupuestos.all()]) # Toma el valor del presupuesto + sus ampliaciones realizadas
+        # Toma el valor del presupuesto + sus ampliaciones realizadas
+        return sum([p.precio_estimado() for p in self.presupuestos.all()])
 
     def agregar_tarea(self, tarea):
         return DetalleOrdenDeTrabajo.objects.create(tarea=tarea, orden=self)
@@ -109,7 +111,7 @@ class OrdenDeTrabajo(models.Model):
 
     def puede_facturar(self):
         pass
-    
+
     @property
     def cliente(self):
         return self.presupuestos.all().first().cliente
@@ -117,8 +119,6 @@ class OrdenDeTrabajo(models.Model):
     @property
     def vehiculo(self):
         return self.presupuestos.all().first().vehiculo
-    
-    
 
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
@@ -152,7 +152,7 @@ class OrdenDeTrabajo(models.Model):
             if un_problema:
                 self.estado = OrdenDeTrabajo.PAUSADA
             elif todo_terminado:
-                self.estado = OrdenDeTrabajo.REALIZADA # VER ESTO
+                self.estado = OrdenDeTrabajo.REALIZADA  # VER ESTO
             self.save()
 
     def ampliar_presupuesto(self):
@@ -164,6 +164,26 @@ class OrdenDeTrabajo(models.Model):
 
     def __str__(self):
         return f"{self.pk} | {self.cliente.nombre} - {self.vehiculo.modelo.marca} {self.vehiculo.modelo.nombre} ({self.vehiculo.patente})"
+
+    def actualizar_material(self, material, cantidad):
+        materiales = self.orden_materiales.filter(material=material)
+        if materiales.exists():
+            material = materiales.first()
+            material.actualizar(cantidad)
+        elif cantidad > 0:
+            material = Material.objects.get(pk=material.pk)
+            MaterialOrdenDeTrabajo.objects.create(
+                material=material, orden=self, cantidad=cantidad)
+
+    def actualizar_repuesto(self, repuesto, cantidad):
+        repuestos = self.orden_repuestos.filter(repuesto=repuesto)
+        if repuestos.exists():
+            repuesto = repuestos.first()
+            repuesto.actualizar(cantidad)
+        elif cantidad > 0:
+            repuesto = Repuesto.objects.get(pk=repuesto.pk)
+            RepuestoOrdenDeTrabajo.objects.create(
+                repuesto=repuesto, orden=self, cantidad=cantidad)
 
 
 class DetalleOrdenDeTrabajoManager(models.Manager):
@@ -178,7 +198,7 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         qs = self.filter(
             ((no_tiene_empleado | orden_pausada |
              (tiene_empleado & soy_empleado & no_iniciada))
-            & empleado_realiza_tarea)
+             & empleado_realiza_tarea)
         ).order_by('orden__turno')
 
         return qs
@@ -195,14 +215,16 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         tiene_empleado = models.Q(empleado__isnull=False)
         no_esta_iniciado = models.Q(inicio__isnull=True)
 
-        qs=self.filter(tiene_empleado & no_esta_iniciado).order_by('orden__turno')
+        qs = self.filter(tiene_empleado & no_esta_iniciado).order_by(
+            'orden__turno')
         return qs
 
     def sin_finalizar(self):
         tiene_empleado = models.Q(empleado__isnull=False)
         esta_iniciado = models.Q(inicio__isnull=False)
         no_esta_finalizado = models.Q(fin__isnull=True)
-        qs = self.filter(tiene_empleado & no_esta_finalizado & esta_iniciado).order_by('orden__turno')
+        qs = self.filter(tiene_empleado & no_esta_finalizado &
+                         esta_iniciado).order_by('orden__turno')
         return qs
 
     # def en_proceso(self):
@@ -210,12 +232,11 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
     #     no_esta_finalizado = models.Q(fin__isnull=True)
     #     qs = self.filter(esta_empezado & no_esta_finalizado).order_by('orden__turno')
     #     return qs
-    
+
     def finalizados(self):
         esta_finalizado = models.Q(fin__isnull=False)
         qs = self.filter(esta_finalizado).order_by('orden__turno')
         return qs
-    
 
 
 class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
@@ -266,7 +287,7 @@ class DetalleOrdenDeTrabajo(models.Model):
 
     def puedo_iniciar(self):
         return self.inicio is None
-    
+
     def puedo_finalizar(self):
         # TODO: hay que verificar que tenga planilla en caso de que la requiera?
         return self.inicio is not None and self.fin is None
@@ -286,6 +307,13 @@ class DetalleOrdenDeTrabajo(models.Model):
     def requiere_planilla(self):
         return self.tarea.tipo.planilla
 
+    def actualizar_cantidad(self, material, cantidad_material, repuesto, cantidad_repuesto):
+        orden = self.orden
+        if material is not None:
+            orden.actualizar_material(material, cantidad_material)
+        if repuesto is not None:
+            orden.actualizar_repuesto(repuesto, cantidad_repuesto)
+
 
 class MaterialOrdenDeTrabajo(models.Model):
     material = models.ForeignKey(
@@ -297,6 +325,10 @@ class MaterialOrdenDeTrabajo(models.Model):
     def precio(self):
         return self.material.precio * self.cantidad
 
+    def actualizar(self, cantidad):
+        self.cantidad += cantidad
+        self.save()
+
 
 class RepuestoOrdenDeTrabajo(models.Model):
     repuesto = models.ForeignKey(
@@ -307,6 +339,10 @@ class RepuestoOrdenDeTrabajo(models.Model):
 
     def precio(self):
         return self.repuesto.precio * self.cantidad
+
+    def actualizar(self, cantidad):
+        self.cantidad += cantidad
+        self.save()
 
 
 class Presupuesto(models.Model):
@@ -353,9 +389,9 @@ class Presupuesto(models.Model):
         for t in self.tareas.all():
             self.orden.agregar_tarea(t)
         for m in self.presupuesto_materiales.all():
-            self.orden.agregar_material(m.material, m.cantidad)
+            self.orden.agregar_material(m.material, 0)
         for r in self.presupuesto_repuestos.all():
-            self.orden.agregar_repuesto(r.repuesto, r.cantidad)
+            self.orden.agregar_repuesto(r.repuesto, 0)
         self.save()
         return self.orden
 
@@ -404,7 +440,7 @@ class DetallePlanillaDePintura(models.Model):
 
 
 class turnoOrden(models.Model):
-    
+
     cliente = models.ForeignKey(
         Cliente, related_name='Turno', on_delete=models.CASCADE)
     vehiculo = models.ForeignKey(

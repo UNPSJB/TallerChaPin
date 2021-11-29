@@ -3,29 +3,31 @@
 
 {% block modal_title %} Asignar cantidad {% endblock %}
 
-{% block modal_body %} 
-  {% crispy form form.helper %} 
+{% block modal_body %}
+{% crispy form form.helper %}
+<div id="cantidad-resumen"></div>
 {% endblock %}
 
 {% block modal_footer %}
-    <a id="btn-asignar" href="#" class="btn btn-primary" data-bs-dismiss="modal">Guardar</a>
+<a id="btn-cantidad" href="#" class="btn btn-primary" data-bs-dismiss="modal">Guardar</a>
 {% endblock %}
 
 {% block extrajs %}
-<script type="text/javascript"> 
-document.addEventListener('DOMContentLoaded', () => {
-  const element = document.getElementById('asignar');
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    const element = document.getElementById('cantidad');
 
-  // configuramos el contenido del modal
-  element.addEventListener('show.bs.modal', (e) => {
-    const btn = e.explicitOriginalTarget;
-    $('#id_asignar-tarea').val(btn.dataset.idTarea);
+    // configuramos el contenido del modal
+    element.addEventListener('show.bs.modal', (e) => {
+      const btn = e.relatedTarget;
+      $('#id_cantidad-tarea').val(btn.dataset.idTarea);
+      $('#cantidad-resumen').load('/ordenes/detalles-orden/resumen/' + btn.dataset.idTarea);
+    })
+
+    $('#btn-cantidad').on('click', (e) => {
+      e.preventDefault();
+      $('#cantidadForm').submit();
+    });
   })
-
-  $('#btn-asignar').on('click', (e) => {
-    e.preventDefault();
-    $('#asignarCantidadForm').submit();
-  });
-})
 </script>
 {% endblock %}

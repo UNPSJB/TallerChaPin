@@ -176,8 +176,8 @@
                                 class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
                                 Cancelar orden de trabajo</a>
                             <a href="{% url 'modificarOrden' object.pk %}" class="btn btn-primary m-1 w-100"><i
-                                    class="fas fa-pencil-alt"></i> Modificar fecha de turno </a> 
-                            
+                                    class="fas fa-pencil-alt"></i> Modificar fecha de turno </a>
+
                             <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
                                 <i class="fas fa-check-circle"></i> Facturar Orden</a>
                             </a>
@@ -189,15 +189,15 @@
         </div>
     </div>
 </div>
-                {% endblock %}
+{% endblock %}
 
-                {% block modals %}
-                {% include './ordendetrabajo_confirm_delete.html' %}
-                
-                {% endblock %}
+{% block modals %}
+{% include './ordendetrabajo_confirm_delete.html' %}
 
-                {% block extrajs %}
-                <script>
-                    conectarBotonesAModal('.btn-eliminar btn btn-danger m-1 w-100')
-                </script>
-                {% endblock %}
+{% endblock %}
+
+{% block extrajs %}
+<script>
+    conectarBotonesAModal('.btn-eliminar btn btn-danger m-1 w-100')
+</script>
+{% endblock %}

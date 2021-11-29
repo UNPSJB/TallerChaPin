@@ -79,7 +79,7 @@ urlpatterns = [
     path('clientes/eliminar/<int:pk>',
          ClienteDeleteView.as_view(), name="eliminarCliente"),
 
-    # ----------------- VEHICULOS -----------------
+    # ----------------- VEHÍCULOS -----------------
 
     path('vehiculos/listar', VehiculoListView.as_view(), name="listarVehiculos"),
     path('vehiculos/crear', VehiculoCreateView.as_view(), name="crearVehiculo"),

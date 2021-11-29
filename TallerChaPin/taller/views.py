@@ -473,7 +473,7 @@ class VehiculoCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Registrar Vehiculo"
+        context['titulo'] = "Registrar Vehículo"
         return context
 
 
@@ -485,7 +485,7 @@ class VehiculoUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Modificar Vehiculo"
+        context['titulo'] = "Modificar Vehículo"
         return context
 
 
@@ -505,7 +505,7 @@ class VehiculoListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Vehiculos"
+        context['titulo'] = "Listado de Vehículos"
         return context
 
 # ---------------------------------------------------------------- #

@@ -5,34 +5,43 @@
 <link rel="stylesheet" href="{% static 'libs/bootstrap/css/sidebars.css' %}" />
 {% endblock %}
 
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
 {% block container %}
 
-  {% block nav %}
-    {% include 'nav_home.html' %}
-  {% endblock %}
+{% block nav %}
+{% include 'nav_home.html' %}
+{% endblock %}
 
-  <div class="container-fluid">
-    <div class="row d-flex justify-content-between">
+<div class="container-fluid">
+  <div class="row d-flex justify-content-between">
 
-      <div class="col-2 mt-4">
-        {% block sidebar %}
-          {% include 'sidebar.html' %}
-        {% endblock %}
-      </div>
+    <div class="col-2 mt-4">
+      {% block sidebar %}
+      {% include 'sidebar.html' %}
+      {% endblock %}
+    </div>
 
-      <div class="col-7 mt-4 ">
-        {% block main %}
+    <div class="col-7 mt-4 ">
+      {% block main %}
 
-        {% endblock %}
-      </div>
+      {% endblock %}
+    </div>
 
-      <div class="col-3 mt-5 pr-4">
-        {% block filtros %}
+    <div class="col-3 mt-5 pr-4">
+      {% block filtros %}
 
-        {% endblock %}
-      </div>
+      {% endblock %}
     </div>
   </div>
+</div>
 {% endblock %}
 
 {% block modals %} {% endblock %}

@@ -89,7 +89,7 @@ class FacturaFiltrosForm(FiltrosForm):
         ("fecha", "fecha"),
         ("orden", "orden"),
         ("cliente", "Cliente"),
-        ("vehiculo", "Vehiculo"),
+        ("vehiculo", "Vehículo"),
         ("repuestos", "Repuestos"),
         ("materiales", "Materiales")
 

@@ -293,7 +293,7 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Registrar egreso de Vehiculo"
+        context['titulo'] = "Registrar egreso de Vehículo"
         context['vehiculo'] = self.model.vehiculo
         return context
 

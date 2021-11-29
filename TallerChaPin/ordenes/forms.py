@@ -196,7 +196,7 @@ class PresupuestoRepuestoFormSetHelper(FormHelper):
 class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
-        ("vehiculo", "Vehiculo"),
+        ("vehiculo", "Vehículo"),
         ("detalles", "Detalles"),
         ("tareas", "Tareas"),
         ("repuestos", "Repuestos"),
@@ -330,7 +330,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-# Registrar Ingreso Vehiculo
+# Registrar Ingreso Vehículo
 
 
 class RegistrarIngresoVehiculoForm(forms.ModelForm):
@@ -366,7 +366,7 @@ class RegistrarIngresoVehiculoForm(forms.ModelForm):
             Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
         )
 
-# Registrar egreso Vehiculo
+# Registrar egreso Vehículo
 
 class RegistrarEgresoVehiculoForm(forms.ModelForm):
 
@@ -408,7 +408,7 @@ class TurnosFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("turno", "Turno"),
         ("cliente", "Cliente"),
-        ("vehiculo", "Vehiculo"),
+        ("vehiculo", "Vehículo"),
         ]
 
     

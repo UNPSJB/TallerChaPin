@@ -1,3 +1,4 @@
+from django.http import request
 from django.http.response import HttpResponse
 from django.urls import reverse_lazy
 from django.shortcuts import render,redirect
@@ -312,16 +313,23 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
             return redirect ('detallesOrden', orden.pk)
         return redirect ('registrarIngresoDeVehiculo')
 
-class ListarTurnosListView(ListView):
-    
+class ListarTurnosListView(ListFilterView):
+    #filtros = TurnosFiltrosForm
     model = OrdenDeTrabajo
     template_name = "ordenes/calendarioturno_list.html"
- 
+    
     paginate_by = 100
    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Calendario de Turnos"
         return context
- 
+    
+def datoPlantilla(request, pk):
+    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    print (orden)
+    return render (request,'ordenes/datoPlantilla.html',{'orden':orden})
+
+
+
     

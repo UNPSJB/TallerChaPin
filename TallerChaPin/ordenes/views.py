@@ -164,8 +164,6 @@ class OrdenTrabajoCreateView(CreateView):
             return redirect ('detallesOrden', orden.pk)
         return redirect('crearOrden', presupuesto.pk)
 
-
-
 class OrdenTrabajoUpdateView(UpdateView):
 
     model = OrdenDeTrabajo
@@ -233,7 +231,7 @@ def asignar_empleado(request):
         messages.add_message(request, messages.SUCCESS,
                              'La tarea se asignó a un empleado exitosamente! :D')
     else:
-        messages.add_message(request, messages.ERROR, 'El formulario tiene errores.')  # TODO: mostrar form.errors
+        messages.add_message(request, messages.ERRORS, 'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
 
 def finalizar_tarea(request):
@@ -244,7 +242,7 @@ def finalizar_tarea(request):
                              'La tarea finalizó exitosamente! :D')
     else:
         print(form.errors)
-        messages.add_message(request, messages.WARNING,
+        messages.add_message(request, messages.ERROR,
                              'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
 
@@ -317,7 +315,7 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Registrar egreso de Vehiculo"
+        context['titulo'] = "Registrar egreso de Vehículo"
         context['vehiculo'] = self.model.vehiculo
         return context
 

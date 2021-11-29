@@ -61,7 +61,7 @@ class OrdenDeTrabajo(models.Model):
     class Meta:
         permissions = [
             ('can_registrar_ingreso',
-             'Puede registrar el ingreso de un vehiculo al taller'),
+             'Puede registrar el ingreso de un vehículo al taller'),
             ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
         ]
 
@@ -105,7 +105,7 @@ class OrdenDeTrabajo(models.Model):
             self.save()
         else:
             raise NoEntregoVehiculoException(
-                'No se puede entregar el vehiculo o me pagas o sos vip', self.estado)
+                'No se puede entregar el vehículo o me pagas o sos vip', self.estado)
 
     def puede_facturar(self):
         pass

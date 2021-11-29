@@ -271,6 +271,7 @@ class MaterialListView(ListFilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de Materiales"
+        context['modificarCantidadForm'] = ModificarCantidadForm()
         return context
 
 

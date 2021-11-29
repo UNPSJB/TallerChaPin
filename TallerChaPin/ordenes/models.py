@@ -265,6 +265,7 @@ class DetalleOrdenDeTrabajo(models.Model):
         return self.inicio is None
     
     def puedo_finalizar(self):
+        # TODO: hay que verificar que tenga planilla en caso de que la requiera?
         return self.inicio is not None and self.fin is None
 
     def puedo_asignar(self):

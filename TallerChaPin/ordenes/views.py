@@ -290,8 +290,52 @@ def asignar_cantidad(request):
     return redirect('listarDetallesOrden')
 
 def resumen_orden(request, pk):
-    tarea = DetalleOrdenDeTrabajo.objects.get(pk=pk)
-    return render(request, 'ordenes/orden-resumen.html', {'orden': tarea.orden})
+    orden = DetalleOrdenDeTrabajo.objects.get(pk=pk).orden
+    presupuesto = orden.presupuestos.first()
+
+    materiales_orden = orden.orden_materiales.all()
+    materiales_pres = presupuesto.presupuesto_materiales.all()
+
+    materiales = []
+    for i in range(0, materiales_orden.count()):
+        try:
+            materiales.append((
+                materiales_orden[i].material.nombre, 
+                materiales_pres[i].cantidad, 
+                materiales_orden[i].cantidad,
+                materiales_orden[i].material.tipo.get_unidad_medida_display()
+                ))
+        except IndexError:
+            materiales.append((
+                materiales_orden[i].material.nombre, 
+                0, 
+                materiales_orden[i].cantidad,
+                materiales_orden[i].material.tipo.get_unidad_medida_display()
+                ))
+
+    repuestos_orden = orden.orden_repuestos.all()
+    repuestos_pres = presupuesto.presupuesto_repuestos.all()
+
+    repuestos = []
+    for i in range(0, repuestos_orden.count()):
+        try:
+            repuestos.append((
+                repuestos_orden[i].repuesto.nombre, 
+                repuestos_pres[i].cantidad, 
+                repuestos_orden[i].cantidad
+                )) 
+        except IndexError:
+            repuestos.append((
+                repuestos_orden[i].repuesto.nombre, 
+                0, 
+                repuestos_orden[i].cantidad
+                )) 
+
+    return render(request, 'ordenes/orden-resumen.html', {
+        'orden': orden, 
+        'materiales': materiales,
+        'repuestos': repuestos
+    })
 
 class PlanillaCreateView(CreateView):
     model = PlanillaDePintura

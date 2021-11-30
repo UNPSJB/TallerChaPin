@@ -338,7 +338,8 @@ class MaterialOrdenDeTrabajo(models.Model):
 
     def actualizar(self, cantidad):
         self.cantidad += cantidad
-        self.save()
+        if self.cantidad >= 0:
+            self.save()
 
 
 class RepuestoOrdenDeTrabajo(models.Model):
@@ -353,7 +354,8 @@ class RepuestoOrdenDeTrabajo(models.Model):
 
     def actualizar(self, cantidad):
         self.cantidad += cantidad
-        self.save()
+        if self.cantidad >= 0:
+            self.save()
 
 
 class Presupuesto(models.Model):

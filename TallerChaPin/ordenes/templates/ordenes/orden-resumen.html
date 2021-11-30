@@ -1,3 +1,43 @@
-<div>
+<hr>
+<h3 class="text-primary">Orden de trabajo</h3>
   {{orden}}
-</div>
+
+<table class="table mt-2">
+  <tr>
+    <th scope="col" class="table-primary">Material</th>
+    <th scope="col" class="text-center table-primary">Presupuestado</th>
+    <th scope="col" class="text-center table-primary">Utilizado</th>
+  </tr>
+
+  {% for material in materiales %}
+    <tr>
+      <td>{{ material.0 }}</td>
+      <td class="text-center">{{ material.1 }} {{material.3}}</td>
+      {% if material.2 > material.1 %}
+        <td class="table-danger text-center">{{ material.2 }} {{material.3}}</td>
+      {% else %}
+        <td class="text-center">{{ material.2 }} {{material.3}} </td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+</table>
+
+<table class="table mt-2">
+  <tr>
+    <th scope="col" class="table-primary">Repuesto</th>
+    <th scope="col" class="text-center table-primary">Presupuestado</th>
+    <th scope="col" class="text-center table-primary">Utilizado</th>
+  </tr>
+
+  {% for repuesto in repuestos %}
+    <tr>
+      <td>{{ repuesto.0 }}</td>
+      <td class="text-center">{{ repuesto.1 }}</td>
+      {% if repuesto.2 > repuesto.1 %}
+        <td class="table-danger text-center">{{ repuesto.2 }}</td>
+      {% else %}
+        <td class="text-center">{{ repuesto.2 }}</td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+</table>

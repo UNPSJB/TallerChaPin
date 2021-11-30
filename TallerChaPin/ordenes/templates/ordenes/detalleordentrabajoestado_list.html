@@ -81,7 +81,7 @@
           {% if detalle_orden.tarea.tipo.repuestos or detalle_orden.tarea.tipo.materiales %}
           <button class="btn btn-primary m-1" type="button" data-bs-toggle="modal" data-bs-target="#cantidad"
             data-id-tarea={{detalle_orden.pk}}>
-            Cantidad
+            <i class="fas fa-box-open"></i> Insumos
           </button>
           {% endif %}
 

@@ -196,7 +196,7 @@ class PresupuestoRepuestoFormSetHelper(FormHelper):
 class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
-        ("vehiculo", "Vehiculo"),
+        ("vehiculo", "Vehículo"),
         ("detalles", "Detalles"),
         ("tareas", "Tareas"),
         ("repuestos", "Repuestos"),
@@ -330,7 +330,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-# Registrar Ingreso Vehiculo
+# Registrar Ingreso Vehículo
 
 
 class RegistrarIngresoVehiculoForm(forms.ModelForm):
@@ -366,7 +366,7 @@ class RegistrarIngresoVehiculoForm(forms.ModelForm):
             Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
         )
 
-# Registrar egreso Vehiculo
+# Registrar egreso Vehículo
 
 
 class RegistrarEgresoVehiculoForm(forms.ModelForm):
@@ -567,3 +567,80 @@ class AsignarCantidadForm(forms.Form):
             pk=detalle_tarea_pk)
         detalle.actualizar_cantidad(
             material, cantidad_material, repuesto, cantidad_repuesto)
+class PlanillaDePinturaForm (forms.ModelForm):
+    
+
+    class Meta:
+        model = ordenes.PlanillaDePintura
+        fields = "__all__"
+        exclude = ["orden","fecha"]
+
+        # labels = {
+
+        # }
+        # widgets = {
+                        
+        # }
+
+    def save(self, detalle_planilla, detalle_orden):
+        planilla = super().save(commit=False)
+        planilla.orden = detalle_orden
+        planilla.save()
+        for detalle in detalle_planilla:
+            cantidadDetalle = detalle["cantidad"]
+            formulaDetalle = detalle["formula"]
+            planilla.agregar(formulaDetalle, cantidadDetalle)
+        return planilla
+
+    def __init__(self, *args, **kwargs):
+        print(kwargs)
+        if "detalle" in kwargs:
+            detalle = kwargs.pop('detalle')
+            kwargs['initial']['nombre_de_color']= detalle.color_de_pintura()
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+
+class DetallePlanillaForm(forms.ModelForm):
+
+    class Meta:
+        model = ordenes.DetallePlanillaDePintura
+        fields = ("formula",
+                  "cantidad",
+                  )
+        # widgets = {
+            
+        # }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+
+
+def DetallePlanillaInline(extra=1):
+    return inlineformset_factory(
+        ordenes.PlanillaDePintura,
+        ordenes.DetallePlanillaDePintura,
+        form=DetallePlanillaForm,
+        extra=extra,
+        # max_num=10,
+        # fk_name=None,
+        # fields=None, exclude=None, can_order=False,
+        # can_delete=True, max_num=None, formfield_callback=None,
+        # widgets=None, validate_max=False, localized_fields=None,
+        # labels=None, help_texts=None, error_messages=None,
+        # min_num=None, validate_min=False, field_classes=None
+    )
+
+class DetallePlanillaFormSetHelper(FormHelper):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.form_method = 'post'
+        self.form_tag = False
+        self.template = 'bootstrap5/table_inline_formset.html'
+        self.layout = Layout(
+            'formula',
+            'cantidad'
+        )
+        self.render_required_fields = True

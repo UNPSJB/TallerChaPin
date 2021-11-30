@@ -600,7 +600,7 @@ class ClienteForm(forms.ModelForm):
                 "direccion",
                 "telefono",
                 HTML(
-                    '<div> <label class="form-label">Datos del vehiculo:</label> <div/> <hr/>' ),
+                    '<div> <label class="form-label">Datos del vehículo:</label> <div/> <hr/>' ),
                 "patente",
                 "modelo",
                 "chasis",
@@ -617,7 +617,7 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
         ("apellido", "Apellido"),
         ("direccion", "Dirección"),
         ("telefono", "Teléfono"),
-        ("vehiculo", "Vehiculo"),
+        ("vehiculo", "Vehículo"),
     ]
     
     dni = forms.IntegerField(required=False)
@@ -627,7 +627,7 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
     direccion = forms.CharField(max_length=100)
     
     vehiculos__modelo = forms.ModelChoiceField(
-        queryset=Modelo.objects.all(), required=False, label='Modelo vehiculo')
+        queryset=Modelo.objects.all(), required=False, label='Modelo vehículo')
     # vehiculo = forms.ModelChoiceField(
     #     queryset=Vehiculo.objects.all(), required=False)
     telefono = forms.IntegerField(required=False)

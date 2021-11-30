@@ -61,7 +61,7 @@ class OrdenDeTrabajo(models.Model):
     class Meta:
         permissions = [
             ('can_registrar_ingreso',
-             'Puede registrar el ingreso de un vehiculo al taller'),
+             'Puede registrar el ingreso de un vehículo al taller'),
             ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
         ]
 
@@ -107,7 +107,7 @@ class OrdenDeTrabajo(models.Model):
             self.save()
         else:
             raise NoEntregoVehiculoException(
-                'No se puede entregar el vehiculo o me pagas o sos vip', self.estado)
+                'No se puede entregar el vehículo o me pagas o sos vip', self.estado)
 
     def puede_facturar(self):
         pass
@@ -119,7 +119,7 @@ class OrdenDeTrabajo(models.Model):
     @property
     def vehiculo(self):
         return self.presupuestos.all().first().vehiculo
-
+    
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 
@@ -203,6 +203,7 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
 
         return qs
 
+
     def para_empleado_hoy(self, empleado):
         return self.para_empleado(empleado).filter(inicio__date=now().date())
 
@@ -282,6 +283,10 @@ class DetalleOrdenDeTrabajo(models.Model):
         for formula, cantidad in componentes:
             planilla.agregar(formula, cantidad)
 
+    def color_de_pintura (self):
+        return self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first().nombre
+
+
     def precio(self):
         return self.tarea.precio
 
@@ -289,8 +294,14 @@ class DetalleOrdenDeTrabajo(models.Model):
         return self.inicio is None
 
     def puedo_finalizar(self):
-        # TODO: hay que verificar que tenga planilla en caso de que la requiera?
-        return self.inicio is not None and self.fin is None
+        requiere_planilla = self.tarea.tipo.planilla
+        tiene_planilla = self.planillas.exists()
+        esta_iniciada = self.inicio is not None
+        no_esta_finalizada = self.fin is None
+        return no_esta_finalizada and esta_iniciada and (requiere_planilla and tiene_planilla or not requiere_planilla)
+    
+    def requiere_planilla (self):
+        return self.tarea.tipo.planilla
 
     def puedo_asignar(self):
         return self.empleado is None

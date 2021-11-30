@@ -1,3 +1,4 @@
+from django.http import request
 from django.http.response import HttpResponse
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
@@ -184,8 +185,6 @@ class OrdenTrabajoCreateView(CreateView):
             orden = presupuesto.confirmar(turno)
             return redirect('detallesOrden', orden.pk)
         return redirect('crearOrden', presupuesto.pk)
-
-
 class OrdenTrabajoUpdateView(UpdateView):
 
     model = OrdenDeTrabajo
@@ -244,14 +243,12 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         pass
 
 
+
 def iniciar_tarea(request, pk):
     detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
-    if detalle.tarea.tipo.planilla:
-        redirect('cargarPlanillaParaTarea', detalle.pk)
-    else:
-        detalle.iniciar(detalle.empleado)
-        messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
-        return redirect('listarDetallesOrden')
+    detalle.iniciar(detalle.empleado)
+    messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
+    return redirect('listarDetallesOrden')
 
 
 def asignar_empleado(request):
@@ -275,7 +272,7 @@ def finalizar_tarea(request):
                              'La tarea finalizó exitosamente! :D')
     else:
         print(form.errors)
-        messages.add_message(request, messages.WARNING,
+        messages.add_message(request, messages.ERROR,
                              'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
 
@@ -298,12 +295,40 @@ def resumen_orden(request, pk):
 
 class PlanillaCreateView(CreateView):
     model = PlanillaDePintura
-    # form_class = PlanillaDePinturaForm # TODO
+    form_class = PlanillaDePinturaForm
+    success_url = reverse_lazy('listarDetallesOrden')
+    detalle_planilla_form = None
 
-    def get_context_data(self, **kwargs):
+    def get_form_kwargs(self,*args,**kwargs) :
+        # print(args,kwargs)
+        kw = super().get_form_kwargs()
+        kw['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
+        # print(kw)
+        return kw
+
+    def get_context_data(self,*args, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['detalle_planilla_formset'] = DetallePlanillaInline()()
+        context['detalle_planilla_formset_helper'] = DetallePlanillaFormSetHelper()
         context["titulo"] = "Crear Planilla de pintura"
+        context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         return context
+        
+
+    def post(self, *args, **kwargs):
+        print(self.request.POST)
+        self.object = None
+        self.detalle_planilla_form = DetallePlanillaInline()(self.request.POST)
+        form = PlanillaDePinturaForm(self.request.POST)        
+        detalle_orden = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
+        # print(detalle)
+        if self.detalle_planilla_form.is_valid() and form.is_valid():
+            planilla = form.save(self.detalle_planilla_form.cleaned_data, detalle_orden)
+            messages.add_message(self.request, messages.INFO, 'Planilla Creada')
+            return redirect ('listarDetallesOrden')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class RegistrarIngresoVehiculoCreateView(CreateView):
@@ -336,7 +361,7 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Registrar egreso de Vehiculo"
+        context['titulo'] = "Registrar egreso de Vehículo"
         context['vehiculo'] = self.model.vehiculo
         return context
 
@@ -363,3 +388,12 @@ class ListarTurnosListView(ListView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Calendario de Turnos"
         return context
+    
+def datoPlantilla(request, pk):
+    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    print (orden)
+    return render (request,'ordenes/datoPlantilla.html',{'orden':orden})
+
+
+
+    

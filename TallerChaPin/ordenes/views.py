@@ -100,9 +100,6 @@ class PresupuestoCreateView(CreateView):
         self.repuesto_form = PresupuestoRepuestoInline()(self.request.POST)
         form = PresupuestoForm(self.request.POST)
         if self.repuesto_form.is_valid() and self.material_form.is_valid() and form.is_valid():
-            print(self.material_form.cleaned_data,
-                  self.repuesto_form.cleaned_data)
-            # TODO: obtener listados de materiales y repuestos (y sus cantidades) y pasarselos al save del Form.
             presupuesto = form.save(
                 self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
             return redirect('detallesPresupuesto', presupuesto.pk)
@@ -122,8 +119,6 @@ class PresupuestoUpdateView(UpdateView):
         initial_repuestos = [
             {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in self.get_object().presupuesto_repuestos.all().values()]
 
-        print(f"{initial_materiales=}")
-        print(f"{initial_repuestos=}")
         context['presupuesto_material_formset'] = PresupuestoMaterialInline(
             len(initial_materiales))(initial=initial_materiales)  # pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
@@ -185,6 +180,7 @@ class OrdenTrabajoCreateView(CreateView):
             orden = presupuesto.confirmar(turno)
             return redirect('detallesOrden', orden.pk)
         return redirect('crearOrden', presupuesto.pk)
+        
 class OrdenTrabajoUpdateView(UpdateView):
 
     model = OrdenDeTrabajo
@@ -271,7 +267,6 @@ def finalizar_tarea(request):
         messages.add_message(request, messages.SUCCESS,
                              'La tarea finalizó exitosamente! :D')
     else:
-        print(form.errors)
         messages.add_message(request, messages.ERROR,
                              'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
@@ -284,7 +279,6 @@ def asignar_cantidad(request):
         messages.add_message(request, messages.SUCCESS,
                              'Se registraron los insumos exitosamente! :D')
     else:
-        print(form.errors)
         messages.add_message(request, messages.WARNING,
                              'No se registraron los insumos el formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
@@ -344,10 +338,8 @@ class PlanillaCreateView(CreateView):
     detalle_planilla_form = None
 
     def get_form_kwargs(self,*args,**kwargs) :
-        # print(args,kwargs)
         kw = super().get_form_kwargs()
         kw['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
-        # print(kw)
         return kw
 
     def get_context_data(self,*args, **kwargs):
@@ -360,12 +352,10 @@ class PlanillaCreateView(CreateView):
         
 
     def post(self, *args, **kwargs):
-        print(self.request.POST)
         self.object = None
         self.detalle_planilla_form = DetallePlanillaInline()(self.request.POST)
         form = PlanillaDePinturaForm(self.request.POST)        
         detalle_orden = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
-        # print(detalle)
         if self.detalle_planilla_form.is_valid() and form.is_valid():
             planilla = form.save(self.detalle_planilla_form.cleaned_data, detalle_orden)
             messages.add_message(self.request, messages.INFO, 'Planilla Creada')
@@ -435,7 +425,6 @@ class ListarTurnosListView(ListView):
     
 def datoPlantilla(request, pk):
     orden = OrdenDeTrabajo.objects.get(pk=pk)
-    print (orden)
     return render (request,'ordenes/datoPlantilla.html',{'orden':orden})
 
 

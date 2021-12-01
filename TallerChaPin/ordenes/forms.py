@@ -593,7 +593,6 @@ class PlanillaDePinturaForm (forms.ModelForm):
         return planilla
 
     def __init__(self, *args, **kwargs):
-        print(kwargs)
         if "detalle" in kwargs:
             detalle = kwargs.pop('detalle')
             kwargs['initial']['nombre_de_color']= detalle.color_de_pintura()

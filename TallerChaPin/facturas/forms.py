@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import widgets
 from .models import *
 from taller.models import TipoMaterial
 from django.db.models.query import QuerySet
@@ -92,19 +93,16 @@ class FacturaFiltrosForm(FiltrosForm):
         ("vehiculo", "Vehículo"),
 
     ]
-    fecha = forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'})
+    # fecha = forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'})
     orden = forms.ModelChoiceField(
         queryset=OrdenDeTrabajo.objects.all(), required=False, label="Orden de Trabajo")
     cliente = forms.ModelChoiceField(
         queryset=Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
         queryset=Vehiculo.objects.all(), required=False)
-    tareas = forms.ModelChoiceField(
-        queryset=Tarea.objects.all(), required=False)
-    materiales = forms.ModelChoiceField(
-        queryset=Material.objects.all(), required=False)
-    repuestos = forms.ModelChoiceField(
-        queryset=Repuesto.objects.all(), required=False)
+
+    fecha__gte = forms.DateField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
+    fecha__lte = forms.DateField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -115,8 +113,9 @@ class FacturaFiltrosForm(FiltrosForm):
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "fecha",
                 "orden",
+                "fecha__lte",
+                "fecha__gte",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

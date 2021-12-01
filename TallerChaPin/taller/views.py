@@ -311,7 +311,6 @@ def modificar_cantidad(request):
         messages.add_message(request, messages.SUCCESS,
                              'Se ha modificado la cantidad del material.')
     else:
-        print(form.errors)
         messages.add_message(request, messages.WARNING,
                              'No se ha podido modificar la cantidad del material.')
     return redirect('listarMateriales')
@@ -419,7 +418,6 @@ class ClienteCreateView(CreateView):
     success_url = reverse_lazy('crearCliente')
 
     def get_context_data(self, **kwargs):
-        print(kwargs)
         context = super().get_context_data(**kwargs)
 
         context['titulo'] = "Registrar cliente"
@@ -436,10 +434,6 @@ class ClienteCreateView(CreateView):
             vehiculo.cliente = cliente
             vehiculo.save()
             return redirect('home')
-        # return self.render_to_response(self.get_context_data(form=cliente_form))
-        else:
-            print(cliente_form.errors)
-            print(vehiculo_form.errors)
         return self.form_invalid(form=cliente_form)
 
 

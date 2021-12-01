@@ -11,8 +11,9 @@ from taller.models import (
     Repuesto
 )
 
-# Create your models here.
+# Aqui definimos los modelos:
 
+#-------------------------- FACTURA -------------------------------#
 
 class Factura(models.Model):
     orden = models.ForeignKey(OrdenDeTrabajo, on_delete=models.CASCADE)
@@ -34,11 +35,13 @@ class Factura(models.Model):
         orden.save()
         return factura
 
+    def puede_pagar(self):
+        return self.no_pagada() and self.adeuda()
+
     def no_pagada(self):
         return self.orden.estado !=  OrdenDeTrabajo.FINALIZADA
     
     def adeuda(self):
-        print(self.saldo())
         return self.saldo() > 0
 
     def agregar_detalle(self, descripcion, precio):
@@ -48,8 +51,13 @@ class Factura(models.Model):
         return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
 
     def saldo(self):
-        return self.total() - self.pagos.aggregate(total=models.Sum('monto'))['total']
+        if len(self.pagos.all()) > 0:
+            return self.total() - self.pagos.all().aggregate(total=models.Sum('monto'))['total']
+        else:
+            return self.total()
+ 
 
+#-------------------------- DETALLE FACTURA -------------------------------#
 
 class DetalleFactura(models.Model):
     factura = models.ForeignKey(
@@ -58,7 +66,10 @@ class DetalleFactura(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2)
 
 
+#-------------------------------- PAGO -----------------------------------#
+
 class Pago(models.Model):
+    
     CONTADO = 0
     TARJETA_DEBITO = 1
     TARJETA_CREDITO = 2

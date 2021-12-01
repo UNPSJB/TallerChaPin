@@ -141,12 +141,10 @@
                     class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
                     Eliminar factura</a>
 
-                {% if object.no_pagada %} 
-                {% if object.adeuda %} 
+                {% if object.puede_pagar %} 
                 <a href="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
                     <i class="fas fa-check-circle"></i> Pagar</a>
                 </a>
-                {% endif %}
                 {% endif %}
             </div>
         </div>

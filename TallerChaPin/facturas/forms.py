@@ -1,61 +1,12 @@
 from django import forms
-from django.forms import widgets
 from .models import *
-from taller.models import TipoMaterial
-from django.db.models.query import QuerySet
-from django.db.models import Q, Model, fields
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
-from decimal import Decimal
+from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
 from datetime import datetime
+from TallerChaPin.utils import FiltrosForm
 
-
-def dict_to_query(filtros_dict):
-    filtro = Q()
-    for attr, value in filtros_dict.items():
-        if not value:
-            continue
-        if type(value) == str:
-            if value.isdigit():
-                prev_value = value
-                value = int(value)
-                filtro &= Q(**{attr: value}) | Q(**
-                                                 {f'{attr}__icontains': prev_value})
-            else:
-                attr = f'{attr}__icontains'
-                filtro &= Q(**{attr: value})
-        elif isinstance(value, Model) or isinstance(value, int) or isinstance(value, Decimal):
-            filtro &= Q(**{attr: value})
-    return filtro
-
-
-class FiltrosForm(forms.Form):
-    ORDEN_CHOICES = []
-    orden = forms.CharField(required=False)
-
-    def filter(self, qs, filters):
-        return qs.filter(dict_to_query(filters))  # aplicamos filtros
-
-    def sort(self, qs, ordering):
-        for o in ordering.split(','):
-            qs = qs.order_by(o)  # aplicamos ordenamiento
-        return qs
-
-    def apply(self, qs):
-        if self.is_valid():
-            cleaned_data = self.cleaned_data
-            ordering = cleaned_data.pop("orden", None)
-            if len(cleaned_data) > 0:
-                qs = self.filter(qs, cleaned_data)
-            if ordering:
-                qs = self.sort(qs, ordering)
-        return qs
-
-    def sortables(self):
-        return self.ORDEN_CHOICES
 
 # Factura Form
-
 
 class FacturaForm(forms.ModelForm):
     class Meta:
@@ -84,16 +35,13 @@ class FacturaForm(forms.ModelForm):
 
 # Factura - Filtro
 
-
 class FacturaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ("#","#"),
         ("fecha", "Fecha"),
-        ("orden", "Orden"),
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
-
     ]
-    # fecha = forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'})
     orden = forms.ModelChoiceField(
         queryset=OrdenDeTrabajo.objects.all(), required=False, label="Orden de Trabajo")
     cliente = forms.ModelChoiceField(
@@ -121,7 +69,6 @@ class FacturaFiltrosForm(FiltrosForm):
         )
 
 # Pago - Form
-
 
 class PagoForm(forms.ModelForm):
     class Meta:
@@ -159,10 +106,13 @@ class PagoFiltrosForm(FiltrosForm):
         ("monto", "monto"),
         ("tipo", "tipo"),
     ]
-    fecha = forms.DateField(required=False)
     monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
     tipo = forms.ModelChoiceField(
         queryset=Pago.objects.all(), required=False, label="Tipo de pago")
+
+    fecha__gte = forms.DateField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
+    fecha__lte = forms.DateField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -173,9 +123,10 @@ class PagoFiltrosForm(FiltrosForm):
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "fecha",
                 "monto",
                 "tipo",
+                "fecha__lte",
+                "fecha__gte",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

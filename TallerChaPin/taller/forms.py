@@ -1,59 +1,11 @@
 from django import forms
-from django.forms import widgets
-from django.views.generic.edit import CreateView
-from django.views.generic.list import ListView
 from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
-from django.db.models.query import QuerySet
-from django.db.models import Q, Model
 from .models import Marca
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
-from decimal import Decimal
+from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
+from TallerChaPin.utils import FiltrosForm
 
-def dict_to_query(filtros_dict):
-    filtro = Q()
-    for attr, value in filtros_dict.items():
-        if not value:
-            continue
-        if type(value) == str:
-            if value.isdigit():
-                prev_value = value
-                value = int(value)
-                filtro &= Q(**{attr: value}) | Q(**
-                                                 {f'{attr}__icontains': prev_value})
-            else:
-                attr = f'{attr}__icontains'
-                filtro &= Q(**{attr: value})
-        elif isinstance(value, Model) or isinstance(value, int) or isinstance(value, Decimal):
-            filtro &= Q(**{attr: value})
-    return filtro
-
-
-class FiltrosForm(forms.Form):
-    ORDEN_CHOICES = []
-    orden = forms.CharField(required=False)
-
-    def filter(self, qs, filters):
-        return qs.filter(dict_to_query(filters))  # aplicamos filtros
-
-    def sort(self, qs, ordering):
-        for o in ordering.split(','):
-            qs = qs.order_by(o)  # aplicamos ordenamiento
-        return qs
-
-    def apply(self, qs):
-        if self.is_valid():
-            cleaned_data = self.cleaned_data
-            ordering = cleaned_data.pop("orden", None)
-            if len(cleaned_data) > 0:
-                qs = self.filter(qs, cleaned_data)
-            if ordering:
-                qs = self.sort(qs, ordering)
-        return qs
-
-    def sortables(self):
-        return self.ORDEN_CHOICES
 
 # Marca Forms
 
@@ -215,7 +167,6 @@ class RepuestoFiltrosForm(FiltrosForm):
         queryset=Modelo.objects.all(), required=False, label='Modelo')
     
     tipo = forms.ChoiceField(choices=Repuesto.TIPOS, required=False, label='Tipo')
-    # TODO: deberían ser campos numéricos
        
     precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
     precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
@@ -249,8 +200,60 @@ class RepuestoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-# Material Forms
+# Tipo de Material 
 
+class TipoMaterialForm(forms.ModelForm):
+
+        class Meta:
+            model = TipoMaterial
+            fields = '__all__'
+        
+        def save(self, commit=True):
+            TipoMaterial = super().save()
+            return TipoMaterial
+
+        def __init__(self, *args, **kwargs):
+                super().__init__(*args, **kwargs)
+                self.helper = FormHelper()
+                
+                self.helper.add_input(Submit('submit', 'Guardar'))
+
+# Tipo de Material - Filtro
+
+class TipoMaterialFiltrosForm(FiltrosForm):
+    ORDEN_CHOICES = [
+        ("nombre", "Nombre"),
+        ("unidad_medida", "Unidad de medida")
+    ]
+
+    nombre = forms.CharField(required=False, label='Nombre', max_length=50)
+    unidades_medida = forms.ChoiceField(
+        choices=TipoMaterial.UNIDADES_BASICAS,
+        required=False,
+        label="Unidad de medida"
+    )
+
+    orden = forms.CharField(
+        required=False
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'get'
+
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
+                "nombre",
+                "unidades_medida",
+            ),
+            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
+        )
+
+# Material
 
 class MaterialForm(forms.ModelForm):
 
@@ -269,7 +272,7 @@ class MaterialForm(forms.ModelForm):
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
-
+# Material - Filtro
 
 class MaterialFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -321,6 +324,8 @@ class MaterialFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
+# Modificar - Cantidad
+
 class ModificarCantidadForm(forms.Form):       # TODO VER
     cantidad = forms.IntegerField(min_value=0, required=True)
 
@@ -341,59 +346,8 @@ class ModificarCantidadForm(forms.Form):       # TODO VER
     #     cantidad = self.cleaned_data.get('cantidad')
     #     material_pk = self.cleaned_data.get('material')
 
-# Tipo de Material Forms
-class TipoMaterialForm(forms.ModelForm):
 
-        class Meta:
-            model = TipoMaterial
-            fields = '__all__'
-        
-        def save(self, commit=True):
-            TipoMaterial = super().save()
-            return TipoMaterial
-
-        def __init__(self, *args, **kwargs):
-                super().__init__(*args, **kwargs)
-                self.helper = FormHelper()
-                
-                self.helper.add_input(Submit('submit', 'Guardar'))
-
-
-class TipoMaterialFiltrosForm(FiltrosForm):
-    ORDEN_CHOICES = [
-        ("nombre", "Nombre"),
-        ("unidad_medida", "Unidad de medida")
-    ]
-
-    nombre = forms.CharField(required=False, label='Nombre', max_length=50)
-    unidades_medida = forms.ChoiceField(
-        choices=TipoMaterial.UNIDADES_BASICAS,
-        required=False,
-        label="Unidad de medida"
-    )
-
-    orden = forms.CharField(
-        required=False
-    )
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'get'
-
-        self.helper.layout = Layout(
-            Fieldset(
-                "",
-                HTML(
-                    '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "nombre",
-                "unidades_medida",
-            ),
-            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
-        )
-
-
-# Tipo de tarea Forms
+# Tipo de Tarea
 
 
 class TipoTareaForm(forms.ModelForm):
@@ -418,6 +372,7 @@ class TipoTareaForm(forms.ModelForm):
 
         self.helper.add_input(Submit('submit', 'Guardar'))
 
+# Tipo de Tarea - Filtro 
 
 class TipoTareaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -448,8 +403,7 @@ class TipoTareaFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-# Tarea Forms
-
+# Tarea 
 
 class TareaForm(forms.ModelForm):
 
@@ -466,6 +420,8 @@ class TareaForm(forms.ModelForm):
         self.helper = FormHelper()
 
         self.helper.add_input(Submit('submit', 'Guardar'))
+
+# Tarea - Filtro 
 
 class TareaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -507,7 +463,8 @@ class TareaFiltrosForm(FiltrosForm):
         )
 
 
-# Empleado Forms
+# Empleado
+
 class EmpleadoForm(forms.ModelForm):
 
     class Meta:
@@ -530,6 +487,7 @@ class EmpleadoForm(forms.ModelForm):
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
+# Empleado - Filtro
 
 class EmpleadoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -569,7 +527,8 @@ class EmpleadoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-# Cliente forms
+# Cliente
+
 class ClienteForm(forms.ModelForm):
 
     # patente = forms.CharField(required=True, label='Patente', max_length=7)
@@ -609,6 +568,7 @@ class ClienteForm(forms.ModelForm):
             Div(Submit('submit', 'Guardar'), css_class='submit-btn-container')
         )
 
+# Cliente - Filtro
 
 class ClienteFiltrosForm(FiltrosForm):  # Revisar
     ORDEN_CHOICES = [
@@ -628,8 +588,7 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
     
     vehiculos__modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo vehículo')
-    # vehiculo = forms.ModelChoiceField(
-    #     queryset=Vehiculo.objects.all(), required=False)
+        
     telefono = forms.IntegerField(required=False)
     
     dni__gte = forms.IntegerField(label="Mayor o igual que", required=False)

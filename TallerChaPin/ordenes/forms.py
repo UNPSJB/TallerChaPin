@@ -1,59 +1,10 @@
 from django import forms
-from django.db.models import query
 from . import models as ordenes
 import taller.models as taller
-from django.db.models.query import QuerySet
-from django.db.models import Q, Model, fields
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, Div, HTML
-from decimal import Decimal
-from django.conf import settings
+from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
 from django.forms import inlineformset_factory
-
-
-def dict_to_query(filtros_dict):
-    filtro = Q()
-    for attr, value in filtros_dict.items():
-        if not value:
-            continue
-        if type(value) == str:
-            if value.isdigit():
-                prev_value = value
-                value = int(value)
-                filtro &= Q(**{attr: value}) | Q(**
-                                                 {f'{attr}__icontains': prev_value})
-            else:
-                attr = f'{attr}__icontains'
-                filtro &= Q(**{attr: value})
-        elif isinstance(value, Model) or isinstance(value, int) or isinstance(value, Decimal):
-            filtro &= Q(**{attr: value})
-    return filtro
-
-
-class FiltrosForm(forms.Form):
-    ORDEN_CHOICES = []
-    orden = forms.CharField(required=False)
-
-    def filter(self, qs, filters):
-        return qs.filter(dict_to_query(filters))  # aplicamos filtros
-
-    def sort(self, qs, ordering):
-        for o in ordering.split(','):
-            qs = qs.order_by(o)  # aplicamos ordenamiento
-        return qs
-
-    def apply(self, qs):
-        if self.is_valid():
-            cleaned_data = self.cleaned_data
-            ordering = cleaned_data.pop("orden", None)
-            if len(cleaned_data) > 0:
-                qs = self.filter(qs, cleaned_data)
-            if ordering:
-                qs = self.sort(qs, ordering)
-        return qs
-
-    def sortables(self):
-        return self.ORDEN_CHOICES
+from TallerChaPin.utils import FiltrosForm
 
 
 # Presupuesto
@@ -113,6 +64,7 @@ class PresupuestoMaterialForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
 
+# Presupuesto - Material - Inlines
 
 def PresupuestoMaterialInline(extra=1):
     return inlineformset_factory(
@@ -129,6 +81,7 @@ def PresupuestoMaterialInline(extra=1):
         # min_num=None, validate_min=False, field_classes=None
     )
 
+# Presupuesto - Material - Form Helper
 
 class PresupuestoMaterialFormSetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
@@ -143,7 +96,6 @@ class PresupuestoMaterialFormSetHelper(FormHelper):
         self.render_required_fields = True
 
 # Presupuesto - Repuesto
-
 
 class PresupuestoRepuestoForm(forms.ModelForm):
     class Meta:
@@ -160,6 +112,7 @@ class PresupuestoRepuestoForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.add_input(Submit('submit', 'Guardar'))
 
+# Presupuesto - Repuesto - Inlines
 
 def PresupuestoRepuestoInline(extra=1):
     return inlineformset_factory(
@@ -177,6 +130,8 @@ def PresupuestoRepuestoInline(extra=1):
     )
 
 
+# Presupuesto - Repuesto - Form Helper
+
 class PresupuestoRepuestoFormSetHelper(FormHelper):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -192,7 +147,6 @@ class PresupuestoRepuestoFormSetHelper(FormHelper):
 
 # Presupuesto - Filtro
 
-
 class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
@@ -200,8 +154,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
         ("detalles", "Detalles"),
         ("tareas", "Tareas"),
         ("repuestos", "Repuestos"),
-        ("materiales", "Materiales")
-        # ("validez", "Validez"),
+        ("materiales", "Materiales"),
 
     ]
 
@@ -216,8 +169,6 @@ class PresupuestoFiltrosForm(FiltrosForm):
         queryset=taller.Material.objects.all(), required=False)
     repuestos = forms.ModelChoiceField(
         queryset=taller.Repuesto.objects.all(), required=False)
-    # validez = forms.IntegerField(
-    #     min_value=0, max_value=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
 
     orden = forms.CharField(
         required=False
@@ -238,7 +189,6 @@ class PresupuestoFiltrosForm(FiltrosForm):
                 "tareas",
                 "materiales",
                 "repuestos",
-                # "validez",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -330,8 +280,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-# Registrar Ingreso Vehículo
-
+# Registrar Ingreso de Vehículo
 
 class RegistrarIngresoVehiculoForm(forms.ModelForm):
     orden = forms.ModelChoiceField(
@@ -366,7 +315,7 @@ class RegistrarIngresoVehiculoForm(forms.ModelForm):
             Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
         )
 
-# Registrar egreso Vehículo
+# Registrar egreso de Vehículo
 
 
 class RegistrarEgresoVehiculoForm(forms.ModelForm):
@@ -403,8 +352,7 @@ class RegistrarEgresoVehiculoForm(forms.ModelForm):
             Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
         )
 
-# listar turno
-
+# Listar Turno
 
 class TurnosFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -413,14 +361,13 @@ class TurnosFiltrosForm(FiltrosForm):
         ("vehiculo", "Vehiculo"),
     ]
 
-    turno = forms.DateTimeField(required=False)
     cliente = forms.ModelChoiceField(
         queryset=taller.Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
         queryset=taller.Vehiculo.objects.all(), required=False)
 
-    turno__gte = forms.DateTimeField(label="Mayor o igual que", required=False)
-    turno__lte = forms.DateTimeField(label="Menor o igual que", required=False)
+    fecha__gte = forms.DateField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
+    fecha__lte = forms.DateField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -431,16 +378,16 @@ class TurnosFiltrosForm(FiltrosForm):
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "turno",
                 "cliente",
                 "vehiculo",
-                "turno__gte",
-                "turno__lte"
+                "fecha__lte",
+                "fecha__gte"
 
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
+# Asignar Tarea a Empleado
 
 class AsignarEmpleadoForm(forms.Form):
     empleado = forms.ModelChoiceField(
@@ -473,6 +420,7 @@ class AsignarEmpleadoForm(forms.Form):
             pk=detalle_tarea_pk)
         detalle.asignar(empleado)
 
+# Finalizar Tarea
 
 class FinalizarTareaForm(forms.Form):
     exitosa = forms.ChoiceField(
@@ -567,8 +515,11 @@ class AsignarCantidadForm(forms.Form):
             pk=detalle_tarea_pk)
         detalle.actualizar_cantidad(
             material, cantidad_material, repuesto, cantidad_repuesto)
+
+
+# Planilla de pintura
+
 class PlanillaDePinturaForm (forms.ModelForm):
-    
 
     class Meta:
         model = ordenes.PlanillaDePintura
@@ -600,6 +551,8 @@ class PlanillaDePinturaForm (forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_tag = False
 
+# Detalles de la Planilla de Pintura
+
 class DetallePlanillaForm(forms.ModelForm):
 
     class Meta:
@@ -616,6 +569,7 @@ class DetallePlanillaForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_tag = False
 
+# Detalle Planilla - Inline
 
 def DetallePlanillaInline(extra=1):
     return inlineformset_factory(
@@ -631,6 +585,8 @@ def DetallePlanillaInline(extra=1):
         # labels=None, help_texts=None, error_messages=None,
         # min_num=None, validate_min=False, field_classes=None
     )
+
+# Detalle Planilla - Form Helper
 
 class DetallePlanillaFormSetHelper(FormHelper):
     def __init__(self, *args, **kwargs):

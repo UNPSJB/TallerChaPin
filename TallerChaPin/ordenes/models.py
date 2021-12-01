@@ -368,7 +368,7 @@ class Presupuesto(models.Model):
         Cliente, related_name='presupuestos', on_delete=models.CASCADE)
     vehiculo = models.ForeignKey(
         Vehiculo, related_name='presupuestos', on_delete=models.CASCADE)
-    detalles = models.CharField(max_length=200)
+    detalles = models.CharField(max_length=200, blank=True)
     tareas = models.ManyToManyField(Tarea, related_name='presupuestos')
     materiales = models.ManyToManyField(
         Material, through='PresupuestoMaterial')
@@ -392,7 +392,7 @@ class Presupuesto(models.Model):
             models.Sum('precio'))['precio__sum']
         materiales = sum([r.precio()
                          for r in self.presupuesto_materiales.all()])
-        repuestos = sum([r.precio() for r in self.presupuesto_repuestos.all()])
+        repuestos = sum([r.precio() for r in self.presupuesto_repuestos.all()])        
         return tareas + materiales + repuestos
 
     def confirmar(self, turno):

@@ -55,8 +55,8 @@
                                         <tr class="bg-transition">
                                             <td>{{ detalle.tarea.nombre }}</td>
                                             <td>{{ detalle.tarea.tipo }}</td>
-                                            <td>{{ detalle.observaciones }}</td>
-                                            <td>{{ detalle.empleado }}</td>
+                                            <td>{{ detalle.observaciones|default_if_none:"" }}</td>
+                                            <td>{{ detalle.empleado|default_if_none:"S/Asignar" }}</td>
                                         </tr>
                                     </tbody>
                             </div>

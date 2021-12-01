@@ -1,3 +1,4 @@
+
 from django import forms
 from django.utils.regex_helper import Choice
 from . import models as ordenes
@@ -17,7 +18,7 @@ class PresupuestoForm(forms.ModelForm):
         exclude = ["orden", "materiales", "repuestos"]
 
         labels = {
-
+            "detalles": "Observaciones:"
         }
         widgets = {
             "tareas": forms.CheckboxSelectMultiple(),

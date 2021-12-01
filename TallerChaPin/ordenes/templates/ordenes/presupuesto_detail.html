@@ -61,9 +61,6 @@
                                         </p>
                                     </td>
                                     <td class="align-middle">
-                                        <input type="text" class="form-control" placeholder="1" disabled>
-                                    </td>
-                                    <td class="align-middle">
                                         <h4>
                                             ${{ tarea.precio }}
                                         </h4>
@@ -71,23 +68,23 @@
                                 </tr>
                             {% endfor %}
 
-                            {% for repuesto in object.repuestos.all %}
+                            {% for detalle_repuesto in object.presupuesto_repuestos.all %}
                                 <tr>
                                     <td class="desc">
-                                        <small><span class="text-danger"><i class="fas fa-cog"></i> Repuesto</span> | ${{ repuesto.precio }} c/u</small>
+                                        <small><span class="text-danger"><i class="fas fa-cog"></i> Repuesto</span> | ${{ detalle_repuesto.repuesto.precio }} c/u</small>
                                         <h4>
-                                            {{ repuesto }}
+                                            {{ detalle_repuesto.repuesto }}
                                         </h4>
                                         <p class="small">
-                                            {{ repuesto.get_tipo_display }}
+                                            {{ detalle_repuesto.repuesto.get_tipo_display }}
                                         </p>
                                 </td>
                                     <td width="65" class="align-middle">
-                                        <input type="text" class="form-control" placeholder="1" disabled>
+                                        <input type="text" class="form-control" placeholder="{{ detalle_repuesto.cantidad }}" disabled>
                                     </td>
                                     <td class="align-middle">
                                         <h4 class="text-right">
-                                            ${{ repuesto.precio }}
+                                            ${{ detalle_repuesto.precio }}
                                         </h4>
                                     </td>
                                 </tr>
@@ -97,19 +94,19 @@
                                 </div>
                             {% endfor %}
 
-                            {% for material in object.materiales.all %}
+                            {% for material in object.presupuesto_materiales.all %}
                                 <tr>
                                     <td class="desc">
-                                        <small><span class="text-success"><i class="fas fa-box-open"></i> Material</span> | ${{ material.precio }} c/u</small>
+                                        <small><span class="text-success"><i class="fas fa-box-open"></i> Material</span> | ${{ material.material.precio }} c/u</small>
                                         <h4>
-                                            {{ material.nombre }}
+                                            {{ material.material.nombre }}
                                         </h4>
                                         <p class="small">
-                                            {{ material.tipo }}
+                                            {{ material.material.tipo }}
                                         </p>
                                     </td>
                                     <td width="65" class="align-middle">
-                                        <input type="text" class="form-control" placeholder="1" disabled>
+                                        <input type="text" class="form-control" placeholder="{{ material.cantidad }}" disabled>
                                     </td>
                                     <td class="align-middle">
                                         <h4 class="text-right">

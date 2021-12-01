@@ -45,6 +45,15 @@ class MarcaCreateView(CreateView):
         context['titulo'] = "Registrar Marca"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = MarcaForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Marca registrada con exito')
+            return redirect ('crearMarca')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class MarcaUpdateView(UpdateView):
     model = Marca
@@ -55,6 +64,16 @@ class MarcaUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar Marca"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = MarcaForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Marca modificada con exito')
+            return redirect ('crearMarca')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class MarcaDeleteView(DeleteView):
@@ -86,6 +105,16 @@ class ModeloCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar Modelo"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = ModeloForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Modelo registrado con exito')
+            return redirect ('crearModelo')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class ModeloUpdateView(UpdateView):
@@ -98,6 +127,15 @@ class ModeloUpdateView(UpdateView):
         context['titulo'] = "Modificar Modelo"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = ModeloForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Modelo modificado con exito')
+            return redirect ('listarModelos')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class ModeloDeleteView(DeleteView):
     model = Modelo
@@ -129,6 +167,16 @@ class RepuestoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar Repuesto"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = RepuestoForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Repuesto registrado con exito')
+            return redirect ('crearRepuesto')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class RepuestoUpdateView(UpdateView):
@@ -138,9 +186,18 @@ class RepuestoUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Modificar Vehiculo"
+        context['titulo'] = "Modificar Repuesto"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = Repuesto(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Repuesto modificado con exito')
+            return redirect ('listarRepuestos')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class RepuestoDeleteView(DeleteView):
     model = Repuesto
@@ -153,7 +210,7 @@ class RepuestoDeleteView(DeleteView):
 class RepuestoListView(ListFilterView):
     filtros = RepuestoFiltrosForm
     model = Repuesto
-    paginate_by = 100  # if pagination is desired
+    paginate_by = 100 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -172,6 +229,16 @@ class TipoTareaCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar Tipo de Tarea"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = TipoTareaForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Tipo de tarea registrada con exito')
+            return redirect ('crearTipoTarea')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class TipoTareaUpdateView(UpdateView):
@@ -183,6 +250,16 @@ class TipoTareaUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar Tipo de Tarea"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = TipoTareaForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Tipo de tarea modificada con exito')
+            return redirect ('listarTipoTarea')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class TipoTareaDeleteView(DeleteView):
@@ -216,6 +293,15 @@ class TareaCreateView(CreateView):
         context['titulo'] = "Registrar Tarea"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = TareaForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Tarea registrada con exito')
+            return redirect ('crearTarea')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class TareaUpdateView(UpdateView):
     model = Tarea
@@ -227,6 +313,15 @@ class TareaUpdateView(UpdateView):
         context['titulo'] = "Modificar Tarea"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = TareaForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Tarea modificada con exito')
+            return redirect ('listarTareas')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class TareaDeleteView(DeleteView):
     model = TipoTarea
@@ -257,6 +352,16 @@ class TipoMaterialCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar tipo material"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = TipoMaterialForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Tipo material registrado con exito')
+            return redirect ('crearTipoMaterial')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class TipoMaterialListView(ListView):
@@ -280,6 +385,16 @@ class TipoMaterialUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar tipo Material"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = TipoMaterialForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Tipo material modificado con exito')
+            return redirect ('listarTipoMateriales')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class TipoMaterialDeleteView(DeleteView):
@@ -314,6 +429,15 @@ class MaterialCreateView(CreateView):
         context['titulo'] = "Registrar material"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = MaterialForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Material registrado con exito')
+            return redirect ('crearMaterial')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class MaterialUpdateView(UpdateView):
     model = Material
@@ -325,6 +449,15 @@ class MaterialUpdateView(UpdateView):
         context['titulo'] = "Modificar Material"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = MaterialForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Material modificado con exito')
+            return redirect ('listarMateriales')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class MaterialDeleteView(DeleteView):
     model = Material
@@ -343,49 +476,6 @@ def modificar_cantidad(request):
         messages.add_message(request, messages.WARNING,
                              'No se ha podido modificar la cantidad del material.')
     return redirect('listarMateriales')
-
-# ---------------------------- Repuesto View ------------------------------------ #
-
-
-class RepuestoCreateView(CreateView):
-    model = Repuesto
-    form_class = RepuestoForm
-    success_url = reverse_lazy('crearRepuesto')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = "Registrar Repuesto"
-        return context
-
-
-class RepuestoUpdateView(UpdateView):
-    model = Repuesto
-    form_class = RepuestoForm
-    success_url = reverse_lazy("listarRepuestos")
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = "Modificar Repuesto"
-        return context
-
-
-class RepuestoDeleteView(DeleteView):
-    model = Repuesto
-    success_url = reverse_lazy("listarRepuestos")
-
-    def get(self, *args, **kwargs):
-        return self.post(*args, **kwargs)
-
-
-class RepuestoListView(ListFilterView):
-    filtros = RepuestoFiltrosForm
-    model = Repuesto
-    paginate_by = 100
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Repuestos"
-        return context
 
 # ---------------------------- Cliente View ------------------------------------ #
 
@@ -412,7 +502,9 @@ class ClienteCreateView(CreateView):
             vehiculo = vehiculo_form.save(commit=False)
             vehiculo.cliente = cliente
             vehiculo.save()
-            return redirect('home')
+            messages.add_message(self.request, messages.INFO, 'Cliente y Vehiculos registrado con exito')
+            return redirect('crearCliente')
+        messages.add_message(self.request, messages.ERROR, cliente_form.errors)
         return self.form_invalid(form=cliente_form)
 
 
@@ -427,6 +519,16 @@ class ClienteUpdateView(UpdateView):
 
         context['titulo'] = "Modificar cliente"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = ClienteForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Cliente modificado con exito')
+            return redirect ('listarClientes')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class ClienteDeleteView(DeleteView):
@@ -460,6 +562,15 @@ class VehiculoCreateView(CreateView):
         context['titulo'] = "Registrar Vehículo"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = VehiculoForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Vehiculo registrado con exito')
+            return redirect ('crearVehiculo')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class VehiculoUpdateView(UpdateView):
 
@@ -472,6 +583,15 @@ class VehiculoUpdateView(UpdateView):
         context['titulo'] = "Modificar Vehículo"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = VehiculoForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Vehiculo modificado con exito')
+            return redirect ('listarVehiculos')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class VehiculoDeleteView(DeleteView):
 
@@ -506,6 +626,16 @@ class EmpleadoCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar empleado"
         return context
+    
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = EmpleadoForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Empleado registrado con exito')
+            return redirect ('crearEmpleado')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 
 class EmpleadoUpdateView(UpdateView):
@@ -518,6 +648,15 @@ class EmpleadoUpdateView(UpdateView):
         context['titulo'] = "Modificar empleado"
         return context
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = EmpleadoForm(self.request.POST)
+        if form.is_valid():
+            messages.add_message(self.request, messages.INFO, 'Empleado modificado con exito')
+            return redirect ('listarEmpleados')
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+        return self.form_invalid(form=form)
 
 class EmpleadoDeleteView(DeleteView):
     model = Empleado

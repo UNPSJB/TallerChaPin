@@ -352,7 +352,7 @@ class RegistrarEgresoVehiculoForm(forms.ModelForm):
 class TurnosFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("turno", "Turno"),
-        # ("cliente", "Cliente"),
+        ("cliente", "Cliente"),
         ("vehiculo", "Vehiculo"),
     ]
 
@@ -373,7 +373,7 @@ class TurnosFiltrosForm(FiltrosForm):
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                # "cliente",
+                "cliente",
                 "vehiculo",
                 "fecha__lte",
                 "fecha__gte"

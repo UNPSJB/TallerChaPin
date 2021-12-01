@@ -4,6 +4,8 @@ from crispy_forms.layout import Submit
 from django.contrib.auth.forms import AuthenticationForm
 
 
+# Login
+
 class TallerAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

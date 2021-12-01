@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.regex_helper import Choice
 from . import models as ordenes
 import taller.models as taller
 from crispy_forms.helper import FormHelper
@@ -151,10 +152,8 @@ class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
-        ("detalles", "Detalles"),
-        ("tareas", "Tareas"),
-        ("repuestos", "Repuestos"),
-        ("materiales", "Materiales"),
+        ("detalles","Observación"),
+        ("validez","Validez"),
 
     ]
 
@@ -162,7 +161,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
         queryset=taller.Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
         queryset=taller.Vehiculo.objects.all(), required=False)
-    detalles = forms.CharField(required=False, max_length=200)
+    observacion = forms.CharField(required=False, max_length=200)
     tareas = forms.ModelChoiceField(
         queryset=taller.Tarea.objects.all(), required=False)
     materiales = forms.ModelChoiceField(
@@ -170,9 +169,6 @@ class PresupuestoFiltrosForm(FiltrosForm):
     repuestos = forms.ModelChoiceField(
         queryset=taller.Repuesto.objects.all(), required=False)
 
-    orden = forms.CharField(
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -238,10 +234,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
         ("vehiculo", "Vehiculo"),
-        ("detalles", "Detalles"),
-        ("tareas", "Tareas"),
-        ("repuestos", "Repuestos"),
-        ("materiales", "Materiales")
+        ("estado", "Estado")
     ]
 
     cliente = forms.ModelChoiceField(
@@ -249,6 +242,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
     vehiculo = forms.ModelChoiceField(
         queryset=taller.Vehiculo.objects.all(), required=False)
     detalles = forms.CharField(required=False, max_length=200)
+    estado = forms.ChoiceField(choices=ordenes.OrdenDeTrabajo.ESTADOS_CHOICES, required=False)
     tareas = forms.ModelChoiceField(
         queryset=taller.Tarea.objects.all(), required=False)
     materiales = forms.ModelChoiceField(
@@ -272,6 +266,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
                 "cliente",
                 "vehiculo",
                 "detalles",
+                "estado",
                 "tareas",
                 "materiales",
                 "repuestos",
@@ -357,7 +352,7 @@ class RegistrarEgresoVehiculoForm(forms.ModelForm):
 class TurnosFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("turno", "Turno"),
-        ("cliente", "Cliente"),
+        # ("cliente", "Cliente"),
         ("vehiculo", "Vehiculo"),
     ]
 
@@ -378,7 +373,7 @@ class TurnosFiltrosForm(FiltrosForm):
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "cliente",
+                # "cliente",
                 "vehiculo",
                 "fecha__lte",
                 "fecha__gte"
@@ -458,6 +453,7 @@ class FinalizarTareaForm(forms.Form):
             pk=detalle_tarea_pk)
         detalle.finalizar(exitosa, observaciones)
 
+# Asignar Cantidad
 
 class AsignarCantidadForm(forms.Form):
 

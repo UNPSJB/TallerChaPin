@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic.list import ListView
 from wkhtmltopdf.views import PDFTemplateView
 from datetime import date
 from .models import *
 from .forms import * 
 from django.urls import reverse_lazy
 from django.contrib import messages
+from TallerChaPin.utils import ListFilterView
 
 # Create your views here.
 
@@ -31,23 +31,23 @@ class imprimirFactura(PDFTemplateView):
         return context
 
 #Clase repetida... 
-class ListFilterView(ListView):
-    filtros = None
+# class ListFilterView(ListView):
+#     filtros = None
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if self.filtros:
-            context['filtros'] = self.filtros(self.request.GET)
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         if self.filtros:
+#             context['filtros'] = self.filtros(self.request.GET)
+#         return context
 
-    def get_queryset(self):
-        qs = super().get_queryset()
-        if self.filtros:
-            filtros = self.filtros(self.request.GET)
-            return filtros.apply(qs)
-        return qs
+#     def get_queryset(self):
+#         qs = super().get_queryset()
+#         if self.filtros:
+#             filtros = self.filtros(self.request.GET)
+#             return filtros.apply(qs)
+#         return qs
 
-# Presupuesto
+# ----------------------------- Factura View ----------------------------------- #
 
 class FacturaListView(ListFilterView):
     filtros = FacturaFiltrosForm
@@ -116,6 +116,8 @@ class ImprimirFactura(PDFTemplateView):
         context["styles"] = 'http://127.0.0.1:8000/static/ordenes/css/presupuesto_pdf.css'
         context["logo"] = 'http://127.0.0.1:8000/static/images/chapin2.png'
         return context
+        
+# ----------------------------- Pago View ----------------------------------- #
 
 class PagoCreateView(CreateView):
 

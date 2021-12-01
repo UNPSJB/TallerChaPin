@@ -6,7 +6,7 @@ from datetime import datetime
 from TallerChaPin.utils import FiltrosForm
 
 
-# Factura Form
+# Factura - Form
 
 class FacturaForm(forms.ModelForm):
     class Meta:

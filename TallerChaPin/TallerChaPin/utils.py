@@ -2,6 +2,7 @@ from django import forms
 from django.db.models import Q, Model, fields
 from decimal import Decimal
 from datetime import date
+from django.views.generic.list import ListView
 
 def dict_to_query(filtros_dict):
     filtro = Q()
@@ -22,6 +23,7 @@ def dict_to_query(filtros_dict):
             filtro &= Q(**{attr: value})
     return filtro
 
+# Filtros - Form
 
 class FiltrosForm(forms.Form):
     ORDEN_CHOICES = []
@@ -47,3 +49,21 @@ class FiltrosForm(forms.Form):
 
     def sortables(self):
         return self.ORDEN_CHOICES
+
+# Lista Filtros - ListView
+
+class ListFilterView(ListView):
+    filtros = None
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.filtros:
+            context['filtros'] = self.filtros(self.request.GET)
+        return context
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if self.filtros:
+            filtros = self.filtros(self.request.GET)
+            return filtros.apply(qs)
+        return qs

@@ -48,8 +48,6 @@
                                             <th scope="col">Tipo</th>
                                             <th scope="col">Observaciones</th>
                                             <th scope="col">Empleado asignado</th>
-                                            <th scope="col">Iniciado</th>
-                                            <th scope="col">Finalizado</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,24 +57,6 @@
                                             <td>{{ detalle.tarea.tipo }}</td>
                                             <td>{{ detalle.observaciones }}</td>
                                             <td>{{ detalle.empleado }}</td>
-
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="flexCheckDisabled" disabled>
-                                                    <label class="form-check-label" for="flexCheckDisabled">
-
-                                                    </label>
-                                            </td>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="flexCheckDisabled" disabled>
-                                                    <label class="form-check-label" for="flexCheckDisabled">
-
-                                                    </label>
-                                            </td>
-
                                         </tr>
                                     </tbody>
                             </div>
@@ -90,8 +70,6 @@
                                                 <th scope="col">Cantidad</th>
                                                 <th scope="col">Repuesto</th>
                                                 <th scope="col">Tipo</th>
-                                                <th scope="col">Usado</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -100,15 +78,7 @@
                                                 <td> {{ repuesto.cantidad }}</td>
                                                 <td>{{ repuesto.nombre }}</td>
                                                 <td>{{ repuesto.get_tipo_display }}</td>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckDisabled" disabled>
-                                                        <label class="form-check-label" for="flexCheckDisabled">
 
-                                                        </label>
-                                                </td>
                                             </tr>
 
                                             {% empty %}
@@ -119,75 +89,72 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            
+
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Cantidad</th>
+                                            <th scope="col">Material</th>
+                                            <th scope="col">Tipo</th>
 
 
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Cantidad</th>
-                                                <th scope="col">Material</th>
-                                                <th scope="col">Tipo</th>
-                                                <th scope="col">Usado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for material in object.materiales.all %}
+                                        <tr class="bg-transition">
+                                            <td>{{ material.cantidad }} {{ material.tipo.get_unidad_medida_display}}
+                                            </td>
+                                            <td>{{ material.nombre }}</td>
+                                            <td>{{ material.tipo }}</td>
+                                            </td>
+                                        </tr>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for material in object.materiales.all %}
-                                            <tr class="bg-transition">
-                                                <td>{{ material.cantidad }} {{ material.tipo.get_unidad_medida_display}}
-                                                </td>
-                                                <td>{{ material.nombre }}</td>
-                                                <td>{{ material.tipo }}</td>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckDisabled" disabled>
-                                                        <label class="form-check-label" for="flexCheckDisabled"></label>
-                                                </td>
-                                            </tr>
-
-                                            {% empty %}
-                                            <tr>
-                                                <div class="alert alert-primary" role="alert">
-                                                    No se han cargado materiales
-                                                </div>
-                                            </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                                </tbody>
+                                        {% empty %}
+                                        <tr>
+                                            <div class="alert alert-primary" role="alert">
+                                                No se han cargado materiales
+                                            </div>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="ibox-content mb-4">
-                            <button class="btn btn-primary pull-right"><i class="fa fa-print" aria-hidden="true"></i>
-                                Imprimir</button>
-                            <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Volver</button>
+                            </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="border border-primary rounded p-3">
-                            <h5>Acciones</h5>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#customModal"
-                                data-bs-nombre="{{object.cliente}}" data-bs-url="{% url 'eliminarOrden' object.pk %}"
-                                class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
-                                Cancelar orden de trabajo</a>
-                            <a href="{% url 'modificarOrden' object.pk %}" class="btn btn-primary m-1 w-100"><i
-                                    class="fas fa-pencil-alt"></i> Modificar fecha de turno </a>
-
-                            <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
-                                <i class="fas fa-check-circle"></i> Facturar Orden</a>
-                            </a>
-
-                        </div>
+                    <div class="ibox-content mb-4">
+                        <button class="btn btn-primary pull-right"><i class="fa fa-print" aria-hidden="true"></i>
+                            Imprimir</button>
+                        <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Volver</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="border border-primary rounded p-3">
+                        <h5>Acciones</h5>
+                        {% if not no_hay_tareas_iniciadas %}
+                        <!-- Puse "not" para que lo muestre, hay que ver la condicion -->
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#customModal"
+                            data-bs-nombre="{{object.cliente}}" data-bs-url="{% url 'cancelarOrden' object.pk %}"
+                            class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
+                            Cancelar orden de trabajo</a>
+                        <a href="{% url 'modificarOrden' object.pk %}" class="btn btn-primary m-1 w-100"><i
+                                class="fas fa-pencil-alt"></i> Modificar fecha de turno </a>
+                        {% endif %}
+                        {% if not puede_facturar %}
+                        <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
+                            <i class="fas fa-check-circle"></i> Facturar Orden</a>
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}
 

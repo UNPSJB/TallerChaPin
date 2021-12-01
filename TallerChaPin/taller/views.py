@@ -1,11 +1,12 @@
 from django.urls import reverse_lazy
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import *
 from .forms import *
 from django.contrib import messages
+from TallerChaPin.utils import ListFilterView
 # Create your views here.
 
 
@@ -14,25 +15,23 @@ def UnidadesDeMedida(request, pk):
     return JsonResponse({'material': material.tipo.get_unidad_medida_display()})
 
 
-class ListFilterView(ListView):
-    filtros = None
+# class ListFilterView(ListView):
+#     filtros = None
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if self.filtros:
-            context['filtros'] = self.filtros(self.request.GET)
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         if self.filtros:
+#             context['filtros'] = self.filtros(self.request.GET)
+#         return context
 
-    def get_queryset(self):
-        qs = super().get_queryset()
-        if self.filtros:
-            filtros = self.filtros(self.request.GET)
-            return filtros.apply(qs)
-        return qs
+#     def get_queryset(self):
+#         qs = super().get_queryset()
+#         if self.filtros:
+#             filtros = self.filtros(self.request.GET)
+#             return filtros.apply(qs)
+#         return qs
 
-# ---------------------------------------------------------------- #
-
-# Marca Views
+# ----------------------------- Marca View ----------------------------------- #
 
 
 class MarcaCreateView(CreateView):
@@ -76,10 +75,7 @@ class MarcaListView(ListFilterView):
         context['titulo'] = "Listado de Marcas"
         return context
 
-# ---------------------------------------------------------------- #
-
-# Modelo View
-
+# ----------------------------- Modelo View ----------------------------------- #
 
 class ModeloCreateView(CreateView):
     model = Modelo
@@ -121,9 +117,7 @@ class ModeloListView(ListFilterView):
         context['titulo'] = "Listado de Modelos"
         return context
 
-# ---------------------------------------------------------------- #
-
-# Repuesto Views
+# ----------------------------- Repuesto View ----------------------------------- #
 
 
 class RepuestoCreateView(CreateView):
@@ -166,9 +160,7 @@ class RepuestoListView(ListFilterView):
         context['titulo'] = "Listado de Repuestos"
         return context
 
-# ---------------------------------------------------------------- #
-
-# Tipo de tareas View
+# ----------------------------- Tipo Tareas View ----------------------------------- #
 
 
 class TipoTareaCreateView(CreateView):
@@ -211,10 +203,7 @@ class TipoTareaListView(ListFilterView):
         context['titulo'] = "Listado de Tipos de Tarea"
         return context
 
-# ---------------------------------------------------------------- #
-
-# Tareas View
-
+# ----------------------------- Tareas View ----------------------------------- #
 
 class TareaCreateView(CreateView):
     model = Tarea
@@ -257,10 +246,50 @@ class TareaListView(ListFilterView):
         context['titulo'] = "Listado de Tareas"
         return context
 
-# ---------------------------------------------------------------- #
+# ---------------------------- Tipo Material View ------------------------------------ #
 
-# Material View
+class TipoMaterialCreateView(CreateView):
+    model = TipoMaterial
+    form_class = TipoMaterialForm
+    success_url = reverse_lazy('crearTipoMaterial')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Registrar tipo material"
+        return context
+
+
+class TipoMaterialListView(ListView):
+    model = TipoMaterial
+
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filtros'] = TipoMaterialFiltrosForm(self.request.GET)
+        context['titulo'] = "Listado de Tipos Materiales"
+        return context
+
+
+class TipoMaterialUpdateView(UpdateView):
+    model = TipoMaterial
+    form_class = TipoMaterialForm
+    success_url = reverse_lazy("listarTipoMateriales")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar tipo Material"
+        return context
+
+
+class TipoMaterialDeleteView(DeleteView):
+    model = TipoMaterial
+    success_url = reverse_lazy("listarTipoMateriales")
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+
+# ---------------------------- Material View ------------------------------------ #
 
 class MaterialListView(ListFilterView):
     filtros = MaterialFiltrosForm
@@ -314,55 +343,8 @@ def modificar_cantidad(request):
         messages.add_message(request, messages.WARNING,
                              'No se ha podido modificar la cantidad del material.')
     return redirect('listarMateriales')
-# ---------------------------------------------------------------- #
 
-# Tipo Material View
-
-
-class TipoMaterialCreateView(CreateView):
-    model = TipoMaterial
-    form_class = TipoMaterialForm
-    success_url = reverse_lazy('crearTipoMaterial')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = "Registrar tipo material"
-        return context
-
-
-class TipoMaterialListView(ListView):
-    model = TipoMaterial
-
-    paginate_by = 100
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filtros'] = TipoMaterialFiltrosForm(self.request.GET)
-        context['titulo'] = "Listado de Tipos Materiales"
-        return context
-
-
-class TipoMaterialUpdateView(UpdateView):
-    model = TipoMaterial
-    form_class = TipoMaterialForm
-    success_url = reverse_lazy("listarTipoMateriales")
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = "Modificar tipo Material"
-        return context
-
-
-class TipoMaterialDeleteView(DeleteView):
-    model = TipoMaterial
-    success_url = reverse_lazy("listarTipoMateriales")
-
-    def get(self, *args, **kwargs):
-        return self.post(*args, **kwargs)
-
-# ---------------------------------------------------------------- #
-
-# Repuesto View
+# ---------------------------- Repuesto View ------------------------------------ #
 
 
 class RepuestoCreateView(CreateView):
@@ -405,10 +387,7 @@ class RepuestoListView(ListFilterView):
         context['titulo'] = "Listado de Repuestos"
         return context
 
-# ---------------------------------------------------------------- #
-
-# Cliente View
-
+# ---------------------------- Cliente View ------------------------------------ #
 
 class ClienteCreateView(CreateView):
 
@@ -469,10 +448,7 @@ class ClienteListView(ListFilterView):
         context['titulo'] = "Listado de Clientes"
         return context
 
-# ---------------------------------------------------------------- #
-
-# Vehiculo View
-
+# ---------------------------- Vehiculo View ------------------------------------ #
 
 class VehiculoCreateView(CreateView):
     model = Vehiculo
@@ -516,10 +492,7 @@ class VehiculoListView(ListFilterView):
         context['titulo'] = "Listado de Vehículos"
         return context
 
-# ---------------------------------------------------------------- #
-
-# Empleado View
-
+# ---------------------------- Empleado View ------------------------------------ #
 
 class EmpleadoCreateView(CreateView):
 

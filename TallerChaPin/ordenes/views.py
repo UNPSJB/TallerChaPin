@@ -11,7 +11,7 @@ from datetime import date
 from django.core.exceptions import ObjectDoesNotExist
 from wkhtmltopdf.views import PDFTemplateView
 from django.contrib import messages
-
+from TallerChaPin.utils import ListFilterView
 
 class imprimirPresupuesto(PDFTemplateView):
     #filename = 'presupuesto_pedro.pdf'
@@ -38,25 +38,23 @@ class imprimirPresupuesto(PDFTemplateView):
 # Clase repetida...
 
 
-class ListFilterView(ListView):
-    filtros = None
+# class ListFilterView(ListView):
+#     filtros = None
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if self.filtros:
-            context['filtros'] = self.filtros(self.request.GET)
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         if self.filtros:
+#             context['filtros'] = self.filtros(self.request.GET)
+#         return context
 
-    def get_queryset(self):
-        qs = super().get_queryset()
-        if self.filtros:
-            filtros = self.filtros(self.request.GET)
-            return filtros.apply(qs)
-        return qs
+#     def get_queryset(self):
+#         qs = super().get_queryset()
+#         if self.filtros:
+#             filtros = self.filtros(self.request.GET)
+#             return filtros.apply(qs)
+#         return qs
 
-# Presupuesto
-
-
+# ----------------------------- Presupuesto View ----------------------------------- #
 class PresupuestoListView(ListFilterView):
     filtros = PresupuestoFiltrosForm
     model = Presupuesto
@@ -137,8 +135,7 @@ class PresupuestoDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
-# Orden de trabajo
-
+# ----------------------------- Orden de trabajo View ----------------------------------- #
 
 class OrdenTrabajoListView(ListFilterView):
     filtros = OrdenTrabajoFiltrosForm
@@ -201,8 +198,8 @@ class OrdenTrabajoDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
-# Detalle de orden
 
+# ----------------------------- Detalle de orden View ----------------------------------- #
 
 class DetalleOrdenDeTrabajoListView(ListFilterView):
     # filtros = OrdenTrabajoFiltrosForm
@@ -239,6 +236,7 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         pass
 
 
+# ----------------------------- Iniciar Tarea ----------------------------------- #
 
 def iniciar_tarea(request, pk):
     detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
@@ -246,6 +244,7 @@ def iniciar_tarea(request, pk):
     messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
     return redirect('listarDetallesOrden')
 
+# ----------------------------- Asignar Tarea a Empleado ----------------------------------- #
 
 def asignar_empleado(request):
     form = AsignarEmpleadoForm(request.POST)
@@ -259,6 +258,7 @@ def asignar_empleado(request):
                              'El formulario tiene errores.')
     return redirect('listarDetallesOrden')
 
+# ----------------------------- Finalizar Tarea ----------------------------------- #
 
 def finalizar_tarea(request):
     form = FinalizarTareaForm(request.POST)
@@ -271,6 +271,7 @@ def finalizar_tarea(request):
                              'El formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
 
+# ----------------------------- Asignar cantidad de insumos ----------------------------------- #
 
 def asignar_cantidad(request):
     form = AsignarCantidadForm(request.POST)
@@ -282,6 +283,8 @@ def asignar_cantidad(request):
         messages.add_message(request, messages.WARNING,
                              'No se registraron los insumos el formulario tiene errores.')  # TODO: mostrar form.errors
     return redirect('listarDetallesOrden')
+
+# ----------------------------- Resumen de orden ----------------------------------- #
 
 def resumen_orden(request, pk):
     orden = DetalleOrdenDeTrabajo.objects.get(pk=pk).orden
@@ -331,6 +334,9 @@ def resumen_orden(request, pk):
         'repuestos': repuestos
     })
 
+
+# ----------------------------- Planilla de Pintura View ----------------------------------- #
+
 class PlanillaCreateView(CreateView):
     model = PlanillaDePintura
     form_class = PlanillaDePinturaForm
@@ -365,6 +371,8 @@ class PlanillaCreateView(CreateView):
         return self.form_invalid(form=form)
 
 
+# ----------------------------- Ingreso de Vehiculo View ----------------------------------- #
+
 class RegistrarIngresoVehiculoCreateView(CreateView):
 
     model = OrdenDeTrabajo
@@ -388,6 +396,8 @@ class RegistrarIngresoVehiculoCreateView(CreateView):
         return redirect('registrarIngresoDeVehiculo')
 
 
+# ----------------------------- Entrega de Vehiculo View ----------------------------------- #
+
 class RegistrarEgresoVehiculoCreateView(CreateView):
 
     model = OrdenDeTrabajo
@@ -410,6 +420,7 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
             return redirect('detallesOrden', orden.pk)
         return redirect('registrarIngresoDeVehiculo')
 
+# ----------------------------- Turnos View ----------------------------------- #
 
 class ListarTurnosListView(ListView):
 

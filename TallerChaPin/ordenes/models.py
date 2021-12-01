@@ -109,11 +109,16 @@ class OrdenDeTrabajo(models.Model):
             raise NoEntregoVehiculoException(
                 'No se puede entregar el vehículo o me pagas o sos vip', self.estado)
 
+
+    def no_hay_tareas_iniciadas(self): 
+        return self.estado == OrdenDeTrabajo.CREADA # VER
+
     def puede_facturar(self):
-        pass
+        return self.estado == OrdenDeTrabajo.REALIZADA # VER
 
     @property
     def cliente(self):
+        print(self.presupuestos.all().first().cliente)
         return self.presupuestos.all().first().cliente
 
     @property

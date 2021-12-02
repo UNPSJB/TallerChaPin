@@ -4,7 +4,6 @@ const mostrarModalEliminacion = (modal_id) => {
     y una URL de navegación para el botón de confirmación.
   */
   const modal_tag = document.getElementById(modal_id);
-  console.log(modal_tag);
 
   // ocultamos el modal para poder configurarlo
   const modal_instance = bootstrap.Modal.getInstance(modal_tag);

@@ -473,6 +473,12 @@ class EmpleadoForm(forms.ModelForm):
         fields = ['nombre', 'apellido', 'cuil', 'legajo']
         exclude = ['usuario']  # añadir campos a excluir
 
+        widgets = {
+            "cuil": forms.TextInput(attrs={'pattern': '(\d{2}-\d{8}-\d{1})', 'placeholder': '##-########-#'})
+        }
+
+
+
     def save(self, commit=True):
         empleado = super().save()
         # cambiar a .save(commit=False) si queremos hacer procesamiento extra antes de guardar,
@@ -540,6 +546,10 @@ class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = "__all__"
+
+        widgets = {
+            "dni": forms.TextInput(attrs={'pattern': '(\d{7}|\d{8})', 'placeholder': 'Sin puntos'})
+        }
 
     def save(self, commit=True):
         cliente = super().save()
@@ -634,7 +644,7 @@ class VehiculoForm(forms.ModelForm):
         fields = "__all__"
 
         widgets = {
-            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'})
+            "patente": forms.TextInput(attrs={'pattern': '([A-Z]{2}\d{3}[A-Z]{2}|[A-Z]{3}\d{3})', 'placeholder': 'AA###AA o AAA###'})
         }
 
     def save(self, commit=True):

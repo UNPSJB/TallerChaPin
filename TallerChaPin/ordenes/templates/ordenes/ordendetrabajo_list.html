@@ -37,7 +37,7 @@
       </tr>
       {% empty %}
       <tr>
-        <td>No hay Órdenes</td>
+        <td>No hay órdenes</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -66,11 +66,11 @@
 {% endblock %}
 
 {% block modals %}
-{% include './ordendetrabajo_confirm_delete.html' %}
+{% include './ordendetrabajo_confirm_delete.html' with idModal='modalEliminarOrden' %}
 {% endblock %}
 
 {% block extrajs %}
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+  conectarBotonesAModal('.btn-eliminar', 'modalEliminarOrden');
 </script>
 {% endblock %}

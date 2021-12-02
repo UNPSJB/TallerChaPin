@@ -67,11 +67,11 @@
 {% endblock %}
 
 {% block modals %}
-{% include './factura_confirm_delete.html' %}
+{% include './factura_confirm_delete.html' with idModal='modalEliminarFactura' %}
 {% endblock %}
 
 {% block extrajs %}
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+  conectarBotonesAModal('.btn-eliminar', 'modalEliminarFactura');
 </script>
 {% endblock %}

@@ -35,7 +35,7 @@
             </svg></a>
           <a href="#" 
           data-bs-toggle="modal" 
-          data-bs-target="#customModal" 
+          data-bs-target="#modalEliminarTarea" 
           data-bs-nombre="{{tarea.nombre}}"
             data-bs-url="{% url 'eliminarTarea' tarea.pk %}" class="btn-listado btn-eliminar">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
@@ -78,11 +78,11 @@
 {% endblock %}
 
 {% block modals %}
-{% include './tarea_confirm_delete.html' %}
+{% include './tarea_confirm_delete.html' with idModal="modalEliminarTarea" %}
 {% endblock %}
 
 {% block extrajs %}
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+  conectarBotonesAModal('.btn-eliminar', 'modalEliminarTarea');
 </script>
 {% endblock %}

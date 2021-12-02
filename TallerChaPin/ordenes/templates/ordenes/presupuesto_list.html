@@ -66,11 +66,11 @@
 {% endblock %}
 
 {% block modals %}
-{% include './presupuesto_confirm_delete.html' %}
+{% include './presupuesto_confirm_delete.html' with idModal='modalEliminarPresupuesto' %}
 {% endblock %}
 
 {% block extrajs %}
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+  conectarBotonesAModal('.btn-eliminar', 'modalEliminarPresupuesto');
 </script>
 {% endblock %}

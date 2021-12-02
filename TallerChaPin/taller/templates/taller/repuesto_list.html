@@ -32,7 +32,7 @@
             </svg></a>
             <a href="#" 
             data-bs-toggle="modal" 
-            data-bs-target="#customModal"
+            data-bs-target="#modalEliminarRepuesto"
             data-bs-nombre="{{repuesto.nombre}}" 
             data-bs-url="{% url 'eliminarRepuesto' repuesto.pk %}" 
             class="btn-listado btn-eliminar">
@@ -71,11 +71,11 @@
 {% endblock %}
 
 {% block modals %} 
-{% include './repuesto_confirm_delete.html' %}
+{% include './repuesto_confirm_delete.html' with idModal='modalEliminarRepuesto'%}
 {% endblock %}
 
 {% block extrajs %} 
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+  conectarBotonesAModal('.btn-eliminar', 'modalEliminarRepuesto');
 </script>
 {% endblock %}

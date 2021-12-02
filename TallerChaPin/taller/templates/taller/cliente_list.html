@@ -44,7 +44,7 @@
               <a 
               href="#" 
               data-bs-toggle="modal" 
-              data-bs-target="#customModal"
+              data-bs-target="#modalEliminarCliente"
               data-bs-nombre="{{cliente.nombre}}" 
               data-bs-url="{% url 'eliminarCliente' cliente.pk %}" 
               class="btn-eliminar btn-listado">
@@ -92,11 +92,11 @@
 {% endblock %}
 
 {% block modals %} 
-{% include './empleado_confirm_delete.html' %}
+{% include './empleado_confirm_delete.html' with idModal="modalEliminarCliente" %}
 {% endblock %}
 
 {% block extrajs %} 
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+  conectarBotonesAModal('.btn-eliminar', 'modalEliminarCliente');
 </script>
 {% endblock %}

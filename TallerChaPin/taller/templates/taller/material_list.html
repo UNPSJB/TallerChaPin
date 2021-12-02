@@ -47,7 +47,7 @@
               <a 
               href="#" 
               data-bs-toggle="modal" 
-              data-bs-target="#customModal"
+              data-bs-target="#modalEliminarMaterial"
               data-bs-nombre="{{material.nombre}}" 
               data-bs-url="{% url 'eliminarMaterial' material.pk %}" 
               class="btn-listado btn-eliminar">
@@ -88,12 +88,12 @@
 {% endblock %}
 
 {% block modals %} 
-{% include './material_confirm_delete.html' %}
-{% include "./modificar-cantidad.html" with idModal='cantidad' form=modificarCantidadForm %}
+{% include './material_confirm_delete.html' with idModal='modalEliminarMaterial' %}
+{% include './modificar-cantidad.html' with idModal='cantidad' form=modificarCantidadForm %}
 {% endblock %}
 
 {% block extrajs %} 
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+  conectarBotonesAModal('.btn-eliminar', 'modalEliminarMaterial');
 </script>
 {% endblock %}

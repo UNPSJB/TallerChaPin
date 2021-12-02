@@ -36,7 +36,7 @@
             <a 
               href="#" 
               data-bs-toggle="modal" 
-              data-bs-target="#customModal"
+              data-bs-target="#modalEliminarTipoTarea"
               data-bs-nombre="{{tipotarea.nombre}}" 
               data-bs-url="{% url 'eliminarTipoTarea' tipotarea.pk %}" 
               class="btn-listado btn-eliminar">
@@ -73,11 +73,11 @@
 {% endblock %}
 
 {% block modals %} 
-{% include './tipotarea_confirm_delete.html' %}
+{% include './tipotarea_confirm_delete.html' with idModal="modalEliminarTipoTarea" %}
 {% endblock %}
 
 {% block extrajs %} 
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+  conectarBotonesAModal('.btn-eliminar', 'modalEliminarTipoTarea');
 </script>
 {% endblock %}

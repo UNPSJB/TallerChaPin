@@ -17,9 +17,9 @@ urlpatterns = [
     # ----------------- TAREAS -----------------
 
     path('tarea/crear', TareaCreateView.as_view(), name="crearTarea"),
-    path('modelo/modificar/<int:pk>',
+    path('tarea/modificar/<int:pk>',
          TareaUpdateView.as_view(), name="modificarTarea"),
-    path('modelo/eliminar/<int:pk>',
+    path('tarea/eliminar/<int:pk>',
          TareaDeleteView.as_view(), name="eliminarTarea"),
     path('tareas/listar', TareaListView.as_view(), name="listarTareas"),
 

@@ -633,6 +633,10 @@ class VehiculoForm(forms.ModelForm):
         model = Vehiculo
         fields = "__all__"
 
+        widgets = {
+            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'})
+        }
+
     def save(self, commit=True):
         vehiculo = super().save()
         return vehiculo

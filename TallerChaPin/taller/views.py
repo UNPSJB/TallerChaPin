@@ -293,7 +293,7 @@ class TareaUpdateView(UpdateView):
 
 
 class TareaDeleteView(DeleteView):
-    model = TipoTarea
+    model = Tarea
     success_url = reverse_lazy("listarTareas")
 
     def get(self, *args, **kwargs):

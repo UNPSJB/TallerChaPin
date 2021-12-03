@@ -7,7 +7,7 @@
 {% block main %}
 
   {% block extra_css %}
-      <link rel="stylesheet" href="{% static 'libs/fullcalendar/lib/main.css' %}" />
+      <link rel="stylesheet" href="{% static 'libs/fullcalendar/main.css' %}" />
   {% endblock extra_css %}
   <h1>{{titulo}}</h1>
 
@@ -33,8 +33,8 @@
   conectarBotonesAModal('.btn-eliminar')
 </script>
 
-<script src="{% static 'libs/fullcalendar/lib/main.js' %}"> </script>
-<script src="{% static 'libs/fullcalendar/lib/locales-all' %}"> </script>
+<script src="{% static 'libs/fullcalendar/main.js' %}"> </script>
+<script src="{% static 'libs/fullcalendar/locales-all' %}"> </script>
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {

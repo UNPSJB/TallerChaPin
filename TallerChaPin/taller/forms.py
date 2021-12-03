@@ -41,7 +41,20 @@ class MarcaForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
 
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "nombre",
+                "descripcion",
+
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
@@ -51,7 +64,7 @@ class MarcaFiltrosForm(FiltrosForm):
         ("nombre", "Nombre"),
         ("descripcion", "Descripcion")
     ]
-    
+
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     orden = forms.CharField(
@@ -75,6 +88,7 @@ class MarcaFiltrosForm(FiltrosForm):
 
 # Modelo Forms
 
+
 class ModeloForm(forms.ModelForm):
     class Meta:
         model = Modelo
@@ -91,8 +105,22 @@ class ModeloForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "nombre",
+                "descripcion",
+                "marca",
+                "anio",
 
-        self.helper.add_input(Submit('submit', 'Guardar'))
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
 
 
 class ModeloFiltrosForm(FiltrosForm):
@@ -150,8 +178,22 @@ class RepuestoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "nombre",
+                "modelo",
+                "tipo",
+                "cantidad",
+                "precio",
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
 
 
 class RepuestoFiltrosForm(FiltrosForm):
@@ -165,14 +207,17 @@ class RepuestoFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=50)
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo')
-    
-    tipo = forms.ChoiceField(choices=Repuesto.TIPOS, required=False, label='Tipo')
-       
+
+    tipo = forms.ChoiceField(choices=Repuesto.TIPOS,
+                             required=False, label='Tipo')
+
     precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
     precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
 
-    cantidad__gte = forms.IntegerField(label="Mayor o igual que", required=False)
-    cantidad__lte = forms.IntegerField(label="Menor o igual que", required=False)
+    cantidad__gte = forms.IntegerField(
+        label="Mayor o igual que", required=False)
+    cantidad__lte = forms.IntegerField(
+        label="Menor o igual que", required=False)
 
     orden = forms.CharField(
         required=False
@@ -200,25 +245,40 @@ class RepuestoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-# Tipo de Material 
+# Tipo de Material
+
 
 class TipoMaterialForm(forms.ModelForm):
 
-        class Meta:
-            model = TipoMaterial
-            fields = '__all__'
-        
-        def save(self, commit=True):
-            TipoMaterial = super().save()
-            return TipoMaterial
+    class Meta:
+        model = TipoMaterial
+        fields = '__all__'
 
-        def __init__(self, *args, **kwargs):
-                super().__init__(*args, **kwargs)
-                self.helper = FormHelper()
-                
-                self.helper.add_input(Submit('submit', 'Guardar'))
+    def save(self, commit=True):
+        TipoMaterial = super().save()
+        return TipoMaterial
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "nombre",
+                "unidad_medida",
+
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
 
 # Tipo de Material - Filtro
+
 
 class TipoMaterialFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -255,6 +315,7 @@ class TipoMaterialFiltrosForm(FiltrosForm):
 
 # Material
 
+
 class MaterialForm(forms.ModelForm):
 
     class Meta:
@@ -268,8 +329,22 @@ class MaterialForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "nombre",
+                "tipo",
+                "cantidad",
+                "precio",
 
-        self.helper.add_input(Submit('submit', 'Guardar'))
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
 
 
 # Material - Filtro
@@ -286,21 +361,23 @@ class MaterialFiltrosForm(FiltrosForm):
     descripcion = forms.CharField(required=False)
     cantidad = forms.DecimalField(required=False)
     precio = forms.DecimalField(required=False)
-    #tipo = forms.CharField(required=False)
-    
+
     material__tipo = forms.ModelChoiceField(
         queryset=TipoMaterial.objects.all(), required=False, label='Tipo Material')
-    
+
     orden = forms.CharField(
         required=False
     )
 
-    precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
-    precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
+    precio__gte = forms.DecimalField(
+        label="Mayor o igual que:", required=False)
+    precio__lte = forms.DecimalField(
+        label="Menor o igual que:", required=False)
 
-    cantidad__gte = forms.IntegerField(label="Mayor o igual que", required=False)
-    cantidad__lte = forms.IntegerField(label="Menor o igual que", required=False)
-
+    cantidad__gte = forms.IntegerField(
+        label="Mayor o igual que:", required=False)
+    cantidad__lte = forms.IntegerField(
+        label="Menor o igual que:", required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -326,6 +403,7 @@ class MaterialFiltrosForm(FiltrosForm):
 
 # Modificar - Cantidad
 
+
 class ModificarCantidadForm(forms.Form):       # TODO VER
     cantidad = forms.IntegerField(min_value=0, required=True)
 
@@ -341,7 +419,7 @@ class ModificarCantidadForm(forms.Form):       # TODO VER
                 "cantidad"
             )
         )
-    
+
     # def asignar_cantidad(self):
     #     cantidad = self.cleaned_data.get('cantidad')
     #     material_pk = self.cleaned_data.get('material')
@@ -369,10 +447,25 @@ class TipoTareaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "nombre",
+                "descripcion",
+                "materiales",
+                "repuestos",
+                "planilla",
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
 
-        self.helper.add_input(Submit('submit', 'Guardar'))
 
-# Tipo de Tarea - Filtro 
+# Tipo de Tarea - Filtro
 
 class TipoTareaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -403,7 +496,8 @@ class TipoTareaFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
-# Tarea 
+# Tarea
+
 
 class TareaForm(forms.ModelForm):
 
@@ -419,9 +513,24 @@ class TareaForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
 
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "nombre",
+                "descripcion",
+                "tipo",
+                "precio",
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
 
-# Tarea - Filtro 
+# Tarea - Filtro
+
 
 class TareaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -435,7 +544,7 @@ class TareaFiltrosForm(FiltrosForm):
     descripcion = forms.CharField(required=False)
     tipo = forms.ModelChoiceField(
         queryset=TipoTarea.objects.all(), required=False)
-       
+
     precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
     precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
 
@@ -477,8 +586,6 @@ class EmpleadoForm(forms.ModelForm):
             "cuil": forms.TextInput(attrs={'pattern': '(\d{2}-\d{8}-\d{1})', 'placeholder': '##-########-#'})
         }
 
-
-
     def save(self, commit=True):
         empleado = super().save()
         # cambiar a .save(commit=False) si queremos hacer procesamiento extra antes de guardar,
@@ -489,11 +596,25 @@ class EmpleadoForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
 
-        self.helper.add_input(Submit('submit', 'Guardar'))
-
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "nombre",
+                "apellido",
+                "cuil",
+                "legajo",
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
 # Empleado - Filtro
+
 
 class EmpleadoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -507,9 +628,6 @@ class EmpleadoFiltrosForm(FiltrosForm):
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
     legajo = forms.IntegerField(required=False)
-    
-    cuil__gte = forms.IntegerField(label="Mayor o igual que", required=False)
-    cuil__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
     orden = forms.CharField(
         required=False
@@ -527,13 +645,12 @@ class EmpleadoFiltrosForm(FiltrosForm):
                 "nombre",
                 "apellido",
                 "legajo",
-                "cuil__gte",
-                "cuil__lte"
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
 # Cliente
+
 
 class ClienteForm(forms.ModelForm):
 
@@ -558,6 +675,7 @@ class ClienteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        # self.helper.form_tag = False
         self.helper.layout = Layout(
             Fieldset(
                 "",
@@ -569,16 +687,20 @@ class ClienteForm(forms.ModelForm):
                 "direccion",
                 "telefono",
                 HTML(
-                    '<div> <label class="form-label">Datos del vehículo:</label> <div/> <hr/>' ),
+                    '<div> <label class="form-label">Datos del vehículo:</label> <div/> <hr/>'),
                 "patente",
                 "modelo",
                 "chasis",
                 "anio"
             ),
-            Div(Submit('submit', 'Guardar'), css_class='submit-btn-container')
+            Div(HTML(
+                '<input href="{% url "crearCliente" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarClientes" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )
 
 # Cliente - Filtro
+
 
 class ClienteFiltrosForm(FiltrosForm):  # Revisar
     ORDEN_CHOICES = [
@@ -589,18 +711,18 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
         ("telefono", "Teléfono"),
         ("vehiculo", "Vehículo"),
     ]
-    
+
     dni = forms.IntegerField(required=False)
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
     direccion = forms.CharField(max_length=100)
-    
+
     vehiculos__modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo vehículo')
-        
+
     telefono = forms.IntegerField(required=False)
-    
+
     dni__gte = forms.IntegerField(label="Mayor o igual que", required=False)
     dni__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
@@ -621,6 +743,7 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
                 "nombre",
                 "apellido",
                 "vehiculos__modelo",
+                HTML("<label> DNI </label>"),
                 "dni__gte",
                 "dni__lte"
             ),
@@ -628,6 +751,8 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
         )
 
 # Vehiculo Forms
+
+
 class ClienteVehiculoForm(forms.ModelForm):
 
     class Meta:
@@ -635,7 +760,9 @@ class ClienteVehiculoForm(forms.ModelForm):
         fields = "__all__"
         exclude = ["cliente"]
 
+
 ClienteForm.base_fields.update(ClienteVehiculoForm.base_fields)
+
 
 class VehiculoForm(forms.ModelForm):
 
@@ -654,8 +781,22 @@ class VehiculoForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "cliente",
+                "patente",
+                "modelo",
+                "chasis",
+                "anio"
+            ),
+            Div(HTML(
+                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
 
 
 class VehiculoFiltrosForm(FiltrosForm):
@@ -691,6 +832,7 @@ class VehiculoFiltrosForm(FiltrosForm):
                 "patente",
                 "modelo",
                 "chasis",
+                HTML("<label> Año </label>"),
                 "anio__gte",
                 "anio__lte"
             ),

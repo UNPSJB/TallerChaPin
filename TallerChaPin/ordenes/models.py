@@ -456,9 +456,9 @@ class DetallePlanillaDePintura(models.Model):
     cantidad = models.PositiveIntegerField()  # en gramos
 
 
-class turnoOrden(models.Model):
+class TurnoOrden(models.Model):
 
     cliente = models.ForeignKey(
-        Cliente, related_name='Turno', on_delete=models.CASCADE)
+        Cliente, related_name='turno', on_delete=models.CASCADE)
     vehiculo = models.ForeignKey(
-        Vehiculo, related_name='Turno', on_delete=models.CASCADE)
+        Vehiculo, related_name='turno', on_delete=models.CASCADE)

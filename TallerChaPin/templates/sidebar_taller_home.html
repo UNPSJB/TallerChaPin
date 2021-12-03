@@ -17,6 +17,24 @@
     <span class="fs-5 fw-semibold">Gestion de taller</span>
   </a>
   <ul class="list-unstyled ps-0">
+    <ul class="list-unstyled ps-0">
+      <!-- Clientes -->
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+          data-bs-target="#clientes-collapse" aria-expanded="false">
+          Clientes
+        </button>
+  
+        <!-- Desplegable de clientes -->
+        <div class="collapse" id="clientes-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li>
+              <a href="{% url 'listarClientes' %}" class="link-dark rounded">Listado de clientes</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
     <!-- Tareas -->
     <li class="mb-1">
       <button

@@ -19,6 +19,9 @@ class Factura(models.Model):
     orden = models.ForeignKey(OrdenDeTrabajo, on_delete=models.CASCADE)
     fecha = models.DateField()
 
+    # def total(self):
+    #     return self.detalles.aggregate(total=models.Sum('precio'))['total']
+
     def total(self):
         return self.detalles.aggregate(total=models.Sum('precio'))['total']
 

@@ -65,6 +65,13 @@ class OrdenDeTrabajo(models.Model):
             ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
         ]
 
+
+    def cancelar_orden_creada(self):
+        orden_cancelada = models.Q(orden__estado=OrdenDeTrabajo.CANCELADA)
+        self.estado = orden_cancelada
+        self.save()
+    
+
     def precio_total_presupuestado(self):
         # Toma el valor del primer presupuesto realizado
         return self.presupuestos.first().precio_estimado()
@@ -118,12 +125,13 @@ class OrdenDeTrabajo(models.Model):
 
     @property
     def cliente(self):
-        print(self.presupuestos.all().first().cliente)
-        return self.presupuestos.all().first().cliente
+        presupuesto = self.presupuestos.all().first()
+        return presupuesto.cliente if presupuesto is not None else None
 
     @property
     def vehiculo(self):
-        return self.presupuestos.all().first().vehiculo
+        vehiculo = self.presupuestos.all().first()
+        return vehiculo.vehiculo if vehiculo is not None else None
     
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
@@ -289,14 +297,15 @@ class DetalleOrdenDeTrabajo(models.Model):
             planilla.agregar(formula, cantidad)
 
     def color_de_pintura (self):
-        return self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first().nombre
+        material = self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first() 
+        return material.nombre if material is not None else "Pintura original"
 
 
     def precio(self):
         return self.tarea.precio
 
     def puedo_iniciar(self):
-        return self.inicio is None
+        return self.orden.estado == OrdenDeTrabajo.ACTIVA and self.inicio is None
 
     def puedo_finalizar(self):
         requiere_planilla = self.tarea.tipo.planilla
@@ -373,6 +382,7 @@ class Presupuesto(models.Model):
     materiales = models.ManyToManyField(
         Material, through='PresupuestoMaterial')
     repuestos = models.ManyToManyField(Repuesto, through='PresupuestoRepuesto')
+    #TODO: Agregar fecha de creacion del presupuesto
     validez = models.PositiveIntegerField(
         default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',

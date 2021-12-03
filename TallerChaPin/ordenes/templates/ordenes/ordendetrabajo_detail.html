@@ -19,7 +19,7 @@
         <div class="row">
 
             <div class="col-md-9">
-                {% include 'messages.html' %}
+                
                 <div class="ibox border border-primary rounded p-3 h-100 p-4">
                     <h3>
                         {{ object.cliente.nombre }}, {{ object.cliente.apellido }}
@@ -137,7 +137,7 @@
                         <h5>Acciones</h5>
                         {% if not no_hay_tareas_iniciadas %}
                         <!-- Puse "not" para que lo muestre, hay que ver la condicion -->
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#customModal"
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalEliminarOrden"
                             data-bs-nombre="{{object.cliente}}" data-bs-url="{% url 'cancelarOrden' object.pk %}"
                             class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
                             Cancelar orden de trabajo</a>
@@ -159,12 +159,12 @@
 {% endblock %}
 
 {% block modals %}
-{% include './ordendetrabajo_confirm_delete.html' %}
+{% include './ordendetrabajo_confirm_delete.html' with idModal='modalEliminarOrden' %}
 
 {% endblock %}
 
 {% block extrajs %}
 <script>
-    conectarBotonesAModal('.btn-eliminar btn btn-danger m-1 w-100')
+    conectarBotonesAModal('.btn-eliminar', 'modalEliminarOrden')
 </script>
 {% endblock %}

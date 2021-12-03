@@ -73,9 +73,9 @@
           {% endif %}
 
           {% if detalle_orden.requiere_planilla %}
-          <button class="btn btn-primary m-1" type="button" data-bs-toggle="modal">
+          <a href="{% url 'cargarPlanillaParaTarea' detalle_orden.pk %}" class="btn btn-primary m-1" type="button" data-bs-toggle="">
             <i class="fas fa-paint-brush"></i> Planilla
-          </button>
+          </a>
           {% endif %}
 
           {% if detalle_orden.tarea.tipo.repuestos or detalle_orden.tarea.tipo.materiales %}
@@ -92,11 +92,11 @@
           </button>
           {% endif %}
 
-          {% if detalle_orden.esta_finalizado %}
+          
           <a class="btn btn-primary m-1" href="{% url 'detallesOrden' detalle_orden.orden.pk %}">
             <i class="fas fa-eye"></i> Ver orden
           </a>
-          {% endif %}
+          
           {% endif %}
         </li>
       </ul>

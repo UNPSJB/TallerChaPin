@@ -198,6 +198,11 @@ class OrdenTrabajoDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+def cancelar_orden(request, pk):
+    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    orden.estado = OrdenDeTrabajo.CANCELADA
+    orden.save()
+    return redirect ('detallesOrden', orden.pk)
 
 # ----------------------------- Detalle de orden View ----------------------------------- #
 
@@ -369,6 +374,7 @@ class PlanillaCreateView(CreateView):
         else:
             messages.add_message(self.request, messages.ERROR, form.errors)
         return self.form_invalid(form=form)
+
 
 
 # ----------------------------- Ingreso de Vehiculo View ----------------------------------- #

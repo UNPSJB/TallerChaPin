@@ -89,9 +89,9 @@
                                     </td>
                                 </tr>
                             {% empty %}
-                                <div class="alert alert-primary m-0" role="alert">
-                                    No se han cargado repuestos
-                                </div>
+                                <tr class="alert alert-primary m-0" role="alert">
+                                    <td>No se han cargado repuestos</td>
+                                </tr>
                             {% endfor %}
 
                             {% for material in object.presupuesto_materiales.all %}
@@ -135,25 +135,26 @@
                 <h5>Acciones</h5>
                 <button href="#" 
                 data-bs-toggle="modal" 
-                data-bs-target="#customModal"
-                data-bs-nombre="{{presupuesto.cliente.apellido}}" 
-                data-bs-url="{% url 'eliminarPresupuesto' presupuesto.pk %}" 
+                data-bs-target="#modalEliminarPresupuesto"
+                data-bs-nombre="{{object.cliente.apellido}}" 
+                data-bs-url="{% url 'eliminarPresupuesto' object.pk %}" 
                 class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
 
-                <a href="{% url 'modificarPresupuesto' presupuesto.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
+                <a href="{% url 'modificarPresupuesto' object.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
                 <button class="btn btn-primary m-1 w-100"><i class="fas fa-plus-circle"></i> Ampliar </button>
-                <a href="{% url 'crearOrden' presupuesto.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
+                <a href="{% url 'crearOrden' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block modals %} 
-{% include './presupuesto_confirm_delete.html' %}
+{% block modals %}
+{% include './presupuesto_confirm_delete.html' with idModal='modalEliminarPresupuesto' %}
+
 {% endblock %}
 
-{% block extrajs %} 
+{% block extrajs %}
 <script>
-  conectarBotonesAModal('.btn-eliminar')
+    conectarBotonesAModal('.btn-eliminar', 'modalEliminarPresupuesto')
 </script>
 {% endblock %}

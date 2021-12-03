@@ -197,7 +197,7 @@ class RepuestoListView(ListFilterView):
 class TipoTareaCreateView(CreateView):
     model = TipoTarea
     form_class = TipoTareaForm
-    success_url = reverse_lazy('crearTipoTarea')
+    # success_url = reverse_lazy('crearTipoTarea')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -212,6 +212,10 @@ class TipoTareaCreateView(CreateView):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)    
 
+    def get_success_url(self):
+        accion = self.request.POST['accion']
+        print(accion)
+        return reverse_lazy('crearTipoTarea') if str(accion) != "Guardar y salir" else reverse_lazy('listarTipoTarea')
 
 
 class TipoTareaUpdateView(UpdateView):
@@ -469,7 +473,7 @@ class ClienteCreateView(CreateView):
             return redirect('crearCliente')
         messages.add_message(self.request, messages.ERROR, cliente_form.errors)
         return self.form_invalid(form=cliente_form)
-
+    
 
 class ClienteUpdateView(UpdateView):
 

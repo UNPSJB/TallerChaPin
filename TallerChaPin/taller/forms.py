@@ -272,9 +272,9 @@ class TipoMaterialForm(forms.ModelForm):
 
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+                '<input href="{% url "crearTipoMaterial" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
             Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input href="{% url "listarTipoMateriales" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )
 
 # Tipo de Material - Filtro
@@ -459,9 +459,9 @@ class TipoTareaForm(forms.ModelForm):
                 "planilla",
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+                '<input type="submit" class="btn btn-primary mt-3" name= "accion" value="Guardar y continuar registrando"/>')),
             Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input type="submit" class="btn btn-primary mt-3" name= "accion" value="Guardar y salir"/>'))
         )
 
 

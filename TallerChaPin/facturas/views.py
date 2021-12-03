@@ -72,7 +72,7 @@ def crearFactura(request, pk):
     orden = OrdenDeTrabajo.objects.get(pk=pk)
     if orden.estado == OrdenDeTrabajo.REALIZADA:
         factura = Factura.facturar_orden(orden)
-        messages.add_message(request, messages.INFO, 'Factura Creada')
+        messages.add_message(request, messages.SUCCESS, 'Factura Creada')
         return redirect ('detallesFactura', factura.pk)
     if orden.estado == OrdenDeTrabajo.FACTURADA:
         messages.add_message(request, messages.WARNING, 'La orden ya ha sido facturada')

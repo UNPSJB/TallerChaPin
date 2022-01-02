@@ -154,7 +154,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
         ("detalles","Observación"),
-        ("validez","Validez"),
+        ("validez","Validez (días)"),
 
     ]
 

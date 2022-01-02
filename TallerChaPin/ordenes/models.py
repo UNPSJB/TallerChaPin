@@ -120,7 +120,14 @@ class OrdenDeTrabajo(models.Model):
     def no_hay_tareas_iniciadas(self): 
         return self.estado == OrdenDeTrabajo.CREADA # VER
 
-    def puede_facturar(self):
+    def puede_cancelarse(self):
+        print("puede_cancelarse?")
+        return self.estado == OrdenDeTrabajo.CREADA
+
+    def puede_cambiar_turno(self):
+        return self.estado == OrdenDeTrabajo.CREADA
+
+    def puede_facturarse(self):
         return self.estado == OrdenDeTrabajo.REALIZADA # VER
 
     @property

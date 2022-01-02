@@ -21,7 +21,7 @@ class PresupuestoForm(forms.ModelForm):
             "detalles": "Observaciones:"
         }
         widgets = {
-            "tareas": forms.CheckboxSelectMultiple(),
+            "tareas": forms.SelectMultiple(attrs={'size': '10'}),
         }
 
     def save(self, materiales, repuestos):

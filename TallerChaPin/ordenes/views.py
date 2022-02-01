@@ -269,6 +269,7 @@ def finalizar_tarea(request):
     form = FinalizarTareaForm(request.POST)
     if form.is_valid():
         form.finalizar()
+        # Ver de agregar actualizar estado
         messages.add_message(request, messages.SUCCESS,
                              'La tarea finalizó exitosamente! :D')
     else:

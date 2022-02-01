@@ -148,7 +148,8 @@ class OrdenDeTrabajo(models.Model):
             tarea.iniciar(empleado, fecha)
             self.estado = OrdenDeTrabajo.INICIADA
             self.save()
-
+    
+    # Ver si de verdad lo necesitamos
     def finalizar_tarea(self, detalle, exitosa, observacion, materiales=None, repuestos=None, fecha=now()):
         # Materiales y repuestos son listas de la forma [(material, cantidad)...]
         if detalle.tarea.tipo.materiales and materiales is None:
@@ -378,6 +379,7 @@ class RepuestoOrdenDeTrabajo(models.Model):
         if self.cantidad >= 0:
             self.save()
 
+# class PresupuestoAmpliado(model.Model): tentativo
 
 class Presupuesto(models.Model):
     cliente = models.ForeignKey(
@@ -390,6 +392,7 @@ class Presupuesto(models.Model):
         Material, through='PresupuestoMaterial')
     repuestos = models.ManyToManyField(Repuesto, through='PresupuestoRepuesto')
     #TODO: Agregar fecha de creacion del presupuesto
+    fecha = models.DateTimeField(auto_now_add=True) # Por las dudas ver
     validez = models.PositiveIntegerField(
         default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',

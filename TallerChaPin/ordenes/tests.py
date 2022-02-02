@@ -1,79 +1,62 @@
 from django.utils.timezone import now
 from django.test import TestCase
-from taller.models import Cliente, Empleado, Tarea, Material, Repuesto
+from taller.models import Cliente, Empleado, Tarea, Marca, Material, Modelo, Repuesto, TipoMaterial
 from ordenes.models import OrdenDeTrabajo, Presupuesto
 
-# Create your tests here.
+class OrdenTestCase(TestCase):
+    def setUp(self):
+        Cliente.objects.create(
+            dni='12312312',
+            nombre='Pepito',
+            apellido='Testing',
+            direccion = 'Calle 123',
+            telefono='2804123456'
+        )
 
+        TipoMaterial.objects.create(
+            nombre='tmat1',
+            unidad_medida=1
+        )
+        Material.objects.create(
+            nombre='mat1',
+            tipo=TipoMaterial.objects.get(nombre='tmat1'),
+            cantidad=10,
+            precio=100
+        )
+        Marca.objects.create(
+            nombre='mar1',
+            descripcion='dmar1'
+            # objects=?
+        )
+        Modelo.objects.create(
+            nombre='mod1',
+            descripcion='dmod1',
+            marca=Marca.objects.get(nombre='mar1'),
+            anio=2019
+        )
+        Repuesto.objects.create(
+            nombre='rep1',
+            modelo=Modelo.objects.get(nombre='mod1'),
+            tipo=1,
+            cantidad=20,
+            precio=200
+        )
 
-class PresupuestoTestCase(TestCase):
-    fixtures = [
-        'taller/fixtures/tests.json'
-    ]
+        OrdenDeTrabajo.objects.create(
+            # materiales=Material.objects.get(nombre='mat1'),
+            # repuestos=Repuesto.objects.get(nombre='rep1'),
+            turno=now(),
+            ingreso=None,
+            egreso=None,
+            estado=0,
+        )
 
-    def setUp(self) -> None:
-        self.cliente = Cliente.objects.get(pk=1)
-        self.vehiculo = self.cliente.vehiculos.first()
-        self.presupuesto = Presupuesto.objects.create(
-            cliente=self.cliente, vehiculo=self.vehiculo, validez=10)
+    # Probando si los test funcionan: este método funciona
+    def test_cliente_prueba(self):
+        cliente1 = Cliente.objects.get(dni='12312312')
+        self.assertEqual(cliente1.nombre, 'Pepito')
 
-    def test_crear_presupuesto(self):
-        pintar = Tarea.objects.get(pk=3)
-        self.presupuesto.agregar_tarea(pintar)
-        material = Material.objects.get(pk=1)
-        self.presupuesto.agregar_material(material, 3)
-        self.assertEqual(self.presupuesto.precio_estimado(), 150)
-
-    def test_confirmar_presupuesto(self):
-        self.test_crear_presupuesto()
-        self.presupuesto.confirmar(now())
-        self.assertIsNotNone(self.presupuesto.orden)
-        self.assertEqual(self.presupuesto.orden.detalles.count(), 1)
-        self.assertEqual(self.presupuesto.orden.materiales.count(), 1)
-
-    def test_turno_orden(self):
-        self.test_confirmar_presupuesto()
-        orden = self.presupuesto.orden
-        orden.cambiar_turno(now())
-
-    def test_orden_ingresar_vehiculo(self):
-        self.test_turno_orden()
-        orden = self.presupuesto.orden
-        orden.registrar_ingreso(now())
-
-    def test_orden_iniciar_trabajo(self):
-        self.test_orden_ingresar_vehiculo()
-        orden = self.presupuesto.orden
-        empleado = Empleado.objects.get(pk=2)
-        tareas = orden.tareas_para_empleado(empleado)
-        self.assertEqual(len(tareas), 1)
-        orden.iniciar_tarea(empleado, tareas[0], now())
-
-    def test_orden_finalizar_trabajo(self):
-        self.test_orden_iniciar_trabajo()
-        orden = self.presupuesto.orden
-        empleado = Empleado.objects.get(pk=2)
-        pintura = Material.objects.filter(tipo=1).first()
-        tareas = orden.tareas_para_empleado(empleado)
-        self.assertEqual(len(tareas), 1)
-        detalle = tareas[0]
-        detalle.crear_planilla_de_pintura(
-            pintura, [("263gs", 100), ("27dgs6", 20), ("727ey", 5)])
-        orden.finalizar_tarea(tareas[0], False, "Todo mal, hay que cambiar la puerta", materiales=[
-                              (1, 1)], fecha=now())
-        self.assertEqual(orden.estado, OrdenDeTrabajo.PAUSADA)
-
-    def test_ampliar_presupuesto(self):
-        self.test_orden_finalizar_trabajo()
-        orden = self.presupuesto.orden
-        presupuesto = orden.ampliar_presupuesto()
-        cambiar = Tarea.objects.get(pk=6)
-        presupuesto.agregar_tarea(cambiar)
-        repuesto = Repuesto.objects.get(pk=1)
-        presupuesto.agregar_repuesto(repuesto)
-        self.assertEqual(presupuesto.precio_estimado(), 480)
-        presupuesto.confirmar(now())
-        self.assertEqual(orden.estado, OrdenDeTrabajo.INICIADA)
-        self.assertEqual(orden.detalles.count(), 2)
-        self.assertEqual(orden.repuestos.count(), 1)
-        self.assertEqual(orden.presupuestos.count(), 2)
+    def test_orden_actualizar_estado(self):
+        orden1 = OrdenDeTrabajo.objects.get(estado=0)
+        print(orden1)
+        self.assertEqual(1,1)

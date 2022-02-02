@@ -206,6 +206,9 @@ class OrdenDeTrabajo(models.Model):
             RepuestoOrdenDeTrabajo.objects.create(
                 repuesto=repuesto, orden=self, cantidad=cantidad)
 
+    def actualizar_estado(self):
+        print(self.detalles.all())
+
 
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):

@@ -394,8 +394,7 @@ class Presupuesto(models.Model):
     materiales = models.ManyToManyField(
         Material, through='PresupuestoMaterial')
     repuestos = models.ManyToManyField(Repuesto, through='PresupuestoRepuesto')
-    #TODO: Agregar fecha de creacion del presupuesto
-    fecha = models.DateTimeField(auto_now_add=True) # Por las dudas ver
+    fecha = models.DateTimeField(auto_now_add=True)
     validez = models.PositiveIntegerField(
         default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',

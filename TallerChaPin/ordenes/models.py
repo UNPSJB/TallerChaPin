@@ -65,6 +65,15 @@ class OrdenDeTrabajo(models.Model):
             ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
         ]
 
+    def detalles_por_finalizar(self):
+        por_finalizar = 0
+
+        for detalle in self.detalles.all():
+            if not detalle.esta_finalizado():
+                por_finalizar += 1
+
+        print(f'La orden tiene {por_finalizar} detalles por finalizar')
+        return por_finalizar
 
     def cancelar_orden_creada(self):
         orden_cancelada = models.Q(orden__estado=OrdenDeTrabajo.CANCELADA)
@@ -143,6 +152,7 @@ class OrdenDeTrabajo(models.Model):
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 
+    # Método que no se está ejecutando nunca
     def iniciar_tarea(self, empleado, tarea, fecha=now()):
         if self.estado == OrdenDeTrabajo.ACTIVA:
             tarea.iniciar(empleado, fecha)
@@ -289,6 +299,9 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.empleado = empleado
         self.inicio = fecha
         self.save()
+        if self.orden.estado == OrdenDeTrabajo.ACTIVA:
+            self.orden.estado = OrdenDeTrabajo.INICIADA
+            self.orden.save()
 
     def asignar(self, empleado):
         self.empleado = empleado
@@ -299,6 +312,12 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.observaciones = observaciones
         self.fin = fecha
         self.save()
+
+        print(f'ESTADO: {self.orden.estado}')
+        if self.orden.estado == OrdenDeTrabajo.INICIADA and self.orden.detalles_por_finalizar() == 0:
+            self.orden.estado = OrdenDeTrabajo.FINALIZADA
+            self.orden.save()
+
 
     def crear_planilla_de_pintura(self, material, componentes):
         # Componentes es una lista de la forma [(formula, cantidad)...]
@@ -316,7 +335,7 @@ class DetalleOrdenDeTrabajo(models.Model):
         return self.tarea.precio
 
     def puedo_iniciar(self):
-        return self.orden.estado == OrdenDeTrabajo.ACTIVA and self.inicio is None
+        return self.orden.estado == OrdenDeTrabajo.ACTIVA or OrdenDeTrabajo.INICIADA and self.inicio is None
 
     def puedo_finalizar(self):
         requiere_planilla = self.tarea.tipo.planilla
@@ -349,6 +368,9 @@ class DetalleOrdenDeTrabajo(models.Model):
             orden.actualizar_material(material, cantidad_material)
         if repuesto is not None:
             orden.actualizar_repuesto(repuesto, cantidad_repuesto)
+
+
+
 
 
 class MaterialOrdenDeTrabajo(models.Model):

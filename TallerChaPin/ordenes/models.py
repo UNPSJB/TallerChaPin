@@ -72,7 +72,6 @@ class OrdenDeTrabajo(models.Model):
             if not detalle.esta_finalizado():
                 por_finalizar += 1
 
-        print(f'La orden tiene {por_finalizar} detalles por finalizar')
         return por_finalizar
 
     def cancelar_orden_creada(self):
@@ -130,7 +129,6 @@ class OrdenDeTrabajo(models.Model):
         return self.estado == OrdenDeTrabajo.CREADA # VER
 
     def puede_cancelarse(self):
-        print("puede_cancelarse?")
         return self.estado == OrdenDeTrabajo.CREADA
 
     def puede_cambiar_turno(self):
@@ -313,9 +311,8 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.fin = fecha
         self.save()
 
-        print(f'ESTADO: {self.orden.estado}')
         if self.orden.estado == OrdenDeTrabajo.INICIADA and self.orden.detalles_por_finalizar() == 0:
-            self.orden.estado = OrdenDeTrabajo.FINALIZADA
+            self.orden.estado = OrdenDeTrabajo.REALIZADA
             self.orden.save()
 
 

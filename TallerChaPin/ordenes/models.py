@@ -370,6 +370,9 @@ class DetalleOrdenDeTrabajo(models.Model):
     def requiere_planilla(self):
         return self.tarea.tipo.planilla
 
+    def esta_pausado(self):
+        return self.orden.estado == OrdenDeTrabajo.PAUSADA and self.fin == None # Si el detalle ya se finalizó, se muestra como finalizado y no como pausado.
+
     def actualizar_cantidad(self, material, cantidad_material, repuesto, cantidad_repuesto):
         orden = self.orden
         if material is not None:

@@ -204,6 +204,21 @@ def cancelar_orden(request, pk):
     orden.save()
     return redirect ('detallesOrden', orden.pk)
 
+def pausar_orden(request, pk):
+    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    orden.estado = OrdenDeTrabajo.PAUSADA
+    orden.save()
+    return redirect ('detallesOrden', orden.pk)
+
+def reanudar_orden(request, pk):
+    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    if orden.no_hay_tareas_iniciadas():
+        orden.estado = OrdenDeTrabajo.ACTIVA
+    else:
+        orden.estado = OrdenDeTrabajo.INICIADA
+    orden.save()
+    return redirect ('detallesOrden', orden.pk)
+
 # ----------------------------- Detalle de orden View ----------------------------------- #
 
 class DetalleOrdenDeTrabajoListView(ListFilterView):

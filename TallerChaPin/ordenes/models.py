@@ -124,9 +124,11 @@ class OrdenDeTrabajo(models.Model):
             raise NoEntregoVehiculoException(
                 'No se puede entregar el vehículo o me pagas o sos vip', self.estado)
 
-
-    def no_hay_tareas_iniciadas(self): 
-        return self.estado == OrdenDeTrabajo.CREADA # VER
+    def no_hay_tareas_iniciadas(self):
+        for detalle in self.detalles.all():
+            if detalle.inicio != None:
+                return False
+        return True
 
     def puede_cancelarse(self):
         return (self.estado == OrdenDeTrabajo.CREADA) or (self.estado == OrdenDeTrabajo.PAUSADA)

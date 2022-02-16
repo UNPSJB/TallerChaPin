@@ -4,7 +4,6 @@ from wkhtmltopdf.views import PDFTemplateView
 
 urlpatterns = [
      # ----------------- Presupuesto -----------------
-     # path('/',)
      path('presupuesto/crear', PresupuestoCreateView.as_view(),
           name="crearPresupuesto"),
      path('presupuesto/listar', PresupuestoListView.as_view(),
@@ -22,10 +21,10 @@ urlpatterns = [
           OrdenTrabajoDetailView.as_view(), name="detallesOrden"),
      path('orden/modificar/<int:pk>',
           OrdenTrabajoUpdateView.as_view(), name="modificarOrden"),
-     # path('orden/eliminar/<int:pk>',
-     #      OrdenTrabajoDeleteView.as_view(), name="cancelarOrden"),  
      path('orden/eliminar/<int:pk>',
-          cancelar_orden, name="cancelarOrden"),  # No se elimina como tal, se cambia el estado a cancelado
+          cancelar_orden, name="cancelarOrden"), 
+     path('orden/pausar/<int:pk>', pausar_orden, name='pausarOrden'), 
+     path('orden/reanudar/<int:pk>', reanudar_orden, name='reanudarOrden'),
      # ------------------ Detalle de Orden de Trabajo -----------------
      path('detalles-orden/listar', DetalleOrdenDeTrabajoListView.as_view(),
           name="listarDetallesOrden"),
@@ -42,7 +41,6 @@ urlpatterns = [
      # ------------------ Planilla de pintura ----------------- 
      path('detalles-orden/<int:detalle>/planilla/crear',
          PlanillaCreateView.as_view(), name="cargarPlanillaParaTarea"),
-
      # ----------------- Ingreso y Entrega de vehiculo -----------------
      path('ordenesTurnos/registrarIngresoVehiculo',
           RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),

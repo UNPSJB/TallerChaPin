@@ -151,12 +151,12 @@
                             </a>
                         {% endif %}
                         {% if object.puede_pausarse %}
-                            <a href="#" class="btn btn-primary m-1 w-100">
+                            <a href="{% url 'pausarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
                                 <i class="fa-solid fa-pause"></i> Pausar orden</a>
                             </a>
                         {% endif %}
                         {% if object.puede_reanudarse %}
-                            <a href="#" class="btn btn-primary m-1 w-100">
+                            <a href="{% url 'reanudarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
                                 <i class="fa-solid fa-play"></i> Reanudar orden</a>
                             </a>
                         {% endif %}

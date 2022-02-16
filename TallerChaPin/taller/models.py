@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from datetime import date
 
 # Create your models here.
 # http://....../?atributo__contains=valor
@@ -183,6 +184,9 @@ class Cliente(models.Model):
             return len(facturas) <= 3
         return False
 
+def validar_anio(anio):
+    if anio < date.today().year - 12:
+        raise ValidationError('El vehículo tiene más de 12 años de antigüedad')
 
 class Vehiculo(models.Model):
     # Ejemplo: ABC-123 o AC-123-AA
@@ -191,7 +195,7 @@ class Vehiculo(models.Model):
         Cliente, related_name="vehiculos", on_delete=models.CASCADE)
     patente = models.CharField(max_length=7, unique=True)
     modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
-    anio = models.IntegerField()
+    anio = models.IntegerField(validators=[validar_anio])
     chasis = models.CharField(max_length=50)
 
     def __str__(self):

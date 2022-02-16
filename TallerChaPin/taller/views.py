@@ -472,13 +472,13 @@ class ClienteCreateView(CreateView):
             messages.add_message(self.request, messages.INFO, 'Cliente y Vehiculos registrado con exito')
             return redirect('crearCliente')
         messages.add_message(self.request, messages.ERROR, cliente_form.errors)
+        messages.add_message(self.request, messages.ERROR, vehiculo_form.errors)
         return self.form_invalid(form=cliente_form)
-    
 
 class ClienteUpdateView(UpdateView):
 
     model = Cliente
-    form_class = ClienteForm
+    form_class = ClienteUpdateForm
     success_url = reverse_lazy("listarClientes")
 
     def get_context_data(self, **kwargs):
@@ -493,8 +493,7 @@ class ClienteUpdateView(UpdateView):
 
     def form_invalid(self, form):
         messages.add_message(self.request, messages.ERROR, form.errors)
-        return super().form_invalid(form)  
-
+        return super().form_invalid(form) 
 
 class ClienteDeleteView(DeleteView):
 

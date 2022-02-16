@@ -687,7 +687,7 @@ class ClienteForm(forms.ModelForm):
                 "direccion",
                 "telefono",
                 HTML(
-                    '<div> <label class="form-label">Datos del vehículo:</label> <div/> <hr/>'),
+                    '<hr/> <h3> Datos del vehículo: </h3>'),
                 "patente",
                 "modelo",
                 "chasis",
@@ -695,6 +695,39 @@ class ClienteForm(forms.ModelForm):
             ),
             Div(HTML(
                 '<input href="{% url "crearCliente" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
+            Div(HTML(
+                '<input href="{% url "listarClientes" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+        )
+class ClienteUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Cliente
+        fields = "__all__"
+
+        widgets = {
+            "dni": forms.TextInput(attrs={'pattern': '(\d{7}|\d{8})', 'placeholder': 'Sin puntos'})
+        }
+
+    def save(self, commit=True):
+        cliente = super().save()
+        return cliente
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                "",
+                HTML(
+                    '<hr/>'),
+                "dni",
+                "nombre",
+                "apellido",
+                "direccion",
+                "telefono",
+            ),
+            Div(HTML(
+                '<input href="{% url "modificarCliente" object.pk %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
             Div(HTML(
                 '<input href="{% url "listarClientes" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )

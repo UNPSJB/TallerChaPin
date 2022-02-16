@@ -4,10 +4,6 @@
     margin-bottom: 20px
 }
 
-/* #div_id_orden > label {
-    display: none;
-} */
-
 .filter-btn-container {
     display: flex;
     justify-content: center;
@@ -40,7 +36,7 @@
     color: #10770d
 }
 
-.btn-eliminar:hover{
+.btn-eliminar.btn-listado:hover{
     transition: color 0.25s;
     color: #d11a1a;
 }

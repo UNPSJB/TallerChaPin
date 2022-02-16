@@ -150,9 +150,30 @@
                                 <i class="fas fa-check-circle"></i> Facturar Orden</a>
                             </a>
                         {% endif %}
-                        {% if not object.puede_cancelarse and not object.puede_cambiar_turno and not object.puede_facturarse %}
-                            <span>La orden de trabajo se encuentra "<b>{{object.get_estado_display}}</b>". No hay acciones disponibles</span>
+                        {% if object.puede_pausarse %}
+                            <a href="#" class="btn btn-primary m-1 w-100">
+                                <i class="fa-solid fa-pause"></i> Pausar orden</a>
+                            </a>
                         {% endif %}
+                        {% if object.puede_reanudarse %}
+                            <a href="#" class="btn btn-primary m-1 w-100">
+                                <i class="fa-solid fa-play"></i> Reanudar orden</a>
+                            </a>
+                        {% endif %}
+                        {% if object.puede_ampliarse %}
+                            <a href="#" class="btn btn-primary m-1 w-100">
+                                <i class="fa-solid fa-file-circle-plus"></i> Ampliar presupuesto</a>
+                            </a>
+                        {% endif %}
+                        {% if object.estado == 2 or object.estado == 6 %}
+                            <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>. No hay acciones disponibles.</span>
+                        {%endif%}
+                        {% if object.estado == 5 %}
+                            <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span>
+                            <a href="{% url 'registrarEgresoVehiculo' %}" class="btn btn-primary m-1 w-100">
+                                <i class="fa-solid fa-car"></i> Registrar egreso de vehiculo</a>
+                            </a>
+                        {%endif%}
                     </div>
                 </div>
             </div>

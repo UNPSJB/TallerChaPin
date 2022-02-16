@@ -129,13 +129,22 @@ class OrdenDeTrabajo(models.Model):
         return self.estado == OrdenDeTrabajo.CREADA # VER
 
     def puede_cancelarse(self):
-        return self.estado == OrdenDeTrabajo.CREADA
+        return (self.estado == OrdenDeTrabajo.CREADA) or (self.estado == OrdenDeTrabajo.PAUSADA)
 
     def puede_cambiar_turno(self):
         return self.estado == OrdenDeTrabajo.CREADA
 
     def puede_facturarse(self):
-        return self.estado == OrdenDeTrabajo.REALIZADA # VER
+        return self.estado == OrdenDeTrabajo.REALIZADA
+
+    def puede_pausarse(self):
+        return (self.estado == OrdenDeTrabajo.ACTIVA) or (self.estado == OrdenDeTrabajo.INICIADA)
+
+    def puede_reanudarse(self):
+        return (self.estado == OrdenDeTrabajo.PAUSADA)
+    
+    def puede_ampliarse(self):
+        return (self.estado == OrdenDeTrabajo.PAUSADA)
 
     @property
     def cliente(self):

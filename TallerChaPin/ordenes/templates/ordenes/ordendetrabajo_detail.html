@@ -159,7 +159,7 @@
                             </a>
                         {% endif %}
                         {% if object.puede_ampliarse %}
-                            <a href="#" class="btn btn-primary m-1 w-100">
+                            <a href="{% url 'ampliarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
                                 <i class="fa-solid fa-file-circle-plus"></i> Ampliar presupuesto</a>
                             </a>
                         {% endif %}

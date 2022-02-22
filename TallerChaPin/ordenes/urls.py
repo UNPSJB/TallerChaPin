@@ -25,6 +25,7 @@ urlpatterns = [
           cancelar_orden, name="cancelarOrden"), 
      path('orden/pausar/<int:pk>', pausar_orden, name='pausarOrden'), 
      path('orden/reanudar/<int:pk>', reanudar_orden, name='reanudarOrden'),
+     path('orden/ampliar/<int:pk>', ampliar_orden, name='ampliarOrden'),
      # ------------------ Detalle de Orden de Trabajo -----------------
      path('detalles-orden/listar', DetalleOrdenDeTrabajoListView.as_view(),
           name="listarDetallesOrden"),

@@ -15,7 +15,7 @@ class PresupuestoForm(forms.ModelForm):
     class Meta:
         model = ordenes.Presupuesto
         fields = "__all__"
-        exclude = ["orden", "materiales", "repuestos"]
+        exclude = ["orden", "materiales", "repuestos", "estado"]
 
         labels = {
             "detalles": "Observaciones:"
@@ -415,6 +415,9 @@ class AsignarEmpleadoForm(forms.Form):
         detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(
             pk=detalle_tarea_pk)
         detalle.asignar(empleado)
+
+class AmpliarPresupuestoForm (forms.Form):
+    pass # TODO
 
 # Finalizar Tarea
 

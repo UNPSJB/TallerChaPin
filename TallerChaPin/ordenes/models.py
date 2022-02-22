@@ -271,12 +271,6 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
                          esta_iniciado).order_by('orden__turno')
         return qs
 
-    # def en_proceso(self):
-    #     esta_empezado = models.Q(inicio__isnull=False)
-    #     no_esta_finalizado = models.Q(fin__isnull=True)
-    #     qs = self.filter(esta_empezado & no_esta_finalizado).order_by('orden__turno')
-    #     return qs
-
     def finalizados(self):
         esta_finalizado = models.Q(fin__isnull=False)
         qs = self.filter(esta_finalizado).order_by('orden__turno')
@@ -418,6 +412,15 @@ class RepuestoOrdenDeTrabajo(models.Model):
 # class PresupuestoAmpliado(model.Model): tentativo
 
 class Presupuesto(models.Model):
+    CREADO = 0
+    CANCELADO = 1
+    CONFIRMADO = 2
+    ESTADOS_CHOICES = [
+        (CREADO, 'Creado'),             # Apenas se crea
+        (CANCELADO, 'Cancelado'),       # Si no se confirmó en el plazo de validez
+        (CONFIRMADO, 'Confirmado'),     # Si el cliente lo confirma dentro del plazo de validez
+    ]
+
     cliente = models.ForeignKey(
         Cliente, related_name='presupuestos', on_delete=models.CASCADE)
     vehiculo = models.ForeignKey(
@@ -430,6 +433,8 @@ class Presupuesto(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     validez = models.PositiveIntegerField(
         default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
+    estado = models.PositiveSmallIntegerField(
+        choices=ESTADOS_CHOICES, default=CREADO)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',
                               blank=True, on_delete=models.SET_NULL)
 

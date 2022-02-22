@@ -219,6 +219,20 @@ def reanudar_orden(request, pk):
     orden.save()
     return redirect ('detallesOrden', orden.pk)
 
+def ampliar_orden(request, pk):
+    orden = OrdenDeTrabajo.objects.get(pk=pk)
+
+    form = AmpliarPresupuestoForm(request.POST)
+    if form.is_valid():
+        messages.add_message(request, messages.SUCCESS,
+                             'TEST: True')
+    else:
+        messages.add_message(request, messages.WARNING,
+                             'TEST: False')
+
+    return redirect ('detallesOrden', orden.pk)
+
+
 # ----------------------------- Detalle de orden View ----------------------------------- #
 
 class DetalleOrdenDeTrabajoListView(ListFilterView):

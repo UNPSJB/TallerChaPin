@@ -21,3 +21,5 @@ urlpatterns = [
     path('facturas/pdf/<int:pk>', imprimirFactura.as_view(),
          name='imprimirFactura')
 ]
+
+# commit de prueba.

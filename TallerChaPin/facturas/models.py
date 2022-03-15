@@ -16,9 +16,24 @@ from taller.models import (
 #-------------------------- FACTURA -------------------------------#
 
 class Factura(models.Model):
+    CREADA = 0
+    ACTIVA = 1
+    CANCELADA = 2
+    REALIZADA = 3
+    VENCIDA = 4
+    ESTADO_CHOICES = [
+        (CREADA, 'Creada'),
+        (ACTIVA, 'Activa'),
+        (CANCELADA, 'Cancelada'),
+        (REALIZADA, 'Realizada'),
+        (VENCIDA, 'Vencida'),        
+    ]
+
     orden = models.ForeignKey(OrdenDeTrabajo, on_delete=models.CASCADE)
     fecha = models.DateField()
-
+    estado =  models.PositiveBigIntegerField(
+        choices=ESTADO_CHOICES, default=CREADA)
+    
     # def total(self):
     #     return self.detalles.aggregate(total=models.Sum('precio'))['total']
 

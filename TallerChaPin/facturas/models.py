@@ -34,8 +34,6 @@ class Factura(models.Model):
     estado =  models.PositiveBigIntegerField(
         choices=ESTADO_CHOICES, default=CREADA)
     
-    # def total(self):
-    #     return self.detalles.aggregate(total=models.Sum('precio'))['total']
 
     def total(self):
         return self.detalles.aggregate(total=models.Sum('precio'))['total']
@@ -51,6 +49,7 @@ class Factura(models.Model):
             factura.agregar_detalle(desc, precio)
         orden.estado = OrdenDeTrabajo.FACTURADA
         orden.save()
+        
         return factura
 
     def puede_pagar(self):

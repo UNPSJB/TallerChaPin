@@ -84,9 +84,17 @@ class OrdenDeTrabajo(models.Model):
         # Toma el valor del primer presupuesto realizado
         return self.presupuestos.first().precio_estimado()
 
-    def precio_total(self):
-        # Toma el valor del presupuesto + sus ampliaciones realizadas
-        return sum([p.precio_estimado() for p in self.presupuestos.all()])
+    # Se cambio porque el sumar todos los presupuestos no refleja el total de la orden 
+    # def precio_total(self): 
+    #     # Toma el valor del presupuesto + sus ampliaciones realizadas
+    #     return sum([p.precio_estimado() for p in self.presupuestos.all()]) 
+
+    # Toma el valor de lo que se utilizo en la orden de trabajo para calcular el precio total de los trabajos realizados y materiales/repuestos usados
+    def precio_orden(self):
+        tareas = sum([t.precio() for t in self.detalles.all()])
+        materiales = sum([m.precio() for m in self.orden_materiales.all()])
+        repuestos = sum([r.precio() for r in self.orden_repuestos.all()])        
+        return tareas + materiales + repuestos
 
     def agregar_tarea(self, tarea):
         return DetalleOrdenDeTrabajo.objects.create(tarea=tarea, orden=self)
@@ -304,6 +312,9 @@ class DetalleOrdenDeTrabajo(models.Model):
     def crear(cls, tarea):
         return cls(tarea=tarea)
 
+    def precio(self):
+        return self.tarea.precio
+
     def iniciar(self, empleado, fecha=now()):
         self.empleado = empleado
         self.inicio = fecha
@@ -443,10 +454,8 @@ class Presupuesto(models.Model):
         return PresupuestoRepuesto.objects.create(repuesto=repuesto, presupuesto=self, cantidad=cantidad)
 
     def precio_estimado(self):
-        tareas = self.tareas.all().aggregate(
-            models.Sum('precio'))['precio__sum']
-        materiales = sum([r.precio()
-                         for r in self.presupuesto_materiales.all()])
+        tareas = self.tareas.all().aggregate(models.Sum('precio'))['precio__sum']
+        materiales = sum([r.precio() for r in self.presupuesto_materiales.all()])
         repuestos = sum([r.precio() for r in self.presupuesto_repuestos.all()])        
         return tareas + materiales + repuestos
 

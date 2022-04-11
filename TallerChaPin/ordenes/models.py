@@ -157,7 +157,7 @@ class OrdenDeTrabajo(models.Model):
     def vehiculo(self):
         vehiculo = self.presupuestos.all().first()
         return vehiculo.vehiculo if vehiculo is not None else None
-    
+
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 

@@ -1,4 +1,5 @@
-
+from django.urls import reverse
+from django.utils.http import urlencode
 from django import forms
 from django.utils.regex_helper import Choice
 from . import models as ordenes
@@ -8,40 +9,60 @@ from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
 from django.forms import inlineformset_factory
 from TallerChaPin.utils import FiltrosForm
 
-
+def reverse_querystring(view, urlconf=None, args=None, kwargs=None, current_app=None, query_kwargs=None):
+    '''Custom reverse to handle query strings.
+    Usage:
+        reverse('app.views.my_view', kwargs={'pk': 123}, query_kwargs={'search': 'Bob'})
+    '''
+    base_url = reverse(view, urlconf=urlconf, args=args, kwargs=kwargs, current_app=current_app)
+    if query_kwargs:
+        return '{}?{}'.format(base_url, urlencode(query_kwargs))
+    return base_url
+    
 # Presupuesto
 
-class PresupuestoForm(forms.ModelForm):
-    class Meta:
-        model = ordenes.Presupuesto
-        fields = "__all__"
-        exclude = ["orden", "materiales", "repuestos"]
+def PresupuestoForm(base = None): 
+    class PresupuestoForm(forms.ModelForm):
+        class Meta:
+            model = ordenes.Presupuesto
+            fields = "__all__" if base is None else ["detalles", "tareas"]
+            exclude = ["orden", "materiales", "repuestos"] if base is None else ["orden", "materiales", "repuestos", "cliente", "vehiculo", "validez"]
 
-        labels = {
-            "detalles": "Observaciones:"
-        }
-        widgets = {
-            "tareas": forms.SelectMultiple(attrs={'size': '10'}),
-        }
+            labels = {
 
-    def save(self, materiales, repuestos):
-        presupuesto = super().save()
-        for material in materiales:
-            if "material" in material:
-                matObj = material["material"]
-                matCantidad = material["cantidad"]
-                presupuesto.agregar_material(matObj, matCantidad)
-        for repuesto in repuestos:
-            if "repuesto" in repuesto:
-                repObj = repuesto["repuesto"]
-                repCantidad = repuesto["cantidad"]
-                presupuesto.agregar_repuesto(repObj, repCantidad)
-        return presupuesto
+            }
+            widgets = {
+                "tareas": forms.CheckboxSelectMultiple(),
+            }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_tag = False
+        def save(self, materiales, repuestos):
+            presupuesto = super().save(commit=False)
+            if base is not None:
+                presupuesto.cliente = base.cliente
+                presupuesto.vehiculo = base.vehiculo
+                presupuesto.orden = base.orden
+                presupuesto.validez = base.validez
+            presupuesto.save()
+            for material in materiales:
+                if "material" in material:
+                    matObj = material["material"]
+                    matCantidad = material["cantidad"]
+                    presupuesto.agregar_material(matObj, matCantidad)
+            for repuesto in repuestos:
+                if "repuesto" in repuesto:
+                    repObj = repuesto["repuesto"]
+                    repCantidad = repuesto["cantidad"]
+                    presupuesto.agregar_repuesto(repObj, repCantidad)
+            return presupuesto
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.helper = FormHelper()
+            self.helper.form_tag = False
+            if base is not None:
+                self.helper.form_action = reverse_querystring('crearPresupuesto', query_kwargs={'pid': base.pk})
+
+    return PresupuestoForm
 
 # Presupuesto - Material
 

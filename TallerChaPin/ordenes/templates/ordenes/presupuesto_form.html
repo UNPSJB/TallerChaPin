@@ -7,7 +7,7 @@
     <h3>{{ titulo }}</h3>
 
     
-    <form action="{% url 'crearPresupuesto' %}" method="post">
+    <form action="{{ form.helper.form_action }}" method="post">
         {% crispy form form.helper %}
         <div data-formset="presupuesto_materiales">
             {% crispy presupuesto_material_formset presupuesto_material_formset_helper %}

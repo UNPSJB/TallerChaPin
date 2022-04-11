@@ -177,12 +177,8 @@ class Cliente(models.Model):
 
     def vip(self):
         # Obtener ultimas tres facturas impagas del cliente
-        facturas = self.facturas.all()
-        if len(facturas) >= 3:
-            facturas = self.facturas.filter(
-                pagado=False).order_by('-fecha')[:3]
-            return len(facturas) <= 3
-        return False
+        facturas = self.facturas.order_by('-fecha')[:3]
+        return len(facturas) == 3 and all(f.pagado for f in facturas)
 
 def validar_anio(anio):
     if anio < date.today().year - 12:

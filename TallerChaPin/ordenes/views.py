@@ -84,9 +84,9 @@ class PresupuestoCreateView(CreateView):
     repuesto_form = None
 
     def get_presupuesto_base(self):
-        pid = self.request.GET.get("pk")
+        pk = self.kwargs["pk"] if "pk" in self.kwargs.keys() else None
         # TODO: get_object_or_404
-        return Presupuesto.objects.get(pk=pid) if pid is not None else None
+        return Presupuesto.objects.get(pk=pk) if pk is not None else None
         
     def get_form_class(self, *args, **kwargs):
         base = self.get_presupuesto_base()
@@ -106,9 +106,9 @@ class PresupuestoCreateView(CreateView):
         base = self.get_presupuesto_base()
         
         initial_materiales = [
-            {'material': pm["material_id"], "cantidad": pm["cantidad"]} for pm in base.presupuesto_materiales.all().values()] if base is not None else []
+            {'material': pm["material_id"], "cantidad": pm["cantidad"]} for pm in base.presupuesto_materiales.all().values()] if base is not None else [{'material': None, "cantidad": 0}]
         initial_repuestos = [
-            {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in base.presupuesto_repuestos.all().values()] if base is not None else []
+            {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in base.presupuesto_repuestos.all().values()] if base is not None else [{'repuesto': None, "cantidad": 0}]
 
         context['presupuesto_material_formset'] = self.material_form or PresupuestoMaterialInline(len(initial_materiales))(initial = initial_materiales) #pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
@@ -120,10 +120,12 @@ class PresupuestoCreateView(CreateView):
 
     def post(self, *args, **kwargs):
         self.object = None
+        #print(self.request.POST)
         self.material_form = PresupuestoMaterialInline()(self.request.POST)
         self.repuesto_form = PresupuestoRepuestoInline()(self.request.POST)
-        form = self.get_form()
+        form = PresupuestoForm()(self.request.POST)
         if self.repuesto_form.is_valid() and self.material_form.is_valid() and form.is_valid():
+            print(form.cleaned_data)
             presupuesto = form.save(
                 self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
             return redirect('detallesPresupuesto', presupuesto.pk)

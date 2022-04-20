@@ -43,6 +43,7 @@ def PresupuestoForm(base = None):
                 presupuesto.orden = base.orden
                 presupuesto.validez = base.validez
             presupuesto.save()
+            print(presupuesto.tareas.all())
             for material in materiales:
                 if "material" in material:
                     matObj = material["material"]
@@ -60,7 +61,7 @@ def PresupuestoForm(base = None):
             self.helper = FormHelper()
             self.helper.form_tag = False
             if base is not None:
-                self.helper.form_action = reverse_querystring('crearPresupuesto', query_kwargs={'pid': base.pk})
+                self.helper.form_action = reverse_querystring('ampliarPresupuesto', args=[base.pk])
 
     return PresupuestoForm
 

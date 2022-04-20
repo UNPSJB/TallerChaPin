@@ -447,7 +447,11 @@ class Presupuesto(models.Model):
             models.Sum('precio'))['precio__sum']
         materiales = sum([r.precio()
                          for r in self.presupuesto_materiales.all()])
-        repuestos = sum([r.precio() for r in self.presupuesto_repuestos.all()])        
+        repuestos = sum([r.precio() for r in self.presupuesto_repuestos.all()])
+        # TODO: arreglar el calculo de precio estimado cuando no se requieren repuestos
+        tareas = tareas if tareas else 0
+        materiales = materiales if materiales else 0
+        repuestos = repuestos if repuestos else 0
         return tareas + materiales + repuestos
 
     def confirmar(self, turno):

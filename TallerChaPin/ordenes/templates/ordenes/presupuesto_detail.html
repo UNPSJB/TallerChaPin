@@ -141,7 +141,7 @@
                 class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
 
                 <a href="{% url 'modificarPresupuesto' object.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
-                <button class="btn btn-primary m-1 w-100"><i class="fas fa-plus-circle"></i> Ampliar </button>
+                <a href="{% url 'ampliarPresupuesto' object.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-plus-circle"></i> Ampliar </a>
                 <a href="{% url 'crearOrden' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
             </div>
         </div>

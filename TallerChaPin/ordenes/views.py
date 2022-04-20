@@ -84,7 +84,7 @@ class PresupuestoCreateView(CreateView):
     repuesto_form = None
 
     def get_presupuesto_base(self):
-        pid = self.request.GET.get("pid")
+        pid = self.request.GET.get("pk")
         # TODO: get_object_or_404
         return Presupuesto.objects.get(pk=pid) if pid is not None else None
         

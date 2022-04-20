@@ -14,6 +14,8 @@ urlpatterns = [
           PresupuestoUpdateView.as_view(), name="modificarPresupuesto"),
      path('presupuesto/eliminar/<int:pk>',
           PresupuestoDeleteView.as_view(), name="eliminarPresupuesto"),
+     path('presupuesto/ampliar/<int:pk>',
+          PresupuestoCreateView.as_view(), name="ampliarPresupuesto"),
      # ------------------ Orden de Trabajo -----------------
      path('orden/crear/<int:pk>', OrdenTrabajoCreateView.as_view(), name="crearOrden"),
      path('orden/listar', OrdenTrabajoListView.as_view(), name="listarOrdenes"),

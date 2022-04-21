@@ -1,7 +1,7 @@
 from django.http import request
 from django.http.response import HttpResponse
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
@@ -85,8 +85,7 @@ class PresupuestoCreateView(CreateView):
 
     def get_presupuesto_base(self):
         pk = self.kwargs["pk"] if "pk" in self.kwargs.keys() else None
-        # TODO: get_object_or_404
-        return Presupuesto.objects.get(pk=pk) if pk is not None else None
+        return get_object_or_404(Presupuesto, pk=pk)
         
     def get_form_class(self, *args, **kwargs):
         base = self.get_presupuesto_base()
@@ -120,14 +119,14 @@ class PresupuestoCreateView(CreateView):
 
     def post(self, *args, **kwargs):
         self.object = None
-        #print(self.request.POST)
         self.material_form = PresupuestoMaterialInline()(self.request.POST)
         self.repuesto_form = PresupuestoRepuestoInline()(self.request.POST)
-        form = PresupuestoForm()(self.request.POST)
+        form = self.get_form_class()(self.request.POST)
         if self.repuesto_form.is_valid() and self.material_form.is_valid() and form.is_valid():
-            print(form.cleaned_data)
             presupuesto = form.save(
-                self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
+                self.material_form.cleaned_data, 
+                self.repuesto_form.cleaned_data,
+                form.cleaned_data['tareas'])
             return redirect('detallesPresupuesto', presupuesto.pk)
         return self.form_invalid(form=form)
 

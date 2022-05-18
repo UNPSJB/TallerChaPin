@@ -155,6 +155,7 @@ class PagoDebitoView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        print(self.object, self.kwargs.get('pk'))
         context['titulo'] = "Ingresar Monto a Pagar"
         return context
 

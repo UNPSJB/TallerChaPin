@@ -138,7 +138,6 @@
                     {% if object.puede_pagar %} 
                     <a href="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
                         <i class="fas fa-check-circle"></i> Pagar</a>
-                    </a>
                     <a href="{% url 'pagoDebito' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
                         <i class="fas fa-check-circle"></i> Pagar con debito</a>
                     <a href="{% url 'pagoCredito' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">

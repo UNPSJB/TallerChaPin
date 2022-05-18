@@ -33,7 +33,7 @@ class Factura(models.Model):
     fecha = models.DateField()
     estado =  models.PositiveBigIntegerField(
         choices=ESTADO_CHOICES, default=CREADA)
-    
+    cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=False)
 
     def total(self):
         return self.detalles.aggregate(total=models.Sum('precio'))['total']
@@ -64,7 +64,10 @@ class Factura(models.Model):
     def agregar_detalle(self, descripcion, precio):
         return DetalleFactura.objects.create(factura=self, descripcion=descripcion, precio=precio)
 
-    def pagar(self, monto, tipo):
+    def pagar(self, monto, tipo, num_cuotas=None):
+        if len(self.pagos.all()) == 0:
+            self.cuotas = num_cuotas
+            self.save()
         return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
 
     def pagar_new(self, monto, tipo):
@@ -79,6 +82,9 @@ class Factura(models.Model):
             num_coutas = 1 #cambiar luego.
             Pago.pagar_con_credito(factura=self, monto=monto, tipo=tipo, num_cuotas=num_coutas)
        
+    def cuotas_pagas(self):
+        return len(self.pagos.all())
+
     def saldo(self):
         if len(self.pagos.all()) > 0:
             return self.total() - self.pagos.all().aggregate(total=models.Sum('monto'))['total']

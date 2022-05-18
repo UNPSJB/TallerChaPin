@@ -123,7 +123,7 @@ class PagoCreateView(CreateView):
 
     model = Pago
     form_class = PagoForm
-    success_url = reverse_lazy ('crearFactura')
+    success_url = reverse_lazy ('listarPagos')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -137,16 +137,58 @@ class PagoCreateView(CreateView):
         if form.is_valid():
             monto = form.cleaned_data.get('monto')
             tipo = form.cleaned_data.get('tipo')
-            print(factura.total())
+            couta = form.cleaned_data.get('couta')
             if monto > factura.total():
                 messages.add_message(self.request, messages.WARNING, "El monto ingresado supera el total de la factura")
                 return redirect ('crearPago', factura.pk)
             else:
-                factura.pagar(monto,tipo)
+                factura.pagar(monto,tipo,couta)
                 messages.add_message(self.request, messages.SUCCESS, "Pago registrado exitosamente")
                 return redirect ('listarPagos')
         return self.form_invalid(form=form)
 
+class PagoDebitoView(CreateView):
+    # WIP:Consultar
+    model = Pago
+    form_class = PagoDebitoForm
+    success_url = reverse_lazy ('listarPagos')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Ingresar Monto a Pagar"
+        return context
+
+class PagoCreditoView(CreateView):
+    # WIP:Consultar
+    model = Pago
+    form_class = PagoCreditoForm
+    success_url = reverse_lazy ('listarPagos')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Ingresar Monto a Pagar"
+        return context
+
+class PagoContadoView(CreateView):
+    # WIP:Consultar
+    model = Pago
+    form_class = PagoContadoForm
+    success_url = reverse_lazy ('listarPagos')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Ingresar Monto a Pagar"
+        return context
+
+
+class PagoDetailView(DetailView):
+
+    model = Pago
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "TallerChaPin"
+        return context
 
 class PagoUpdateView(UpdateView):
 

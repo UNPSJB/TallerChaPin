@@ -8,11 +8,11 @@
         {{ titulo }}
     </h3>
         <div class="col-12">
-                <a href="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
+                <a href="{% url 'pagoDebito' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
                     <i class="fas fa-check-circle"></i> Pagar con debito</a>
-                <a href="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
+                <a href="{% url 'pagoCredito' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
                     <i class="fas fa-check-circle"></i> Pagar con credito</a>
-                <a href="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
+                <a href="{% url 'pagoContado' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
                     <i class="fas fa-check-circle"></i> Pagar al contado</a>           
         </div>
 </div>

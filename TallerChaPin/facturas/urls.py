@@ -14,7 +14,7 @@ urlpatterns = [
          FacturaDeleteView.as_view(), name="eliminarFactura"),
     # ----------------Pago-------------------------
     path('pagos/crear/<int:pk>', PagoCreateView.as_view(), name="crearPago"),
-    path('pagos/crear/<int:pk>/debito', PagoDebitoView.as_view(), name="pagoDebito"),
+    path('pagos/crear/debito/<int:pk>', PagoDebitoView.as_view(), name="pagoDebito"),
     path('pagos/crear/<int:pk>/credito', PagoCreditoView.as_view(), name="pagoCredito"),
     path('pagos/crear/<int:pk>/contado', PagoContadoView.as_view(), name="pagoContado"),
     path('pagos/detalle/<int:pk>', PagoDetailView.as_view(), name="detallesPago"),

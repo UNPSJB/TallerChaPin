@@ -79,8 +79,8 @@ class Factura(models.Model):
             Pago.pagar_con_debito(factura=self, monto=monto, tipo=tipo)
         
         if(tipo==Pago.TARJETA_CREDITO):
-            num_coutas = 1 #cambiar luego.
-            Pago.pagar_con_credito(factura=self, monto=monto, tipo=tipo, num_cuotas=num_coutas)
+            num_cuotas = 1 #cambiar luego.
+            Pago.pagar_con_credito(factura=self, monto=monto, tipo=tipo, num_cuotas=num_cuotas)
        
     def cuotas_pagas(self):
         return len(self.pagos.all())

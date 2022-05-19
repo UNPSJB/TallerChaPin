@@ -11,7 +11,6 @@ from django.db import models
 from django.conf import settings
 # Create your models here.
 
-
 class OrdenDeTrabajoManager(models.Manager):
     def para_el_dia(self, fecha):
         return self.filter(turno__date=fecha.date())
@@ -390,9 +389,6 @@ class DetalleOrdenDeTrabajo(models.Model):
             orden.actualizar_material(material, cantidad_material)
         if repuesto is not None:
             orden.actualizar_repuesto(repuesto, cantidad_repuesto)
-
-
-
 
 
 class MaterialOrdenDeTrabajo(models.Model):

@@ -85,7 +85,7 @@ class PresupuestoCreateView(CreateView):
 
     def get_presupuesto_base(self):
         pk = self.kwargs["pk"] if "pk" in self.kwargs.keys() else None
-        return get_object_or_404(Presupuesto, pk=pk)
+        return Presupuesto.objects.get(pk=pk) if pk is not None else None
         
     def get_form_class(self, *args, **kwargs):
         base = self.get_presupuesto_base()
@@ -298,6 +298,7 @@ def asignar_empleado(request):
                              'La tarea se asignó a un empleado exitosamente! :D')
     else:
         # TODO: mostrar form.errors
+        print(form.errors)
         messages.add_message(request, messages.WARNING,
                              'El formulario tiene errores.')
     return redirect('listarDetallesOrden')

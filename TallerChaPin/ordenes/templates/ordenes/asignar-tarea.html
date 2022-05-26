@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const element = document.getElementById('asignar');
 
   // configuramos el contenido del modal
-  element.addEventListener('show.bs.modal', (e) => {
-    const btn = e.explicitOriginalTarget;
+  element.addEventListener('shown.bs.modal', (e) => {
+    const btn = e.relatedTarget;
     $('#id_asignar-tarea').val(btn.dataset.idTarea);
   })
 

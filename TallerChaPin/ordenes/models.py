@@ -1,4 +1,3 @@
-from datetime import date, datetime
 from django.utils.timezone import now
 from django.utils import timezone
 from taller.models import (
@@ -28,7 +27,6 @@ class NoEntregoVehiculoException(Exception):
     def __init__(self, message, estado) -> None:
         super().__init__(message)
         self.estado = estado
-
 
 def fecha_es_futura(fecha):
     if fecha < timezone.now():

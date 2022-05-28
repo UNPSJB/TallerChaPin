@@ -9,6 +9,7 @@ from taller.models import (
 )
 from django.db import models
 from django.conf import settings
+from django.core.exceptions import ValidationError
 # Create your models here.
 
 
@@ -474,24 +475,26 @@ class Presupuesto(models.Model):
     def cantidad_detalles(self):
         return self.tareas.count() + self.materiales.count() + self.repuestos.count()
 
+def cantidad_positiva(v):
+    if v <= 0:
+        raise ValidationError('La cantidad de un insumo debe ser mayor a 0')
 
 class PresupuestoMaterial(models.Model):
     material = models.ForeignKey(
         Material, on_delete=models.CASCADE, related_name='presupuestos')
     presupuesto = models.ForeignKey(
         Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_materiales')
-    cantidad = models.PositiveBigIntegerField()
+    cantidad = models.PositiveBigIntegerField(validators=[cantidad_positiva])
 
     def precio(self):
         return self.material.precio * self.cantidad
-
 
 class PresupuestoRepuesto(models.Model):
     repuesto = models.ForeignKey(
         Repuesto, on_delete=models.CASCADE, related_name='presupuestos')
     presupuesto = models.ForeignKey(
         Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_repuestos')
-    cantidad = models.PositiveBigIntegerField()
+    cantidad = models.PositiveBigIntegerField(validators=[cantidad_positiva])   # cantidad debe ser positiva
 
     def precio(self):
         return self.repuesto.precio * self.cantidad

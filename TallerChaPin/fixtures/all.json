@@ -1988,7 +1988,7 @@
   "pk": 2,
   "fields": {
     "nombre": "Pintar",
-    "descripcion": "Pintar una parte del vehículo",
+    "descripcion": "Pintar una parte del vehiculo",
     "materiales": true,
     "repuestos": false,
     "planilla": true
@@ -2054,7 +2054,7 @@
   "pk": 8,
   "fields": {
     "nombre": "Puertas y Portones",
-    "descripcion": "Colocación de puertas portones capot, etc",
+    "descripcion": "Colocacion de puertas portones capot, etc",
     "materiales": true,
     "repuestos": true,
     "planilla": false
@@ -2065,7 +2065,7 @@
   "pk": 9,
   "fields": {
     "nombre": "Interiores",
-    "descripcion": "Colocación de butacas tablero, baul, etc",
+    "descripcion": "Colocacion de butacas tablero, baul, etc",
     "materiales": true,
     "repuestos": true,
     "planilla": false
@@ -2228,8 +2228,8 @@
   "model": "taller.tarea",
   "pk": 2,
   "fields": {
-    "nombre": "Reparación de Chapa hasta 20cm2",
-    "descripcion": "Reparación de Chapa",
+    "nombre": "Reparacion de Chapa hasta 20cm2",
+    "descripcion": "Reparacion de Chapa",
     "tipo": 3,
     "precio": "50.00"
   }
@@ -4156,7 +4156,7 @@
       "repuesto"
     ],
     "object_id": "2",
-    "object_repr": "Reparación de Chapa",
+    "object_repr": "Reparacion de Chapa",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -4246,7 +4246,7 @@
       "repuesto"
     ],
     "object_id": "2",
-    "object_repr": "Reparación de Chapa",
+    "object_repr": "Reparacion de Chapa",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
   }
@@ -4372,7 +4372,7 @@
       "repuesto"
     ],
     "object_id": "2",
-    "object_repr": "Reparación de Chapa hasta 20cm2",
+    "object_repr": "Reparacion de Chapa hasta 20cm2",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
   }

@@ -1,4 +1,6 @@
+from datetime import date, datetime
 from django.utils.timezone import now
+from django.utils import timezone
 from taller.models import (
     Empleado,
     Cliente,
@@ -28,6 +30,10 @@ class NoEntregoVehiculoException(Exception):
         self.estado = estado
 
 
+def fecha_es_futura(fecha):
+    if fecha < timezone.now():
+        raise ValidationError('Fecha no válida')
+
 class OrdenDeTrabajo(models.Model):
     CREADA = 0
     ACTIVA = 1
@@ -52,7 +58,7 @@ class OrdenDeTrabajo(models.Model):
         Material, through='MaterialOrdenDeTrabajo')
     repuestos = models.ManyToManyField(
         Repuesto, through='RepuestoOrdenDeTrabajo')
-    turno = models.DateTimeField()
+    turno = models.DateTimeField(validators=[fecha_es_futura])
     ingreso = models.DateTimeField(null=True, blank=True)
     egreso = models.DateTimeField(null=True, blank=True)
     estado = models.PositiveSmallIntegerField(

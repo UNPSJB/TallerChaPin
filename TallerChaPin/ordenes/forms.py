@@ -1,3 +1,4 @@
+from ast import arg
 from django.urls import reverse
 from django.utils.http import urlencode
 from django import forms
@@ -47,7 +48,6 @@ def PresupuestoForm(base = None):
             for tarea in tareas:
                 presupuesto.agregar_tarea(tarea)
 
-            #print(presupuesto.tareas.all())
             for material in materiales:
                 if "material" in material:
                     matObj = material["material"]

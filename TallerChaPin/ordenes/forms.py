@@ -8,6 +8,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
 from django.forms import inlineformset_factory
 from TallerChaPin.utils import FiltrosForm
+from datetime import datetime
 
 def reverse_querystring(view, urlconf=None, args=None, kwargs=None, current_app=None, query_kwargs=None):
     '''Custom reverse to handle query strings.
@@ -229,7 +230,7 @@ class OrdenForm(forms.ModelForm):
 
         # }
         widgets = {
-            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
 
         }
 

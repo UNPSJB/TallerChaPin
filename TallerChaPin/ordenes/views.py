@@ -200,7 +200,9 @@ class OrdenTrabajoCreateView(CreateView):
             turno = form.cleaned_data.get('turno')
             orden = presupuesto.confirmar(turno)
             return redirect('detallesOrden', orden.pk)
-        return redirect('crearOrden', presupuesto.pk)
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+            return redirect('crearOrden', presupuesto.pk)
         
 class OrdenTrabajoUpdateView(UpdateView):
 

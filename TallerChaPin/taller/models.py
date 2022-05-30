@@ -140,9 +140,9 @@ class TipoMaterial(models.Model):
     def __str__(self):
         return self.nombre
 
-    def clean(self) -> None:
-        validacion_nombre_unico(TipoMaterial, "nombre", self.nombre)
-        return super().clean()
+    # def clean(self) -> None:
+    #     validacion_nombre_unico(TipoMaterial, "nombre", self.nombre)
+    #     return super().clean()
 
 
 class Material(models.Model):

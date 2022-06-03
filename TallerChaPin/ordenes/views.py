@@ -1,4 +1,4 @@
-from django.http import request
+from django.http import request, JsonResponse
 from django.http.response import HttpResponse
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404
@@ -12,6 +12,26 @@ from django.core.exceptions import ObjectDoesNotExist
 from wkhtmltopdf.views import PDFTemplateView
 from django.contrib import messages
 from TallerChaPin.utils import ListFilterView
+import json
+from functools import reduce
+
+def requerimientos_tareas(request):
+    """
+        Recibe el pk de una o mas tareas y se retorna un diccionario como:
+        { "materiales": <True|False>, "repuestos": <True|False> } 
+        según si alguna de ellas requiere o no materiales y/o repuestos.
+    """
+    pks = json.load(request)['tareas']
+    tareas = [Tarea.objects.get(pk=pk) for pk in pks]
+    materiales = False
+    repuestos = False
+    
+    for t in tareas:
+        materiales |= t.tipo.materiales
+        repuestos |= t.tipo.repuestos
+
+    requerimientos = {"materiales": materiales, "repuestos": repuestos}
+    return JsonResponse(requerimientos)
 
 class imprimirPresupuesto(PDFTemplateView):
     #filename = 'presupuesto_pedro.pdf'
@@ -486,7 +506,3 @@ class ListarTurnosListView(ListView):
 def datoPlantilla(request, pk):
     orden = OrdenDeTrabajo.objects.get(pk=pk)
     return render (request,'ordenes/datoPlantilla.html',{'orden':orden})
-
-
-
-    

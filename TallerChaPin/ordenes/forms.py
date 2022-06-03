@@ -171,7 +171,7 @@ class PresupuestoRepuestoFormSetHelper(FormHelper):
             'cantidad'
         )
         self.render_required_fields = True
-        self.add_input(Submit('submit', 'Guardar'))
+        #self.add_input(Submit('submit', 'Guardar'))
 
 # Presupuesto - Filtro
 

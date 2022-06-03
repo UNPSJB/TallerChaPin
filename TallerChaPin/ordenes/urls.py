@@ -3,6 +3,7 @@ from .views import *
 from wkhtmltopdf.views import PDFTemplateView
 
 urlpatterns = [
+     path('presupuesto/tareas/requerimientos', requerimientos_tareas, name='requerimientos_tareas'),
      # ----------------- Presupuesto -----------------
      path('presupuesto/crear', PresupuestoCreateView.as_view(),
           name="crearPresupuesto"),

@@ -485,20 +485,20 @@ def cantidad_positiva(v):
 
 class PresupuestoMaterial(models.Model):
     material = models.ForeignKey(
-        Material, on_delete=models.CASCADE, related_name='presupuestos')
+        Material, on_delete=models.CASCADE, related_name='presupuestos', null=True, blank=True)
     presupuesto = models.ForeignKey(
         Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_materiales')
-    cantidad = models.PositiveBigIntegerField(validators=[cantidad_positiva])
+    cantidad = models.PositiveBigIntegerField(validators=[], null=True, blank=True, default=1)
 
     def precio(self):
         return self.material.precio * self.cantidad
 
 class PresupuestoRepuesto(models.Model):
     repuesto = models.ForeignKey(
-        Repuesto, on_delete=models.CASCADE, related_name='presupuestos')
+        Repuesto, on_delete=models.CASCADE, related_name='presupuestos', null=True, blank=True)
     presupuesto = models.ForeignKey(
         Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_repuestos')
-    cantidad = models.PositiveBigIntegerField(validators=[cantidad_positiva])   # cantidad debe ser positiva
+    cantidad = models.PositiveBigIntegerField(validators=[], null=True, blank=True, default=1)   # cantidad debe ser positiva
 
     def precio(self):
         return self.repuesto.precio * self.cantidad

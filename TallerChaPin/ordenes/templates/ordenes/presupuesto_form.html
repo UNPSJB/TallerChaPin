@@ -3,6 +3,7 @@
 
 {% block extracss %}
 <link rel="stylesheet" href="{% static 'ordenes/css/presupuesto_form.css' %}" />
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}"> <!-- TODO: Esta línea está repetida, se debería heredar del template anterior-->
 {% endblock %}
 
 {% load crispy_forms_tags %}
@@ -50,7 +51,6 @@ $(document).ready(() => {
             $('#repuestos').toggle(res.repuestos);
         })
         .catch(err => console.log(err))
-
     }
 
     $("#div_id_tareas input[type='checkbox']").change((e) => {

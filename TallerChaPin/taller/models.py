@@ -33,7 +33,7 @@ class MarcaQuerySet(models.QuerySet):
 
 class Marca(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200, blank=True)
     objects = MarcaQuerySet.as_manager()
 
     def __str__(self):
@@ -51,7 +51,7 @@ class ModeloQuerySet(models.QuerySet):
 
 class Modelo(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200, blank=True)
     marca = models.ForeignKey(
         Marca, related_name="modelos", on_delete=models.CASCADE)
     anio = models.PositiveSmallIntegerField()
@@ -69,7 +69,7 @@ class Modelo(models.Model):
 
 class TipoTarea(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200, blank=True)
     # Requiere Material[si/no]
     materiales = models.BooleanField(default=False)
     # Requiere Repuesto[si/no]
@@ -87,7 +87,7 @@ class TipoTarea(models.Model):
 
 class Tarea(models.Model):
     nombre = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200, blank=True)
     tipo = models.ForeignKey(TipoTarea, on_delete=models.CASCADE)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
 

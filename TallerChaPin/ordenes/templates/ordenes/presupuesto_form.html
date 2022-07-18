@@ -49,6 +49,15 @@ $(document).ready(() => {
             console.log(res)
             $('#materiales').toggle(res.materiales);
             $('#repuestos').toggle(res.repuestos);
+
+            if (res.repuestos){
+                $('select[id^="id_presupuesto_repuestos-0"]').prop('required',true);
+                $('input[id^="id_presupuesto_repuestos-0"]').prop('min',1);
+            }
+            if (res.materiales){
+                $('select[id^="id_presupuesto_materiales-0"]').prop('required',true);
+                $('input[id^="id_presupuesto_materiales-0"]').prop('min',1);
+            }
         })
         .catch(err => console.log(err))
     }

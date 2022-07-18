@@ -49,13 +49,12 @@ def PresupuestoForm(base = None):
                 presupuesto.agregar_tarea(tarea)
 
             for material in materiales:
-                print(material)
-                if "material" in material and material["material"] is not None:
+                if "material" in material and material["material"] is not None and material["cantidad"] is not 0:
                     matObj = material["material"]
                     matCantidad = material["cantidad"]
                     presupuesto.agregar_material(matObj, matCantidad)
             for repuesto in repuestos:
-                if "repuesto" in repuesto and repuesto["repuesto"] is not None:
+                if "repuesto" in repuesto and repuesto["repuesto"] is not None and repuesto["cantidad"] is not 0:
                     repObj = repuesto["repuesto"]
                     repCantidad = repuesto["cantidad"]
                     presupuesto.agregar_repuesto(repObj, repCantidad)
@@ -135,7 +134,7 @@ class PresupuestoRepuestoForm(forms.ModelForm):
 
         widgets = {
             'repuesto': forms.Select(attrs={'autocomplete': 'off'}),
-            'cantidad': forms.NumberInput(attrs={'min': 1})
+            'cantidad': forms.TextInput(attrs={'type': 'number', 'min':'0'})
         }
 
     def __init__(self, *args, **kwargs):

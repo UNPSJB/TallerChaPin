@@ -125,9 +125,9 @@ class PresupuestoCreateView(CreateView):
         base = self.get_presupuesto_base()
         
         initial_materiales = [
-            {'material': pm["material_id"], "cantidad": pm["cantidad"]} for pm in base.presupuesto_materiales.all().values()] if base is not None else [{'material': None, "cantidad": 0}]
+            {'material': pm["material_id"], "cantidad": pm["cantidad"]} for pm in base.presupuesto_materiales.all().values()] if base is not None else [{'material': None, "cantidad": 1}]
         initial_repuestos = [
-            {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in base.presupuesto_repuestos.all().values()] if base is not None else [{'repuesto': None, "cantidad": 0}]
+            {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in base.presupuesto_repuestos.all().values()] if base is not None else [{'repuesto': None, "cantidad": 1}]
 
         context['presupuesto_material_formset'] = self.material_form or PresupuestoMaterialInline(len(initial_materiales))(initial = initial_materiales) #pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()

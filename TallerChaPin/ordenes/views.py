@@ -14,6 +14,7 @@ from django.contrib import messages
 from TallerChaPin.utils import ListFilterView
 import json
 from functools import reduce
+from .utils import requiere_insumo
 
 def requerimientos_tareas(request):
     """
@@ -23,15 +24,7 @@ def requerimientos_tareas(request):
     """
     pks = json.load(request)['tareas']
     tareas = [Tarea.objects.get(pk=pk) for pk in pks]
-    materiales = False
-    repuestos = False
-    
-    for t in tareas:
-        materiales |= t.tipo.materiales
-        repuestos |= t.tipo.repuestos
-
-    requerimientos = {"materiales": materiales, "repuestos": repuestos}
-    return JsonResponse(requerimientos)
+    return JsonResponse(requiere_insumo(tareas))
 
 class imprimirPresupuesto(PDFTemplateView):
     #filename = 'presupuesto_pedro.pdf'

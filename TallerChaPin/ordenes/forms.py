@@ -9,6 +9,7 @@ from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
 from django.forms import inlineformset_factory
 from TallerChaPin.utils import FiltrosForm
 from datetime import datetime
+from .utils import requiere_insumo
 
 def reverse_querystring(view, urlconf=None, args=None, kwargs=None, current_app=None, query_kwargs=None):
     '''Custom reverse to handle query strings.
@@ -48,17 +49,30 @@ def PresupuestoForm(base = None):
             for tarea in tareas:
                 presupuesto.agregar_tarea(tarea)
 
-            for material in materiales:
-                if "material" in material and material["material"] is not None and material["cantidad"] is not 0:
-                    matObj = material["material"]
-                    matCantidad = material["cantidad"]
-                    presupuesto.agregar_material(matObj, matCantidad)
-            for repuesto in repuestos:
-                if "repuesto" in repuesto and repuesto["repuesto"] is not None and repuesto["cantidad"] is not 0:
-                    repObj = repuesto["repuesto"]
-                    repCantidad = repuesto["cantidad"]
-                    presupuesto.agregar_repuesto(repObj, repCantidad)
+            if self.requiere("materiales", tareas):
+                for material in materiales:
+                    if "material" in material and material["material"] is not None and material["cantidad"] is not 0:
+                        matObj = material["material"]
+                        matCantidad = material["cantidad"]
+                        presupuesto.agregar_material(matObj, matCantidad)
+
+            if self.requiere("repuestos", tareas):
+                for repuesto in repuestos:
+                    if "repuesto" in repuesto and repuesto["repuesto"] is not None and repuesto["cantidad"] is not 0:
+                        repObj = repuesto["repuesto"]
+                        repCantidad = repuesto["cantidad"]
+                        presupuesto.agregar_repuesto(repObj, repCantidad)
+            
             return presupuesto
+
+        def requiere(self, insumo, tareas):
+
+            requerimientos = requiere_insumo(tareas)
+            
+            if insumo not in requerimientos.keys():
+                return False
+
+            return requerimientos[insumo]
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)

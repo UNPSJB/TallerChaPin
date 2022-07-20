@@ -236,6 +236,10 @@ class OrdenDeTrabajo(models.Model):
     def actualizar_estado(self):
         print(self.detalles.all())
 
+    def get_ultimo_presupuesto(self):
+        return self.presupuestos.all().order_by('fecha').last()
+        
+
 
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):
@@ -388,7 +392,11 @@ class DetalleOrdenDeTrabajo(models.Model):
         if repuesto is not None:
             orden.actualizar_repuesto(repuesto, cantidad_repuesto)
 
+    def get_titulo(self):
+        return f"{self.tarea} (#{self.orden.pk})"
 
+    def se_debe_mostrar(self):
+        return self.orden.estado > 1
 
 
 
@@ -481,6 +489,18 @@ class Presupuesto(models.Model):
 
     def cantidad_detalles(self):
         return self.tareas.count() + self.materiales.count() + self.repuestos.count()
+
+    def puede_confirmarse(self):
+        return self.orden is None
+
+    def puede_modificarse(self):
+        return self.orden is None
+
+    def tiene_orden(self):
+        return self.orden is not None   
+
+    def puede_cancelarse(self):
+        return self.orden is None
 
 def cantidad_positiva(v):
     if v <= 0:

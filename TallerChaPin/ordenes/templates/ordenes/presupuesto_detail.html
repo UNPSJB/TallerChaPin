@@ -133,16 +133,27 @@
         <div class="col-md-3">
             <div class="border border-primary rounded p-3">
                 <h5>Acciones</h5>
-                <button href="#" 
-                data-bs-toggle="modal" 
-                data-bs-target="#modalEliminarPresupuesto"
-                data-bs-nombre="{{object.cliente.apellido}}" 
-                data-bs-url="{% url 'eliminarPresupuesto' object.pk %}" 
-                class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
 
-                <a href="{% url 'modificarPresupuesto' object.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
-                <a href="{% url 'ampliarPresupuesto' object.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-plus-circle"></i> Ampliar </a>
-                <a href="{% url 'crearOrden' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
+                {% if object.puede_cancelarse %}
+                    <button href="#" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalEliminarPresupuesto"
+                    data-bs-nombre="{{object.cliente.apellido}}" 
+                    data-bs-url="{% url 'eliminarPresupuesto' object.pk %}" 
+                    class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
+                {% endif %}
+
+                {% if object.puede_modificarse %}
+                    <a href="{% url 'modificarPresupuesto' object.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
+                {% endif %}
+
+                {% if object.puede_confirmarse %}
+                    <a href="{% url 'crearOrden' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
+                {% endif %}
+
+                {% if object.tiene_orden %}
+                    <a href="{% url 'detallesOrden' object.orden.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver orden </a>
+                {% endif %}
             </div>
         </div>
     </div>

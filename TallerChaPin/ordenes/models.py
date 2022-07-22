@@ -453,10 +453,22 @@ class Presupuesto(models.Model):
         self.tareas.add(tarea)
 
     def agregar_material(self, material, cantidad):
-        return PresupuestoMaterial.objects.create(material=material, presupuesto=self, cantidad=cantidad)
+        lista_materiales = list(self.materiales.all())
+        if material in lista_materiales:
+            pm_qs = PresupuestoMaterial.objects.filter(material=material, presupuesto=self)
+            cantidad_existente = pm_qs.first().cantidad
+            pm_qs.update(cantidad=cantidad_existente+cantidad)
+        else: 
+            return PresupuestoMaterial.objects.create(material=material, presupuesto=self, cantidad=cantidad)
 
     def agregar_repuesto(self, repuesto, cantidad=1):
-        return PresupuestoRepuesto.objects.create(repuesto=repuesto, presupuesto=self, cantidad=cantidad)
+        lista_repuestos = list(self.repuestos.all())
+        if repuesto in lista_repuestos:
+            pr_qs = PresupuestoRepuesto.objects.filter(repuesto=repuesto, presupuesto=self)
+            cantidad_existente = pr_qs.first().cantidad
+            pr_qs.update(cantidad=cantidad_existente+cantidad)
+        else: 
+            return PresupuestoRepuesto.objects.create(repuesto=repuesto, presupuesto=self, cantidad=cantidad)
 
     def precio_estimado(self):
         tareas = self.tareas.all().aggregate(

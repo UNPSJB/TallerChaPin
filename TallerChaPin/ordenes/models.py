@@ -264,7 +264,11 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
 
     def sin_asignar(self):
         no_tiene_empleado = models.Q(empleado__isnull=True)
-        qs = self.filter(no_tiene_empleado).order_by('orden__turno')
+        ha_ingresado = models.Q(orden__ingreso__isnull=False)
+        print("test:")
+        qs = self.filter(no_tiene_empleado and ha_ingresado).order_by('orden__turno')
+        print(qs)
+        # print(qs.first().orden.ingreso)
         return qs
 
     def asignados(self):
@@ -394,9 +398,6 @@ class DetalleOrdenDeTrabajo(models.Model):
 
     def get_titulo(self):
         return f"{self.tarea} (#{self.orden.pk})"
-
-    def se_debe_mostrar(self):
-        return self.orden.estado > 1
 
 
 

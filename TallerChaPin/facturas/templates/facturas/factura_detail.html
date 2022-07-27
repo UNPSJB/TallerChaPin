@@ -138,12 +138,9 @@
                     {% if object.puede_pagar %} 
                     <a href="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
                         <i class="fas fa-check-circle"></i> Pagar</a>
-                    <a href="{% url 'pagoDebito' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
-                        <i class="fas fa-check-circle"></i> Pagar con debito</a>
-                    <a href="{% url 'pagoCredito' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
-                        <i class="fas fa-check-circle"></i> Pagar con credito</a>
-                    <a href="{% url 'pagoContado' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
-                        <i class="fas fa-check-circle"></i> Pagar al contado</a>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#modalPagarFactura"
+                    data-bs-nombre="{{object.orden.cliente}}" data-bs-url="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
+                        <i class="fas fa-check-circle"></i> Pagar (modal)</a>
                     {% endif %}
                 </div>
             </div>
@@ -165,11 +162,13 @@
 {% endblock %}
 
 {% block modals %}
-{% include './factura_confirm_delete.html' with idModal='modalEliminarFactura' %}
+    {% include './factura_confirm_delete.html' with idModal='modalEliminarFactura' %}
+    {% include './factura_pago.html' with idModal='modalPagarFactura' form=PagoForm %}
 {% endblock %}
 
 {% block extrajs %}
 <script>
-  conectarBotonesAModal('.btn-eliminar', 'modalEliminarFactura');
+    // conectarBotonesAModal('.btn-cancelar', 'modalPagarFactura');
+    conectarBotonesAModal('.btn-eliminar', 'modalEliminarFactura');
 </script>
 {% endblock %}

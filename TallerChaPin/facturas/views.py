@@ -1,3 +1,4 @@
+from multiprocessing import context, get_context
 from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -118,6 +119,10 @@ class ImprimirFactura(PDFTemplateView):
         return context
         
 # ----------------------------- Pago View ----------------------------------- #
+
+def crearPago(request, pk):
+    factura = Factura.objects.get(pk=pk)
+    return redirect ('detalleFactura', factura.pk)
 
 class PagoCreateView(CreateView):
 

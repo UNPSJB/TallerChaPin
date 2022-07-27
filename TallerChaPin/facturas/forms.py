@@ -172,6 +172,9 @@ class PagoContadoForm(forms.ModelForm):
         # self.helper.form_tag = False
         self.helper.add_input(Submit('submit', 'Guardar'))
 
+
+
+
 # Pago - Filtros
 
 class PagoFiltrosForm(FiltrosForm):

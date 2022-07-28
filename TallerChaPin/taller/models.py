@@ -1,3 +1,4 @@
+from genericpath import exists
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -93,6 +94,15 @@ class Tarea(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    def eliminable(self, presupuesto_id):
+        presupuestos = self.presupuestos.filter(pk=presupuesto_id)
+        if presupuestos.exists():
+            presupuesto = presupuestos.first()
+            if presupuesto.orden:
+                detalles = presupuesto.orden.detalles.filter(tarea=self)
+                return not (detalles.exists() and detalles.first().exitosa)
+        return True
 
 class Repuesto(models.Model):
     TIPOS = (

@@ -306,7 +306,7 @@ class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
 class DetalleOrdenDeTrabajo(models.Model):
     orden = models.ForeignKey(
         OrdenDeTrabajo, related_name="detalles", on_delete=models.CASCADE)
-    tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE)
+    tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE, related_name="detallesorden")
     empleado = models.ForeignKey(
         Empleado, null=True, blank=True, related_name="trabajo", on_delete=models.CASCADE)
     inicio = models.DateTimeField(null=True, blank=True)

@@ -128,9 +128,8 @@ class Pago(models.Model):
     def cliente(self):
         return self.factura.orden.cliente
 
-    def pagar_con_debito(self, monto, tipo):
-        return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
+    # def pagar_con_debito(self, monto, tipo):
+    #     return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
     
-    def pagar_con_credito(self, monto,tipo, num_cuotas):
-        # WIP: consultar como se puede hacer para ver la cantidad de cuotas pagadas y restantes.
-        return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
+    # def pagar_con_credito(self, monto,tipo, num_cuotas):
+    #     return Pago.objects.create(factura=self, monto=monto, tipo=tipo)

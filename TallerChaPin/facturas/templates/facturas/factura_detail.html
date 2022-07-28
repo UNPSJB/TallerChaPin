@@ -163,12 +163,12 @@
 
 {% block modals %}
     {% include './factura_confirm_delete.html' with idModal='modalEliminarFactura' %}
-    {% include './factura_pago.html' with idModal='modalPagarFactura' form=PagoForm %}
+    {% include './factura_pago.html' with idModal='modalPagarFactura' form=facturaPagoForm %}
 {% endblock %}
 
 {% block extrajs %}
 <script>
-    // conectarBotonesAModal('.btn-cancelar', 'modalPagarFactura');
+    conectarBotonesAModal('.btn-cancelar', 'modalPagarFactura');
     conectarBotonesAModal('.btn-eliminar', 'modalEliminarFactura');
 </script>
 {% endblock %}

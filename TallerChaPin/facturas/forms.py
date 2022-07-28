@@ -77,7 +77,6 @@ class PagoForm(forms.ModelForm):
         exclude = ["factura"]
 
         labels = {
-            
             # "tipo": forms.ModelChoiceField(queryset=Pago.objects.all(), label="Pagar al/con:")
         }
         widgets = {
@@ -93,84 +92,84 @@ class PagoForm(forms.ModelForm):
             initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        # self.helper.form_tag = False
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.form_tag = False
 
-class PagoDebitoForm(forms.ModelForm):
-    class Meta:
-        model = Pago
-        fields = "__all__"
-        exclude = ["factura"]
 
-        labels = {
+# class PagoDebitoForm(forms.ModelForm):
+#     class Meta:
+#         model = Pago
+#         fields = "__all__"
+#         exclude = ["factura"]
+
+#         labels = {
             
-        }
-        widgets = {
-            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
-        }
+#         }
+#         widgets = {
+#             "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
+#         }
 
-    def save(self):
-        pago = super().save()
-        return pago
+#     def save(self):
+#         pago = super().save()
+#         return pago
 
-    def __init__(self, *args, **kwargs):
-        kwargs.update(
-            initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        # self.helper.form_tag = False
-        self.helper.add_input(Submit('submit', 'Guardar'))
+#     def __init__(self, *args, **kwargs):
+#         kwargs.update(
+#             initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         # self.helper.form_tag = False
+#         self.helper.add_input(Submit('submit', 'Guardar'))
 
-class PagoCreditoForm(forms.ModelForm):
-    class Meta:
-        model = Pago
-        fields = "__all__"
-        exclude = ["factura"]
+# class PagoCreditoForm(forms.ModelForm):
+#     class Meta:
+#         model = Pago
+#         fields = "__all__"
+#         exclude = ["factura"]
 
-        labels = {
+#         labels = {
             
-            # "cuotas": forms.ModelChoiceField(queryset=Pago.objects.all(), label="Pagar al/con:") // consultar
-        }
-        widgets = {
-            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
-        }
+#             # "cuotas": forms.ModelChoiceField(queryset=Pago.objects.all(), label="Pagar al/con:") // consultar
+#         }
+#         widgets = {
+#             "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
+#         }
 
-    def save(self):
-        pago = super().save()
-        return pago
+#     def save(self):
+#         pago = super().save()
+#         return pago
 
-    def __init__(self, *args, **kwargs):
-        kwargs.update(
-            initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        # self.helper.form_tag = False
-        self.helper.add_input(Submit('submit', 'Guardar'))
+#     def __init__(self, *args, **kwargs):
+#         kwargs.update(
+#             initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         # self.helper.form_tag = False
+#         self.helper.add_input(Submit('submit', 'Guardar'))
 
-class PagoContadoForm(forms.ModelForm):
-    class Meta:
-        model = Pago
-        fields = "__all__"
-        exclude = ["factura"]
+# class PagoContadoForm(forms.ModelForm):
+#     class Meta:
+#         model = Pago
+#         fields = "__all__"
+#         exclude = ["factura"]
 
-        labels = {
+#         labels = {
             
-        }
-        widgets = {
-            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
-        }
+#         }
+#         widgets = {
+#             "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
+#         }
 
-    def save(self):
-        pago = super().save()
-        return pago
+#     def save(self):
+#         pago = super().save()
+#         return pago
 
-    def __init__(self, *args, **kwargs):
-        kwargs.update(
-            initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        # self.helper.form_tag = False
-        self.helper.add_input(Submit('submit', 'Guardar'))
+#     def __init__(self, *args, **kwargs):
+#         kwargs.update(
+#             initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         # self.helper.form_tag = False
+#         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
 

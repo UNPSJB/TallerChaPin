@@ -208,7 +208,7 @@ class OrdenDeTrabajo(models.Model):
         )
 
     def __str__(self):
-        if self.cliente is not None and self.vehiculo is not None:
+        if self.cliente and self.vehiculo:
             return f"{self.pk} | {self.cliente.nombre} - {self.vehiculo.modelo.marca} {self.vehiculo.modelo.nombre} ({self.vehiculo.patente})"
         else:
             return f"{self.pk} | (inconsistencia en cliente/vehiculo)" # Agregado ya que al haber inconsistencias se rompía en /admin

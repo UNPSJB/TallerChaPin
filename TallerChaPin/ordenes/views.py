@@ -472,11 +472,21 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
         context['vehiculo'] = self.model.vehiculo
         return context
 
+    def get_orden(self):
+        pk = self.kwargs["pk"] if "pk" in self.kwargs.keys() else None
+        return OrdenDeTrabajo.objects.get(pk=pk) if pk is not None else None
+        
+    def get_form_class(self, *args, **kwargs):
+        orden = self.get_orden()
+        print(orden)
+        return RegistrarEgresoVehiculoForm(orden)
+
     def post(self, *args, **kwargs):
-        form = RegistrarEgresoVehiculoForm(self.request.POST)
+        form_class = self.get_form_class()
+        form = form_class(self.request.POST)
         if form.is_valid():
             fecha_egreso = form.cleaned_data.get('egreso')
-            orden = form.cleaned_data.get('orden')
+            orden = form.cleaned_data.get('orden', self.get_orden())
 
             orden.registrar_egreso(fecha_egreso)
 

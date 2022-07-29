@@ -50,6 +50,8 @@ urlpatterns = [
           RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),
      path('ordenesTurnos/registrarEgresoVehiculo',
           RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo"),
+     path('ordenesTurnos/registrarEgresoVehiculo/<int:pk>',
+          RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo"),
      # ----------------- Turnos -------------------
      path('ordenesTurnos/listarTurnos',
           ListarTurnosListView.as_view(), name="calendarioTurnos"),

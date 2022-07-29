@@ -169,7 +169,7 @@
                         {%endif%}
                         {% if object.estado == 5 %}
                             <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span>
-                            <a href="{% url 'registrarEgresoVehiculo' %}" class="btn btn-primary m-1 w-100">
+                            <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
                                 <i class="fa-solid fa-car"></i> Registrar egreso de vehiculo</a>
                             </a>
                         {%endif%}

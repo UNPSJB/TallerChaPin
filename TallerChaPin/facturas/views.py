@@ -67,7 +67,6 @@ class FacturaDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "TallerChaPin"
-
         context['facturaPagoForm'] = PagoForm()
 
         return context
@@ -75,7 +74,14 @@ class FacturaDetailView(DetailView):
     def post(self, *args, **kwargs):
         form = PagoForm(self.request.POST)
         print(form.is_valid(), form.errors)
-        pass
+        if form.is_valid():
+            form.save()
+            return redirect('listarPagos')
+        else:
+            messages.add_message(self.request, messages.WARNING,
+                             'Algo esta mal que no esta bien.')
+            return redirect ('listarFacturas')
+
 
 
 def crearFactura(request, pk):
@@ -150,95 +156,12 @@ class PagoCreateView(CreateView):
             cuota = form.cleaned_data.get('cuota')
             if monto > factura.total():
                 messages.add_message(self.request, messages.WARNING, "El monto ingresado supera el total de la factura")
-                return redirect ('crearPago', factura.pk)
+                return redirect ('detallesFactura', factura.pk)
             else:
                 factura.pagar(monto,tipo,cuota)
                 messages.add_message(self.request, messages.SUCCESS, "Pago registrado exitosamente")
                 return redirect ('listarPagos')
         return self.form_invalid(form=form)
-
-# class PagoDebitoView(CreateView):
-    
-#     model = Pago
-#     form_class = PagoDebitoForm
-#     success_url = reverse_lazy ('listarPagos')
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         print(self.object, self.kwargs.get('pk'))
-#         context['titulo'] = "Ingresar Monto a Pagar"
-#         return context
-
-#     def post(self, *args, **kwargs):
-#         pk = kwargs.get('pk')
-#         factura = Factura.objects.get(pk=pk)
-#         form = PagoForm(self.request.POST)
-#         if form.is_valid():
-#             monto = form.cleaned_data.get('monto')
-#             tipo = form.cleaned_data.get('tipo')
-#             if monto > factura.total():
-#                 messages.add_message(self.request, messages.WARNING, "El monto ingresado supera el total de la factura")
-#                 return redirect ('crearPago', factura.pk)
-#             else:
-#                 factura.pagar(monto,tipo, None)
-#                 messages.add_message(self.request, messages.SUCCESS, "Pago registrado exitosamente")
-#                 return redirect ('listarPagos')
-#         return self.form_invalid(form=form)
-
-# class PagoCreditoView(CreateView):
-#     # WIP:Consultar
-#     model = Pago
-#     form_class = PagoCreditoForm
-#     success_url = reverse_lazy ('listarPagos')
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['titulo'] = "Ingresar Monto y cantidad de cuotas a Pagar"
-#         return context
-
-#     def post(self, *args, **kwargs):
-#         pk = kwargs.get('pk')
-#         factura = Factura.objects.get(pk=pk)
-#         form = PagoForm(self.request.POST)
-#         if form.is_valid():
-#             monto = form.cleaned_data.get('monto')
-#             tipo = form.cleaned_data.get('tipo') # ver como recuperar tipo del form
-#             cuota = form.cleaned_data.get('cuota') # ver como recuperar cuota del form
-#             if monto > factura.total():
-#                 messages.add_message(self.request, messages.WARNING, "El monto ingresado supera el total de la factura")
-#                 return redirect ('crearPago', factura.pk)
-#             else:
-#                 factura.pagar(monto,tipo, cuota)
-#                 messages.add_message(self.request, messages.SUCCESS, "Pago registrado exitosamente")
-#                 return redirect ('listarPagos')
-#         return self.form_invalid(form=form)
-
-
-# class PagoContadoView(CreateView):
-#     model = Pago
-#     form_class = PagoContadoForm
-#     success_url = reverse_lazy ('listarPagos')
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['titulo'] = "Ingresar Monto a Pagar"
-#         return context
-
-#     def post(self, *args, **kwargs):
-#         pk = kwargs.get('pk')
-#         factura = Factura.objects.get(pk=pk)
-#         form = PagoForm(self.request.POST)
-#         if form.is_valid():
-#             monto = form.cleaned_data.get('monto')
-#             tipo = form.cleaned_data.get('tipo') # ver como recuperar tipo del form
-#             if monto > factura.total():
-#                 messages.add_message(self.request, messages.WARNING, "El monto ingresado supera el total de la factura")
-#                 return redirect ('crearPago', factura.pk)
-#             else:
-#                 factura.pagar(monto,tipo, None)
-#                 messages.add_message(self.request, messages.SUCCESS, "Pago registrado exitosamente")
-#                 return redirect ('listarPagos')
-#         return self.form_invalid(form=form)
 
 class PagoDetailView(DetailView):
 

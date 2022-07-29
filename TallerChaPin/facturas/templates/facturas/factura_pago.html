@@ -21,7 +21,8 @@
 
       // configuramos el contenido del modal
       element.addEventListener('show.bs.modal', (e) => {
-        const btn = e.explicitOriginalTarget;
+        // debugger;
+        const btn = e.explicitOriginalTarget || e.relatedTarget;
         $('#facturaPagoForm').attr('action', btn.dataset.bsUrl);
       })
 

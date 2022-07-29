@@ -15,7 +15,20 @@
 {% endblock %}
 
 {% block extrajs %}
-<script>
-    conectarBotonesAModal('.btn-pago', 'crearPago');
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    const element = document.getElementById('modalPagarFactura');
+
+      // configuramos el contenido del modal
+      element.addEventListener('show.bs.modal', (e) => {
+        const btn = e.explicitOriginalTarget;
+        $('#facturaPagoForm').attr('action', btn.dataset.bsUrl);
+      })
+
+    $('#btn-pago').on('click', (e) => {
+      e.preventDefault();
+      $('#facturaPagoForm').submit();
+    });
+  });
 </script>
 {% endblock %}

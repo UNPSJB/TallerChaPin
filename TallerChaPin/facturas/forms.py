@@ -92,7 +92,9 @@ class PagoForm(forms.ModelForm):
             initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_tag = False
+        self.helper.form_method = 'post'
+        self.helper.form_id = 'facturaPagoForm'
+        self.helper.form_action = 'crearPago'
 
 
 # class PagoDebitoForm(forms.ModelForm):

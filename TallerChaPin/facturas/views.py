@@ -72,6 +72,12 @@ class FacturaDetailView(DetailView):
 
         return context
 
+    def post(self, *args, **kwargs):
+        form = PagoForm(self.request.POST)
+        print(form.is_valid(), form.errors)
+        pass
+
+
 def crearFactura(request, pk):
     orden = OrdenDeTrabajo.objects.get(pk=pk)
     if orden.estado == OrdenDeTrabajo.REALIZADA:

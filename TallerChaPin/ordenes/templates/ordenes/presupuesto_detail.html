@@ -32,10 +32,17 @@
                 <div class="ibox-title">
                     <h5> Total estimado</h5>
                 </div>
-                <div class="ibox-content">
-                    <h2 class="font-bold text-primary">
+                <div class="ibox-content d-flex flex-column">
+                    <h2 class="font-bold text-primary text-center">
                         <i class="fas fa-dollar-sign"></i> {{presupuesto.precio_estimado}}
                     </h2>
+                    {% if presupuesto.tiene_anterior %}
+                        {% if presupuesto.es_mas_caro %}
+                            <span class="text-center text-danger fw-bold"> Diferencia: {{presupuesto.get_diferencia_con_anterior}}</span>
+                        {% else %}
+                            <span class="text-center text-success fw-bold"> Diferencia: {{presupuesto.get_diferencia_con_anterior}}</span>
+                        {% endif %}    
+                    {% endif %}
                 </div>
             </div>
         </div>

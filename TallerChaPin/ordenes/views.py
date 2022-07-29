@@ -70,8 +70,9 @@ class imprimirPresupuesto(PDFTemplateView):
 # ----------------------------- Presupuesto View ----------------------------------- #
 class PresupuestoListView(ListFilterView):
     filtros = PresupuestoFiltrosForm
-    model = Presupuesto
-    paginate_by = 100  # if pagination is desired
+    # model = Presupuesto
+    queryset = Presupuesto.objects.filter(ampliado=False)
+    paginate_by = 100 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

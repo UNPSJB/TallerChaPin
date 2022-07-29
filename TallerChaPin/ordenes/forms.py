@@ -28,7 +28,7 @@ def PresupuestoForm(base = None):
         class Meta:
             model = ordenes.Presupuesto
             fields = "__all__" if base is None else ["detalles", "tareas"]
-            exclude = ["orden", "materiales", "repuestos"] if base is None else ["orden", "materiales", "repuestos", "cliente", "vehiculo", "validez"]
+            exclude = ["orden", "materiales", "repuestos", "ampliado"] if base is None else ["orden", "materiales", "repuestos", "cliente", "vehiculo", "validez", "ampliado"]
 
             labels = {
 
@@ -44,6 +44,8 @@ def PresupuestoForm(base = None):
                 presupuesto.vehiculo = base.vehiculo
                 presupuesto.orden = base.orden
                 presupuesto.validez = base.validez
+                base.ampliado = True
+                base.save()
             presupuesto.save()
             
             for tarea in tareas:

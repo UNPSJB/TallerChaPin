@@ -240,7 +240,6 @@ class OrdenDeTrabajo(models.Model):
         return self.presupuestos.all().order_by('fecha').last()
         
 
-
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):
         no_tiene_empleado = models.Q(empleado__isnull=True)
@@ -449,6 +448,7 @@ class Presupuesto(models.Model):
         default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',
                               blank=True, on_delete=models.SET_NULL)
+    ampliado = models.BooleanField(default=False)
 
     def agregar_tarea(self, tarea):
         self.tareas.add(tarea)
@@ -514,6 +514,34 @@ class Presupuesto(models.Model):
 
     def puede_cancelarse(self):
         return self.orden is None
+
+    def tiene_anterior(self):
+        if self.orden is None:
+            return False
+
+        presupuestos = list(self.orden.presupuestos.all().order_by('fecha'))
+        if presupuestos.index(self) > 0:
+            return True
+        else:
+            return False
+        
+    def get_diferencia_con_anterior(self):
+        presupuestos = list(self.orden.presupuestos.all().order_by('fecha'))
+        indice = presupuestos.index(self)
+        anterior = presupuestos[indice-1]
+
+        diferencia = presupuestos[indice].precio_estimado() - anterior.precio_estimado()
+        if diferencia > 0:
+            return f'+${diferencia}'
+        else: 
+            return f'-${abs(diferencia)}'
+
+    def es_mas_caro(self):
+        presupuestos = list(self.orden.presupuestos.all().order_by('fecha'))
+        indice = presupuestos.index(self)
+        anterior = presupuestos[indice-1]
+        return presupuestos[indice].precio_estimado() - anterior.precio_estimado() > 0
+
 
 def cantidad_positiva(v):
     if v <= 0:

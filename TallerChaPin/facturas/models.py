@@ -33,9 +33,7 @@ class Factura(models.Model):
     fecha = models.DateField()
     estado =  models.PositiveBigIntegerField(
         choices=ESTADO_CHOICES, default=CREADA)
-    
-    # def total(self):
-    #     return self.detalles.aggregate(total=models.Sum('precio'))['total']
+    cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=False)
 
     def total(self):
         return self.detalles.aggregate(total=models.Sum('precio'))['total']
@@ -51,6 +49,7 @@ class Factura(models.Model):
             factura.agregar_detalle(desc, precio)
         orden.estado = OrdenDeTrabajo.FACTURADA
         orden.save()
+        
         return factura
 
     def puede_pagar(self):
@@ -65,8 +64,26 @@ class Factura(models.Model):
     def agregar_detalle(self, descripcion, precio):
         return DetalleFactura.objects.create(factura=self, descripcion=descripcion, precio=precio)
 
-    def pagar(self, monto, tipo):
+    def pagar(self, monto, tipo, num_cuotas=None):
+        if len(self.pagos.all()) == 0:
+            self.cuotas = num_cuotas
+            self.save()
         return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
+
+    def pagar_new(self, monto, tipo):
+        
+        if (tipo==Pago.CONTADO):
+            return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
+
+        if(tipo==Pago.TARJETA_DEBITO):
+            Pago.pagar_con_debito(factura=self, monto=monto, tipo=tipo)
+        
+        if(tipo==Pago.TARJETA_CREDITO):
+            num_cuotas = 1 #cambiar luego.
+            Pago.pagar_con_credito(factura=self, monto=monto, tipo=tipo, num_cuotas=num_cuotas)
+       
+    def cuotas_pagas(self):
+        return len(self.pagos.all())
 
     def saldo(self):
         if len(self.pagos.all()) > 0:
@@ -82,7 +99,6 @@ class DetalleFactura(models.Model):
         Factura, related_name="detalles", on_delete=models.CASCADE)
     descripcion = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
-
 
 #-------------------------------- PAGO -----------------------------------#
 
@@ -102,6 +118,7 @@ class Pago(models.Model):
     monto = models.DecimalField(max_digits=10, decimal_places=2)
     tipo = models.PositiveSmallIntegerField(
         choices=TIPO_CHOICES, default=CONTADO)
+    
 
     @property
     def vehiculo(self):
@@ -110,3 +127,10 @@ class Pago(models.Model):
     @property
     def cliente(self):
         return self.factura.orden.cliente
+
+    def pagar_con_debito(self, monto, tipo):
+        return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
+    
+    def pagar_con_credito(self, monto,tipo, num_cuotas):
+        # WIP: consultar como se puede hacer para ver la cantidad de cuotas pagadas y restantes.
+        return Pago.objects.create(factura=self, monto=monto, tipo=tipo)

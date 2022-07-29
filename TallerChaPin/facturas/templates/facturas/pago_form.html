@@ -4,8 +4,16 @@
 
 {% block main %}
 <div class="col-8">
-    <h3>{{ titulo }}</h3>
-    {% crispy form form.helper %}
-    
+    <h3>
+        {{ titulo }}
+    </h3>
+        <div class="col-12">
+                {% comment %} <a href="{% url 'pagoDebito' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
+                    <i class="fas fa-check-circle"></i> Pagar con debito</a>
+                <a href="{% url 'pagoCredito' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
+                    <i class="fas fa-check-circle"></i> Pagar con credito</a>
+                <a href="{% url 'pagoContado' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
+                    <i class="fas fa-check-circle"></i> Pagar al contado</a> {% endcomment %}
+        </div>
 </div>
 {% endblock %}

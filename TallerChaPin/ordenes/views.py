@@ -311,7 +311,7 @@ def asignar_empleado(request):
     if form.is_valid():
         form.asignar()
         messages.add_message(request, messages.SUCCESS,
-                             'La tarea se asignó a un empleado exitosamente! :D')
+                             'La tarea se asignó a un empleado exitosamente!')
     else:
         # TODO: mostrar form.errors
         print(form.errors)
@@ -327,7 +327,7 @@ def finalizar_tarea(request):
         form.finalizar()
         # Ver de agregar actualizar estado
         messages.add_message(request, messages.SUCCESS,
-                             'La tarea finalizó exitosamente! :D')
+                             'La tarea finalizó exitosamente!')
     else:
         messages.add_message(request, messages.ERROR,
                              'El formulario tiene errores.')  # TODO: mostrar form.errors
@@ -425,7 +425,7 @@ class PlanillaCreateView(CreateView):
         form = PlanillaDePinturaForm(self.request.POST)        
         detalle_orden = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         if self.detalle_planilla_form.is_valid() and form.is_valid():
-            planilla = form.save(self.detalle_planilla_form.cleaned_data, detalle_orden)
+            planilla = form.save(self.detalle_planilla_form.cleaned_data, detalle_orden) # VER
             messages.add_message(self.request, messages.INFO, 'Planilla Creada')
             return redirect ('listarDetallesOrden')
         else:

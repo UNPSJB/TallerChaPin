@@ -475,7 +475,8 @@ class FinalizarTareaForm(forms.Form):
         label="Finalización:")
     observaciones = forms.CharField(
         widget=forms.Textarea(),
-        label='Observaciones:')
+        label='Observaciones:', 
+        required=False)
     tarea = forms.IntegerField(widget=forms.HiddenInput())
 
     def __init__(self, *args, **kwargs):

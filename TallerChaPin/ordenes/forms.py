@@ -1,4 +1,5 @@
-
+from django.urls import reverse
+from django.utils.http import urlencode
 from django import forms
 from django.utils.regex_helper import Choice
 from . import models as ordenes
@@ -7,41 +8,82 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
 from django.forms import inlineformset_factory
 from TallerChaPin.utils import FiltrosForm
+from datetime import datetime
+from .utils import requiere_insumo
 
-
+def reverse_querystring(view, urlconf=None, args=None, kwargs=None, current_app=None, query_kwargs=None):
+    '''Custom reverse to handle query strings.
+    Usage:
+        reverse('app.views.my_view', kwargs={'pk': 123}, query_kwargs={'search': 'Bob'})
+    '''
+    base_url = reverse(view, urlconf=urlconf, args=args, kwargs=kwargs, current_app=current_app)
+    if query_kwargs:
+        return '{}?{}'.format(base_url, urlencode(query_kwargs))
+    return base_url
+    
 # Presupuesto
 
-class PresupuestoForm(forms.ModelForm):
-    class Meta:
-        model = ordenes.Presupuesto
-        fields = "__all__"
-        exclude = ["orden", "materiales", "repuestos"]
+def PresupuestoForm(base = None): 
+    class PresupuestoForm(forms.ModelForm):
+        class Meta:
+            model = ordenes.Presupuesto
+            fields = "__all__" if base is None else ["detalles", "tareas"]
+            exclude = ["orden", "materiales", "repuestos", "ampliado"] if base is None else ["orden", "materiales", "repuestos", "cliente", "vehiculo", "validez", "ampliado"]
 
-        labels = {
-            "detalles": "Observaciones:"
-        }
-        widgets = {
-            "tareas": forms.SelectMultiple(attrs={'size': '10'}),
-        }
+            labels = {
 
-    def save(self, materiales, repuestos):
-        presupuesto = super().save()
-        for material in materiales:
-            if "material" in material:
-                matObj = material["material"]
-                matCantidad = material["cantidad"]
-                presupuesto.agregar_material(matObj, matCantidad)
-        for repuesto in repuestos:
-            if "repuesto" in repuesto:
-                repObj = repuesto["repuesto"]
-                repCantidad = repuesto["cantidad"]
-                presupuesto.agregar_repuesto(repObj, repCantidad)
-        return presupuesto
+            }
+            widgets = {
+                "tareas": forms.CheckboxSelectMultiple(),
+            }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_tag = False
+        def save(self, materiales, repuestos, tareas):
+            presupuesto = super().save(commit=False)
+            if base is not None:
+                presupuesto.cliente = base.cliente
+                presupuesto.vehiculo = base.vehiculo
+                presupuesto.orden = base.orden
+                presupuesto.validez = base.validez
+                base.ampliado = True
+                base.save()
+            presupuesto.save()
+            
+            for tarea in tareas:
+                presupuesto.agregar_tarea(tarea)
+
+            if self.requiere("materiales", tareas):
+                for material in materiales:
+                    if "material" in material and material["material"] is not None and material["cantidad"] is not 0:
+                        matObj = material["material"]
+                        matCantidad = material["cantidad"]
+                        presupuesto.agregar_material(matObj, matCantidad)
+
+            if self.requiere("repuestos", tareas):
+                for repuesto in repuestos:
+                    if "repuesto" in repuesto and repuesto["repuesto"] is not None and repuesto["cantidad"] is not 0:
+                        repObj = repuesto["repuesto"]
+                        repCantidad = repuesto["cantidad"]
+                        presupuesto.agregar_repuesto(repObj, repCantidad)
+            
+            return presupuesto
+
+        def requiere(self, insumo, tareas):
+
+            requerimientos = requiere_insumo(tareas)
+            
+            if insumo not in requerimientos.keys():
+                return False
+
+            return requerimientos[insumo]
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.helper = FormHelper()
+            self.helper.form_tag = False
+            if base is not None:
+                self.helper.form_action = reverse_querystring('ampliarPresupuesto', args=[base.pk])
+
+    return PresupuestoForm
 
 # Presupuesto - Material
 
@@ -59,7 +101,8 @@ class PresupuestoMaterialForm(forms.ModelForm):
                   )
 
         widgets = {
-            'material': forms.Select(attrs={'autocomplete': 'off'})
+            'material': forms.Select(attrs={'autocomplete': 'off'}),
+            'cantidad': forms.NumberInput(attrs={'min': 1})
         }
 
     def __init__(self, *args, **kwargs):
@@ -106,7 +149,8 @@ class PresupuestoRepuestoForm(forms.ModelForm):
                   "cantidad")
 
         widgets = {
-            'repuesto': forms.Select(attrs={'autocomplete': 'off'})
+            'repuesto': forms.Select(attrs={'autocomplete': 'off'}),
+            'cantidad': forms.TextInput(attrs={'type': 'number', 'min':'0'})
         }
 
     def __init__(self, *args, **kwargs):
@@ -145,7 +189,7 @@ class PresupuestoRepuestoFormSetHelper(FormHelper):
             'cantidad'
         )
         self.render_required_fields = True
-        self.add_input(Submit('submit', 'Guardar'))
+        #self.add_input(Submit('submit', 'Guardar'))
 
 # Presupuesto - Filtro
 
@@ -204,7 +248,7 @@ class OrdenForm(forms.ModelForm):
 
         # }
         widgets = {
-            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
 
         }
 
@@ -313,40 +357,46 @@ class RegistrarIngresoVehiculoForm(forms.ModelForm):
 
 # Registrar egreso de Vehículo
 
+def RegistrarEgresoVehiculoForm(model=None):
+    class RegistrarEgresoVehiculoForm(forms.ModelForm):
 
-class RegistrarEgresoVehiculoForm(forms.ModelForm):
+        if model is None:
+            orden = forms.ModelChoiceField(
+                queryset=ordenes.OrdenDeTrabajo.objects.all(),
+                required=True,
+                widget=forms.Select(),
+                label="Orden de trabajo"
+            )
 
-    orden = forms.ModelChoiceField(
-        queryset=ordenes.OrdenDeTrabajo.objects.all(),
-        required=True,
-        widget=forms.Select(),
-        label="Orden de trabajo"  # TODO: verificar que el layout muestre un label
-    )
+        class Meta:
+            model = ordenes.OrdenDeTrabajo
+            fields = "__all__"
+            exclude = ["ingreso", "estado", "turno", "materiales", "repuestos"]
 
-    class Meta:
-        model = ordenes.OrdenDeTrabajo
-        fields = "__all__"
-        exclude = ["ingreso", "estado", "turno", "materiales", "repuestos"]
+            widgets = {
+                "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+            }
 
-        widgets = {
-            "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
-        }
+        def save(self, commit=True):
+            registrarEgresoVehiculo = super().save(commit=bool(model))
+            if model:
+                registrarEgresoVehiculo.orden = model
+                registrarEgresoVehiculo.save()
+            return registrarEgresoVehiculo
 
-    def save(self, commit=True):
-        registrarEgresoVehiculo = super().save()
-        return registrarEgresoVehiculo
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.helper = FormHelper()
+            self.helper.layout = Layout(
+                Fieldset(
+                    "",
+                    "orden",
+                    "egreso"
+                ),
+                Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
+            )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(
-            Fieldset(
-                "",
-                "orden",
-                "egreso"
-            ),
-            Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
-        )
+    return RegistrarEgresoVehiculoForm
 
 # Listar Turno
 

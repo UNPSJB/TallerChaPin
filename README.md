@@ -5,7 +5,6 @@ Aplicación Django para gestión de taller de chapa y pintura
 ## Autores
 
 - Barea, Matías
-- Murillo, Alexis
 - Canario, Ramiro
 
 ## Proyecto

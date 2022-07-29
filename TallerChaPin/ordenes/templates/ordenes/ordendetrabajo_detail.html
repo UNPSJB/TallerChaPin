@@ -94,8 +94,6 @@
                                             <th scope="col">Cantidad</th>
                                             <th scope="col">Material</th>
                                             <th scope="col">Tipo</th>
-
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -159,16 +157,19 @@
                             </a>
                         {% endif %}
                         {% if object.puede_ampliarse %}
-                            <a href="#" class="btn btn-primary m-1 w-100">
+                            <a href="{% url 'ampliarPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100">
                                 <i class="fa-solid fa-file-circle-plus"></i> Ampliar presupuesto</a>
                             </a>
                         {% endif %}
+                            
+                        <a href="{% url 'detallesPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver presupuesto </a>
+                        
                         {% if object.estado == 2 or object.estado == 6 %}
                             <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>. No hay acciones disponibles.</span>
                         {%endif%}
                         {% if object.estado == 5 %}
                             <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span>
-                            <a href="{% url 'registrarEgresoVehiculo' %}" class="btn btn-primary m-1 w-100">
+                            <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
                                 <i class="fa-solid fa-car"></i> Registrar egreso de vehiculo</a>
                             </a>
                         {%endif%}

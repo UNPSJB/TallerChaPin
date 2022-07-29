@@ -442,50 +442,6 @@
 {
   "model": "auth.permission",
   "fields": {
-    "name": "Can add tipo repuesto",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "add_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo repuesto",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "change_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo repuesto",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "delete_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo repuesto",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "view_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
     "name": "Can add tipo tarea",
     "content_type": [
       "taller",
@@ -882,7 +838,7 @@
 {
   "model": "auth.permission",
   "fields": {
-    "name": "Puede registrar el ingreso de un vehiculo al taller",
+    "name": "Puede registrar el ingreso de un veh√ùculo al taller",
     "content_type": [
       "ordenes",
       "ordendetrabajo"
@@ -1168,6 +1124,50 @@
 {
   "model": "auth.permission",
   "fields": {
+    "name": "Can add turno orden",
+    "content_type": [
+      "ordenes",
+      "turnoorden"
+    ],
+    "codename": "add_turnoorden"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change turno orden",
+    "content_type": [
+      "ordenes",
+      "turnoorden"
+    ],
+    "codename": "change_turnoorden"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete turno orden",
+    "content_type": [
+      "ordenes",
+      "turnoorden"
+    ],
+    "codename": "delete_turnoorden"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view turno orden",
+    "content_type": [
+      "ordenes",
+      "turnoorden"
+    ],
+    "codename": "view_turnoorden"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
     "name": "Can add factura",
     "content_type": [
       "facturas",
@@ -1298,343 +1298,200 @@
   }
 },
 {
-  "model": "auth.permission",
+  "model": "auth.user",
   "fields": {
-    "name": "Can add repuesto",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "add_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change repuesto",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "change_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete repuesto",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "delete_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view repuesto",
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "codename": "view_repuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo material",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "add_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo material",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "change_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo material",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "delete_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo material",
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "codename": "view_tipomaterial"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo repuesto",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "add_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo repuesto",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "change_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo repuesto",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "delete_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo repuesto",
-    "content_type": [
-      "taller",
-      "tipotarea"
-    ],
-    "codename": "view_tiporepuesto"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tipo tarea",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "add_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tipo tarea",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "change_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tipo tarea",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "delete_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tipo tarea",
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "codename": "view_tipotarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add vehiculo",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "add_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change vehiculo",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "change_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete vehiculo",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "delete_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view vehiculo",
-    "content_type": [
-      "taller",
-      "tarea"
-    ],
-    "codename": "view_vehiculo"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add tarea",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "add_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change tarea",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "change_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete tarea",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "delete_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view tarea",
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "codename": "view_tarea"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add turno orden",
-    "content_type": [
-      "ordenes",
-      "turnoorden"
-    ],
-    "codename": "add_turnoorden"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change turno orden",
-    "content_type": [
-      "ordenes",
-      "turnoorden"
-    ],
-    "codename": "change_turnoorden"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete turno orden",
-    "content_type": [
-      "ordenes",
-      "turnoorden"
-    ],
-    "codename": "delete_turnoorden"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view turno orden",
-    "content_type": [
-      "ordenes",
-      "turnoorden"
-    ],
-    "codename": "view_turnoorden"
-  }
-},
-{
-  "model": "auth.group",
-  "fields": {
-    "name": "Administrativo",
-    "permissions": []
-  }
-},
-{
-  "model": "auth.group",
-  "fields": {
-    "name": "Jefe de Taller",
-    "permissions": [
+    "password": "pbkdf2_sha256$260000$SVCfNjMhONaGysJ5a0xVLN$8FqDNnI/mjDyvNBq5JIryV6KGk1TejDeN7TpzlpSh0E=",
+    "last_login": "2022-05-26T20:29:29Z",
+    "is_superuser": true,
+    "username": "diego",
+    "first_name": "",
+    "last_name": "",
+    "email": "diego@diego.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-05-26T20:29:18Z",
+    "groups": [],
+    "user_permissions": [
       [
-        "can_asignar_trabajo",
-        "ordenes",
-        "ordendetrabajo"
+        "add_logentry",
+        "admin",
+        "logentry"
       ],
       [
-        "can_registrar_ingreso",
+        "change_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "delete_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "view_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "add_group",
+        "auth",
+        "group"
+      ],
+      [
+        "change_group",
+        "auth",
+        "group"
+      ],
+      [
+        "delete_group",
+        "auth",
+        "group"
+      ],
+      [
+        "view_group",
+        "auth",
+        "group"
+      ],
+      [
+        "add_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "change_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "delete_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "view_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "add_user",
+        "auth",
+        "user"
+      ],
+      [
+        "change_user",
+        "auth",
+        "user"
+      ],
+      [
+        "delete_user",
+        "auth",
+        "user"
+      ],
+      [
+        "view_user",
+        "auth",
+        "user"
+      ],
+      [
+        "add_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "change_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "delete_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "view_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "add_detallefactura",
+        "facturas",
+        "detallefactura"
+      ],
+      [
+        "change_detallefactura",
+        "facturas",
+        "detallefactura"
+      ],
+      [
+        "delete_detallefactura",
+        "facturas",
+        "detallefactura"
+      ],
+      [
+        "view_detallefactura",
+        "facturas",
+        "detallefactura"
+      ],
+      [
+        "add_factura",
+        "facturas",
+        "factura"
+      ],
+      [
+        "change_factura",
+        "facturas",
+        "factura"
+      ],
+      [
+        "delete_factura",
+        "facturas",
+        "factura"
+      ],
+      [
+        "view_factura",
+        "facturas",
+        "factura"
+      ],
+      [
+        "add_pago",
+        "facturas",
+        "pago"
+      ],
+      [
+        "change_pago",
+        "facturas",
+        "pago"
+      ],
+      [
+        "delete_pago",
+        "facturas",
+        "pago"
+      ],
+      [
+        "view_pago",
+        "facturas",
+        "pago"
+      ],
+      [
+        "add_detalleordendetrabajo",
         "ordenes",
-        "ordendetrabajo"
-      ]
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "fields": {
-    "name": "Oficial Pintor",
-    "permissions": [
+        "detalleordendetrabajo"
+      ],
+      [
+        "change_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      [
+        "delete_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      [
+        "view_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
       [
         "add_detalleplanilladepintura",
         "ordenes",
@@ -1646,9 +1503,64 @@
         "detalleplanilladepintura"
       ],
       [
+        "delete_detalleplanilladepintura",
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      [
         "view_detalleplanilladepintura",
         "ordenes",
         "detalleplanilladepintura"
+      ],
+      [
+        "add_materialordendetrabajo",
+        "ordenes",
+        "materialordendetrabajo"
+      ],
+      [
+        "change_materialordendetrabajo",
+        "ordenes",
+        "materialordendetrabajo"
+      ],
+      [
+        "delete_materialordendetrabajo",
+        "ordenes",
+        "materialordendetrabajo"
+      ],
+      [
+        "view_materialordendetrabajo",
+        "ordenes",
+        "materialordendetrabajo"
+      ],
+      [
+        "add_ordendetrabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "can_asignar_trabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "can_registrar_ingreso",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "change_ordendetrabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "delete_ordendetrabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "view_ordendetrabajo",
+        "ordenes",
+        "ordendetrabajo"
       ],
       [
         "add_planilladepintura",
@@ -1661,323 +1573,370 @@
         "planilladepintura"
       ],
       [
+        "delete_planilladepintura",
+        "ordenes",
+        "planilladepintura"
+      ],
+      [
         "view_planilladepintura",
         "ordenes",
         "planilladepintura"
+      ],
+      [
+        "add_presupuesto",
+        "ordenes",
+        "presupuesto"
+      ],
+      [
+        "change_presupuesto",
+        "ordenes",
+        "presupuesto"
+      ],
+      [
+        "delete_presupuesto",
+        "ordenes",
+        "presupuesto"
+      ],
+      [
+        "view_presupuesto",
+        "ordenes",
+        "presupuesto"
+      ],
+      [
+        "add_presupuestomaterial",
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      [
+        "change_presupuestomaterial",
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      [
+        "delete_presupuestomaterial",
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      [
+        "view_presupuestomaterial",
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      [
+        "add_presupuestorepuesto",
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      [
+        "change_presupuestorepuesto",
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      [
+        "delete_presupuestorepuesto",
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      [
+        "view_presupuestorepuesto",
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      [
+        "add_repuestoordendetrabajo",
+        "ordenes",
+        "repuestoordendetrabajo"
+      ],
+      [
+        "change_repuestoordendetrabajo",
+        "ordenes",
+        "repuestoordendetrabajo"
+      ],
+      [
+        "delete_repuestoordendetrabajo",
+        "ordenes",
+        "repuestoordendetrabajo"
+      ],
+      [
+        "view_repuestoordendetrabajo",
+        "ordenes",
+        "repuestoordendetrabajo"
+      ],
+      [
+        "add_turnoorden",
+        "ordenes",
+        "turnoorden"
+      ],
+      [
+        "change_turnoorden",
+        "ordenes",
+        "turnoorden"
+      ],
+      [
+        "delete_turnoorden",
+        "ordenes",
+        "turnoorden"
+      ],
+      [
+        "view_turnoorden",
+        "ordenes",
+        "turnoorden"
+      ],
+      [
+        "add_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "change_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "delete_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "view_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "add_cliente",
+        "taller",
+        "cliente"
+      ],
+      [
+        "change_cliente",
+        "taller",
+        "cliente"
+      ],
+      [
+        "delete_cliente",
+        "taller",
+        "cliente"
+      ],
+      [
+        "view_cliente",
+        "taller",
+        "cliente"
+      ],
+      [
+        "add_empleado",
+        "taller",
+        "empleado"
+      ],
+      [
+        "change_empleado",
+        "taller",
+        "empleado"
+      ],
+      [
+        "delete_empleado",
+        "taller",
+        "empleado"
+      ],
+      [
+        "view_empleado",
+        "taller",
+        "empleado"
+      ],
+      [
+        "add_marca",
+        "taller",
+        "marca"
+      ],
+      [
+        "change_marca",
+        "taller",
+        "marca"
+      ],
+      [
+        "delete_marca",
+        "taller",
+        "marca"
+      ],
+      [
+        "view_marca",
+        "taller",
+        "marca"
+      ],
+      [
+        "add_material",
+        "taller",
+        "material"
+      ],
+      [
+        "change_material",
+        "taller",
+        "material"
+      ],
+      [
+        "delete_material",
+        "taller",
+        "material"
+      ],
+      [
+        "view_material",
+        "taller",
+        "material"
+      ],
+      [
+        "add_modelo",
+        "taller",
+        "modelo"
+      ],
+      [
+        "change_modelo",
+        "taller",
+        "modelo"
+      ],
+      [
+        "delete_modelo",
+        "taller",
+        "modelo"
+      ],
+      [
+        "view_modelo",
+        "taller",
+        "modelo"
+      ],
+      [
+        "add_repuesto",
+        "taller",
+        "repuesto"
+      ],
+      [
+        "change_repuesto",
+        "taller",
+        "repuesto"
+      ],
+      [
+        "delete_repuesto",
+        "taller",
+        "repuesto"
+      ],
+      [
+        "view_repuesto",
+        "taller",
+        "repuesto"
+      ],
+      [
+        "add_tarea",
+        "taller",
+        "tarea"
+      ],
+      [
+        "change_tarea",
+        "taller",
+        "tarea"
+      ],
+      [
+        "delete_tarea",
+        "taller",
+        "tarea"
+      ],
+      [
+        "view_tarea",
+        "taller",
+        "tarea"
+      ],
+      [
+        "add_tipomaterial",
+        "taller",
+        "tipomaterial"
+      ],
+      [
+        "change_tipomaterial",
+        "taller",
+        "tipomaterial"
+      ],
+      [
+        "delete_tipomaterial",
+        "taller",
+        "tipomaterial"
+      ],
+      [
+        "view_tipomaterial",
+        "taller",
+        "tipomaterial"
+      ],
+      [
+        "add_tipotarea",
+        "taller",
+        "tipotarea"
+      ],
+      [
+        "change_tipotarea",
+        "taller",
+        "tipotarea"
+      ],
+      [
+        "delete_tipotarea",
+        "taller",
+        "tipotarea"
+      ],
+      [
+        "view_tipotarea",
+        "taller",
+        "tipotarea"
+      ],
+      [
+        "add_vehiculo",
+        "taller",
+        "vehiculo"
+      ],
+      [
+        "change_vehiculo",
+        "taller",
+        "vehiculo"
+      ],
+      [
+        "delete_vehiculo",
+        "taller",
+        "vehiculo"
+      ],
+      [
+        "view_vehiculo",
+        "taller",
+        "vehiculo"
       ]
     ]
   }
 },
 {
-  "model": "auth.group",
-  "fields": {
-    "name": "Empleado de Taller",
-    "permissions": [
-      [
-        "add_detalleordendetrabajo",
-        "ordenes",
-        "detalleordendetrabajo"
-      ],
-      [
-        "change_detalleordendetrabajo",
-        "ordenes",
-        "detalleordendetrabajo"
-      ],
-      [
-        "view_detalleordendetrabajo",
-        "ordenes",
-        "detalleordendetrabajo"
-      ]
-    ]
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$260000$fe5PN1RcVbKP0CQB9t1LFl$Ugpe70boMwA6OCs/IrcWoNiFo+QJossvqAdy8TLQnA8=",
-    "last_login": "2021-12-03T20:47:34.147Z",
-    "is_superuser": true,
-    "username": "diego",
-    "first_name": "",
-    "last_name": "",
-    "email": "diego@diego.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-09-27T21:18:50Z",
-    "groups": [
-      [
-        "Administrativo"
-      ]
-    ],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$260000$gvQ8nWFi5Gm0IliUnIWS3x$UUzc3BNW8O0x8JwBtA4QmvB+GofB/gDMPqRW5/ax1YI=",
-    "last_login": "2021-11-10T22:56:40.790Z",
-    "is_superuser": false,
-    "username": "juan",
-    "first_name": "",
-    "last_name": "",
-    "email": "juan@juan.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-09-27T22:18:59Z",
-    "groups": [
-      [
-        "Jefe de Taller"
-      ],
-      [
-        "Empleado de Taller"
-      ]
-    ],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$260000$OyC44FhvYza533wXa6sWHn$06gn3BPbSVzqPtUP0aw+hKEoxKf9AgxSXi6kdIzTNns=",
-    "last_login": "2021-12-03T20:34:26.322Z",
-    "is_superuser": false,
-    "username": "pedro",
-    "first_name": "",
-    "last_name": "",
-    "email": "pedro@pedro.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-09-27T22:19:20Z",
-    "groups": [
-      [
-        "Oficial Pintor"
-      ],
-      [
-        "Empleado de Taller"
-      ]
-    ],
-    "user_permissions": []
-  }
-},
-{
   "model": "sessions.session",
-  "pk": "fgw4jxmt7hfz2gb99wvp8o7zzv5ng3ru",
+  "pk": "nb9560giznp67zg39etwq5hngjcolfr6",
   "fields": {
-    "session_data": ".eJxVjDsOwyAQBe9CHSEDu4BTpvcZ0PILTiKQjF1FuXtsyUXSzsx7b-ZoW4vbelrcHNmVCXb5ZZ7CM9VDxAfVe-Oh1XWZPT8SftrOpxbT63a2fweFetnXORkYc4IMQ1RyRCWApJTZIhrwCFkjakDSwittggERSe005gGsAcs-X8TDNsg:1mUy24:LU0hPzcCWMMTcxeAxOB26v96XxHOtL5iuj8nuja0NtY",
-    "expire_date": "2021-10-11T21:19:28.587Z"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "fxr48gf64h5htlk7jcij5q4kp7lx7a5a",
-  "fields": {
-    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQgRmkaiAp7cr479qkC93ec859sQjbWuM2aIkzsjOT7PS7JcgPajvAO7Rb57m3dZkT3xV-0MGvHel5Ody_gwqjfuuQFLogpUMUSYlMyoDJqeAkKBRVpNI0eQNBGg_WkraOdDAEUoPz3rL3B-hAN60:1mtFSw:hd2oRcnFpX34fqYHPPUjfkmzTW0_zk_jJ4jEK2g45Uw",
-    "expire_date": "2021-12-17T20:47:34.153Z"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "ni10r9vkxwdavsu18toxpyfow2wu6mcr",
-  "fields": {
-    "session_data": ".eJxVjDsOwyAQBe9CHSEDu4BTpvcZ0PILTiKQjF1FuXtsyUXSzsx7b-ZoW4vbelrcHNmVCXb5ZZ7CM9VDxAfVe-Oh1XWZPT8SftrOpxbT63a2fweFetnXORkYc4IMQ1RyRCWApJTZIhrwCFkjakDSwittggERSe005gGsAcs-X8TDNsg:1mcZH3:S0-zA4rPwA6aixu0rmNr9kUBotc7pOo8OfsmojFtmVI",
-    "expire_date": "2021-11-01T20:30:21.313Z"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "un66todyetvx1k2tvsl0ero6bibs9rvi",
-  "fields": {
-    "session_data": ".eJxVjEsOwjAMBe-SNYrS1CE1S_Y9Q-XENimgRupnhbg7VOoCtm9m3ssMtK1l2BaZh5HNxbTm9Lslyg-ZdsB3mm7V5jqt85jsrtiDLravLM_r4f4dFFrKt8bAUThjqxIJYyeN10iJBBGAUtSOFABa9DmyYvbswPlGIMA5qFPz_gAFRThS:1mkwXG:ZR2x57mALym1fRAj0XyWNoJQPabLEXtaEoHuZC-DZEA",
-    "expire_date": "2021-11-24T22:57:42.942Z"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "zvqb0jhyl0uwib56fwby7yifm4angjpl",
-  "fields": {
-    "session_data": ".eJxVjDsOwyAQBe9CHSEDu4BTpvcZ0PILTiKQjF1FuXtsyUXSzsx7b-ZoW4vbelrcHNmVCXb5ZZ7CM9VDxAfVe-Oh1XWZPT8SftrOpxbT63a2fweFetnXORkYc4IMQ1RyRCWApJTZIhrwCFkjakDSwittggERSe005gGsAcs-X8TDNsg:1mj66s:qrFbHo5g52EpVtMvafMhurli0U7Q_rOFFAVrmVVdpVE",
-    "expire_date": "2021-11-19T20:46:50.188Z"
+    "session_data": ".eJxVjMsOwiAQRf-FtSFM6_Bw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWo9GoNaKLypAKSBaDNZDHjIq0NpBYO-RIEM-DskhjyAScnBtMsA7E-wPA-zdP:1nuK6r:HiFZjoWFbHebSgc3bt-MZhoer9Uw6UArtAgmn9SLD-E",
+    "expire_date": "2022-06-09T20:29:29.901Z"
   }
 },
 {
   "model": "taller.marca",
   "pk": 1,
   "fields": {
-    "nombre": "Ford",
-    "descripcion": "Ford"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 2,
-  "fields": {
-    "nombre": "Nissan",
-    "descripcion": "Nissan"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 3,
-  "fields": {
-    "nombre": "Toyota",
-    "descripcion": "Toyota"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 4,
-  "fields": {
-    "nombre": "Renault",
-    "descripcion": "Renault"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 5,
-  "fields": {
-    "nombre": "Chevrolet",
-    "descripcion": "Chevrolet"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 6,
-  "fields": {
-    "nombre": "Chery",
-    "descripcion": "Chery"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 7,
-  "fields": {
-    "nombre": "Fiat",
-    "descripcion": "Fiat"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 8,
-  "fields": {
-    "nombre": "Plymouth",
-    "descripcion": "Plymouth"
-  }
-},
-{
-  "model": "taller.marca",
-  "pk": 9,
-  "fields": {
-    "nombre": "Jeep",
-    "descripcion": "Jeep"
+    "nombre": "marca1",
+    "descripcion": "hola"
   }
 },
 {
   "model": "taller.modelo",
   "pk": 1,
   "fields": {
-    "nombre": "Tiggo",
-    "descripcion": "Tiggo",
-    "marca": 6,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 2,
-  "fields": {
-    "nombre": "Punto",
-    "descripcion": "Punto",
-    "marca": 7,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 3,
-  "fields": {
-    "nombre": "Fiesta",
-    "descripcion": "Fiesta",
+    "nombre": "mod1",
+    "descripcion": "mod1",
     "marca": 1,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 4,
-  "fields": {
-    "nombre": "Cruze",
-    "descripcion": "Cruze",
-    "marca": 5,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 5,
-  "fields": {
-    "nombre": "S10",
-    "descripcion": "S10",
-    "marca": 5,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 6,
-  "fields": {
-    "nombre": "March",
-    "descripcion": "March",
-    "marca": 2,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 7,
-  "fields": {
-    "nombre": "Hilux",
-    "descripcion": "Hilux",
-    "marca": 3,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 8,
-  "fields": {
-    "nombre": "Kangoo",
-    "descripcion": "Kangoo",
-    "marca": 4,
-    "anio": 2010
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 9,
-  "fields": {
-    "nombre": "Clio",
-    "descripcion": "Clio Mio",
-    "marca": 4,
-    "anio": 2015
-  }
-},
-{
-  "model": "taller.modelo",
-  "pk": 10,
-  "fields": {
-    "nombre": "Junkerolla",
-    "descripcion": "Junkerolla",
-    "marca": 8,
-    "anio": 1986
+    "anio": 2020
   }
 },
 {
   "model": "taller.tipotarea",
   "pk": 1,
   "fields": {
-    "nombre": "Decapadar",
-    "descripcion": "Limpiar la chapa",
+    "nombre": "req materiales",
+    "descripcion": "Tarea que requiere materiales",
     "materiales": true,
     "repuestos": false,
     "planilla": false
@@ -1987,342 +1946,70 @@
   "model": "taller.tipotarea",
   "pk": 2,
   "fields": {
-    "nombre": "Pintar",
-    "descripcion": "Pintar una parte del vehÌculo",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": true
+    "nombre": "req repuestos",
+    "descripcion": "Tarea que requiere repuestos",
+    "materiales": false,
+    "repuestos": true,
+    "planilla": false
   }
 },
 {
   "model": "taller.tipotarea",
   "pk": 3,
   "fields": {
-    "nombre": "Desabollar",
-    "descripcion": "Quitar bollos",
+    "nombre": "req planilla",
+    "descripcion": "Tarea que requiere planilla de pintura",
     "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 4,
-  "fields": {
-    "nombre": "Masillar",
-    "descripcion": "Aplicar masilla",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 5,
-  "fields": {
-    "nombre": "Lijar",
-    "descripcion": "Lijar y preparar partes para pintura",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 6,
-  "fields": {
-    "nombre": "Soldar",
-    "descripcion": "Unir dos chapas",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 7,
-  "fields": {
-    "nombre": "Pulir",
-    "descripcion": "Sacar brillo",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 8,
-  "fields": {
-    "nombre": "Puertas y Portones",
-    "descripcion": "ColocaciÛn de puertas portones capot, etc",
-    "materiales": true,
-    "repuestos": true,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 9,
-  "fields": {
-    "nombre": "Interiores",
-    "descripcion": "ColocaciÛn de butacas tablero, baul, etc",
-    "materiales": true,
-    "repuestos": true,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 10,
-  "fields": {
-    "nombre": "asdasd",
-    "descripcion": "aasdasdasd",
-    "materiales": true,
-    "repuestos": true,
-    "planilla": true
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 11,
-  "fields": {
-    "nombre": "ASdasdasd",
-    "descripcion": "asdasdasd",
-    "materiales": true,
     "repuestos": false,
     "planilla": true
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 12,
-  "fields": {
-    "nombre": "hola",
-    "descripcion": "sagasgasga",
-    "materiales": true,
-    "repuestos": false,
-    "planilla": true
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 13,
-  "fields": {
-    "nombre": "afsafsa",
-    "descripcion": "asfasfasf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 14,
-  "fields": {
-    "nombre": "fafasf",
-    "descripcion": "asfasfas",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 15,
-  "fields": {
-    "nombre": "hsafsf",
-    "descripcion": "alksjfklasf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 16,
-  "fields": {
-    "nombre": "afasgasg",
-    "descripcion": "asfasfasfsf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 17,
-  "fields": {
-    "nombre": "asfasasd",
-    "descripcion": "asfasfasf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 18,
-  "fields": {
-    "nombre": "sdasfa",
-    "descripcion": "asfaf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 19,
-  "fields": {
-    "nombre": "asfasf",
-    "descripcion": "asfasfasf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 20,
-  "fields": {
-    "nombre": "asfsaf",
-    "descripcion": "asfasf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 21,
-  "fields": {
-    "nombre": "asfasfasf",
-    "descripcion": "asfasf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
-  }
-},
-{
-  "model": "taller.tipotarea",
-  "pk": 22,
-  "fields": {
-    "nombre": "safasfa",
-    "descripcion": "asfasf",
-    "materiales": false,
-    "repuestos": false,
-    "planilla": false
   }
 },
 {
   "model": "taller.tarea",
   "pk": 1,
   "fields": {
-    "nombre": "Limpiar chapa",
-    "descripcion": "Quitar todas las impurezas de la chapa en torno al golpe",
+    "nombre": "tarea1",
+    "descripcion": "adasasd",
     "tipo": 1,
-    "precio": "30.00"
+    "precio": "150.00"
   }
 },
 {
   "model": "taller.tarea",
   "pk": 2,
   "fields": {
-    "nombre": "ReparaciÛn de Chapa hasta 20cm2",
-    "descripcion": "ReparaciÛn de Chapa",
-    "tipo": 3,
+    "nombre": "tarea repuestos",
+    "descripcion": "Tarea que req repuestos",
+    "tipo": 2,
+    "precio": "100.00"
+  }
+},
+{
+  "model": "taller.tarea",
+  "pk": 3,
+  "fields": {
+    "nombre": "req materiales",
+    "descripcion": "Tarea que requiere materiales",
+    "tipo": 1,
     "precio": "50.00"
   }
 },
 {
-  "model": "taller.tarea",
-  "pk": 3,
-  "fields": {
-    "nombre": "Pintar arreglo de hasta 100cm2",
-    "descripcion": "Pintar superficie",
-    "tipo": 2,
-    "precio": "120.00"
-  }
-},
-{
-  "model": "taller.tarea",
-  "pk": 4,
-  "fields": {
-    "nombre": "Masilla Chapa hasta 20cm2",
-    "descripcion": "Masillar Chapa",
-    "tipo": 4,
-    "precio": "70.00"
-  }
-},
-{
-  "model": "taller.tarea",
-  "pk": 5,
-  "fields": {
-    "nombre": "Pintar arreglo de hasta 50cm2",
-    "descripcion": "Pintar arreglo de hasta 50cm2",
-    "tipo": 2,
-    "precio": "80.00"
-  }
-},
-{
-  "model": "taller.tarea",
-  "pk": 6,
-  "fields": {
-    "nombre": "Cambiar puerta",
-    "descripcion": "Cambiar puerta",
-    "tipo": 8,
-    "precio": "80.00"
-  }
-},
-{
   "model": "taller.repuesto",
   "pk": 1,
   "fields": {
-    "nombre": "Puerta Derecha",
+    "nombre": "rep",
     "modelo": 1,
     "tipo": 1,
-    "cantidad": 2,
-    "precio": "400.00"
-  }
-},
-{
-  "model": "taller.repuesto",
-  "pk": 2,
-  "fields": {
-    "nombre": "Puerta Izquierda",
-    "modelo": 1,
-    "tipo": 1,
-    "cantidad": 2,
-    "precio": "400.00"
-  }
-},
-{
-  "model": "taller.repuesto",
-  "pk": 3,
-  "fields": {
-    "nombre": "Absorvedores",
-    "modelo": 9,
-    "tipo": 2,
-    "cantidad": 4,
-    "precio": "400.00"
-  }
-},
-{
-  "model": "taller.repuesto",
-  "pk": 4,
-  "fields": {
-    "nombre": "lHJaf",
-    "modelo": 2,
-    "tipo": 4,
-    "cantidad": 49,
-    "precio": "123.00"
+    "cantidad": 200,
+    "precio": "201.00"
   }
 },
 {
   "model": "taller.tipomaterial",
   "pk": 1,
   "fields": {
-    "nombre": "Pintura",
+    "nombre": "tipomat2",
     "unidad_medida": 1
   }
 },
@@ -2330,211 +2017,37 @@
   "model": "taller.tipomaterial",
   "pk": 2,
   "fields": {
-    "nombre": "Remaches",
-    "unidad_medida": 4
+    "nombre": "tipo6",
+    "unidad_medida": 2
   }
 },
 {
   "model": "taller.tipomaterial",
   "pk": 3,
   "fields": {
-    "nombre": "Broches",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 4,
-  "fields": {
-    "nombre": "Electrodos",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 5,
-  "fields": {
-    "nombre": "Lija 80",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 6,
-  "fields": {
-    "nombre": "Pasta de Pulir",
-    "unidad_medida": 1
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 7,
-  "fields": {
-    "nombre": "Fibra de Vidrio",
+    "nombre": "tipomat3",
     "unidad_medida": 6
   }
 },
 {
-  "model": "taller.tipomaterial",
-  "pk": 8,
-  "fields": {
-    "nombre": "Resina",
-    "unidad_medida": 2
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 9,
-  "fields": {
-    "nombre": "Tiner",
-    "unidad_medida": 2
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 10,
-  "fields": {
-    "nombre": "Aguarraz",
-    "unidad_medida": 2
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 11,
-  "fields": {
-    "nombre": "Lija 120",
-    "unidad_medida": 4
-  }
-},
-{
-  "model": "taller.tipomaterial",
-  "pk": 12,
-  "fields": {
-    "nombre": "Masilla",
-    "unidad_medida": 1
-  }
-},
-{
   "model": "taller.material",
   "pk": 1,
   "fields": {
-    "nombre": "Blanco Polar",
-    "tipo": 1,
-    "cantidad": 3000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 2,
-  "fields": {
-    "nombre": "Blanco",
-    "tipo": 1,
-    "cantidad": 2000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 3,
-  "fields": {
-    "nombre": "Gris",
-    "tipo": 1,
-    "cantidad": 52,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 6,
-  "fields": {
-    "nombre": "Gris Grafito",
-    "tipo": 1,
-    "cantidad": 3000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 7,
-  "fields": {
-    "nombre": "Gris Topo",
-    "tipo": 1,
-    "cantidad": 1000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 8,
-  "fields": {
-    "nombre": "Galgo",
-    "tipo": 5,
-    "cantidad": 30,
-    "precio": "20.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 9,
-  "fields": {
-    "nombre": "Galgo",
-    "tipo": 11,
-    "cantidad": 30,
-    "precio": "20.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 10,
-  "fields": {
-    "nombre": "Durlok",
-    "tipo": 12,
-    "cantidad": 3000,
-    "precio": "10.00"
-  }
-},
-{
-  "model": "taller.material",
-  "pk": 11,
-  "fields": {
-    "nombre": "Alba",
-    "tipo": 7,
-    "cantidad": 100,
-    "precio": "0.50"
+    "nombre": "mat2",
+    "tipo": 2,
+    "cantidad": 130,
+    "precio": "300.00"
   }
 },
 {
   "model": "taller.cliente",
   "pk": 1,
   "fields": {
-    "dni": "36363633",
-    "nombre": "Pedro",
-    "apellido": "Paco",
-    "direccion": "Avenida Siempre Viva 123",
-    "telefono": "4343434"
-  }
-},
-{
-  "model": "taller.cliente",
-  "pk": 2,
-  "fields": {
-    "dni": "20304050",
-    "nombre": "Homero J.",
-    "apellido": "Simpson",
-    "direccion": "Siempreviva 742",
-    "telefono": "1213141516"
-  }
-},
-{
-  "model": "taller.cliente",
-  "pk": 3,
-  "fields": {
-    "dni": "30405060",
-    "nombre": "Raul",
-    "apellido": "Ruiz",
-    "direccion": "calle falsa 123",
-    "telefono": "1313134141414"
+    "dni": "12345678",
+    "nombre": "Cliente1",
+    "apellido": "Apellido",
+    "direccion": "calle 123",
+    "telefono": "2804566768"
   }
 },
 {
@@ -2542,232 +2055,208 @@
   "pk": 1,
   "fields": {
     "cliente": 1,
-    "patente": "AD123DE",
-    "modelo": 9,
-    "anio": 2018,
-    "chasis": "423r23r34r23r4r34r34r343f34"
-  }
-},
-{
-  "model": "taller.vehiculo",
-  "pk": 2,
-  "fields": {
-    "cliente": 2,
-    "patente": "BCD814",
-    "modelo": 10,
-    "anio": 1868,
-    "chasis": "AB 44422 111"
-  }
-},
-{
-  "model": "taller.vehiculo",
-  "pk": 3,
-  "fields": {
-    "cliente": 3,
-    "patente": "AS677AA",
-    "modelo": 2,
-    "anio": 2013,
-    "chasis": "ASD"
-  }
-},
-{
-  "model": "taller.vehiculo",
-  "pk": 6,
-  "fields": {
-    "cliente": 2,
-    "patente": "156465",
-    "modelo": 3,
-    "anio": 1234567,
-    "chasis": "sdfghjkl"
-  }
-},
-{
-  "model": "taller.vehiculo",
-  "pk": 10,
-  "fields": {
-    "cliente": 2,
-    "patente": "AA123AA",
-    "modelo": 5,
-    "anio": 2016,
-    "chasis": "aas123123"
+    "patente": "AB123CD",
+    "modelo": 1,
+    "anio": 2020,
+    "chasis": "asd1"
   }
 },
 {
   "model": "taller.empleado",
   "pk": 1,
   "fields": {
-    "cuil": "23-32323232-2",
-    "legajo": 1231,
-    "nombre": "Juan",
-    "apellido": "Jancho",
+    "cuil": "12-45456765-7",
+    "legajo": 123123312,
+    "nombre": "Don Pepe",
+    "apellido": "Pepito",
     "usuario": [
-      "juan"
+      "diego"
     ],
     "tareas": [
-      4,
-      5
+      1
     ]
-  }
-},
-{
-  "model": "taller.empleado",
-  "pk": 2,
-  "fields": {
-    "cuil": "23-32323222-2",
-    "legajo": 232,
-    "nombre": "Pedro",
-    "apellido": "Pedro",
-    "usuario": [
-      "pedro"
-    ],
-    "tareas": [
-      2,
-      7,
-      9
-    ]
-  }
-},
-{
-  "model": "taller.empleado",
-  "pk": 3,
-  "fields": {
-    "cuil": "442255885",
-    "legajo": 20,
-    "nombre": "Carl",
-    "apellido": "Carlson",
-    "usuario": null,
-    "tareas": []
-  }
-},
-{
-  "model": "taller.empleado",
-  "pk": 4,
-  "fields": {
-    "cuil": "44555888",
-    "legajo": 21,
-    "nombre": "Lenny",
-    "apellido": "leonard",
-    "usuario": null,
-    "tareas": []
-  }
-},
-{
-  "model": "taller.empleado",
-  "pk": 5,
-  "fields": {
-    "cuil": "124124",
-    "legajo": 214,
-    "nombre": "jljsaf",
-    "apellido": "lkajsklfajskf",
-    "usuario": null,
-    "tareas": []
   }
 },
 {
   "model": "ordenes.ordendetrabajo",
-  "pk": 6,
+  "pk": 1,
   "fields": {
-    "turno": "2021-12-22T10:52:00Z",
-    "ingreso": "2021-12-22T10:50:00Z",
+    "turno": "2022-05-26T18:03:00Z",
+    "ingreso": "2022-05-26T17:41:00Z",
     "egreso": null,
     "estado": 5
   }
 },
 {
-  "model": "ordenes.detalleordendetrabajo",
-  "pk": 15,
+  "model": "ordenes.ordendetrabajo",
+  "pk": 2,
   "fields": {
-    "orden": 6,
+    "turno": "2022-05-29T19:26:00Z",
+    "ingreso": null,
+    "egreso": null,
+    "estado": 0
+  }
+},
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 3,
+  "fields": {
+    "turno": "2022-05-29T19:35:00Z",
+    "ingreso": null,
+    "egreso": null,
+    "estado": 0
+  }
+},
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 4,
+  "fields": {
+    "turno": "2022-06-14T16:41:00Z",
+    "ingreso": null,
+    "egreso": null,
+    "estado": 0
+  }
+},
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 5,
+  "fields": {
+    "turno": "2022-06-15T17:09:00Z",
+    "ingreso": null,
+    "egreso": null,
+    "estado": 0
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "orden": 1,
+    "tarea": 1,
+    "empleado": 1,
+    "inicio": "2022-05-26T20:48:01.967Z",
+    "fin": "2022-05-26T20:48:01.967Z",
+    "exitosa": true,
+    "observaciones": "asd"
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "orden": 2,
+    "tarea": 1,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
+    "exitosa": true,
+    "observaciones": null
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 3,
+  "fields": {
+    "orden": 3,
+    "tarea": 2,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
+    "exitosa": true,
+    "observaciones": null
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 4,
+  "fields": {
+    "orden": 3,
     "tarea": 3,
-    "empleado": 2,
-    "inicio": "2021-12-03T20:32:37.490Z",
-    "fin": "2021-12-03T20:32:37.490Z",
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
     "exitosa": true,
-    "observaciones": "se pinto con 50gr de pintura y se recupero una puerta"
+    "observaciones": null
   }
 },
 {
   "model": "ordenes.detalleordendetrabajo",
-  "pk": 16,
+  "pk": 5,
   "fields": {
-    "orden": 6,
-    "tarea": 4,
-    "empleado": 2,
-    "inicio": "2021-12-03T20:32:37.490Z",
-    "fin": "2021-12-03T20:32:37.490Z",
+    "orden": 4,
+    "tarea": 3,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
     "exitosa": true,
-    "observaciones": "ok"
+    "observaciones": null
   }
 },
 {
   "model": "ordenes.detalleordendetrabajo",
-  "pk": 17,
-  "fields": {
-    "orden": 6,
-    "tarea": 5,
-    "empleado": 4,
-    "inicio": "2021-12-03T20:32:37.490Z",
-    "fin": "2021-12-03T20:32:37.490Z",
-    "exitosa": true,
-    "observaciones": "ok"
-  }
-},
-{
-  "model": "ordenes.detalleordendetrabajo",
-  "pk": 18,
-  "fields": {
-    "orden": 6,
-    "tarea": 6,
-    "empleado": 2,
-    "inicio": "2021-12-03T20:32:37.490Z",
-    "fin": "2021-12-03T20:32:37.490Z",
-    "exitosa": true,
-    "observaciones": "OK"
-  }
-},
-{
-  "model": "ordenes.materialordendetrabajo",
-  "pk": 12,
-  "fields": {
-    "material": 6,
-    "orden": 6,
-    "cantidad": 50
-  }
-},
-{
-  "model": "ordenes.materialordendetrabajo",
-  "pk": 13,
-  "fields": {
-    "material": 9,
-    "orden": 6,
-    "cantidad": 8
-  }
-},
-{
-  "model": "ordenes.materialordendetrabajo",
-  "pk": 14,
-  "fields": {
-    "material": 7,
-    "orden": 6,
-    "cantidad": 0
-  }
-},
-{
-  "model": "ordenes.repuestoordendetrabajo",
   "pk": 6,
   "fields": {
-    "repuesto": 1,
-    "orden": 6,
+    "orden": 5,
+    "tarea": 2,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
+    "exitosa": true,
+    "observaciones": null
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "material": 1,
+    "orden": 1,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "material": 1,
+    "orden": 2,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 3,
+  "fields": {
+    "material": 1,
+    "orden": 3,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 4,
+  "fields": {
+    "material": 1,
+    "orden": 4,
     "cantidad": 0
   }
 },
 {
   "model": "ordenes.repuestoordendetrabajo",
-  "pk": 7,
+  "pk": 1,
   "fields": {
-    "repuesto": 2,
-    "orden": 6,
-    "cantidad": 1
+    "repuesto": 1,
+    "orden": 1,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.repuestoordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "repuesto": 1,
+    "orden": 3,
+    "cantidad": 0
   }
 },
 {
@@ -2776,12 +2265,12 @@
   "fields": {
     "cliente": 1,
     "vehiculo": 1,
-    "detalles": "Presupuesto",
+    "detalles": "asadadasd",
+    "fecha": "2022-05-26T20:40:04.372Z",
     "validez": 60,
-    "orden": null,
+    "orden": 1,
     "tareas": [
-      3,
-      6
+      1
     ]
   }
 },
@@ -2791,12 +2280,12 @@
   "fields": {
     "cliente": 1,
     "vehiculo": 1,
-    "detalles": "Presupuesto",
+    "detalles": "pres1",
+    "fecha": "2022-05-28T18:24:15.177Z",
     "validez": 60,
     "orden": null,
     "tareas": [
-      3,
-      5
+      1
     ]
   }
 },
@@ -2806,14 +2295,12 @@
   "fields": {
     "cliente": 1,
     "vehiculo": 1,
-    "detalles": "Presupuesto",
+    "detalles": "pres2",
+    "fecha": "2022-05-28T18:41:08.487Z",
     "validez": 60,
     "orden": null,
     "tareas": [
-      1,
-      2,
-      3,
-      5
+      1
     ]
   }
 },
@@ -2821,15 +2308,29 @@
   "model": "ordenes.presupuesto",
   "pk": 4,
   "fields": {
-    "cliente": 2,
-    "vehiculo": 2,
-    "detalles": "",
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "pres3",
+    "fecha": "2022-05-28T18:43:49.054Z",
     "validez": 60,
     "orden": null,
     "tareas": [
-      1,
-      4,
-      6
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 5,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "pres5",
+    "fecha": "2022-05-28T18:47:49.680Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      1
     ]
   }
 },
@@ -2837,15 +2338,14 @@
   "model": "ordenes.presupuesto",
   "pk": 6,
   "fields": {
-    "cliente": 2,
+    "cliente": 1,
     "vehiculo": 1,
-    "detalles": "",
+    "detalles": "pres6",
+    "fecha": "2022-05-28T18:48:54.983Z",
     "validez": 60,
     "orden": null,
     "tareas": [
-      1,
-      3,
-      5
+      1
     ]
   }
 },
@@ -2853,15 +2353,29 @@
   "model": "ordenes.presupuesto",
   "pk": 7,
   "fields": {
-    "cliente": 2,
+    "cliente": 1,
     "vehiculo": 1,
-    "detalles": "",
+    "detalles": "pres1",
+    "fecha": "2022-05-28T21:43:05.609Z",
     "validez": 60,
     "orden": null,
     "tareas": [
-      1,
-      3,
-      5
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 8,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T21:45:49.482Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      2
     ]
   }
 },
@@ -2869,18 +2383,14 @@
   "model": "ordenes.presupuesto",
   "pk": 9,
   "fields": {
-    "cliente": 2,
-    "vehiculo": 2,
+    "cliente": 1,
+    "vehiculo": 1,
     "detalles": "",
+    "fecha": "2022-05-28T21:47:43.562Z",
     "validez": 60,
     "orden": null,
     "tareas": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
+      3
     ]
   }
 },
@@ -2888,16 +2398,121 @@
   "model": "ordenes.presupuesto",
   "pk": 10,
   "fields": {
-    "cliente": 2,
-    "vehiculo": 2,
+    "cliente": 1,
+    "vehiculo": 1,
     "detalles": "",
+    "fecha": "2022-05-28T21:48:25.037Z",
     "validez": 60,
-    "orden": 6,
+    "orden": null,
     "tareas": [
-      3,
-      4,
-      5,
-      6
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 11,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T22:05:04.232Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 12,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T22:13:58.851Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 13,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T22:15:07.202Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 14,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T22:15:22.677Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 15,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "fecha1",
+    "fecha": "2022-05-28T22:35:26.593Z",
+    "validez": 60,
+    "orden": 3,
+    "tareas": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 16,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "fecha2",
+    "fecha": "2022-05-28T22:37:12.744Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 17,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-30T18:37:58.625Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      2
     ]
   }
 },
@@ -2905,117 +2520,162 @@
   "model": "ordenes.presupuestomaterial",
   "pk": 1,
   "fields": {
-    "material": 7,
-    "presupuesto": 1,
-    "cantidad": 10
-  }
-},
-{
-  "model": "ordenes.presupuestomaterial",
-  "pk": 2,
-  "fields": {
-    "material": 10,
-    "presupuesto": 1,
-    "cantidad": 2
-  }
-},
-{
-  "model": "ordenes.presupuestomaterial",
-  "pk": 3,
-  "fields": {
-    "material": 9,
+    "material": 1,
     "presupuesto": 1,
     "cantidad": 1
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
+  "pk": 2,
+  "fields": {
+    "material": 1,
+    "presupuesto": 2,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 3,
+  "fields": {
+    "material": 1,
+    "presupuesto": 3,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
   "pk": 4,
   "fields": {
-    "material": 8,
-    "presupuesto": 1,
-    "cantidad": 2
+    "material": 1,
+    "presupuesto": 4,
+    "cantidad": 0
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
   "pk": 5,
   "fields": {
-    "material": 10,
-    "presupuesto": 4,
-    "cantidad": 150
+    "material": 1,
+    "presupuesto": 5,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 6,
+  "fields": {
+    "material": 1,
+    "presupuesto": 6,
+    "cantidad": 1
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
   "pk": 7,
   "fields": {
-    "material": 10,
-    "presupuesto": 6,
-    "cantidad": 0
-  }
-},
-{
-  "model": "ordenes.presupuestomaterial",
-  "pk": 8,
-  "fields": {
-    "material": 10,
+    "material": 1,
     "presupuesto": 7,
     "cantidad": 10
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
+  "pk": 8,
+  "fields": {
+    "material": 1,
+    "presupuesto": 8,
+    "cantidad": 100
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 9,
+  "fields": {
+    "material": 1,
+    "presupuesto": 9,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
   "pk": 10,
   "fields": {
-    "material": 6,
-    "presupuesto": 9,
-    "cantidad": 10
+    "material": 1,
+    "presupuesto": 10,
+    "cantidad": 2
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
   "pk": 11,
   "fields": {
-    "material": 9,
-    "presupuesto": 9,
-    "cantidad": 10
+    "material": 1,
+    "presupuesto": 10,
+    "cantidad": 1
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
   "pk": 12,
   "fields": {
-    "material": 7,
-    "presupuesto": 9,
-    "cantidad": 9
+    "material": 1,
+    "presupuesto": 11,
+    "cantidad": 10
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
   "pk": 13,
   "fields": {
-    "material": 6,
-    "presupuesto": 10,
-    "cantidad": 10
+    "material": 1,
+    "presupuesto": 12,
+    "cantidad": 1
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
   "pk": 14,
   "fields": {
-    "material": 9,
-    "presupuesto": 10,
-    "cantidad": 10
+    "material": 1,
+    "presupuesto": 13,
+    "cantidad": 1
   }
 },
 {
   "model": "ordenes.presupuestomaterial",
   "pk": 15,
   "fields": {
-    "material": 7,
-    "presupuesto": 10,
-    "cantidad": 9
+    "material": 1,
+    "presupuesto": 14,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 16,
+  "fields": {
+    "material": 1,
+    "presupuesto": 15,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 17,
+  "fields": {
+    "material": 1,
+    "presupuesto": 16,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 18,
+  "fields": {
+    "material": 1,
+    "presupuesto": 17,
+    "cantidad": 1
   }
 },
 {
@@ -3031,9 +2691,18 @@
   "model": "ordenes.presupuestorepuesto",
   "pk": 2,
   "fields": {
-    "repuesto": 2,
-    "presupuesto": 4,
-    "cantidad": 1
+    "repuesto": 1,
+    "presupuesto": 2,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 3,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 3,
+    "cantidad": 0
   }
 },
 {
@@ -3041,16 +2710,16 @@
   "pk": 4,
   "fields": {
     "repuesto": 1,
-    "presupuesto": 9,
-    "cantidad": 1
+    "presupuesto": 4,
+    "cantidad": 0
   }
 },
 {
   "model": "ordenes.presupuestorepuesto",
   "pk": 5,
   "fields": {
-    "repuesto": 2,
-    "presupuesto": 9,
+    "repuesto": 1,
+    "presupuesto": 5,
     "cantidad": 1
   }
 },
@@ -3059,1563 +2728,168 @@
   "pk": 6,
   "fields": {
     "repuesto": 1,
-    "presupuesto": 10,
-    "cantidad": 1
+    "presupuesto": 6,
+    "cantidad": 3
   }
 },
 {
   "model": "ordenes.presupuestorepuesto",
   "pk": 7,
   "fields": {
-    "repuesto": 2,
-    "presupuesto": 10,
+    "repuesto": 1,
+    "presupuesto": 7,
+    "cantidad": 1000
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 8,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 8,
     "cantidad": 1
   }
 },
 {
-  "model": "ordenes.planilladepintura",
-  "pk": 5,
-  "fields": {
-    "orden": 15,
-    "fecha": "2021-12-03T20:40:59.644Z",
-    "nombre_de_color": "Gris Grafito"
-  }
-},
-{
-  "model": "ordenes.planilladepintura",
-  "pk": 6,
-  "fields": {
-    "orden": 17,
-    "fecha": "2021-12-03T20:45:43.004Z",
-    "nombre_de_color": "Gris Grafito"
-  }
-},
-{
-  "model": "ordenes.detalleplanilladepintura",
+  "model": "ordenes.presupuestorepuesto",
   "pk": 9,
   "fields": {
-    "planilla": 5,
-    "formula": "base",
-    "cantidad": 40
+    "repuesto": 1,
+    "presupuesto": 9,
+    "cantidad": 2
   }
 },
 {
-  "model": "ordenes.detalleplanilladepintura",
+  "model": "ordenes.presupuestorepuesto",
   "pk": 10,
   "fields": {
-    "planilla": 6,
-    "formula": "base",
-    "cantidad": 10
+    "repuesto": 1,
+    "presupuesto": 10,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 11,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 11,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 12,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 12,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 13,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 13,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 14,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 14,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 15,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 15,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 16,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 16,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 17,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 17,
+    "cantidad": 1
   }
 },
 {
   "model": "facturas.factura",
-  "pk": 3,
+  "pk": 1,
   "fields": {
-    "orden": 6,
-    "fecha": "2021-12-03"
+    "orden": 1,
+    "fecha": "2022-05-26",
+    "estado": 0
   }
 },
 {
   "model": "facturas.detallefactura",
-  "pk": 15,
+  "pk": 1,
   "fields": {
-    "factura": 3,
-    "descripcion": "MaterialOrdenDeTrabajo object (12)",
-    "precio": "500.00"
-  }
-},
-{
-  "model": "facturas.detallefactura",
-  "pk": 16,
-  "fields": {
-    "factura": 3,
-    "descripcion": "MaterialOrdenDeTrabajo object (13)",
-    "precio": "160.00"
-  }
-},
-{
-  "model": "facturas.detallefactura",
-  "pk": 17,
-  "fields": {
-    "factura": 3,
-    "descripcion": "MaterialOrdenDeTrabajo object (14)",
+    "factura": 1,
+    "descripcion": "MaterialOrdenDeTrabajo object (1)",
     "precio": "0.00"
   }
 },
 {
   "model": "facturas.detallefactura",
-  "pk": 18,
-  "fields": {
-    "factura": 3,
-    "descripcion": "RepuestoOrdenDeTrabajo object (6)",
-    "precio": "0.00"
-  }
-},
-{
-  "model": "facturas.detallefactura",
-  "pk": 19,
-  "fields": {
-    "factura": 3,
-    "descripcion": "RepuestoOrdenDeTrabajo object (7)",
-    "precio": "400.00"
-  }
-},
-{
-  "model": "facturas.detallefactura",
-  "pk": 20,
-  "fields": {
-    "factura": 3,
-    "descripcion": "DetalleOrdenDeTrabajo object (15)",
-    "precio": "120.00"
-  }
-},
-{
-  "model": "facturas.detallefactura",
-  "pk": 21,
-  "fields": {
-    "factura": 3,
-    "descripcion": "DetalleOrdenDeTrabajo object (16)",
-    "precio": "70.00"
-  }
-},
-{
-  "model": "facturas.detallefactura",
-  "pk": 22,
-  "fields": {
-    "factura": 3,
-    "descripcion": "DetalleOrdenDeTrabajo object (17)",
-    "precio": "80.00"
-  }
-},
-{
-  "model": "facturas.detallefactura",
-  "pk": 23,
-  "fields": {
-    "factura": 3,
-    "descripcion": "DetalleOrdenDeTrabajo object (18)",
-    "precio": "80.00"
-  }
-},
-{
-  "model": "facturas.pago",
   "pk": 2,
   "fields": {
-    "factura": 3,
-    "fecha": "2021-12-03",
-    "monto": "1370.00",
-    "tipo": 0
+    "factura": 1,
+    "descripcion": "RepuestoOrdenDeTrabajo object (1)",
+    "precio": "0.00"
+  }
+},
+{
+  "model": "facturas.detallefactura",
+  "pk": 3,
+  "fields": {
+    "factura": 1,
+    "descripcion": "DetalleOrdenDeTrabajo object (1)",
+    "precio": "150.00"
   }
 },
 {
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
-    "action_time": "2021-09-27T21:23:31.835Z",
+    "action_time": "2022-05-26T20:45:15.941Z",
     "user": [
       "diego"
     ],
     "content_type": [
       "taller",
-      "vehiculo"
+      "empleado"
     ],
     "object_id": "1",
-    "object_repr": "TipoTarea object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
+    "object_repr": "Pepito, Don Pepe",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Tareas\", \"Usuario\"]}}]"
   }
 },
 {
   "model": "admin.logentry",
   "pk": 2,
   "fields": {
-    "action_time": "2021-09-27T21:24:08.426Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "2",
-    "object_repr": "TipoTarea object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 3,
-  "fields": {
-    "action_time": "2021-09-27T21:24:44.418Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "3",
-    "object_repr": "TipoTarea object (3)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 4,
-  "fields": {
-    "action_time": "2021-09-27T21:24:56.111Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "4",
-    "object_repr": "TipoTarea object (4)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 5,
-  "fields": {
-    "action_time": "2021-09-27T21:25:17.747Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "5",
-    "object_repr": "TipoTarea object (5)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 6,
-  "fields": {
-    "action_time": "2021-09-27T21:26:06.266Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "1",
-    "object_repr": "Decapadar",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 7,
-  "fields": {
-    "action_time": "2021-09-27T21:26:30.952Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "6",
-    "object_repr": "Soldar",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 8,
-  "fields": {
-    "action_time": "2021-09-27T21:27:17.295Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "7",
-    "object_repr": "Pulir",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 9,
-  "fields": {
-    "action_time": "2021-09-27T21:29:58.077Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "8",
-    "object_repr": "Puertas y Portones",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 10,
-  "fields": {
-    "action_time": "2021-09-27T21:30:40.740Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "9",
-    "object_repr": "Interiores",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 11,
-  "fields": {
-    "action_time": "2021-09-27T21:31:18.606Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "TipoMaterial object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 12,
-  "fields": {
-    "action_time": "2021-09-27T21:31:55.906Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "Remaches",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 13,
-  "fields": {
-    "action_time": "2021-09-27T21:32:02.333Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Broches",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 14,
-  "fields": {
-    "action_time": "2021-09-27T21:32:12.762Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Electrodos",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 15,
-  "fields": {
-    "action_time": "2021-09-27T21:32:29.097Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "5",
-    "object_repr": "Lija",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 16,
-  "fields": {
-    "action_time": "2021-09-27T21:32:47.321Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "6",
-    "object_repr": "Pasta de Pulir",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 17,
-  "fields": {
-    "action_time": "2021-09-27T21:32:56.400Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "7",
-    "object_repr": "Fibra de Vidrio",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 18,
-  "fields": {
-    "action_time": "2021-09-27T21:33:07.005Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "8",
-    "object_repr": "Resina",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 19,
-  "fields": {
-    "action_time": "2021-09-27T21:33:34.542Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "8",
-    "object_repr": "Resina",
-    "action_flag": 2,
-    "change_message": "[]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 20,
-  "fields": {
-    "action_time": "2021-09-27T21:33:49.013Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "9",
-    "object_repr": "Tiner",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 21,
-  "fields": {
-    "action_time": "2021-09-27T21:34:02.202Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "10",
-    "object_repr": "Aguarraz",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 22,
-  "fields": {
-    "action_time": "2021-09-27T21:37:22.820Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "1",
-    "object_repr": "Material object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 23,
-  "fields": {
-    "action_time": "2021-09-27T21:38:25.653Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "2",
-    "object_repr": "Blanco",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 24,
-  "fields": {
-    "action_time": "2021-09-27T21:38:37.635Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "3",
-    "object_repr": "Gris",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 25,
-  "fields": {
-    "action_time": "2021-09-27T21:38:54.403Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "4",
-    "object_repr": "Azul",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 26,
-  "fields": {
-    "action_time": "2021-09-27T21:39:10.917Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "5",
-    "object_repr": "Gris Urano",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 27,
-  "fields": {
-    "action_time": "2021-09-27T21:39:50.656Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "6",
-    "object_repr": "Gris Grafito",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 28,
-  "fields": {
-    "action_time": "2021-09-27T21:40:04.524Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "7",
-    "object_repr": "Gris Topo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 29,
-  "fields": {
-    "action_time": "2021-09-27T21:41:11.793Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "8",
-    "object_repr": "Lija Galgo 80",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 30,
-  "fields": {
-    "action_time": "2021-09-27T21:41:42.443Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "5",
-    "object_repr": "Lija 80",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 31,
-  "fields": {
-    "action_time": "2021-09-27T21:42:01.389Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "11",
-    "object_repr": "Lija 120",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 32,
-  "fields": {
-    "action_time": "2021-09-27T21:42:08.086Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "9",
-    "object_repr": "Galgo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 33,
-  "fields": {
-    "action_time": "2021-09-27T21:42:14.915Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "8",
-    "object_repr": "Galgo",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 34,
-  "fields": {
-    "action_time": "2021-09-27T21:44:30.824Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tiporepuesto"
-    ],
-    "object_id": "12",
-    "object_repr": "Masilla",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 35,
-  "fields": {
-    "action_time": "2021-09-27T21:44:45.173Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "10",
-    "object_repr": "Durlok (Masilla)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 36,
-  "fields": {
-    "action_time": "2021-09-27T21:45:30.311Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "material"
-    ],
-    "object_id": "11",
-    "object_repr": "Alba (Fibra de Vidrio)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 37,
-  "fields": {
-    "action_time": "2021-09-27T21:45:51.417Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "1",
-    "object_repr": "Ford",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 38,
-  "fields": {
-    "action_time": "2021-09-27T21:46:05.066Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "2",
-    "object_repr": "Nissan",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 39,
-  "fields": {
-    "action_time": "2021-09-27T21:46:11.311Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "3",
-    "object_repr": "Toyota",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 40,
-  "fields": {
-    "action_time": "2021-09-27T21:46:30.803Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "4",
-    "object_repr": "Renault",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 41,
-  "fields": {
-    "action_time": "2021-09-27T21:46:44.001Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "5",
-    "object_repr": "Chevrolet",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 42,
-  "fields": {
-    "action_time": "2021-09-27T21:47:15.399Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "6",
-    "object_repr": "Chery",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 43,
-  "fields": {
-    "action_time": "2021-09-27T21:47:22.421Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "1",
-    "object_repr": "Tiggo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 44,
-  "fields": {
-    "action_time": "2021-09-27T21:47:44.557Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "marca"
-    ],
-    "object_id": "7",
-    "object_repr": "Fiat",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 45,
-  "fields": {
-    "action_time": "2021-09-27T21:47:45.884Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "2",
-    "object_repr": "Punto",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 46,
-  "fields": {
-    "action_time": "2021-09-27T21:47:56.198Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "3",
-    "object_repr": "Fiesta",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 47,
-  "fields": {
-    "action_time": "2021-09-27T21:48:14.474Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "4",
-    "object_repr": "Cruze",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 48,
-  "fields": {
-    "action_time": "2021-09-27T21:48:23.224Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "5",
-    "object_repr": "S10",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 49,
-  "fields": {
-    "action_time": "2021-09-27T21:48:34.502Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "6",
-    "object_repr": "March",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 50,
-  "fields": {
-    "action_time": "2021-09-27T21:48:45.775Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "7",
-    "object_repr": "Hilux",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 51,
-  "fields": {
-    "action_time": "2021-09-27T21:48:57.394Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "8",
-    "object_repr": "Kangoo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 52,
-  "fields": {
-    "action_time": "2021-09-27T21:50:10.886Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "Limpiar chapa",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 53,
-  "fields": {
-    "action_time": "2021-09-27T21:50:58.033Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "ReparaciÛn de Chapa",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 54,
-  "fields": {
-    "action_time": "2021-09-27T21:51:59.142Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Pintar",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 55,
-  "fields": {
-    "action_time": "2021-09-27T21:52:22.413Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Masilla Chapa",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 56,
-  "fields": {
-    "action_time": "2021-09-27T21:53:20.997Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Pintar arreglo de hasta 100cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 57,
-  "fields": {
-    "action_time": "2021-09-27T21:53:32.878Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "5",
-    "object_repr": "Pintar arreglo de hasta 50cm2",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 58,
-  "fields": {
-    "action_time": "2021-09-27T21:58:10.098Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "ReparaciÛn de Chapa",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 59,
-  "fields": {
-    "action_time": "2021-09-27T21:58:18.305Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "5",
-    "object_repr": "Pintar arreglo de hasta 50cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 60,
-  "fields": {
-    "action_time": "2021-09-27T21:58:25.241Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Pintar arreglo de hasta 100cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 61,
-  "fields": {
-    "action_time": "2021-09-27T21:58:39.533Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Masilla Chapa",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 62,
-  "fields": {
-    "action_time": "2021-09-27T21:59:40.659Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "Limpiar chapa",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 63,
-  "fields": {
-    "action_time": "2021-09-27T21:59:52.507Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Masilla Chapa 20cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 64,
-  "fields": {
-    "action_time": "2021-09-27T22:00:03.329Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "4",
-    "object_repr": "Masilla Chapa hasta 20cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 65,
-  "fields": {
-    "action_time": "2021-09-27T22:00:13.058Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "ReparaciÛn de Chapa hasta 20cm2",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 66,
-  "fields": {
-    "action_time": "2021-09-27T22:02:22.991Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "1",
-    "object_repr": "Repuesto object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 67,
-  "fields": {
-    "action_time": "2021-09-27T22:05:40.180Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "2",
-    "object_repr": "Puerta Izquierda",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 68,
-  "fields": {
-    "action_time": "2021-09-27T22:05:53.949Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "1",
-    "object_repr": "Puerta Derecha",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Nombre\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 69,
-  "fields": {
-    "action_time": "2021-09-27T22:06:00.779Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "2",
-    "object_repr": "Puerta Izquierda",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Precio\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 70,
-  "fields": {
-    "action_time": "2021-09-27T22:06:03.966Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "tipomaterial"
-    ],
-    "object_id": "1",
-    "object_repr": "Puerta Derecha",
-    "action_flag": 2,
-    "change_message": "[]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 71,
-  "fields": {
-    "action_time": "2021-09-27T22:16:57.854Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "cliente"
-    ],
-    "object_id": "1",
-    "object_repr": "Pedro",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 72,
-  "fields": {
-    "action_time": "2021-09-27T22:19:41.236Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "empleado"
-    ],
-    "object_id": "1",
-    "object_repr": "Empleado object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 73,
-  "fields": {
-    "action_time": "2021-09-27T22:20:13.230Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "empleado"
-    ],
-    "object_id": "2",
-    "object_repr": "Empleado object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 74,
-  "fields": {
-    "action_time": "2021-09-27T22:21:24.571Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "1",
-    "object_repr": "Administrativo",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 75,
-  "fields": {
-    "action_time": "2021-09-27T22:21:32.573Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "2",
-    "object_repr": "Jefe de Taller",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 76,
-  "fields": {
-    "action_time": "2021-09-27T22:21:50.659Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "3",
-    "object_repr": "Oficial Pintor",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 77,
-  "fields": {
-    "action_time": "2021-09-27T22:22:04.238Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "3",
-    "object_repr": "pedro",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 78,
-  "fields": {
-    "action_time": "2021-09-27T22:22:11.681Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "2",
-    "object_repr": "juan",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 79,
-  "fields": {
-    "action_time": "2021-09-27T22:22:22.869Z",
+    "action_time": "2022-05-26T20:46:30.984Z",
     "user": [
       "diego"
     ],
@@ -4626,601 +2900,7 @@
     "object_id": "1",
     "object_repr": "diego",
     "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 80,
-  "fields": {
-    "action_time": "2021-09-29T21:31:07.045Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "modelo"
-    ],
-    "object_id": "9",
-    "object_repr": "Clio",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 81,
-  "fields": {
-    "action_time": "2021-09-29T21:31:25.520Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Absorvedores",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 82,
-  "fields": {
-    "action_time": "2021-09-29T21:31:34.611Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "2",
-    "object_repr": "Puerta Izquierda",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Tipo\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 83,
-  "fields": {
-    "action_time": "2021-09-29T21:31:38.434Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "Puerta Derecha",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Tipo\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 84,
-  "fields": {
-    "action_time": "2021-09-29T21:31:42.061Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "repuesto"
-    ],
-    "object_id": "3",
-    "object_repr": "Absorvedores",
-    "action_flag": 2,
-    "change_message": "[]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 85,
-  "fields": {
-    "action_time": "2021-10-06T22:17:31.182Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "taller",
-      "vehiculo"
-    ],
-    "object_id": "1",
-    "object_repr": "Vehiculo object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 86,
-  "fields": {
-    "action_time": "2021-10-06T22:17:50.763Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "presupuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "Presupuesto object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 87,
-  "fields": {
-    "action_time": "2021-10-06T22:18:17.593Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "presupuestomaterial"
-    ],
-    "object_id": "1",
-    "object_repr": "PresupuestoMaterial object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 88,
-  "fields": {
-    "action_time": "2021-10-06T22:18:31.665Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "presupuestomaterial"
-    ],
-    "object_id": "2",
-    "object_repr": "PresupuestoMaterial object (2)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 89,
-  "fields": {
-    "action_time": "2021-10-06T22:18:45.550Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "presupuestomaterial"
-    ],
-    "object_id": "3",
-    "object_repr": "PresupuestoMaterial object (3)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 90,
-  "fields": {
-    "action_time": "2021-10-06T22:18:52.510Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "presupuestomaterial"
-    ],
-    "object_id": "4",
-    "object_repr": "PresupuestoMaterial object (4)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 91,
-  "fields": {
-    "action_time": "2021-10-06T22:19:05.502Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "presupuestorepuesto"
-    ],
-    "object_id": "1",
-    "object_repr": "PresupuestoRepuesto object (1)",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 92,
-  "fields": {
-    "action_time": "2021-10-06T22:37:41.173Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "ordendetrabajo"
-    ],
-    "object_id": "1",
-    "object_repr": "OrdenDeTrabajo object (1)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 93,
-  "fields": {
-    "action_time": "2021-11-10T22:09:18.762Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "3",
-    "object_repr": "pedro",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 94,
-  "fields": {
-    "action_time": "2021-11-10T22:09:25.022Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "2",
-    "object_repr": "juan",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 95,
-  "fields": {
-    "action_time": "2021-11-10T22:11:37.491Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "3",
-    "object_repr": "Oficial Pintor",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 96,
-  "fields": {
-    "action_time": "2021-11-10T22:31:37.188Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "2",
-    "object_repr": "Jefe de Taller",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 97,
-  "fields": {
-    "action_time": "2021-11-10T22:44:34.791Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "4",
-    "object_repr": "Empleado de Taller",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 98,
-  "fields": {
-    "action_time": "2021-11-10T22:44:48.697Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "2",
-    "object_repr": "juan",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 99,
-  "fields": {
-    "action_time": "2021-11-10T22:44:56.144Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "3",
-    "object_repr": "pedro",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 100,
-  "fields": {
-    "action_time": "2021-11-10T22:46:56.900Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "auth",
-      "group"
-    ],
-    "object_id": "4",
-    "object_repr": "Empleado de Taller",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 101,
-  "fields": {
-    "action_time": "2021-12-01T21:43:23.743Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "ordendetrabajo"
-    ],
-    "object_id": "2",
-    "object_repr": "2 | Homero J. - Plymouth Junkerolla (BCD814)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 102,
-  "fields": {
-    "action_time": "2021-12-03T20:29:32.989Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "10",
-    "object_repr": "MaterialOrdenDeTrabajo object (10)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 103,
-  "fields": {
-    "action_time": "2021-12-03T20:29:32.996Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "9",
-    "object_repr": "MaterialOrdenDeTrabajo object (9)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 104,
-  "fields": {
-    "action_time": "2021-12-03T20:29:33.001Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "8",
-    "object_repr": "MaterialOrdenDeTrabajo object (8)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 105,
-  "fields": {
-    "action_time": "2021-12-03T20:29:33.008Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "7",
-    "object_repr": "MaterialOrdenDeTrabajo object (7)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 106,
-  "fields": {
-    "action_time": "2021-12-03T20:29:33.026Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "6",
-    "object_repr": "MaterialOrdenDeTrabajo object (6)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 107,
-  "fields": {
-    "action_time": "2021-12-03T20:29:33.041Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "5",
-    "object_repr": "MaterialOrdenDeTrabajo object (5)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 108,
-  "fields": {
-    "action_time": "2021-12-03T20:29:33.058Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "4",
-    "object_repr": "MaterialOrdenDeTrabajo object (4)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 109,
-  "fields": {
-    "action_time": "2021-12-03T20:29:33.077Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "3",
-    "object_repr": "MaterialOrdenDeTrabajo object (3)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 110,
-  "fields": {
-    "action_time": "2021-12-03T20:29:33.084Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "2",
-    "object_repr": "MaterialOrdenDeTrabajo object (2)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 111,
-  "fields": {
-    "action_time": "2021-12-03T20:29:33.090Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "materialordendetrabajo"
-    ],
-    "object_id": "1",
-    "object_repr": "MaterialOrdenDeTrabajo object (1)",
-    "action_flag": 3,
-    "change_message": ""
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 112,
-  "fields": {
-    "action_time": "2021-12-03T20:50:51.751Z",
-    "user": [
-      "diego"
-    ],
-    "content_type": [
-      "ordenes",
-      "ordendetrabajo"
-    ],
-    "object_id": "6",
-    "object_repr": "6 | Homero J. - Plymouth Junkerolla (BCD814)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Estado\"]}}]"
+    "change_message": "[{\"changed\": {\"fields\": [\"User permissions\"]}}]"
   }
 }
 ]

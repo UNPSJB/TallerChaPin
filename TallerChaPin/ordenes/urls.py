@@ -3,6 +3,8 @@ from .views import *
 from wkhtmltopdf.views import PDFTemplateView
 
 urlpatterns = [
+     path('presupuesto/tareas/requerimientos', requerimientos_tareas, name='requerimientos_tareas'),
+     path('presupuesto/ampliar/tareas/requerimientos', requerimientos_tareas, name='requerimientos_tareas'),
      # ----------------- Presupuesto -----------------
      path('presupuesto/crear', PresupuestoCreateView.as_view(),
           name="crearPresupuesto"),
@@ -14,6 +16,8 @@ urlpatterns = [
           PresupuestoUpdateView.as_view(), name="modificarPresupuesto"),
      path('presupuesto/eliminar/<int:pk>',
           PresupuestoDeleteView.as_view(), name="eliminarPresupuesto"),
+     path('presupuesto/ampliar/<int:pk>',
+          PresupuestoCreateView.as_view(), name="ampliarPresupuesto"),
      # ------------------ Orden de Trabajo -----------------
      path('orden/crear/<int:pk>', OrdenTrabajoCreateView.as_view(), name="crearOrden"),
      path('orden/listar', OrdenTrabajoListView.as_view(), name="listarOrdenes"),
@@ -45,6 +49,8 @@ urlpatterns = [
      path('ordenesTurnos/registrarIngresoVehiculo',
           RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),
      path('ordenesTurnos/registrarEgresoVehiculo',
+          RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo"),
+     path('ordenesTurnos/registrarEgresoVehiculo/<int:pk>',
           RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo"),
      # ----------------- Turnos -------------------
      path('ordenesTurnos/listarTurnos',

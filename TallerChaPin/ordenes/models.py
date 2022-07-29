@@ -1,4 +1,5 @@
 from django.utils.timezone import now
+from django.utils import timezone
 from taller.models import (
     Empleado,
     Cliente,
@@ -9,6 +10,7 @@ from taller.models import (
 )
 from django.db import models
 from django.conf import settings
+from django.core.exceptions import ValidationError
 # Create your models here.
 
 class OrdenDeTrabajoManager(models.Manager):
@@ -25,6 +27,9 @@ class NoEntregoVehiculoException(Exception):
         super().__init__(message)
         self.estado = estado
 
+def fecha_es_futura(fecha):
+    if fecha < timezone.now():
+        raise ValidationError('Fecha no válida')
 
 class OrdenDeTrabajo(models.Model):
     CREADA = 0
@@ -50,7 +55,7 @@ class OrdenDeTrabajo(models.Model):
         Material, through='MaterialOrdenDeTrabajo')
     repuestos = models.ManyToManyField(
         Repuesto, through='RepuestoOrdenDeTrabajo')
-    turno = models.DateTimeField()
+    turno = models.DateTimeField(validators=[fecha_es_futura])
     ingreso = models.DateTimeField(null=True, blank=True)
     egreso = models.DateTimeField(null=True, blank=True)
     estado = models.PositiveSmallIntegerField(
@@ -164,7 +169,7 @@ class OrdenDeTrabajo(models.Model):
     def vehiculo(self):
         vehiculo = self.presupuestos.all().first()
         return vehiculo.vehiculo if vehiculo is not None else None
-    
+
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 
@@ -210,7 +215,10 @@ class OrdenDeTrabajo(models.Model):
         )
 
     def __str__(self):
-        return f"{self.pk} | {self.cliente.nombre} - {self.vehiculo.modelo.marca} {self.vehiculo.modelo.nombre} ({self.vehiculo.patente})"
+        if self.cliente and self.vehiculo:
+            return f"{self.pk} | {self.cliente.nombre} - {self.vehiculo.modelo.marca} {self.vehiculo.modelo.nombre} ({self.vehiculo.patente})"
+        else:
+            return f"{self.pk} | (inconsistencia en cliente/vehiculo)" # Agregado ya que al haber inconsistencias se rompía en /admin
 
     def actualizar_material(self, material, cantidad):
         materiales = self.orden_materiales.filter(material=material)
@@ -235,6 +243,9 @@ class OrdenDeTrabajo(models.Model):
     def actualizar_estado(self):
         print(self.detalles.all())
 
+    def get_ultimo_presupuesto(self):
+        return self.presupuestos.all().order_by('fecha').last()
+        
 
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):
@@ -259,7 +270,11 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
 
     def sin_asignar(self):
         no_tiene_empleado = models.Q(empleado__isnull=True)
-        qs = self.filter(no_tiene_empleado).order_by('orden__turno')
+        ha_ingresado = models.Q(orden__ingreso__isnull=False)
+        print("test:")
+        qs = self.filter(no_tiene_empleado and ha_ingresado).order_by('orden__turno')
+        print(qs)
+        # print(qs.first().orden.ingreso)
         return qs
 
     def asignados(self):
@@ -297,7 +312,7 @@ class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
 class DetalleOrdenDeTrabajo(models.Model):
     orden = models.ForeignKey(
         OrdenDeTrabajo, related_name="detalles", on_delete=models.CASCADE)
-    tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE)
+    tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE, related_name="detallesorden")
     empleado = models.ForeignKey(
         Empleado, null=True, blank=True, related_name="trabajo", on_delete=models.CASCADE)
     inicio = models.DateTimeField(null=True, blank=True)
@@ -390,6 +405,10 @@ class DetalleOrdenDeTrabajo(models.Model):
         if repuesto is not None:
             orden.actualizar_repuesto(repuesto, cantidad_repuesto)
 
+    def get_titulo(self):
+        return f"{self.tarea} (#{self.orden.pk})"
+
+
 
 class MaterialOrdenDeTrabajo(models.Model):
     material = models.ForeignKey(
@@ -439,15 +458,28 @@ class Presupuesto(models.Model):
         default=settings.CANTIDAD_VALIDEZ_PRESUPUESTO)
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',
                               blank=True, on_delete=models.SET_NULL)
+    ampliado = models.BooleanField(default=False)
 
     def agregar_tarea(self, tarea):
         self.tareas.add(tarea)
 
     def agregar_material(self, material, cantidad):
-        return PresupuestoMaterial.objects.create(material=material, presupuesto=self, cantidad=cantidad)
+        lista_materiales = list(self.materiales.all())
+        if material in lista_materiales:
+            pm_qs = PresupuestoMaterial.objects.filter(material=material, presupuesto=self)
+            cantidad_existente = pm_qs.first().cantidad
+            pm_qs.update(cantidad=cantidad_existente+cantidad)
+        else: 
+            return PresupuestoMaterial.objects.create(material=material, presupuesto=self, cantidad=cantidad)
 
     def agregar_repuesto(self, repuesto, cantidad=1):
-        return PresupuestoRepuesto.objects.create(repuesto=repuesto, presupuesto=self, cantidad=cantidad)
+        lista_repuestos = list(self.repuestos.all())
+        if repuesto in lista_repuestos:
+            pr_qs = PresupuestoRepuesto.objects.filter(repuesto=repuesto, presupuesto=self)
+            cantidad_existente = pr_qs.first().cantidad
+            pr_qs.update(cantidad=cantidad_existente+cantidad)
+        else: 
+            return PresupuestoRepuesto.objects.create(repuesto=repuesto, presupuesto=self, cantidad=cantidad)
 
     def precio_estimado(self):
         tareas = self.tareas.all().aggregate(models.Sum('precio'))['precio__sum']
@@ -475,24 +507,66 @@ class Presupuesto(models.Model):
     def cantidad_detalles(self):
         return self.tareas.count() + self.materiales.count() + self.repuestos.count()
 
+    def puede_confirmarse(self):
+        return self.orden is None
+
+    def puede_modificarse(self):
+        return self.orden is None
+
+    def tiene_orden(self):
+        return self.orden is not None   
+
+    def puede_cancelarse(self):
+        return self.orden is None
+
+    def tiene_anterior(self):
+        if self.orden is None:
+            return False
+
+        presupuestos = list(self.orden.presupuestos.all().order_by('fecha'))
+        if presupuestos.index(self) > 0:
+            return True
+        else:
+            return False
+        
+    def get_diferencia_con_anterior(self):
+        presupuestos = list(self.orden.presupuestos.all().order_by('fecha'))
+        indice = presupuestos.index(self)
+        anterior = presupuestos[indice-1]
+
+        diferencia = presupuestos[indice].precio_estimado() - anterior.precio_estimado()
+        if diferencia > 0:
+            return f'+${diferencia}'
+        else: 
+            return f'-${abs(diferencia)}'
+
+    def es_mas_caro(self):
+        presupuestos = list(self.orden.presupuestos.all().order_by('fecha'))
+        indice = presupuestos.index(self)
+        anterior = presupuestos[indice-1]
+        return presupuestos[indice].precio_estimado() - anterior.precio_estimado() > 0
+
+
+def cantidad_positiva(v):
+    if v <= 0:
+        raise ValidationError('La cantidad de un insumo debe ser mayor a 0')
 
 class PresupuestoMaterial(models.Model):
     material = models.ForeignKey(
-        Material, on_delete=models.CASCADE, related_name='presupuestos')
+        Material, on_delete=models.CASCADE, related_name='presupuestos', null=True, blank=True)
     presupuesto = models.ForeignKey(
         Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_materiales')
-    cantidad = models.PositiveBigIntegerField()
+    cantidad = models.PositiveBigIntegerField(validators=[], null=True, blank=True, default=1)
 
     def precio(self):
         return self.material.precio * self.cantidad
 
-
 class PresupuestoRepuesto(models.Model):
     repuesto = models.ForeignKey(
-        Repuesto, on_delete=models.CASCADE, related_name='presupuestos')
+        Repuesto, on_delete=models.CASCADE, related_name='presupuestos', null=True, blank=True)
     presupuesto = models.ForeignKey(
         Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_repuestos')
-    cantidad = models.PositiveBigIntegerField()
+    cantidad = models.PositiveBigIntegerField(validators=[], null=True, blank=True, default=1)   # cantidad debe ser positiva
 
     def precio(self):
         return self.repuesto.precio * self.cantidad

@@ -261,7 +261,6 @@ class TipoMaterialForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-
         self.helper.layout = Layout(
             Fieldset(
                 "",

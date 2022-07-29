@@ -1,7 +1,7 @@
-from django.http import request
+from django.http import request, JsonResponse
 from django.http.response import HttpResponse
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
@@ -12,6 +12,19 @@ from django.core.exceptions import ObjectDoesNotExist
 from wkhtmltopdf.views import PDFTemplateView
 from django.contrib import messages
 from TallerChaPin.utils import ListFilterView
+import json
+from functools import reduce
+from .utils import requiere_insumo
+
+def requerimientos_tareas(request):
+    """
+        Recibe el pk de una o mas tareas y se retorna un diccionario como:
+        { "materiales": <True|False>, "repuestos": <True|False> } 
+        según si alguna de ellas requiere o no materiales y/o repuestos.
+    """
+    pks = json.load(request)['tareas']
+    tareas = [Tarea.objects.get(pk=pk) for pk in pks]
+    return JsonResponse(requiere_insumo(tareas))
 
 class imprimirPresupuesto(PDFTemplateView):
     #filename = 'presupuesto_pedro.pdf'
@@ -57,8 +70,9 @@ class imprimirPresupuesto(PDFTemplateView):
 # ----------------------------- Presupuesto View ----------------------------------- #
 class PresupuestoListView(ListFilterView):
     filtros = PresupuestoFiltrosForm
-    model = Presupuesto
-    paginate_by = 100  # if pagination is desired
+    # model = Presupuesto
+    queryset = Presupuesto.objects.filter(ampliado=False)
+    paginate_by = 100 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -78,17 +92,42 @@ class PresupuestoDetailView(DetailView):
 
 class PresupuestoCreateView(CreateView):
     model = Presupuesto
-    form_class = PresupuestoForm
+    #form_class = PresupuestoForm
     success_url = reverse_lazy('crearPresupuesto')
     material_form = None
     repuesto_form = None
 
+    def get_presupuesto_base(self):
+        pk = self.kwargs["pk"] if "pk" in self.kwargs.keys() else None
+        return Presupuesto.objects.get(pk=pk) if pk is not None else None
+        
+    def get_form_class(self, *args, **kwargs):
+        base = self.get_presupuesto_base()
+        return PresupuestoForm(base)
+    
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        base = self.get_presupuesto_base()
+        if base is not None:
+            kwargs['initial'] = { 
+                "tareas": base.tareas.all() 
+            }
+        return kwargs
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['presupuesto_material_formset'] = self.material_form or PresupuestoMaterialInline()()
+        base = self.get_presupuesto_base()
+        
+        initial_materiales = [
+            {'material': pm["material_id"], "cantidad": pm["cantidad"]} for pm in base.presupuesto_materiales.all().values()] if base is not None else [{'material': None, "cantidad": 1}]
+        initial_repuestos = [
+            {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in base.presupuesto_repuestos.all().values()] if base is not None else [{'repuesto': None, "cantidad": 1}]
+
+        context['presupuesto_material_formset'] = self.material_form or PresupuestoMaterialInline(len(initial_materiales))(initial = initial_materiales) #pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = self.repuesto_form or PresupuestoRepuestoInline()()
+        context['presupuesto_repuesto_formset'] = self.repuesto_form or PresupuestoRepuestoInline(len(initial_repuestos))(initial = initial_repuestos) #pasarle las lineas previas
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
+        
         context['titulo'] = "Registrar Presupuesto"
         return context
 
@@ -96,18 +135,19 @@ class PresupuestoCreateView(CreateView):
         self.object = None
         self.material_form = PresupuestoMaterialInline()(self.request.POST)
         self.repuesto_form = PresupuestoRepuestoInline()(self.request.POST)
-        form = PresupuestoForm(self.request.POST)
+        form = self.get_form_class()(self.request.POST)
         if self.repuesto_form.is_valid() and self.material_form.is_valid() and form.is_valid():
             presupuesto = form.save(
-                self.material_form.cleaned_data, self.repuesto_form.cleaned_data)
+                self.material_form.cleaned_data, 
+                self.repuesto_form.cleaned_data,
+                form.cleaned_data['tareas'])
             return redirect('detallesPresupuesto', presupuesto.pk)
         return self.form_invalid(form=form)
-
 
 class PresupuestoUpdateView(UpdateView):
 
     model = Presupuesto
-    form_class = PresupuestoForm
+    form_class = PresupuestoForm()
     success_url = reverse_lazy('listarPresupuestos')
 
     def get_context_data(self, **kwargs):
@@ -117,11 +157,9 @@ class PresupuestoUpdateView(UpdateView):
         initial_repuestos = [
             {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in self.get_object().presupuesto_repuestos.all().values()]
 
-        context['presupuesto_material_formset'] = PresupuestoMaterialInline(
-            len(initial_materiales))(initial=initial_materiales)  # pasarle las lineas previas
+        context['presupuesto_material_formset'] = PresupuestoMaterialInline(len(initial_materiales))(initial=initial_materiales)  # pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(
-            len(initial_repuestos))(initial=initial_repuestos)  # pasarle las lineas previas
+        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(len(initial_repuestos))(initial=initial_repuestos)  # pasarle las lineas previas
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         context['titulo'] = "Modificar presupuesto"
         return context
@@ -176,7 +214,9 @@ class OrdenTrabajoCreateView(CreateView):
             turno = form.cleaned_data.get('turno')
             orden = presupuesto.confirmar(turno)
             return redirect('detallesOrden', orden.pk)
-        return redirect('crearOrden', presupuesto.pk)
+        else:
+            messages.add_message(self.request, messages.ERROR, form.errors)
+            return redirect('crearOrden', presupuesto.pk)
         
 class OrdenTrabajoUpdateView(UpdateView):
 
@@ -274,6 +314,7 @@ def asignar_empleado(request):
                              'La tarea se asignó a un empleado exitosamente!')
     else:
         # TODO: mostrar form.errors
+        print(form.errors)
         messages.add_message(request, messages.WARNING,
                              'El formulario tiene errores.')
     return redirect('listarDetallesOrden')
@@ -431,11 +472,21 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
         context['vehiculo'] = self.model.vehiculo
         return context
 
+    def get_orden(self):
+        pk = self.kwargs["pk"] if "pk" in self.kwargs.keys() else None
+        return OrdenDeTrabajo.objects.get(pk=pk) if pk is not None else None
+        
+    def get_form_class(self, *args, **kwargs):
+        orden = self.get_orden()
+        print(orden)
+        return RegistrarEgresoVehiculoForm(orden)
+
     def post(self, *args, **kwargs):
-        form = RegistrarEgresoVehiculoForm(self.request.POST)
+        form_class = self.get_form_class()
+        form = form_class(self.request.POST)
         if form.is_valid():
             fecha_egreso = form.cleaned_data.get('egreso')
-            orden = form.cleaned_data.get('orden')
+            orden = form.cleaned_data.get('orden', self.get_orden())
 
             orden.registrar_egreso(fecha_egreso)
 
@@ -459,7 +510,3 @@ class ListarTurnosListView(ListView):
 def datoPlantilla(request, pk):
     orden = OrdenDeTrabajo.objects.get(pk=pk)
     return render (request,'ordenes/datoPlantilla.html',{'orden':orden})
-
-
-
-    

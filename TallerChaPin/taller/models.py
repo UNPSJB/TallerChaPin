@@ -1,3 +1,4 @@
+from genericpath import exists
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -33,7 +34,7 @@ class MarcaQuerySet(models.QuerySet):
 
 class Marca(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200, blank=True)
     objects = MarcaQuerySet.as_manager()
 
     def __str__(self):
@@ -51,7 +52,7 @@ class ModeloQuerySet(models.QuerySet):
 
 class Modelo(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200, blank=True)
     marca = models.ForeignKey(
         Marca, related_name="modelos", on_delete=models.CASCADE)
     anio = models.PositiveSmallIntegerField()
@@ -69,7 +70,7 @@ class Modelo(models.Model):
 
 class TipoTarea(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200, blank=True)
     # Requiere Material[si/no]
     materiales = models.BooleanField(default=False)
     # Requiere Repuesto[si/no]
@@ -87,12 +88,21 @@ class TipoTarea(models.Model):
 
 class Tarea(models.Model):
     nombre = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.CharField(max_length=200, blank=True)
     tipo = models.ForeignKey(TipoTarea, on_delete=models.CASCADE)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.nombre
+
+    def eliminable(self, presupuesto_id):
+        presupuestos = self.presupuestos.filter(pk=presupuesto_id)
+        if presupuestos.exists():
+            presupuesto = presupuestos.first()
+            if presupuesto.orden:
+                detalles = presupuesto.orden.detalles.filter(tarea=self)
+                return not (detalles.exists() and detalles.first().exitosa)
+        return True
 
 class Repuesto(models.Model):
     TIPOS = (
@@ -140,9 +150,9 @@ class TipoMaterial(models.Model):
     def __str__(self):
         return self.nombre
 
-    def clean(self) -> None:
-        validacion_nombre_unico(TipoMaterial, "nombre", self.nombre)
-        return super().clean()
+    # def clean(self) -> None:
+    #     validacion_nombre_unico(TipoMaterial, "nombre", self.nombre)
+    #     return super().clean()
 
 
 class Material(models.Model):
@@ -177,12 +187,8 @@ class Cliente(models.Model):
 
     def vip(self):
         # Obtener ultimas tres facturas impagas del cliente
-        facturas = self.facturas.all()
-        if len(facturas) >= 3:
-            facturas = self.facturas.filter(
-                pagado=False).order_by('-fecha')[:3]
-            return len(facturas) <= 3
-        return False
+        facturas = self.facturas.order_by('-fecha')[:3]
+        return len(facturas) == 3 and all(f.pagado for f in facturas)
 
 def validar_anio(anio):
     if anio < date.today().year - 12:

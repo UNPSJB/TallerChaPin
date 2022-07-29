@@ -17,7 +17,7 @@
       {% endif %}
 
       <div class="card-body">
-        <h5 class="card-title">{{detalle_orden.tarea}}</h5>
+        <h5 class="card-title">{{detalle_orden.get_titulo}}</h5>
         {% if detalle_orden.observaciones != None %}
           <p class="card-text">{{detalle_orden.observaciones}}</p>
         {% endif %}
@@ -75,7 +75,7 @@
                   <i class="fas fa-user-plus"></i> Reasignar
                 </button>
                 {% endif %}
-             {% endif %}
+            {% endif %}
 
               {% if detalle_orden.requiere_planilla %}
                 <a href="{% url 'cargarPlanillaParaTarea' detalle_orden.pk %}" class="btn btn-primary m-1" type="button" data-bs-toggle="">

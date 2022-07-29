@@ -1,20 +1,76 @@
 {% extends 'template_ordenes.html' %}
-{% load crispy_forms_tags %}
 {% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'ordenes/css/presupuesto_form.css' %}" />
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}"> <!-- TODO: Esta línea está repetida, se debería heredar del template anterior-->
+{% endblock %}
+
+{% load crispy_forms_tags %}
 
 {% block main %}
 <div class="col-8">
     <h3>{{ titulo }}</h3>
-
-    
-    <form action="{% url 'crearPresupuesto' %}" method="post">
+    <form action="{{ form.helper.form_action }}" method="post">
         {% crispy form form.helper %}
-        <div data-formset="presupuesto_materiales">
+        <div data-formset="presupuesto_materiales" id="materiales" class="oculto">
             {% crispy presupuesto_material_formset presupuesto_material_formset_helper %}
         </div>
-        <div data-formset="presupuesto_repuestos">
+        <div data-formset="presupuesto_repuestos" id="repuestos" class="oculto">
             {% crispy presupuesto_repuesto_formset presupuesto_repuesto_formset_helper %}
         </div>
+        <input type="submit" value="Guardar" class="btn btn-primary">
     </form>
 </div>
+{% endblock %}
+
+{% block extrajs %}
+<script> 
+$(document).ready(() => {
+    let checked = [];
+
+    let toggle_tables = () => {
+        checked = [...$("#div_id_tareas input[type='checkbox']:checked")];
+        checked = checked.map(c => c.value);
+        console.log(checked);
+        fetch(`tareas/requerimientos`, {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 
+                'content-type': 'application/json',
+                'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+            },
+            body: JSON.stringify({
+                'tareas': checked
+            })
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            $('#materiales').toggle(res.materiales);
+            $('#repuestos').toggle(res.repuestos);
+
+            if (res.repuestos){
+                $('select[id^="id_presupuesto_repuestos-0"]').prop('required',true);
+                $('input[id^="id_presupuesto_repuestos-0"]').prop('min',1);
+            } else {
+                $('select[id^="id_presupuesto_repuestos-0"]').removeAttr('required');
+            }
+            if (res.materiales){
+                $('select[id^="id_presupuesto_materiales-0"]').prop('required',true);
+                $('input[id^="id_presupuesto_materiales-0"]').prop('min',1);
+            } else {
+                $('select[id^="id_presupuesto_materiales-0"]').removeAttr('required');
+            }
+        })
+        .catch(err => console.log(err))
+    }
+
+    $("#div_id_tareas input[type='checkbox']").change((e) => {
+        toggle_tables();
+    })
+
+    toggle_tables();
+});
+</script>
 {% endblock %}

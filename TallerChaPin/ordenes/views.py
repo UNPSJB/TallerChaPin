@@ -1,3 +1,4 @@
+from turtle import update
 from django.http import request, JsonResponse
 from django.http.response import HttpResponse
 from django.urls import reverse_lazy
@@ -164,6 +165,21 @@ class PresupuestoUpdateView(UpdateView):
         context['titulo'] = "Modificar presupuesto"
         return context
 
+    def post(self, *args, **kwargs):
+        p = Presupuesto.objects.get(id=kwargs['pk'])
+        self.object = None
+        self.material_form = PresupuestoMaterialInline()(self.request.POST)
+        self.repuesto_form = PresupuestoRepuestoInline()(self.request.POST)
+        form = self.get_form_class()(self.request.POST, instance=p)
+        if self.repuesto_form.is_valid() and self.material_form.is_valid() and form.is_valid():
+            presupuesto = form.save(
+                self.material_form.cleaned_data, 
+                self.repuesto_form.cleaned_data,
+                form.cleaned_data['tareas'],
+                update=True
+            )
+            return redirect('detallesPresupuesto', presupuesto.pk)
+        return self.form_invalid(form=form)
 
 class PresupuestoDeleteView(DeleteView):
 

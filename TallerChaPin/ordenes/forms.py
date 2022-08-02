@@ -37,7 +37,7 @@ def PresupuestoForm(base = None):
                 "tareas": forms.CheckboxSelectMultiple(),
             }
 
-        def save(self, materiales, repuestos, tareas):
+        def save(self, materiales, repuestos, tareas, update=False):
             presupuesto = super().save(commit=False)
             if base is not None:
                 presupuesto.cliente = base.cliente
@@ -47,6 +47,9 @@ def PresupuestoForm(base = None):
                 base.ampliado = True
                 base.save()
             presupuesto.save()
+
+            if update:
+                presupuesto.vaciar()
             
             for tarea in tareas:
                 presupuesto.agregar_tarea(tarea)

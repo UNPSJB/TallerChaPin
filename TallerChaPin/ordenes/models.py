@@ -481,6 +481,11 @@ class Presupuesto(models.Model):
         else: 
             return PresupuestoRepuesto.objects.create(repuesto=repuesto, presupuesto=self, cantidad=cantidad)
 
+    def vaciar(self):
+        self.materiales.clear()
+        self.repuestos.clear()
+        self.tareas.clear()
+
     def precio_estimado(self):
         tareas = self.tareas.all().aggregate(models.Sum('precio'))['precio__sum']
         materiales = sum([r.precio() for r in self.presupuesto_materiales.all()])

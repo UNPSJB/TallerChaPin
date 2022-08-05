@@ -56,14 +56,14 @@ def PresupuestoForm(base = None):
 
             if self.requiere("materiales", tareas):
                 for material in materiales:
-                    if "material" in material and material["material"] is not None and material["cantidad"] is not 0:
+                    if "material" in material and material["material"] != None and material["cantidad"] is not 0:
                         matObj = material["material"]
                         matCantidad = material["cantidad"]
                         presupuesto.agregar_material(matObj, matCantidad)
 
             if self.requiere("repuestos", tareas):
                 for repuesto in repuestos:
-                    if "repuesto" in repuesto and repuesto["repuesto"] is not None and repuesto["cantidad"] is not 0:
+                    if "repuesto" in repuesto and repuesto["repuesto"] != None and repuesto["cantidad"] is not 0:
                         repObj = repuesto["repuesto"]
                         repCantidad = repuesto["cantidad"]
                         presupuesto.agregar_repuesto(repObj, repCantidad)

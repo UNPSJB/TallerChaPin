@@ -1,3 +1,4 @@
+from email.policy import default
 from django import forms
 from .models import *
 from crispy_forms.helper import FormHelper
@@ -69,33 +70,46 @@ class FacturaFiltrosForm(FiltrosForm):
         )
 
 # Pago - Form
+def PagoForm(model=None):
+    class PagoForm(forms.ModelForm):
 
-class PagoForm(forms.ModelForm):
-    class Meta:
-        model = Pago
-        fields = "__all__"
-        exclude = ["factura"]
+        if model is None:
+            pago = forms.IntegerField(                
+                required=True,
+                # default= 0, # Consultar como pasarle el monto a pagar... 
+                label="Monto"
+            )
 
-        labels = {
-           
-        }
-        widgets = {
-            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
-        }
 
-    def save(self):
-        pago = super().save()
-        return pago
+        class Meta:
+            model = Pago
+            fields = "__all__"
+            exclude = ["factura" ,"monto"]
 
-    def __init__(self, *args, **kwargs):
-        kwargs.update(
-            initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.form_id = 'facturaPagoForm'
-        self.helper.form_action = 'crearPago'
+            labels = {
+            
+            }
+            widgets = {
+                "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
+            }
 
+        def save(self, commit=True):
+            pago = super().save(commit=bool(model))
+            if model:
+                pago.factura = model
+                pago.save()
+            return pago
+
+        def __init__(self, *args, **kwargs):
+            kwargs.update(
+                initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
+            super().__init__(*args, **kwargs)
+            self.helper = FormHelper()
+            self.helper.form_method = 'post'
+            self.helper.form_id = 'facturaPagoForm'
+            self.helper.form_action = 'crearPago'
+    
+    return PagoForm
 
 
 # Pago - Filtros

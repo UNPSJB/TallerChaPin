@@ -70,21 +70,12 @@ class FacturaFiltrosForm(FiltrosForm):
         )
 
 # Pago - Form
-def PagoForm(model=None):
-    class PagoForm(forms.ModelForm):
-
-        if model is None:
-            pago = forms.IntegerField(                
-                required=True,
-                # default= 0, # Consultar como pasarle el monto a pagar... 
-                label="Monto"
-            )
-
+class PagoForm(forms.ModelForm):
 
         class Meta:
             model = Pago
             fields = "__all__"
-            exclude = ["factura" ,"monto"]
+            exclude = ["factura"]
 
             labels = {
             
@@ -94,10 +85,7 @@ def PagoForm(model=None):
             }
 
         def save(self, commit=True):
-            pago = super().save(commit=bool(model))
-            if model:
-                pago.factura = model
-                pago.save()
+            pago = super().save()
             return pago
 
         def __init__(self, *args, **kwargs):
@@ -108,9 +96,6 @@ def PagoForm(model=None):
             self.helper.form_method = 'post'
             self.helper.form_id = 'facturaPagoForm'
             self.helper.form_action = 'crearPago'
-    
-    return PagoForm
-
 
 # Pago - Filtros
 

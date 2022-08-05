@@ -146,14 +146,14 @@ class PagoCreateView(CreateView):
         context['titulo'] = "Ingresar Monto a Pagar"
         return context
     
-    def get_pago(self):
-        pk = self.kwargs["pk"] if "pk" in self.kwargs.keys() else None
-        return Pago.objects.get(pk=pk) if pk is not None else None
+    # def get_pago(self):
+    #     pk = self.kwargs["pk"] if "pk" in self.kwargs.keys() else None
+    #     return Pago.objects.get(pk=pk) if pk is not None else None
     
-    def get_form_class(self):
-        pago = self.get_pago()
-        print (pago)
-        return PagoForm(pago)
+    # def get_form_class(self):
+    #     pago = self.get_pago()
+
+    #     return PagoForm(pago)
 
     def post(self, *args, **kwargs):
         form_class = self.get_form_class()

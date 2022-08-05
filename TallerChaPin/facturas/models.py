@@ -33,7 +33,7 @@ class Factura(models.Model):
     fecha = models.DateField()
     estado =  models.PositiveBigIntegerField(
         choices=ESTADO_CHOICES, default=CREADA)
-    cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=False)
+    cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=True)
 
     def total(self):
         return self.detalles.aggregate(total=models.Sum('precio'))['total']

@@ -31,6 +31,25 @@
       e.preventDefault();
       $('#facturaPagoForm').submit();
     });
+    /* 
+    Permite habilitar o deshabilitar el campo cuotas dependiendo el tipo de pago elegido
+    Por defecto en false pero cuando se selecciona tajeta de credito se habilita
+    se pone por defecto el num de cuota cuando se elige otro medio de pago que no sea tarjeta de credito
+    */
+    $('#id_tipo').on('change',(e) => {
+      let opcion = $(e.currentTarget).val();
+      if (opcion == 2){
+        $('#select_cuota').prop('disabled',false);
+      }
+      else {
+        $('#select_cuota').prop('disabled',true);
+      //  document.getElementById('select_cuota').options[0].setAttribute('selected',true);
+        $($('#select_cuota')[0].options[0]).prop('selected',true);
+      }
+
+      
+    })
+
   });
 </script>
 {% endblock %}

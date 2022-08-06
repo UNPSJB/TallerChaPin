@@ -494,7 +494,6 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
         
     def get_form_class(self, *args, **kwargs):
         orden = self.get_orden()
-        print(orden)
         return RegistrarEgresoVehiculoForm(orden)
 
     def post(self, *args, **kwargs):

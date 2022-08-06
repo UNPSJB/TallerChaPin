@@ -26,6 +26,7 @@
           <td>{{ cliente.direccion }}</td>
           <td>{{ cliente.telefono }}</td>
           <td>{{ cliente.vehiculos.all | join:" <br/> " | safe }}</td>
+          <!-- Falta agregar la funcion para saber si el cliente es vip o no -->
           <td>
             <a href="{% url 'modificarCliente' cliente.pk %}"
               class="btn-listado btn-modificar">

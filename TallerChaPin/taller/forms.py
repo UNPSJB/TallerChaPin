@@ -742,6 +742,7 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
         ("direccion", "Dirección"),
         ("telefono", "Teléfono"),
         ("vehiculo", "Vehículo"),
+        ("es_vip","Es Vip"),
     ]
 
     dni = forms.IntegerField(required=False)

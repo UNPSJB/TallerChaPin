@@ -181,14 +181,23 @@ class Cliente(models.Model):
     apellido = models.CharField(max_length=100)
     direccion = models.CharField(max_length=100)
     telefono = models.CharField(max_length=50)
-
+    
     def __str__(self):
         return self.nombre
 
     def vip(self):
-        # Obtener ultimas tres facturas impagas del cliente
+        # Obtener ultimas tres facturas pagas del cliente
         facturas = self.facturas.order_by('-fecha')[:3]
         return len(facturas) == 3 and all(f.pagado for f in facturas)
+
+    def vip2(self):
+        # Obtener ultimas tres facturas pagas del cliente
+        # Hay que ir a los presupuestos
+        # Ver si esos presupuestos tienen una ordenen (es decir, se confirmo)
+        # Ver si esas ordenes estan FACTURADAs
+        # Ver si las facturas estan PAGADAs
+        # return len(facturas) == 3 and all(f.pagado for f in facturas)
+        return None
 
 def validar_anio(anio):
     if anio < date.today().year - 12:

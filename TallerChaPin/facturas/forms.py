@@ -42,6 +42,7 @@ class FacturaFiltrosForm(FiltrosForm):
         ("fecha", "Fecha"),
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
+        ("estado", "Estado")
     ]
     orden = forms.ModelChoiceField(
         queryset=OrdenDeTrabajo.objects.all(), required=False, label="Orden de Trabajo")
@@ -71,6 +72,11 @@ class FacturaFiltrosForm(FiltrosForm):
 
 # Pago - Form
 class PagoForm(forms.ModelForm):
+
+    cuota = forms.ChoiceField(required=False,
+                                    choices=((1,1),(3,3),(6,6),(12,12)),
+                                    widget=forms.Select(attrs={'disabled': '','id':'select_cuota'})
+                                    )
 
     class Meta:
         model = Pago

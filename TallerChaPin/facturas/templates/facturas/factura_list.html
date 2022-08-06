@@ -24,6 +24,7 @@
         <td>{{ factura.fecha }}</td>
         <td>{{ factura.orden.cliente }}</td>
         <td>{{ factura.orden.vehiculo }}</td>
+        <td>{{ factura.get_estado_display}}</td>
 
         <td>
           <a href="{% url 'detallesFactura' factura.pk %}" class="btn-listado btn-ver">

@@ -19,7 +19,7 @@
         <th scope="col">Fecha</th>
         <th scope="col">Monto</th>
         <th scope="col">Tipo de pago</th>
-        <th scope="col">N° de cuota</th>
+        <th scope="col">N° de cuotas</th>
         <th scope="col">Opciones</th>
       </tr>
     </thead>
@@ -31,6 +31,7 @@
         <td>{{ pago.fecha }}</td>
         <td>{{ pago.monto }}</td>
         <td>{{ pago.get_tipo_display }}</td>
+        <td>{{ pago.factura.cuotas }}</td>
 
 
         <td>

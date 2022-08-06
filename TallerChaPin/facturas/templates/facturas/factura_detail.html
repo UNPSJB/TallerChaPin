@@ -22,7 +22,10 @@
                     </h3>
                     <span>
                         <i class="fas fa-car-side"></i> {{ object.orden.vehiculo.patente }}
-                        ({{object.orden.vehiculo.modelo}}) <br>
+                        ({{object.orden.vehiculo.modelo}}) 
+                        <br>
+                        <i class="far fa-flag"></i> ESTADO: {{ factura.get_estado_display}}
+                        <br>
                     </span>
                 </div>
             </div>
@@ -136,8 +139,6 @@
                         Eliminar factura</a>
         
                     {% if object.puede_pagar %} 
-                    <a href="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
-                        <i class="fas fa-check-circle"></i> Pagar</a>
                     <a href="" data-bs-toggle="modal" data-bs-target="#modalPagarFactura"
                     data-bs-nombre="{{object.orden.cliente}}" data-bs-url="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn2">
                         <i class="fas fa-check-circle"></i> Pagar (modal)</a>

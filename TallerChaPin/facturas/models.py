@@ -19,13 +19,13 @@ class Factura(models.Model):
     CREADA = 0
     ACTIVA = 1
     CANCELADA = 2
-    REALIZADA = 3
+    PAGADA = 3
     VENCIDA = 4
     ESTADO_CHOICES = [
         (CREADA, 'Creada'),
         (ACTIVA, 'Activa'),
         (CANCELADA, 'Cancelada'),
-        (REALIZADA, 'Realizada'),
+        (PAGADA, 'Pagada'),
         (VENCIDA, 'Vencida'),        
     ]
 
@@ -33,7 +33,7 @@ class Factura(models.Model):
     fecha = models.DateField()
     estado =  models.PositiveBigIntegerField(
         choices=ESTADO_CHOICES, default=CREADA)
-    cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=True)
+    cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=False)
 
     def total(self):
         return self.detalles.aggregate(total=models.Sum('precio'))['total']
@@ -64,26 +64,29 @@ class Factura(models.Model):
     def agregar_detalle(self, descripcion, precio):
         return DetalleFactura.objects.create(factura=self, descripcion=descripcion, precio=precio)
 
-    def pagar(self, monto, tipo, num_cuotas=None):
-        if len(self.pagos.all()) == 0:
+    def pagar(self, monto, tipo, num_cuotas):
+        if len(self.pagos.all()) == 0 and monto == self.total(): 
+            self.estado = Factura.PAGADA # Si se pago la totalidad entonces la orden esta PAGADA
             self.cuotas = num_cuotas
             self.save()
+            
+        if self.saldo() < self.total(): 
+            self.estado = Factura.ACTIVA # Si no se pago toda la factura y aun hay saldo pendiente esta ACTIVA
+            self.save()
+            self.cuotas = 1
+
         return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
 
-    def pagar_new(self, monto, tipo):
-        
-        if (tipo==Pago.CONTADO):
-            return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
-
-        if(tipo==Pago.TARJETA_DEBITO):
-            Pago.pagar_con_debito(factura=self, monto=monto, tipo=tipo)
-        
-        if(tipo==Pago.TARJETA_CREDITO):
-            num_cuotas = 1 #cambiar luego.
-            Pago.pagar_con_credito(factura=self, monto=monto, tipo=tipo, num_cuotas=num_cuotas)
+    def calcular_couta(monto, num_coutas): # Puede que sirva para algo
+        if num_coutas == 3:
+            return monto / 3
+        if num_coutas == 6:
+            return monto / 6
+        if num_coutas == 12:
+            return monto / 12
        
-    def cuotas_pagas(self):
-        return len(self.pagos.all())
+    # def cuotas_pagas(self):
+    #     return len(self.pagos.all())
 
     def saldo(self):
         if len(self.pagos.all()) > 0:
@@ -128,8 +131,3 @@ class Pago(models.Model):
     def cliente(self):
         return self.factura.orden.cliente
 
-    # def pagar_con_debito(self, monto, tipo):
-    #     return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
-    
-    # def pagar_con_credito(self, monto,tipo, num_cuotas):
-    #     return Pago.objects.create(factura=self, monto=monto, tipo=tipo)

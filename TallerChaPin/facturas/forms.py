@@ -72,30 +72,33 @@ class FacturaFiltrosForm(FiltrosForm):
 # Pago - Form
 class PagoForm(forms.ModelForm):
 
-        class Meta:
-            model = Pago
-            fields = "__all__"
-            exclude = ["factura"]
+    class Meta:
+        model = Pago
+        fields = "__all__"
+        exclude = ["factura"]
 
-            labels = {
-            
-            }
-            widgets = {
-                "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
-            }
+        labels = {
+        
+        }
+        widgets = {
+            "fecha": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'readonly': 'readonly'}),
+        }
 
-        def save(self, commit=True):
-            pago = super().save()
-            return pago
+    def save(self, commit=True):
+        pago = super().save()
+        return pago
 
-        def __init__(self, *args, **kwargs):
-            kwargs.update(
-                initial={'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')})
-            super().__init__(*args, **kwargs)
-            self.helper = FormHelper()
-            self.helper.form_method = 'post'
-            self.helper.form_id = 'facturaPagoForm'
-            self.helper.form_action = 'crearPago'
+    def __init__(self, *args, **kwargs):
+        initial = {'fecha': datetime.now().strftime('%Y-%m-%dT%H:%M')}
+        if 'initial' in kwargs:
+            initial.update(**kwargs['initial'])
+
+        kwargs.update(initial=initial)
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_id = 'facturaPagoForm'
+        self.helper.form_action = 'crearPago'
 
 # Pago - Filtros
 

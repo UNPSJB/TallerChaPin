@@ -70,7 +70,7 @@ class Factura(models.Model):
             self.cuotas = num_cuotas
             self.save()
             
-        if self.saldo() < self.total(): 
+        if monto < self.total(): 
             self.estado = Factura.ACTIVA # Si no se pago toda la factura y aun hay saldo pendiente esta ACTIVA
             self.save()
             self.cuotas = 1

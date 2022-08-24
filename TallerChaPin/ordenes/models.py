@@ -271,10 +271,8 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
     def sin_asignar(self):
         no_tiene_empleado = models.Q(empleado__isnull=True)
         ha_ingresado = models.Q(orden__ingreso__isnull=False)
-        print("test:")
-        qs = self.filter(no_tiene_empleado and ha_ingresado).order_by('orden__turno')
-        print(qs)
-        # print(qs.first().orden.ingreso)
+
+        qs = self.filter(no_tiene_empleado & ha_ingresado).order_by('orden__turno')
         return qs
 
     def asignados(self):

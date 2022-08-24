@@ -72,6 +72,9 @@
                                             ${{ tarea.precio }}
                                         </h4>
                                     </td>
+                                    <td>
+
+                                    </td>
                                 </tr>
                             {% endfor %}
 
@@ -85,7 +88,7 @@
                                         <p class="small">
                                             {{ detalle_repuesto.repuesto.get_tipo_display }}
                                         </p>
-                                </td>
+                                    </td>
                                     <td width="65" class="align-middle">
                                         <input type="text" class="form-control" placeholder="{{ detalle_repuesto.cantidad }}" disabled>
                                     </td>
@@ -94,10 +97,6 @@
                                             ${{ detalle_repuesto.precio }}
                                         </h4>
                                     </td>
-                                </tr>
-                            {% empty %}
-                                <tr class="alert alert-primary m-0" role="alert">
-                                    <td>No se han cargado repuestos</td>
                                 </tr>
                             {% endfor %}
 
@@ -121,10 +120,6 @@
                                         </h4>
                                     </td>
                                 </tr>
-                            {% empty %}
-                                <div class="alert alert-primary" role="alert">
-                                    No se han cargado materiales
-                                </div>
                             {% endfor %}
                         </tbody>
                     </table>

@@ -79,7 +79,7 @@
 
                                             {% empty %}
                                             <tr>
-                                                <td>No hay Repuestos</td>
+                                                <td>No hay repuestos</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -105,12 +105,9 @@
                                             <td>{{ material.tipo }}</td>
                                             </td>
                                         </tr>
-
                                         {% empty %}
                                         <tr>
-                                            <div class="alert alert-primary" role="alert">
-                                                No se han cargado materiales
-                                            </div>
+                                            <td>No hay materiales</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

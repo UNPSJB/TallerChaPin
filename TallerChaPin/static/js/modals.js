@@ -1,3 +1,15 @@
+
+const getMensaje = (target, nombre) => {
+  switch (target) {
+    case "#modalEliminarOrden":
+      return `¿Estás seguro/a de querer <strong>eliminar</strong> la orden de trabajo del cliente "${nombre}"?`
+    case "#modalEliminarPresupuesto":
+      return `¿Estás seguro/a de querer <strong>eliminar</strong> el presupuesto del cliente "${nombre}"?`
+    default:
+      return `¿Estás seguro/a de querer <strong>eliminar</strong> "${nombre}" ?`
+  }
+}
+
 const mostrarModalEliminacion = (e, modal_id) => {
   /* 
     Configura un modal de eliminación con un mensaje en el cuerpo del mismo
@@ -10,10 +22,10 @@ const mostrarModalEliminacion = (e, modal_id) => {
 
   // configuramos el contenido del modal
   modal_tag.addEventListener('show.bs.modal', () => {
-    const btn = e.target; // e.target es el boton al que se le hizo click.
-    const url = btn.dataset.bsUrl;
-    const nombre = btn.dataset.bsNombre;
-    const msj = `¿Estás seguro/a de querer <strong>eliminar</strong> "${nombre}" ?`;
+    const btn = e.currentTarget; // e.currentTarget es el boton al que se le hizo click.
+    const url = btn?.dataset.bsUrl;
+    const nombre = btn?.dataset.bsNombre;
+    const msj = getMensaje(btn?.dataset.bsTarget, nombre)
 
     // modificamos comportamiento del modal (contenido y acción de confirmación)
     const ok_button = document.getElementById('ok-button');

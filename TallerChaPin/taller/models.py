@@ -187,8 +187,10 @@ class Cliente(models.Model):
 
     def vip(self):
         # Obtener ultimas tres facturas pagas del cliente
-        facturas = self.facturas.order_by('-fecha')[:3]
-        return len(facturas) == 3 and all(f.pagado for f in facturas)
+        facturas = []
+        for presupuesto in self.presupuestos.all():
+            facturas.extend(presupuesto.orden.factura_set.order_by('-fecha')[:3])
+        return len(facturas) >= 3 and all(f.pagado for f in facturas)
 
     def vip2(self):
         # Obtener ultimas tres facturas pagas del cliente

@@ -29,14 +29,13 @@ class Factura(models.Model):
         (VENCIDA, 'Vencida'),        
     ]
 
-    orden = models.ForeignKey(OrdenDeTrabajo, on_delete=models.CASCADE)
+    orden = models.ForeignKey(OrdenDeTrabajo, related_name='factura', on_delete=models.CASCADE)
     fecha = models.DateField()
     estado =  models.PositiveBigIntegerField(
         choices=ESTADO_CHOICES, default=CREADA)
     cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=False)
 
-    def total(self):
-        return self.detalles.aggregate(total=models.Sum('precio'))['total']
+
 
     @staticmethod
     def facturar_orden(orden):
@@ -51,6 +50,12 @@ class Factura(models.Model):
         orden.save()
         
         return factura
+
+    def total(self):
+        return self.detalles.aggregate(total=models.Sum('precio'))['total']
+
+    def pagado(self):
+        return self.estado == Factura.PAGADA
 
     def puede_pagar(self):
         return self.no_pagada() and self.adeuda()
@@ -67,16 +72,23 @@ class Factura(models.Model):
     def pagar(self, monto, tipo, num_cuotas):
         if len(self.pagos.all()) == 0 and monto == self.total(): 
             self.estado = Factura.PAGADA # Si se pago la totalidad entonces la orden esta PAGADA
-            self.cuotas = num_cuotas
+            self.orden.pagar_orden() # Cambia el estado de la orden a PAGADA
+            if tipo == Pago.TARJETA_CREDITO:
+                 self.cuotas = num_cuotas
+            else:
+                self.cuotas = 1
             self.save()
             
-        if monto < self.total(): 
+        if len(self.pagos.all()) != 0 and monto < self.total(): 
             self.estado = Factura.ACTIVA # Si no se pago toda la factura y aun hay saldo pendiente esta ACTIVA
+            if monto == self.saldo(): # si el monto a pagar es igual al saldo restante significa que es lo ultimo que se adeuda
+                self.estado = Factura.PAGADA # Si se pago la totalidad entonces la orden esta PAGADA
+                self.orden.pagar_orden() # Cambia el estado de la orden a PAGADA
             self.save()
             self.cuotas = 1
 
         return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
-
+    #Nota: si se pueden simplificar mejor jaja
     def calcular_couta(monto, num_coutas): # Puede que sirva para algo
         if num_coutas == 3:
             return monto / 3

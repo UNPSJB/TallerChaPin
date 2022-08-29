@@ -9,7 +9,7 @@ urlpatterns = [
     path('facturas/detalle/<int:pk>',
          FacturaDetailView.as_view(), name="detallesFactura"),
     path('facturas/modificar/<int:pk>',
-         FacturaUpdateView.as_view(), name="modificarFactura"),  # Solo se puede modificar el modo de pago... El pago creado se debe eliminar UNICAMENTE si no ha sido PAGADO
+         FacturaUpdateView.as_view(), name="modificarFactura"),  # Solo se puede modificar el modo de pago... 
     path('facturas/eliminar/<int:pk>',
          FacturaDeleteView.as_view(), name="eliminarFactura"),
     # ----------------Pago-------------------------

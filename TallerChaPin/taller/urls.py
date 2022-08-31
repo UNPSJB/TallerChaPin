@@ -5,6 +5,7 @@ from .views import *
 urlpatterns = [
 
     path('materiales/unidades_de_medida/<int:pk>', UnidadesDeMedida),
+    path('cliente/vehiculos/<int:pk>', vehiculosDelCliente),
     # ----------------- MARCAS -----------------
 
     path('marcas/crear', MarcaCreateView.as_view(), name="crearMarca"),

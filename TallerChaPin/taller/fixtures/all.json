@@ -1,0 +1,2906 @@
+[
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add cliente",
+    "content_type": [
+      "taller",
+      "cliente"
+    ],
+    "codename": "add_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change cliente",
+    "content_type": [
+      "taller",
+      "cliente"
+    ],
+    "codename": "change_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete cliente",
+    "content_type": [
+      "taller",
+      "cliente"
+    ],
+    "codename": "delete_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view cliente",
+    "content_type": [
+      "taller",
+      "cliente"
+    ],
+    "codename": "view_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add marca",
+    "content_type": [
+      "taller",
+      "marca"
+    ],
+    "codename": "add_marca"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change marca",
+    "content_type": [
+      "taller",
+      "marca"
+    ],
+    "codename": "change_marca"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete marca",
+    "content_type": [
+      "taller",
+      "marca"
+    ],
+    "codename": "delete_marca"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view marca",
+    "content_type": [
+      "taller",
+      "marca"
+    ],
+    "codename": "view_marca"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add modelo",
+    "content_type": [
+      "taller",
+      "modelo"
+    ],
+    "codename": "add_modelo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change modelo",
+    "content_type": [
+      "taller",
+      "modelo"
+    ],
+    "codename": "change_modelo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete modelo",
+    "content_type": [
+      "taller",
+      "modelo"
+    ],
+    "codename": "delete_modelo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view modelo",
+    "content_type": [
+      "taller",
+      "modelo"
+    ],
+    "codename": "view_modelo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add tipo material",
+    "content_type": [
+      "taller",
+      "tipomaterial"
+    ],
+    "codename": "add_tipomaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change tipo material",
+    "content_type": [
+      "taller",
+      "tipomaterial"
+    ],
+    "codename": "change_tipomaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete tipo material",
+    "content_type": [
+      "taller",
+      "tipomaterial"
+    ],
+    "codename": "delete_tipomaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view tipo material",
+    "content_type": [
+      "taller",
+      "tipomaterial"
+    ],
+    "codename": "view_tipomaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add tipo tarea",
+    "content_type": [
+      "taller",
+      "tipotarea"
+    ],
+    "codename": "add_tipotarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change tipo tarea",
+    "content_type": [
+      "taller",
+      "tipotarea"
+    ],
+    "codename": "change_tipotarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete tipo tarea",
+    "content_type": [
+      "taller",
+      "tipotarea"
+    ],
+    "codename": "delete_tipotarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view tipo tarea",
+    "content_type": [
+      "taller",
+      "tipotarea"
+    ],
+    "codename": "view_tipotarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add vehiculo",
+    "content_type": [
+      "taller",
+      "vehiculo"
+    ],
+    "codename": "add_vehiculo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change vehiculo",
+    "content_type": [
+      "taller",
+      "vehiculo"
+    ],
+    "codename": "change_vehiculo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete vehiculo",
+    "content_type": [
+      "taller",
+      "vehiculo"
+    ],
+    "codename": "delete_vehiculo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view vehiculo",
+    "content_type": [
+      "taller",
+      "vehiculo"
+    ],
+    "codename": "view_vehiculo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add tarea",
+    "content_type": [
+      "taller",
+      "tarea"
+    ],
+    "codename": "add_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change tarea",
+    "content_type": [
+      "taller",
+      "tarea"
+    ],
+    "codename": "change_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete tarea",
+    "content_type": [
+      "taller",
+      "tarea"
+    ],
+    "codename": "delete_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view tarea",
+    "content_type": [
+      "taller",
+      "tarea"
+    ],
+    "codename": "view_tarea"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add repuesto",
+    "content_type": [
+      "taller",
+      "repuesto"
+    ],
+    "codename": "add_repuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change repuesto",
+    "content_type": [
+      "taller",
+      "repuesto"
+    ],
+    "codename": "change_repuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete repuesto",
+    "content_type": [
+      "taller",
+      "repuesto"
+    ],
+    "codename": "delete_repuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view repuesto",
+    "content_type": [
+      "taller",
+      "repuesto"
+    ],
+    "codename": "view_repuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add material",
+    "content_type": [
+      "taller",
+      "material"
+    ],
+    "codename": "add_material"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change material",
+    "content_type": [
+      "taller",
+      "material"
+    ],
+    "codename": "change_material"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete material",
+    "content_type": [
+      "taller",
+      "material"
+    ],
+    "codename": "delete_material"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view material",
+    "content_type": [
+      "taller",
+      "material"
+    ],
+    "codename": "view_material"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add empleado",
+    "content_type": [
+      "taller",
+      "empleado"
+    ],
+    "codename": "add_empleado"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change empleado",
+    "content_type": [
+      "taller",
+      "empleado"
+    ],
+    "codename": "change_empleado"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete empleado",
+    "content_type": [
+      "taller",
+      "empleado"
+    ],
+    "codename": "delete_empleado"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view empleado",
+    "content_type": [
+      "taller",
+      "empleado"
+    ],
+    "codename": "view_empleado"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add detalle orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "detalleordendetrabajo"
+    ],
+    "codename": "add_detalleordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change detalle orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "detalleordendetrabajo"
+    ],
+    "codename": "change_detalleordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete detalle orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "detalleordendetrabajo"
+    ],
+    "codename": "delete_detalleordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view detalle orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "detalleordendetrabajo"
+    ],
+    "codename": "view_detalleordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add material orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "materialordendetrabajo"
+    ],
+    "codename": "add_materialordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change material orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "materialordendetrabajo"
+    ],
+    "codename": "change_materialordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete material orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "materialordendetrabajo"
+    ],
+    "codename": "delete_materialordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view material orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "materialordendetrabajo"
+    ],
+    "codename": "view_materialordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "ordendetrabajo"
+    ],
+    "codename": "add_ordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "ordendetrabajo"
+    ],
+    "codename": "change_ordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "ordendetrabajo"
+    ],
+    "codename": "delete_ordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "ordendetrabajo"
+    ],
+    "codename": "view_ordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Puede registrar el ingreso de un vehÝculo al taller",
+    "content_type": [
+      "ordenes",
+      "ordendetrabajo"
+    ],
+    "codename": "can_registrar_ingreso"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Puede asignar trabajo a empleados",
+    "content_type": [
+      "ordenes",
+      "ordendetrabajo"
+    ],
+    "codename": "can_asignar_trabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add presupuesto",
+    "content_type": [
+      "ordenes",
+      "presupuesto"
+    ],
+    "codename": "add_presupuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change presupuesto",
+    "content_type": [
+      "ordenes",
+      "presupuesto"
+    ],
+    "codename": "change_presupuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete presupuesto",
+    "content_type": [
+      "ordenes",
+      "presupuesto"
+    ],
+    "codename": "delete_presupuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view presupuesto",
+    "content_type": [
+      "ordenes",
+      "presupuesto"
+    ],
+    "codename": "view_presupuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add repuesto orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "repuestoordendetrabajo"
+    ],
+    "codename": "add_repuestoordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change repuesto orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "repuestoordendetrabajo"
+    ],
+    "codename": "change_repuestoordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete repuesto orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "repuestoordendetrabajo"
+    ],
+    "codename": "delete_repuestoordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view repuesto orden de trabajo",
+    "content_type": [
+      "ordenes",
+      "repuestoordendetrabajo"
+    ],
+    "codename": "view_repuestoordendetrabajo"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add presupuesto repuesto",
+    "content_type": [
+      "ordenes",
+      "presupuestorepuesto"
+    ],
+    "codename": "add_presupuestorepuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change presupuesto repuesto",
+    "content_type": [
+      "ordenes",
+      "presupuestorepuesto"
+    ],
+    "codename": "change_presupuestorepuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete presupuesto repuesto",
+    "content_type": [
+      "ordenes",
+      "presupuestorepuesto"
+    ],
+    "codename": "delete_presupuestorepuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view presupuesto repuesto",
+    "content_type": [
+      "ordenes",
+      "presupuestorepuesto"
+    ],
+    "codename": "view_presupuestorepuesto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add presupuesto material",
+    "content_type": [
+      "ordenes",
+      "presupuestomaterial"
+    ],
+    "codename": "add_presupuestomaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change presupuesto material",
+    "content_type": [
+      "ordenes",
+      "presupuestomaterial"
+    ],
+    "codename": "change_presupuestomaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete presupuesto material",
+    "content_type": [
+      "ordenes",
+      "presupuestomaterial"
+    ],
+    "codename": "delete_presupuestomaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view presupuesto material",
+    "content_type": [
+      "ordenes",
+      "presupuestomaterial"
+    ],
+    "codename": "view_presupuestomaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add planilla de pintura",
+    "content_type": [
+      "ordenes",
+      "planilladepintura"
+    ],
+    "codename": "add_planilladepintura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change planilla de pintura",
+    "content_type": [
+      "ordenes",
+      "planilladepintura"
+    ],
+    "codename": "change_planilladepintura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete planilla de pintura",
+    "content_type": [
+      "ordenes",
+      "planilladepintura"
+    ],
+    "codename": "delete_planilladepintura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view planilla de pintura",
+    "content_type": [
+      "ordenes",
+      "planilladepintura"
+    ],
+    "codename": "view_planilladepintura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add detalle planilla de pintura",
+    "content_type": [
+      "ordenes",
+      "detalleplanilladepintura"
+    ],
+    "codename": "add_detalleplanilladepintura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change detalle planilla de pintura",
+    "content_type": [
+      "ordenes",
+      "detalleplanilladepintura"
+    ],
+    "codename": "change_detalleplanilladepintura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete detalle planilla de pintura",
+    "content_type": [
+      "ordenes",
+      "detalleplanilladepintura"
+    ],
+    "codename": "delete_detalleplanilladepintura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view detalle planilla de pintura",
+    "content_type": [
+      "ordenes",
+      "detalleplanilladepintura"
+    ],
+    "codename": "view_detalleplanilladepintura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add turno orden",
+    "content_type": [
+      "ordenes",
+      "turnoorden"
+    ],
+    "codename": "add_turnoorden"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change turno orden",
+    "content_type": [
+      "ordenes",
+      "turnoorden"
+    ],
+    "codename": "change_turnoorden"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete turno orden",
+    "content_type": [
+      "ordenes",
+      "turnoorden"
+    ],
+    "codename": "delete_turnoorden"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view turno orden",
+    "content_type": [
+      "ordenes",
+      "turnoorden"
+    ],
+    "codename": "view_turnoorden"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add factura",
+    "content_type": [
+      "facturas",
+      "factura"
+    ],
+    "codename": "add_factura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change factura",
+    "content_type": [
+      "facturas",
+      "factura"
+    ],
+    "codename": "change_factura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete factura",
+    "content_type": [
+      "facturas",
+      "factura"
+    ],
+    "codename": "delete_factura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view factura",
+    "content_type": [
+      "facturas",
+      "factura"
+    ],
+    "codename": "view_factura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add pago",
+    "content_type": [
+      "facturas",
+      "pago"
+    ],
+    "codename": "add_pago"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change pago",
+    "content_type": [
+      "facturas",
+      "pago"
+    ],
+    "codename": "change_pago"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete pago",
+    "content_type": [
+      "facturas",
+      "pago"
+    ],
+    "codename": "delete_pago"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view pago",
+    "content_type": [
+      "facturas",
+      "pago"
+    ],
+    "codename": "view_pago"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add detalle factura",
+    "content_type": [
+      "facturas",
+      "detallefactura"
+    ],
+    "codename": "add_detallefactura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change detalle factura",
+    "content_type": [
+      "facturas",
+      "detallefactura"
+    ],
+    "codename": "change_detallefactura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete detalle factura",
+    "content_type": [
+      "facturas",
+      "detallefactura"
+    ],
+    "codename": "delete_detallefactura"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view detalle factura",
+    "content_type": [
+      "facturas",
+      "detallefactura"
+    ],
+    "codename": "view_detallefactura"
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$260000$SVCfNjMhONaGysJ5a0xVLN$8FqDNnI/mjDyvNBq5JIryV6KGk1TejDeN7TpzlpSh0E=",
+    "last_login": "2022-05-26T20:29:29Z",
+    "is_superuser": true,
+    "username": "diego",
+    "first_name": "",
+    "last_name": "",
+    "email": "diego@diego.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-05-26T20:29:18Z",
+    "groups": [],
+    "user_permissions": [
+      [
+        "add_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "change_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "delete_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "view_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "add_group",
+        "auth",
+        "group"
+      ],
+      [
+        "change_group",
+        "auth",
+        "group"
+      ],
+      [
+        "delete_group",
+        "auth",
+        "group"
+      ],
+      [
+        "view_group",
+        "auth",
+        "group"
+      ],
+      [
+        "add_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "change_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "delete_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "view_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "add_user",
+        "auth",
+        "user"
+      ],
+      [
+        "change_user",
+        "auth",
+        "user"
+      ],
+      [
+        "delete_user",
+        "auth",
+        "user"
+      ],
+      [
+        "view_user",
+        "auth",
+        "user"
+      ],
+      [
+        "add_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "change_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "delete_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "view_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "add_detallefactura",
+        "facturas",
+        "detallefactura"
+      ],
+      [
+        "change_detallefactura",
+        "facturas",
+        "detallefactura"
+      ],
+      [
+        "delete_detallefactura",
+        "facturas",
+        "detallefactura"
+      ],
+      [
+        "view_detallefactura",
+        "facturas",
+        "detallefactura"
+      ],
+      [
+        "add_factura",
+        "facturas",
+        "factura"
+      ],
+      [
+        "change_factura",
+        "facturas",
+        "factura"
+      ],
+      [
+        "delete_factura",
+        "facturas",
+        "factura"
+      ],
+      [
+        "view_factura",
+        "facturas",
+        "factura"
+      ],
+      [
+        "add_pago",
+        "facturas",
+        "pago"
+      ],
+      [
+        "change_pago",
+        "facturas",
+        "pago"
+      ],
+      [
+        "delete_pago",
+        "facturas",
+        "pago"
+      ],
+      [
+        "view_pago",
+        "facturas",
+        "pago"
+      ],
+      [
+        "add_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      [
+        "change_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      [
+        "delete_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      [
+        "view_detalleordendetrabajo",
+        "ordenes",
+        "detalleordendetrabajo"
+      ],
+      [
+        "add_detalleplanilladepintura",
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      [
+        "change_detalleplanilladepintura",
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      [
+        "delete_detalleplanilladepintura",
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      [
+        "view_detalleplanilladepintura",
+        "ordenes",
+        "detalleplanilladepintura"
+      ],
+      [
+        "add_materialordendetrabajo",
+        "ordenes",
+        "materialordendetrabajo"
+      ],
+      [
+        "change_materialordendetrabajo",
+        "ordenes",
+        "materialordendetrabajo"
+      ],
+      [
+        "delete_materialordendetrabajo",
+        "ordenes",
+        "materialordendetrabajo"
+      ],
+      [
+        "view_materialordendetrabajo",
+        "ordenes",
+        "materialordendetrabajo"
+      ],
+      [
+        "add_ordendetrabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "can_asignar_trabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "can_registrar_ingreso",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "change_ordendetrabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "delete_ordendetrabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "view_ordendetrabajo",
+        "ordenes",
+        "ordendetrabajo"
+      ],
+      [
+        "add_planilladepintura",
+        "ordenes",
+        "planilladepintura"
+      ],
+      [
+        "change_planilladepintura",
+        "ordenes",
+        "planilladepintura"
+      ],
+      [
+        "delete_planilladepintura",
+        "ordenes",
+        "planilladepintura"
+      ],
+      [
+        "view_planilladepintura",
+        "ordenes",
+        "planilladepintura"
+      ],
+      [
+        "add_presupuesto",
+        "ordenes",
+        "presupuesto"
+      ],
+      [
+        "change_presupuesto",
+        "ordenes",
+        "presupuesto"
+      ],
+      [
+        "delete_presupuesto",
+        "ordenes",
+        "presupuesto"
+      ],
+      [
+        "view_presupuesto",
+        "ordenes",
+        "presupuesto"
+      ],
+      [
+        "add_presupuestomaterial",
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      [
+        "change_presupuestomaterial",
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      [
+        "delete_presupuestomaterial",
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      [
+        "view_presupuestomaterial",
+        "ordenes",
+        "presupuestomaterial"
+      ],
+      [
+        "add_presupuestorepuesto",
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      [
+        "change_presupuestorepuesto",
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      [
+        "delete_presupuestorepuesto",
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      [
+        "view_presupuestorepuesto",
+        "ordenes",
+        "presupuestorepuesto"
+      ],
+      [
+        "add_repuestoordendetrabajo",
+        "ordenes",
+        "repuestoordendetrabajo"
+      ],
+      [
+        "change_repuestoordendetrabajo",
+        "ordenes",
+        "repuestoordendetrabajo"
+      ],
+      [
+        "delete_repuestoordendetrabajo",
+        "ordenes",
+        "repuestoordendetrabajo"
+      ],
+      [
+        "view_repuestoordendetrabajo",
+        "ordenes",
+        "repuestoordendetrabajo"
+      ],
+      [
+        "add_turnoorden",
+        "ordenes",
+        "turnoorden"
+      ],
+      [
+        "change_turnoorden",
+        "ordenes",
+        "turnoorden"
+      ],
+      [
+        "delete_turnoorden",
+        "ordenes",
+        "turnoorden"
+      ],
+      [
+        "view_turnoorden",
+        "ordenes",
+        "turnoorden"
+      ],
+      [
+        "add_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "change_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "delete_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "view_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "add_cliente",
+        "taller",
+        "cliente"
+      ],
+      [
+        "change_cliente",
+        "taller",
+        "cliente"
+      ],
+      [
+        "delete_cliente",
+        "taller",
+        "cliente"
+      ],
+      [
+        "view_cliente",
+        "taller",
+        "cliente"
+      ],
+      [
+        "add_empleado",
+        "taller",
+        "empleado"
+      ],
+      [
+        "change_empleado",
+        "taller",
+        "empleado"
+      ],
+      [
+        "delete_empleado",
+        "taller",
+        "empleado"
+      ],
+      [
+        "view_empleado",
+        "taller",
+        "empleado"
+      ],
+      [
+        "add_marca",
+        "taller",
+        "marca"
+      ],
+      [
+        "change_marca",
+        "taller",
+        "marca"
+      ],
+      [
+        "delete_marca",
+        "taller",
+        "marca"
+      ],
+      [
+        "view_marca",
+        "taller",
+        "marca"
+      ],
+      [
+        "add_material",
+        "taller",
+        "material"
+      ],
+      [
+        "change_material",
+        "taller",
+        "material"
+      ],
+      [
+        "delete_material",
+        "taller",
+        "material"
+      ],
+      [
+        "view_material",
+        "taller",
+        "material"
+      ],
+      [
+        "add_modelo",
+        "taller",
+        "modelo"
+      ],
+      [
+        "change_modelo",
+        "taller",
+        "modelo"
+      ],
+      [
+        "delete_modelo",
+        "taller",
+        "modelo"
+      ],
+      [
+        "view_modelo",
+        "taller",
+        "modelo"
+      ],
+      [
+        "add_repuesto",
+        "taller",
+        "repuesto"
+      ],
+      [
+        "change_repuesto",
+        "taller",
+        "repuesto"
+      ],
+      [
+        "delete_repuesto",
+        "taller",
+        "repuesto"
+      ],
+      [
+        "view_repuesto",
+        "taller",
+        "repuesto"
+      ],
+      [
+        "add_tarea",
+        "taller",
+        "tarea"
+      ],
+      [
+        "change_tarea",
+        "taller",
+        "tarea"
+      ],
+      [
+        "delete_tarea",
+        "taller",
+        "tarea"
+      ],
+      [
+        "view_tarea",
+        "taller",
+        "tarea"
+      ],
+      [
+        "add_tipomaterial",
+        "taller",
+        "tipomaterial"
+      ],
+      [
+        "change_tipomaterial",
+        "taller",
+        "tipomaterial"
+      ],
+      [
+        "delete_tipomaterial",
+        "taller",
+        "tipomaterial"
+      ],
+      [
+        "view_tipomaterial",
+        "taller",
+        "tipomaterial"
+      ],
+      [
+        "add_tipotarea",
+        "taller",
+        "tipotarea"
+      ],
+      [
+        "change_tipotarea",
+        "taller",
+        "tipotarea"
+      ],
+      [
+        "delete_tipotarea",
+        "taller",
+        "tipotarea"
+      ],
+      [
+        "view_tipotarea",
+        "taller",
+        "tipotarea"
+      ],
+      [
+        "add_vehiculo",
+        "taller",
+        "vehiculo"
+      ],
+      [
+        "change_vehiculo",
+        "taller",
+        "vehiculo"
+      ],
+      [
+        "delete_vehiculo",
+        "taller",
+        "vehiculo"
+      ],
+      [
+        "view_vehiculo",
+        "taller",
+        "vehiculo"
+      ]
+    ]
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nb9560giznp67zg39etwq5hngjcolfr6",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFM6_Bw6b7fQAYYpGogKe3K-O_apAvd3nPOfQlP21r81nnxcxIXAeL0uwWKD647SHeqtyZjq-syB7kr8qBdTi3x83q4fweFevnWo9GoNaKLypAKSBaDNZDHjIq0NpBYO-RIEM-DskhjyAScnBtMsA7E-wPA-zdP:1nuK6r:HiFZjoWFbHebSgc3bt-MZhoer9Uw6UArtAgmn9SLD-E",
+    "expire_date": "2022-06-09T20:29:29.901Z"
+  }
+},
+{
+  "model": "taller.marca",
+  "pk": 1,
+  "fields": {
+    "nombre": "marca1",
+    "descripcion": "hola"
+  }
+},
+{
+  "model": "taller.modelo",
+  "pk": 1,
+  "fields": {
+    "nombre": "mod1",
+    "descripcion": "mod1",
+    "marca": 1,
+    "anio": 2020
+  }
+},
+{
+  "model": "taller.tipotarea",
+  "pk": 1,
+  "fields": {
+    "nombre": "req materiales",
+    "descripcion": "Tarea que requiere materiales",
+    "materiales": true,
+    "repuestos": false,
+    "planilla": false
+  }
+},
+{
+  "model": "taller.tipotarea",
+  "pk": 2,
+  "fields": {
+    "nombre": "req repuestos",
+    "descripcion": "Tarea que requiere repuestos",
+    "materiales": false,
+    "repuestos": true,
+    "planilla": false
+  }
+},
+{
+  "model": "taller.tipotarea",
+  "pk": 3,
+  "fields": {
+    "nombre": "req planilla",
+    "descripcion": "Tarea que requiere planilla de pintura",
+    "materiales": false,
+    "repuestos": false,
+    "planilla": true
+  }
+},
+{
+  "model": "taller.tarea",
+  "pk": 1,
+  "fields": {
+    "nombre": "tarea1",
+    "descripcion": "adasasd",
+    "tipo": 1,
+    "precio": "150.00"
+  }
+},
+{
+  "model": "taller.tarea",
+  "pk": 2,
+  "fields": {
+    "nombre": "tarea repuestos",
+    "descripcion": "Tarea que req repuestos",
+    "tipo": 2,
+    "precio": "100.00"
+  }
+},
+{
+  "model": "taller.tarea",
+  "pk": 3,
+  "fields": {
+    "nombre": "req materiales",
+    "descripcion": "Tarea que requiere materiales",
+    "tipo": 1,
+    "precio": "50.00"
+  }
+},
+{
+  "model": "taller.repuesto",
+  "pk": 1,
+  "fields": {
+    "nombre": "rep",
+    "modelo": 1,
+    "tipo": 1,
+    "cantidad": 200,
+    "precio": "201.00"
+  }
+},
+{
+  "model": "taller.tipomaterial",
+  "pk": 1,
+  "fields": {
+    "nombre": "tipomat2",
+    "unidad_medida": 1
+  }
+},
+{
+  "model": "taller.tipomaterial",
+  "pk": 2,
+  "fields": {
+    "nombre": "tipo6",
+    "unidad_medida": 2
+  }
+},
+{
+  "model": "taller.tipomaterial",
+  "pk": 3,
+  "fields": {
+    "nombre": "tipomat3",
+    "unidad_medida": 6
+  }
+},
+{
+  "model": "taller.material",
+  "pk": 1,
+  "fields": {
+    "nombre": "mat2",
+    "tipo": 2,
+    "cantidad": 130,
+    "precio": "300.00"
+  }
+},
+{
+  "model": "taller.cliente",
+  "pk": 1,
+  "fields": {
+    "dni": "12345678",
+    "nombre": "Cliente1",
+    "apellido": "Apellido",
+    "direccion": "calle 123",
+    "telefono": "2804566768"
+  }
+},
+{
+  "model": "taller.vehiculo",
+  "pk": 1,
+  "fields": {
+    "cliente": 1,
+    "patente": "AB123CD",
+    "modelo": 1,
+    "anio": 2020,
+    "chasis": "asd1"
+  }
+},
+{
+  "model": "taller.empleado",
+  "pk": 1,
+  "fields": {
+    "cuil": "12-45456765-7",
+    "legajo": 123123312,
+    "nombre": "Don Pepe",
+    "apellido": "Pepito",
+    "usuario": [
+      "diego"
+    ],
+    "tareas": [
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "turno": "2022-05-26T18:03:00Z",
+    "ingreso": "2022-05-26T17:41:00Z",
+    "egreso": null,
+    "estado": 5
+  }
+},
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "turno": "2022-05-29T19:26:00Z",
+    "ingreso": null,
+    "egreso": null,
+    "estado": 0
+  }
+},
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 3,
+  "fields": {
+    "turno": "2022-05-29T19:35:00Z",
+    "ingreso": null,
+    "egreso": null,
+    "estado": 0
+  }
+},
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 4,
+  "fields": {
+    "turno": "2022-06-14T16:41:00Z",
+    "ingreso": null,
+    "egreso": null,
+    "estado": 0
+  }
+},
+{
+  "model": "ordenes.ordendetrabajo",
+  "pk": 5,
+  "fields": {
+    "turno": "2022-06-15T17:09:00Z",
+    "ingreso": null,
+    "egreso": null,
+    "estado": 0
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "orden": 1,
+    "tarea": 1,
+    "empleado": 1,
+    "inicio": "2022-05-26T20:48:01.967Z",
+    "fin": "2022-05-26T20:48:01.967Z",
+    "exitosa": true,
+    "observaciones": "asd"
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "orden": 2,
+    "tarea": 1,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
+    "exitosa": true,
+    "observaciones": null
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 3,
+  "fields": {
+    "orden": 3,
+    "tarea": 2,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
+    "exitosa": true,
+    "observaciones": null
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 4,
+  "fields": {
+    "orden": 3,
+    "tarea": 3,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
+    "exitosa": true,
+    "observaciones": null
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 5,
+  "fields": {
+    "orden": 4,
+    "tarea": 3,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
+    "exitosa": true,
+    "observaciones": null
+  }
+},
+{
+  "model": "ordenes.detalleordendetrabajo",
+  "pk": 6,
+  "fields": {
+    "orden": 5,
+    "tarea": 2,
+    "empleado": null,
+    "inicio": null,
+    "fin": null,
+    "exitosa": true,
+    "observaciones": null
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "material": 1,
+    "orden": 1,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "material": 1,
+    "orden": 2,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 3,
+  "fields": {
+    "material": 1,
+    "orden": 3,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.materialordendetrabajo",
+  "pk": 4,
+  "fields": {
+    "material": 1,
+    "orden": 4,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.repuestoordendetrabajo",
+  "pk": 1,
+  "fields": {
+    "repuesto": 1,
+    "orden": 1,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.repuestoordendetrabajo",
+  "pk": 2,
+  "fields": {
+    "repuesto": 1,
+    "orden": 3,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 1,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "asadadasd",
+    "fecha": "2022-05-26T20:40:04.372Z",
+    "validez": 60,
+    "orden": 1,
+    "tareas": [
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 2,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "pres1",
+    "fecha": "2022-05-28T18:24:15.177Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 3,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "pres2",
+    "fecha": "2022-05-28T18:41:08.487Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 4,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "pres3",
+    "fecha": "2022-05-28T18:43:49.054Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 5,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "pres5",
+    "fecha": "2022-05-28T18:47:49.680Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 6,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "pres6",
+    "fecha": "2022-05-28T18:48:54.983Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 7,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "pres1",
+    "fecha": "2022-05-28T21:43:05.609Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      1
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 8,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T21:45:49.482Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      2
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 9,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T21:47:43.562Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 10,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T21:48:25.037Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 11,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T22:05:04.232Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 12,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T22:13:58.851Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 13,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T22:15:07.202Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 14,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-28T22:15:22.677Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 15,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "fecha1",
+    "fecha": "2022-05-28T22:35:26.593Z",
+    "validez": 60,
+    "orden": 3,
+    "tareas": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 16,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "fecha2",
+    "fecha": "2022-05-28T22:37:12.744Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuesto",
+  "pk": 17,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2022-05-30T18:37:58.625Z",
+    "validez": 60,
+    "orden": null,
+    "tareas": [
+      2
+    ]
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 1,
+  "fields": {
+    "material": 1,
+    "presupuesto": 1,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 2,
+  "fields": {
+    "material": 1,
+    "presupuesto": 2,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 3,
+  "fields": {
+    "material": 1,
+    "presupuesto": 3,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 4,
+  "fields": {
+    "material": 1,
+    "presupuesto": 4,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 5,
+  "fields": {
+    "material": 1,
+    "presupuesto": 5,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 6,
+  "fields": {
+    "material": 1,
+    "presupuesto": 6,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 7,
+  "fields": {
+    "material": 1,
+    "presupuesto": 7,
+    "cantidad": 10
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 8,
+  "fields": {
+    "material": 1,
+    "presupuesto": 8,
+    "cantidad": 100
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 9,
+  "fields": {
+    "material": 1,
+    "presupuesto": 9,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 10,
+  "fields": {
+    "material": 1,
+    "presupuesto": 10,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 11,
+  "fields": {
+    "material": 1,
+    "presupuesto": 10,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 12,
+  "fields": {
+    "material": 1,
+    "presupuesto": 11,
+    "cantidad": 10
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 13,
+  "fields": {
+    "material": 1,
+    "presupuesto": 12,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 14,
+  "fields": {
+    "material": 1,
+    "presupuesto": 13,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 15,
+  "fields": {
+    "material": 1,
+    "presupuesto": 14,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 16,
+  "fields": {
+    "material": 1,
+    "presupuesto": 15,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 17,
+  "fields": {
+    "material": 1,
+    "presupuesto": 16,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestomaterial",
+  "pk": 18,
+  "fields": {
+    "material": 1,
+    "presupuesto": 17,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 1,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 1,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 2,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 2,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 3,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 3,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 4,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 4,
+    "cantidad": 0
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 5,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 5,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 6,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 6,
+    "cantidad": 3
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 7,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 7,
+    "cantidad": 1000
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 8,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 8,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 9,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 9,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 10,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 10,
+    "cantidad": 2
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 11,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 11,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 12,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 12,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 13,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 13,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 14,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 14,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 15,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 15,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 16,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 16,
+    "cantidad": 1
+  }
+},
+{
+  "model": "ordenes.presupuestorepuesto",
+  "pk": 17,
+  "fields": {
+    "repuesto": 1,
+    "presupuesto": 17,
+    "cantidad": 1
+  }
+},
+{
+  "model": "facturas.factura",
+  "pk": 1,
+  "fields": {
+    "orden": 1,
+    "fecha": "2022-05-26",
+    "estado": 0
+  }
+},
+{
+  "model": "facturas.detallefactura",
+  "pk": 1,
+  "fields": {
+    "factura": 1,
+    "descripcion": "MaterialOrdenDeTrabajo object (1)",
+    "precio": "0.00"
+  }
+},
+{
+  "model": "facturas.detallefactura",
+  "pk": 2,
+  "fields": {
+    "factura": 1,
+    "descripcion": "RepuestoOrdenDeTrabajo object (1)",
+    "precio": "0.00"
+  }
+},
+{
+  "model": "facturas.detallefactura",
+  "pk": 3,
+  "fields": {
+    "factura": 1,
+    "descripcion": "DetalleOrdenDeTrabajo object (1)",
+    "precio": "150.00"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2022-05-26T20:45:15.941Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "taller",
+      "empleado"
+    ],
+    "object_id": "1",
+    "object_repr": "Pepito, Don Pepe",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Tareas\", \"Usuario\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2022-05-26T20:46:30.984Z",
+    "user": [
+      "diego"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "diego",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"User permissions\"]}}]"
+  }
+}
+]

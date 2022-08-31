@@ -1,4 +1,5 @@
 from genericpath import exists
+from types import NoneType
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -187,17 +188,25 @@ class Cliente(models.Model):
 
     def vip(self):
         # Obtener ultimas tres facturas pagas del cliente
-        facturas = self.facturas.order_by('-fecha')[:3]
-        return len(facturas) == 3 and all(f.pagado for f in facturas)
-
-    def vip2(self):
-        # Obtener ultimas tres facturas pagas del cliente
-        # Hay que ir a los presupuestos
-        # Ver si esos presupuestos tienen una ordenen (es decir, se confirmo)
-        # Ver si esas ordenes estan FACTURADAs
-        # Ver si las facturas estan PAGADAs
-        # return len(facturas) == 3 and all(f.pagado for f in facturas)
-        return None
+        # Ir a los presupuestos
+        # Tomar un presupuesto
+        # si ese presupuesto tiene una orden, esta confirmado
+        # Si la orden tiene una factura, esta facturada
+        # ver si las ultimas 3 facturas
+        # si hay 3 facturas pagadas es vip, caso contrario no es vip 
+        facturas = []
+        for presupuesto in self.presupuestos.all():   
+            if(presupuesto.orden) != None:
+                if(presupuesto.orden.factura) != None:
+                    facturas.extend(presupuesto.orden.factura.order_by('-fecha')[:3])
+                    for f in facturas:
+                        print(f.pagado()) # esto esta bien, da true o false
+                        print(len(facturas)) #este siempre es 1...
+                    return len(facturas) >= 3 and all(f.pagado for f in facturas) # Da falso
+                    #Datos devueltos en la consola
+                    # True
+                    # 1
+            return None
 
 def validar_anio(anio):
     if anio < date.today().year - 12:

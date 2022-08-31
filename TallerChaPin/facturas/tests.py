@@ -9,8 +9,7 @@ from decimal import Decimal
 
 class FacturaTestCase(TestCase):
     fixtures = [
-        'taller/fixtures/tests.json',
-        'ordenes/fixtures/tests.json'
+        'taller/fixtures/all.json',
     ]
 
     def setUp(self) -> None:

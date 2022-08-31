@@ -149,8 +149,9 @@
                     {% if object.puede_pagar %} 
                     <a href="" data-bs-toggle="modal" data-bs-target="#modalPagarFactura"
                     data-bs-nombre="{{object.orden.cliente}}" data-bs-url="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn2">
-                        <i class="fas fa-check-circle"></i> Pagar (modal)</a>
+                        <i class="fas fa-check-circle"></i> Pagar</a>
                     {% endif %}
+                    <a href="{% url 'detallesOrden' object.orden.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver orden </a>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ from taller.models import (
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
+
 # Create your models here.
 
 class OrdenDeTrabajoManager(models.Manager):
@@ -40,6 +41,7 @@ class OrdenDeTrabajo(models.Model):
     FACTURADA = 5
     FINALIZADA = 6
     INICIADA = 7
+    PAGADA = 8
     ESTADOS_CHOICES = [
         # Para cuando se crea, recien salida del presupuesto
         (CREADA, 'Creada'),
@@ -50,6 +52,7 @@ class OrdenDeTrabajo(models.Model):
         (REALIZADA, 'Realizada'),       # Cuando se terminan todas las tareas
         (FACTURADA, 'Facturada'),       # Cuando se factura la orden
         (FINALIZADA, 'Finalizada'),     # Cuando se entrega el vehiculo
+        (PAGADA, 'Pagada')              # Cuando se registra la factura tanto la factura como la orden quedan PAGADAS
     ]
     materiales = models.ManyToManyField(
         Material, through='MaterialOrdenDeTrabajo')
@@ -61,6 +64,16 @@ class OrdenDeTrabajo(models.Model):
     estado = models.PositiveSmallIntegerField(
         choices=ESTADOS_CHOICES, default=CREADA)
     objects = OrdenDeTrabajoManager.from_queryset(OrdenDeTrabajoQuerySet)()
+
+    @property
+    def cliente(self):
+        presupuesto = self.presupuestos.all().first()
+        return presupuesto.cliente if presupuesto is not None else None
+
+    @property
+    def vehiculo(self):
+        vehiculo = self.presupuestos.all().first()
+        return vehiculo.vehiculo if vehiculo is not None else None
 
     class Meta:
         permissions = [
@@ -128,13 +141,18 @@ class OrdenDeTrabajo(models.Model):
         self.save()
 
     def registrar_egreso(self, fecha):
-        if self.estado == OrdenDeTrabajo.FACTURADA or self.cliente.vip():
-            self.egreso = fecha
-            self.estado = OrdenDeTrabajo.FINALIZADA if self.estado == OrdenDeTrabajo.FACTURADA else self.estado
-            self.save()
+        if self.estado == OrdenDeTrabajo.FACTURADA:
+            if self.estado == OrdenDeTrabajo.PAGADA or self.cliente.vip(): 
+                self.egreso = fecha
+                self.estado = OrdenDeTrabajo.FINALIZADA if self.estado == OrdenDeTrabajo.FACTURADA else self.estado
+                self.save()
+            else:
+                #Creo que no esta muy bueno que tire una excepcion 
+                raise NoEntregoVehiculoException(
+                    'No se puede entregar el vehículo si el cliente no paga o no es VIP', self.estado)
         else:
             raise NoEntregoVehiculoException(
-                'No se puede entregar el vehículo o me pagas o sos vip', self.estado)
+                'No se puede entregar el vehículo si no se genera una factura', self.estado)
 
     def no_hay_tareas_iniciadas(self):
         for detalle in self.detalles.all():
@@ -160,15 +178,6 @@ class OrdenDeTrabajo(models.Model):
     def puede_ampliarse(self):
         return (self.estado == OrdenDeTrabajo.PAUSADA)
 
-    @property
-    def cliente(self):
-        presupuesto = self.presupuestos.all().first()
-        return presupuesto.cliente if presupuesto is not None else None
-
-    @property
-    def vehiculo(self):
-        vehiculo = self.presupuestos.all().first()
-        return vehiculo.vehiculo if vehiculo is not None else None
 
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
@@ -245,7 +254,13 @@ class OrdenDeTrabajo(models.Model):
 
     def get_ultimo_presupuesto(self):
         return self.presupuestos.all().order_by('fecha').last()
-        
+    
+    def tiene_factura(self):
+        return self.factura is not None
+    #Solo cambia el estado cuando se paga el total de la factura
+    def pagar_orden(self): 
+        self.estado = OrdenDeTrabajo.PAGADA
+        self.save()
 
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):

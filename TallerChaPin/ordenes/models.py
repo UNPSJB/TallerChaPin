@@ -306,15 +306,14 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
                          esta_iniciado).order_by('orden__turno')
         return qs
 
-    # def en_proceso(self):
-    #     esta_empezado = models.Q(inicio__isnull=False)
-    #     no_esta_finalizado = models.Q(fin__isnull=True)
-    #     qs = self.filter(esta_empezado & no_esta_finalizado).order_by('orden__turno')
-    #     return qs
-
     def finalizados(self):
         esta_finalizado = models.Q(fin__isnull=False)
         qs = self.filter(esta_finalizado).order_by('orden__turno')
+        return qs
+
+    def todos(self):
+        no_ha_ingresado = models.Q(orden__ingreso__isnull=True)
+        qs = self.all().exclude(no_ha_ingresado)
         return qs
 
 

@@ -18,8 +18,21 @@
 
     // configuramos el contenido del modal
     element.addEventListener('show.bs.modal', (e) => {
-        const btn = e.explicitOriginalTarget;
-        $('#id_modificar-cantidad').val(btn.dataset.idMaterial);
+        const btn = e.relatedTarget;
+        const pk_material = btn.dataset.idMaterial;
+        $('#id_cantidad').val(btn.dataset.cantidad);
+
+        let input_pk;
+        console.log($("input[name=pk]")[0])
+        if (!$("input[name=pk]")[0]) {
+            input_pk = document.createElement("input");
+            input_pk.type = "hidden";
+            input_pk.name = "pk";
+        } else {
+            input_pk = $("input[name=pk]")[0];
+        }
+        input_pk.value = pk_material;
+        $("#modificarCantidadForm").append(input_pk)
     })
 
     $('#btn-asignar').on('click', (e) => {

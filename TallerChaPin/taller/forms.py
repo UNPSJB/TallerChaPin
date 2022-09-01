@@ -1,4 +1,7 @@
+from audioop import reverse
+from urllib.parse import urlencode
 from django import forms
+
 from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from .models import Marca
@@ -8,7 +11,15 @@ from TallerChaPin.utils import FiltrosForm
 
 
 # Marca Forms
-
+def reverse_querystring(view, urlconf=None, args=None, kwargs=None, current_app=None, query_kwargs=None):
+    '''Custom reverse to handle query strings.
+    Usage:
+        reverse('app.views.my_view', kwargs={'pk': 123}, query_kwargs={'search': 'Bob'})
+    '''
+    base_url = reverse(view, urlconf=urlconf, args=args, kwargs=kwargs, current_app=current_app)
+    if query_kwargs:
+        return '{}?{}'.format(base_url, urlencode(query_kwargs))
+    return base_url
 
 class MarcaForm(forms.ModelForm):
 
@@ -402,9 +413,8 @@ class MaterialFiltrosForm(FiltrosForm):
 
 # Modificar - Cantidad
 
-
-class ModificarCantidadForm(forms.Form):       # TODO VER
-    cantidad = forms.IntegerField(min_value=0, required=True)
+class ModificarCantidadForm(forms.Form):      
+    cantidad = forms.IntegerField(min_value=0, max_value=10000, required=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -418,6 +428,14 @@ class ModificarCantidadForm(forms.Form):       # TODO VER
                 "cantidad"
             )
         )
+
+    def save(self, pk):
+        material = Material.objects.get(pk=pk)
+        cantidad = self.cleaned_data.get('cantidad')
+        material.cantidad = cantidad
+        material.save()
+
+    
 
     # def asignar_cantidad(self):
     #     cantidad = self.cleaned_data.get('cantidad')

@@ -18,6 +18,15 @@ def vehiculosDelCliente(request, pk):
     vehiculos = list(Vehiculo.objects.filter(cliente=pk).values('id', 'patente', 'modelo__nombre'))
     return JsonResponse({'pk_cliente': pk, 'vehiculos': vehiculos})
 
+def MaterialCantidad(request):
+    if request.method == "POST":
+        form = ModificarCantidadForm(request.POST)
+        pk = request.POST["pk"]
+        if form.is_valid():
+            form.save(pk)
+        else:
+            messages.add_message(request, messages.WARNING,'Cantidad no válida')
+    return redirect('listarMateriales')
 
 # ----------------------------- Marca View ----------------------------------- #
 

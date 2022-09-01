@@ -59,6 +59,8 @@ urlpatterns = [
          MaterialDeleteView.as_view(), name="eliminarMaterial"),
     path('materiales/modificar/<int:pk>',
          MaterialUpdateView.as_view(), name="modificarMaterial"),
+    path('materiales/modificarCantidad',
+         MaterialCantidad, name="modificarCantidad"),
 
     # ----------------- TIPOS MATERIALES -----------------
 

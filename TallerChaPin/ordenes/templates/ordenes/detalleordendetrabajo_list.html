@@ -21,7 +21,7 @@
     <button class="nav-link text-primary" data-bs-toggle="tab" data-bs-target="#finalizados" type="button" role="tab" aria-controls="finalizados" aria-selected="false">Finalizados <span class="badge rounded-pill bg-primary">{{finalizados.count}}</span></button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link text-primary" data-bs-toggle="tab" data-bs-target="#todos" type="button" role="tab" aria-controls="todos" aria-selected="false">Ver todos</button>
+    <button class="nav-link text-primary" data-bs-toggle="tab" data-bs-target="#todos" type="button" role="tab" aria-controls="todos" aria-selected="false">Ver todos <span class="badge rounded-pill bg-primary">{{todos.count}}</span></button>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
@@ -38,7 +38,7 @@
     {% include './detalleordentrabajoestado_list.html' with listado=finalizados %}
   </div>
   <div class="tab-pane fade" id="todos" role="tabpanel" aria-labelledby="todos-tab">
-    {% include './detalleordentrabajoestado_list.html' with listado=object_list %}
+    {% include './detalleordentrabajoestado_list.html' with listado=todos %}
   </div>
 </div>
 

@@ -14,6 +14,10 @@ def UnidadesDeMedida(request, pk):
     material = get_object_or_404(Material, pk=pk)
     return JsonResponse({'material': material.tipo.get_unidad_medida_display()})
 
+def vehiculosDelCliente(request, pk):
+    vehiculos = list(Vehiculo.objects.filter(cliente=pk).values('id', 'patente', 'modelo__nombre'))
+    return JsonResponse({'pk_cliente': pk, 'vehiculos': vehiculos})
+
 
 # ----------------------------- Marca View ----------------------------------- #
 

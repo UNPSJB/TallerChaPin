@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.utils.http import urlencode
 from django import forms
 from django.utils.regex_helper import Choice
+
 from . import models as ordenes
 import taller.models as taller
 from crispy_forms.helper import FormHelper
@@ -326,8 +327,10 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
 # Registrar Ingreso de Vehículo
 
 class RegistrarIngresoVehiculoForm(forms.ModelForm):
+    qs = ordenes.OrdenDeTrabajo.objects.sin_ingresar()
+
     orden = forms.ModelChoiceField(
-        queryset=ordenes.OrdenDeTrabajo.objects.all(),
+        queryset=qs,
         required=True,
         widget=forms.Select(),
         label="Orden de trabajo"  # TODO: verificar que el layout muestre un label

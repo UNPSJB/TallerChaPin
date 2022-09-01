@@ -301,6 +301,7 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context['sinFinalizar'] = DetalleOrdenDeTrabajo.objects.sin_finalizar()
         context['asignados'] = DetalleOrdenDeTrabajo.objects.asignados()
         context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados()
+        context['todos'] = DetalleOrdenDeTrabajo.objects.todos()
         
         # Pasar formulario por contexto
         context['asignarEmpleadoForm'] = AsignarEmpleadoForm()

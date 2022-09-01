@@ -198,14 +198,9 @@ class Cliente(models.Model):
             if(presupuesto.orden) != None:
                 if(presupuesto.orden.factura) != None:
                     facturas.extend(presupuesto.orden.factura.order_by('-fecha')[:3])
-                    for f in facturas:
-                        print(f.pagado()) # esto esta bien, da true o false
-                        print(len(facturas)) #este siempre es 1...
-                    return len(facturas) >= 3 and all(f.pagado for f in facturas) # Da falso
-                    #Datos devueltos en la consola
-                    # True
-                    # 1
-            return None
+            else:
+                return False
+        return len(facturas) >= 3 and all(f.pagado for f in facturas) #Ver como restringir que un cliente VIP que adeuda 2 facturas no se le permita retirar el vehiculo.
 
 def validar_anio(anio):
     if anio < date.today().year - 12:

@@ -165,14 +165,18 @@
                             <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>. No hay acciones disponibles.</span>
                         {%endif%}
                         {% if object.estado == 8 or object.cliente.vip %}
+                            {% if object.estado == 8 %}
                             <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span>
+                            {%endif%}
+                            {% if object.cliente.vip %}
+                            <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b> con pago pendiente. El cliente es <b>VIP</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span> 
+                            {%endif%}
+                            
                             <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
                                 <i class="fa-solid fa-car"></i> Registrar egreso de vehiculo</a>
                             </a>
                         {%endif%}
-                        {% if object.cliente.vip %}
-                            <span>El cliente es VIP</span>
-                        {%endif%}
+
                     </div>
                 </div>
             </div>

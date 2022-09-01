@@ -18,6 +18,11 @@ class OrdenDeTrabajoManager(models.Manager):
     def para_el_dia(self, fecha):
         return self.filter(turno__date=fecha.date())
 
+    def sin_ingresar(self):
+        no_ha_ingresado = models.Q(ingreso__isnull=True)
+        qs = self.filter(no_ha_ingresado)
+        return qs
+
 
 class OrdenDeTrabajoQuerySet(models.QuerySet):
     pass

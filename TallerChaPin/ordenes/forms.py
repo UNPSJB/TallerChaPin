@@ -57,14 +57,14 @@ def PresupuestoForm(base = None):
 
             if self.requiere("materiales", tareas):
                 for material in materiales:
-                    if "material" in material and material["material"] != None and material["cantidad"] is not 0:
+                    if "material" in material and material["material"] is not None and material["cantidad"] is not 0:
                         matObj = material["material"]
                         matCantidad = material["cantidad"]
                         presupuesto.agregar_material(matObj, matCantidad)
 
             if self.requiere("repuestos", tareas):
                 for repuesto in repuestos:
-                    if "repuesto" in repuesto and repuesto["repuesto"] != None and repuesto["cantidad"] is not 0:
+                    if "repuesto" in repuesto and repuesto["repuesto"] is not None and repuesto["cantidad"] is not 0:
                         repObj = repuesto["repuesto"]
                         repCantidad = repuesto["cantidad"]
                         presupuesto.agregar_repuesto(repObj, repCantidad)
@@ -327,6 +327,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
 # Registrar Ingreso de Vehículo
 def RegistrarIngresoVehiculoForm(model=None):
     class RegistrarIngresoVehiculoForm(forms.ModelForm):
+       
         if model is None:
             orden = forms.ModelChoiceField(
                 queryset=ordenes.OrdenDeTrabajo.objects.sin_ingresar(),
@@ -341,7 +342,7 @@ def RegistrarIngresoVehiculoForm(model=None):
             exclude = ["egreso", "estado", "turno", "materiales", "repuestos"]
 
             widgets = {
-                "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+                "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
             }
 
         def save(self, commit=True):
@@ -384,7 +385,7 @@ def RegistrarEgresoVehiculoForm(model=None):
             exclude = ["ingreso", "estado", "turno", "materiales", "repuestos"]
 
             widgets = {
-                "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+                "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
             }
 
         def save(self, commit=True):

@@ -146,10 +146,10 @@ class OrdenDeTrabajo(models.Model):
         self.save()
 
     def registrar_egreso(self, fecha):
-        if self.estado == OrdenDeTrabajo.FACTURADA:
+        if self.puede_retirar_vehiculo() :
             if self.estado == OrdenDeTrabajo.PAGADA or self.cliente.vip(): 
                 self.egreso = fecha
-                self.estado = OrdenDeTrabajo.FINALIZADA if self.estado == OrdenDeTrabajo.FACTURADA else self.estado
+                self.estado = OrdenDeTrabajo.FINALIZADA if self.estado == OrdenDeTrabajo.FACTURADA or self.estado == OrdenDeTrabajo.PAGADA else self.estado
                 self.save()
             else:
                 #Creo que no esta muy bueno que tire una excepcion 
@@ -187,7 +187,7 @@ class OrdenDeTrabajo(models.Model):
         return (self.estado == OrdenDeTrabajo.CREADA)
 
     def puede_retirar_vehiculo(self):
-        return (self.estado == OrdenDeTrabajo.PAGADA) or (self.cliente.vip())
+        return  ((self.estado == OrdenDeTrabajo.FACTURADA) and (self.cliente.vip())) or (self.estado == OrdenDeTrabajo.PAGADA)
 
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
@@ -270,6 +270,12 @@ class OrdenDeTrabajo(models.Model):
     
     def pagado(self):
         return (self.estado == OrdenDeTrabajo.PAGADA)
+    
+    def vehiculo_ingreso(self):
+        return self.ingreso is not None
+
+    def vehiculo_egreso(self):
+        return self.egreso is not None
 
     #Solo cambia el estado cuando se paga el total de la factura
     def pagar_orden(self): 

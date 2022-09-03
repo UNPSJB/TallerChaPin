@@ -21,13 +21,29 @@
                         {{ object.cliente.nombre }}, {{ object.cliente.apellido }}
                     </h3>
                     <span>
-                        <i class="fas fa-car-side"></i> {{ object.vehiculo.patente }} ({{ object.vehiculo.modelo}}) <br>
+                        <i class="fas fa-car-side"></i> {{ object.vehiculo.patente }} ({{ object.vehiculo.modelo }}) <br>
 
                     </span>
 
                     <span>
-                        <i class="far fa-flag"></i> ESTADO: {{ object.get_estado_display}} <br>
+                        <i class="far fa-flag"></i> ESTADO: {{ object.get_estado_display }} <br>
                     </span>
+
+                    <span>
+                        <i class="fa-regular fa-calendar"></i> TURNO: {{ object.turno }} <br>
+                    </span>
+
+                    {% if object.vehiculo_ingreso %}
+                    <span>
+                        <i class="fa-solid fa-arrow-right"></i> INGRESO: {{ object.ingreso }} <br>
+                    </span>
+                    {%endif%}
+
+                    {% if object.vehiculo_egreso %}
+                    <span>
+                        <i class="fa-solid fa-arrow-left"></i> EGRESO: {{ object.egreso }} <br>
+                    </span>
+                    {%endif%}
 
                 </div>
             </div>

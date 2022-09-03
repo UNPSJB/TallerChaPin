@@ -325,41 +325,45 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
         )
 
 # Registrar Ingreso de Vehículo
+def RegistrarIngresoVehiculoForm(model=None):
+    class RegistrarIngresoVehiculoForm(forms.ModelForm):
+        if model is None:
+            orden = forms.ModelChoiceField(
+                queryset=ordenes.OrdenDeTrabajo.objects.sin_ingresar(),
+                required=True,
+                widget=forms.Select(),
+                label="Orden de trabajo"  # TODO: verificar que el layout muestre un label
+            )
 
-class RegistrarIngresoVehiculoForm(forms.ModelForm):
-    qs = ordenes.OrdenDeTrabajo.objects.sin_ingresar()
+        class Meta:
+            model = ordenes.OrdenDeTrabajo
+            fields = "__all__"
+            exclude = ["egreso", "estado", "turno", "materiales", "repuestos"]
 
-    orden = forms.ModelChoiceField(
-        queryset=qs,
-        required=True,
-        widget=forms.Select(),
-        label="Orden de trabajo"  # TODO: verificar que el layout muestre un label
-    )
+            widgets = {
+                "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
+            }
 
-    class Meta:
-        model = ordenes.OrdenDeTrabajo
-        fields = "__all__"
-        exclude = ["egreso", "estado", "turno", "materiales", "repuestos"]
+        def save(self, commit=True):
+            registrarIngresoVehiculo = super().save(commit=bool(model))
+            if model:
+                registrarIngresoVehiculo.orden = model
+                registrarIngresoVehiculo.save()
+            return registrarIngresoVehiculo
 
-        widgets = {
-            "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
-        }
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.helper = FormHelper()
+            self.helper.layout = Layout(
+                Fieldset(
+                    "",
+                    "orden",
+                    "ingreso"
+                ),
+                Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
+            )
+    return RegistrarIngresoVehiculoForm
 
-    def save(self, commit=True):
-        registrarIngresoVehiculo = super().save()
-        return registrarIngresoVehiculo
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout(
-            Fieldset(
-                "",
-                "orden",
-                "ingreso"
-            ),
-            Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
-        )
 
 # Registrar egreso de Vehículo
 

@@ -49,6 +49,8 @@ urlpatterns = [
      # ----------------- Ingreso y Entrega de vehiculo -----------------
      path('ordenesTurnos/registrarIngresoVehiculo',
           RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),
+     path('ordenesTurnos/registrarIngresoVehiculo/<int:pk>',
+          RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),
      path('ordenesTurnos/registrarEgresoVehiculo',
           RegistrarEgresoVehiculoCreateView.as_view(), name="registrarEgresoVehiculo"),
      path('ordenesTurnos/registrarEgresoVehiculo/<int:pk>',

@@ -158,24 +158,40 @@
                                 <i class="fa-solid fa-file-circle-plus"></i> Ampliar presupuesto</a>
                             </a>
                         {% endif %}
-                            
+                           
+                        {% if object.puede_ingresar_vehiculo %}
+                            <a href="{% url 'registrarIngresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
+                                <i class="fa-solid fa-car"></i> Registrar Ingreso del Vehiculo</a>
+                            </a>
+                        {%endif%}
+
                         <a href="{% url 'detallesPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver presupuesto </a>
+                        
+
                         
                         {% if object.estado == 2 or object.estado == 6 %}
                             <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>. No hay acciones disponibles.</span>
                         {%endif%}
-                        {% if object.estado == 8 or object.cliente.vip %}
-                            {% if object.estado == 8 %}
+                        {% if object.puede_retirar_vehiculo %}
+                        
+                            {% if object.pagado %}
                             <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span>
-                            {%endif%}
-                            {% if object.cliente.vip %}
-                            <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b> con pago pendiente. El cliente es <b>VIP</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span> 
-                            {%endif%}
                             
                             <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
                                 <i class="fa-solid fa-car"></i> Registrar egreso de vehiculo</a>
                             </a>
+                            
+                            {%endif%}
+                            {% if object.tiene_factura and object.cliente.vip %}
+                            <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b> con pago pendiente. El cliente es <b>VIP</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span> 
+                            
+                            <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
+                                <i class="fa-solid fa-car"></i> Registrar egreso del vehiculo</a>
+                            </a>
+                            {%endif%}
                         {%endif%}
+
+
 
                     </div>
                 </div>

@@ -183,6 +183,11 @@ class OrdenDeTrabajo(models.Model):
     def puede_ampliarse(self):
         return (self.estado == OrdenDeTrabajo.PAUSADA)
 
+    def puede_ingresar_vehiculo(self):
+        return (self.estado == OrdenDeTrabajo.CREADA)
+
+    def puede_retirar_vehiculo(self):
+        return (self.estado == OrdenDeTrabajo.PAGADA) or (self.cliente.vip())
 
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
@@ -261,7 +266,11 @@ class OrdenDeTrabajo(models.Model):
         return self.presupuestos.all().order_by('fecha').last()
     
     def tiene_factura(self):
-        return self.factura is not None
+        return (self.factura is not None) and (self.estado == OrdenDeTrabajo.FACTURADA)
+    
+    def pagado(self):
+        return (self.estado == OrdenDeTrabajo.PAGADA)
+
     #Solo cambia el estado cuando se paga el total de la factura
     def pagar_orden(self): 
         self.estado = OrdenDeTrabajo.PAGADA

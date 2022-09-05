@@ -189,6 +189,16 @@ class PresupuestoDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+def confirmar_ampliacion(request, pk):
+    presupuesto = Presupuesto.objects.get(pk=pk)
+    orden = presupuesto.orden
+
+    orden.aplicar_ampliacion(presupuesto)
+    print("-- En view --")
+
+    print(presupuesto.orden)
+    return redirect ('detallesOrden', presupuesto.orden.pk)
+
 # ----------------------------- Orden de trabajo View ----------------------------------- #
 
 class OrdenTrabajoListView(ListFilterView):

@@ -29,7 +29,7 @@ def PresupuestoForm(base = None):
         class Meta:
             model = ordenes.Presupuesto
             fields = "__all__" if base is None else ["detalles", "tareas"]
-            exclude = ["orden", "materiales", "repuestos", "ampliado"] if base is None else ["orden", "materiales", "repuestos", "cliente", "vehiculo", "validez", "ampliado"]
+            exclude = ["orden", "materiales", "repuestos", "ampliado", "confirmado"] if base is None else ["orden", "materiales", "repuestos", "cliente", "vehiculo", "validez", "ampliado", "confirmado"]
 
             labels = {
 

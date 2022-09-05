@@ -150,7 +150,11 @@
                 {% endif %}
 
                 {% if object.puede_confirmarse %}
-                    <a href="{% url 'crearOrden' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
+                    {% if object.tiene_anterior %}
+                        <a href="{% url 'confirmarAmpliacion' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
+                    {% else %}
+                        <a href="{% url 'crearOrden' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
+                    {% endif %}
                 {% endif %}
 
                 {% if object.tiene_orden %}

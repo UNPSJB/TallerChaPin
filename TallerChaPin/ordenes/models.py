@@ -282,6 +282,24 @@ class OrdenDeTrabajo(models.Model):
         self.estado = OrdenDeTrabajo.PAGADA
         self.save()
 
+    def vaciar(self):
+        self.materiales.clear()
+        self.repuestos.clear()
+        self.detalles.all().delete()
+
+    def aplicar_ampliacion(self, presupuesto):
+        self.vaciar()
+        for t in presupuesto.tareas.all():
+            self.agregar_tarea(t)
+        for m in presupuesto.presupuesto_materiales.all():
+            self.agregar_material(m.material, 0)
+        for r in presupuesto.presupuesto_repuestos.all():
+            self.agregar_repuesto(r.repuesto, 0)
+        
+        presupuesto.confirmado = True
+        presupuesto.save()
+        self.save()
+
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):
         no_tiene_empleado = models.Q(empleado__isnull=True)
@@ -491,6 +509,7 @@ class Presupuesto(models.Model):
     orden = models.ForeignKey(OrdenDeTrabajo, null=True, related_name='presupuestos',
                               blank=True, on_delete=models.SET_NULL)
     ampliado = models.BooleanField(default=False)
+    confirmado = models.BooleanField(default=False)
 
     def agregar_tarea(self, tarea):
         self.tareas.add(tarea)
@@ -525,19 +544,15 @@ class Presupuesto(models.Model):
         return tareas + materiales + repuestos
 
     def confirmar(self, turno):
-        if self.orden is None:
-            self.orden = OrdenDeTrabajo.objects.create(turno=turno)
-        else:
-            # FIXME: Que pasa si una tarea se bloquea o no es exitosa por otra cosa que no implique ampliar el presupuesto?
-            self.orden.estado = OrdenDeTrabajo.INICIADA
-            self.orden.detalles.all().update(exitosa=True)
-            self.orden.save()
+        self.orden = OrdenDeTrabajo.objects.create(turno=turno)
+
         for t in self.tareas.all():
             self.orden.agregar_tarea(t)
         for m in self.presupuesto_materiales.all():
             self.orden.agregar_material(m.material, 0)
         for r in self.presupuesto_repuestos.all():
             self.orden.agregar_repuesto(r.repuesto, 0)
+        
         self.save()
         return self.orden
 
@@ -545,7 +560,7 @@ class Presupuesto(models.Model):
         return self.tareas.count() + self.materiales.count() + self.repuestos.count()
 
     def puede_confirmarse(self):
-        return self.orden is None
+        return not self.confirmado
 
     def puede_modificarse(self):
         return self.orden is None

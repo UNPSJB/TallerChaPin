@@ -1,3 +1,4 @@
+from time import process_time_ns
 from django.utils.timezone import now
 from django.utils import timezone
 from taller.models import (
@@ -165,6 +166,9 @@ class OrdenDeTrabajo(models.Model):
                 return False
         return True
 
+    def esta_pausada(self):
+        return self.estado == OrdenDeTrabajo.PAUSADA
+
     def puede_cancelarse(self):
         return (self.estado == OrdenDeTrabajo.CREADA) or (self.estado == OrdenDeTrabajo.PAUSADA)
 
@@ -177,11 +181,18 @@ class OrdenDeTrabajo(models.Model):
     def puede_pausarse(self):
         return (self.estado == OrdenDeTrabajo.ACTIVA) or (self.estado == OrdenDeTrabajo.INICIADA)
 
+    # Retorna verdadero si está esperando que su último presupuesto sea confirmado (ampliación)
+    def esperando_confirmacion(self):
+        ultimo_presupuesto = self.get_ultimo_presupuesto()
+        return not ultimo_presupuesto.confirmado  
+
     def puede_reanudarse(self):
-        return (self.estado == OrdenDeTrabajo.PAUSADA)
+        esta_pausada = self.estado == OrdenDeTrabajo.PAUSADA
+        return esta_pausada and not self.esperando_confirmacion()
     
     def puede_ampliarse(self):
-        return (self.estado == OrdenDeTrabajo.PAUSADA)
+        esta_pausada = self.estado == OrdenDeTrabajo.PAUSADA
+        return esta_pausada and not self.esperando_confirmacion()
 
     def puede_ingresar_vehiculo(self):
         return (self.estado == OrdenDeTrabajo.CREADA)
@@ -282,15 +293,41 @@ class OrdenDeTrabajo(models.Model):
         self.estado = OrdenDeTrabajo.PAGADA
         self.save()
 
-    def vaciar(self):
+    def vaciar_insumos(self):
         self.materiales.clear()
         self.repuestos.clear()
-        self.detalles.all().delete()
+        # self.detalles.all().delete()
 
     def aplicar_ampliacion(self, presupuesto):
-        self.vaciar()
-        for t in presupuesto.tareas.all():
-            self.agregar_tarea(t)
+        self.vaciar_insumos()
+
+        tareas_presupuesto = presupuesto.tareas.all()
+        # tareas_orden = list(self.detalles.all().values_list('tarea', flat=True))
+        tareas_orden = self.detalles.all()
+
+        print('lista de tareas (presupuesto):')
+        print(tareas_presupuesto)
+        print('lista de tareas (orden):')
+        print(tareas_orden)
+
+        # De las tareas del presupuesto, agrego las que no existen
+        for t in tareas_presupuesto:
+            print(t)
+            if t.pk not in tareas_orden.values_list('tarea', flat=True):
+                print(f'agregando tarea {t}')
+                self.agregar_tarea(t)
+
+        # De las tareas de la orden, quito las que no están en el nuevo presupuesto
+        tareas_orden = self.detalles.all()
+        for t in tareas_orden:
+            print(f'viendo para borrar: {t.tarea}')
+            if t.tarea not in tareas_presupuesto: # TODO: además tienen que estar sin iniciar
+                print(f'borrando tarea {t.tarea}')
+                t.delete()
+
+        print("-- Tareas orden -- ")
+        print(tareas_orden)
+
         for m in presupuesto.presupuesto_materiales.all():
             self.agregar_material(m.material, 0)
         for r in presupuesto.presupuesto_repuestos.all():
@@ -553,6 +590,8 @@ class Presupuesto(models.Model):
         for r in self.presupuesto_repuestos.all():
             self.orden.agregar_repuesto(r.repuesto, 0)
         
+        self.confirmado = True
+
         self.save()
         return self.orden
 

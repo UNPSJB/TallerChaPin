@@ -96,6 +96,8 @@
                                             {% empty %}
                                             <tr>
                                                 <td>No hay repuestos</td>
+                                                <td>n/a</td>
+                                                <td>n/a</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -124,6 +126,8 @@
                                         {% empty %}
                                         <tr>
                                             <td>No hay materiales</td>
+                                            <td>n/a</td>
+                                            <td>n/a</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -164,10 +168,16 @@
                                 <i class="fa-solid fa-pause"></i> Pausar orden</a>
                             </a>
                         {% endif %}
-                        {% if object.puede_reanudarse %}
-                            <a href="{% url 'reanudarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
-                                <i class="fa-solid fa-play"></i> Reanudar orden</a>
-                            </a>
+                        {% if object.esta_pausada %}
+                            {% if object.puede_reanudarse %}
+                                <a href="{% url 'reanudarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
+                                    <i class="fa-solid fa-play"></i> Reanudar orden</a>
+                                </a>
+                            {% else %}
+                                <button class="btn btn-primary m-1 w-100" disabled >
+                                    <i class="fa-solid fa-play"></i> Esperando confirmación</a>
+                                </button>
+                            {% endif %}
                         {% endif %}
                         {% if object.puede_ampliarse %}
                             <a href="{% url 'ampliarPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100">

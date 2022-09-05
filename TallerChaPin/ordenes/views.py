@@ -194,9 +194,8 @@ def confirmar_ampliacion(request, pk):
     orden = presupuesto.orden
 
     orden.aplicar_ampliacion(presupuesto)
-    print("-- En view --")
 
-    print(presupuesto.orden)
+    messages.add_message(request, messages.SUCCESS, 'La ampliación se ha aplicado correctamente.')
     return redirect ('detallesOrden', presupuesto.orden.pk)
 
 # ----------------------------- Orden de trabajo View ----------------------------------- #

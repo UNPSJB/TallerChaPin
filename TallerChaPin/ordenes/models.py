@@ -1,3 +1,4 @@
+from cgi import print_exception
 from time import process_time_ns
 from django.utils.timezone import now
 from django.utils import timezone
@@ -293,46 +294,44 @@ class OrdenDeTrabajo(models.Model):
         self.estado = OrdenDeTrabajo.PAGADA
         self.save()
 
-    def vaciar_insumos(self):
-        self.materiales.clear()
-        self.repuestos.clear()
-        # self.detalles.all().delete()
-
     def aplicar_ampliacion(self, presupuesto):
-        self.vaciar_insumos()
-
         tareas_presupuesto = presupuesto.tareas.all()
-        # tareas_orden = list(self.detalles.all().values_list('tarea', flat=True))
-        tareas_orden = self.detalles.all()
-
-        print('lista de tareas (presupuesto):')
-        print(tareas_presupuesto)
-        print('lista de tareas (orden):')
-        print(tareas_orden)
+        detalles_orden = self.detalles.all()
 
         # De las tareas del presupuesto, agrego las que no existen
         for t in tareas_presupuesto:
-            print(t)
-            if t.pk not in tareas_orden.values_list('tarea', flat=True):
-                print(f'agregando tarea {t}')
+            if t.pk not in detalles_orden.values_list('tarea', flat=True):
                 self.agregar_tarea(t)
 
         # De las tareas de la orden, quito las que no están en el nuevo presupuesto
-        tareas_orden = self.detalles.all()
-        for t in tareas_orden:
-            print(f'viendo para borrar: {t.tarea}')
+        for t in detalles_orden:
             if t.tarea not in tareas_presupuesto: # TODO: además tienen que estar sin iniciar
-                print(f'borrando tarea {t.tarea}')
                 t.delete()
-
-        print("-- Tareas orden -- ")
-        print(tareas_orden)
-
+    
+        # De los materiales del presupuesto, solo agrego a la orden los que son nuevos
+        materiales_orden = list(self.orden_materiales.all().values_list('material__pk', flat=True))
         for m in presupuesto.presupuesto_materiales.all():
-            self.agregar_material(m.material, 0)
+            if m.material.pk not in materiales_orden:
+                self.agregar_material(m.material, 0)
+
+        # De los repuestos del presupuesto, solo agrego a la orden los que son nuevos
+        repuestos_orden = list(self.orden_repuestos.all().values_list('repuesto__pk', flat=True))
         for r in presupuesto.presupuesto_repuestos.all():
-            self.agregar_repuesto(r.repuesto, 0)
-        
+            if r.repuesto.pk not in repuestos_orden:
+                self.agregar_repuesto(r.repuesto, 0)
+
+        # Elimino los materiales que están en la orden pero no en el presupuesto
+        materiales_presupuesto = list(presupuesto.presupuesto_materiales.all().values_list('material__pk', flat=True))
+        for om in self.orden_materiales.all():
+            if om.material.pk not in materiales_presupuesto:
+                om.delete() # TODO: en el caso en que se haya utilizado, qué se hace?
+
+        # Elimino los repuestos que están en la orden pero no en el presupuesto
+        repuestos_presupuesto = list(presupuesto.presupuesto_repuestos.all().values_list('repuesto__pk', flat=True))
+        for rm in self.orden_repuestos.all():
+            if rm.repuesto.pk not in repuestos_presupuesto:
+                rm.delete() # TODO: en el caso en que se haya utilizado, qué se hace?
+
         presupuesto.confirmado = True
         presupuesto.save()
         self.save()
@@ -648,6 +647,9 @@ class PresupuestoMaterial(models.Model):
     presupuesto = models.ForeignKey(
         Presupuesto, on_delete=models.CASCADE, related_name='presupuesto_materiales')
     cantidad = models.PositiveBigIntegerField(validators=[], null=True, blank=True, default=1)
+
+    def __str__(self) -> str:
+        return f'{self.material.nombre} (cantidad: {self.cantidad})'
 
     def precio(self):
         return self.material.precio * self.cantidad

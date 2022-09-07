@@ -26,6 +26,7 @@
 
 {% block extrajs %}
 <script> 
+
 const select_cliente = document.getElementById('id_cliente')
 const select_vehiculos = document.getElementById('id_vehiculo')
 
@@ -35,7 +36,6 @@ $(document).ready(() => {
     let toggle_tables = () => {
         checked = [...$("#div_id_tareas input[type='checkbox']:checked")];
         checked = checked.map(c => c.value);
-        console.log(checked);
         fetch(`tareas/requerimientos`, {
             method: 'POST',
             credentials: 'same-origin',
@@ -49,7 +49,6 @@ $(document).ready(() => {
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
             $('#materiales').toggle(res.materiales);
             $('#repuestos').toggle(res.repuestos);
 
@@ -74,12 +73,22 @@ $(document).ready(() => {
     })
 
     toggle_tables();
-    select_vehiculos.options.length = 1
+    if (select_vehiculos) {
+        select_vehiculos.options.length = 1
+    }
+    deshabilitar_tareas_iniciadas()
 });
 
-function get_base_url(string){
-    const index = string.indexOf('/',7) // Empiezo a buscar '/' en la posición 7 para evitar 'http://'
-    return string.slice(0, index)
+function get_base_url(){
+    const url = window.location.href
+    const index = url.indexOf('/',7) // Empiezo a buscar '/' en la posición 7 para evitar 'http://'
+    return url.slice(0, index)
+}
+
+function get_pk_presupuesto(){
+    const url = window.location.href
+    const pk = url.substring(url.lastIndexOf('/') + 1)
+    return pk
 }
 
 select_cliente.addEventListener("change", () => {
@@ -88,7 +97,7 @@ select_cliente.addEventListener("change", () => {
     select_vehiculos.options.length = 1
 
     // Obtengo los datos necesarios para hacer el fetch
-    const base = get_base_url(window.location.href)
+    const base = get_base_url()
     const pk_cliente = select_cliente.value
     fetch(`${base}/taller/cliente/vehiculos/${pk_cliente}`)
     .then(response => response.json())
@@ -102,5 +111,24 @@ select_cliente.addEventListener("change", () => {
         });
     })
 })
+
+function deshabilitar_tareas_iniciadas(){
+    const pk = get_pk_presupuesto()
+    const url_base = get_base_url()
+    
+    fetch(`${url_base}/ordenes/presupuesto/tareasIniciadas/${pk}`)
+        .then(response => response.json())
+        .then(r => {
+            const checks_tareas = document.querySelectorAll('#div_id_tareas input')
+            const tareas_a_deshabilitar = r.tareas_finalizadas
+
+            checks_tareas.forEach(check => {
+                if (tareas_a_deshabilitar.includes(parseInt(check.value))) {
+                    check.setAttribute('disabled', true)
+                }
+            });
+        }) 
+}
+
 </script>
 {% endblock %}

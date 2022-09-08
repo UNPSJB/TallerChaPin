@@ -30,6 +30,28 @@
 const select_cliente = document.getElementById('id_cliente')
 const select_vehiculos = document.getElementById('id_vehiculo')
 
+function get_base_url(){
+    const url = window.location.href
+    const index = url.indexOf('/',7) // Empiezo a buscar '/' en la posición 7 para evitar 'http://'
+    return url.slice(0, index)
+}
+
+function get_pk_presupuesto(){
+    const url = window.location.href
+    const pk = url.substring(url.lastIndexOf('/') + 1)
+    return pk
+}
+
+function estoy_modificando(){
+    const url = window.location.href
+    return url.includes('modificar')
+}
+
+function estoy_ampliando() {
+    const url = window.location.href
+    return url.includes('ampliar')
+}
+
 $(document).ready(() => {
     let checked = [];
 
@@ -73,28 +95,31 @@ $(document).ready(() => {
     })
 
     toggle_tables();
-    if (select_vehiculos) {
-        select_vehiculos.options.length = 1
+    if (select_vehiculos) { // Al principio viene cargado con el queryset de todos los vehículos
+        select_vehiculos.options.length = 1 // Elimino todos para después cargar solo los de ese cliente
     }
-    deshabilitar_tareas_iniciadas()
+
+    if (estoy_ampliando()){
+        deshabilitar_tareas_iniciadas()
+    }
+    
+    if (estoy_modificando()) {
+        cargarVehiculosCliente()
+    }
+
 });
 
-function get_base_url(){
-    const url = window.location.href
-    const index = url.indexOf('/',7) // Empiezo a buscar '/' en la posición 7 para evitar 'http://'
-    return url.slice(0, index)
-}
-
-function get_pk_presupuesto(){
-    const url = window.location.href
-    const pk = url.substring(url.lastIndexOf('/') + 1)
-    return pk
-}
-
-select_cliente.addEventListener("change", () => {
+select_cliente?.addEventListener("change", () => {
     
     // Elimino todas las opciones del input
     select_vehiculos.options.length = 1
+    if (select_cliente.value) {
+        cargarVehiculosCliente()
+    }
+    
+})
+
+function cargarVehiculosCliente() {
 
     // Obtengo los datos necesarios para hacer el fetch
     const base = get_base_url()
@@ -110,7 +135,9 @@ select_cliente.addEventListener("change", () => {
             select_vehiculos.add(option)
         });
     })
-})
+
+    return true
+}
 
 function deshabilitar_tareas_iniciadas(){
     const pk = get_pk_presupuesto()
@@ -125,6 +152,7 @@ function deshabilitar_tareas_iniciadas(){
             checks_tareas.forEach(check => {
                 if (tareas_a_deshabilitar.includes(parseInt(check.value))) {
                     check.setAttribute('disabled', true)
+                    check.classList.add('no_eliminable')
                 }
             });
         }) 

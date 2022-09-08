@@ -1,3 +1,7 @@
 .oculto {
     display: none
 }
+
+.no_eliminable + label::after{
+    content: '(ya finalizada)';
+}

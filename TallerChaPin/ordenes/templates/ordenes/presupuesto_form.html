@@ -10,7 +10,7 @@
 
 {% block main %}
 <div class="col-8">
-    <h3>{{ titulo }}</h3>
+    <h3>{{ titulo }} </h3>
     <form action="{{ form.helper.form_action }}" method="post">
         {% crispy form form.helper %}
         <div data-formset="presupuesto_materiales" id="materiales" class="oculto">
@@ -20,6 +20,7 @@
             {% crispy presupuesto_repuesto_formset presupuesto_repuesto_formset_helper %}
         </div>
         <input type="submit" value="Guardar" class="btn btn-primary">
+        <input type="hidden" data-vehiculo="{{object.vehiculo.pk}}" id="pk_vehiculo">
     </form>
 </div>
 {% endblock %}
@@ -104,7 +105,7 @@ $(document).ready(() => {
     }
     
     if (estoy_modificando()) {
-        cargarVehiculosCliente()
+        cargarVehiculosCliente(modificando=true)
     }
 
 });
@@ -119,7 +120,7 @@ select_cliente?.addEventListener("change", () => {
     
 })
 
-function cargarVehiculosCliente() {
+function cargarVehiculosCliente(modificando = false) {
 
     // Obtengo los datos necesarios para hacer el fetch
     const base = get_base_url()
@@ -134,6 +135,12 @@ function cargarVehiculosCliente() {
             option.text = `${v.modelo__nombre}, ${v.patente}`
             select_vehiculos.add(option)
         });
+
+        // Tomo el pk del vehiculo del presupuesto para cargarlo por defecto en el input de vehiculos
+        if (modificando) {
+            const pk = document.getElementById('pk_vehiculo').dataset.vehiculo
+            select_vehiculos.value = pk
+        }
     })
 
     return true

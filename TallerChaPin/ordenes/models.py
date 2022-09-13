@@ -607,7 +607,7 @@ class Presupuesto(models.Model):
         return self.orden is not None   
 
     def puede_cancelarse(self):
-        return self.orden is None
+        return not self.confirmado
 
     def tiene_anterior(self):
         if self.orden is None:

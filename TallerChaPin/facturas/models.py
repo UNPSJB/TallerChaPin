@@ -1,3 +1,6 @@
+from traceback import print_tb
+from xml.dom import ValidationErr
+from django.forms import ValidationError
 from django.utils.timezone import now
 from datetime import datetime, time
 from django.db import models
@@ -58,7 +61,8 @@ class Factura(models.Model):
         return self.estado == Factura.PAGADA
 
     def puede_pagar(self):
-        return self.no_pagada() and self.adeuda()
+        # return self.no_pagada() and self.adeuda()
+        return self.adeuda()
 
     def no_pagada(self):
         return self.orden.estado !=  OrdenDeTrabajo.FINALIZADA
@@ -70,24 +74,32 @@ class Factura(models.Model):
         return DetalleFactura.objects.create(factura=self, descripcion=descripcion, precio=precio)
 
     def pagar(self, monto, tipo, num_cuotas):
-        if len(self.pagos.all()) == 0 and monto == self.total(): 
-            self.estado = Factura.PAGADA # Si se pago la totalidad entonces la orden esta PAGADA
-            self.orden.pagar_orden() # Cambia el estado de la orden a PAGADA
-            if tipo == Pago.TARJETA_CREDITO:
-                 self.cuotas = num_cuotas
-            else:
-                self.cuotas = 1
-            self.save()
-            
-        if len(self.pagos.all()) != 0 and monto < self.total(): 
-            self.estado = Factura.ACTIVA # Si no se pago toda la factura y aun hay saldo pendiente esta ACTIVA
-            if monto == self.saldo(): # si el monto a pagar es igual al saldo restante significa que es lo ultimo que se adeuda
-                self.estado = Factura.PAGADA # Si se pago la totalidad entonces la orden esta PAGADA
-                self.orden.pagar_orden() # Cambia el estado de la orden a PAGADA
-            self.save()
+
+        if monto <= 0:
+            raise ValidationError('El monto a pagar debe ser mayor.')
+
+        if monto > self.saldo():
+            raise ValidationError('El pago ingresado es mayor al saldo restante.')
+
+        if tipo == Pago.TARJETA_CREDITO and monto != self.saldo():
+            raise ValidationError('El pago con tarjeta de crédito solo está disponible para pagos totales.')
+
+        pago = Pago.objects.create(factura=self, monto=monto, tipo=tipo)
+        self.estado = Factura.ACTIVA
+
+        if tipo == Pago.TARJETA_CREDITO:
+            self.cuotas = num_cuotas
+        else:
             self.cuotas = 1
 
-        return Pago.objects.create(factura=self, monto=monto, tipo=tipo)
+        if self.saldo() <= 0:
+            self.estado = Factura.PAGADA
+
+        self.save()
+        
+        return pago
+
+       
     #Nota: si se pueden simplificar mejor jaja
     def calcular_couta(monto, num_coutas): # Puede que sirva para algo
         if num_coutas == 3:
@@ -101,10 +113,8 @@ class Factura(models.Model):
     #     return len(self.pagos.all())
 
     def saldo(self):
-        if len(self.pagos.all()) > 0:
-            return self.total() - self.pagos.all().aggregate(total=models.Sum('monto'))['total']
-        else:
-            return self.total()
+        saldo = self.total() - (self.pagos.aggregate(total=models.Sum('monto'))['total'] or 0) 
+        return saldo
  
 
 #-------------------------- DETALLE FACTURA -------------------------------#

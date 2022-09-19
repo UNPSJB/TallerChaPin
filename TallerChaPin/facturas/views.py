@@ -159,18 +159,22 @@ class PagoCreateView(CreateView):
         form_class = self.get_form_class()
         pk = kwargs.get('pk')
         factura = Factura.objects.get(pk=pk)
+        print('TEST: request')
+        print(self.request.POST)
         form = form_class(self.request.POST)
         if form.is_valid():
             monto = form.cleaned_data.get('monto')
             tipo = form.cleaned_data.get('tipo')
             cuota = form.cleaned_data.get('cuota')
-            if monto > factura.total():
-                messages.add_message(self.request, messages.WARNING, "El monto ingresado supera el total de la factura")
-                return redirect ('detallesFactura', factura.pk)
-            else:
+
+            try:
                 factura.pagar(monto,tipo,cuota)
                 messages.add_message(self.request, messages.SUCCESS, "Pago registrado exitosamente")
                 return redirect ('listarPagos')
+            except ValidationError as err:
+                messages.add_message(self.request, messages.ERROR, err.message)
+                return redirect ('detallesFactura', factura.pk)
+
         return self.form_invalid(form=form)
 
 class PagoDetailView(DetailView):

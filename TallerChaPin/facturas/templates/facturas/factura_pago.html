@@ -9,6 +9,7 @@
 <div id="factura-resumen"></div>
 <h3> Monto total por pagar: {{ object.total}} </h3>
 <h3> Saldo restante por pagar: {{ object.saldo }} </h3>
+<input id='input_saldo' type="hidden" data-saldo='{{ object.saldo }}'/>
 {% endblock %}
 
 {% block modal_footer %}
@@ -19,6 +20,7 @@
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     const element = document.getElementById('modalPagarFactura');
+    const input_saldo = document.getElementById('input_saldo')
 
       // configuramos el contenido del modal
       element.addEventListener('show.bs.modal', (e) => {
@@ -40,10 +42,12 @@
       let opcion = $(e.currentTarget).val();
       if (opcion == 2){
         $('#select_cuota').prop('disabled',false);
+        $('#id_monto').prop('readonly', true)
+        $('#id_monto').val(input_saldo.dataset.saldo)
       }
       else {
         $('#select_cuota').prop('disabled',true);
-      //  document.getElementById('select_cuota').options[0].setAttribute('selected',true);
+        $('#id_monto').prop('readonly', false)
         $($('#select_cuota')[0].options[0]).prop('selected',true);
       }
 

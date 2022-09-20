@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+from numpy import full
 from .models import *
 from .forms import *
 from datetime import date
@@ -16,6 +17,7 @@ from TallerChaPin.utils import ListFilterView
 import json
 from functools import reduce
 from .utils import requiere_insumo
+import os
 
 def requerimientos_tareas(request):
     """
@@ -40,8 +42,7 @@ def tareasIniciadas(request, pk):
     return JsonResponse({'tareas_finalizadas': tareas_iniciadas})
 
 class imprimirPresupuesto(PDFTemplateView):
-    #filename = 'presupuesto_pedro.pdf'
-    template_name = 'ordenes/template_pdf.html'
+    template_name = 'ordenes/presupuesto_pdf.html'
     cmd_options = {
         'margin-top': 3,
         'enable-local-file-access': True,
@@ -52,13 +53,38 @@ class imprimirPresupuesto(PDFTemplateView):
         context = super().get_context_data(**kwargs)
         pk = kwargs.get('pk')
         presupuesto = Presupuesto.objects.get(pk=pk)
+
         # definimos el nombre del pdf con datos del cliente.
-        self.filename = presupuesto.cliente.nombre + '-' + \
-            presupuesto.cliente.apellido + '-' + str(date.today()) + '.pdf'
+        self.filename = f'pres. {presupuesto.cliente.nombre} {presupuesto.cliente.apellido} ({str(date.today())}).pdf'
+
         # pasamos el objeto presupuesto para usarlo en el template.
         context["presupuesto"] = presupuesto
-        context["styles"] = 'http://127.0.0.1:8000/static/ordenes/css/presupuesto_pdf.css'
-        context["logo"] = 'http://127.0.0.1:8000/static/images/chapin2.png'
+        context["styles"] = os.path.abspath("./ordenes/static/ordenes/css/styles_pdf.css")
+        context["logo"] = os.path.abspath("./static/images/chapin2.png")
+        return context
+
+class imprimirOrdenDeTrabajo(PDFTemplateView):
+    template_name = 'ordenes/ordendetrabajo_pdf.html'
+    cmd_options = {
+        'margin-top': 3,
+        'enable-local-file-access': True,
+        'quiet': False
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = kwargs.get('pk')
+        orden = OrdenDeTrabajo.objects.get(pk=pk)
+        vehiculo = orden.get_ultimo_presupuesto().vehiculo
+
+        # definimos el nombre del pdf con datos del cliente.
+        self.filename = f'orden {vehiculo.modelo} {vehiculo.patente} ({str(date.today())}).pdf'
+
+        # pasamos el objeto orden para usarlo en el template.
+        context["orden"] = orden
+        context["vehiculo"] = vehiculo
+        context["styles"] = os.path.abspath("./ordenes/static/ordenes/css/styles_pdf.css")
+        context["logo"] = os.path.abspath("./static/images/chapin2.png")
         return context
 
 # Clase repetida...

@@ -102,48 +102,50 @@
         </tr>
         {% endfor %}
     </table>
-    <hr class="separador">
-    <h4>Repuestos utilizados</h4>
-    <table>
-        <tr>
-            <th class="descripcion">Descripción</th>
-            <th class="cantidad">Cant.</th>
-            <th class="subtotal">Subtotal</th>
-        </tr>
+
+    {% if factura.orden.orden_repuestos.all.exists %}
+        <h4>Repuestos utilizados</h4>
+        <table>
+            <tr>
+                <th class="descripcion">Descripción</th>
+                <th class="cantidad">Cant.</th>
+                <th class="subtotal">Subtotal</th>
+            </tr>
 
 
-        {% for repuesto in factura.orden.orden_repuestos.all %}
-        <tr>
-            <td>{{ repuesto.repuesto.nombre }}</td>
-            <td class="cantidad">{{ repuesto.cantidad }}</td>
-            <td class="subtotal">${{ repuesto.precio}}</td>
-        </tr>
-        {% empty %}
-        {% endfor %}
+            {% for repuesto in factura.orden.orden_repuestos.all %}
+            <tr>
+                <td>{{ repuesto.repuesto.nombre }}</td>
+                <td class="cantidad">{{ repuesto.cantidad }}</td>
+                <td class="subtotal">${{ repuesto.precio}}</td>
+            </tr>
+            {% endfor %}
 
-    </table>
-    <hr class="separador">
-    <h4>Materiales utilizados</h4>
-    <table>
-        <tr>
-            <th class="descripcion">Descripción</th>
-            <th class="cantidad">Cant.</th>
-            <th class="subtotal">Subtotal</th>
-        </tr>
+        </table>
+    {% endif %}
 
-        {% for material in factura.orden.orden_materiales.all %}
-        <tr>
-            <td>{{ material.material.nombre }}</td>
-            <td class="cantidad">{{ material.cantidad}} {{ detalle.material.tipo.get_unidad_medida_display }}</td>
-            <td class="subtotal">${{ material.precio }}</td>
-        </tr>
-        {% empty %}
-        {% endfor %}
-    </table>
+    {% if factura.orden.orden_materiales.all.exists %}
+        <h4>Materiales utilizados</h4>
+        <table>
+            <tr>
+                <th class="descripcion">Descripción</th>
+                <th class="cantidad">Cant.</th>
+                <th class="subtotal">Subtotal</th>
+            </tr>
+
+            {% for material in factura.orden.orden_materiales.all %}
+            <tr>
+                <td>{{ material.material.nombre }}</td>
+                <td class="cantidad">{{ material.cantidad}} {{ detalle.material.tipo.get_unidad_medida_display }}</td>
+                <td class="subtotal">${{ material.precio }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {%endif%}
 
 
     <div class="total">
-        <h2>Total: ${{ factura.orden.precio_total }}</h2>
+        <h2>Total: ${{ factura.total }}</h2>
     </div>
 
 </body>

@@ -494,6 +494,17 @@ class DetalleOrdenDeTrabajo(models.Model):
     def get_titulo(self):
         return f"{self.tarea} (#{self.orden.pk})"
 
+    def get_string_estado(self):
+
+        if not self.inicio:
+            return 'sin iniciar'
+        if self.fin and self.exitosa:
+            return 'finalizada'
+        if not self.exitosa:
+            return 'fallida'
+        
+        return 'iniciada'
+
 
 
 class MaterialOrdenDeTrabajo(models.Model):

@@ -207,8 +207,6 @@ def validar_anio(anio):
         raise ValidationError('El vehículo tiene más de 12 años de antigüedad')
 
 class Vehiculo(models.Model):
-    # Ejemplo: ABC-123 o AC-123-AA
-    # TODO: Validar con patrones
     cliente = models.ForeignKey(
         Cliente, related_name="vehiculos", on_delete=models.CASCADE)
     patente = models.CharField(max_length=7, unique=True)

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{styles}}" type="text/css">
+        <title>Orden de trabajo</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>Orden de trabajo</h1>
+            <img src="{{logo}}" alt="" height="100" class="img">
+        </header>
+        <div class="encabezado">
+            <h2 class="text-primary">Taller ChaPin</h2>
+            <hr class="separador-encabezado">
+            <h2>Nro. de orden: {{orden.pk}}</h2>
+            <span>Fecha de ingreso del vehículo: {{orden.ingreso}}</span> <br>
+            <span>Estado de la orden: {{orden.get_estado_display}}</span>
+        </div>
+        <h3>Datos del vehículo</h3>
+        <span><b>Vehículo:</b> {{ vehiculo.marca }} {{ vehiculo.modelo }}, modelo {{vehiculo.anio}} | Patente: {{vehiculo.patente}}</span> 
+        <hr class="separador">
+
+        <table>
+            <tr>
+              <th class="">Tarea</th>
+              <th class="">Tipo</th>
+              <th class="">Empleado</th>
+              <th class="estado_orden">Estado</th>
+            </tr>
+            {% for detalle in orden.detalles.all %}
+                <tr>
+                  <td>{{ detalle.tarea.nombre }}</td>
+                  <td>{{detalle.tarea.tipo}}</td>
+                  <td>{{detalle.empleado}}</td>
+                  <td class="estado_orden">{{detalle.get_string_estado}}</td>
+                </tr>
+                {% endfor %}
+        </table> 
+
+        {% if orden.orden_repuestos.all.exists %}
+          <table>
+            <tr>
+              <th class="nombre_insumo">Repuesto</th>
+              <th class="tipo_insumo">Tipo</th>
+              <th class="cantidad_insumo">Cantidad</th>
+            </tr>
+            {% for repuesto in orden.orden_repuestos.all %}
+              <tr>
+                <td>{{ repuesto.repuesto.nombre }}</td>
+                <td>{{ repuesto.repuesto.get_tipo_display }}</td>
+                <td class="estado_orden">{{ repuesto.cantidad}}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        {%endif%}
+        
+        {% if orden.orden_materiales.all.exists %}
+          <table>
+            <tr>
+              <th class="nombre_insumo">Material</th>
+              <th class="tipo_insumo">Tipo</th>
+              <th class="cantidad_insumo">Cantidad</th>
+            </tr>
+            {% for material in orden.orden_materiales.all %}
+              <tr>
+                <td>{{ material.material.nombre }}</td>
+                <td>{{ material.material.tipo }}</td>
+                <td class="estado_orden">{{ material.cantidad}}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        {% endif %}
+                
+            
+
+            <!-- {% for detalle in presupuesto.presupuesto_materiales.all %}
+                <tr>
+                <td>{{ detalle.material.nombre }}</td>
+                <td class="cantidad">{{ detalle.cantidad}} {{ detalle.material.tipo.get_unidad_medida_display }}</td>
+                <td class="subtotal">${{ detalle.precio }}</td>
+                </tr>
+            {% empty %}
+            {% endfor %} -->
+            
+        <!-- <div class="total">
+            <h2>Total estimado: ${{ presupuesto.precio_estimado }}</h2>
+        </div> -->
+
+    </body>
+</html>

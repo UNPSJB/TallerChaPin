@@ -63,5 +63,7 @@ urlpatterns = [
      path('ordenesTurnos/listarTurnos/detalleTurno/<int:pk>',datoPlantilla, name="datoPlantilla"),
      # ----------------PDF-------------------------
      path('presupuesto/pdf/<int:pk>', imprimirPresupuesto.as_view(),
-          name='imprimirPresupuesto')
+          name='imprimirPresupuesto'),
+     path('orden/pdf/<int:pk>', imprimirOrdenDeTrabajo.as_view(),
+          name='imprimirOrden')
 ]

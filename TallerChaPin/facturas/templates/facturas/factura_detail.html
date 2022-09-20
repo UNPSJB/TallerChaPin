@@ -81,7 +81,6 @@
                             <tr>
                                 <td>{{ detalle.tarea.nombre }}</td>
                                 <td>{{ detalle.tarea.precio }}</td>
-
                             </tr>
 
                             {% endfor %}
@@ -89,53 +88,57 @@
                     </table>
                 </div>
 
-                <div class="table-responsive">
-                    <table class="table table-hover {% if filtros %} sortable{% endif %}">
-                        <thead>
-                            <tr>
-                                <th scope="col">Repuesto</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Precio Unitario</th>
-                                <th scope="col">Precio Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for repuesto in object.orden.orden_repuestos.all %}
-                            <tr>
-                                <td>{{ repuesto.repuesto.nombre }}</td>
-                                <td>{{ repuesto.cantidad }}</td>
-                                <td>{{ repuesto.repuesto.precio }}</td>
-                                <td>{{ repuesto.precio }}</td>
-                            </tr>
+                {% if factura.orden.orden_repuestos.all.exists %}
+                    <div class="table-responsive">
+                        <table class="table table-hover {% if filtros %} sortable{% endif %}">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Repuesto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio Unitario</th>
+                                    <th scope="col">Precio Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for repuesto in object.orden.orden_repuestos.all %}
+                                <tr>
+                                    <td>{{ repuesto.repuesto.nombre }}</td>
+                                    <td>{{ repuesto.cantidad }}</td>
+                                    <td>{{ repuesto.repuesto.precio }}</td>
+                                    <td>{{ repuesto.precio }}</td>
+                                </tr>
 
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {%endif%}
 
-                <div class="table-responsive">
-                    <table class="table table-hover {% if filtros %} sortable{% endif %}">
-                        <thead>
-                            <tr>
-                                <th scope="col">Material</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Precio Unitario</th>
-                                <th scope="col">Precio Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for material in object.orden.orden_materiales.all %}
-                            <tr>
-                                <td>{{ material.material.nombre }}</td>
-                                <td>{{ material.cantidad }}</td>
-                                <td>{{ material.material.precio }}</td>
-                                <td>{{ material.precio }}</td>
-                            </tr>
+                {% if factura.orden.orden_materiales.all.exists %}
+                    <div class="table-responsive">
+                        <table class="table table-hover {% if filtros %} sortable{% endif %}">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Material</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio Unitario</th>
+                                    <th scope="col">Precio Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for material in object.orden.orden_materiales.all %}
+                                <tr>
+                                    <td>{{ material.material.nombre }}</td>
+                                    <td>{{ material.cantidad }}</td>
+                                    <td>{{ material.material.precio }}</td>
+                                    <td>{{ material.precio }}</td>
+                                </tr>
 
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {%endif%}
             </div>
 
             <div class="col-md-3">

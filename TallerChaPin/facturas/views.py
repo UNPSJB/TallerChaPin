@@ -1,4 +1,5 @@
 from multiprocessing import context, get_context
+import os
 from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -9,44 +10,6 @@ from .forms import *
 from django.urls import reverse_lazy
 from django.contrib import messages
 from TallerChaPin.utils import ListFilterView
-
-# Create your views here.
-
-class imprimirFactura(PDFTemplateView):
-    #filename = 'presupuesto_pedro.pdf'
-    template_name = 'facturas/factura_pdf.html'
-    cmd_options = {
-        'margin-top': 3,
-        'enable-local-file-access': True,
-        'quiet': False
-    }
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        pk = kwargs.get('pk')
-        factura = Factura.objects.get(pk=pk)
-        self.filename = factura.cliente.nombre + '-' + factura.cliente.apellido + '-'+ str(date.today()) + '.pdf' # definimos el nombre del pdf con datos del cliente.
-        context["factura"] = factura # pasamos el objeto presupuesto para usarlo en el template.
-        context["styles"] = 'http://127.0.0.1:8000/static/ordenes/css/factura_pdf.css' # no esta creado el archivo
-        context["logo"] = 'http://127.0.0.1:8000/static/images/chapin2.png'
-        return context
-
-#Clase repetida... 
-# class ListFilterView(ListView):
-#     filtros = None
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         if self.filtros:
-#             context['filtros'] = self.filtros(self.request.GET)
-#         return context
-
-#     def get_queryset(self):
-#         qs = super().get_queryset()
-#         if self.filtros:
-#             filtros = self.filtros(self.request.GET)
-#             return filtros.apply(qs)
-#         return qs
 
 # ----------------------------- Factura View ----------------------------------- #
 
@@ -114,8 +77,7 @@ class FacturaDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
-class ImprimirFactura(PDFTemplateView):
- 
+class imprimirFactura(PDFTemplateView):
     template_name = 'facturas/factura_pdf.html'
     cmd_options = {
         'margin-top': 3,
@@ -127,10 +89,15 @@ class ImprimirFactura(PDFTemplateView):
         context = super().get_context_data(**kwargs)
         pk = kwargs.get('pk')
         factura = Factura.objects.get(pk=pk)
-        self.filename = factura.orden.cliente.nombre + '-' + factura.orden.cliente.apellido + '-'+ str(date.today()) + '.pdf' # definimos el nombre del pdf con datos del cliente.
-        context["factura"] = factura # pasamos el objeto presupuesto para usarlo en el template.
-        context["styles"] = 'http://127.0.0.1:8000/static/ordenes/css/presupuesto_pdf.css'
-        context["logo"] = 'http://127.0.0.1:8000/static/images/chapin2.png'
+        cliente = factura.orden.get_ultimo_presupuesto().cliente
+
+        # definimos el nombre del pdf con datos del cliente.
+        self.filename = f'factura {cliente.nombre} {cliente.apellido} ({str(date.today())}).pdf'
+
+        # pasamos el objeto factura para usarlo en el template.
+        context["factura"] = factura
+        context["styles"] = os.path.abspath("./ordenes/static/ordenes/css/styles_pdf.css")
+        context["logo"] = os.path.abspath("./static/images/chapin2.png")
         return context
         
 # ----------------------------- Pago View ----------------------------------- #

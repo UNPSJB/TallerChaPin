@@ -3,7 +3,7 @@
 
 {% block extracss %}
 <link rel="stylesheet" href="{% static 'ordenes/css/presupuesto_form.css' %}" />
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}"> <!-- TODO: Esta línea está repetida, se debería heredar del template anterior-->
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 {% endblock %}
 
 {% load crispy_forms_tags %}
@@ -11,7 +11,7 @@
 {% block main %}
 <div class="col-8">
     <h3>{{ titulo }} </h3>
-    <form action="{{ form.helper.form_action }}" method="post">
+    <form action="{{ form.helper.form_action }}" method="post" id="presupuesto_form">
         {% crispy form form.helper %}
         <div data-formset="presupuesto_materiales" id="materiales" class="oculto">
             {% crispy presupuesto_material_formset presupuesto_material_formset_helper %}
@@ -19,8 +19,8 @@
         <div data-formset="presupuesto_repuestos" id="repuestos" class="oculto">
             {% crispy presupuesto_repuesto_formset presupuesto_repuesto_formset_helper %}
         </div>
-        <input type="submit" value="Guardar" class="btn btn-primary">
-        <input type="hidden" data-vehiculo="{{object.vehiculo.pk}}" id="pk_vehiculo">
+        <input type="submit" value="Guardar" class="btn btn-primary" id="submit_button">
+        <input type="hidden" data-vehiculo="{{object.vehiculo.pk}}">
     </form>
 </div>
 {% endblock %}
@@ -146,6 +146,7 @@ function cargarVehiculosCliente(modificando = false) {
     return true
 }
 
+const checks_tareas = document.querySelectorAll('#div_id_tareas input')
 function deshabilitar_tareas_iniciadas(){
     const pk = get_pk_presupuesto()
     const url_base = get_base_url()
@@ -153,7 +154,6 @@ function deshabilitar_tareas_iniciadas(){
     fetch(`${url_base}/ordenes/presupuesto/tareasIniciadas/${pk}`)
         .then(response => response.json())
         .then(r => {
-            const checks_tareas = document.querySelectorAll('#div_id_tareas input')
             const tareas_a_deshabilitar = r.tareas_finalizadas
 
             checks_tareas.forEach(check => {
@@ -164,6 +164,16 @@ function deshabilitar_tareas_iniciadas(){
             });
         }) 
 }
+
+// Al hacer el submit, habilito todos los checks para que sean enviados
+const form = document.getElementById('presupuesto_form');
+form.addEventListener('submit', (e) => {
+    // e.preventDefault()
+    checks_tareas.forEach(check => {
+        check.removeAttribute('disabled')
+    });
+    // $(form).submit();
+})
 
 </script>
 {% endblock %}

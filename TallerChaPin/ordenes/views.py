@@ -572,8 +572,12 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
         if form.is_valid():
             fecha_egreso = form.cleaned_data.get('egreso')
             orden = form.cleaned_data.get('orden', self.get_orden())
-
-            orden.registrar_egreso(fecha_egreso)
+            try:
+                orden.registrar_egreso(fecha_egreso)
+            except NoEntregoVehiculoException as err:
+                print(err)
+                messages.add_message(self.request, messages.ERROR, err)
+                return redirect('detallesOrden', orden.pk)
 
             return redirect('detallesOrden', orden.pk)
         return redirect('registrarIngresoDeVehiculo')

@@ -159,7 +159,7 @@ class OrdenDeTrabajo(models.Model):
                     'No se puede entregar el vehículo si el cliente no paga o no es VIP', self.estado)
         else:
             raise NoEntregoVehiculoException(
-                'No se puede entregar el vehículo si no se genera una factura', self.estado)
+                'No se puede entregar el vehículo. Ver estado de la orden.', self.estado)
 
     def no_hay_tareas_iniciadas(self):
         for detalle in self.detalles.all():

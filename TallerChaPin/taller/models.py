@@ -195,16 +195,14 @@ class Cliente(models.Model):
         # si hay 3 facturas pagadas es vip, caso contrario no es vip 
         facturas = []
         for presupuesto in self.presupuestos.all():   
-            if(presupuesto.orden) != None and (presupuesto.orden.factura) != None:                
+            if (presupuesto.orden.factura) != None:              
                     facturas.extend(presupuesto.orden.factura.all())
             else:
                 return False  
         # Veo las ultimas 4, puede adeudar al menos una al ser VIP
-        #Mejorar codigo
         facturas = sorted(facturas, key=lambda f: f.fecha , reverse=True)[:4]
-        if len(facturas) != 0 and len(facturas) >= 4 and not facturas[0].pagado():
+        if len(facturas) >= 4 and not facturas[0].pagado():
             facturas.pop(0) #De estar la mas reciente impaga la quita del listado. VER ESTO 
-        print([f.pagado() for f in facturas])
         return len(facturas) >= 3 and all(f.pagado() for f in facturas) 
 
 def validar_anio(anio):

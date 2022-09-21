@@ -1,4 +1,5 @@
 from cgi import print_exception
+from datetime import timedelta
 from time import process_time_ns
 from django.utils.timezone import now
 from django.utils import timezone
@@ -107,11 +108,6 @@ class OrdenDeTrabajo(models.Model):
     def precio_total_presupuestado(self):
         # Toma el valor del primer presupuesto realizado
         return self.presupuestos.first().precio_estimado()
-
-    # Se cambio porque el sumar todos los presupuestos no refleja el total de la orden 
-    # def precio_total(self): 
-    #     # Toma el valor del presupuesto + sus ampliaciones realizadas
-    #     return sum([p.precio_estimado() for p in self.presupuestos.all()]) 
 
     # Toma el valor de lo que se utilizo en la orden de trabajo para calcular el precio total de los trabajos realizados y materiales/repuestos usados
     def precio_orden(self):
@@ -619,16 +615,16 @@ class Presupuesto(models.Model):
         return self.tareas.count() + self.materiales.count() + self.repuestos.count()
 
     def puede_confirmarse(self):
-        return not self.confirmado
+        return not self.confirmado and not self.esta_expirado()
 
     def puede_modificarse(self):
-        return self.orden is None
+        return self.orden is None and not self.esta_expirado()
 
     def tiene_orden(self):
         return self.orden is not None   
 
     def puede_cancelarse(self):
-        return not self.confirmado
+        return not self.confirmado and not self.esta_expirado()
 
     def tiene_anterior(self):
         if self.orden is None:
@@ -656,6 +652,12 @@ class Presupuesto(models.Model):
         indice = presupuestos.index(self)
         anterior = presupuestos[indice-1]
         return presupuestos[indice].precio_estimado() - anterior.precio_estimado() > 0
+
+    def get_fecha_vencimiento(self):
+        return (self.fecha + timedelta(days=self.validez)).date()
+
+    def esta_expirado(self):
+        return self.get_fecha_vencimiento() < timezone.now().date() and not self.confirmado
 
 
 def cantidad_positiva(v):

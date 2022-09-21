@@ -85,11 +85,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for repuesto in object.repuestos.all %}
+                                            {% for repuesto in object.orden_repuestos.all %}
                                             <tr class="bg-transition">
                                                 <td> {{ repuesto.cantidad }}</td>
-                                                <td>{{ repuesto.nombre }}</td>
-                                                <td>{{ repuesto.get_tipo_display }}</td>
+                                                <td>{{ repuesto.repuesto.nombre }}</td>
+                                                <td>{{ repuesto.repuesto.get_tipo_display }}</td>
 
                                             </tr>
 
@@ -115,12 +115,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for material in object.materiales.all %}
+                                        {% for material in object.orden_materiales.all %}
                                         <tr class="bg-transition">
                                             <td>{{ material.cantidad }} {{ material.tipo.get_unidad_medida_display}}
                                             </td>
-                                            <td>{{ material.nombre }}</td>
-                                            <td>{{ material.tipo }}</td>
+                                            <td>{{ material.material.nombre }}</td>
+                                            <td>{{ material.material.tipo }}</td>
                                             </td>
                                         </tr>
                                         {% empty %}

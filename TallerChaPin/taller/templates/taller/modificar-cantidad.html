@@ -40,5 +40,19 @@
         $('#modificarCantidadForm').submit();
     });
     })
+
+    const input_cantidad = document.getElementById('id_cantidad')
+    const submit_button = document.getElementById('btn-asignar')
+    input_cantidad.addEventListener('input', (e) => {
+        let value = e.currentTarget.value
+        if (value <= 0) {
+            submit_button.classList.add('disabled_anchor')
+            submit_button.classList.add('btn-secondary')
+        } else {
+            submit_button.classList.remove('disabled_anchor')
+            submit_button.classList.remove('btn-secondary')
+        }
+    })
+
 </script>
 {% endblock %}

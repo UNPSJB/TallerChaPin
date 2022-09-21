@@ -46,7 +46,7 @@ class FacturaDetailView(DetailView):
             return redirect ('listarFacturas')
 
 
-
+#Mejorar
 def crearFactura(request, pk):
     orden = OrdenDeTrabajo.objects.get(pk=pk)
     if orden.estado == OrdenDeTrabajo.REALIZADA:

@@ -59,7 +59,6 @@ class Factura(models.Model):
 
     def pagado(self):
         return self.estado == Factura.PAGADA
-
     def puede_pagar(self):
         # return self.no_pagada() and self.adeuda()
         return self.adeuda()

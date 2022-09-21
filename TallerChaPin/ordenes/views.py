@@ -6,7 +6,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
-from numpy import full
 from .models import *
 from .forms import *
 from datetime import date
@@ -18,7 +17,7 @@ import json
 from functools import reduce
 from .utils import requiere_insumo
 import os
-
+from django.core.exceptions import ObjectDoesNotExist
 def requerimientos_tareas(request):
     """
         Recibe el pk de una o mas tareas y se retorna un diccionario como:
@@ -284,14 +283,27 @@ class OrdenTrabajoCreateView(CreateView):
 class OrdenTrabajoUpdateView(UpdateView):
 
     model = OrdenDeTrabajo
-    form_class = OrdenForm
-    success_url = reverse_lazy('listarOrdenes')
+    form_class = OrdenUpdateForm
+    success_url = reverse_lazy('calendarioTurnos')
+    context_object_name = "orden"
+
+    def get(self, *args, **kwargs):
+        #Control para que no se pueda modificar desde una URL
+        pk = kwargs.get('pk')
+        try:
+            orden = OrdenDeTrabajo.objects.get(pk=pk)
+        except OrdenDeTrabajo.DoesNotExist:
+            messages.add_message(self.request, messages.ERROR, "No se registra una Orden de trabajo.")
+            return redirect('calendarioTurnos')
+        if not orden.puede_cambiar_turno():
+            messages.add_message(self.request, messages.ERROR, "La orden de trabajo no se puede modificar.")
+            return redirect('calendarioTurnos')
+        return self.post(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Cambiar turno de la orden de trabajo"
         return context
-
 
 class OrdenTrabajoDeleteView(DeleteView):
 
@@ -482,7 +494,7 @@ class PlanillaCreateView(CreateView):
         context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         return context
         
-
+    #Mejorar
     def post(self, *args, **kwargs):
         self.object = None
         self.detalle_planilla_form = DetallePlanillaInline()(self.request.POST)

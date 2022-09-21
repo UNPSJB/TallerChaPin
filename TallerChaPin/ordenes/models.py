@@ -281,7 +281,7 @@ class OrdenDeTrabajo(models.Model):
         return (self.factura is not None) and (self.estado == OrdenDeTrabajo.FACTURADA)
     
     def pagado(self):
-        return (self.estado == OrdenDeTrabajo.PAGADA)
+        return self.estado == OrdenDeTrabajo.PAGADA
     
     def vehiculo_ingreso(self):
         return self.ingreso is not None

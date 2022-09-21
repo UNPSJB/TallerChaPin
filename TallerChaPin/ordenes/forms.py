@@ -241,6 +241,28 @@ class PresupuestoFiltrosForm(FiltrosForm):
 # Orden de trabajo - Form
 
 
+class OrdenUpdateForm(forms.ModelForm):
+    class Meta:
+        model = ordenes.OrdenDeTrabajo
+        fields = "__all__"
+        exclude = ["egreso", "estado", "ingreso", "materiales", "repuestos"]
+   
+        widgets = {
+            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
+
+        }
+    def save(self):
+        orden = super().save()
+        return orden
+
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        # self.helper.form_tag = False
+        self.helper.add_input(Submit('submit', 'Guardar'))
+
+
 class OrdenForm(forms.ModelForm):
 
     class Meta:

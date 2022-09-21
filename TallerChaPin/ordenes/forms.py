@@ -40,6 +40,8 @@ def PresupuestoForm(base = None):
 
         def save(self, materiales, repuestos, tareas, update=False):
             presupuesto = super().save(commit=False)
+            tareas_para_agregar = list(tareas).copy()
+
             if base is not None:
                 presupuesto.cliente = base.cliente
                 presupuesto.vehiculo = base.vehiculo
@@ -47,22 +49,32 @@ def PresupuestoForm(base = None):
                 presupuesto.validez = base.validez
                 base.ampliado = True
                 base.save()
+
+                # Control realizado para evitar que personas malintencionadas eliminen tareas que no se deben eliminar
+                tareas_finalizadas = base.orden.get_tareas_finalizadas()
+
+                for t in tareas_finalizadas:
+                    tarea = taller.Tarea.objects.get(pk=t)
+                    
+                    if tarea not in tareas_para_agregar:
+                        tareas_para_agregar.append(tarea)
+
             presupuesto.save()
 
             if update:
                 presupuesto.vaciar()
             
-            for tarea in tareas:
+            for tarea in tareas_para_agregar:
                 presupuesto.agregar_tarea(tarea)
 
-            if self.requiere("materiales", tareas):
+            if self.requiere("materiales", tareas_para_agregar):
                 for material in materiales:
                     if "material" in material and material["material"] is not None and material["cantidad"] is not 0:
                         matObj = material["material"]
                         matCantidad = material["cantidad"]
                         presupuesto.agregar_material(matObj, matCantidad)
 
-            if self.requiere("repuestos", tareas):
+            if self.requiere("repuestos", tareas_para_agregar):
                 for repuesto in repuestos:
                     if "repuesto" in repuesto and repuesto["repuesto"] is not None and repuesto["cantidad"] is not 0:
                         repObj = repuesto["repuesto"]

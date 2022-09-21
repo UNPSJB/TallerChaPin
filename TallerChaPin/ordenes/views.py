@@ -28,17 +28,12 @@ def requerimientos_tareas(request):
     tareas = [Tarea.objects.get(pk=pk) for pk in pks]
     return JsonResponse(requiere_insumo(tareas))
 
-def tareasIniciadas(request, pk):
+def tareasFinalizadas(request, pk):
 
-    tareas_iniciadas = []
-    presupuesto = Presupuesto.objects.get(pk=pk)
-    detalles = presupuesto.orden.detalles.all()
-
-    for d in detalles:
-        if d.fin is not None and d.exitosa:
-            tareas_iniciadas.append(d.tarea.pk)
+    orden = Presupuesto.objects.get(pk=pk).orden
+    tareas_finalizadas = orden.get_tareas_finalizadas()
             
-    return JsonResponse({'tareas_finalizadas': tareas_iniciadas})
+    return JsonResponse({'tareas_finalizadas': tareas_finalizadas})
 
 class imprimirPresupuesto(PDFTemplateView):
     template_name = 'ordenes/presupuesto_pdf.html'

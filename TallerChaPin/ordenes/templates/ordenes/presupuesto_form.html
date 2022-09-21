@@ -151,9 +151,10 @@ function deshabilitar_tareas_iniciadas(){
     const pk = get_pk_presupuesto()
     const url_base = get_base_url()
     
-    fetch(`${url_base}/ordenes/presupuesto/tareasIniciadas/${pk}`)
+    fetch(`${url_base}/ordenes/presupuesto/tareasFinalizadas/${pk}`)
         .then(response => response.json())
         .then(r => {
+            console.log(r)
             const tareas_a_deshabilitar = r.tareas_finalizadas
 
             checks_tareas.forEach(check => {
@@ -168,11 +169,9 @@ function deshabilitar_tareas_iniciadas(){
 // Al hacer el submit, habilito todos los checks para que sean enviados
 const form = document.getElementById('presupuesto_form');
 form.addEventListener('submit', (e) => {
-    // e.preventDefault()
     checks_tareas.forEach(check => {
         check.removeAttribute('disabled')
     });
-    // $(form).submit();
 })
 
 </script>

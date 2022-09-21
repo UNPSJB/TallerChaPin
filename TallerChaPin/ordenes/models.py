@@ -336,6 +336,16 @@ class OrdenDeTrabajo(models.Model):
         presupuesto.save()
         self.save()
 
+    def get_tareas_finalizadas(self):
+        tareas_finalizadas = []
+        detalles = self.detalles.all()
+
+        for d in detalles:
+            if d.fin is not None and d.exitosa:
+                tareas_finalizadas.append(d.tarea.pk)
+        
+        return tareas_finalizadas
+
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):
         no_tiene_empleado = models.Q(empleado__isnull=True)

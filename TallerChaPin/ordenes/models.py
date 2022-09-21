@@ -305,7 +305,7 @@ class OrdenDeTrabajo(models.Model):
 
         # De las tareas de la orden, quito las que no están en el nuevo presupuesto
         for t in detalles_orden:
-            if t.tarea not in tareas_presupuesto: # TODO: además tienen que estar sin iniciar
+            if t.tarea not in tareas_presupuesto and not t.esta_finalizado():
                 t.delete()
     
         # De los materiales del presupuesto, solo agrego a la orden los que son nuevos

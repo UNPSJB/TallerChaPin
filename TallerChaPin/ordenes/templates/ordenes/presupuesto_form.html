@@ -20,7 +20,7 @@
             {% crispy presupuesto_repuesto_formset presupuesto_repuesto_formset_helper %}
         </div>
         <input type="submit" value="Guardar" class="btn btn-primary" id="submit_button">
-        <input type="hidden" data-vehiculo="{{object.vehiculo.pk}}">
+        <input type="hidden" data-vehiculo="{{object.vehiculo.pk}}" id="pk_vehiculo">
     </form>
 </div>
 {% endblock %}

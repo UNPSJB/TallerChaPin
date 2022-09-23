@@ -19,11 +19,13 @@
 {% block extrajs %}
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
-    const element = document.getElementById('modalPagarFactura');
+    const modal = document.getElementById('modalPagarFactura')
     const input_saldo = document.getElementById('input_saldo')
+    const submit_button = document.getElementById('btn-pago')
+    const input_monto = document.getElementById('id_monto')
 
       // configuramos el contenido del modal
-      element.addEventListener('show.bs.modal', (e) => {
+      modal.addEventListener('show.bs.modal', (e) => {
         // debugger;
         const btn = e.explicitOriginalTarget || e.relatedTarget;
         $('#facturaPagoForm').attr('action', btn.dataset.bsUrl);
@@ -33,6 +35,7 @@
       e.preventDefault();
       $('#facturaPagoForm').submit();
     });
+    
     /* 
     Permite habilitar o deshabilitar el campo cuotas dependiendo el tipo de pago elegido
     Por defecto en false pero cuando se selecciona tajeta de credito se habilita
@@ -40,19 +43,32 @@
     */
     $('#id_tipo').on('change',(e) => {
       let opcion = $(e.currentTarget).val();
-      if (opcion == 2){
+      if (opcion == 2) {
         $('#select_cuota').prop('disabled',false);
         $('#id_monto').prop('readonly', true)
         $('#id_monto').val(input_saldo.dataset.saldo)
-      }
-      else {
+      } else {
         $('#select_cuota').prop('disabled',true);
         $('#id_monto').prop('readonly', false)
         $($('#select_cuota')[0].options[0]).prop('selected',true);
       }
-
-      
+      disable_button(submit_button, input_monto.value)
     })
+
+    document.getElementById('id_monto').addEventListener('input', (e) => {
+        let value = e.currentTarget.value
+        disable_button(submit_button, value)
+    })
+
+    function disable_button(button, value, min_value = 0, max_value = parseInt(input_saldo.dataset.saldo)) {
+      if (value <= min_value || value > max_value ) {
+            button.classList.add('disabled_anchor')
+            button.classList.add('btn-secondary')
+        } else {
+            button.classList.remove('disabled_anchor')
+            button.classList.remove('btn-secondary')
+        }
+    }
 
   });
 </script>

@@ -195,7 +195,7 @@ class Cliente(models.Model):
         # si hay 3 facturas pagadas es vip, caso contrario no es vip 
         facturas = []
         for presupuesto in self.presupuestos.all():   
-            if (presupuesto.orden.factura) != None:              
+            if (presupuesto.orden) != None and (presupuesto.orden.factura) != None:              
                     facturas.extend(presupuesto.orden.factura.all())
             else:
                 return False  

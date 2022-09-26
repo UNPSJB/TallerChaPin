@@ -10,7 +10,10 @@ Welcome to Taller ChaPin's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   login
+   home
+   crear_cliente
+   presupuestos
 
 Indices and tables
 ==================

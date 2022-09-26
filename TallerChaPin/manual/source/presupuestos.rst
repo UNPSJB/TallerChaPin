@@ -6,7 +6,7 @@ Manejo de presupuestos
 Creación de un presupuesto
 **************************
 
-Para crear un nuevo cliente, debemos dirigirnos a la sección **Presupuestos**.
+Para crear un nuevo presupuesto, debemos dirigirnos a la sección **Presupuestos**.
 
 .. image::  _static/boton_presupuestos.png
    :align:  center
@@ -33,7 +33,41 @@ Luego de esto se seleccionan las tareas que se realizarán, y la cantidad de dí
 .. image::  _static/agregar_materiales.png
    :align:  center
 
-Luego de haber cargado todos los campos del formulario, se puede hacer click en **Guardar** para dejar el presupuesto registrado en el sistema.
+Luego de haber cargado todos los campos del formulario, se puede hacer click en **Guardar** para dejar el presupuesto registrado en el sistema. El sistema lo redirigirá al detalle del presupuesto.
+
+.. image::  _static/boton_submit_form.png
+   :align:  center
+
+******************************
+Modificación de un presupuesto
+******************************
+
+Para modificar un presupuesto existente, debemos dirigirnos a la sección **Listados**.
+
+.. image::  _static/boton_listados.png
+   :align:  center
+
+Y luego dirigirnos a la opción **Ver presupuestos**.
+
+.. image::  _static/boton_ver_presupuestos.png
+   :align:  center
+
+En el listado, debemos buscar el presupuesto deseado y pulsar el ícono 👁, para abrir su detalle.
+
+.. image::  _static/detalle_presupuesto.png
+   :align:  center
+
+De las opciones de la derecha, en el recuadro de **Acciones**, debemos pulsar en **Modificar**.
+
+.. image::  _static/acciones_presupuesto.png
+   :align:  center
+
+Luego de esto, se abrirá el mismo formulario que se utilizó para crearlo, pero con los campos ya cargados y disponibles para ser modificados.
+
+.. image::  _static/modificar_presupuesto_form.png
+   :align:  center
+
+Una vez que se hayan efectuado los cambios en el presupuesto, se debe clickear el botón **Guardar** y los cambios habrán sido registrados en el sistema.
 
 .. image::  _static/boton_submit_form.png
    :align:  center

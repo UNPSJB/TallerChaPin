@@ -19,6 +19,3 @@ En el formulario debemos completar los campos con los datos del cliente (**DNI**
    :align:  center
 
 Luego de haber cargado los datos, se debe clickear en el botón **Guardar y continuar registrando** o **Guardar y salir**, según sea la preferencia del usuario. En caso de que alguno de los campos ingresados no cumpla con los requisitos, se le solicitará verificar el error.
-
-.. image::  _static/botones_submit_form.png
-   :align:  center

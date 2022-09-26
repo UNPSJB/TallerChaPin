@@ -39,6 +39,8 @@ En esta sección se encuentran todas las operaciones relacionadas a las facturas
 - Facturar órdenes de trabajo
 - Registrar pagos a facturas.
 
+.. _seccion-listados:
+
 ********
 Listados
 ********
@@ -57,16 +59,19 @@ En esta sección se encuentran todos los listados disponibles en la aplicación:
 - Listado de presupuestos.
 - Listado de turnos.
 - Listado de órdenes de trabajo.
-- Listado de detalles de órdenes de trabajo (ver sección **Trabajos**)
+- Listado de detalles de órdenes de trabajo (ver sección :ref:`seccion-trabajos`).
 - Listado de facturas.
 - Listado de pagos.
+
+.. _seccion-trabajos:
 
 ********
 Trabajos
 ********
-En esta sección se muestran todos los trabajos, divididos según su estado actual. 
-Esta sección es equivalente al *Listado de detalles de órdenes de trabajo*.
-Se cuenta con cinco divisiones:
+| En esta sección se muestran todos los trabajos, divididos según su estado actual. 
+| Esta sección es equivalente al **Listado de detalles de órdenes de trabajo**.
+
+| Se cuenta con cinco divisiones:
 
 - 'Sin asignar': trabajos que aún no fueron asignados a un empleado.
 - 'Asignados': trabajos que fueron asignados a un empleado, pero aún no fueron iniciadas.

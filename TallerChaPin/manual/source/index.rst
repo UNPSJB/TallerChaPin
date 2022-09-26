@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Taller ChaPin's documentation!
-=========================================
+Documentación de Taller ChaPin
+==============================
 
 .. toctree::
    :maxdepth: 2
@@ -14,10 +14,3 @@ Welcome to Taller ChaPin's documentation!
    home
    crear_cliente
    presupuestos
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

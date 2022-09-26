@@ -1,4 +1,6 @@
+from ast import pattern
 from audioop import reverse
+from email.policy import default
 from urllib.parse import urlencode
 from django import forms
 
@@ -73,14 +75,11 @@ class MarcaForm(forms.ModelForm):
 class MarcaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("nombre", "Nombre"),
-        ("descripcion", "Descripcion")
+        ("descripcion", "Descripcion"),
     ]
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
-    orden = forms.CharField(
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -92,7 +91,7 @@ class MarcaFiltrosForm(FiltrosForm):
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "nombre",
-                "descripcion"
+                "descripcion",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -145,10 +144,7 @@ class ModeloFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     marca = forms.ModelChoiceField(
-        queryset=Marca.objects.all(), required=False)
-
-    anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
-    anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
+        queryset=Marca.objects.all().order_by('nombre'), required=False)
 
     orden = forms.CharField(
         required=False
@@ -166,9 +162,6 @@ class ModeloFiltrosForm(FiltrosForm):
                 "nombre",
                 "descripcion",
                 "marca",
-                HTML("<label>Año </label>"),
-                "anio__gte",
-                "anio__lte"
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -215,20 +208,23 @@ class RepuestoFiltrosForm(FiltrosForm):
         ("cantidad", "Cantidad"),
         ("precio", "Precio"),
     ]
+
+
     nombre = forms.CharField(required=False, label='Nombre', max_length=50)
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo')
 
     tipo = forms.ChoiceField(choices=Repuesto.TIPOS,
-                             required=False, label='Tipo')
+                             required=False, 
+                             label='Tipo')
 
-    precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
-    precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
+    # precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
+    # precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
 
-    cantidad__gte = forms.IntegerField(
-        label="Mayor o igual que", required=False)
-    cantidad__lte = forms.IntegerField(
-        label="Menor o igual que", required=False)
+    # cantidad__gte = forms.IntegerField(
+    #     label="Mayor o igual que", required=False)
+    # cantidad__lte = forms.IntegerField(
+    #     label="Menor o igual que", required=False)
 
     orden = forms.CharField(
         required=False
@@ -246,12 +242,12 @@ class RepuestoFiltrosForm(FiltrosForm):
                 "nombre",
                 "modelo",
                 "tipo",
-                HTML("<label>Precio</label>"),
-                "precio__gte",
-                "precio__lte",
-                HTML("<label>Cantidad</label>"),
-                "cantidad__gte",
-                "cantidad__lte"
+                # HTML("<label>Precio</label>"),
+                # "precio__gte",
+                # "precio__lte",
+                # HTML("<label>Cantidad</label>"),
+                # "cantidad__gte",
+                # "cantidad__lte"
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -373,21 +369,11 @@ class MaterialFiltrosForm(FiltrosForm):
     precio = forms.DecimalField(required=False)
 
     material__tipo = forms.ModelChoiceField(
-        queryset=TipoMaterial.objects.all(), required=False, label='Tipo Material')
+        queryset=TipoMaterial.objects.all().order_by('nombre'), required=False)
 
     orden = forms.CharField(
         required=False
     )
-
-    precio__gte = forms.DecimalField(
-        label="Mayor o igual que:", required=False)
-    precio__lte = forms.DecimalField(
-        label="Menor o igual que:", required=False)
-
-    cantidad__gte = forms.IntegerField(
-        label="Mayor o igual que:", required=False)
-    cantidad__lte = forms.IntegerField(
-        label="Menor o igual que:", required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -400,13 +386,7 @@ class MaterialFiltrosForm(FiltrosForm):
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "nombre",
-                "material__tipo",
-                HTML("<label> Cantidad </label>"),
-                "cantidad__gte",
-                "cantidad__lte",
-                HTML("<label> Precio </label>"),
-                "precio__gte",
-                "precio__lte",
+                "material__tipo"
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -562,12 +542,8 @@ class TareaFiltrosForm(FiltrosForm):
     tipo = forms.ModelChoiceField(
         queryset=TipoTarea.objects.all(), required=False)
 
-    precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
-    precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
-
-    orden = forms.CharField(
-        required=False
-    )
+    # precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
+    # precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -581,9 +557,9 @@ class TareaFiltrosForm(FiltrosForm):
                 "nombre",
                 "descripcion",
                 "tipo",
-                HTML("<label> Precio </label>"),
-                "precio__gte",
-                "precio__lte"
+                # HTML("<label> Precio </label>"),
+                # "precio__gte",
+                # "precio__lte"
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -645,10 +621,7 @@ class EmpleadoFiltrosForm(FiltrosForm):
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
     legajo = forms.IntegerField(required=False)
-
-    orden = forms.CharField(
-        required=False
-    )
+    cuil = forms.IntegerField(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -662,6 +635,7 @@ class EmpleadoFiltrosForm(FiltrosForm):
                 "nombre",
                 "apellido",
                 "legajo",
+                "cuil",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -751,7 +725,6 @@ class ClienteUpdateForm(forms.ModelForm):
 
 # Cliente - Filtro
 
-
 class ClienteFiltrosForm(FiltrosForm):  # Revisar
     ORDEN_CHOICES = [
         ("dni", "DNI"),
@@ -763,41 +736,31 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
         ("es_vip","Es Vip"),
     ]
 
-    dni = forms.IntegerField(required=False)
+    dni = forms.IntegerField(max_value=99999999,min_value=0, required=False)
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
     direccion = forms.CharField(max_length=100)
-
+    orden = forms.CharField(required=False)
     vehiculos__modelo = forms.ModelChoiceField(
-        queryset=Modelo.objects.all(), required=False, label='Modelo vehículo')
-
+        queryset=Modelo.objects.all().order_by('-nombre'), required=False, label='Modelo vehículo')
     telefono = forms.IntegerField(required=False)
-
-    dni__gte = forms.IntegerField(label="Mayor o igual que", required=False)
-    dni__lte = forms.IntegerField(label="Menor o igual que", required=False)
-
-    orden = forms.CharField(
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
         self.helper.layout = Layout(
-            Fieldset(
+          Fieldset(
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "dni",
                 "nombre",
                 "apellido",
-                "vehiculos__modelo",
-                HTML("<label> DNI </label>"),
-                "dni__gte",
-                "dni__lte"
+                "vehiculos__modelo"
             ),
+
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
@@ -861,15 +824,9 @@ class VehiculoFiltrosForm(FiltrosForm):
 
     patente = forms.CharField(required=False, label='Patente', max_length=100)
     modelo = forms.ModelChoiceField(
-        queryset=Modelo.objects.all(), required=False)
+        queryset=Modelo.objects.all().order_by('nombre'), required=False)
     chasis = forms.CharField(required=False)
 
-    anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
-    anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
-
-    orden = forms.CharField(
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -883,9 +840,6 @@ class VehiculoFiltrosForm(FiltrosForm):
                 "patente",
                 "modelo",
                 "chasis",
-                HTML("<label> Año </label>"),
-                "anio__gte",
-                "anio__lte"
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

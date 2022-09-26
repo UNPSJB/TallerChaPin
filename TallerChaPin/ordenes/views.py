@@ -106,6 +106,7 @@ class PresupuestoListView(ListFilterView):
     # model = Presupuesto
     queryset = Presupuesto.objects.filter(ampliado=False)
     paginate_by = 100 
+    ordering = ['-id']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -236,6 +237,7 @@ class OrdenTrabajoListView(ListFilterView):
     filtros = OrdenTrabajoFiltrosForm
     model = OrdenDeTrabajo
     paginate_by = 100  # if pagination is desired
+    ordering = ['id']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -335,6 +337,7 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
     # filtros = OrdenTrabajoFiltrosForm
     model = DetalleOrdenDeTrabajo
     paginate_by = 100
+    ordering = ['id']
 
     def get_queryset(self):
         user = self.request.user
@@ -384,8 +387,6 @@ def asignar_empleado(request):
         messages.add_message(request, messages.SUCCESS,
                              'La tarea se asignó a un empleado exitosamente!')
     else:
-        # TODO: mostrar form.errors
-        print(form.errors)
         messages.add_message(request, messages.WARNING,
                              'El formulario tiene errores.')
     return redirect('listarDetallesOrden')
@@ -529,7 +530,6 @@ class RegistrarIngresoVehiculoCreateView(CreateView):
 
     def post(self, *args, **kwargs):
         form_class = self.get_form_class()
-        print(form_class)
         form = form_class(self.request.POST)
         if form.is_valid():
             fecha_ingreso = form.cleaned_data.get('ingreso')
@@ -570,7 +570,6 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
             try:
                 orden.registrar_egreso(fecha_egreso)
             except NoEntregoVehiculoException as err:
-                print(err)
                 messages.add_message(self.request, messages.ERROR, err)
                 return redirect('detallesOrden', orden.pk)
 
@@ -583,7 +582,7 @@ class ListarTurnosListView(ListView):
 
     model = OrdenDeTrabajo
     template_name = "ordenes/calendarioturno_list.html"
-
+    ordering = ['id']
     paginate_by = 100
 
     def get_context_data(self, **kwargs):

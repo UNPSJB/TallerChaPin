@@ -82,6 +82,7 @@ class MarcaListView(ListFilterView):
     filtros = MarcaFiltrosForm
     model = Marca
     paginate_by = 100  # if pagination is desired
+    ordering = ['nombre']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -140,6 +141,7 @@ class ModeloListView(ListFilterView):
     filtros = ModeloFiltrosForm
     model = Modelo
     paginate_by = 100  # if pagination is desired
+    ordering = ['nombre']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -197,7 +199,9 @@ class RepuestoDeleteView(DeleteView):
 class RepuestoListView(ListFilterView):
     filtros = RepuestoFiltrosForm
     model = Repuesto
-    paginate_by = 100 
+    paginate_by = 100
+    ordering = ['nombre']
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -227,7 +231,6 @@ class TipoTareaCreateView(CreateView):
 
     def get_success_url(self):
         accion = self.request.POST['accion']
-        print(accion)
         return reverse_lazy('crearTipoTarea') if str(accion) != "Guardar y salir" else reverse_lazy('listarTipoTarea')
 
 
@@ -262,6 +265,7 @@ class TipoTareaListView(ListFilterView):
     filtros = TipoTareaFiltrosForm
     model = TipoTarea
     paginate_by = 100
+    ordering = ['nombre']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -321,6 +325,7 @@ class TareaListView(ListFilterView):
     filtros = TareaFiltrosForm
     model = Tarea
     paginate_by = 100
+    ordering = ['nombre']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -352,8 +357,8 @@ class TipoMaterialCreateView(CreateView):
 
 class TipoMaterialListView(ListView):
     model = TipoMaterial
-
     paginate_by = 100
+    ordering = ['nombre']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -392,6 +397,7 @@ class TipoMaterialDeleteView(DeleteView):
 class MaterialListView(ListFilterView):
     filtros = MaterialFiltrosForm
     model = Material
+    ordering = ['nombre']
 
     paginate_by = 100
 
@@ -521,6 +527,7 @@ class ClienteListView(ListFilterView):
     filtros = ClienteFiltrosForm
     model = Cliente
     success_url = reverse_lazy('listarClientes')
+    ordering = ['dni']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -580,6 +587,7 @@ class VehiculoListView(ListFilterView):
     filtros = VehiculoFiltrosForm
     model = Vehiculo
     paginate_by = 100
+    ordering = ['anio']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -640,6 +648,7 @@ class EmpleadoListView(ListFilterView):
     filtros = EmpleadoFiltrosForm
     model = Empleado
     paginate_by = 100
+    ordering = ['apellido']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

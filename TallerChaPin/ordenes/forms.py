@@ -1,8 +1,6 @@
 from django.urls import reverse
 from django.utils.http import urlencode
 from django import forms
-from django.utils.regex_helper import Choice
-
 from . import models as ordenes
 import taller.models as taller
 from crispy_forms.helper import FormHelper
@@ -213,22 +211,24 @@ class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
-        ("detalles","Observación"),
         ("validez","Validez (días)"),
-
+        ("confirmado","Confirmado")
     ]
 
+
     cliente = forms.ModelChoiceField(
-        queryset=taller.Cliente.objects.all(), required=False)
+        queryset=taller.Cliente.objects.all().order_by('nombre'), required=False)
     vehiculo = forms.ModelChoiceField(
-        queryset=taller.Vehiculo.objects.all(), required=False)
-    observacion = forms.CharField(required=False, max_length=200)
+        queryset=taller.Vehiculo.objects.all().order_by('id'), required=False)
+    observacion = forms.CharField(
+        required=False, max_length=200)
     tareas = forms.ModelChoiceField(
-        queryset=taller.Tarea.objects.all(), required=False)
+        queryset=taller.Tarea.objects.all().order_by('nombre'), required=False)
     materiales = forms.ModelChoiceField(
-        queryset=taller.Material.objects.all(), required=False)
+        queryset=taller.Material.objects.all().order_by('id'), required=False)
     repuestos = forms.ModelChoiceField(
-        queryset=taller.Repuesto.objects.all(), required=False)
+        queryset=taller.Repuesto.objects.all().order_by('id'), required=False)
+
 
 
     def __init__(self, *args, **kwargs):
@@ -242,11 +242,11 @@ class PresupuestoFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "cliente",
                 "vehiculo",
-                "detalles",
                 "tareas",
                 "materiales",
                 "repuestos",
             ),
+
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
@@ -317,7 +317,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
         ("vehiculo", "Vehiculo"),
-        ("estado", "Estado")
+        ("estado", "Estado"),
     ]
 
     cliente = forms.ModelChoiceField(
@@ -353,10 +353,10 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
                 "tareas",
                 "materiales",
                 "repuestos",
-
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
+
 
 # Registrar Ingreso de Vehículo
 def RegistrarIngresoVehiculoForm(model=None):

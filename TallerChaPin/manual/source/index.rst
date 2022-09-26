@@ -7,8 +7,7 @@ Documentación de Taller ChaPin
 ==============================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :caption: Contenido
 
    login
    home

@@ -1,5 +1,5 @@
-Acciones básicas sobre las entidades de la aplicación
-=====================================================
+💻 Acciones básicas sobre las entidades de la aplicación
+========================================================
 
 Para el control de los datos de la aplicación, se requiere la creación de distintas entidades, las cuales son:
 
@@ -22,9 +22,9 @@ Para el control de los datos de la aplicación, se requiere la creación de dist
 Todas ellas poseen distintas acciones básicas, como lo son la **creación**, **modificación** y **eliminación**. 
 A continuación se detallará la forma de realizar cada una de estas operaciones en forma general.
 
-********
-Creación
-********
+***********
+➕ Creación
+***********
 
 +-----------------------------+-------------------------------------------------------+
 | Entidad                     | Forma de creación                                     |
@@ -60,9 +60,9 @@ Creación
 | Pago                        | Se crea al pagar una factura.                         |
 +-----------------------------+-------------------------------------------------------+
 
-************
-Modificación
-************
+***************
+✏ Modificación
+***************
 
 +-----------------------------+---------------------------------------------------------+
 | Entidad                     | Forma de modificación                                   |
@@ -98,9 +98,9 @@ Modificación
 | Pago                        | *Acción no disponible*                                  |
 +-----------------------------+---------------------------------------------------------+
 
-************
-Eliminación
-************
+*************
+🗑 Eliminación
+*************
 
 +-----------------------------+-----------------------------------------------------------+
 | Entidad                     | Forma de eliminación                                      |

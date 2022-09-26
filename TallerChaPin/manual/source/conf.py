@@ -25,5 +25,8 @@ language = 'es'
 
 html_theme = 'furo'
 html_static_path = ['_static']
-html_favicon = './_static/favicon.png'
-
+html_favicon = './_static/logos/favicon.png'
+html_theme_options = {
+    "light_logo": "logos/logo-light.png",
+    "dark_logo": "logos/logo-dark.png",
+}

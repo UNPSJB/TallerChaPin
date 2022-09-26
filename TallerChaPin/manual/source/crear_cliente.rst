@@ -1,5 +1,5 @@
-Cómo crear un cliente
-=====================
+🧑 Cómo crear un cliente
+========================
 
 Para crear un nuevo cliente, debemos dirigirnos a la sección **Taller**.
 

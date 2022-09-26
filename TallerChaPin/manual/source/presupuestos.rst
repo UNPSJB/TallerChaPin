@@ -1,11 +1,11 @@
-Manejo de presupuestos
-======================
+📋 Manejo de presupuestos
+=========================
 
 .. _crear-presupuesto:
 
-**************************
-Creación de un presupuesto
-**************************
+*****************************
+✍ Creación de un presupuesto
+*****************************
 
 Para crear un nuevo presupuesto, debemos dirigirnos a la sección **Presupuestos**.
 
@@ -38,9 +38,9 @@ Luego de haber cargado todos los campos del formulario, se puede hacer click en 
 
 .. _modificar-presupuesto:
 
-******************************
-Modificación de un presupuesto
-******************************
+*********************************
+✏ Modificación de un presupuesto
+*********************************
 
 Para modificar un presupuesto existente, debemos dirigirnos a la sección :ref:`seccion-listados`.
 
@@ -71,9 +71,9 @@ Una vez que se hayan efectuado los cambios en el presupuesto, se debe clickear e
 
 .. _cancelar-presupuesto:
 
-*****************************
-Cancelación de un presupuesto
-*****************************
+*******************************
+🗑 Cancelación de un presupuesto
+*******************************
 
 Para cancelar un presupuesto existente, debemos dirigirnos a su detalle del mismo modo que se mencionó en :ref:`modificar-presupuesto`. Una vez en el detalle del presupuesto, se debe clickear en la opción **Cancelar**, dentro del recuadro de *Acciones*.
 
@@ -89,9 +89,9 @@ Al clickear en **Aceptar**, el presupuesto habrá sido cancelado exitosamente.
 
 .. _confirmar-presupuesto:
 
-******************************
-Confirmación de un presupuesto
-******************************
+*********************************
+✅ Confirmación de un presupuesto
+*********************************
 
 Para confirmar un presupuesto existente, se debe ingresar a su detalle del mismo modo que se mencionó en :ref:`modificar-presupuesto`. Una vez en el detalle del presupuesto, se debe clickear en la opción **Confirmar**, dentro del recuadro de *Acciones*.
 
@@ -110,9 +110,9 @@ Luego de seleccionar una fecha y hora válida, el sistema nos mostrará el detal
 
 .. _ampliar-presupuesto:
 
-****************************
-Ampliación de un presupuesto
-****************************
+*******************************
+➕ Ampliación de un presupuesto
+*******************************
 
 Para realizar la ampliación de un presupuesto, primero se deben cumplir las siguientes condiciones:
 

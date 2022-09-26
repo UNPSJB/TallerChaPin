@@ -1,14 +1,19 @@
-Página de inicio
-================
+.. _pagina-de-inicio:
+
+===================
+🏠 Página de inicio
+===================
 
 En la página de inicio tendrá acceso a las distintas secciones de la aplicación.
 
 .. image::  _static/home.png
    :align:  center
 
-******
-Taller
-******
+.. _seccion-taller:
+
+*********
+🔧 Taller
+*********
 En esta sección se encuentran todas las operaciones relacionadas a la creación, modificación y eliminación de:
 
 - Clientes
@@ -22,18 +27,18 @@ En esta sección se encuentran todas las operaciones relacionadas a la creación
 - Modelos
 - Marcas
 
-************
-Presupuestos
-************
+***************
+📋 Presupuestos
+***************
 En esta sección se encuentran todas las operaciones relacionadas a los presupuestos y órdenes de trabajo, como:
 
 - Creación, modificación, ampliación y eliminación de presupuestos
 - Creación y eliminación de órdenes de trabajo.
 - Registro de ingreso y egreso de vehículos.
 
-********
-Facturas
-********
+***********
+💸 Facturas
+***********
 En esta sección se encuentran todas las operaciones relacionadas a las facturas:
 
 - Facturar órdenes de trabajo
@@ -41,9 +46,9 @@ En esta sección se encuentran todas las operaciones relacionadas a las facturas
 
 .. _seccion-listados:
 
-********
-Listados
-********
+***********
+🔍 Listados
+***********
 En esta sección se encuentran todos los listados disponibles en la aplicación:
 
 - Listado de clientes.
@@ -65,9 +70,9 @@ En esta sección se encuentran todos los listados disponibles en la aplicación:
 
 .. _seccion-trabajos:
 
-********
-Trabajos
-********
+***********
+🔨 Trabajos
+***********
 | En esta sección se muestran todos los trabajos, divididos según su estado actual. 
 | Esta sección es equivalente al **Listado de detalles de órdenes de trabajo**.
 

@@ -1,6 +1,6 @@
-================
-Inicio de sesión
-================
+===================
+🔑 Inicio de sesión
+===================
 
 Para iniciar sesión en la aplicación, en la pantalla deberá ingresar su nombre de usuario en el primer campo y su contraseña en el segundo, para luego clickear en el botón **Ingresar**
 

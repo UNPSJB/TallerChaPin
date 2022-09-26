@@ -7,8 +7,7 @@ Documentación de Taller ChaPin
 ==============================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :caption: Contenido
 
    login
    home
@@ -16,3 +15,4 @@ Documentación de Taller ChaPin
    crear_cliente
    presupuestos
    acciones_basicas
+   pdf

@@ -118,20 +118,22 @@ class PresupuestoDetailView(DetailView):
 
     model = Presupuesto
 
-    def get(self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        try:
-            orden = Presupuesto.objects.get(pk=pk)
-        except Presupuesto.DoesNotExist:
-            messages.add_message(self.request, messages.ERROR, "No se registra ese presupuesto.")
-            return redirect('listarPresupuestos')
-        return self.post(*args, **kwargs)
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "TallerChaPin"
         return context
 
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        try:
+            presupuesto = Presupuesto.objects.get(pk=pk)
+        except Presupuesto.DoesNotExist:
+            messages.add_message(self.request, messages.ERROR, "No se registra ese presupuesto.")
+            return redirect('listarPresupuestos')
+        return self.post(*args, **kwargs)
+
+    # def post(self, *args, **kwargs):
+    #     pass 
 
 class PresupuestoCreateView(CreateView):
     model = Presupuesto

@@ -110,10 +110,12 @@ class PagoForm(forms.ModelForm):
 
 class PagoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
-        ("fecha", "fecha"),
-        ("monto", "monto"),
-        ("tipo", "tipo"),
+        ("cliente", "Cliente"),
+        ("fecha", "Fecha"),
+        ("monto", "Monto"),
+        ("tipo", "Tipo"),
     ]
+  
     monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
     tipo = forms.ChoiceField(choices=Pago.TIPO_PAGO, required=False, label="Tipo de pago")
 

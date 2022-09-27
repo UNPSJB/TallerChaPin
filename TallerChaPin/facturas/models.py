@@ -143,6 +143,8 @@ class Pago(models.Model):
     tipo = models.PositiveSmallIntegerField(
         choices=TIPO_PAGO, default=CONTADO)
     
+    def __str__(self):
+        return f'Nº de Factura: ({self.factura.pk})'
 
     @property
     def vehiculo(self):

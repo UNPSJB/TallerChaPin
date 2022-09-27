@@ -111,6 +111,7 @@ class PagoForm(forms.ModelForm):
 class PagoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
+        ("factura","Factura"),
         ("fecha", "Fecha"),
         ("monto", "Monto"),
         ("tipo", "Tipo"),

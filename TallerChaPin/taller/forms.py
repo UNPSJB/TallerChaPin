@@ -844,9 +844,9 @@ class VehiculoForm(forms.ModelForm):
                 "anio"
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )
 
 

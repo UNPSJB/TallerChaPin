@@ -547,6 +547,19 @@ class VehiculoCreateView(CreateView):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)  
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = VehiculoForm(self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(self.request, messages.SUCCESS, 'Vehiculo registrado con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarVehiculos')
+            return redirect('crearVehiculo')
+        return self.form_invalid(form=form)
+        
+
 class VehiculoUpdateView(UpdateView):
 
     model = Vehiculo

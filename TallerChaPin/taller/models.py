@@ -183,7 +183,7 @@ class Cliente(models.Model):
     telefono = models.CharField(max_length=50)
     
     def __str__(self):
-        return self.nombre
+        return f'{self.nombre} {self.apellido} ({self.dni})'
 
     def vip(self):
         # Obtener ultimas tres facturas pagas del cliente

@@ -614,6 +614,9 @@ class Presupuesto(models.Model):
     def cantidad_detalles(self):
         return self.tareas.count() + self.materiales.count() + self.repuestos.count()
 
+    def puede_eliminarse(self):
+        return not self.confirmado 
+        
     def puede_confirmarse(self):
         return not self.confirmado and not self.esta_expirado()
 

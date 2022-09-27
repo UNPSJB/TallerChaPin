@@ -131,7 +131,7 @@ class Pago(models.Model):
     CONTADO = 0
     TARJETA_DEBITO = 1
     TARJETA_CREDITO = 2
-    TIPO_CHOICES = [
+    TIPO_PAGO = [
         (CONTADO, 'Contado'),
         (TARJETA_DEBITO, 'Tarjeta Debito'),
         (TARJETA_CREDITO, 'Tarjeta Credito'),
@@ -141,7 +141,7 @@ class Pago(models.Model):
     fecha = models.DateField(auto_now=True)
     monto = models.DecimalField(max_digits=10, decimal_places=2)
     tipo = models.PositiveSmallIntegerField(
-        choices=TIPO_CHOICES, default=CONTADO)
+        choices=TIPO_PAGO, default=CONTADO)
     
 
     @property

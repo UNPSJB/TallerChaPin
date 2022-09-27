@@ -14,7 +14,6 @@
         {% for sortable in filtros.sortables %}
         <th class="sortable bg-transition pointer" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
       {% endfor %}
-        <th scope="col">Confirmado</th>
         <th scope="col">Opciones</th>
       </tr>
     </thead>
@@ -23,7 +22,6 @@
       <tr>
         <td>{{ presupuesto.cliente }}</td>
         <td>{{ presupuesto.vehiculo }}</td>
-        <td>{{ presupuesto.detalles}}</td>
         <td>{{ presupuesto.validez}}</td>
         <td>{{ presupuesto.confirmado | yesno:"Si,No"}}</td>
         <td>

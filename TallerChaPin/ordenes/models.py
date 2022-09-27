@@ -1,6 +1,6 @@
-from cgi import print_exception
+from cgi import print_exception #se usa?
 from datetime import timedelta
-from time import process_time_ns
+from time import process_time_ns #se usa?
 from django.utils.timezone import now
 from django.utils import timezone
 from taller.models import (
@@ -267,6 +267,7 @@ class OrdenDeTrabajo(models.Model):
             RepuestoOrdenDeTrabajo.objects.create(
                 repuesto=repuesto, orden=self, cantidad=cantidad)
 
+    #Creado para test
     def actualizar_estado(self):
         print(self.detalles.all())
 

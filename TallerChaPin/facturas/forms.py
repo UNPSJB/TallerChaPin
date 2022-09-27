@@ -45,7 +45,7 @@ class FacturaFiltrosForm(FiltrosForm):
         ("estado", "Estado")
     ]
     orden = forms.ModelChoiceField(
-        queryset=OrdenDeTrabajo.objects.all(), required=False, label="Orden de Trabajo")
+        queryset=OrdenDeTrabajo.objects.all().order_by('id'), required=False, label="Orden de Trabajo")
     cliente = forms.ModelChoiceField(
         queryset=Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
@@ -110,16 +110,17 @@ class PagoForm(forms.ModelForm):
 
 class PagoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
-        ("fecha", "fecha"),
-        ("monto", "monto"),
-        ("tipo", "tipo"),
+        ("cliente", "Cliente"),
+        ("fecha", "Fecha"),
+        ("monto", "Monto"),
+        ("tipo", "Tipo"),
     ]
+  
     monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
-    tipo = forms.ModelChoiceField(
-        queryset=Pago.objects.all(), required=False, label="Tipo de pago")
+    tipo = forms.ChoiceField(choices=Pago.TIPO_PAGO, required=False, label="Tipo de pago")
 
-    fecha__gte = forms.DateField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
-    fecha__lte = forms.DateField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
+    # fecha__gte = forms.DateField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
+    # fecha__lte = forms.DateField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
 
 
     def __init__(self, *args, **kwargs):
@@ -133,8 +134,8 @@ class PagoFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "monto",
                 "tipo",
-                "fecha__lte",
-                "fecha__gte",
+                # "fecha__lte",
+                # "fecha__gte",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

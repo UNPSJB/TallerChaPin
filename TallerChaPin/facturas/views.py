@@ -17,6 +17,7 @@ class FacturaListView(ListFilterView):
     filtros = FacturaFiltrosForm
     model = Factura
     paginate_by = 100  # if pagination is desired
+    ordering = ['id']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -36,7 +37,6 @@ class FacturaDetailView(DetailView):
 
     def post(self, *args, **kwargs):
         form = PagoForm(self.request.POST)
-        print(form.is_valid(), form.errors)
         if form.is_valid():
             form.save()
             return redirect('listarPagos')
@@ -126,8 +126,6 @@ class PagoCreateView(CreateView):
         form_class = self.get_form_class()
         pk = kwargs.get('pk')
         factura = Factura.objects.get(pk=pk)
-        print('TEST: request')
-        print(self.request.POST)
         form = form_class(self.request.POST)
         if form.is_valid():
             monto = form.cleaned_data.get('monto')
@@ -167,6 +165,7 @@ class PagoListView(ListFilterView):
     filtros = PagoFiltrosForm
     model = Pago
     paginate_by = 100  # if pagination is desired
+    ordering = ['-id']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

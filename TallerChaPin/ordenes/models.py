@@ -150,7 +150,6 @@ class OrdenDeTrabajo(models.Model):
                 self.estado = OrdenDeTrabajo.FINALIZADA if self.estado == OrdenDeTrabajo.FACTURADA or self.estado == OrdenDeTrabajo.PAGADA else self.estado
                 self.save()
             else:
-                #Creo que no esta muy bueno que tire una excepcion 
                 raise NoEntregoVehiculoException(
                     'No se puede entregar el vehículo si el cliente no paga o no es VIP', self.estado)
         else:

@@ -1,4 +1,3 @@
-from ast import pattern
 from audioop import reverse
 from email.policy import default
 from urllib.parse import urlencode

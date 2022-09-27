@@ -51,6 +51,17 @@ class MarcaCreateView(CreateView):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = MarcaForm(self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(self.request, messages.SUCCESS, 'Marca registrada con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarMarcas')
+            return redirect('crearMarca')
+        return self.form_invalid(form=form)
 
 class MarcaUpdateView(UpdateView):
     model = Marca
@@ -109,6 +120,17 @@ class ModeloCreateView(CreateView):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = ModeloForm(self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(self.request, messages.SUCCESS, 'Modelo registrado con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarModelos')
+            return redirect('crearModelo')
+        return self.form_invalid(form=form)
 
 
 class ModeloUpdateView(UpdateView):
@@ -169,6 +191,17 @@ class RepuestoCreateView(CreateView):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = RepuestoForm(self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(self.request, messages.SUCCESS, 'Repuesto registrado con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarRepuestos')
+            return redirect('crearRepuesto')
+        return self.form_invalid(form=form)
 
 class RepuestoUpdateView(UpdateView):
     model = Repuesto
@@ -293,6 +326,17 @@ class TareaCreateView(CreateView):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)    
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = TareaForm(self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(self.request, messages.SUCCESS, 'Tarea registrada con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarTareas')
+            return redirect('crearTarea')
+        return self.form_invalid(form=form)
 
 class TareaUpdateView(UpdateView):
     model = Tarea
@@ -353,6 +397,17 @@ class TipoMaterialCreateView(CreateView):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)    
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = TipoMaterialForm(self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(self.request, messages.SUCCESS, 'Tipo Material registrado con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarTipoMateriales')
+            return redirect('crearTipoMaterial')
+        return self.form_invalid(form=form)
 
 
 class TipoMaterialListView(ListView):
@@ -426,6 +481,17 @@ class MaterialCreateView(CreateView):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)   
 
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = MaterialForm(self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(self.request, messages.SUCCESS, 'Material registrado con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarMateriales')
+            return redirect('crearMaterial')
+        return self.form_invalid(form=form)
 
 class MaterialUpdateView(UpdateView):
     model = Material
@@ -478,6 +544,7 @@ class ClienteCreateView(CreateView):
         context['titulo'] = "Registrar cliente"
         return context
 
+
     def post(self, *args, **kwargs):
         self.object = None
         cliente_form = self.get_form()
@@ -489,6 +556,8 @@ class ClienteCreateView(CreateView):
             vehiculo.cliente = cliente
             vehiculo.save()
             messages.add_message(self.request, messages.INFO, 'Cliente y Vehiculos registrado con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarClientes')
             return redirect('crearCliente')
         messages.add_message(self.request, messages.ERROR, cliente_form.errors)
         messages.add_message(self.request, messages.ERROR, vehiculo_form.errors)
@@ -629,6 +698,18 @@ class EmpleadoCreateView(CreateView):
     def form_invalid(self, form):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)  
+
+    def post(self, *args, **kwargs):
+        self.object = None
+        form = EmpleadoForm(self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(self.request, messages.SUCCESS, 'Empleado registrado con exito')
+            if 'guardar' in self.request.POST:
+                return redirect('listarEmpleados')
+            return redirect('crearEmpleado')
+        return self.form_invalid(form=form)
 
 
 class EmpleadoUpdateView(UpdateView):

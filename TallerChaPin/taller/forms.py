@@ -1,3 +1,4 @@
+from ast import pattern
 from audioop import reverse
 from email.policy import default
 from urllib.parse import urlencode
@@ -63,9 +64,9 @@ class MarcaForm(forms.ModelForm):
 
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )
 
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
@@ -126,9 +127,9 @@ class ModeloForm(forms.ModelForm):
 
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )
 
 
@@ -193,9 +194,10 @@ class RepuestoForm(forms.ModelForm):
                 "precio",
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+
         )
 
 
@@ -277,9 +279,9 @@ class TipoMaterialForm(forms.ModelForm):
 
             ),
             Div(HTML(
-                '<input href="{% url "crearTipoMaterial" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarTipoMateriales" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )
 
 # Tipo de Material - Filtro
@@ -346,9 +348,10 @@ class MaterialForm(forms.ModelForm):
 
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+
         )
 
 
@@ -520,9 +523,10 @@ class TareaForm(forms.ModelForm):
                 "precio",
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+
         )
 
 # Tarea - Filtro
@@ -599,9 +603,9 @@ class EmpleadoForm(forms.ModelForm):
                 "legajo",
             ),
             Div(HTML(
-                '<input href="{% url "crearVehiculo" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarVehiculos" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
@@ -644,12 +648,6 @@ class EmpleadoFiltrosForm(FiltrosForm):
 
 class ClienteForm(forms.ModelForm):
 
-    # patente = forms.CharField(required=True, label='Patente', max_length=7)
-    # modelo = forms.ModelChoiceField(
-    # queryset=Modelo.objects.all(), required=True)
-    # chasis = forms.CharField(required=True)
-    # anio = forms.IntegerField(required=True)
-
     class Meta:
         model = Cliente
         fields = "__all__"
@@ -684,9 +682,9 @@ class ClienteForm(forms.ModelForm):
                 "anio"
             ),
             Div(HTML(
-                '<input href="{% url "crearCliente" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
-                '<input href="{% url "listarClientes" %}" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
+                '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar registrando"/>'),
+            HTML(
+                '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
         )
 class ClienteUpdateForm(forms.ModelForm):
 

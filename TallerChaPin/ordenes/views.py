@@ -620,9 +620,13 @@ class ListarTurnosListView(ListView):
     ordering = ['id']
     paginate_by = 100
 
+    def get_turnos(self):
+        return {'test': 'true', 'attribute': 'pepe'}
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Calendario de Turnos"
+        context['turnos'] = self.get_turnos()
         return context
     
 def datoPlantilla(request, pk):

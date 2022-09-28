@@ -184,6 +184,9 @@ class Cliente(models.Model):
     
     def __str__(self):
         return f'{self.nombre} {self.apellido} ({self.dni})'
+        
+    def get_nombre_abreviado(self):
+        return f'{self.nombre[0]}. {self.apellido}'
 
     def vip(self):
         # Obtener ultimas tres facturas pagas del cliente

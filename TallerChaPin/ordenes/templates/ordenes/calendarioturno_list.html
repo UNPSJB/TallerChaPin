@@ -1,28 +1,24 @@
 {% extends 'template_ordenes.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %}
-{{titulo}}
-{% endblock %}
+
+{% block title %} {{titulo}} {% endblock %}
+
 {% block main %}
 
   {% block extra_css %}
       <link rel="stylesheet" href="{% static 'libs/fullcalendar/main.css' %}" />
+      <link rel="stylesheet" href="../../static/ordenes/css/calendario.css"> 
   {% endblock extra_css %}
+
   <h1>{{titulo}}</h1>
-
-
   <div id='calendar'></div>
-  
   
 {% endblock %}
 
 {% block filtros%}
-  <div id='datos'>
-
-  </div>
+  <div id='datos'></div>
 {% endblock %}
-
 
 {% block extrajs %}
 <script>
@@ -33,48 +29,49 @@
 <script src="{% static 'libs/fullcalendar/locales-all' %}"> </script>
     <script>
 
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', () => {
+        renderCalendar();
+      });
+
+      function renderCalendar(){
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
           headerToolbar: {
-            left: 'prev,next',
+            left: '',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            
-            
           },
-          events: function(info, successCallback, failureCallback) {
-            
+          events: getEvents(),
+          eventClick: handleClick,   
+          initialView: 'dayGridMonth',
+          buttonText: {
+            today: 'Hoy',
           },
-          
-          events: [
-            
-             {% for orden in object_list %}
-                {
-                title: "{{orden.cliente}}",
-                start: "{{orden.turno | date:'c'}}",
-                url: '/ordenes/ordenesTurnos/listarTurnos/detalleTurno/{{orden.pk}}'
-                },
-              {% endfor %}
-            // etc...
-          ],
-
-          eventClick: function(info)  {
-
-           info.jsEvent.preventDefault(); // don't let the browser navigate
-
-            if (info.event.url) {
-              $('#datos').load(info.event.url)
-            }
-          },   
-            
-            // etc...
-          
-          initialView: 'dayGridMonth'
+          dayHeaderFormat: { weekday: 'long' }
         });
         calendar.render();
         calendar.setOption('locale','es'); 
-      });
+      }
+
+      function handleClick(info) {
+        info.jsEvent.preventDefault();
+
+        if (info.event.url) {
+          $('#datos').load(info.event.url)
+        }
+      }
+
+      function getEvents() {
+        return [
+             {% for orden in object_list %}
+                {
+                title: "{{orden.cliente.get_nombre_abreviado}}",
+                start: "{{orden.turno | date:'c'}}",
+                url: '/ordenes/ordenesTurnos/listarTurnos/detalleTurno/{{orden.pk}}',
+                classNames: '{{orden.get_class_dot}}',
+                },
+              {% endfor %}
+          ]
+      }
 
     </script>
 {% endblock %}

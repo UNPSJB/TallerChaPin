@@ -171,6 +171,22 @@ class OrdenDeTrabajo(models.Model):
     def puede_cambiar_turno(self):
         return self.estado == OrdenDeTrabajo.CREADA
 
+    # Método para dar estilos a los eventos del calendario de turnos
+    def get_class_dot(self):
+        estado = self.estado
+        if estado == OrdenDeTrabajo.PAUSADA:
+            return 'orden_pausada'
+        elif estado == OrdenDeTrabajo.CANCELADA:
+            return 'orden_cancelada'
+        elif estado == OrdenDeTrabajo.CREADA:
+            return 'orden_creada'
+        elif estado == OrdenDeTrabajo.INICIADA or estado == OrdenDeTrabajo.ACTIVA:
+            return 'orden_iniciada'
+        else: 
+            return 'orden_default'
+        
+
+
     def puede_facturarse(self):
         return self.estado == OrdenDeTrabajo.REALIZADA
 

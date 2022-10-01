@@ -15,4 +15,5 @@ Documentación de Taller ChaPin
    crear_cliente
    presupuestos
    acciones_basicas
+   turnos
    pdf

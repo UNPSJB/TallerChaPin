@@ -1,0 +1,1244 @@
+[
+  {
+  "model": "taller.cliente",
+  "pk": 1,
+  "fields": {
+    "dni": 37852985,
+    "nombre": "Patricia",
+    "apellido": "Ramírez",
+    "direccion": "Centenario 993",
+    "telefono": "2804309295"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 2,
+  "fields": {
+    "dni": 44826759,
+    "nombre": "Marta",
+    "apellido": "Arias",
+    "direccion": "Lezana 279",
+    "telefono": "2804677223"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 3,
+  "fields": {
+    "dni": 86894946,
+    "nombre": "Norma",
+    "apellido": "Aguirre",
+    "direccion": "Cambrin 745",
+    "telefono": "2804365270"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 4,
+  "fields": {
+    "dni": 54093481,
+    "nombre": "Néstor",
+    "apellido": "Peralta",
+    "direccion": "Brown 868",
+    "telefono": "2804283548"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 5,
+  "fields": {
+    "dni": 50528408,
+    "nombre": "Adriana",
+    "apellido": "Cabrera",
+    "direccion": "A. P. Bell 1163",
+    "telefono": "2804818210"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 6,
+  "fields": {
+    "dni": 57459290,
+    "nombre": "Jorge",
+    "apellido": "Benitez",
+    "direccion": "Edwin Roberts 205",
+    "telefono": "2804944880"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 7,
+  "fields": {
+    "dni": 89373866,
+    "nombre": "Alejandro",
+    "apellido": "Ponce",
+    "direccion": "El Carmen 864",
+    "telefono": "2804149354"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 8,
+  "fields": {
+    "dni": 64706433,
+    "nombre": "Héctor",
+    "apellido": "Moreno",
+    "direccion": "Cuba 1787",
+    "telefono": "2804617055"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 9,
+  "fields": {
+    "dni": 75326191,
+    "nombre": "Fernando",
+    "apellido": "Fernández",
+    "direccion": "Gral. Artigas 1392",
+    "telefono": "2804167763"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 10,
+  "fields": {
+    "dni": 10355923,
+    "nombre": "Andrea",
+    "apellido": "Vázquez",
+    "direccion": "Juan Evans 1610",
+    "telefono": "2804437547"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 11,
+  "fields": {
+    "dni": 39381461,
+    "nombre": "Juan",
+    "apellido": "Muñoz",
+    "direccion": "Rivadavia 130",
+    "telefono": "2804476334"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 12,
+  "fields": {
+    "dni": 37051058,
+    "nombre": "Liliana",
+    "apellido": "Ponce",
+    "direccion": "Cambrin 1721",
+    "telefono": "2804916988"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 13,
+  "fields": {
+    "dni": 73054248,
+    "nombre": "Susana",
+    "apellido": "Vázquez",
+    "direccion": "Nicaragua 547",
+    "telefono": "2804284823"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 14,
+  "fields": {
+    "dni": 71450069,
+    "nombre": "Marcelo",
+    "apellido": "Ponce",
+    "direccion": "Juan Manuel de Rosas 382",
+    "telefono": "2804655816"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 15,
+  "fields": {
+    "dni": 39662168,
+    "nombre": "Antonio",
+    "apellido": "Torres",
+    "direccion": "Brasil 335",
+    "telefono": "2804202645"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 16,
+  "fields": {
+    "dni": 19810164,
+    "nombre": "Víctor",
+    "apellido": "Núñez",
+    "direccion": "Edwin Roberts 573",
+    "telefono": "2804909045"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 17,
+  "fields": {
+    "dni": 15726398,
+    "nombre": "Mónica",
+    "apellido": "Pereyra",
+    "direccion": "Corrientes 1565",
+    "telefono": "2804492828"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 18,
+  "fields": {
+    "dni": 11596927,
+    "nombre": "Andrea",
+    "apellido": "Cáceres",
+    "direccion": "Juan Manuel de Rosas 118",
+    "telefono": "2804205179"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 19,
+  "fields": {
+    "dni": 13727436,
+    "nombre": "Hugo",
+    "apellido": "Ponce",
+    "direccion": "San David 813",
+    "telefono": "2804728840"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 20,
+  "fields": {
+    "dni": 36911818,
+    "nombre": "Claudio",
+    "apellido": "Sosa",
+    "direccion": "El Carmen 1568",
+    "telefono": "2804924670"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 21,
+  "fields": {
+    "dni": 13577155,
+    "nombre": "Ricardo",
+    "apellido": "Coronel",
+    "direccion": "España 1334",
+    "telefono": "2804219502"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 22,
+  "fields": {
+    "dni": 36365297,
+    "nombre": "Rosa",
+    "apellido": "Castro",
+    "direccion": "Juan Manuel de Rosas 470",
+    "telefono": "2804547142"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 23,
+  "fields": {
+    "dni": 46394379,
+    "nombre": "Óscar",
+    "apellido": "Fernández",
+    "direccion": "9 de Julio 118",
+    "telefono": "2804758226"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 24,
+  "fields": {
+    "dni": 84056849,
+    "nombre": "Juan",
+    "apellido": "Giménez",
+    "direccion": "Juan Evans 654",
+    "telefono": "2804854387"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 25,
+  "fields": {
+    "dni": 18460025,
+    "nombre": "Cristian",
+    "apellido": "Morales",
+    "direccion": "Crucero Gral. Belgrano 1006",
+    "telefono": "2804784454"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 26,
+  "fields": {
+    "dni": 36040360,
+    "nombre": "Carmen",
+    "apellido": "Álvarez",
+    "direccion": "28 de Julio 1168",
+    "telefono": "2804435897"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 27,
+  "fields": {
+    "dni": 50193047,
+    "nombre": "Laura",
+    "apellido": "Romero",
+    "direccion": "Paraná 792",
+    "telefono": "2804684533"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 28,
+  "fields": {
+    "dni": 80327986,
+    "nombre": "José",
+    "apellido": "Navarro",
+    "direccion": "Edison 1355",
+    "telefono": "2804480760"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 29,
+  "fields": {
+    "dni": 20653865,
+    "nombre": "Rosa",
+    "apellido": "Ortiz",
+    "direccion": "Brasil 166",
+    "telefono": "2804190450"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 30,
+  "fields": {
+    "dni": 75193358,
+    "nombre": "Manuel",
+    "apellido": "Ramírez",
+    "direccion": "Mitre 142",
+    "telefono": "2804328551"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 31,
+  "fields": {
+    "dni": 63387231,
+    "nombre": "Daniel",
+    "apellido": "Morales",
+    "direccion": "Zapiola 375",
+    "telefono": "2804000655"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 32,
+  "fields": {
+    "dni": 47091520,
+    "nombre": "Walter",
+    "apellido": "Moreno",
+    "direccion": "9 de Julio 351",
+    "telefono": "2804358557"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 33,
+  "fields": {
+    "dni": 43005220,
+    "nombre": "Andrea",
+    "apellido": "Arias",
+    "direccion": "25 de Mayo 937",
+    "telefono": "2804060348"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 34,
+  "fields": {
+    "dni": 65763186,
+    "nombre": "Miguel",
+    "apellido": "Vázquez",
+    "direccion": "Rivadavia 1452",
+    "telefono": "2804220517"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 35,
+  "fields": {
+    "dni": 66911577,
+    "nombre": "Olga",
+    "apellido": "Fernández",
+    "direccion": "Pje. Portugal 417",
+    "telefono": "2804421730"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 36,
+  "fields": {
+    "dni": 13725273,
+    "nombre": "Óscar",
+    "apellido": "López",
+    "direccion": "Cuba 623",
+    "telefono": "2804597136"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 37,
+  "fields": {
+    "dni": 89089934,
+    "nombre": "Graciela",
+    "apellido": "González",
+    "direccion": "Musters 1163",
+    "telefono": "2804904704"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 38,
+  "fields": {
+    "dni": 22613636,
+    "nombre": "Daniel",
+    "apellido": "Vázquez",
+    "direccion": "Piedrabuena 165",
+    "telefono": "2804171275"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 39,
+  "fields": {
+    "dni": 11129067,
+    "nombre": "María",
+    "apellido": "Cabrera",
+    "direccion": "Paraguay 1503",
+    "telefono": "2804468208"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 40,
+  "fields": {
+    "dni": 48229532,
+    "nombre": "Olga",
+    "apellido": "Aguirre",
+    "direccion": "25 de Mayo 1270",
+    "telefono": "2804075136"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 41,
+  "fields": {
+    "dni": 58970195,
+    "nombre": "Juan",
+    "apellido": "López",
+    "direccion": "Lezana 327",
+    "telefono": "2804341373"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 42,
+  "fields": {
+    "dni": 16385973,
+    "nombre": "Ángel",
+    "apellido": "Villalba",
+    "direccion": "San David 624",
+    "telefono": "2804348607"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 43,
+  "fields": {
+    "dni": 67651993,
+    "nombre": "Roberto",
+    "apellido": "Torres",
+    "direccion": "Zapiola 1581",
+    "telefono": "2804442975"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 44,
+  "fields": {
+    "dni": 77593580,
+    "nombre": "Mónica",
+    "apellido": "Medina",
+    "direccion": "Brasil 1191",
+    "telefono": "2804218701"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 45,
+  "fields": {
+    "dni": 37019187,
+    "nombre": "Óscar",
+    "apellido": "Carrizo",
+    "direccion": "Lezana 236",
+    "telefono": "2804133558"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 46,
+  "fields": {
+    "dni": 16254419,
+    "nombre": "Diego",
+    "apellido": "Villalba",
+    "direccion": "Rivadavia 1079",
+    "telefono": "2804476305"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 47,
+  "fields": {
+    "dni": 32320958,
+    "nombre": "Martín",
+    "apellido": "Cáceres",
+    "direccion": "Corrientes 593",
+    "telefono": "2804277751"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 48,
+  "fields": {
+    "dni": 41347347,
+    "nombre": "Juana",
+    "apellido": "Carrizo",
+    "direccion": "9 de Julio 1652",
+    "telefono": "2804859866"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 49,
+  "fields": {
+    "dni": 44012587,
+    "nombre": "Cristian",
+    "apellido": "Ramos",
+    "direccion": "9 de Julio 1912",
+    "telefono": "2804402477"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 50,
+  "fields": {
+    "dni": 50915486,
+    "nombre": "Norma",
+    "apellido": "Pérez",
+    "direccion": "Mitre 428",
+    "telefono": "2804016663"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 51,
+  "fields": {
+    "dni": 23209650,
+    "nombre": "Silvia",
+    "apellido": "Ríos",
+    "direccion": "Piedrabuena 209",
+    "telefono": "2804000196"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 52,
+  "fields": {
+    "dni": 33930755,
+    "nombre": "Pablo",
+    "apellido": "Castro",
+    "direccion": "Pje. Portugal 1649",
+    "telefono": "2804378983"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 53,
+  "fields": {
+    "dni": 75009171,
+    "nombre": "María",
+    "apellido": "Gómez",
+    "direccion": "Corrientes 1271",
+    "telefono": "2804003578"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 54,
+  "fields": {
+    "dni": 38943385,
+    "nombre": "Ana",
+    "apellido": "Silva",
+    "direccion": "9 de Julio 1970",
+    "telefono": "2804639700"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 55,
+  "fields": {
+    "dni": 22859278,
+    "nombre": "Pedro",
+    "apellido": "Rodriguez",
+    "direccion": "Lezana 1652",
+    "telefono": "2804652513"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 56,
+  "fields": {
+    "dni": 67920610,
+    "nombre": "Ángel",
+    "apellido": "Vázquez",
+    "direccion": "Juan Manuel de Rosas 633",
+    "telefono": "2804832509"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 57,
+  "fields": {
+    "dni": 35936236,
+    "nombre": "Jorge",
+    "apellido": "Flores",
+    "direccion": "Brown 1803",
+    "telefono": "2804880447"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 58,
+  "fields": {
+    "dni": 80031529,
+    "nombre": "Sandra",
+    "apellido": "Gómez",
+    "direccion": "Musters 163",
+    "telefono": "2804440744"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 59,
+  "fields": {
+    "dni": 46053098,
+    "nombre": "Carmen",
+    "apellido": "Arias",
+    "direccion": "San Martín 1684",
+    "telefono": "2804965634"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 60,
+  "fields": {
+    "dni": 85867617,
+    "nombre": "Sandra",
+    "apellido": "Díaz",
+    "direccion": "Edison 1242",
+    "telefono": "2804874833"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 61,
+  "fields": {
+    "dni": 45792498,
+    "nombre": "Hugo",
+    "apellido": "Morales",
+    "direccion": "Av. Rawson 647",
+    "telefono": "2804683346"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 62,
+  "fields": {
+    "dni": 31294428,
+    "nombre": "Cristian",
+    "apellido": "Cardozo",
+    "direccion": "Edwin Roberts 1897",
+    "telefono": "2804770419"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 63,
+  "fields": {
+    "dni": 68658312,
+    "nombre": "Teresa",
+    "apellido": "Peralta",
+    "direccion": "Maipú 932",
+    "telefono": "2804349829"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 64,
+  "fields": {
+    "dni": 61721849,
+    "nombre": "Marcelo",
+    "apellido": "Fernández",
+    "direccion": "25 de Mayo 1543",
+    "telefono": "2804707432"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 65,
+  "fields": {
+    "dni": 37265452,
+    "nombre": "Laura",
+    "apellido": "Peralta",
+    "direccion": "Av. Rawson 1500",
+    "telefono": "2804530634"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 66,
+  "fields": {
+    "dni": 75232580,
+    "nombre": "Marta",
+    "apellido": "Ruiz",
+    "direccion": "Juan Evans 518",
+    "telefono": "2804134452"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 67,
+  "fields": {
+    "dni": 54596660,
+    "nombre": "Marcela",
+    "apellido": "Pérez",
+    "direccion": "Juan Manuel de Rosas 1679",
+    "telefono": "2804493381"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 68,
+  "fields": {
+    "dni": 37068762,
+    "nombre": "Gustavo",
+    "apellido": "Juárez",
+    "direccion": "Brown 511",
+    "telefono": "2804182823"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 69,
+  "fields": {
+    "dni": 81702302,
+    "nombre": "Carlos",
+    "apellido": "Pérez",
+    "direccion": "Pellegrini 1355",
+    "telefono": "2804541222"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 70,
+  "fields": {
+    "dni": 52909828,
+    "nombre": "Laura",
+    "apellido": "Gómez",
+    "direccion": "A. P. Bell 1208",
+    "telefono": "2804965324"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 71,
+  "fields": {
+    "dni": 77321006,
+    "nombre": "Marcelo",
+    "apellido": "Álvarez",
+    "direccion": "28 de Julio 1397",
+    "telefono": "2804289549"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 72,
+  "fields": {
+    "dni": 89268405,
+    "nombre": "Silvia",
+    "apellido": "Luna",
+    "direccion": "Luis Feldman 875",
+    "telefono": "2804472238"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 73,
+  "fields": {
+    "dni": 58743396,
+    "nombre": "Marcelo",
+    "apellido": "Benitez",
+    "direccion": "Centenario 1061",
+    "telefono": "2804977477"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 74,
+  "fields": {
+    "dni": 22513840,
+    "nombre": "Ramón",
+    "apellido": "Coronel",
+    "direccion": "Centenario 1076",
+    "telefono": "2804981068"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 75,
+  "fields": {
+    "dni": 82063879,
+    "nombre": "Óscar",
+    "apellido": "Sánchez",
+    "direccion": "Luis Feldman 1573",
+    "telefono": "2804775693"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 76,
+  "fields": {
+    "dni": 84145889,
+    "nombre": "Andrea",
+    "apellido": "Gómez",
+    "direccion": "Juan Evans 391",
+    "telefono": "2804253741"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 77,
+  "fields": {
+    "dni": 38961317,
+    "nombre": "Carmen",
+    "apellido": "López",
+    "direccion": "Paraná 958",
+    "telefono": "2804424292"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 78,
+  "fields": {
+    "dni": 48115007,
+    "nombre": "Laura",
+    "apellido": "Vázquez",
+    "direccion": "Edwin Roberts 915",
+    "telefono": "2804052975"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 79,
+  "fields": {
+    "dni": 57558651,
+    "nombre": "Silvia",
+    "apellido": "Suárez",
+    "direccion": "San David 1153",
+    "telefono": "2804794093"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 80,
+  "fields": {
+    "dni": 78614997,
+    "nombre": "Lidia",
+    "apellido": "Castro",
+    "direccion": "28 de Julio 592",
+    "telefono": "2804075526"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 81,
+  "fields": {
+    "dni": 49781798,
+    "nombre": "Rosa",
+    "apellido": "Díaz",
+    "direccion": "Paraguay 1518",
+    "telefono": "2804988104"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 82,
+  "fields": {
+    "dni": 75189598,
+    "nombre": "Alicia",
+    "apellido": "Pereyra",
+    "direccion": "San Martín 541",
+    "telefono": "2804103422"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 83,
+  "fields": {
+    "dni": 38593204,
+    "nombre": "Carmen",
+    "apellido": "Vargas",
+    "direccion": "Rivadavia 1089",
+    "telefono": "2804988323"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 84,
+  "fields": {
+    "dni": 77172423,
+    "nombre": "Juan",
+    "apellido": "Pereyra",
+    "direccion": "Tte. García 1084",
+    "telefono": "2804054540"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 85,
+  "fields": {
+    "dni": 36248952,
+    "nombre": "Ramón",
+    "apellido": "Gutiérrez",
+    "direccion": "Maipú 1152",
+    "telefono": "2804824527"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 86,
+  "fields": {
+    "dni": 72879705,
+    "nombre": "Jorge",
+    "apellido": "Ríos",
+    "direccion": "Brasil 915",
+    "telefono": "2804916886"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 87,
+  "fields": {
+    "dni": 52332940,
+    "nombre": "Daniel",
+    "apellido": "González",
+    "direccion": "Tte. García 653",
+    "telefono": "2804427651"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 88,
+  "fields": {
+    "dni": 76730214,
+    "nombre": "Julio",
+    "apellido": "Pérez",
+    "direccion": "Musters 1041",
+    "telefono": "2804812292"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 89,
+  "fields": {
+    "dni": 15948257,
+    "nombre": "Marta",
+    "apellido": "Silva",
+    "direccion": "Lezana 424",
+    "telefono": "2804854623"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 90,
+  "fields": {
+    "dni": 69743801,
+    "nombre": "Pablo",
+    "apellido": "Coronel",
+    "direccion": "Edwin Roberts 885",
+    "telefono": "2804882030"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 91,
+  "fields": {
+    "dni": 40622906,
+    "nombre": "Miguel",
+    "apellido": "Martínez",
+    "direccion": "Brasil 1133",
+    "telefono": "2804651538"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 92,
+  "fields": {
+    "dni": 20556506,
+    "nombre": "Héctor",
+    "apellido": "Herrera",
+    "direccion": "Brasil 1755",
+    "telefono": "2804011233"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 93,
+  "fields": {
+    "dni": 16568288,
+    "nombre": "Norma",
+    "apellido": "Gómez",
+    "direccion": "San David 428",
+    "telefono": "2804560043"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 94,
+  "fields": {
+    "dni": 11661387,
+    "nombre": "José",
+    "apellido": "Vega",
+    "direccion": "Juan Manuel de Rosas 1079",
+    "telefono": "2804121532"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 95,
+  "fields": {
+    "dni": 71318774,
+    "nombre": "Rosa",
+    "apellido": "González",
+    "direccion": "San Martín 253",
+    "telefono": "2804639437"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 96,
+  "fields": {
+    "dni": 31971387,
+    "nombre": "Sergio",
+    "apellido": "Ruiz",
+    "direccion": "Perú 1088",
+    "telefono": "2804526533"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 97,
+  "fields": {
+    "dni": 15853208,
+    "nombre": "Ramona",
+    "apellido": "Torres",
+    "direccion": "28 de Julio 1503",
+    "telefono": "2804072181"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 98,
+  "fields": {
+    "dni": 40163715,
+    "nombre": "Cristian",
+    "apellido": "Quiroga",
+    "direccion": "Edison 652",
+    "telefono": "2804566418"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 99,
+  "fields": {
+    "dni": 83961718,
+    "nombre": "Luis",
+    "apellido": "Cabrera",
+    "direccion": "Edison 1936",
+    "telefono": "2804507601"
+  }
+}, {
+  "model": "taller.cliente",
+  "pk": 100,
+  "fields": {
+    "dni": 48505338,
+    "nombre": "Claudia",
+    "apellido": "Luna",
+    "direccion": "Mitre 275",
+    "telefono": "2804702818"
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 1,
+  "fields": {
+    "nombre": "Volkswagen",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 2,
+  "fields": {
+    "nombre": "Peugeot",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 3,
+  "fields": {
+    "nombre": "Toyota",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 4,
+  "fields": {
+    "nombre": "Fiat",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 5,
+  "fields": {
+    "nombre": "Chevrolet",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 6,
+  "fields": {
+    "nombre": "Nissan",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 7,
+  "fields": {
+    "nombre": "Ford",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 8,
+  "fields": {
+    "nombre": "Jeep",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 9,
+  "fields": {
+    "nombre": "Citroën",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.marca",
+  "pk": 10,
+  "fields": {
+    "nombre": "Renault",
+    "descripcion": " "
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 1,
+  "fields": {
+    "nombre": "208",
+    "descripcion": "",
+    "marca": 2,
+    "anio": 2020
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 2,
+  "fields": {
+    "nombre": "Cruze",
+    "descripcion": "",
+    "marca": 5,
+    "anio": 2020
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 3,
+  "fields": {
+    "nombre": "Cronos",
+    "descripcion": "",
+    "marca": 4,
+    "anio": 2021
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 4,
+  "fields": {
+    "nombre": "Etios",
+    "descripcion": "",
+    "marca": 3,
+    "anio": 2013
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 5,
+  "fields": {
+    "nombre": "Corolla Cross",
+    "descripcion": "",
+    "marca": 3,
+    "anio": 2014
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 6,
+  "fields": {
+    "nombre": "Yaris",
+    "descripcion": "",
+    "marca": 3,
+    "anio": 2015
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 7,
+  "fields": {
+    "nombre": "Corolla",
+    "descripcion": "",
+    "marca": 3,
+    "anio": 2022
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 8,
+  "fields": {
+    "nombre": "Gol Trend",
+    "descripcion": "",
+    "marca": 1,
+    "anio": 2012
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 9,
+  "fields": {
+    "nombre": "C4 Cactus",
+    "descripcion": "",
+    "marca": 9,
+    "anio": 2020
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 10,
+  "fields": {
+    "nombre": "Sandero",
+    "descripcion": "",
+    "marca": 10,
+    "anio": 2013
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 11,
+  "fields": {
+    "nombre": "Onix",
+    "descripcion": "",
+    "marca": 5,
+    "anio": 2018
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 12,
+  "fields": {
+    "nombre": "Taos",
+    "descripcion": "",
+    "marca": 1,
+    "anio": 2018
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 13,
+  "fields": {
+    "nombre": "Ecosport",
+    "descripcion": "",
+    "marca": 7,
+    "anio": 2021
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 14,
+  "fields": {
+    "nombre": "Stepway",
+    "descripcion": "",
+    "marca": 10,
+    "anio": 2019
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 15,
+  "fields": {
+    "nombre": "T-Cross",
+    "descripcion": "",
+    "marca": 1,
+    "anio": 2020
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 16,
+  "fields": {
+    "nombre": "Tracker",
+    "descripcion": "",
+    "marca": 5,
+    "anio": 2022
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 17,
+  "fields": {
+    "nombre": "Nivus",
+    "descripcion": "",
+    "marca": 1,
+    "anio": 2018
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 18,
+  "fields": {
+    "nombre": "Sw4",
+    "descripcion": "",
+    "marca": 3,
+    "anio": 2021
+  }
+}, {
+  "model": "taller.modelo",
+  "pk": 19,
+  "fields": {
+    "nombre": "Renegade",
+    "descripcion": "",
+    "marca": 8,
+    "anio": 2017
+  }
+}
+]

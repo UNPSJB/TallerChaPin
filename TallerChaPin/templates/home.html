@@ -10,9 +10,17 @@
 <div class="contenedor">
     <div class="encabezado shadow-lg">
         <div class="container">
-            <span class="mt-3">
-                <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt logo-salir"></i></a>
-            </span>
+            <div class="d-flex justify-content-between">
+                <span class="mt-3">
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt logo-salir"></i></a>
+                </span>
+
+                <button type="button" class="btn btn-link">
+                    <a href="/docs/home.html" class="link-light" target="_blank">
+                    Ayuda    
+                    </a>
+                </button>
+            </div>
 
             <img src="{% static '/images/chapin1.png' %}" alt="Taller ChaPin" class="logo-home">
             <p>

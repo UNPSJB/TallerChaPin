@@ -174,6 +174,7 @@ class PresupuestoCreateView(CreateView):
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         
         context['titulo'] = "Registrar Presupuesto"
+        context['ayuda'] = 'presupuestos.html#creacion-de-un-presupuesto'
         return context
 
     def post(self, *args, **kwargs):
@@ -221,6 +222,7 @@ class PresupuestoUpdateView(UpdateView):
         context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(len(initial_repuestos))(initial=initial_repuestos)  # pasarle las lineas previas
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         context['titulo'] = "Modificar presupuesto"
+        context['ayuda'] = 'presupuestos.html#modificacion-de-un-presupuesto'
         return context
 
     def post(self, *args, **kwargs):
@@ -627,6 +629,7 @@ class ListarTurnosListView(ListView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Calendario de Turnos"
         context['turnos'] = self.get_turnos()
+        context['ayuda'] = 'turnos.html'
         return context
     
 def datoPlantilla(request, pk):

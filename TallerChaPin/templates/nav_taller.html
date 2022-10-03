@@ -16,6 +16,15 @@
       <a type="button" class="btn btn-primary" href="{% url 'listarDetallesOrden' %}"><i class="fas fa-tools"></i> Trabajos</a>  
     </div>
 
+
+    {% if ayuda %}
+      <button type="button" class="btn btn-link">
+        <a href="/docs/{{ayuda}}" class="link-light" target="_blank">
+          Ayuda    
+        </a>
+      </button>
+    {% endif %}
+
     <!-- Dropdown de sesión -->
     <ul class="navbar-nav sesion dropstart">
       <li class="nav-item dropdown active">

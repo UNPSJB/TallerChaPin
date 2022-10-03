@@ -542,6 +542,7 @@ class ClienteCreateView(CreateView):
         context = super().get_context_data(**kwargs)
 
         context['titulo'] = "Registrar cliente"
+        context['ayuda'] = 'crear_cliente.html'
         return context
 
 

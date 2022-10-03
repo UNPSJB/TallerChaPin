@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     "crispy_bootstrap5",
     "django_extensions",
+    "docs",
     #'wkhtmltopdf',
 ]
 
@@ -132,6 +133,9 @@ USE_TZ = True
 
 STATIC_ROOT = str(BASE_DIR / "temp") # "/TallerChaPin/TallerChaPin/static/"
 STATIC_URL = '/static/'
+
+DOCS_ROOT = os.path.join(BASE_DIR, 'manual/build/html')
+DOCS_ACCESS = 'public'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",

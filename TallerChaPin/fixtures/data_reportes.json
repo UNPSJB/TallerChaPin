@@ -1240,5 +1240,1255 @@
     "marca": 8,
     "anio": 2017
   }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 1,
+  "fields": {
+    "cliente": 1,
+    "patente": "DM030LM",
+    "modelo": 11,
+    "anio": 2015,
+    "chasis": "2WZGTLB9NGD740687"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 2,
+  "fields": {
+    "cliente": 2,
+    "patente": "WW563DX",
+    "modelo": 14,
+    "anio": 2015,
+    "chasis": "2UXHEQU7VAF742306"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 3,
+  "fields": {
+    "cliente": 3,
+    "patente": "QD924LY",
+    "modelo": 13,
+    "anio": 2021,
+    "chasis": "4KBWWFT1AHN819119"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 4,
+  "fields": {
+    "cliente": 4,
+    "patente": "FZ983MK",
+    "modelo": 13,
+    "anio": 2015,
+    "chasis": "3QOQTYI5NNT136478"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 5,
+  "fields": {
+    "cliente": 5,
+    "patente": "FP211LI",
+    "modelo": 18,
+    "anio": 2018,
+    "chasis": "1SALBPF8FTF418328"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 6,
+  "fields": {
+    "cliente": 6,
+    "patente": "LB698JA",
+    "modelo": 11,
+    "anio": 2020,
+    "chasis": "7GERJHB0RQL997467"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 7,
+  "fields": {
+    "cliente": 7,
+    "patente": "KD506OT",
+    "modelo": 14,
+    "anio": 2021,
+    "chasis": "2IHADDW5UQO246086"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 8,
+  "fields": {
+    "cliente": 8,
+    "patente": "PF251GN",
+    "modelo": 7,
+    "anio": 2014,
+    "chasis": "9FPHQUR9WJJ334723"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 9,
+  "fields": {
+    "cliente": 9,
+    "patente": "MS214GQ",
+    "modelo": 6,
+    "anio": 2014,
+    "chasis": "2IEYTQH2KBR888271"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 10,
+  "fields": {
+    "cliente": 10,
+    "patente": "QZ912CQ",
+    "modelo": 7,
+    "anio": 2015,
+    "chasis": "0BJTMFZ2GBO949052"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 11,
+  "fields": {
+    "cliente": 11,
+    "patente": "JR992YB",
+    "modelo": 16,
+    "anio": 2015,
+    "chasis": "9HURHZY3WCD764971"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 12,
+  "fields": {
+    "cliente": 12,
+    "patente": "TD903GR",
+    "modelo": 4,
+    "anio": 2015,
+    "chasis": "0SGBBHV7NQE720822"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 13,
+  "fields": {
+    "cliente": 13,
+    "patente": "SO998NE",
+    "modelo": 11,
+    "anio": 2018,
+    "chasis": "5RRXMQR6NME815321"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 14,
+  "fields": {
+    "cliente": 14,
+    "patente": "GJ296OO",
+    "modelo": 9,
+    "anio": 2021,
+    "chasis": "8EQZVTF7VFT250162"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 15,
+  "fields": {
+    "cliente": 15,
+    "patente": "IH450RS",
+    "modelo": 16,
+    "anio": 2020,
+    "chasis": "9QAPYBQ5IMD470662"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 16,
+  "fields": {
+    "cliente": 16,
+    "patente": "ML997XN",
+    "modelo": 3,
+    "anio": 2019,
+    "chasis": "9KQMGFB4XFT939724"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 17,
+  "fields": {
+    "cliente": 17,
+    "patente": "TB470KP",
+    "modelo": 9,
+    "anio": 2021,
+    "chasis": "0WXKPZL1PID721374"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 18,
+  "fields": {
+    "cliente": 18,
+    "patente": "OE815MS",
+    "modelo": 1,
+    "anio": 2021,
+    "chasis": "6NJXIOO3JKX382040"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 19,
+  "fields": {
+    "cliente": 19,
+    "patente": "DH010EI",
+    "modelo": 8,
+    "anio": 2020,
+    "chasis": "4QRXKMU1PHH401480"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 20,
+  "fields": {
+    "cliente": 20,
+    "patente": "JU910NK",
+    "modelo": 5,
+    "anio": 2019,
+    "chasis": "5WQLUEJ0QFG033124"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 21,
+  "fields": {
+    "cliente": 21,
+    "patente": "TF970KL",
+    "modelo": 3,
+    "anio": 2014,
+    "chasis": "6YTCAIC0GIX526767"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 22,
+  "fields": {
+    "cliente": 22,
+    "patente": "GI749ML",
+    "modelo": 16,
+    "anio": 2014,
+    "chasis": "4ZEOGYZ3MZE898862"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 23,
+  "fields": {
+    "cliente": 23,
+    "patente": "BK324VK",
+    "modelo": 11,
+    "anio": 2019,
+    "chasis": "2VRDYDP7OVZ912486"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 24,
+  "fields": {
+    "cliente": 24,
+    "patente": "GN277VP",
+    "modelo": 11,
+    "anio": 2015,
+    "chasis": "1ATPOCX7YFR361922"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 25,
+  "fields": {
+    "cliente": 25,
+    "patente": "XC508QS",
+    "modelo": 13,
+    "anio": 2022,
+    "chasis": "4WMSVMT1ELZ872462"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 26,
+  "fields": {
+    "cliente": 26,
+    "patente": "HQ074CO",
+    "modelo": 11,
+    "anio": 2017,
+    "chasis": "6ISIOMN7BMO230579"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 27,
+  "fields": {
+    "cliente": 27,
+    "patente": "XD578GD",
+    "modelo": 11,
+    "anio": 2019,
+    "chasis": "4EXXANJ7JNN220089"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 28,
+  "fields": {
+    "cliente": 28,
+    "patente": "UI219ST",
+    "modelo": 2,
+    "anio": 2021,
+    "chasis": "9ZKWOBW1RAX663444"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 29,
+  "fields": {
+    "cliente": 29,
+    "patente": "EU433VK",
+    "modelo": 9,
+    "anio": 2018,
+    "chasis": "9MWNPXS7SWZ602615"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 30,
+  "fields": {
+    "cliente": 30,
+    "patente": "KX917TD",
+    "modelo": 3,
+    "anio": 2021,
+    "chasis": "9ZZKLJJ9USB306513"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 31,
+  "fields": {
+    "cliente": 31,
+    "patente": "PH656KH",
+    "modelo": 15,
+    "anio": 2018,
+    "chasis": "0CSZHCE8AJA492454"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 32,
+  "fields": {
+    "cliente": 32,
+    "patente": "BK564TI",
+    "modelo": 3,
+    "anio": 2022,
+    "chasis": "0HNCRSH8XOW785302"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 33,
+  "fields": {
+    "cliente": 33,
+    "patente": "EB376ZV",
+    "modelo": 18,
+    "anio": 2021,
+    "chasis": "8FQJTSV7CZW635176"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 34,
+  "fields": {
+    "cliente": 34,
+    "patente": "WN547AI",
+    "modelo": 3,
+    "anio": 2016,
+    "chasis": "2ATFLKW7TGL833575"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 35,
+  "fields": {
+    "cliente": 35,
+    "patente": "LU975CE",
+    "modelo": 12,
+    "anio": 2019,
+    "chasis": "2DHEERM0OTU199331"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 36,
+  "fields": {
+    "cliente": 36,
+    "patente": "QB747WF",
+    "modelo": 1,
+    "anio": 2016,
+    "chasis": "5ZJTSYP1RZD150833"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 37,
+  "fields": {
+    "cliente": 37,
+    "patente": "WO708TD",
+    "modelo": 18,
+    "anio": 2016,
+    "chasis": "8BCKIFM8AFM316657"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 38,
+  "fields": {
+    "cliente": 38,
+    "patente": "CE924OK",
+    "modelo": 19,
+    "anio": 2020,
+    "chasis": "1EXNOWA1LVM804602"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 39,
+  "fields": {
+    "cliente": 39,
+    "patente": "WY167GP",
+    "modelo": 5,
+    "anio": 2016,
+    "chasis": "0MFODKA1LSX989659"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 40,
+  "fields": {
+    "cliente": 40,
+    "patente": "XK965VK",
+    "modelo": 11,
+    "anio": 2022,
+    "chasis": "2FBYFNS5UVG348911"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 41,
+  "fields": {
+    "cliente": 41,
+    "patente": "DW602SH",
+    "modelo": 15,
+    "anio": 2021,
+    "chasis": "3ATZMPW1CMB238777"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 42,
+  "fields": {
+    "cliente": 42,
+    "patente": "DF968CC",
+    "modelo": 6,
+    "anio": 2014,
+    "chasis": "4SZABPP7PFR598360"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 43,
+  "fields": {
+    "cliente": 43,
+    "patente": "EU491TG",
+    "modelo": 6,
+    "anio": 2022,
+    "chasis": "3AMZPZD5DBU177973"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 44,
+  "fields": {
+    "cliente": 44,
+    "patente": "TQ785WI",
+    "modelo": 18,
+    "anio": 2016,
+    "chasis": "3SZEIZG4SQA098101"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 45,
+  "fields": {
+    "cliente": 45,
+    "patente": "TD558AB",
+    "modelo": 6,
+    "anio": 2019,
+    "chasis": "6WPTHKX9NOV046104"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 46,
+  "fields": {
+    "cliente": 46,
+    "patente": "VH069UZ",
+    "modelo": 7,
+    "anio": 2015,
+    "chasis": "6HUFRTL7DCZ918148"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 47,
+  "fields": {
+    "cliente": 47,
+    "patente": "TJ884OK",
+    "modelo": 12,
+    "anio": 2017,
+    "chasis": "0MQHCER8TDZ950715"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 48,
+  "fields": {
+    "cliente": 48,
+    "patente": "MD100ZS",
+    "modelo": 12,
+    "anio": 2019,
+    "chasis": "0AOTMBB1JKV486857"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 49,
+  "fields": {
+    "cliente": 49,
+    "patente": "GC063NF",
+    "modelo": 2,
+    "anio": 2019,
+    "chasis": "1MHAUCA1XYK265119"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 50,
+  "fields": {
+    "cliente": 50,
+    "patente": "XD697HB",
+    "modelo": 7,
+    "anio": 2017,
+    "chasis": "6DFFXFR4UNW277680"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 51,
+  "fields": {
+    "cliente": 51,
+    "patente": "SK047CC",
+    "modelo": 14,
+    "anio": 2018,
+    "chasis": "0NSKSCJ3LTI226942"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 52,
+  "fields": {
+    "cliente": 52,
+    "patente": "KU512PL",
+    "modelo": 13,
+    "anio": 2016,
+    "chasis": "7HLTECE2SNW550713"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 53,
+  "fields": {
+    "cliente": 53,
+    "patente": "GC351EJ",
+    "modelo": 16,
+    "anio": 2016,
+    "chasis": "0EBQCJW5AGV346595"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 54,
+  "fields": {
+    "cliente": 54,
+    "patente": "GD098ZE",
+    "modelo": 4,
+    "anio": 2016,
+    "chasis": "0UGXJXE5CRE038513"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 55,
+  "fields": {
+    "cliente": 55,
+    "patente": "HH860HB",
+    "modelo": 16,
+    "anio": 2018,
+    "chasis": "6XRGQXJ6OLZ932952"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 56,
+  "fields": {
+    "cliente": 56,
+    "patente": "SX527JY",
+    "modelo": 10,
+    "anio": 2021,
+    "chasis": "1SLOYXW8KJW981047"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 57,
+  "fields": {
+    "cliente": 57,
+    "patente": "FF928XR",
+    "modelo": 15,
+    "anio": 2020,
+    "chasis": "8ODSHFB6QIE584192"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 58,
+  "fields": {
+    "cliente": 58,
+    "patente": "AM809VD",
+    "modelo": 9,
+    "anio": 2018,
+    "chasis": "2HDEMIP0NGN021589"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 59,
+  "fields": {
+    "cliente": 59,
+    "patente": "SU746GY",
+    "modelo": 12,
+    "anio": 2015,
+    "chasis": "2DURHMZ1HLG572375"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 60,
+  "fields": {
+    "cliente": 60,
+    "patente": "LF561PL",
+    "modelo": 12,
+    "anio": 2019,
+    "chasis": "0UXPBLM3CFT256651"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 61,
+  "fields": {
+    "cliente": 61,
+    "patente": "KH906AN",
+    "modelo": 19,
+    "anio": 2014,
+    "chasis": "2JBQQVH8EQT604388"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 62,
+  "fields": {
+    "cliente": 62,
+    "patente": "WE661BO",
+    "modelo": 15,
+    "anio": 2022,
+    "chasis": "8DRESCU3MMP634662"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 63,
+  "fields": {
+    "cliente": 63,
+    "patente": "QK911LV",
+    "modelo": 3,
+    "anio": 2021,
+    "chasis": "1GWYASG0FUK114744"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 64,
+  "fields": {
+    "cliente": 64,
+    "patente": "YD947HY",
+    "modelo": 18,
+    "anio": 2021,
+    "chasis": "3ATUMZE0IAQ222539"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 65,
+  "fields": {
+    "cliente": 65,
+    "patente": "TB454FT",
+    "modelo": 16,
+    "anio": 2021,
+    "chasis": "0EJMSZN0LGM093068"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 66,
+  "fields": {
+    "cliente": 66,
+    "patente": "LY142EY",
+    "modelo": 12,
+    "anio": 2014,
+    "chasis": "7LOAUMO1WMJ673104"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 67,
+  "fields": {
+    "cliente": 67,
+    "patente": "II309NB",
+    "modelo": 6,
+    "anio": 2015,
+    "chasis": "2APGBKS6EDL267925"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 68,
+  "fields": {
+    "cliente": 68,
+    "patente": "WD726CL",
+    "modelo": 6,
+    "anio": 2019,
+    "chasis": "7MVRFTM2RBP261606"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 69,
+  "fields": {
+    "cliente": 69,
+    "patente": "WZ530XQ",
+    "modelo": 12,
+    "anio": 2021,
+    "chasis": "7IAYGIO7HHI588906"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 70,
+  "fields": {
+    "cliente": 70,
+    "patente": "IO214AY",
+    "modelo": 14,
+    "anio": 2018,
+    "chasis": "4RAEVVN1YEV404214"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 71,
+  "fields": {
+    "cliente": 71,
+    "patente": "UH173XZ",
+    "modelo": 4,
+    "anio": 2022,
+    "chasis": "4ZUFHNA7FCS944683"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 72,
+  "fields": {
+    "cliente": 72,
+    "patente": "QK149JG",
+    "modelo": 14,
+    "anio": 2020,
+    "chasis": "7ORDPIM4LCF524555"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 73,
+  "fields": {
+    "cliente": 73,
+    "patente": "FG408QK",
+    "modelo": 1,
+    "anio": 2020,
+    "chasis": "5XYPXYB5MQJ075047"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 74,
+  "fields": {
+    "cliente": 74,
+    "patente": "KZ814MA",
+    "modelo": 8,
+    "anio": 2015,
+    "chasis": "7XSTUBM8TVM295505"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 75,
+  "fields": {
+    "cliente": 75,
+    "patente": "UY082YE",
+    "modelo": 5,
+    "anio": 2014,
+    "chasis": "7QTISZK8VNU772506"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 76,
+  "fields": {
+    "cliente": 76,
+    "patente": "AB287YT",
+    "modelo": 1,
+    "anio": 2021,
+    "chasis": "9WLQMOL8QIM337473"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 77,
+  "fields": {
+    "cliente": 77,
+    "patente": "MG549PP",
+    "modelo": 4,
+    "anio": 2017,
+    "chasis": "5EQTKIB0JGN275463"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 78,
+  "fields": {
+    "cliente": 78,
+    "patente": "IQ085RX",
+    "modelo": 8,
+    "anio": 2019,
+    "chasis": "1BJVVQD5LIE446537"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 79,
+  "fields": {
+    "cliente": 79,
+    "patente": "FA966VV",
+    "modelo": 12,
+    "anio": 2020,
+    "chasis": "1RBKHYU0PSA588998"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 80,
+  "fields": {
+    "cliente": 80,
+    "patente": "HR231QB",
+    "modelo": 12,
+    "anio": 2016,
+    "chasis": "2REOPZS7HAI880240"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 81,
+  "fields": {
+    "cliente": 81,
+    "patente": "EA232CF",
+    "modelo": 16,
+    "anio": 2019,
+    "chasis": "7NHPLIU6ABG211925"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 82,
+  "fields": {
+    "cliente": 82,
+    "patente": "VQ361OJ",
+    "modelo": 9,
+    "anio": 2017,
+    "chasis": "3UZCENZ2YUP853827"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 83,
+  "fields": {
+    "cliente": 83,
+    "patente": "YD954CO",
+    "modelo": 4,
+    "anio": 2020,
+    "chasis": "0YWERKI8DLJ545147"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 84,
+  "fields": {
+    "cliente": 84,
+    "patente": "PM281HJ",
+    "modelo": 11,
+    "anio": 2019,
+    "chasis": "1TLQMLB3XNW716579"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 85,
+  "fields": {
+    "cliente": 85,
+    "patente": "IH802LD",
+    "modelo": 15,
+    "anio": 2016,
+    "chasis": "8VSDBNT2MNS395639"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 86,
+  "fields": {
+    "cliente": 86,
+    "patente": "OI273RG",
+    "modelo": 14,
+    "anio": 2017,
+    "chasis": "0EEWQEF9GDQ147300"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 87,
+  "fields": {
+    "cliente": 87,
+    "patente": "RZ730TR",
+    "modelo": 14,
+    "anio": 2017,
+    "chasis": "6MDLELD7GRL051802"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 88,
+  "fields": {
+    "cliente": 88,
+    "patente": "TO791LO",
+    "modelo": 14,
+    "anio": 2022,
+    "chasis": "4CSVZPR5QID028723"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 89,
+  "fields": {
+    "cliente": 89,
+    "patente": "GR847ER",
+    "modelo": 14,
+    "anio": 2018,
+    "chasis": "1LLHOJG0WQG219483"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 90,
+  "fields": {
+    "cliente": 90,
+    "patente": "ES731RP",
+    "modelo": 11,
+    "anio": 2016,
+    "chasis": "1FYGKGL4AXC390391"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 91,
+  "fields": {
+    "cliente": 91,
+    "patente": "TY200WD",
+    "modelo": 13,
+    "anio": 2016,
+    "chasis": "9VXSJHK2ZZK279471"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 92,
+  "fields": {
+    "cliente": 92,
+    "patente": "ND695YH",
+    "modelo": 17,
+    "anio": 2017,
+    "chasis": "5BGPVWH8YNF024565"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 93,
+  "fields": {
+    "cliente": 93,
+    "patente": "NJ814QQ",
+    "modelo": 9,
+    "anio": 2016,
+    "chasis": "9QMESZU7XJX608861"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 94,
+  "fields": {
+    "cliente": 94,
+    "patente": "OM746CI",
+    "modelo": 8,
+    "anio": 2021,
+    "chasis": "7VAJVTR2GJJ580607"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 95,
+  "fields": {
+    "cliente": 95,
+    "patente": "CB799TO",
+    "modelo": 17,
+    "anio": 2018,
+    "chasis": "1PNXTEX0IPX060214"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 96,
+  "fields": {
+    "cliente": 96,
+    "patente": "OU895RC",
+    "modelo": 2,
+    "anio": 2021,
+    "chasis": "5LKSRSY7DRD669407"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 97,
+  "fields": {
+    "cliente": 97,
+    "patente": "NH715QZ",
+    "modelo": 3,
+    "anio": 2019,
+    "chasis": "2RVGKXF3SDZ775807"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 98,
+  "fields": {
+    "cliente": 98,
+    "patente": "WH452JZ",
+    "modelo": 12,
+    "anio": 2018,
+    "chasis": "8INEFBS5NLV599986"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 99,
+  "fields": {
+    "cliente": 99,
+    "patente": "FY152KI",
+    "modelo": 8,
+    "anio": 2021,
+    "chasis": "0IXZVQQ7YDZ517714"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 100,
+  "fields": {
+    "cliente": 100,
+    "patente": "GW031MJ",
+    "modelo": 4,
+    "anio": 2014,
+    "chasis": "1DKAQJG7YCT333915"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 101,
+  "fields": {
+    "cliente": 36,
+    "patente": "LO968XN",
+    "modelo": 8,
+    "anio": 2018,
+    "chasis": "0HYTNXA8ZPS472371"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 102,
+  "fields": {
+    "cliente": 18,
+    "patente": "IF869PB",
+    "modelo": 11,
+    "anio": 2014,
+    "chasis": "2APFJCK8NVU962736"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 103,
+  "fields": {
+    "cliente": 49,
+    "patente": "HU076MW",
+    "modelo": 6,
+    "anio": 2014,
+    "chasis": "4EDNXSQ8XJM469627"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 104,
+  "fields": {
+    "cliente": 20,
+    "patente": "JP597FP",
+    "modelo": 16,
+    "anio": 2021,
+    "chasis": "0YRDPTP6EUJ448428"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 105,
+  "fields": {
+    "cliente": 8,
+    "patente": "NZ889AM",
+    "modelo": 4,
+    "anio": 2022,
+    "chasis": "3JFRJXK6HZR803718"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 106,
+  "fields": {
+    "cliente": 50,
+    "patente": "LA580SW",
+    "modelo": 15,
+    "anio": 2022,
+    "chasis": "9VGQPSR7UUC234257"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 107,
+  "fields": {
+    "cliente": 13,
+    "patente": "MJ078JP",
+    "modelo": 19,
+    "anio": 2018,
+    "chasis": "2TFCOJE2FMN406761"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 108,
+  "fields": {
+    "cliente": 70,
+    "patente": "YT017SK",
+    "modelo": 19,
+    "anio": 2021,
+    "chasis": "4POLEZY2OTJ750242"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 109,
+  "fields": {
+    "cliente": 16,
+    "patente": "HD352LC",
+    "modelo": 12,
+    "anio": 2022,
+    "chasis": "7KPCBHT1FZS936988"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 110,
+  "fields": {
+    "cliente": 9,
+    "patente": "DO918ON",
+    "modelo": 17,
+    "anio": 2016,
+    "chasis": "6RZXLVL8WJU327278"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 111,
+  "fields": {
+    "cliente": 12,
+    "patente": "MU909ZG",
+    "modelo": 3,
+    "anio": 2016,
+    "chasis": "4EOFWUN2HFJ750453"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 112,
+  "fields": {
+    "cliente": 46,
+    "patente": "OE857ME",
+    "modelo": 9,
+    "anio": 2022,
+    "chasis": "4HIRPUD9BAO886286"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 113,
+  "fields": {
+    "cliente": 22,
+    "patente": "AV117YA",
+    "modelo": 12,
+    "anio": 2015,
+    "chasis": "1RRGOJB5RKO883173"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 114,
+  "fields": {
+    "cliente": 63,
+    "patente": "FB373JH",
+    "modelo": 1,
+    "anio": 2021,
+    "chasis": "9UPIBDJ9SHB014820"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 115,
+  "fields": {
+    "cliente": 83,
+    "patente": "XE032FW",
+    "modelo": 11,
+    "anio": 2016,
+    "chasis": "8NKKSTQ2SGD964842"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 116,
+  "fields": {
+    "cliente": 80,
+    "patente": "GB733JT",
+    "modelo": 9,
+    "anio": 2015,
+    "chasis": "0GJUCVR9LLO588609"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 117,
+  "fields": {
+    "cliente": 37,
+    "patente": "QE335MJ",
+    "modelo": 15,
+    "anio": 2022,
+    "chasis": "9RIMUKB2YOT318951"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 118,
+  "fields": {
+    "cliente": 85,
+    "patente": "OP172XL",
+    "modelo": 9,
+    "anio": 2022,
+    "chasis": "3DFJQHL4CEY795713"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 119,
+  "fields": {
+    "cliente": 79,
+    "patente": "IT141BY",
+    "modelo": 14,
+    "anio": 2015,
+    "chasis": "0EFTRZT9QXY762994"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 120,
+  "fields": {
+    "cliente": 80,
+    "patente": "BN172PU",
+    "modelo": 4,
+    "anio": 2018,
+    "chasis": "1IQUAHE0FOJ136605"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 121,
+  "fields": {
+    "cliente": 43,
+    "patente": "QX296GQ",
+    "modelo": 16,
+    "anio": 2016,
+    "chasis": "2NKOJFQ0ZPV171846"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 122,
+  "fields": {
+    "cliente": 1,
+    "patente": "CJ581IN",
+    "modelo": 6,
+    "anio": 2020,
+    "chasis": "0IDVACO9DYE136392"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 123,
+  "fields": {
+    "cliente": 71,
+    "patente": "ZS895GL",
+    "modelo": 10,
+    "anio": 2022,
+    "chasis": "6TOWDEM2ZFR336845"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 124,
+  "fields": {
+    "cliente": 66,
+    "patente": "QD883QH",
+    "modelo": 9,
+    "anio": 2015,
+    "chasis": "2JZEKKT1PPA644243"
+  }
+}, {
+  "model": "taller.vehiculo",
+  "pk": 125,
+  "fields": {
+    "cliente": 99,
+    "patente": "NN514EE",
+    "modelo": 14,
+    "anio": 2022,
+    "chasis": "8RGHYFN4PAP833221"
+  }
 }
 ]

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/accesos-directos.css' %}">
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
-{% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' %} {% endblock %}
+{% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' with ayuda=ayuda %} {% endblock %}
 
 <div class="container-fluid">
   <div class="row d-flex justify-content-between">

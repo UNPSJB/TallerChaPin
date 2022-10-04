@@ -300,6 +300,7 @@ class OrdenTrabajoCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar Orden"
+        context['ayuda'] = 'presupuestos.html#confirmacion-de-un-presupuesto'
         return context
 
     def post(self, *args, **kwargs):
@@ -391,6 +392,7 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de detalles de Orden de Trabajo"
+        context['ayuda'] = 'home.html#trabajos'
         context['sinAsignar'] = DetalleOrdenDeTrabajo.objects.sin_asignar()
         context['sinFinalizar'] = DetalleOrdenDeTrabajo.objects.sin_finalizar()
         context['asignados'] = DetalleOrdenDeTrabajo.objects.asignados()

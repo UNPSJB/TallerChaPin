@@ -369,12 +369,8 @@ class MaterialFiltrosForm(FiltrosForm):
     cantidad = forms.DecimalField(required=False)
     precio = forms.DecimalField(required=False)
 
-    material__tipo = forms.ModelChoiceField(
+    tipo = forms.ModelChoiceField(
         queryset=TipoMaterial.objects.all().order_by('nombre'), required=False)
-
-    orden = forms.CharField(
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -387,7 +383,10 @@ class MaterialFiltrosForm(FiltrosForm):
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "nombre",
-                "material__tipo"
+                "tipo",
+                "precio",
+                "descripcion",
+
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

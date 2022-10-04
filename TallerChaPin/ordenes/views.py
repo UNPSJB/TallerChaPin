@@ -123,14 +123,14 @@ class PresupuestoDetailView(DetailView):
         context['titulo'] = "TallerChaPin"
         return context
 
-    def get(self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        try:
-            presupuesto = Presupuesto.objects.get(pk=pk)
-        except Presupuesto.DoesNotExist:
-            messages.add_message(self.request, messages.ERROR, "No se registra ese presupuesto.")
-            return redirect('listarPresupuestos')
-        return self.post(*args, **kwargs)
+    # def get(self, *args, **kwargs):
+    #     pk = kwargs.get('pk')
+    #     try:
+    #         presupuesto = Presupuesto.objects.get(pk=pk)
+    #     except Presupuesto.DoesNotExist:
+    #         messages.add_message(self.request, messages.ERROR, "No se registra ese presupuesto.")
+    #         return redirect('listarPresupuestos')
+    #     return self.post(*args, **kwargs)
 
     # def post(self, *args, **kwargs):
     #     pass 

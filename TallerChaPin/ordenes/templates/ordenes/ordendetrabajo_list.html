@@ -76,4 +76,52 @@
 <script>
   conectarBotonesAModal('.btn-eliminar', 'modalEliminarOrden');
 </script>
+<script>
+  //viva la reutilizacion
+  const select_cliente = document.getElementById('id_presupuestos__cliente')
+  const select_vehiculos = document.getElementById('id_presupuestos__vehiculo')
+
+  function get_base_url(){
+    const url = window.location.href
+    const index = url.indexOf('/',7) // Empiezo a buscar '/' en la posición 7 para evitar 'http://'
+    return url.slice(0, index)
+}
+
+function get_pk_presupuesto(){
+    const url = window.location.href
+    const pk = url.substring(url.lastIndexOf('/') + 1)
+    return pk
+}
+
+  select_cliente?.addEventListener("change", () => {
+    
+    // Elimino todas las opciones del input
+    select_vehiculos.options.length = 1
+    if (select_cliente.value) {
+        cargarVehiculosCliente()
+    }
+    
+})
+
+function cargarVehiculosCliente() {
+
+    // Obtengo los datos necesarios para hacer el fetch
+    const base = get_base_url()
+    const pk_cliente = select_cliente.value
+    fetch(`${base}/taller/cliente/vehiculos/${pk_cliente}`)
+    .then(response => response.json())
+    .then(response => {
+        // Agrego las opciones al input de vehículo
+        response.vehiculos.forEach(v => {
+            option = document.createElement("option")
+            option.value = v.id
+            option.text = `${v.modelo__nombre}, ${v.patente}`
+            select_vehiculos.add(option)
+        });
+    })
+
+    return true
+}
+
+</script>
 {% endblock %}

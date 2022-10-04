@@ -1,3 +1,4 @@
+from tkinter import Label
 from django.urls import reverse
 from django.utils.http import urlencode
 from django import forms
@@ -320,10 +321,10 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
         ("estado", "Estado"),
     ]
 
-    cliente = forms.ModelChoiceField(
-        queryset=taller.Cliente.objects.all(), required=False)
-    vehiculo = forms.ModelChoiceField(
-        queryset=taller.Vehiculo.objects.all(), required=False)
+    presupuestos__cliente = forms.ModelChoiceField(
+        queryset=taller.Cliente.objects.all(), label="Cliente",required=False)
+    presupuestos__vehiculo = forms.ModelChoiceField(
+        queryset=taller.Vehiculo.objects.all(), label="Vehiculo", required=False)
     detalles = forms.CharField(required=False, max_length=200)
     estado = forms.ChoiceField(choices=ordenes.OrdenDeTrabajo.ESTADOS_CHOICES, required=False)
     tareas = forms.ModelChoiceField(
@@ -346,8 +347,8 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "cliente",
-                "vehiculo",
+                "presupuestos__cliente",
+                "presupuestos__vehiculo",
                 "detalles",
                 "estado",
                 "tareas",

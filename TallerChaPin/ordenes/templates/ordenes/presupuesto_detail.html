@@ -17,12 +17,12 @@
         <div class="col-md-9">
             <div class="ibox border border-primary rounded p-3 h-100 p-4">
                 <h3>
-                    {{ object.cliente.nombre }}, {{ object.cliente.apellido }}
+                    {{ presupuesto.cliente.nombre }}, {{ presupuesto.cliente.apellido }}
                 </h3>
                 <span>
-                    <i class="fas fa-car-side"></i> {{ object.vehiculo.patente }} ({{ object.vehiculo.modelo}}) <br>
-                    <i class="fas fa-calendar"></i> {{ object.fecha }} <br>
-                    <i class="fas fa-calendar"></i> Válido hasta {{object.get_fecha_vencimiento}}
+                    <i class="fas fa-car-side"></i> {{ presupuesto.vehiculo.patente }} ({{ presupuesto.vehiculo.modelo}}) <br>
+                    <i class="fas fa-calendar"></i> {{ presupuesto.fecha }} <br>
+                    <i class="fas fa-calendar"></i> Válido hasta {{presupuesto.get_fecha_vencimiento}}
                 </span>
             </div>
         </div>
@@ -49,14 +49,14 @@
     </div>
     
     <div class="row mt-4">
-        <span>(<strong>{{object.cantidad_detalles}}</strong>) elementos</span>   
+        <span>(<strong>{{presupuesto.cantidad_detalles}}</strong>) elementos</span>   
         
         <div class="col-md-9 mt-2">
             <div class="ibox-content">
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
-                            {% for tarea in object.tareas.all %}
+                            {% for tarea in presupuesto.tareas.all %}
                                 <tr>
                                     <td class="desc w-75">
                                         <small> <span class="text-primary"><i class="fas fa-thumbtack"></i> Tarea</span> | ${{ tarea.precio }} c/u</small>
@@ -78,7 +78,7 @@
                                 </tr>
                             {% endfor %}
 
-                            {% for detalle_repuesto in object.presupuesto_repuestos.all %}
+                            {% for detalle_repuesto in presupuesto.presupuesto_repuestos.all %}
                                 <tr>
                                     <td class="desc">
                                         <small><span class="text-danger"><i class="fas fa-cog"></i> Repuesto</span> | ${{ detalle_repuesto.repuesto.precio }} c/u</small>
@@ -100,7 +100,7 @@
                                 </tr>
                             {% endfor %}
 
-                            {% for material in object.presupuesto_materiales.all %}
+                            {% for material in presupuesto.presupuesto_materiales.all %}
                                 <tr>
                                     <td class="desc">
                                         <small><span class="text-success"><i class="fas fa-box-open"></i> Material</span> | ${{ material.material.precio }} c/u</small>
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="ibox-content mb-4">
-                <a href="{% url 'imprimirPresupuesto' object.pk %}" class="btn btn-primary pull-right">
+                <a href="{% url 'imprimirPresupuesto' presupuesto.pk %}" class="btn btn-primary pull-right">
                     <i class="fa fa-print" aria-hidden="true"></i> Imprimir
                 </a>
             </div>
@@ -135,32 +135,32 @@
             <div class="border border-primary rounded p-3">
                 <h5>Acciones</h5>
 
-                {% if object.puede_cancelarse %}
+                {% if presupuesto.puede_cancelarse %}
                     <button href="#" 
                     data-bs-toggle="modal" 
                     data-bs-target="#modalEliminarPresupuesto"
-                    data-bs-nombre="{{object.cliente.apellido}}" 
-                    data-bs-url="{% url 'eliminarPresupuesto' object.pk %}" 
+                    data-bs-nombre="{{presupuesto.cliente.apellido}}" 
+                    data-bs-url="{% url 'eliminarPresupuesto' presupuesto.pk %}" 
                     class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i> Cancelar </button>
                 {% endif %}
 
-                {% if object.puede_modificarse %}
-                    <a href="{% url 'modificarPresupuesto' object.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
+                {% if presupuesto.puede_modificarse %}
+                    <a href="{% url 'modificarPresupuesto' presupuesto.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-pencil-alt"></i> Modificar </a>
                 {% endif %}
 
-                {% if object.puede_confirmarse %}
-                    {% if object.tiene_anterior %}
-                        <a href="{% url 'confirmarAmpliacion' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
+                {% if presupuesto.puede_confirmarse %}
+                    {% if presupuesto.tiene_anterior %}
+                        <a href="{% url 'confirmarAmpliacion' presupuesto.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
                     {% else %}
-                        <a href="{% url 'crearOrden' object.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
+                        <a href="{% url 'crearOrden' presupuesto.pk %}" class="btn btn-success m-1 w-100"><i class="fas fa-check-circle"></i> Confirmar </a>
                     {% endif %}
                 {% endif %}
 
-                {% if object.tiene_orden %}
-                    <a href="{% url 'detallesOrden' object.orden.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver orden </a>
+                {% if presupuesto.tiene_orden %}
+                    <a href="{% url 'detallesOrden' presupuesto.orden.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver orden </a>
                 {% endif %}
 
-                {% if object.esta_expirado %}
+                {% if presupuesto.esta_expirado %}
                     <span>El presupuesto se encuentra <b>expirado</b>. No hay acciones disponibles</span>
                 {% endif %}
 

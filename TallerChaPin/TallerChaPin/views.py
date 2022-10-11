@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as django_logout, login as django_login, authenticate
 from django.urls import reverse_lazy
 from .forms import TallerAuthenticationForm
-
+from django.views.generic import TemplateView
 
 @login_required(login_url='/login')
 def home(request):
@@ -48,3 +48,20 @@ def template_facturas(request):
 
 def template_listados(request):
     return render(request, 'template_listados_home.html', {"title": "Visualización de listados", "ayuda": "home.html#listados"})
+
+
+class Error404View(TemplateView):
+    template_name = "404.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de presupuestos"
+        return context
+
+class Error500View(TemplateView):
+    template_name = "500.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de presupuestos"
+        return context

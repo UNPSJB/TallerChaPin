@@ -1,5 +1,5 @@
 from turtle import update
-from django.http import request, JsonResponse
+from django.http import Http404, request, JsonResponse
 from django.http.response import HttpResponse
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404
@@ -18,6 +18,11 @@ from functools import reduce
 from .utils import requiere_insumo
 import os
 from django.core.exceptions import ObjectDoesNotExist
+
+
+
+
+
 def requerimientos_tareas(request):
     """
         Recibe el pk de una o mas tareas y se retorna un diccionario como:
@@ -123,17 +128,13 @@ class PresupuestoDetailView(DetailView):
         context['titulo'] = "TallerChaPin"
         return context
 
-    # def get(self, *args, **kwargs):
-    #     pk = kwargs.get('pk')
-    #     try:
-    #         presupuesto = Presupuesto.objects.get(pk=pk)
-    #     except Presupuesto.DoesNotExist:
-    #         messages.add_message(self.request, messages.ERROR, "No se registra ese presupuesto.")
-    #         return redirect('listarPresupuestos')
-    #     return self.post(*args, **kwargs)
-
-    # def post(self, *args, **kwargs):
-    #     pass 
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        try:
+            presupuesto = Presupuesto.objects.get(pk=pk)
+        except Presupuesto.DoesNotExist:
+            raise Http404('Probando')
+        return render(self.request, 'ordenes/presupuesto_detail.html', {'presupuesto':presupuesto})
 
 class PresupuestoCreateView(CreateView):
     model = Presupuesto
@@ -302,6 +303,7 @@ class OrdenTrabajoCreateView(CreateView):
         context['titulo'] = "Registrar Orden"
         context['ayuda'] = 'presupuestos.html#confirmacion-de-un-presupuesto'
         return context
+
 
     def post(self, *args, **kwargs):
         pk = kwargs.get('pk')

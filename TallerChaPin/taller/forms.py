@@ -214,17 +214,21 @@ class RepuestoFiltrosForm(FiltrosForm):
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo')
 
-    tipo = forms.ChoiceField(choices=Repuesto.TIPOS,
+    #Consultar
+    tipo_choices = [('','-'*9)] + list(Repuesto.TIPOS)
+
+    tipo = forms.ChoiceField(choices=tipo_choices,
                              required=False, 
                              label='Tipo')
+   
 
-    # precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
-    # precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
+    precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
+    precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
 
-    # cantidad__gte = forms.IntegerField(
-    #     label="Mayor o igual que", required=False)
-    # cantidad__lte = forms.IntegerField(
-    #     label="Menor o igual que", required=False)
+    cantidad__gte = forms.IntegerField(
+        label="Mayor o igual que", required=False)
+    cantidad__lte = forms.IntegerField(
+        label="Menor o igual que", required=False)
 
     orden = forms.CharField(
         required=False
@@ -242,18 +246,17 @@ class RepuestoFiltrosForm(FiltrosForm):
                 "nombre",
                 "modelo",
                 "tipo",
-                # HTML("<label>Precio</label>"),
-                # "precio__gte",
-                # "precio__lte",
-                # HTML("<label>Cantidad</label>"),
-                # "cantidad__gte",
-                # "cantidad__lte"
+                HTML("<label><b>Precio:</b></label>"),
+                "precio__gte",
+                "precio__lte",
+                HTML("<label><b>Cantidad</b></label>"),
+                "cantidad__gte",
+                "cantidad__lte"
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
 # Tipo de Material
-
 
 class TipoMaterialForm(forms.ModelForm):
 
@@ -284,7 +287,6 @@ class TipoMaterialForm(forms.ModelForm):
         )
 
 # Tipo de Material - Filtro
-
 
 class TipoMaterialFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -320,7 +322,6 @@ class TipoMaterialFiltrosForm(FiltrosForm):
         )
 
 # Material
-
 
 class MaterialForm(forms.ModelForm):
 
@@ -367,10 +368,14 @@ class MaterialFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     cantidad = forms.DecimalField(required=False)
-    precio = forms.DecimalField(required=False)
+    # precio = forms.DecimalField(required=False)
 
     tipo = forms.ModelChoiceField(
         queryset=TipoMaterial.objects.all().order_by('nombre'), required=False)
+
+    precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
+    precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -384,8 +389,10 @@ class MaterialFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "nombre",
                 "tipo",
-                "precio",
                 "descripcion",
+                HTML('<label><b>Precio:</b></label>'),
+                "precio__gte",
+                "precio__lte"
 
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
@@ -543,8 +550,8 @@ class TareaFiltrosForm(FiltrosForm):
     tipo = forms.ModelChoiceField(
         queryset=TipoTarea.objects.all(), required=False)
 
-    # precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
-    # precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
+    precio__gte = forms.DecimalField(label="Mayor o igual que", required=False)
+    precio__lte = forms.DecimalField(label="Menor o igual que", required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -558,9 +565,11 @@ class TareaFiltrosForm(FiltrosForm):
                 "nombre",
                 "descripcion",
                 "tipo",
-                # HTML("<label> Precio </label>"),
-                # "precio__gte",
-                # "precio__lte"
+                HTML(
+                    '<label> <b>Precio:</b> </label>'
+                    ),
+                "precio__gte",
+                "precio__lte"
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -731,7 +740,7 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
         ("es_vip","Es Vip"),
     ]
 
-    dni = forms.IntegerField(max_value=99999999,min_value=0, required=False)
+    dni = forms.CharField (required=False, max_length=8)
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
@@ -753,10 +762,10 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
                 "dni",
                 "nombre",
                 "apellido",
-                "vehiculos__modelo"
+                "vehiculos__modelo",
+                Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
             ),
 
-            Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
 # Vehiculo Forms
@@ -822,6 +831,8 @@ class VehiculoFiltrosForm(FiltrosForm):
         queryset=Modelo.objects.all().order_by('nombre'), required=False)
     chasis = forms.CharField(required=False)
 
+    anio__gte = forms.IntegerField(label="Mayor o igual que", required=False)
+    anio__lte = forms.IntegerField(label="Menor o igual que", required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -835,6 +846,11 @@ class VehiculoFiltrosForm(FiltrosForm):
                 "patente",
                 "modelo",
                 "chasis",
+                HTML(
+                    '<label> <b>Año:</b> </label>'
+                ),
+                "anio__gte",
+                "anio__lte",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

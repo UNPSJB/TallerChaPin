@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from TallerChaPin.views import *
+from django.conf.urls import handler404, handler500
 
 urlpatterns = [
     path('', home, name="home"),
@@ -31,3 +32,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^docs/', include('docs.urls')),
 ]
+
+handler404 = Error404View.as_view()
+

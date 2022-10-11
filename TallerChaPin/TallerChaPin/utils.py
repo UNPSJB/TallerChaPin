@@ -34,7 +34,8 @@ class FiltrosForm(forms.Form):
 
     def sort(self, qs, ordering):
         for o in ordering.split(','):
-            qs = qs.order_by(o)  # aplicamos ordenamiento
+            if o != '':
+                qs = qs.order_by(o)  # aplicamos ordenamiento
         return qs
 
     def apply(self, qs):

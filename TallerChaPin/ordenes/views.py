@@ -304,6 +304,17 @@ class OrdenTrabajoCreateView(CreateView):
         context['ayuda'] = 'presupuestos.html#confirmacion-de-un-presupuesto'
         return context
 
+    def get (self, *args, **kwargs):
+        pk_presupuesto = kwargs.get('pk')
+        pk_orden = kwargs.get('pk')
+        try:
+            presupuesto = Presupuesto.objects.get(pk=pk_presupuesto)
+        except Presupuesto.DoesNotExist:
+            raise Http404
+        
+        if not presupuesto.puede_confirmarse():
+            raise Http404
+        return render(self.request, 'ordenes/ordendetrabajo_form.html', {'presupuesto' : presupuesto})
 
     def post(self, *args, **kwargs):
         pk = kwargs.get('pk')

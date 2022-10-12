@@ -33,5 +33,4 @@ urlpatterns = [
     re_path(r'^docs/', include('docs.urls')),
 ]
 
-handler404 = Error404View.as_view()
 

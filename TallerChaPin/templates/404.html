@@ -1,12 +1,12 @@
-{% extends 'template_taller.html' %}
+{% extends 'exceptions.html' %}
 {% load static %}
-
-{% block sidebar%}
-{% endblock %}
 
 
 {% block main %}
-	<h1>Probando 404</h1>
+
+	<div class="mb-2 lead"><h1>{{exception}}</h1></div>
+	<a href="{% url 'home' %}" class="btn btn-link">Volver al inicio</a>
+			
 {% endblock %}
 
 

@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from datetime import date
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 # http://....../?atributo__contains=valor
@@ -13,7 +14,7 @@ from datetime import date
 def validacion_nombre_unico(modelo, campo, value):
     aux = dict([(f"{campo}__iregex", f'^{value}$')])
     if modelo.objects.filter(**aux).exists():
-        raise ValidationError({"nombre": "nombre ya existe"})
+        raise ValidationError({"nombre": "nombre ya existe"}) #TODO: se muestran con un formato malo
     # return validateeven
 
 
@@ -49,13 +50,15 @@ class ModeloQuerySet(models.QuerySet):
     def filtrar(self, texto):
         return self.filter(texto_to_query(texto))
 
-
+def anio_valido(anio):
+    if anio > date.today().year:
+        raise ValidationError('El año del modelo no puede ser mayor al año actual')
 class Modelo(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     descripcion = models.CharField(max_length=200, blank=True)
     marca = models.ForeignKey(
         Marca, related_name="modelos", on_delete=models.CASCADE)
-    anio = models.PositiveSmallIntegerField()
+    anio = models.PositiveSmallIntegerField(validators=[anio_valido])
 
     # Manager de la clase Modelo
     objects = ModeloQuerySet.as_manager()
@@ -90,7 +93,7 @@ class Tarea(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=200, blank=True)
     tipo = models.ForeignKey(TipoTarea, on_delete=models.CASCADE)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    precio = models.DecimalField(max_digits=10, decimal_places=2, validators = [MinValueValidator(0)])
 
     def __str__(self):
         return self.nombre
@@ -121,8 +124,8 @@ class Repuesto(models.Model):
     nombre = models.CharField(max_length=50)
     modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
     tipo = models.PositiveSmallIntegerField(choices=TIPOS)
-    cantidad = models.IntegerField(blank=True, null=True, default=0)
-    precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+    cantidad = models.IntegerField(blank=True, null=True, default=0, validators = [MinValueValidator(0)])
+    precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True, validators = [MinValueValidator(0)])
 
     def __str__(self):
         return f"{self.nombre}, {self.modelo}"
@@ -158,8 +161,8 @@ class TipoMaterial(models.Model):
 class Material(models.Model):
     nombre = models.CharField(max_length=50)
     tipo = models.ForeignKey(TipoMaterial, on_delete=models.CASCADE)
-    cantidad = models.PositiveIntegerField(blank=True, null=True, default=0)
-    precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+    cantidad = models.PositiveIntegerField(blank=True, null=True, default=0, validators = [MinValueValidator(0)])
+    precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True, validators = [MinValueValidator(0)])
 
     def __str__(self):
         return f"{self.nombre} ({self.tipo}) {self.tipo.get_unidad_medida_display()}"
@@ -211,6 +214,8 @@ class Cliente(models.Model):
 def validar_anio(anio):
     if anio < date.today().year - 12:
         raise ValidationError('El vehículo tiene más de 12 años de antigüedad')
+    if anio > date.today().year:
+        raise ValidationError('El año del vehículo no puede ser mayor al año actual')
 
 class Vehiculo(models.Model):
     cliente = models.ForeignKey(
@@ -225,8 +230,6 @@ class Vehiculo(models.Model):
 
 
 class Empleado(models.Model):
-    # Ejemplo: 21-17263542-2
-    # TODO: Validar con patrones y digito verificador
     cuil = models.CharField(max_length=13, unique=True)
     legajo = models.IntegerField(null=False)
     nombre = models.CharField(max_length=100, null=False, blank=False)

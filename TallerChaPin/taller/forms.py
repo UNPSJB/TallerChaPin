@@ -660,7 +660,7 @@ class ClienteForm(forms.ModelForm):
         fields = "__all__"
 
         widgets = {
-            "dni": forms.TextInput(attrs={'pattern': '(\d{7}|\d{8})', 'placeholder': 'Sin puntos'})
+            "dni": forms.TextInput(attrs={'pattern': '(\d{7}|\d{8})', 'placeholder': '########'}),
         }
 
     def save(self, commit=True):
@@ -778,6 +778,14 @@ class ClienteVehiculoForm(forms.ModelForm):
         fields = "__all__"
         exclude = ["cliente"]
 
+        widgets = {
+            "patente": forms.TextInput(attrs={'pattern': '([A-Z]{2}\d{3}[A-Z]{2}|[A-Z]{3}\d{3})', 'placeholder': 'AA###AA o AAA###'})
+        }
+
+        labels = {
+            "anio": 'Año'
+        }
+
 
 ClienteForm.base_fields.update(ClienteVehiculoForm.base_fields)
 
@@ -790,6 +798,9 @@ class VehiculoForm(forms.ModelForm):
 
         widgets = {
             "patente": forms.TextInput(attrs={'pattern': '([A-Z]{2}\d{3}[A-Z]{2}|[A-Z]{3}\d{3})', 'placeholder': 'AA###AA o AAA###'})
+        }
+        labels = {
+            "anio": 'Año'
         }
 
     def save(self, commit=True):

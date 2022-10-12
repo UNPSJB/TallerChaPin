@@ -556,7 +556,7 @@ class ClienteCreateView(CreateView):
             vehiculo = vehiculo_form.save(commit=False)
             vehiculo.cliente = cliente
             vehiculo.save()
-            messages.add_message(self.request, messages.INFO, 'Cliente y Vehiculos registrado con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Cliente y Vehiculos registrado con exito')
             if 'guardar' in self.request.POST:
                 return redirect('listarClientes')
             return redirect('crearCliente')
@@ -649,7 +649,7 @@ class VehiculoUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.INFO, 'Vehiculo modificado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Vehiculo modificado con exito')
         return super().form_valid(form)
 
     def form_invalid(self, form):

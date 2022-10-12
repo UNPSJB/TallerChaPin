@@ -539,7 +539,7 @@ class PlanillaCreateView(CreateView):
         detalle_orden = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         if self.detalle_planilla_form.is_valid() and form.is_valid():
             planilla = form.save(self.detalle_planilla_form.cleaned_data, detalle_orden) # VER
-            messages.add_message(self.request, messages.INFO, 'Planilla Creada')
+            messages.add_message(self.request, messages.SUCCESS, 'Planilla Creada')
             return redirect ('listarDetallesOrden')
         else:
             messages.add_message(self.request, messages.ERROR, form.errors)

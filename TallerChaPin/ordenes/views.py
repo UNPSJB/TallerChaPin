@@ -279,7 +279,7 @@ class OrdenTrabajoListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Ordenes de trabajo"
+        context['titulo'] = "Listado de órdenes de trabajo"
         return context
 
 
@@ -404,7 +404,7 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de detalles de Orden de Trabajo"
+        context['titulo'] = "Listado de detalles de orden de trabajo"
         context['ayuda'] = 'home.html#trabajos'
         context['sinAsignar'] = DetalleOrdenDeTrabajo.objects.sin_asignar()
         context['sinFinalizar'] = DetalleOrdenDeTrabajo.objects.sin_finalizar()

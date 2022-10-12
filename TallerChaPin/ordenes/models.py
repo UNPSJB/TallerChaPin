@@ -566,7 +566,7 @@ class Presupuesto(models.Model):
     cliente = models.ForeignKey(
         Cliente, related_name='presupuestos', on_delete=models.CASCADE)
     vehiculo = models.ForeignKey(
-        Vehiculo, related_name='presupuestos', on_delete=models.CASCADE)
+        Vehiculo, related_name='presupuestos', on_delete=models.RESTRICT)
     detalles = models.CharField(max_length=200, blank=True)
     tareas = models.ManyToManyField(Tarea, related_name='presupuestos')
     materiales = models.ManyToManyField(

@@ -306,7 +306,7 @@ class OrdenTrabajoCreateView(CreateView):
 
     def get (self, *args, **kwargs):
         pk_presupuesto = kwargs.get('pk')
-        pk_orden = kwargs.get('pk')
+        form = self.get_form()
         try:
             presupuesto = Presupuesto.objects.get(pk=pk_presupuesto)
         except Presupuesto.DoesNotExist:
@@ -314,7 +314,7 @@ class OrdenTrabajoCreateView(CreateView):
         
         if not presupuesto.puede_confirmarse():
             raise Http404
-        return render(self.request, 'ordenes/ordendetrabajo_form.html', {'presupuesto' : presupuesto})
+        return render(self.request, 'ordenes/ordendetrabajo_form.html', {'form' : form})
 
     def post(self, *args, **kwargs):
         pk = kwargs.get('pk')

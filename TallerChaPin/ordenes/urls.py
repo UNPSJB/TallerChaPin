@@ -28,7 +28,7 @@ urlpatterns = [
           OrdenTrabajoDetailView.as_view(), name="detallesOrden"),
      path('orden/modificar/<int:pk>',
           OrdenTrabajoUpdateView.as_view(), name="modificarOrden"),
-     path('orden/eliminar/<int:pk>',
+     path('orden/cancelar/<int:pk>',
           cancelar_orden, name="cancelarOrden"), 
      path('orden/pausar/<int:pk>', pausar_orden, name='pausarOrden'), 
      path('orden/reanudar/<int:pk>', reanudar_orden, name='reanudarOrden'),

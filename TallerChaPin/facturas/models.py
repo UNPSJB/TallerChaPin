@@ -59,8 +59,8 @@ class Factura(models.Model):
 
     def pagado(self):
         return self.estado == Factura.PAGADA
+
     def puede_pagar(self):
-        # return self.no_pagada() and self.adeuda()
         return self.adeuda()
 
     def no_pagada(self):
@@ -98,19 +98,6 @@ class Factura(models.Model):
         
         return pago
 
-       
-    #Nota: si se pueden simplificar mejor jaja
-    def calcular_couta(monto, num_coutas): # Puede que sirva para algo
-        if num_coutas == 3:
-            return monto / 3
-        if num_coutas == 6:
-            return monto / 6
-        if num_coutas == 12:
-            return monto / 12
-       
-    # def cuotas_pagas(self):
-    #     return len(self.pagos.all())
-
     def saldo(self):
         saldo = self.total() - (self.pagos.aggregate(total=models.Sum('monto'))['total'] or 0) 
         return saldo
@@ -142,7 +129,7 @@ class Pago(models.Model):
     monto = models.DecimalField(max_digits=10, decimal_places=2)
     tipo = models.PositiveSmallIntegerField(
         choices=TIPO_PAGO, default=CONTADO)
-    
+
     def __str__(self):
         return f'Nº de Factura: ({self.factura.pk})'
 
@@ -154,3 +141,4 @@ class Pago(models.Model):
     def cliente(self):
         return self.factura.orden.cliente
 
+   

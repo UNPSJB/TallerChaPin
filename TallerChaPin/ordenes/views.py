@@ -1,6 +1,7 @@
+from tkinter import E
 from turtle import update
-from django.http import Http404, request, JsonResponse
-from django.http.response import HttpResponse
+from django.http import Http404, JsonResponse
+# from django.http.response import HttpResponse 
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.detail import DetailView
@@ -133,7 +134,7 @@ class PresupuestoDetailView(DetailView):
         try:
             presupuesto = Presupuesto.objects.get(pk=pk)
         except Presupuesto.DoesNotExist:
-            raise Http404('Probando')
+            raise Http404('No existe presupuesto')
         return render(self.request, 'ordenes/presupuesto_detail.html', {'presupuesto':presupuesto})
 
 class PresupuestoCreateView(CreateView):
@@ -204,8 +205,7 @@ class PresupuestoUpdateView(UpdateView):
         try:
             presupuesto = Presupuesto.objects.get(pk=pk)
         except Presupuesto.DoesNotExist:
-            messages.add_message(self.request, messages.ERROR, "No se registra ese presupuesto.")
-            return redirect('listarPresupuestos')
+                raise Http404("Presupuesto no existe")
         if not presupuesto.puede_modificarse():
             messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede modificar.")
             return redirect('detallesPresupuesto',presupuesto.pk)
@@ -252,11 +252,11 @@ class PresupuestoDeleteView(DeleteView):
         try:
             presupuesto =Presupuesto.objects.get(pk=pk)
         except Presupuesto.DoesNotExist:
-            messages.add_message(self.request, messages.ERROR, "No se encuentra un el presupuesto.")
-            return redirect('listarPresupuestos')
+            raise Http404 ("El presupuesto no existe")
         if not presupuesto.puede_eliminarse():
-            messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede eliminar")
-            return redirect('detallesPresupuesto', presupuesto.pk)
+            messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede eliminar.")
+            return redirect('detallesPresupuesto',presupuesto.pk)
+
         return self.post(*args, **kwargs)
 
 
@@ -292,6 +292,13 @@ class OrdenTrabajoDetailView(DetailView):
         context['titulo'] = "TallerChaPin"
         return context
 
+    def get (self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        try:
+            orden = OrdenDeTrabajo.objects.get(pk=pk)
+        except OrdenDeTrabajo.DoesNotExist:
+            raise Http404('Orden no existe')
+        return render(self.request, 'ordenes/ordendetrabajo_detail.html', {'object' : orden})
 
 class OrdenTrabajoCreateView(CreateView):
     model = OrdenDeTrabajo
@@ -310,10 +317,11 @@ class OrdenTrabajoCreateView(CreateView):
         try:
             presupuesto = Presupuesto.objects.get(pk=pk_presupuesto)
         except Presupuesto.DoesNotExist:
-            raise Http404
+            raise Http404('Presupuesto no existe')
         
         if not presupuesto.puede_confirmarse():
-            raise Http404
+            messages.add_message(self.request, messages.ERROR, "Orden de trabajo ya confirmada.")
+            return redirect('detallesPresupuesto',presupuesto.pk)
         return render(self.request, 'ordenes/ordendetrabajo_form.html', {'form' : form})
 
     def post(self, *args, **kwargs):
@@ -341,11 +349,10 @@ class OrdenTrabajoUpdateView(UpdateView):
         try:
             orden = OrdenDeTrabajo.objects.get(pk=pk)
         except OrdenDeTrabajo.DoesNotExist:
-            messages.add_message(self.request, messages.ERROR, "No se registra una Orden de trabajo.")
-            return redirect('calendarioTurnos')
+            raise Http404("Orden de trabajo no existe")
         if not orden.puede_cambiar_turno():
             messages.add_message(self.request, messages.ERROR, "La orden de trabajo no se puede modificar.")
-            return redirect('calendarioTurnos')
+            return redirect('detallesOrden', orden.pk)
         return self.post(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -359,22 +366,54 @@ class OrdenTrabajoDeleteView(DeleteView):
     success_url = reverse_lazy('listarOrdenes')
 
     def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        try:
+            orden = OrdenDeTrabajo.objects.get(pk=pk)
+        except OrdenDeTrabajo.DoesNotExist:
+            raise Http404("Orden de trabajo no existe")
+        if not orden.puede_cancelarse() :
+            messages.add_message(self.request, messages.ERROR, "La orden de trabajo no se puede cancelar.")
+            return redirect('detallesOrden', orden.pk)
+
         return self.post(*args, **kwargs)
 
+
 def cancelar_orden(request, pk):
-    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    try:
+            orden = OrdenDeTrabajo.objects.get(pk=pk)
+    except OrdenDeTrabajo.DoesNotExist:
+        raise Http404("Orden de trabajo no existe")
+    if not orden.puede_cancelarse() :
+            messages.add_message(request, messages.ERROR, "La orden de trabajo no se puede cancelar.")
+            return redirect('detallesOrden', orden.pk)
     orden.estado = OrdenDeTrabajo.CANCELADA
     orden.save()
     return redirect ('detallesOrden', orden.pk)
 
 def pausar_orden(request, pk):
-    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    #Control para que no pausar desde la url
+    try:
+        orden = OrdenDeTrabajo.objects.get(pk=pk)
+    except OrdenDeTrabajo.DoesNotExist:
+        raise Http404("Orden de trabajo no existe")
+    if not orden.puede_pausarse() :
+        messages.add_message(request, messages.ERROR, "La orden de trabajo no se puede pausar.")
+        return redirect('detallesOrden', orden.pk)    
+
     orden.estado = OrdenDeTrabajo.PAUSADA
     orden.save()
     return redirect ('detallesOrden', orden.pk)
 
 def reanudar_orden(request, pk):
-    orden = OrdenDeTrabajo.objects.get(pk=pk)
+    #Control para que no reanudar desde la url
+    try:
+        orden = OrdenDeTrabajo.objects.get(pk=pk)
+    except OrdenDeTrabajo.DoesNotExist:
+        raise Http404("Orden de trabajo no existe")
+    if not orden.puede_reanudarse() :
+        messages.add_message(request, messages.ERROR, "La orden de trabajo no se puede reanudar.")
+        return redirect('detallesOrden', orden.pk)
+
     if orden.no_hay_tareas_iniciadas():
         orden.estado = OrdenDeTrabajo.ACTIVA
     else:
@@ -425,7 +464,10 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
 # ----------------------------- Iniciar Tarea ----------------------------------- #
 
 def iniciar_tarea(request, pk):
-    detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
+    try:
+        detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
+    except DetalleOrdenDeTrabajo.DoesNotExist:
+        raise Http404("No existe detalle de orden de trabajo")
     detalle.iniciar(detalle.empleado)
     messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
     return redirect('listarDetallesOrden')
@@ -453,8 +495,7 @@ def finalizar_tarea(request):
         messages.add_message(request, messages.SUCCESS,
                              'La tarea finalizó exitosamente!')
     else:
-        messages.add_message(request, messages.ERROR,
-                             'El formulario tiene errores.')  # TODO: mostrar form.errors
+        messages.add_message(request, messages.ERROR, form.errors) 
     return redirect('listarDetallesOrden')
 
 # ----------------------------- Asignar cantidad de insumos ----------------------------------- #
@@ -466,14 +507,16 @@ def asignar_cantidad(request):
         messages.add_message(request, messages.SUCCESS,
                              'Se registraron los insumos exitosamente! :D')
     else:
-        messages.add_message(request, messages.WARNING,
-                             'No se registraron los insumos el formulario tiene errores.')  # TODO: mostrar form.errors
+        messages.add_message(request, messages.WARNING, form.errors) 
     return redirect('listarDetallesOrden')
 
 # ----------------------------- Resumen de orden ----------------------------------- #
 
 def resumen_orden(request, pk):
-    orden = DetalleOrdenDeTrabajo.objects.get(pk=pk).orden
+    try:
+        orden = DetalleOrdenDeTrabajo.objects.get(pk=pk).orden
+    except OrdenDeTrabajo.DoesNotExist:
+        raise Http404("Orden no existe")
     presupuesto = orden.presupuestos.first()
 
     materiales_orden = orden.orden_materiales.all()
@@ -579,6 +622,18 @@ class RegistrarIngresoVehiculoCreateView(CreateView):
     def get_form_class(self, *args, **kwargs):
         orden = self.get_orden()
         return RegistrarIngresoVehiculoForm(orden)
+    
+    def get(self, *args, **kwargs):
+        form = self.get_form()
+        try:
+            orden = self.get_orden()
+        except OrdenDeTrabajo.DoesNotExist:
+            raise Http404("Orden no existe")
+        if orden is not None:
+            if not orden.puede_ingresar_vehiculo():
+                messages.add_message(self.request, messages.ERROR, "No se puede registrar ingreso del vehiculo.")
+                return redirect('detallesPresupuesto',orden.pk)
+        return render(self.request, 'ordenes/registraringresovehiculo_form.html', {'form' : form})
 
     def post(self, *args, **kwargs):
         form_class = self.get_form_class()
@@ -587,9 +642,8 @@ class RegistrarIngresoVehiculoCreateView(CreateView):
             fecha_ingreso = form.cleaned_data.get('ingreso')
             orden = form.cleaned_data.get('orden', self.get_orden())
             orden.registrar_ingreso(fecha_ingreso)
-
             return redirect('detallesOrden', orden.pk)
-        return redirect('registrarIngresoDeVehiculo')
+        return redirect('registrarIngresoVehiculo')
 
 
 # ----------------------------- Entrega de Vehiculo View ----------------------------------- #
@@ -613,6 +667,18 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
         orden = self.get_orden()
         return RegistrarEgresoVehiculoForm(orden)
 
+    def get(self, *args, **kwargs):
+        form = self.get_form()
+        try:
+            orden = self.get_orden()
+        except OrdenDeTrabajo.DoesNotExist:
+            raise Http404("Orden no existe")
+        if orden is not None:
+            if not orden.puede_retirar_vehiculo():
+                messages.add_message(self.request, messages.ERROR, "No se puede registrar retiro del vehiculo.")
+                return redirect('detallesPresupuesto',orden.pk)
+        return render(self.request, 'ordenes/registraringresovehiculo_form.html', {'form' : form})
+
     def post(self, *args, **kwargs):
         form_class = self.get_form_class()
         form = form_class(self.request.POST)
@@ -626,7 +692,7 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
                 return redirect('detallesOrden', orden.pk)
 
             return redirect('detallesOrden', orden.pk)
-        return redirect('registrarIngresoDeVehiculo')
+        return redirect('registrarIngresoVehiculo')
 
 # ----------------------------- Turnos View ----------------------------------- #
 

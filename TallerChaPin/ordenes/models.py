@@ -166,7 +166,7 @@ class OrdenDeTrabajo(models.Model):
         return self.estado == OrdenDeTrabajo.PAUSADA
 
     def puede_cancelarse(self):
-        return (self.estado == OrdenDeTrabajo.CREADA) or (self.estado == OrdenDeTrabajo.PAUSADA)
+        return self.estado == OrdenDeTrabajo.CREADA or self.estado == OrdenDeTrabajo.PAUSADA
 
     def puede_cambiar_turno(self):
         return self.estado == OrdenDeTrabajo.CREADA
@@ -215,7 +215,6 @@ class OrdenDeTrabajo(models.Model):
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 
-    # Método que no se está ejecutando nunca
     def iniciar_tarea(self, empleado, tarea, fecha=now()):
         if self.estado == OrdenDeTrabajo.ACTIVA:
             tarea.iniciar(empleado, fecha)

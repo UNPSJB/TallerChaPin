@@ -106,6 +106,8 @@ $(document).ready(() => {
     
     if (estoy_modificando()) {
         cargarVehiculosCliente(modificando=true)
+    } else if (hay_cliente_cargado()) {
+        cargarVehiculosCliente()
     }
 
 });
@@ -119,6 +121,10 @@ select_cliente?.addEventListener("change", () => {
     }
     
 })
+
+function hay_cliente_cargado(){
+    return select_cliente.value
+}
 
 function cargarVehiculosCliente(modificando = false) {
 

@@ -57,7 +57,7 @@ class Modelo(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
     descripcion = models.CharField(max_length=200, blank=True)
     marca = models.ForeignKey(
-        Marca, related_name="modelos", on_delete=models.CASCADE)
+        Marca, related_name="modelos", on_delete=models.RESTRICT)
     anio = models.PositiveSmallIntegerField(validators=[anio_valido])
 
     # Manager de la clase Modelo
@@ -92,7 +92,7 @@ class TipoTarea(models.Model):
 class Tarea(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=200, blank=True)
-    tipo = models.ForeignKey(TipoTarea, on_delete=models.CASCADE)
+    tipo = models.ForeignKey(TipoTarea, on_delete=models.RESTRICT)
     precio = models.DecimalField(max_digits=10, decimal_places=2, validators = [MinValueValidator(0)])
 
     def __str__(self):
@@ -122,7 +122,7 @@ class Repuesto(models.Model):
         (99, 'Otro'),
     )
     nombre = models.CharField(max_length=50)
-    modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
+    modelo = models.ForeignKey(Modelo, on_delete=models.RESTRICT)
     tipo = models.PositiveSmallIntegerField(choices=TIPOS)
     cantidad = models.IntegerField(blank=True, null=True, default=0, validators = [MinValueValidator(0)])
     precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True, validators = [MinValueValidator(0)])
@@ -160,7 +160,7 @@ class TipoMaterial(models.Model):
 
 class Material(models.Model):
     nombre = models.CharField(max_length=50)
-    tipo = models.ForeignKey(TipoMaterial, on_delete=models.CASCADE)
+    tipo = models.ForeignKey(TipoMaterial, on_delete=models.RESTRICT)
     cantidad = models.PositiveIntegerField(blank=True, null=True, default=0, validators = [MinValueValidator(0)])
     precio = models.DecimalField(max_digits=10, decimal_places=2, blank=True, validators = [MinValueValidator(0)])
 
@@ -219,9 +219,9 @@ def validar_anio(anio):
 
 class Vehiculo(models.Model):
     cliente = models.ForeignKey(
-        Cliente, related_name="vehiculos", on_delete=models.CASCADE)
+        Cliente, related_name="vehiculos", on_delete=models.RESTRICT)
     patente = models.CharField(max_length=7, unique=True)
-    modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
+    modelo = models.ForeignKey(Modelo, on_delete=models.RESTRICT)
     anio = models.IntegerField(validators=[validar_anio])
     chasis = models.CharField(max_length=50)
 

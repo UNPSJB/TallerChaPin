@@ -44,7 +44,7 @@ class MarcaCreateView(CreateView):
 
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Marca registrada con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Marca registrada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -57,7 +57,7 @@ class MarcaCreateView(CreateView):
 
         if form.is_valid():
             form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Marca registrada con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Marca registrada con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarMarcas')
             return redirect('crearMarca')
@@ -74,7 +74,7 @@ class MarcaUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Marca modificada con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Marca modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -88,6 +88,17 @@ class MarcaDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        try:
+            self.object.delete()
+            messages.add_message(self.request, messages.SUCCESS, f'Marca eliminada con éxito..')
+        except models.RestrictedError:
+            messages.add_message(self.request, messages.WARNING, f'La marca "{self.object.nombre}" no se puede eliminar porque posee modelos registrados.')
+        finally:
+            return redirect(success_url)
+
 
 class MarcaListView(ListFilterView):
     filtros = MarcaFiltrosForm
@@ -97,7 +108,7 @@ class MarcaListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Marcas"
+        context['titulo'] = "Listado de marcas"
         return context
 
 # ----------------------------- Modelo View ----------------------------------- #
@@ -113,7 +124,7 @@ class ModeloCreateView(CreateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Modelo registrado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Modelo registrado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -126,7 +137,7 @@ class ModeloCreateView(CreateView):
 
         if form.is_valid():
             form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Modelo registrado con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Modelo registrado con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarModelos')
             return redirect('crearModelo')
@@ -144,7 +155,7 @@ class ModeloUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Modelo modificado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Modelo modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -158,6 +169,17 @@ class ModeloDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        try:
+            self.object.delete()
+            messages.add_message(self.request, messages.SUCCESS, f'Modelo eliminado con éxito.')
+        except models.RestrictedError:
+            messages.add_message(self.request, messages.WARNING, f'El modelo "{self.object.nombre}" no se puede eliminar porque está en uso.')
+        finally:
+            return redirect(success_url)
+
 
 class ModeloListView(ListFilterView):
     filtros = ModeloFiltrosForm
@@ -167,7 +189,7 @@ class ModeloListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Modelos"
+        context['titulo'] = "Listado de modelos"
         return context
 
 # ----------------------------- Repuesto View ----------------------------------- #
@@ -184,7 +206,7 @@ class RepuestoCreateView(CreateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Repuesto registrado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Repuesto registrado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -197,7 +219,7 @@ class RepuestoCreateView(CreateView):
 
         if form.is_valid():
             form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Repuesto registrado con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Repuesto registrado con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarRepuestos')
             return redirect('crearRepuesto')
@@ -214,7 +236,7 @@ class RepuestoUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Repuesto modificado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Repuesto modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -238,7 +260,7 @@ class RepuestoListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Repuestos"
+        context['titulo'] = "Listado de repuestos"
         return context
 
 # ----------------------------- Tipo Tareas View ----------------------------------- #
@@ -255,7 +277,7 @@ class TipoTareaCreateView(CreateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Tipo de tarea registrada con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Tipo de tarea registrada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -278,7 +300,7 @@ class TipoTareaUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Tipo de tarea modificada con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Tipo de tarea modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -292,6 +314,17 @@ class TipoTareaDeleteView(DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+        
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        try:
+            self.object.delete()
+            messages.add_message(self.request, messages.SUCCESS, 'Tipo de tarea eliminada con éxito.')
+        except models.RestrictedError:
+            messages.add_message(self.request, messages.WARNING, f'El tipo de tarea "{self.object.nombre}" no se puede eliminar porque posee tareas registradas.')
+        finally:
+            return redirect(success_url)
 
 
 class TipoTareaListView(ListFilterView):
@@ -302,7 +335,7 @@ class TipoTareaListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Tipos de Tarea"
+        context['titulo'] = "Listado de tipos de tarea"
         return context
 
 # ----------------------------- Tareas View ----------------------------------- #
@@ -319,7 +352,7 @@ class TareaCreateView(CreateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Tarea registrada con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Tarea registrada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -332,7 +365,7 @@ class TareaCreateView(CreateView):
 
         if form.is_valid():
             form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Tarea registrada con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Tarea registrada con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarTareas')
             return redirect('crearTarea')
@@ -349,7 +382,7 @@ class TareaUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Tarea modificada con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Tarea modificada con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -373,7 +406,7 @@ class TareaListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Tareas"
+        context['titulo'] = "Listado de tareas"
         return context
 
 # ---------------------------- Tipo Material View ------------------------------------ #
@@ -390,7 +423,7 @@ class TipoMaterialCreateView(CreateView):
     
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Tipo material registrado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Tipo material registrado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -403,7 +436,7 @@ class TipoMaterialCreateView(CreateView):
 
         if form.is_valid():
             form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Tipo Material registrado con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Tipo Material registrado con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarTipoMateriales')
             return redirect('crearTipoMaterial')
@@ -418,7 +451,7 @@ class TipoMaterialListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filtros'] = TipoMaterialFiltrosForm(self.request.GET)
-        context['titulo'] = "Listado de Tipos Materiales"
+        context['titulo'] = "Listado de tipos de materiales"
         return context
 
 
@@ -433,7 +466,7 @@ class TipoMaterialUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Tipo material modificado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Tipo material modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -447,6 +480,17 @@ class TipoMaterialDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        try:
+            self.object.delete()
+            messages.add_message(self.request, messages.SUCCESS, f'Tipo de material eliminado con éxito.')
+        except models.RestrictedError:
+            messages.add_message(self.request, messages.WARNING, f'El tipo de material "{self.object.nombre}" no se puede eliminar porque está en uso.')
+        finally:
+            return redirect(success_url)
+
 # ---------------------------- Material View ------------------------------------ #
 
 class MaterialListView(ListFilterView):
@@ -458,7 +502,7 @@ class MaterialListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Materiales"
+        context['titulo'] = "Listado de materiales"
         context['modificarCantidadForm'] = ModificarCantidadForm()
         return context
 
@@ -474,7 +518,7 @@ class MaterialCreateView(CreateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Material registrado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Material registrado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -487,7 +531,7 @@ class MaterialCreateView(CreateView):
 
         if form.is_valid():
             form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Material registrado con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Material registrado con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarMateriales')
             return redirect('crearMaterial')
@@ -504,7 +548,7 @@ class MaterialUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Material modificado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Material modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -556,7 +600,7 @@ class ClienteCreateView(CreateView):
             vehiculo = vehiculo_form.save(commit=False)
             vehiculo.cliente = cliente
             vehiculo.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Cliente y Vehiculos registrado con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Cliente y Vehiculos registrado con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarClientes')
             return redirect('crearCliente')
@@ -577,7 +621,7 @@ class ClienteUpdateView(UpdateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Cliente modificado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Cliente modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -592,6 +636,17 @@ class ClienteDeleteView(DeleteView):
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
 
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        try:
+            self.object.delete()
+            messages.add_message(self.request, messages.SUCCESS, f'Cliente eliminado con éxito.')
+        except models.RestrictedError:
+            messages.add_message(self.request, messages.WARNING, f'El cliente {self.object} no se puede eliminar porque está en uso.')
+        finally:
+            return redirect(success_url)
+
 
 class ClienteListView(ListFilterView):
     filtros = ClienteFiltrosForm
@@ -601,7 +656,7 @@ class ClienteListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Clientes"
+        context['titulo'] = "Listado de clientes"
         return context
 
 # ---------------------------- Vehiculo View ------------------------------------ #
@@ -617,7 +672,7 @@ class VehiculoCreateView(CreateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Vehiculo registrado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Vehiculo registrado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -630,7 +685,7 @@ class VehiculoCreateView(CreateView):
 
         if form.is_valid():
             form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Vehiculo registrado con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Vehiculo registrado con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarVehiculos')
             return redirect('crearVehiculo')
@@ -649,7 +704,7 @@ class VehiculoUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Vehiculo modificado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Vehiculo modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -663,7 +718,18 @@ class VehiculoDeleteView(DeleteView):
     success_url = reverse_lazy("listarVehiculos")
 
     def get(self, *args, **kwargs):
-        return self.post(*args, **kwargs)
+        return self.post(self, *args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        try:
+            self.object.delete()
+        except models.RestrictedError:
+            messages.add_message(self.request, messages.WARNING, f'El vehículo {self.object.patente } no se puede eliminar porque está en uso.')
+        finally:
+            return redirect(success_url)
+
 
 
 class VehiculoListView(ListFilterView):
@@ -674,7 +740,7 @@ class VehiculoListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Vehículos"
+        context['titulo'] = "Listado de vehículos"
         return context
 
 # ---------------------------- Empleado View ------------------------------------ #
@@ -693,7 +759,7 @@ class EmpleadoCreateView(CreateView):
         return context
     
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Empleado registrado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Empleado registrado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -706,7 +772,7 @@ class EmpleadoCreateView(CreateView):
 
         if form.is_valid():
             form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Empleado registrado con exito')
+            messages.add_message(self.request, messages.SUCCESS, 'Empleado registrado con éxito')
             if 'guardar' in self.request.POST:
                 return redirect('listarEmpleados')
             return redirect('crearEmpleado')
@@ -724,7 +790,7 @@ class EmpleadoUpdateView(UpdateView):
         return context
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Empleado modificado con exito')
+        messages.add_message(self.request, messages.SUCCESS, 'Empleado modificado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -747,7 +813,7 @@ class EmpleadoListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de Empleados"
+        context['titulo'] = "Listado de empleados"
         return context
 
 # ---------------------------------------------------------------- #

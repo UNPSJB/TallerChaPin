@@ -443,14 +443,14 @@ class TipoMaterialCreateView(CreateView):
         return self.form_invalid(form=form)
 
 
-class TipoMaterialListView(ListView):
+class TipoMaterialListView(ListFilterView):
+    filtros = TipoMaterialFiltrosForm
     model = TipoMaterial
     paginate_by = 100
     ordering = ['nombre']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filtros'] = TipoMaterialFiltrosForm(self.request.GET)
         context['titulo'] = "Listado de tipos de materiales"
         return context
 

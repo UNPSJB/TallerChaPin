@@ -145,10 +145,6 @@ class ModeloFiltrosForm(FiltrosForm):
     marca = forms.ModelChoiceField(
         queryset=Marca.objects.all().order_by('nombre'), required=False)
 
-    orden = forms.CharField(
-        required=False
-    )
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -214,7 +210,7 @@ class RepuestoFiltrosForm(FiltrosForm):
     modelo = forms.ModelChoiceField(
         queryset=Modelo.objects.all(), required=False, label='Modelo')
 
-    #Consultar
+
     tipo_choices = [('','-'*9)] + list(Repuesto.TIPOS)
 
     tipo = forms.ChoiceField(choices=tipo_choices,
@@ -229,10 +225,6 @@ class RepuestoFiltrosForm(FiltrosForm):
         label="Mayor o igual que", required=False)
     cantidad__lte = forms.IntegerField(
         label="Menor o igual que", required=False)
-
-    orden = forms.CharField(
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -295,28 +287,25 @@ class TipoMaterialFiltrosForm(FiltrosForm):
     ]
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=50)
-    unidades_medida = forms.ChoiceField(
-        choices=TipoMaterial.UNIDADES_BASICAS,
-        required=False,
-        label="Unidad de medida"
-    )
 
-    orden = forms.CharField(
-        required=False
+    tipo_choices = [('','-'*9)] + list(TipoMaterial.UNIDADES_BASICAS)
+    unidad_medida = forms.ChoiceField(
+        choices=tipo_choices,
+        required=False,
+        label="Unidades de medida"
     )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'get'
-
         self.helper.layout = Layout(
             Fieldset(
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "nombre",
-                "unidades_medida",
+                "unidad_medida",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -368,7 +357,6 @@ class MaterialFiltrosForm(FiltrosForm):
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
     cantidad = forms.DecimalField(required=False)
-    # precio = forms.DecimalField(required=False)
 
     tipo = forms.ModelChoiceField(
         queryset=TipoMaterial.objects.all().order_by('nombre'), required=False)
@@ -482,9 +470,6 @@ class TipoTareaFiltrosForm(FiltrosForm):
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
 
-    orden = forms.CharField(
-        required=False
-    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -744,11 +729,10 @@ class ClienteFiltrosForm(FiltrosForm):  # Revisar
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
-    direccion = forms.CharField(max_length=100)
-    orden = forms.CharField(required=False)
+    direccion = forms.CharField(required=False, max_length=100)
     vehiculos__modelo = forms.ModelChoiceField(
-        queryset=Modelo.objects.all().order_by('-nombre'), required=False, label='Modelo vehículo')
-    telefono = forms.IntegerField(required=False)
+        queryset=Modelo.objects.all(), required=False, label='Modelo vehículo')
+    telefono = forms.CharField(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

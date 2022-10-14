@@ -3,237 +3,281 @@
 {% load static %}
 
 {% block main %}
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <div class="container">
     <div class="wrapper wrapper-content animated fadeInRight">
 
-        <div class="ibox-title">
-            <h1 class="mb-4">Ver Orden de trabajo</h1>
-        </div>
+      <div class="ibox-title">
+        <h1 class="mb-4">Ver Orden de trabajo</h1>
+      </div>
 
-        <div class="row">
+      <div class="row">
+        <div class="col-md-9">
+          <div
+            class="ibox border border-primary rounded p-3 h-100 p-4">
+            <h3>
+              {{ object.cliente.nombre }}, {{ object.cliente.apellido }}
+            </h3>
+            <span>
+              <i class="fas fa-car-side"></i> {{ object.vehiculo.patente }} ({{ object.vehiculo.modelo }}) <br>
+            </span>
 
-            <div class="col-md-9">
-                
-                <div class="ibox border border-primary rounded p-3 h-100 p-4">
-                    <h3>
-                        {{ object.cliente.nombre }}, {{ object.cliente.apellido }}
-                    </h3>
-                    <span>
-                        <i class="fas fa-car-side"></i> {{ object.vehiculo.patente }} ({{ object.vehiculo.modelo }}) <br>
+            <span>
+              <i class="far fa-flag"></i> ESTADO: {{ object.get_estado_display }} <br>
+            </span>
 
-                    </span>
+            <span>
+              <i class="fa-regular fa-calendar"></i> TURNO: {{ object.turno }} <br>
+            </span>
 
-                    <span>
-                        <i class="far fa-flag"></i> ESTADO: {{ object.get_estado_display }} <br>
-                    </span>
+            {% if object.vehiculo_ingreso %}
+              <span>
+                <i class="fa-solid fa-arrow-right"></i> INGRESO: {{ object.ingreso }} <br>
+              </span>
+            {%endif%}
 
-                    <span>
-                        <i class="fa-regular fa-calendar"></i> TURNO: {{ object.turno }} <br>
-                    </span>
+            {% if object.vehiculo_egreso %}
+              <span>
+                <i class="fa-solid fa-arrow-left"></i> EGRESO: {{ object.egreso }} <br>
+              </span>
+            {%endif%}
 
-                    {% if object.vehiculo_ingreso %}
-                    <span>
-                        <i class="fa-solid fa-arrow-right"></i> INGRESO: {{ object.ingreso }} <br>
-                    </span>
-                    {%endif%}
+          </div>
+          </div>
+          </div>
 
-                    {% if object.vehiculo_egreso %}
-                    <span>
-                        <i class="fa-solid fa-arrow-left"></i> EGRESO: {{ object.egreso }} <br>
-                    </span>
-                    {%endif%}
-
+        <div class="row mt-4">
+          <div class="col-md-6 mt-2">
+            <div class="ibox-content">
+              <div>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Tarea</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Observaciones</th>
+                        <th scope="col">Empleado asignado</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for detalle in object.detalles.all %}
+                        <tr class="bg-transition">
+                          <td>{{detalle.tarea.nombre}}</td>
+                          <td>{{detalle.tarea.tipo}}</td>
+                          <td>{{detalle.observaciones|default_if_none:""}}</td>
+                          <td>{{detalle.empleado|default_if_none:"S/Asignar"}}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
                 </div>
+
+                <div>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Repuesto</th>
+                          <th scope="col">Tipo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for repuesto in object.orden_repuestos.all %}
+                        <tr class="bg-transition">
+                          <td>{{repuesto.cantidad}}</td>
+                          <td>{{repuesto.repuesto.nombre}}</td>
+                          <td>{{repuesto.repuesto.get_tipo_display}}</td>
+                        </tr>
+
+                        {% empty %}
+                          <tr>
+                            <td>No hay repuestos</td>
+                            <td>n/a</td>
+                            <td>n/a</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Material</th>
+                          <th scope="col">Tipo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for material in object.orden_materiales.all %}
+                          <tr class="bg-transition">
+                            <td>{{ material.cantidad }} {{ material.tipo.get_unidad_medida_display }}</td>
+                            <td>{{material.material.nombre}}</td>
+                            <td>{{material.material.tipo}}</td>
+                          </tr>
+                        {% empty %}
+                          <tr>
+                            <td>No hay materiales </td>
+                            <td>n/a</td>
+                            <td>n/a</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Color</th>
+                          <th scope="col">Ver</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for detalle in object.detalles.all %}
+                          {% for planilla in detalle.planillas.all %}
+                            <tr class="bg-transition">
+                              <td>{{ planilla.nombre_de_color }}</td>
+                              <td><a href="#">Ver detalle</a></td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                              <td>No hay planillas de pintura</td>
+                              <td>n/a</td>
+                            </tr>
+                          {% endfor %}
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ibox-content mb-4">
+                <a href="{% url 'imprimirOrden' object.pk %}" class="btn btn-primary pull-right">
+                  <i class="fa fa-print" aria-hidden="true"></i> Imprimir
+                </a>
+              </div>
+            </div>
             </div>
 
-            <div class="row mt-4">
-                <div class="col-md-6 mt-2">
-                    <div class="ibox-content">
-                        <div>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Tarea</th>
-                                            <th scope="col">Tipo</th>
-                                            <th scope="col">Observaciones</th>
-                                            <th scope="col">Empleado asignado</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for detalle in object.detalles.all %}
-                                        <tr class="bg-transition">
-                                            <td>{{ detalle.tarea.nombre }}</td>
-                                            <td>{{ detalle.tarea.tipo }}</td>
-                                            <td>{{ detalle.observaciones|default_if_none:"" }}</td>
-                                            <td>{{ detalle.empleado|default_if_none:"S/Asignar" }}</td>
-                                        </tr>
-                                    </tbody>
-                            </div>
-
-                            {% endfor %}
-                            <div>
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Cantidad</th>
-                                                <th scope="col">Repuesto</th>
-                                                <th scope="col">Tipo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for repuesto in object.orden_repuestos.all %}
-                                            <tr class="bg-transition">
-                                                <td> {{ repuesto.cantidad }}</td>
-                                                <td>{{ repuesto.repuesto.nombre }}</td>
-                                                <td>{{ repuesto.repuesto.get_tipo_display }}</td>
-
-                                            </tr>
-
-                                            {% empty %}
-                                            <tr>
-                                                <td>No hay repuestos</td>
-                                                <td>n/a</td>
-                                                <td>n/a</td>
-                                            </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            
-
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Cantidad</th>
-                                            <th scope="col">Material</th>
-                                            <th scope="col">Tipo</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for material in object.orden_materiales.all %}
-                                        <tr class="bg-transition">
-                                            <td>{{ material.cantidad }} {{ material.tipo.get_unidad_medida_display}}
-                                            </td>
-                                            <td>{{ material.material.nombre }}</td>
-                                            <td>{{ material.material.tipo }}</td>
-                                            </td>
-                                        </tr>
-                                        {% empty %}
-                                        <tr>
-                                            <td>No hay materiales</td>
-                                            <td>n/a</td>
-                                            <td>n/a</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="ibox-content mb-4">
-                        <a href="{% url 'imprimirOrden' object.pk %}" class="btn btn-primary pull-right"><i class="fa fa-print" aria-hidden="true"></i>
-                            Imprimir</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="border border-primary rounded p-3">
-                        <h5>Acciones</h5>
-                        {% if object.puede_cancelarse %}
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalEliminarOrden"
-                                data-bs-nombre="{{object.cliente}}" data-bs-url="{% url 'cancelarOrden' object.pk %}"
-                                class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
-                                Cancelar orden de trabajo 
-                            </a>
-                        {% endif %}
-                        {% if object.puede_cambiar_turno %}
-                            <a href="{% url 'modificarOrden' object.pk %}" class="btn btn-primary m-1 w-100"><i
-                                    class="fas fa-pencil-alt"></i> Modificar fecha de turno 
-                            </a>
-                        {% endif %}
-                        {% if object.puede_facturarse %}
-                            <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
-                                <i class="fas fa-check-circle"></i> Facturar Orden</a>
-                            </a>
-                        {% endif %}
-                        {% if object.puede_pausarse %}
-                            <a href="{% url 'pausarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
-                                <i class="fa-solid fa-pause"></i> Pausar orden</a>
-                            </a>
-                        {% endif %}
-                        {% if object.esta_pausada %}
-                            {% if object.puede_reanudarse %}
-                                <a href="{% url 'reanudarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
-                                    <i class="fa-solid fa-play"></i> Reanudar orden</a>
-                                </a>
-                            {% else %}
-                                <button class="btn btn-primary m-1 w-100" disabled >
-                                    <i class="fa-solid fa-play"></i> Esperando confirmación</a>
-                                </button>
-                            {% endif %}
-                        {% endif %}
-                        {% if object.puede_ampliarse %}
-                            <a href="{% url 'ampliarPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100">
-                                <i class="fa-solid fa-file-circle-plus"></i> Ampliar presupuesto</a>
-                            </a>
-                        {% endif %}
-                           
-                        {% if object.puede_ingresar_vehiculo %}
-                            <a href="{% url 'registrarIngresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
-                                <i class="fa-solid fa-car"></i> Registrar Ingreso del Vehiculo</a>
-                            </a>
-                        {%endif%}
-
-                        <a href="{% url 'detallesPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver presupuesto </a>
-                        
-
-                        
-                        {% if object.estado == 2 or object.estado == 6 %}
-                            <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>. No hay acciones disponibles.</span>
-                        {%endif%}
-                        {% if object.puede_retirar_vehiculo %}
-                        
-                            {% if object.pagado %}
-                            <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span>
-                            
-                            <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
-                                <i class="fa-solid fa-car"></i> Registrar egreso de vehiculo</a>
-                            </a>
-                            
-                            {%endif%}
-                            {% if object.tiene_factura and object.cliente.vip %}
-                            <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b> con pago pendiente. El cliente es <b>VIP</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span> 
-                            
-                            <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
-                                <i class="fa-solid fa-car"></i> Registrar egreso del vehiculo</a>
-                            </a>
-                            {%endif%}
-                        {%endif%}
 
 
+            <div class="col-md-3">
+              <div class="border border-primary rounded p-3">
+                <h5>Acciones</h5>
 
-                    </div>
-                </div>
+                  {% if object.puede_cancelarse %}
+                  <a href="#" data-bs-toggle="modal"
+                    data-bs-target="#modalEliminarOrden"
+                    data-bs-nombre="{{object.cliente}}"
+                    data-bs-url="{% url 'cancelarOrden' object.pk %}"
+                    class="btn-eliminar btn btn-danger m-1 w-100">
+                    <i class="fas fa-trash-alt"></i>
+                    Cancelar orden de trabajo
+                  </a>
+                  {% endif %}
+
+                {% if object.puede_cambiar_turno %}
+                  <a href="{% url 'modificarOrden' object.pk %}"
+                    class="btn btn-primary m-1 w-100">
+                    <i class="fas fa-pencil-alt"></i>
+                    Modificar fecha de turno
+                  </a>
+                {% endif %}
+
+                {% if object.puede_facturarse %}
+                  <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
+                    <i class="fas fa-check-circle"></i>
+                    Facturar Orden
+                  </a>
+                {% endif %}
+
+                {% if object.puede_pausarse %}
+                  <a href="{% url 'pausarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
+                    <i class="fa-solid fa-pause"></i>
+                    Pausar orden
+                  </a>
+                {% endif %}
+
+                {% if object.esta_pausada %}
+                  {% if object.puede_reanudarse %}
+                    <a href="{% url 'reanudarOrden' object.pk %}" class="btn btn-primary m-1 w-100">
+                      <i class="fa-solid fa-play"></i>
+                      Reanudar orden
+                    </a>
+                  {% else %}
+                    <button class="btn btn-primary m-1 w-100" disabled>
+                      <i class="fa-solid fa-play"></i>
+                      Esperando confirmación
+                    </button>
+                  {% endif %}
+                {% endif %}
+
+                {% if object.puede_ampliarse %}
+                  <a href="{% url 'ampliarPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                    Ampliar presupuesto
+                  </a>
+                {% endif %}
+
+                {% if object.puede_ingresar_vehiculo %}
+                  <a href="{% url 'registrarIngresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
+                    <i class="fa-solid fa-car"></i>
+                    Registrar Ingreso del Vehiculo
+                  </a>
+                {% endif %}
+
+                <a href="{% url 'detallesPresupuesto' object.get_ultimo_presupuesto.pk %}"
+                  class="btn btn-primary m-1 w-100">
+                  <i class="fas fa-eye"></i>
+                  Ver presupuesto 
+                </a>
+
+                {% if object.estado == 2 or object.estado == 6 %}
+                  <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>. No hay acciones disponibles.</span>
+                {%endif%}
+
+                {% if object.puede_retirar_vehiculo %}
+                  {% if object.pagado %}
+                    <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span>
+
+                    <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
+                      <i class="fa-solid fa-car"></i>
+                      Registrar egreso de vehiculo
+                    </a>
+                  {%endif%}
+
+                  {% if object.tiene_factura and object.cliente.vip %}
+                    <span>La orden de trabajo se encuentra <b>{{object.get_estado_display}}</b> con pago pendiente. El cliente es <b>VIP</b>. Para finalizar la orden de trabajo, el vehículo debe ser entregado al cliente.</span>
+
+                    <a href="{% url 'registrarEgresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
+                      <i class="fa-solid fa-car"></i>
+                      Registrar egreso del vehiculo
+                    </a>
+                  {%endif%}
+                {%endif%}
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
+  </div>
 {% endblock %}
 
 {% block modals %}
-{% include './ordendetrabajo_confirm_delete.html' with idModal='modalEliminarOrden' %}
-
+  {% include './ordendetrabajo_confirm_delete.html' with idModal='modalEliminarOrden' %}
 {% endblock %}
 
 {% block extrajs %}
-<script>
+  <script>
     conectarBotonesAModal('.btn-eliminar', 'modalEliminarOrden')
-</script>
+  </script>
 {% endblock %}

@@ -198,18 +198,17 @@ class PresupuestoUpdateView(UpdateView):
     form_class = PresupuestoForm()
     success_url = reverse_lazy('listarPresupuestos')
 
-
-    def get(self, *args, **kwargs):
-        #Control para que no se pueda modificar desde una URL
-        pk = kwargs.get('pk')
-        try:
-            presupuesto = Presupuesto.objects.get(pk=pk)
-        except Presupuesto.DoesNotExist:
-                raise Http404("Presupuesto no existe")
-        if not presupuesto.puede_modificarse():
-            messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede modificar.")
-            return redirect('detallesPresupuesto',presupuesto.pk)
-        return self.post(*args, **kwargs)
+    # def get(self, *args, **kwargs):
+    #     #Control para que no se pueda modificar desde una URL
+    #     pk = kwargs.get('pk')
+    #     try:
+    #         presupuesto = Presupuesto.objects.get(pk=pk)
+    #     except Presupuesto.DoesNotExist:
+    #             raise Http404("Presupuesto no existe")
+    #     if not presupuesto.puede_modificarse():
+    #         messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede modificar.")
+    #         return redirect('detallesPresupuesto',presupuesto.pk)
+    #     # return redirect('modificarPresupuesto', presupuesto.pk)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -469,7 +468,7 @@ def iniciar_tarea(request, pk):
     except DetalleOrdenDeTrabajo.DoesNotExist:
         raise Http404("No existe detalle de orden de trabajo")
     detalle.iniciar(detalle.empleado)
-    messages.add_message(request, messages.SUCCESS, 'Tarea iniciada!')
+    messages.add_message(request, messages.SUCCESS, 'La tarea se inició exitosamente')
     return redirect('listarDetallesOrden')
 
 # ----------------------------- Asignar Tarea a Empleado ----------------------------------- #
@@ -479,7 +478,7 @@ def asignar_empleado(request):
     if form.is_valid():
         form.asignar()
         messages.add_message(request, messages.SUCCESS,
-                             'La tarea se asignó a un empleado exitosamente!')
+                             'La tarea se asignó a un empleado exitosamente')
     else:
         messages.add_message(request, messages.WARNING,
                              'El formulario tiene errores.')
@@ -505,7 +504,7 @@ def asignar_cantidad(request):
     if form.is_valid():
         form.actualizar_cantidad()
         messages.add_message(request, messages.SUCCESS,
-                             'Se registraron los insumos exitosamente! :D')
+                             'Se registraron los insumos exitosamente')
     else:
         messages.add_message(request, messages.WARNING, form.errors) 
     return redirect('listarDetallesOrden')
@@ -581,7 +580,7 @@ class PlanillaCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['detalle_planilla_formset'] = DetallePlanillaInline()()
         context['detalle_planilla_formset_helper'] = DetallePlanillaFormSetHelper()
-        context["titulo"] = "Crear Planilla de pintura"
+        context["titulo"] = "Crear planilla de pintura"
         context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         return context
         
@@ -593,7 +592,7 @@ class PlanillaCreateView(CreateView):
         detalle_orden = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         if self.detalle_planilla_form.is_valid() and form.is_valid():
             planilla = form.save(self.detalle_planilla_form.cleaned_data, detalle_orden) # VER
-            messages.add_message(self.request, messages.SUCCESS, 'Planilla Creada')
+            messages.add_message(self.request, messages.SUCCESS, 'La planilla de pintura se ha registrado exitosamente')
             return redirect ('listarDetallesOrden')
         else:
             messages.add_message(self.request, messages.ERROR, form.errors)

@@ -198,18 +198,6 @@ class PresupuestoUpdateView(UpdateView):
     form_class = PresupuestoForm()
     success_url = reverse_lazy('listarPresupuestos')
 
-    # def get(self, *args, **kwargs):
-    #     #Control para que no se pueda modificar desde una URL
-    #     pk = kwargs.get('pk')
-    #     try:
-    #         presupuesto = Presupuesto.objects.get(pk=pk)
-    #     except Presupuesto.DoesNotExist:
-    #             raise Http404("Presupuesto no existe")
-    #     if not presupuesto.puede_modificarse():
-    #         messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede modificar.")
-    #         return redirect('detallesPresupuesto',presupuesto.pk)
-    #     # return redirect('modificarPresupuesto', presupuesto.pk)
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         initial_materiales = [
@@ -224,6 +212,20 @@ class PresupuestoUpdateView(UpdateView):
         context['titulo'] = "Modificar presupuesto"
         context['ayuda'] = 'presupuestos.html#modificacion-de-un-presupuesto'
         return context
+    
+    # Revisar. Hace que se pierdan los valores cargados.
+    # def get(self, *args, **kwargs):
+    #     #Control para que no se pueda modificar desde una URL
+    #     pk = kwargs.get('pk')
+    #     form= self.get_form()
+    #     try:
+    #         presupuesto = Presupuesto.objects.get(pk=pk)
+    #     except Presupuesto.DoesNotExist:
+    #             raise Http404("Presupuesto no existe")
+    #     if not presupuesto.puede_modificarse():
+    #         messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede modificar.")
+    #         return redirect('detallesPresupuesto',presupuesto.pk)
+    #     return self.post(*args, **kwargs)
 
     def post(self, *args, **kwargs):
         p = Presupuesto.objects.get(id=kwargs['pk'])
@@ -255,7 +257,6 @@ class PresupuestoDeleteView(DeleteView):
         if not presupuesto.puede_eliminarse():
             messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede eliminar.")
             return redirect('detallesPresupuesto',presupuesto.pk)
-
         return self.post(*args, **kwargs)
 
 

@@ -15,3 +15,32 @@
     </form>
 </div>
 {% endblock %}
+
+{% block extrajs %}
+<script>
+
+
+
+// Pongo como required el primer renglón de la tabla
+window.addEventListener('load', (event) => {
+    document.getElementById('id_detalles-0-formula').setAttribute('required', true)
+    document.getElementById('id_detalles-0-cantidad').setAttribute('required', true)
+    
+    boton_agregar = document.querySelectorAll('tfoot a')[0]
+    boton_agregar.addEventListener('click', () => {
+
+        inputs_formula = document.querySelectorAll('#id_detalles-__prefix__-formula')
+        for (i = 0; i < inputs_formula.length; ++i) {
+            if (i > 0) inputs_formula[i].setAttribute('required', true)
+        }
+        
+        inputs_cantidad = document.querySelectorAll('#id_detalles-__prefix__-cantidad')
+        for (i = 0; i < inputs_cantidad.length; ++i) {
+            if (i > 0) inputs_cantidad[i].setAttribute('required', true)
+        }
+    })
+});
+
+
+</script>
+{% endblock %}

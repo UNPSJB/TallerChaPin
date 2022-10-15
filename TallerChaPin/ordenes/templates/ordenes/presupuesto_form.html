@@ -28,179 +28,179 @@
 {% block extrajs %}
 <script> 
 
-const select_cliente = document.getElementById('id_cliente')
-const select_vehiculos = document.getElementById('id_vehiculo')
+    const select_cliente = document.getElementById('id_cliente')
+    const select_vehiculos = document.getElementById('id_vehiculo')
 
-function get_base_url(){
-    const url = window.location.href
-    const index = url.indexOf('/',7) // Empiezo a buscar '/' en la posición 7 para evitar 'http://'
-    return url.slice(0, index)
-}
+    function get_base_url(){
+        const url = window.location.href
+        const index = url.indexOf('/',7) // Empiezo a buscar '/' en la posición 7 para evitar 'http://'
+        return url.slice(0, index)
+    }
 
-function get_pk_presupuesto(){
-    const url = window.location.href
-    const pk = url.substring(url.lastIndexOf('/') + 1)
-    return pk
-}
+    function get_pk_presupuesto(){
+        const url = window.location.href
+        const pk = url.substring(url.lastIndexOf('/') + 1)
+        return pk
+    }
 
-function estoy_modificando(){
-    const url = window.location.href
-    return url.includes('modificar')
-}
+    function estoy_modificando(){
+        const url = window.location.href
+        return url.includes('modificar')
+    }
 
-function estoy_ampliando() {
-    const url = window.location.href
-    return url.includes('ampliar')
-}
+    function estoy_ampliando() {
+        const url = window.location.href
+        return url.includes('ampliar')
+    }
 
-$(document).ready(() => {
-    let checked = [];
+    $(document).ready(() => {
+        let checked = [];
 
-    let toggle_tables = () => {
-        checked = [...$("#div_id_tareas input[type='checkbox']:checked")];
-        checked = checked.map(c => c.value);
-        fetch(`tareas/requerimientos`, {
-            method: 'POST',
-            credentials: 'same-origin',
-            headers: { 
-                'content-type': 'application/json',
-                'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value,
-            },
-            body: JSON.stringify({
-                'tareas': checked
+        let toggle_tables = () => {
+            checked = [...$("#div_id_tareas input[type='checkbox']:checked")];
+            checked = checked.map(c => c.value);
+            fetch(`tareas/requerimientos`, {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { 
+                    'content-type': 'application/json',
+                    'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+                },
+                body: JSON.stringify({
+                    'tareas': checked
+                })
             })
-        })
-        .then(res => res.json())
-        .then(res => {
-            $('#materiales').toggle(res.materiales);
-            $('#repuestos').toggle(res.repuestos);
+            .then(res => res.json())
+            .then(res => {
+                $('#materiales').toggle(res.materiales);
+                $('#repuestos').toggle(res.repuestos);
 
-            if (res.repuestos){
-                $('select[id^="id_presupuesto_repuestos-0"]').prop('required',true);
-                $('input[id^="id_presupuesto_repuestos-0"]').prop('min',1);
-            } else {
-                $('select[id^="id_presupuesto_repuestos-0"]').removeAttr('required');
-            }
-            if (res.materiales){
-                $('select[id^="id_presupuesto_materiales-0"]').prop('required',true);
-                $('input[id^="id_presupuesto_materiales-0"]').prop('min',1);
-            } else {
-                $('select[id^="id_presupuesto_materiales-0"]').removeAttr('required');
-            }
-        })
-        .catch(err => console.log(err))
-    }
-
-    $("#div_id_tareas input[type='checkbox']").change((e) => {
-        toggle_tables();
-    })
-
-    toggle_tables();
-    if (select_vehiculos) { // Al principio viene cargado con el queryset de todos los vehículos
-        select_vehiculos.options.length = 1 // Elimino todos para después cargar solo los de ese cliente
-    }
-
-    if (estoy_ampliando()){
-        deshabilitar_tareas_iniciadas()
-    }
-    
-    if (estoy_modificando()) {
-        cargarVehiculosCliente(modificando=true)
-    } else if (hay_cliente_cargado()) {
-        cargarVehiculosCliente()
-    }
-
-});
-
-select_cliente?.addEventListener("change", () => {
-    
-    // Elimino todas las opciones del input
-    select_vehiculos.options.length = 1
-    if (select_cliente.value) {
-        cargarVehiculosCliente()
-    }
-    
-})
-
-function hay_cliente_cargado(){
-    return select_cliente.value
-}
-
-function cargarVehiculosCliente(modificando = false) {
-
-    // Obtengo los datos necesarios para hacer el fetch
-    const base = get_base_url()
-    const pk_cliente = select_cliente.value
-    fetch(`${base}/taller/cliente/vehiculos/${pk_cliente}`)
-    .then(response => response.json())
-    .then(response => {
-        // Agrego las opciones al input de vehículo
-        response.vehiculos.forEach(v => {
-            option = document.createElement("option")
-            option.value = v.id
-            option.text = `${v.modelo__nombre}, ${v.patente}`
-            select_vehiculos.add(option)
-        });
-
-        // Tomo el pk del vehiculo del presupuesto para cargarlo por defecto en el input de vehiculos
-        if (modificando) {
-            const pk = document.getElementById('pk_vehiculo').dataset.vehiculo
-            select_vehiculos.value = pk
-        }
-    })
-
-    return true
-}
-
-const checks_tareas = document.querySelectorAll('#div_id_tareas input')
-function deshabilitar_tareas_iniciadas(){
-    const pk = get_pk_presupuesto()
-    const url_base = get_base_url()
-    
-    fetch(`${url_base}/ordenes/presupuesto/tareasFinalizadas/${pk}`)
-        .then(response => response.json())
-        .then(r => {
-            console.log(r)
-            const tareas_a_deshabilitar = r.tareas_finalizadas
-
-            checks_tareas.forEach(check => {
-                if (tareas_a_deshabilitar.includes(parseInt(check.value))) {
-                    check.setAttribute('disabled', true)
-                    check.classList.add('no_eliminable')
+                if (res.repuestos){
+                    $('select[id^="id_presupuesto_repuestos-0"]').prop('required',true);
+                    $('input[id^="id_presupuesto_repuestos-0"]').prop('min',1);
+                } else {
+                    $('select[id^="id_presupuesto_repuestos-0"]').removeAttr('required');
                 }
-            });
-        }) 
-}
-
-function get_span_error() {
-    span_error = document.createElement('span')
-    span_error.classList.add('text-danger')
-    span_error.classList.add('fw-bold')
-    span_error.setAttribute('id', 'error-sin-tareas')
-    span_error.appendChild(document.createTextNode('Seleccione al menos una tarea para continuar'))
-    return(span_error)
-}
-
-// Al hacer el submit, habilito todos los checks para que sean enviados
-const form = document.getElementById('presupuesto_form');
-form.addEventListener('submit', (e) => {
-
-    cant_tareas_seleccionadas = $("input[type=checkbox]:checked").length;
-    if (cant_tareas_seleccionadas === 0) {
-        div_tareas = document.getElementById('div_id_tareas')
-
-        if (!div_tareas.innerHTML.includes('error-sin-tareas')){
-            div_tareas.appendChild(get_span_error())
+                if (res.materiales){
+                    $('select[id^="id_presupuesto_materiales-0"]').prop('required',true);
+                    $('input[id^="id_presupuesto_materiales-0"]').prop('min',1);
+                } else {
+                    $('select[id^="id_presupuesto_materiales-0"]').removeAttr('required');
+                }
+            })
+            .catch(err => console.log(err))
         }
 
-        e.preventDefault()
-        return 1
+        $("#div_id_tareas input[type='checkbox']").change((e) => {
+            toggle_tables();
+        })
+
+        toggle_tables();
+        if (select_vehiculos) { // Al principio viene cargado con el queryset de todos los vehículos
+            select_vehiculos.options.length = 1 // Elimino todos para después cargar solo los de ese cliente
+        }
+
+        if (estoy_ampliando()){
+            deshabilitar_tareas_iniciadas()
+        }
+        
+        if (estoy_modificando()) {
+            cargarVehiculosCliente(modificando=true)
+        } else if (hay_cliente_cargado()) {
+            cargarVehiculosCliente()
+        }
+
+    });
+
+    select_cliente?.addEventListener("change", () => {
+        
+        // Elimino todas las opciones del input
+        select_vehiculos.options.length = 1
+        if (select_cliente.value) {
+            cargarVehiculosCliente()
+        }
+        
+    })
+
+    function hay_cliente_cargado(){
+        return select_cliente.value
     }
 
-    checks_tareas.forEach(check => {
-        check.removeAttribute('disabled')
-    });
-})
+    function cargarVehiculosCliente(modificando = false) {
+
+        // Obtengo los datos necesarios para hacer el fetch
+        const base = get_base_url()
+        const pk_cliente = select_cliente.value
+        fetch(`${base}/taller/cliente/vehiculos/${pk_cliente}`)
+        .then(response => response.json())
+        .then(response => {
+            // Agrego las opciones al input de vehículo
+            response.vehiculos.forEach(v => {
+                option = document.createElement("option")
+                option.value = v.id
+                option.text = `${v.modelo__nombre}, ${v.patente}`
+                select_vehiculos.add(option)
+            });
+
+            // Tomo el pk del vehiculo del presupuesto para cargarlo por defecto en el input de vehiculos
+            if (modificando) {
+                const pk = document.getElementById('pk_vehiculo').dataset.vehiculo
+                select_vehiculos.value = pk
+            }
+        })
+
+        return true
+    }
+
+    const checks_tareas = document.querySelectorAll('#div_id_tareas input')
+    function deshabilitar_tareas_iniciadas(){
+        const pk = get_pk_presupuesto()
+        const url_base = get_base_url()
+        
+        fetch(`${url_base}/ordenes/presupuesto/tareasFinalizadas/${pk}`)
+            .then(response => response.json())
+            .then(r => {
+                console.log(r)
+                const tareas_a_deshabilitar = r.tareas_finalizadas
+
+                checks_tareas.forEach(check => {
+                    if (tareas_a_deshabilitar.includes(parseInt(check.value))) {
+                        check.setAttribute('disabled', true)
+                        check.classList.add('no_eliminable')
+                    }
+                });
+            }) 
+    }
+
+    function get_span_error() {
+        span_error = document.createElement('span')
+        span_error.classList.add('text-danger')
+        span_error.classList.add('fw-bold')
+        span_error.setAttribute('id', 'error-sin-tareas')
+        span_error.appendChild(document.createTextNode('Seleccione al menos una tarea para continuar'))
+        return(span_error)
+    }
+
+    // Al hacer el submit, habilito todos los checks para que sean enviados
+    const form = document.getElementById('presupuesto_form');
+    form.addEventListener('submit', (e) => {
+
+        cant_tareas_seleccionadas = $("input[type=checkbox]:checked").length;
+        if (cant_tareas_seleccionadas === 0) {
+            div_tareas = document.getElementById('div_id_tareas')
+
+            if (!div_tareas.innerHTML.includes('error-sin-tareas')){
+                div_tareas.appendChild(get_span_error())
+            }
+
+            e.preventDefault()
+            return 1
+        }
+
+        checks_tareas.forEach(check => {
+            check.removeAttribute('disabled')
+        });
+    })
 
 </script>
 {% endblock %}

@@ -640,7 +640,6 @@ class PlanillaDePinturaForm (forms.ModelForm):
     def __init__(self, *args, **kwargs):
         if "detalle" in kwargs:
             detalle = kwargs.pop('detalle')
-            kwargs['initial']['nombre_de_color']= detalle.color_de_pintura()
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = False

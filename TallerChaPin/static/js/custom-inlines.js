@@ -12,9 +12,20 @@ const updateElementIndex = function (el, prefix, ndx) {
   }
 };
 
+function getQuitarButton(){
+  button = document.createElement('a')
+  button.classList.add('quitar')
+  button.setAttribute('href', '#')
+  button.appendChild(document.createTextNode('Quitar'))
+  return button
+}
+
 const addInlineDeleteButton = function (row, prefix) {
-  
-  row.append('<td><a class="quitar" href="#">Quitar</a></td>');
+  fila = row[0]
+  hijos = Array.from(fila.childNodes)
+  td_quitar = hijos.filter(n => n.id?.includes("DELETE"))[0]
+  td_quitar.appendChild(getQuitarButton())
+
   row.find('a.quitar').on('click', function (event) {
     inlineDeleteHandler(event, prefix);
   });
@@ -63,7 +74,7 @@ const inlineFormset = function ($context) {
 
     $(tbody).append(newRow);
     const trs = $('tr', tbody);
-    // console.log($(trs));
+
     $('#id_' + prefix + '-TOTAL_FORMS').val(trs.length);
   });
   

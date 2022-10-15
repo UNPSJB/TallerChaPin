@@ -172,9 +172,31 @@ function deshabilitar_tareas_iniciadas(){
         }) 
 }
 
+function get_span_error() {
+    span_error = document.createElement('span')
+    span_error.classList.add('text-danger')
+    span_error.classList.add('fw-bold')
+    span_error.setAttribute('id', 'error-sin-tareas')
+    span_error.appendChild(document.createTextNode('Seleccione al menos una tarea para continuar'))
+    return(span_error)
+}
+
 // Al hacer el submit, habilito todos los checks para que sean enviados
 const form = document.getElementById('presupuesto_form');
 form.addEventListener('submit', (e) => {
+
+    cant_tareas_seleccionadas = $("input[type=checkbox]:checked").length;
+    if (cant_tareas_seleccionadas === 0) {
+        div_tareas = document.getElementById('div_id_tareas')
+
+        if (!div_tareas.innerHTML.includes('error-sin-tareas')){
+            div_tareas.appendChild(get_span_error())
+        }
+
+        e.preventDefault()
+        return 1
+    }
+
     checks_tareas.forEach(check => {
         check.removeAttribute('disabled')
     });

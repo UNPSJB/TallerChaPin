@@ -93,6 +93,7 @@ class Factura(models.Model):
 
         if self.saldo() <= 0:
             self.estado = Factura.PAGADA
+            self.orden.pagar_orden()
 
         self.save()
         

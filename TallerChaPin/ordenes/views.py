@@ -310,7 +310,7 @@ class OrdenTrabajoCreateView(CreateView):
         context['titulo'] = "Registrar Orden"
         context['ayuda'] = 'presupuestos.html#confirmacion-de-un-presupuesto'
         return context
-
+    #Carga el formulario pero no el titulo del formulario
     def get (self, *args, **kwargs):
         pk_presupuesto = kwargs.get('pk')
         form = self.get_form()
@@ -424,7 +424,6 @@ def reanudar_orden(request, pk):
 # ----------------------------- Detalle de orden View ----------------------------------- #
 
 class DetalleOrdenDeTrabajoListView(ListFilterView):
-    # filtros = OrdenTrabajoFiltrosForm
     model = DetalleOrdenDeTrabajo
     paginate_by = 100
     ordering = ['id']
@@ -491,7 +490,6 @@ def finalizar_tarea(request):
     form = FinalizarTareaForm(request.POST)
     if form.is_valid():
         form.finalizar()
-        # Ver de agregar actualizar estado
         messages.add_message(request, messages.SUCCESS,
                              'La tarea finalizó exitosamente!')
     else:
@@ -623,6 +621,7 @@ class RegistrarIngresoVehiculoCreateView(CreateView):
         orden = self.get_orden()
         return RegistrarIngresoVehiculoForm(orden)
     
+    #Carga el formulario pero no el titulo del formulario
     def get(self, *args, **kwargs):
         form = self.get_form()
         try:
@@ -666,7 +665,7 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
     def get_form_class(self, *args, **kwargs):
         orden = self.get_orden()
         return RegistrarEgresoVehiculoForm(orden)
-
+    #Carga el formulario pero no el titulo del formulario
     def get(self, *args, **kwargs):
         form = self.get_form()
         try:
@@ -678,7 +677,7 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
                 messages.add_message(self.request, messages.ERROR, "No se puede registrar retiro del vehiculo.")
                 return redirect('detallesPresupuesto',orden.pk)
         return render(self.request, 'ordenes/registraringresovehiculo_form.html', {'form' : form})
-
+    
     def post(self, *args, **kwargs):
         form_class = self.get_form_class()
         form = form_class(self.request.POST)

@@ -24,6 +24,7 @@
         <td>{{ presupuesto.vehiculo }}</td>
         <td>{{ presupuesto.validez}}</td>
         <td>{{ presupuesto.confirmado | yesno:"Si,No"}}</td>
+        <td>{{ presupuesto.ampliado | yesno:"Si,No"}}</td>
         <td>
           <a href="{% url 'detallesPresupuesto' presupuesto.pk %}" class="btn-listado btn-ver">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"

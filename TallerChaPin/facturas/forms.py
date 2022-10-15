@@ -1,5 +1,6 @@
 from email.policy import default
 from django import forms
+from django.forms import ChoiceField
 from .models import *
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
@@ -50,9 +51,11 @@ class FacturaFiltrosForm(FiltrosForm):
         queryset=Cliente.objects.all(), required=False)
     vehiculo = forms.ModelChoiceField(
         queryset=Vehiculo.objects.all(), required=False)
+    estado_choices = [('','-'*9)] + list(Factura.ESTADO_CHOICES)    
+    estado = ChoiceField(choices=estado_choices, label="Estado de factura" ,required=False)
 
-    fecha__gte = forms.DateField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
-    fecha__lte = forms.DateField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
+    fecha__lte = forms.DateTimeField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'}))
+    fecha__gte= forms.DateTimeField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -64,8 +67,12 @@ class FacturaFiltrosForm(FiltrosForm):
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "orden",
-                "fecha__lte",
+                "estado",
+                HTML(
+                    '<label> <b>Fecha de factura:</b> </label>'
+                    ),
                 "fecha__gte",
+                "fecha__lte",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -118,10 +125,10 @@ class PagoFiltrosForm(FiltrosForm):
     ]
   
     monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
-    tipo = forms.ChoiceField(choices=Pago.TIPO_PAGO, required=False, label="Tipo de pago")
-
-    # fecha__gte = forms.DateField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
-    # fecha__lte = forms.DateField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'type': 'date'}))
+    tipo_choices = [('','-'*9)] + list(Pago.TIPO_PAGO)
+    tipo = forms.ChoiceField(choices=tipo_choices, required=False, label="Tipo de pago")
+    fecha__lte = forms.DateTimeField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'}))
+    fecha__gte= forms.DateTimeField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'}))
 
 
     def __init__(self, *args, **kwargs):
@@ -135,8 +142,11 @@ class PagoFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "monto",
                 "tipo",
-                # "fecha__lte",
-                # "fecha__gte",
+                HTML(
+                    '<label> <b>Fecha de pago:</b> </label>'
+                    ),
+                "fecha__gte",
+                "fecha__lte",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

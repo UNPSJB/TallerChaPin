@@ -6,7 +6,7 @@ from . import models as ordenes
 import taller.models as taller
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
-from django.forms import inlineformset_factory
+from django.forms import BooleanField, inlineformset_factory
 from TallerChaPin.utils import FiltrosForm
 from datetime import datetime
 from .utils import requiere_insumo
@@ -213,7 +213,8 @@ class PresupuestoFiltrosForm(FiltrosForm):
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
         ("validez","Validez (días)"),
-        ("confirmado","Confirmado")
+        ("confirmado","Confirmado"),
+        ("ampliado","Ampliado")
     ]
 
 
@@ -229,6 +230,12 @@ class PresupuestoFiltrosForm(FiltrosForm):
         queryset=taller.Material.objects.all().order_by('id'), required=False)
     repuestos = forms.ModelChoiceField(
         queryset=taller.Repuesto.objects.all().order_by('id'), required=False)
+    
+    confirmado = BooleanField(required=False)
+    ampliado = BooleanField(required=False)
+
+    fecha__lte = forms.DateTimeField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'}))
+    fecha__gte= forms.DateTimeField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'}))
 
 
 
@@ -246,6 +253,13 @@ class PresupuestoFiltrosForm(FiltrosForm):
                 "tareas",
                 "materiales",
                 "repuestos",
+                "confirmado",
+                "ampliado",
+                HTML(
+                    '<label> <b>Fecha de confirmacion:</b> </label>'
+                    ),
+                "fecha__gte",
+                "fecha__lte",
             ),
 
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
@@ -325,8 +339,8 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
         queryset=taller.Cliente.objects.all(), label="Cliente",required=False)
     presupuestos__vehiculo = forms.ModelChoiceField(
         queryset=taller.Vehiculo.objects.all(), label="Vehiculo", required=False)
-    detalles = forms.CharField(required=False, max_length=200)
-    estado = forms.ChoiceField(choices=ordenes.OrdenDeTrabajo.ESTADOS_CHOICES, required=False)
+    estado_choices = [('','-'*9)] + list(ordenes.OrdenDeTrabajo.ESTADOS_CHOICES)
+    estado = forms.ChoiceField(choices=estado_choices, required=False)
     tareas = forms.ModelChoiceField(
         queryset=taller.Tarea.objects.all(), required=False)
     materiales = forms.ModelChoiceField(
@@ -334,9 +348,8 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
     repuestos = forms.ModelChoiceField(
         queryset=taller.Repuesto.objects.all(), required=False)
 
-    orden = forms.CharField(
-        required=False
-    )
+    turno__lte= forms.DateTimeField(label="Hasta", required=False, widget=forms.DateInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'}))
+    turno__gte= forms.DateTimeField(label="Desde", required=False, widget=forms.DateInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -349,11 +362,15 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "presupuestos__cliente",
                 "presupuestos__vehiculo",
-                "detalles",
                 "estado",
                 "tareas",
                 "materiales",
                 "repuestos",
+                HTML(
+                    '<label> <b>Fecha de Turno:</b> </label>'
+                    ),
+                "turno__gte",
+                "turno__lte",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

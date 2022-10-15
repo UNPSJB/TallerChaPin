@@ -287,10 +287,10 @@ class OrdenDeTrabajo(models.Model):
 
     def get_ultimo_presupuesto(self):
         return self.presupuestos.all().order_by('fecha').last()
-    
+
     def tiene_factura(self):
         return (self.factura is not None) and (self.estado == OrdenDeTrabajo.FACTURADA)
-    
+
     def pagado(self):
         return self.estado == OrdenDeTrabajo.PAGADA
     

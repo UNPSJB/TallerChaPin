@@ -141,9 +141,13 @@ class ModeloFiltrosForm(FiltrosForm):
     ]
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
-    descripcion = forms.CharField(required=False)
     marca = forms.ModelChoiceField(
         queryset=Marca.objects.all().order_by('nombre'), required=False)
+    
+    anio__gte = forms.IntegerField(
+        label="Mayor o igual que", required=False)
+    anio__lte = forms.IntegerField(
+        label="Menor o igual que", required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -155,8 +159,11 @@ class ModeloFiltrosForm(FiltrosForm):
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
                 "nombre",
-                "descripcion",
                 "marca",
+                HTML("<label><b>Año:</b></label>"),
+                "anio__gte",
+                "anio__lte"
+
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
@@ -469,6 +476,9 @@ class TipoTareaFiltrosForm(FiltrosForm):
     ]
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
+    materiales = forms.BooleanField(required=False)
+    repuestos = forms.BooleanField(required=False)
+    planilla = forms.BooleanField(required=False)
 
 
     def __init__(self, *args, **kwargs):
@@ -480,7 +490,10 @@ class TipoTareaFiltrosForm(FiltrosForm):
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "nombre"
+                "nombre",
+                "materiales",
+                "repuestos",
+                "planilla",
             ),
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )

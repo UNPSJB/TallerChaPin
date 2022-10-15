@@ -50,14 +50,16 @@
       <div class="collapse" id="tareas-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li>
-            <a href="{% url 'crearTipoTarea' %}" class="link-dark rounded"
-              >Registrar un tipo de tarea</a
-            >
+            <a href="{% url 'crearTarea' %}" class="link-dark rounded">Registrar una tarea</a>
           </li>
           <li>
-            <a href="{% url 'listarTipoTarea' %}" class="link-dark rounded"
-              >Listar tipos de tareas</a
-            >
+            <a href="{% url 'listarTareas' %}" class="link-dark rounded">Listar tareas</a>
+          </li>
+          <li>
+            <a href="{% url 'crearTipoTarea' %}" class="link-dark rounded">Registrar un tipo de tarea</a>
+          </li>
+          <li>
+            <a href="{% url 'listarTipoTarea' %}" class="link-dark rounded">Listar tipos de tareas</a>
           </li>
         </ul>
       </div>

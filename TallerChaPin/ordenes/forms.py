@@ -57,6 +57,7 @@ def PresupuestoForm(base = None):
                     
                     if tarea not in tareas_para_agregar:
                         tareas_para_agregar.append(tarea)
+                #presupuesto.orden.actualizar_estado()
 
             presupuesto.save()
 

@@ -727,7 +727,7 @@ class ClienteUpdateForm(forms.ModelForm):
 
 # Cliente - Filtro
 
-class ClienteFiltrosForm(FiltrosForm):  # Revisar
+class ClienteFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("dni", "DNI"),
         ("nombre", "Nombre"),

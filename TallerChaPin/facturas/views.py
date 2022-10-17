@@ -35,14 +35,14 @@ class FacturaDetailView(DetailView):
 
         return context
 
-    # Revisar
-    # def get(self, *args, **kwargs):
-    #     pk = kwargs.get('pk')
-    #     try:
-    #         factura = Factura.objects.get(pk=pk)
-    #     except Factura.DoesNotExist:
-    #         raise Http404('Factura no existe')
-    #     return render(self.request, 'facturas/factura_detail.html', {'factura': factura})
+
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        try:
+            factura = Factura.objects.get(pk=pk)
+        except Factura.DoesNotExist:
+            raise Http404('Factura no existe')
+        return super().get(*args,**kwargs)
     
     def post(self, *args, **kwargs):
         form = PagoForm(self.request.POST)

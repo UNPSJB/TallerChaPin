@@ -49,7 +49,7 @@ class Factura(models.Model):
             factura.agregar_detalle(desc, precio)
         for desc, precio in [(f"{t}", t.precio()) for t in orden.detalles.all()]:
             factura.agregar_detalle(desc, precio)
-        orden.estado = OrdenDeTrabajo.FACTURADA
+        orden.actualizar_estado(OrdenDeTrabajo.FACTURAR_ORDEN)
         orden.save()
         
         return factura

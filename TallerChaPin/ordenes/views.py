@@ -213,19 +213,19 @@ class PresupuestoUpdateView(UpdateView):
         context['ayuda'] = 'presupuestos.html#modificacion-de-un-presupuesto'
         return context
     
-    # Revisar. Hace que se pierdan los valores cargados.
-    # def get(self, *args, **kwargs):
-    #     #Control para que no se pueda modificar desde una URL
-    #     pk = kwargs.get('pk')
-    #     form= self.get_form()
-    #     try:
-    #         presupuesto = Presupuesto.objects.get(pk=pk)
-    #     except Presupuesto.DoesNotExist:
-    #             raise Http404("Presupuesto no existe")
-    #     if not presupuesto.puede_modificarse():
-    #         messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede modificar.")
-    #         return redirect('detallesPresupuesto',presupuesto.pk)
-    #     return self.post(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        #Control para que no se pueda modificar desde una URL
+        pk = kwargs.get('pk')
+        form= self.get_form()
+        try:
+            presupuesto = Presupuesto.objects.get(pk=pk)
+        except Presupuesto.DoesNotExist:
+            raise Http404("Presupuesto no existe")
+        if not presupuesto.puede_modificarse():
+            messages.add_message(self.request, messages.ERROR, "El presupuesto no se puede modificar.")
+            return redirect('detallesPresupuesto',presupuesto.pk)
+        return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
         p = Presupuesto.objects.get(id=kwargs['pk'])
@@ -387,8 +387,7 @@ def cancelar_orden(request, pk):
     if not orden.puede_cancelarse() :
             messages.add_message(request, messages.ERROR, "La orden de trabajo no se puede cancelar.")
             return redirect('detallesOrden', orden.pk)
-    orden.estado = OrdenDeTrabajo.CANCELADA
-    orden.save()
+    orden.actualizar_estado(OrdenDeTrabajo.CANCELAR_ORDEN)
     return redirect ('detallesOrden', orden.pk)
 
 def pausar_orden(request, pk):
@@ -401,8 +400,7 @@ def pausar_orden(request, pk):
         messages.add_message(request, messages.ERROR, "La orden de trabajo no se puede pausar.")
         return redirect('detallesOrden', orden.pk)    
 
-    orden.estado = OrdenDeTrabajo.PAUSADA
-    orden.save()
+    orden.actualizar_estado(OrdenDeTrabajo.PAUSAR_ORDEN)
     return redirect ('detallesOrden', orden.pk)
 
 def reanudar_orden(request, pk):
@@ -415,11 +413,7 @@ def reanudar_orden(request, pk):
         messages.add_message(request, messages.ERROR, "La orden de trabajo no se puede reanudar.")
         return redirect('detallesOrden', orden.pk)
 
-    if orden.no_hay_tareas_iniciadas():
-        orden.estado = OrdenDeTrabajo.ACTIVA
-    else:
-        orden.estado = OrdenDeTrabajo.INICIADA
-    orden.save()
+    orden.actualizar_estado(OrdenDeTrabajo.REANUDAR_ORDEN)
     return redirect ('detallesOrden', orden.pk)
 
 # ----------------------------- Detalle de orden View ----------------------------------- #

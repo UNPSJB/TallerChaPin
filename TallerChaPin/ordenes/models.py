@@ -41,6 +41,17 @@ def fecha_es_futura(fecha):
         raise ValidationError('Fecha no válida')
 
 class OrdenDeTrabajo(models.Model):
+    INICIAR_TAREA = 0
+    PAUSAR_ORDEN = 1
+    REANUDAR_ORDEN = 2
+    FINALIZAR_ORDEN = 3
+    FACTURAR_ORDEN = 4
+    FINALIZAR_TAREA_EXITOSA = 5
+    CANCELAR_ORDEN = 6
+    FINALIZAR_TAREA_NO_EXITOSA = 7 
+    
+       
+    
     CREADA = 0
     ACTIVA = 1
     CANCELADA = 2
@@ -185,7 +196,30 @@ class OrdenDeTrabajo(models.Model):
         else: 
             return 'orden_default'
         
-
+    def actualizar_estado(self, evento):
+        if evento == self.INICIAR_TAREA and self.estado == OrdenDeTrabajo.ACTIVA:
+            # Si la señal fue INICIAR_TAREA paso el estado a iniciada
+            self.estado = OrdenDeTrabajo.INICIADA
+        elif evento == self.FINALIZAR_TAREA_EXITOSA and self.estado == OrdenDeTrabajo.INICIADA and self.detalles_por_finalizar() == 0:
+            self.estado = OrdenDeTrabajo.REALIZADA
+        elif evento == self.FINALIZAR_TAREA_NO_EXITOSA and self.estado == OrdenDeTrabajo.INICIADA:
+            self.estado = OrdenDeTrabajo.PAUSADA
+        elif evento == self.PAUSAR_ORDEN:
+            self.estado = OrdenDeTrabajo.PAUSADA
+        elif evento == self.REANUDAR_ORDEN:
+            if self.detalles_por_finalizar() == 0:
+                self.estado = OrdenDeTrabajo.REALIZADA
+            elif self.no_hay_tareas_iniciadas():
+                self.estado = OrdenDeTrabajo.ACTIVA
+            else:
+                self.estado = OrdenDeTrabajo.INICIADA
+        elif evento == self.FINALIZAR_ORDEN:
+            self.estado = OrdenDeTrabajo.FINALIZADA
+        elif evento == self.FACTURAR_ORDEN:
+            self.estado = OrdenDeTrabajo.FACTURADA
+        elif evento == self.CANCELAR_ORDEN:
+            self.estado = OrdenDeTrabajo.CANCELADA
+        self.save()
 
     def puede_facturarse(self):
         return self.estado == OrdenDeTrabajo.REALIZADA
@@ -282,8 +316,8 @@ class OrdenDeTrabajo(models.Model):
                 repuesto=repuesto, orden=self, cantidad=cantidad)
 
     #Creado para test
-    def actualizar_estado(self):
-        print(self.detalles.all())
+    # def actualizar_estado(self):
+    #     print(self.detalles.all())
 
     def get_ultimo_presupuesto(self):
         return self.presupuestos.all().order_by('fecha').last()
@@ -440,9 +474,8 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.empleado = empleado
         self.inicio = fecha
         self.save()
-        if self.orden.estado == OrdenDeTrabajo.ACTIVA:
-            self.orden.estado = OrdenDeTrabajo.INICIADA
-            self.orden.save()
+        self.orden.actualizar_estado(OrdenDeTrabajo.INICIAR_TAREA)
+
 
     def asignar(self, empleado):
         self.empleado = empleado
@@ -453,10 +486,8 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.observaciones = observaciones
         self.fin = fecha
         self.save()
+        self.orden.actualizar_estado(exitosa and OrdenDeTrabajo.FINALIZAR_TAREA_EXITOSA or OrdenDeTrabajo.FINALIZAR_TAREA_NO_EXITOSA)
 
-        if self.orden.estado == OrdenDeTrabajo.INICIADA and self.orden.detalles_por_finalizar() == 0:
-            self.orden.estado = OrdenDeTrabajo.REALIZADA
-            self.orden.save()
 
 
     def crear_planilla_de_pintura(self, material, componentes):

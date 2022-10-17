@@ -310,7 +310,7 @@ class OrdenTrabajoCreateView(CreateView):
         context['titulo'] = "Registrar Orden"
         context['ayuda'] = 'presupuestos.html#confirmacion-de-un-presupuesto'
         return context
-    #Carga el formulario pero no el titulo del formulario
+
     def get (self, *args, **kwargs):
         pk_presupuesto = kwargs.get('pk')
         form = self.get_form()
@@ -322,7 +322,8 @@ class OrdenTrabajoCreateView(CreateView):
         if not presupuesto.puede_confirmarse():
             messages.add_message(self.request, messages.ERROR, "Orden de trabajo ya confirmada.")
             return redirect('detallesPresupuesto',presupuesto.pk)
-        return render(self.request, 'ordenes/ordendetrabajo_form.html', {'form' : form})
+        return render(self.request, 'ordenes/ordendetrabajo_form.html', {'form' : form ,
+                                                                        'titulo': "Registrar Orden" })
 
     def post(self, *args, **kwargs):
         pk = kwargs.get('pk')
@@ -632,7 +633,8 @@ class RegistrarIngresoVehiculoCreateView(CreateView):
             if not orden.puede_ingresar_vehiculo():
                 messages.add_message(self.request, messages.ERROR, "No se puede registrar ingreso del vehiculo.")
                 return redirect('detallesPresupuesto',orden.pk)
-        return render(self.request, 'ordenes/registraringresovehiculo_form.html', {'form' : form})
+        return render(self.request, 'ordenes/registraringresovehiculo_form.html', {'form' : form,
+                                                                                    'titulo' : "Registrar Ingreso de Vehiculo"})
 
     def post(self, *args, **kwargs):
         form_class = self.get_form_class()
@@ -676,7 +678,8 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
             if not orden.puede_retirar_vehiculo():
                 messages.add_message(self.request, messages.ERROR, "No se puede registrar retiro del vehiculo.")
                 return redirect('detallesPresupuesto',orden.pk)
-        return render(self.request, 'ordenes/registraringresovehiculo_form.html', {'form' : form})
+        return render(self.request, 'ordenes/registraringresovehiculo_form.html', {'form' : form,
+                                                                                    'titulo' : "Registrar Ingreso de Vehiculo"})
     
     def post(self, *args, **kwargs):
         form_class = self.get_form_class()

@@ -3,6 +3,7 @@ from django.db.models import Q, Model, fields
 from decimal import Decimal
 from datetime import date
 from django.views.generic.list import ListView
+from django_pandas.io import read_frame
 
 def dict_to_query(filtros_dict):
     filtro = Q()
@@ -59,6 +60,7 @@ class ListFilterView(ListView):
         context = super().get_context_data(**kwargs)
         if self.filtros:
             context['filtros'] = self.filtros(self.request.GET)
+            context['query'] = self.get_queryset()
         return context
 
     def get_queryset(self):
@@ -67,3 +69,8 @@ class ListFilterView(ListView):
             filtros = self.filtros(self.request.GET)
             return filtros.apply(qs)
         return qs
+
+def exportar_listado(self, qs):
+    df = read_frame(qs)
+    print(df)
+    return None

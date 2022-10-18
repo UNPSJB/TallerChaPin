@@ -1,9 +1,11 @@
 from django.urls import path
 from .views import *
+from TallerChaPin.utils import exportar_listado
 
 
 urlpatterns = [
 
+    
     path('materiales/unidades_de_medida/<int:pk>', UnidadesDeMedida),
     path('cliente/vehiculos/<int:pk>', vehiculosDelCliente),
     # ----------------- MARCAS -----------------
@@ -61,7 +63,7 @@ urlpatterns = [
          MaterialUpdateView.as_view(), name="modificarMaterial"),
     path('materiales/modificarCantidad',
          MaterialCantidad, name="modificarCantidad"),
-
+     
     # ----------------- TIPOS MATERIALES -----------------
 
     path('tipos-materiales/crear', TipoMaterialCreateView.as_view(),
@@ -81,7 +83,8 @@ urlpatterns = [
          ClienteUpdateView .as_view(), name="modificarCliente"),
     path('clientes/eliminar/<int:pk>',
          ClienteDeleteView.as_view(), name="eliminarCliente"),
-
+    path('cliente/exportar/<int:pk>',
+          export_list, name='exportarCliente'),
     # ----------------- VEHÍCULOS -----------------
 
     path('vehiculos/listar', VehiculoListView.as_view(), name="listarVehiculos"),

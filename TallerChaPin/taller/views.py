@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
@@ -658,6 +659,10 @@ class ClienteListView(ListFilterView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de clientes"
         return context
+
+def export_list(request):
+    response = HTTPResponse
+    return response
 
 # ---------------------------- Vehiculo View ------------------------------------ #
 

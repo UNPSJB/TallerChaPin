@@ -8,6 +8,7 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from TallerChaPin.utils import ListFilterView
+import pandas as pd
 # Create your views here.
 
 
@@ -660,8 +661,16 @@ class ClienteListView(ListFilterView):
         context['titulo'] = "Listado de clientes"
         return context
 
-def export_list(request):
-    response = HTTPResponse
+def export_list(request, pk):
+    df = pd.DataFrame()
+
+    path = 'TallerChaPin/taller/'
+    response = HTTPResponse(content_type='text/csv',
+                            headers={'Content-Disposition': 'attachment; filename="archivo.csv"'},
+                            )
+    # response['Content'] = 'attachment'; filename="archivo.csv"
+
+    df.to_csv(path = response)
     return response
 
 # ---------------------------- Vehiculo View ------------------------------------ #

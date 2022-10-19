@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import *
-from TallerChaPin.utils import exportar_listado
+
 
 
 urlpatterns = [

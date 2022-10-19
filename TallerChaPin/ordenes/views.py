@@ -592,6 +592,25 @@ class PlanillaCreateView(CreateView):
             messages.add_message(self.request, messages.ERROR, form.errors)
         return self.form_invalid(form=form)
 
+class PlanillaUpdateView(UpdateView):
+
+    model = PlanillaDePintura
+    form_class = PlanillaDePinturaForm
+    success_url = reverse_lazy("listarVehiculos")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Modificar planilla de pintura"
+        return context
+
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.SUCCESS, 'Planilla modificada con éxito')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)
+
 
 
 # ----------------------------- Ingreso de Vehiculo View ----------------------------------- #

@@ -47,7 +47,9 @@ urlpatterns = [
          resumen_orden, name="resumenOrden"),
      # ------------------ Planilla de pintura ----------------- 
      path('detalles-orden/<int:detalle>/planilla/crear',
-         PlanillaCreateView.as_view(), name="cargarPlanillaParaTarea"),
+          PlanillaCreateView.as_view(), name="cargarPlanillaParaTarea"),
+     path('planilla/modificar/<int:pk>',
+          PlanillaUpdateView.as_view(), name="modificarPlanilla"),
      # ----------------- Ingreso y Entrega de vehiculo -----------------
      path('ordenesTurnos/registrarIngresoVehiculo',
           RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),

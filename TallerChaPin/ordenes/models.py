@@ -489,7 +489,7 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.orden.actualizar_estado(exitosa and OrdenDeTrabajo.FINALIZAR_TAREA_EXITOSA or OrdenDeTrabajo.FINALIZAR_TAREA_NO_EXITOSA)
 
 
-
+    #Este metodo no se usa?
     def crear_planilla_de_pintura(self, material, componentes):
         # Componentes es una lista de la forma [(formula, cantidad)...]
         planilla = PlanillaDePintura.objects.create(
@@ -746,7 +746,6 @@ class PlanillaDePintura(models.Model):
 
     def agregar(self, formula, cantidad):
         return DetallePlanillaDePintura.objects.create(planilla=self, formula=formula, cantidad=cantidad)
-
 
 class DetallePlanillaDePintura(models.Model):
     planilla = models.ForeignKey(

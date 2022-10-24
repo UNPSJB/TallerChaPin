@@ -45,6 +45,13 @@ class FacturaDetailView(DetailView):
         return super().get(*args,**kwargs)
     
     def post(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        factura = Factura.objects.get(pk=pk)
+        
+        if not factura.puede_pagar():
+            messages.add_message(self.request, messages.WARNING, "La Factura no se puede pagar.")
+            return redirect('detallesFactura', factura.pk)
+
         form = PagoForm(self.request.POST)
         if form.is_valid():
             form.save()
@@ -133,7 +140,8 @@ class PagoCreateView(CreateView):
             pago = Pago.objects.get(pk=pk)
         except Pago.DoesNotExist:
             raise Http404('Pago no existe')
-        return render(self.request, 'facturas/pago_form.html', {'form': form})
+        return render(self.request, 'facturas/pago_form.html', {'form': form,
+                                                                'titulo': "Ingresar Monto a Pagar"})
 
 
     def post(self, *args, **kwargs):

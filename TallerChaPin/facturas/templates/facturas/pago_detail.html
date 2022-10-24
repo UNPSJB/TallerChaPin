@@ -60,17 +60,11 @@
             <div class="col-md-3">
                 <div class="border border-primary rounded p-3">
                     <h5>Acciones</h5>
-                    <a href="" data-bs-toggle="modal" data-bs-target="#modalEliminarFactura"
-                        data-bs-nombre="{{object.orden.cliente}}" data-bs-url="{% url 'eliminarFactura' object.pk %}"
+                    <a href="" data-bs-toggle="modal" data-bs-target="#modalEliminarPago"
+                        data-bs-nombre="{{object.orden.cliente}}" data-bs-url="{% url 'eliminarPago' object.pk %}"
                         class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
-                        Eliminar factura</a>
-        
-                    {% if object.factura.puede_pagar %} 
-                    <a href="{% url 'crearPago' object.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn">
-                        <i class="fas fa-check-circle"></i> Pagar cuota</a>
-                    </a>
-                    <!-- WIP: Falta poder pagar una cuota -->
-                    {% endif %}
+                        Eliminar Pago</a>
+                    <a href="{% url 'detallesFactura' object.factura.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver Factura </a>
                 </div>
             </div>
         </div>
@@ -90,7 +84,7 @@
 {% endblock %}
 
 {% block modals %}
-{% include './factura_confirm_delete.html' with idModal='modalEliminarFactura' %}
+{% include './pago_confirm_delete.html' with idModal='modalEliminarPago' %}
 {% endblock %}
 
 {% block extrajs %}

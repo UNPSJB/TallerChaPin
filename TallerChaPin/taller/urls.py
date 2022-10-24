@@ -83,8 +83,8 @@ urlpatterns = [
          ClienteUpdateView .as_view(), name="modificarCliente"),
     path('clientes/eliminar/<int:pk>',
          ClienteDeleteView.as_view(), name="eliminarCliente"),
-    path('cliente/exportar/<int:pk>',
-          export_list, name='exportarCliente'),
+    path('clientes/exportar',
+          export_list, name='exportarClientes'),
     # ----------------- VEHÍCULOS -----------------
 
     path('vehiculos/listar', VehiculoListView.as_view(), name="listarVehiculos"),

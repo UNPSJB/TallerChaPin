@@ -1,6 +1,5 @@
-from http.client import HTTPResponse
 from django.urls import reverse_lazy
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
@@ -8,6 +7,8 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from TallerChaPin.utils import ListFilterView
+from django_pandas.io import read_frame
+
 import pandas as pd
 # Create your views here.
 
@@ -661,16 +662,16 @@ class ClienteListView(ListFilterView):
         context['titulo'] = "Listado de clientes"
         return context
 
-def export_list(request, pk):
-    df = pd.DataFrame()
+def export_list(request):
+    qs = Cliente.objects.all()
+    df = read_frame(qs)
 
     path = 'TallerChaPin/taller/'
-    response = HTTPResponse(content_type='text/csv',
-                            headers={'Content-Disposition': 'attachment; filename="archivo.csv"'},
-                            )
-    # response['Content'] = 'attachment'; filename="archivo.csv"
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=filename.csv'
 
-    df.to_csv(path = response)
+
+    df.to_csv(path_or_buf=response,sep=';',float_format='%.2f',index=False,decimal=",")
     return response
 
 # ---------------------------- Vehiculo View ------------------------------------ #

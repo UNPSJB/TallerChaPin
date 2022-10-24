@@ -10,8 +10,8 @@ urlpatterns = [
          FacturaDetailView.as_view(), name="detallesFactura"),
 #     path('facturas/modificar/<int:pk>',
 #          FacturaUpdateView.as_view(), name="modificarFactura"),  # Es necesario?
-    path('facturas/eliminar/<int:pk>',
-         FacturaDeleteView.as_view(), name="eliminarFactura"),  # Impedir que se pueda eliminar si ya fue pagada y cuando se elimina cambiar el estado de la orden al anterior
+#     path('facturas/eliminar/<int:pk>',
+#          FacturaDeleteView.as_view(), name="eliminarFactura"),  # Es necesario?
     # ----------------Pago-------------------------
     path('pagos/crear/<int:pk>', PagoCreateView.as_view(), name="crearPago"),
     path('pagos/detalle/<int:pk>', PagoDetailView.as_view(), name="detallesPago"),

@@ -21,9 +21,6 @@ import os
 from django.core.exceptions import ObjectDoesNotExist
 
 
-
-
-
 def requerimientos_tareas(request):
     """
         Recibe el pk de una o mas tareas y se retorna un diccionario como:

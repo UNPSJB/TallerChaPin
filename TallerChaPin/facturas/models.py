@@ -38,13 +38,13 @@ class Factura(models.Model):
         choices=ESTADO_CHOICES, default=CREADA)
     cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=False)
 
-    @property
-    def vehiculo(self):
-        return self.orden.vehiculo
+    # @property
+    # def vehiculo(self):
+    #     return self.orden.vehiculo
 
-    @property
-    def cliente(self):
-        return self.orden.cliente
+    # @property
+    # def cliente(self):
+    #     return self.orden.cliente
 
 
     @staticmethod

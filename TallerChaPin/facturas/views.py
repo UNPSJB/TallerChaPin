@@ -89,13 +89,13 @@ class FacturaUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         return context
 
-class FacturaDeleteView(DeleteView):
+# class FacturaDeleteView(DeleteView):
 
-    model = Factura
-    success_url = reverse_lazy('listarFacturas')
+#     model = Factura
+#     success_url = reverse_lazy('listarFacturas')
 
-    def get(self, *args, **kwargs):
-        return self.post(*args, **kwargs)
+#     def get(self, *args, **kwargs):
+#         return self.post(*args, **kwargs)
 
 class imprimirFactura(PDFTemplateView):
     template_name = 'facturas/factura_pdf.html'

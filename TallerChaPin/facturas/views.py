@@ -89,14 +89,6 @@ class FacturaUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         return context
 
-# class FacturaDeleteView(DeleteView):
-
-#     model = Factura
-#     success_url = reverse_lazy('listarFacturas')
-
-#     def get(self, *args, **kwargs):
-#         return self.post(*args, **kwargs)
-
 class imprimirFactura(PDFTemplateView):
     template_name = 'facturas/factura_pdf.html'
     cmd_options = {
@@ -178,9 +170,9 @@ class PagoDetailView(DetailView):
 
 class PagoUpdateView(UpdateView):
 
-    model = Factura
-    form_class = FacturaForm
-    success_url = reverse_lazy('crearFactura')
+    model = Pago
+    form_class = PagoForm
+    success_url = reverse_lazy('crearPago')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -196,3 +188,30 @@ class PagoListView(ListFilterView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de pagos"
         return context
+
+class PagoDeleteView(DeleteView):
+
+    model = Pago
+    success_url = reverse_lazy('listarPagos')
+
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('pk')
+        try:
+            pago = Pago.objects.get(pk=pk)
+        except Pago.DoesNotExist:
+            raise Http404("Pago no existe")
+        if not pago.puede_eliminarse() :
+            messages.add_message(self.request, messages.ERROR, "El pago no se puede eliminar.")
+            return redirect('detallesPago', pago.pk)
+        return self.post(*args, **kwargs)
+    
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        try:
+            self.object.delete()
+            messages.add_message(self.request, messages.SUCCESS, f'Pago eliminado con éxito.')
+        except models.RestrictedError:
+            messages.add_message(self.request, messages.WARNING, f'El Pago "{self.pk}" no se puede eliminar porque está en uso.')
+        finally:
+            return redirect(success_url)

@@ -149,4 +149,5 @@ class Pago(models.Model):
     def cliente(self):
         return self.factura.orden.cliente
 
-   
+    def puede_eliminarse(self):
+        return self.factura.estado == Factura.ACTIVA or self.factura.estado == Factura.CREADA

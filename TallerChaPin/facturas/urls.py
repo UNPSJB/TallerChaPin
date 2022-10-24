@@ -17,7 +17,7 @@ urlpatterns = [
     path('pagos/detalle/<int:pk>', PagoDetailView.as_view(), name="detallesPago"),
     path('pagos/modificar/<int:pk>', PagoUpdateView.as_view(), name="modificarPago"), # Solo se puede modificar el modo de pago... 
     path('pagos/listar', PagoListView.as_view(), name="listarPagos"), 
-    path('pagos/eliminar/<int:pk>', FacturaDeleteView.as_view(), name="eliminarPago"),
+    path('pagos/eliminar/<int:pk>', PagoDeleteView.as_view(), name="eliminarPago"),
     # ----------------PDF-------------------------
     path('factura/pdf/<int:pk>', imprimirFactura.as_view(),
           name='imprimirFactura'),

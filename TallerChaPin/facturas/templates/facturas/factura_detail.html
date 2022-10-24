@@ -144,10 +144,6 @@
             <div class="col-md-3">
                 <div class="border border-primary rounded p-3">
                     <h5>Acciones</h5>
-                    <a href="" data-bs-toggle="modal" data-bs-target="#modalEliminarFactura"
-                        data-bs-nombre="{{factura.orden.cliente}}" data-bs-url="{% url 'eliminarFactura' factura.pk %}"
-                        class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
-                        Eliminar factura</a>
         
                     {% if factura.puede_pagar %} 
                     <a href="" data-bs-toggle="modal" data-bs-target="#modalPagarFactura"
@@ -174,13 +170,11 @@
 {% endblock %}
 
 {% block modals %}
-    {% include './factura_confirm_delete.html' with idModal='modalEliminarFactura' %}
     {% include './factura_pago.html' with idModal='modalPagarFactura' form=facturaPagoForm %}
 {% endblock %}
 
 {% block extrajs %}
 <script>
     conectarBotonesAModal('.btn-cancelar', 'modalPagarFactura');
-    conectarBotonesAModal('.btn-eliminar', 'modalEliminarFactura');
 </script>
 {% endblock %}

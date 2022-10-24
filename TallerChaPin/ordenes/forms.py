@@ -638,13 +638,6 @@ class PlanillaDePinturaForm (forms.ModelForm):
         fields = "__all__"
         exclude = ["orden","fecha"]
 
-        # labels = {
-
-        # }
-        # widgets = {
-                        
-        # }
-
     def save(self, detalle_planilla, detalle_orden):
         planilla = super().save(commit=False)
         planilla.orden = detalle_orden

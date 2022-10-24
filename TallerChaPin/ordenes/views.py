@@ -601,9 +601,20 @@ class PlanillaUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar planilla de pintura"
+        context['modificando'] = True
+        context['pk_planilla'] = self.kwargs['pk']
+
+        initial_detalles = [
+            {'formula': p["formula"], "cantidad": p["cantidad"]} for p in self.get_object().detalles.all().values()]
+
+        context['detalle_planilla_formset'] = DetallePlanillaInline(len(initial_detalles))(initial=initial_detalles)
+        context['detalle_planilla_formset_helper'] = DetallePlanillaFormSetHelper()
+
         return context
 
     def form_valid(self, form):
+        print('------------TEST------------')
+        print(form)
         messages.add_message(self.request, messages.SUCCESS, 'Planilla modificada con éxito')
         return super().form_valid(form)
 

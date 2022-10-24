@@ -132,6 +132,10 @@ class PagoCreateView(CreateView):
             pago = Pago.objects.get(pk=pk)
         except Pago.DoesNotExist:
             raise Http404('Pago no existe')
+        if not pago.puede_pagar():
+            messages.add_message(self.request, messages.WARNING, "El pago no se puede realizar.")
+            return redirect('detallesPago', pago.pk)
+        
         return render(self.request, 'facturas/pago_form.html', {'form': form,
                                                                 'titulo': "Ingresar Monto a Pagar"})
 

@@ -141,13 +141,8 @@ class Pago(models.Model):
     def __str__(self):
         return f'Nº de Factura: ({self.factura.pk})'
 
-    @property
-    def vehiculo(self):
-        return self.factura.orden.vehiculo
-
-    @property
-    def cliente(self):
-        return self.factura.orden.cliente
-
     def puede_eliminarse(self):
         return self.factura.estado == Factura.ACTIVA or self.factura.estado == Factura.CREADA
+
+    def puede_pagar(self):
+        return self.factura.puede_pagar()

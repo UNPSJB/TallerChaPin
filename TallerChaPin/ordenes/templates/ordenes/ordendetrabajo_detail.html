@@ -144,7 +144,7 @@
                           {% for planilla in detalle.planillas.all %}
                             <tr class="bg-transition">
                               <td>{{ planilla.nombre_de_color }}</td>
-                              <td><a href="#">Ver detalle</a></td>
+                              <td><a href="{% url 'modificarPlanilla' planilla.pk %}">Ver detalle</a></td>
                             </tr>
                             {% empty %}
                             <tr>

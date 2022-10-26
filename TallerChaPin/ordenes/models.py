@@ -481,7 +481,6 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.save()
         self.orden.actualizar_estado(OrdenDeTrabajo.INICIAR_TAREA)
 
-
     def asignar(self, empleado):
         self.empleado = empleado
         self.save()
@@ -495,16 +494,16 @@ class DetalleOrdenDeTrabajo(models.Model):
 
 
     #Este metodo no se usa?
-    def crear_planilla_de_pintura(self, material, componentes):
-        # Componentes es una lista de la forma [(formula, cantidad)...]
-        planilla = PlanillaDePintura.objects.create(
-            orden=self, nombre_de_color=material.nombre)
-        for formula, cantidad in componentes:
-            planilla.agregar(formula, cantidad)
+    # def crear_planilla_de_pintura(self, material, componentes):
+    #     # Componentes es una lista de la forma [(formula, cantidad)...]
+    #     planilla = PlanillaDePintura.objects.create(
+    #         orden=self, nombre_de_color=material.nombre)
+    #     for formula, cantidad in componentes:
+    #         planilla.agregar(formula, cantidad)
 
-    def color_de_pintura (self):
-        material = self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first() 
-        return material.nombre if material is not None else "Pintura original"
+    # def color_de_pintura (self):
+    #     material = self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first() 
+    #     return material.nombre if material is not None else "Pintura original"
 
 
     def precio(self):

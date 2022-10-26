@@ -577,6 +577,18 @@ class PlanillaCreateView(CreateView):
         context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         return context
 
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('detalle')
+        print(pk)
+        try:
+            detalleTarea = DetalleOrdenDeTrabajo.objects.get(pk=pk)
+        except DetalleOrdenDeTrabajo.DoesNotExist:
+            raise Http404('Detalle no existe')
+        if not detalleTarea.requiere_planilla():
+            messages.add_message(self.request, messages.WARNING, 'No se puede crear planilla de pintura')
+            return redirect('listarDetallesOrden')
+        return super().get(*args, **kwargs)
+
     #Mejorar
     def post(self, *args, **kwargs):
         self.object = None

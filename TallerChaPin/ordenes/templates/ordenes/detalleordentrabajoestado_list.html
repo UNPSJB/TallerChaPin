@@ -77,7 +77,8 @@
                 {% endif %}
             {% endif %}
 
-              {% if detalle_orden.requiere_planilla %}
+
+              {% if detalle_orden.requiere_planilla and not detalle_orden.esta_finalizado %}
                 <a href="{% url 'cargarPlanillaParaTarea' detalle_orden.pk %}" class="btn btn-primary m-1" type="button" data-bs-toggle="">
                   <i class="fas fa-paint-brush"></i> Planilla
                 </a>

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import *
-
+from TallerChaPin.utils import export_list
 
 
 urlpatterns = [
@@ -84,7 +84,7 @@ urlpatterns = [
     path('clientes/eliminar/<int:pk>',
          ClienteDeleteView.as_view(), name="eliminarCliente"),
     path('clientes/exportar',
-          export_list, name='exportarClientes'),
+          exportar_listado_clientes, name='exportarClientes'),
     # ----------------- VEHÍCULOS -----------------
 
     path('vehiculos/listar', VehiculoListView.as_view(), name="listarVehiculos"),

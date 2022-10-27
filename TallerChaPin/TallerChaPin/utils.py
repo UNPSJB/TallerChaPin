@@ -1,8 +1,11 @@
 from django import forms
 from django.db.models import Q, Model, fields
+from django.http import HttpResponse
 from decimal import Decimal
 from datetime import date
 from django.views.generic.list import ListView
+from django_pandas.io import read_frame
+
 # from django_pandas.io import read_frame
 
 def dict_to_query(filtros_dict):
@@ -70,7 +73,17 @@ class ListFilterView(ListView):
             return filtros.apply(qs)
         return qs
 
-# def exportar_listado(self, qs):
-#     df = read_frame(qs)
-#     print(df)
-#     return None
+def export_list(qs, fields):
+    df = read_frame(qs)
+    for m in qs:
+        attr = getattr(m, "vip")
+        if callable(attr):
+            attr = attr()
+
+    path = 'TallerChaPin/taller/'
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=filename.csv'
+
+
+    df.to_csv(path_or_buf=response,sep=';',float_format='%.2f',index=False,decimal=",")
+    return response

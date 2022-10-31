@@ -746,8 +746,10 @@ class PlanillaDePintura(models.Model):
     orden = models.ForeignKey(
         DetalleOrdenDeTrabajo, on_delete=models.CASCADE, related_name='planillas')
     fecha = models.DateTimeField(auto_now_add=True)
-    # Blanco nieve, Gris Topo, Azul Topo, Verde aceituna, etc
     nombre_de_color = models.CharField(max_length=100)
+
+    def vaciar(self):
+        DetallePlanillaDePintura.objects.filter(planilla=self).delete()
 
     def agregar(self, formula, cantidad):
         return DetallePlanillaDePintura.objects.create(planilla=self, formula=formula, cantidad=cantidad)

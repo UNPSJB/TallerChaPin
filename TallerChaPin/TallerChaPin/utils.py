@@ -83,7 +83,6 @@ def export_list(request, Modelo, Filtros):
     
         encabezados = filtros.sortables()
         
-        # path = 'TallerChaPin/taller/'
         response = HttpResponse(content_type='text/csv; charset=utf-8')
         response['Content-Disposition'] = 'attachment; filename=filename.csv'
         
@@ -102,15 +101,20 @@ def export_list(request, Modelo, Filtros):
                     
                     try:
                         valor = valor()
+                        if bool(valor):
+                            valor = 'Si'
+                        else:
+                            valor = 'No'
+
                     except:
-                        valor = list(valor for v in valor.all()) # VERRRRRR
+                        valor =  ''.join([str(v)+'\n' for v in valor.all()])
 
                 if valor is None:
                     valor = 'n/a'
+                
+
                 valores.append(valor)
                 print(valores)
             writer.writerow(valores)
 
-
-        # df.to_csv(path_or_buf=response,sep=';',float_format='%.2f',index=False,decimal=",")
     return response

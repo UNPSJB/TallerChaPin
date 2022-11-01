@@ -25,6 +25,8 @@ urlpatterns = [
     path('tarea/eliminar/<int:pk>',
          TareaDeleteView.as_view(), name="eliminarTarea"),
     path('tareas/listar', TareaListView.as_view(), name="listarTareas"),
+    path('tareas/exportar',
+          exportar_listado_tareas, name='exportarTareas'),
 
     # ----------------- TIPOS TAREA -----------------
 

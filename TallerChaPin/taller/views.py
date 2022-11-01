@@ -112,6 +112,7 @@ class MarcaListView(ListFilterView):
         context['titulo'] = "Listado de marcas"
         return context
 
+exportar_listado_marcas = lambda r: export_list(r, Marca, MarcaFiltrosForm)
 # ----------------------------- Modelo View ----------------------------------- #
 
 class ModeloCreateView(CreateView):
@@ -193,6 +194,7 @@ class ModeloListView(ListFilterView):
         context['titulo'] = "Listado de modelos"
         return context
 
+exportar_listado_modelos = lambda r: export_list(r, Modelo, ModeloFiltrosForm)
 # ----------------------------- Repuesto View ----------------------------------- #
 
 
@@ -264,6 +266,7 @@ class RepuestoListView(ListFilterView):
         context['titulo'] = "Listado de repuestos"
         return context
 
+exportar_listado_repuestos = lambda r: export_list(r, Repuesto, RepuestoFiltrosForm)
 # ----------------------------- Tipo Tareas View ----------------------------------- #
 
 
@@ -339,6 +342,7 @@ class TipoTareaListView(ListFilterView):
         context['titulo'] = "Listado de tipos de tarea"
         return context
 
+exportar_listado_tipotareas = lambda r: export_list(r, TipoTarea, TipoTareaFiltrosForm)
 # ----------------------------- Tareas View ----------------------------------- #
 
 class TareaCreateView(CreateView):
@@ -444,19 +448,6 @@ class TipoMaterialCreateView(CreateView):
             return redirect('crearTipoMaterial')
         return self.form_invalid(form=form)
 
-
-class TipoMaterialListView(ListFilterView):
-    filtros = TipoMaterialFiltrosForm
-    model = TipoMaterial
-    paginate_by = 100
-    ordering = ['nombre']
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de tipos de materiales"
-        return context
-
-
 class TipoMaterialUpdateView(UpdateView):
     model = TipoMaterial
     form_class = TipoMaterialForm
@@ -493,21 +484,19 @@ class TipoMaterialDeleteView(DeleteView):
         finally:
             return redirect(success_url)
 
-# ---------------------------- Material View ------------------------------------ #
-
-class MaterialListView(ListFilterView):
-    filtros = MaterialFiltrosForm
-    model = Material
-    ordering = ['nombre']
-
+class TipoMaterialListView(ListFilterView):
+    filtros = TipoMaterialFiltrosForm
+    model = TipoMaterial
     paginate_by = 100
+    ordering = ['nombre']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = "Listado de materiales"
-        context['modificarCantidadForm'] = ModificarCantidadForm()
+        context['titulo'] = "Listado de tipos de materiales"
         return context
 
+exportar_listado_tipomateriales = lambda r: export_list(r, TipoMaterial, TipoMaterialFiltrosForm)
+# ---------------------------- Material View ------------------------------------ #
 
 class MaterialCreateView(CreateView):
     model = Material
@@ -575,6 +564,20 @@ def modificar_cantidad(request):
                              'No se ha podido modificar la cantidad del material.')
     return redirect('listarMateriales')
 
+class MaterialListView(ListFilterView):
+    filtros = MaterialFiltrosForm
+    model = Material
+    ordering = ['nombre']
+
+    paginate_by = 100
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titulo'] = "Listado de materiales"
+        context['modificarCantidadForm'] = ModificarCantidadForm()
+        return context
+
+exportar_listado_materiales = lambda r: export_list(r, Material, MaterialFiltrosForm)
 # ---------------------------- Cliente View ------------------------------------ #
 
 class ClienteCreateView(CreateView):
@@ -747,6 +750,7 @@ class VehiculoListView(ListFilterView):
         context['titulo'] = "Listado de vehículos"
         return context
 
+exportar_listado_vehiculos = lambda r: export_list(r, Vehiculo, VehiculoFiltrosForm)
 # ---------------------------- Empleado View ------------------------------------ #
 
 class EmpleadoCreateView(CreateView):
@@ -820,4 +824,5 @@ class EmpleadoListView(ListFilterView):
         context['titulo'] = "Listado de empleados"
         return context
 
+exportar_listado_empleados = lambda r: export_list(r, Empleado, EmpleadoFiltrosForm)
 # ---------------------------------------------------------------- #

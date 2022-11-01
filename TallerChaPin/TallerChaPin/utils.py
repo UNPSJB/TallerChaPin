@@ -74,47 +74,45 @@ class ListFilterView(ListView):
             return filtros.apply(qs)
         return qs
 
-def export_list(request, Modelo, Filtros):
+def export_list(request, Modelo, Filtros): # Metodo utilizado para la exportar listados a formato .csv
 
-    qs = Modelo.objects.all()
-    filtros = Filtros(request.GET)
+    qs = Modelo.objects.all() # Modelo del listado
+    filtros = Filtros(request.GET) # Filtros del listado, el GET obtiene los criterios de filtros
     if filtros.is_valid():
-        qs = filtros.apply(qs)
+        qs = filtros.apply(qs) # aplicamos filtros
     
-        encabezados = filtros.sortables()
+        encabezados = filtros.sortables() # encabezados de las columnas del listado, son tuplas (ver las choices de <Modelo>FiltrosForm)
         
         response = HttpResponse(content_type='text/csv; charset=utf-8')
         response['Content-Disposition'] = 'attachment; filename=filename.csv'
         
-        writer = csv.writer(response, delimiter=";")
+        writer = csv.writer(response, delimiter=";") # comienzo a escribrir
 
-        fields_nombre = [v for k,v in encabezados]
+        fields_nombre = [v for k,v in encabezados] 
         fields_clave = [k for k,v in encabezados]
         writer.writerow(fields_nombre)
 
-        for fila in qs:
+
+        for fila in qs: # por cada fila...
             valores = []
-            for f in fields_clave:
-                print(f)
+            for f in fields_clave: #escribo el valor de la celda que corresponde hasta llenar la fila
                 valor = getattr(fila, f)
-                if callable(valor):
+                if callable(valor): 
                     
-                    try:
+                    try: #intento ejecutarla
                         valor = valor()
                         if bool(valor):
                             valor = 'Si'
                         else:
                             valor = 'No'
 
-                    except:
-                        valor =  ''.join([str(v)+'\n' for v in valor.all()])
+                    except: #si llego aca es que es una fk
+                        valor =  ''.join([str(v)+'\n' for v in valor.all()]) #formateando valores
 
-                if valor is None:
+                if valor is None: #si el valor es nulo...
                     valor = 'n/a'
-                
 
-                valores.append(valor)
-                print(valores)
-            writer.writerow(valores)
+                valores.append(valor) # adjunto el valor justo con los demas valores que conforman la fila
+            writer.writerow(valores) # escribo la fila
 
     return response

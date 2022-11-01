@@ -1,3 +1,4 @@
+from xmlrpc.client import Boolean
 from django import forms
 from django.db.models import Q, Model, fields
 from django.http import HttpResponse
@@ -80,16 +81,36 @@ def export_list(request, Modelo, Filtros):
     if filtros.is_valid():
         qs = filtros.apply(qs)
     
-    h = filtros.sortables()
-    print(h)
-    # path = 'TallerChaPin/taller/'
-    response = HttpResponse(content_type='text/csv; charset=utf-8')
-    response['Content-Disposition'] = 'attachment; filename=filename.csv'
-    
-    writer = csv.writer(response, delimiter=",")
+        encabezados = filtros.sortables()
+        
+        # path = 'TallerChaPin/taller/'
+        response = HttpResponse(content_type='text/csv; charset=utf-8')
+        response['Content-Disposition'] = 'attachment; filename=filename.csv'
+        
+        writer = csv.writer(response, delimiter=";")
 
-    fields = [v for k,v in h]
-    writer.writerow(fields)
+        fields_nombre = [v for k,v in encabezados]
+        fields_clave = [k for k,v in encabezados]
+        writer.writerow(fields_nombre)
 
-    # df.to_csv(path_or_buf=response,sep=';',float_format='%.2f',index=False,decimal=",")
+        for fila in qs:
+            valores = []
+            for f in fields_clave:
+                print(f)
+                valor = getattr(fila, f)
+                if callable(valor):
+                    
+                    try:
+                        valor = valor()
+                    except:
+                        valor = list(valor for v in valor.all()) # VERRRRRR
+
+                if valor is None:
+                    valor = 'n/a'
+                valores.append(valor)
+                print(valores)
+            writer.writerow(valores)
+
+
+        # df.to_csv(path_or_buf=response,sep=';',float_format='%.2f',index=False,decimal=",")
     return response

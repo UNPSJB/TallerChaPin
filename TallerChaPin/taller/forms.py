@@ -734,8 +734,8 @@ class ClienteFiltrosForm(FiltrosForm):
         ("apellido", "Apellido"),
         ("direccion", "Dirección"),
         ("telefono", "Teléfono"),
-        ("vehiculo", "Vehículo"),
-        ("es_vip","Es Vip"),
+        ("vehiculos", "Vehículo"),
+        ("vip","Es Vip"),
     ]
 
     dni = forms.CharField (required=False, max_length=8)

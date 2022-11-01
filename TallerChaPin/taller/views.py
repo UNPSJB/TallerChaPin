@@ -8,8 +8,6 @@ from .forms import *
 from django.contrib import messages
 from TallerChaPin.utils import ListFilterView, export_list
 
-
-import pandas as pd
 # Create your views here.
 
 

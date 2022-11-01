@@ -648,6 +648,8 @@ class PlanillaDePinturaForm (forms.ModelForm):
             planilla.save()
 
         for detalle in detalle_planilla:
+            if detalle == {}:
+                continue
             cantidadDetalle = detalle["cantidad"]
             formulaDetalle = detalle["formula"]
             planilla.agregar(formulaDetalle, cantidadDetalle)

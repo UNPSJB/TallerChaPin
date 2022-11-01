@@ -6,9 +6,9 @@
 <div class="col-8">
     <h3>{{ titulo }}</h3>
     
-    <form action="{% if modificando %} {% url 'modificarPlanilla' pk_planilla %} {% else %} {% url 'cargarPlanillaParaTarea' detalle.pk %} {% endif %}" method="post">
+    <form action="{{ form.helper.form_action }}" method="post">
         {% crispy form form.helper %}
-        <div data-formset="detalle_planilla">
+        <div data-formset="detalles" id="detalles">
             {% crispy detalle_planilla_formset detalle_planilla_formset_helper %}
         </div>
         <input type="submit" class="btn btn-primary mt-3" value="Guardar"/>

@@ -618,15 +618,12 @@ class PlanillaUpdateView(UpdateView):
     def form_invalid(self, form):
         messages.add_message(self.request, messages.ERROR, form.errors)
         return super().form_invalid(form)
-        
-    # def get_form_kwargs(self,*args,**kwargs) :
-    #     kw = super().get_form_kwargs()
-    #     kw['pk'] = PlanillaDePintura.objects.get(pk=self.kwargs.get('pk'))
-    #     return kw
 
     def post(self, *args, **kwargs):
         self.object = None
         self.detalle_planilla_form = DetallePlanillaInline()(self.request.POST)
+        print('form:')
+        print(self.detalle_planilla_form)
         form = PlanillaDePinturaForm(self.request.POST)        
         planilla = PlanillaDePintura.objects.get(pk=self.kwargs.get('pk'))
         if self.detalle_planilla_form.is_valid() and form.is_valid():

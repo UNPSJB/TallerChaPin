@@ -662,17 +662,17 @@ class ClienteListView(ListFilterView):
         context['titulo'] = "Listado de clientes"
         return context
 
-def exportar_listado(request, Modelo, Filtros):
-    qs = Modelo.objects.all()
-    print(request.GET)
-    filtros = Filtros(request.GET)
-    if filtros.is_valid():
-        qs = filtros.apply(qs)
-    print("hola",filtros)
-    return export_list(qs)
+# def exportar_listado(request,):
+#     qs = Modelo.objects.all()
+#     print(request.GET)
+#     filtros = Filtros(request.GET)
+#     if filtros.is_valid():
+#         qs = filtros.apply(qs)
+#     print("hola",filtros)
+#     return export_list(qs)
 
-exportar_listado_clientes = lambda r: exportar_listado(r, Cliente, ClienteFiltrosForm, ["nombre", "apellido", "vip"])
-    
+# exportar_listado_clientes = lambda r: export_list(r, Cliente, ClienteFiltrosForm, ["nombre", "apellido", "vip"])
+exportar_listado_clientes = lambda r: export_list(r, Cliente, ClienteFiltrosForm)    
 
 # ---------------------------- Vehiculo View ------------------------------------ #
 

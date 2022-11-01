@@ -4,9 +4,9 @@ from django.http import HttpResponse
 from decimal import Decimal
 from datetime import date
 from django.views.generic.list import ListView
-from django_pandas.io import read_frame
-
 # from django_pandas.io import read_frame
+import csv
+
 
 def dict_to_query(filtros_dict):
     filtro = Q()
@@ -73,17 +73,23 @@ class ListFilterView(ListView):
             return filtros.apply(qs)
         return qs
 
-def export_list(qs, fields):
-    df = read_frame(qs)
-    for m in qs:
-        attr = getattr(m, "vip")
-        if callable(attr):
-            attr = attr()
+def export_list(request, Modelo, Filtros):
 
-    path = 'TallerChaPin/taller/'
-    response = HttpResponse(content_type='text/csv')
+    qs = Modelo.objects.all()
+    filtros = Filtros(request.GET)
+    if filtros.is_valid():
+        qs = filtros.apply(qs)
+    
+    h = filtros.sortables()
+    print(h)
+    # path = 'TallerChaPin/taller/'
+    response = HttpResponse(content_type='text/csv; charset=utf-8')
     response['Content-Disposition'] = 'attachment; filename=filename.csv'
+    
+    writer = csv.writer(response, delimiter=",")
 
+    fields = [v for k,v in h]
+    writer.writerow(fields)
 
-    df.to_csv(path_or_buf=response,sep=';',float_format='%.2f',index=False,decimal=",")
+    # df.to_csv(path_or_buf=response,sep=';',float_format='%.2f',index=False,decimal=",")
     return response

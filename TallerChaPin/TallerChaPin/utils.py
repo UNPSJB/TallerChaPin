@@ -101,16 +101,15 @@ def export_list(request, Modelo, Filtros): # Metodo utilizado para la exportar l
                     
                     try: #intento ejecutarla
                         valor = valor()
-                        if bool(valor):
-                            valor = 'Si'
-                        else:
-                            valor = 'No'
+                        if valor is True or valor is False:
+                            valor = ("Si","No")[True]
 
-                    except: #si llego aca es que es una fk
+                    except: 
                         valor =  ''.join([str(v)+'\n' for v in valor.all()]) #formateando valores
 
                 if valor is None: #si el valor es nulo...
                     valor = 'n/a'
+
 
                 valores.append(valor) # adjunto el valor justo con los demas valores que conforman la fila
             writer.writerow(valores) # escribo la fila

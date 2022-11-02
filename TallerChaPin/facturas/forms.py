@@ -122,6 +122,7 @@ class PagoFiltrosForm(FiltrosForm):
         ("fecha", "Fecha"),
         ("monto", "Monto"),
         ("tipo", "Tipo"),
+        ("get_cuotas", "Nro. de Coutas")
     ]
   
     monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)

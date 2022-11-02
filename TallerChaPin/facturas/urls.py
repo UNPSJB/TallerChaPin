@@ -12,12 +12,16 @@ urlpatterns = [
          FacturaUpdateView.as_view(), name="modificarFactura"),  # Solo se puede modificar el modo de pago... 
     path('facturas/eliminar/<int:pk>',
          FacturaDeleteView.as_view(), name="eliminarFactura"),
+     path('facturas/exportar',
+          exportar_listado_facturas, name='exportarFacturas'),
     # ----------------Pago-------------------------
     path('pagos/crear/<int:pk>', PagoCreateView.as_view(), name="crearPago"),
     path('pagos/detalle/<int:pk>', PagoDetailView.as_view(), name="detallesPago"),
     path('pagos/modificar/<int:pk>', PagoUpdateView.as_view(), name="modificarPago"),
     path('pagos/listar', PagoListView.as_view(), name="listarPagos"), 
     path('pagos/eliminar/<int:pk>', FacturaDeleteView.as_view(), name="eliminarPago"),
+    path('pagos/exportar',
+          exportar_listado_pagos, name='exportarPagos'),
     # ----------------PDF-------------------------
     path('factura/pdf/<int:pk>', imprimirFactura.as_view(),
           name='imprimirFactura'),

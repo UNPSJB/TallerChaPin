@@ -63,6 +63,9 @@ class Factura(models.Model):
     def puede_pagar(self):
         return self.adeuda()
 
+    def get_cuotas(self):
+        return self.cuotas
+
     def no_pagada(self):
         return self.orden.estado !=  OrdenDeTrabajo.FINALIZADA
     
@@ -142,4 +145,5 @@ class Pago(models.Model):
     def cliente(self):
         return self.factura.orden.cliente
 
-   
+    def get_cuotas(self):
+        return self.factura.get_cuotas()

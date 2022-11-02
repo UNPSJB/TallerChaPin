@@ -2,7 +2,6 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic.list import ListView
 from .models import *
 from .forms import *
 from django.contrib import messages

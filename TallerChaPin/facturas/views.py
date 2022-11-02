@@ -1,4 +1,3 @@
-from multiprocessing import context, get_context
 import os
 from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
@@ -9,7 +8,7 @@ from .models import *
 from .forms import * 
 from django.urls import reverse_lazy
 from django.contrib import messages
-from TallerChaPin.utils import ListFilterView
+from TallerChaPin.utils import ListFilterView, export_list
 from django.http import Http404
 # ----------------------------- Factura View ----------------------------------- #
 
@@ -53,6 +52,7 @@ class FacturaDetailView(DetailView):
             messages.add_message(self.request, messages.WARNING, form.errors)
             return redirect ('listarFacturas')
 
+exportar_listado_facturas = lambda r: export_list(r, Factura, FacturaFiltrosForm)
 
 #Mejorar
 def crearFactura(request, pk):
@@ -188,3 +188,5 @@ class PagoListView(ListFilterView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de pagos"
         return context
+
+exportar_listado_pagos = lambda r: export_list(r, Pago, PagoFiltrosForm)

@@ -658,6 +658,12 @@ class Presupuesto(models.Model):
         self.save()
         return self.orden
 
+    def get_confirmado(self):
+        return self.confirmado
+
+    def get_ampliado(self):
+        return self.ampliado
+
     def cantidad_detalles(self):
         return self.tareas.count() + self.materiales.count() + self.repuestos.count()
 

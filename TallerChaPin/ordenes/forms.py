@@ -217,7 +217,13 @@ class PresupuestoFiltrosForm(FiltrosForm):
         ("confirmado","Confirmado"),
         ("ampliado","Ampliado")
     ]
-
+    ATTR_CHOICES = [
+        ("cliente", "Cliente"),
+        ("vehiculo", "Vehículo"),
+        ("validez","Validez (días)"),
+        ("get_confirmado","Confirmado"),
+        ("get_ampliado","Ampliado") 
+    ]
 
     cliente = forms.ModelChoiceField(
         queryset=taller.Cliente.objects.all().order_by('nombre'), required=False)
@@ -331,6 +337,12 @@ class OrdenForm(forms.ModelForm):
 
 class OrdenTrabajoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ("presupuestos__cliente", "Cliente"),
+        ("presupuestos__vehiculo", "Vehiculo"),
+        ("estado", "Estado"),
+    ]
+
+    ATTR_CHOICES = [
         ("cliente", "Cliente"),
         ("vehiculo", "Vehiculo"),
         ("get_estado", "Estado"),
@@ -466,6 +478,12 @@ def RegistrarEgresoVehiculoForm(model=None):
 
 class TurnosFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ("turno", "Turno"),
+        ("cliente", "Cliente"),
+        ("vehiculo", "Vehiculo"),
+    ]
+
+    ATTR_CHOICES = [
         ("turno", "Turno"),
         ("cliente", "Cliente"),
         ("vehiculo", "Vehiculo"),

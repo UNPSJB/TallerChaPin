@@ -42,18 +42,24 @@ class FacturaForm(forms.ModelForm):
 
 class FacturaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ("#","#"),
+        ("fecha", "Fecha"),
+        ("orden__presupuestos__cliente", "Cliente"),
+        ("orden__presupuestos__vehiculo", "Vehículo"),
+        ("estado", "Estado")
+    ]
+
+    ATTR_CHOICES = [
         ("pk","#"),
         ("fecha", "Fecha"),
         ("get_cliente_orden", "Cliente"),
         ("get_vehiculo_orden", "Vehículo"),
         ("get_estado", "Estado")
     ]
-    orden = forms.ModelChoiceField(
-        queryset=OrdenDeTrabajo.objects.all().order_by('id'), required=False, label="Orden de Trabajo")
-    cliente = forms.ModelChoiceField(
-        queryset=Cliente.objects.all(), required=False)
-    vehiculo = forms.ModelChoiceField(
-        queryset=Vehiculo.objects.all(), required=False)
+    orden__presupuestos__cliente = forms.ModelChoiceField(
+        queryset=Cliente.objects.all(), label="Cliente",required=False)
+    orden__presupuestos__vehiculo = forms.ModelChoiceField(
+        queryset=Vehiculo.objects.all(),label="Vehiculo", required=False)
     estado_choices = [('','-'*9)] + list(Factura.ESTADO_CHOICES)    
     estado = ChoiceField(choices=estado_choices, label="Estado de factura" ,required=False)
 
@@ -69,7 +75,8 @@ class FacturaFiltrosForm(FiltrosForm):
                 "",
                 HTML(
                     '<div class="custom-filter"><i class="fas fa-filter"></i> Filtrar</div>'),
-                "orden",
+                "orden__presupuestos__cliente",
+                "orden__presupuestos__vehiculo",
                 "estado",
                 HTML(
                     '<label> <b>Fecha de factura:</b> </label>'
@@ -120,6 +127,17 @@ class PagoForm(forms.ModelForm):
 
 class PagoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ("#","#"),
+        ("factura__orden__presupuestos__cliente", "Cliente"),
+        ("factura","Factura"),
+        ("fecha", "Fecha"),
+        ("monto", "Monto"),
+        ("tipo", "Tipo"),
+        ("factura__cuotas", "Nro. de Coutas")
+    ]
+    
+    ATTR_CHOICES = [
+        ("pk","#"),
         ("cliente", "Cliente"),
         ("get_nombre_factura","Factura"),
         ("fecha", "Fecha"),
@@ -127,6 +145,8 @@ class PagoFiltrosForm(FiltrosForm):
         ("get_tipo", "Tipo"),
         ("get_cuotas", "Nro. de Coutas")
     ]
+
+
   
     monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
     tipo_choices = [('','-'*9)] + list(Pago.TIPO_PAGO)

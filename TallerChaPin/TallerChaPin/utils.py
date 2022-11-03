@@ -31,7 +31,8 @@ def dict_to_query(filtros_dict):
 # Filtros - Form
 
 class FiltrosForm(forms.Form):
-    ORDEN_CHOICES = []
+    ORDEN_CHOICES = [] # Choices para ordenamiento
+    ATTR_CHOICES = [] # Choices del listado para el listado a exportar
     orden = forms.CharField(required=False)
 
     def filter(self, qs, filters):
@@ -55,6 +56,9 @@ class FiltrosForm(forms.Form):
 
     def sortables(self):
         return self.ORDEN_CHOICES
+    
+    def get_attrs(self):
+        return self.ATTR_CHOICES
 
 # Lista Filtros - ListView
 
@@ -81,7 +85,7 @@ def export_list(request, Modelo, Filtros): # Metodo utilizado para la exportar l
     if filtros.is_valid():
         qs = filtros.apply(qs) # aplicamos filtros
     
-        encabezados = filtros.sortables() # encabezados de las columnas del listado, son tuplas (ver las choices de <Modelo>FiltrosForm)
+        encabezados = filtros.get_attrs() # attrs definidos en filtros
         
         response = HttpResponse(content_type='text/csv; charset=utf-8')
         response['Content-Disposition'] = 'attachment; filename=filename.csv'
@@ -102,7 +106,8 @@ def export_list(request, Modelo, Filtros): # Metodo utilizado para la exportar l
                     try: #intento ejecutarla
                         valor = valor()
                         if valor is True or valor is False:
-                            valor = ("Si","No")[True]
+                            valor = ("No","Si")[valor is True]
+     
 
                     except: 
                         valor =  ''.join([str(v)+'\n' for v in valor.all()]) #formateando valores

@@ -76,6 +76,10 @@ class MarcaFiltrosForm(FiltrosForm):
         ("nombre", "Nombre"),
         ("descripcion", "Descripcion"),
     ]
+    ATTR_CHOICES = [
+        ("nombre", "Nombre"),
+        ("descripcion", "Descripcion"),
+    ]
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     descripcion = forms.CharField(required=False)
@@ -138,6 +142,12 @@ class ModeloFiltrosForm(FiltrosForm):
         ("descripcion", "Descripcion"),
         ("marca", "Marca"),
         ("anio", "Año")
+    ]
+    ATTR_CHOICES = [
+        ("nombre", "Nombre"),
+        ("descripcion", "Descripcion"),
+        ("marca", "Marca"),
+        ("anio", "Año"),
     ]
 
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
@@ -208,6 +218,13 @@ class RepuestoFiltrosForm(FiltrosForm):
         ("nombre", "Nombre"),
         ("modelo", "Modelo"),
         ("tipo", "Tipo"),
+        ("cantidad", "Cantidad"),
+        ("precio", "Precio"),
+    ]
+    ATTR_CHOICES = [
+        ("nombre", "Nombre"),
+        ("modelo", "Modelo"),
+        ("get_tipo", "Tipo"),
         ("cantidad", "Cantidad"),
         ("precio", "Precio"),
     ]
@@ -293,6 +310,11 @@ class TipoMaterialFiltrosForm(FiltrosForm):
         ("unidad_medida", "Unidad de medida")
     ]
 
+    ATTR_CHOICES = [
+        ("nombre", "Nombre"),
+        ("get_unidad_medida", "Unidad de medida")
+    ]
+
     nombre = forms.CharField(required=False, label='Nombre', max_length=50)
 
     tipo_choices = [('','-'*9)] + list(TipoMaterial.UNIDADES_BASICAS)
@@ -355,6 +377,12 @@ class MaterialForm(forms.ModelForm):
 
 class MaterialFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ("nombre", "Nombre"),
+        ("tipo", "Tipo"),
+        ("cantidad", "Cantidad"),
+        ("precio", "Precio"),
+    ]
+    ATTR_CHOICES = [
         ("nombre", "Nombre"),
         ("tipo", "Tipo"),
         ("cantidad", "Cantidad"),
@@ -475,6 +503,14 @@ class TipoTareaFiltrosForm(FiltrosForm):
         ("planilla", "Planilla?"),
     ]
 
+    ATTR_CHOICES = [
+        ("nombre", "Nombre"),
+        ("descripcion", "Descripción"),
+        ("get_req_materiales", "Materiales"),
+        ("get_req_repuestos", "Repuestos"),
+        ("get_req_planilla", "Planilla"),
+    ]
+
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     materiales = forms.BooleanField(required=False)
     repuestos = forms.BooleanField(required=False)
@@ -537,6 +573,13 @@ class TareaForm(forms.ModelForm):
 
 class TareaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ("nombre", "Nombre"),
+        ("descripcion", "Descripcion"),
+        ("tipo", "Tipo"),
+        ("precio", "Precio")
+    ]
+    
+    ATTR_CHOICES = [
         ("nombre", "Nombre"),
         ("descripcion", "Descripcion"),
         ("tipo", "Tipo"),
@@ -623,7 +666,13 @@ class EmpleadoFiltrosForm(FiltrosForm):
         ("apellido", "Apellido"),
         ("legajo", "Legajo"),
         ("cuil", "CUIL"),
+    ]
 
+    ATTR_CHOICES = [
+        ("nombre", "Nombre"),
+        ("apellido", "Apellido"),
+        ("legajo", "Legajo"),
+        ("cuil", "CUIL"),
     ]
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
@@ -735,6 +784,15 @@ class ClienteFiltrosForm(FiltrosForm):
         ("direccion", "Dirección"),
         ("telefono", "Teléfono"),
         ("vehiculos", "Vehículo"),
+    ]
+
+    ATTR_CHOICES = [
+        ("dni", "DNI"),
+        ("nombre", "Nombre"),
+        ("apellido", "Apellido"),
+        ("direccion", "Dirección"),
+        ("telefono", "Teléfono"),
+        ("vehiculos", "Vehículo"),
         ("vip","Es Vip"),
     ]
 
@@ -833,6 +891,15 @@ class VehiculoFiltrosForm(FiltrosForm):
         ("cliente", "Cliente"),
         ("chasis", "Chasis"),
     ]
+
+    ATTR_CHOICES = [
+        ("patente", "Patente"),
+        ("modelo", "Modelo"),
+        ("anio", "Año"),
+        ("cliente", "Cliente"),
+        ("chasis", "Chasis"),
+    ]
+
 
     patente = forms.CharField(required=False, label='Patente', max_length=100)
     modelo = forms.ModelChoiceField(

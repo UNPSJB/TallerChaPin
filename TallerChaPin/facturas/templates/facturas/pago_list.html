@@ -11,9 +11,8 @@
   <table class="table table-hover {% if filtros %} sortable{% endif %}">
     <thead>
       <tr>
-        <th class="sortable bg-transition pointer" scope="col">#</th>
         {% for sortable in filtros.sortables %}
-        <th class="sortable" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
+        <th class="sortable bg-transition pointer" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
         {% endfor %}
         <th scope="col">Opciones</th>
       </tr>

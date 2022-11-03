@@ -50,8 +50,6 @@ class OrdenDeTrabajo(models.Model):
     CANCELAR_ORDEN = 6
     FINALIZAR_TAREA_NO_EXITOSA = 7 
     
-       
-    
     CREADA = 0
     ACTIVA = 1
     CANCELADA = 2
@@ -197,15 +195,22 @@ class OrdenDeTrabajo(models.Model):
             return 'orden_default'
         
     def actualizar_estado(self, evento):
+        # Si la evento fue INICIAR_TAREA paso el estado a iniciada
         if evento == self.INICIAR_TAREA and self.estado == OrdenDeTrabajo.ACTIVA:
-            # Si la señal fue INICIAR_TAREA paso el estado a iniciada
             self.estado = OrdenDeTrabajo.INICIADA
+        # Si la evento fue FINALIZAR_TAREA_EXITOSA y esta Tarea fue la ultima, paso el estado a REALIZADA 
         elif evento == self.FINALIZAR_TAREA_EXITOSA and self.estado == OrdenDeTrabajo.INICIADA and self.detalles_por_finalizar() == 0:
             self.estado = OrdenDeTrabajo.REALIZADA
+        # Si la evento fue FINALIZAR_TAREA_NO_EXITOSA y el estado de la Orden es INICIADA, paso el estado a PAUSADA  
         elif evento == self.FINALIZAR_TAREA_NO_EXITOSA and self.estado == OrdenDeTrabajo.INICIADA:
             self.estado = OrdenDeTrabajo.PAUSADA
+        # Si la evento fue PAUSAR_ORDEN, paso el estado PAUSADA (cuando se presiona el boton "Pausar Orden")
         elif evento == self.PAUSAR_ORDEN:
             self.estado = OrdenDeTrabajo.PAUSADA
+        # Si la evento fue REANUDAR_ORDEN:
+        # En el caso de haber Tareas terminadas la orden pasa a estado REALIZADA
+        # En el caso que haya tareas no iniciadas la orden pasa a ACTIVA
+        # Si no es niguno de los anteriores pasa a INICIADA (cuando se presiona el boton "Reanudar Orden")
         elif evento == self.REANUDAR_ORDEN:
             if self.detalles_por_finalizar() == 0:
                 self.estado = OrdenDeTrabajo.REALIZADA
@@ -213,12 +218,16 @@ class OrdenDeTrabajo(models.Model):
                 self.estado = OrdenDeTrabajo.ACTIVA
             else:
                 self.estado = OrdenDeTrabajo.INICIADA
+        # Si la evento fue FINALIZAR_ORDEN, paso el estado a FINALIZADA (cuando se terminaron todas las tareas, se facturo, se pago y se entrego el vehiculo) 
         elif evento == self.FINALIZAR_ORDEN:
             self.estado = OrdenDeTrabajo.FINALIZADA
+        # Si la evento fue FACTURAR_ORDEN, paso el estado a FACTURADA que quiere decir que se creo una factura asociada a la orden 
         elif evento == self.FACTURAR_ORDEN:
             self.estado = OrdenDeTrabajo.FACTURADA
+        # Si la evento fue CANCELAR_ORDEN, paso el estado a CANCELADA 
         elif evento == self.CANCELAR_ORDEN:
             self.estado = OrdenDeTrabajo.CANCELADA
+        # Guardo cambio de estado 
         self.save()
 
     def puede_facturarse(self):
@@ -477,7 +486,6 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.save()
         self.orden.actualizar_estado(OrdenDeTrabajo.INICIAR_TAREA)
 
-
     def asignar(self, empleado):
         self.empleado = empleado
         self.save()
@@ -490,17 +498,17 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.orden.actualizar_estado(exitosa and OrdenDeTrabajo.FINALIZAR_TAREA_EXITOSA or OrdenDeTrabajo.FINALIZAR_TAREA_NO_EXITOSA)
 
 
+    #Este metodo no se usa?
+    # def crear_planilla_de_pintura(self, material, componentes):
+    #     # Componentes es una lista de la forma [(formula, cantidad)...]
+    #     planilla = PlanillaDePintura.objects.create(
+    #         orden=self, nombre_de_color=material.nombre)
+    #     for formula, cantidad in componentes:
+    #         planilla.agregar(formula, cantidad)
 
-    def crear_planilla_de_pintura(self, material, componentes):
-        # Componentes es una lista de la forma [(formula, cantidad)...]
-        planilla = PlanillaDePintura.objects.create(
-            orden=self, nombre_de_color=material.nombre)
-        for formula, cantidad in componentes:
-            planilla.agregar(formula, cantidad)
-
-    def color_de_pintura (self):
-        material = self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first() 
-        return material.nombre if material is not None else "Pintura original"
+    # def color_de_pintura (self):
+    #     material = self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first() 
+    #     return material.nombre if material is not None else "Pintura original"
 
 
     def precio(self):
@@ -753,7 +761,6 @@ class PlanillaDePintura(models.Model):
 
     def agregar(self, formula, cantidad):
         return DetallePlanillaDePintura.objects.create(planilla=self, formula=formula, cantidad=cantidad)
-
 
 class DetallePlanillaDePintura(models.Model):
     planilla = models.ForeignKey(

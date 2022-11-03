@@ -18,9 +18,6 @@ import os
 from django.core.exceptions import ObjectDoesNotExist
 
 
-
-
-
 def requerimientos_tareas(request):
     """
         Recibe el pk de una o mas tareas y se retorna un diccionario como:
@@ -199,7 +196,6 @@ class PresupuestoUpdateView(UpdateView):
     def get(self, *args, **kwargs):
         #Control para que no se pueda modificar desde una URL
         pk = kwargs.get('pk')
-        form= self.get_form()
         try:
             presupuesto = Presupuesto.objects.get(pk=pk)
         except Presupuesto.DoesNotExist:
@@ -446,6 +442,9 @@ def iniciar_tarea(request, pk):
         detalle = DetalleOrdenDeTrabajo.objects.get(pk=pk)
     except DetalleOrdenDeTrabajo.DoesNotExist:
         raise Http404("No existe detalle de orden de trabajo")
+    if not detalle.puedo_iniciar():
+        messages.add_message(request, messages.WARNING, 'No se puede iniciar la tarea')
+        return redirect('listarDetallesOrden')
     detalle.iniciar(detalle.empleado)
     messages.add_message(request, messages.SUCCESS, 'La tarea se inició exitosamente')
     return redirect('listarDetallesOrden')
@@ -561,7 +560,19 @@ class PlanillaCreateView(CreateView):
         context["titulo"] = "Crear planilla de pintura"
         context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         return context
-        
+
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('detalle')
+        print(pk)
+        try:
+            detalleTarea = DetalleOrdenDeTrabajo.objects.get(pk=pk)
+        except DetalleOrdenDeTrabajo.DoesNotExist:
+            raise Http404('Detalle no existe')
+        if not detalleTarea.requiere_planilla():
+            messages.add_message(self.request, messages.WARNING, 'No se puede crear planilla de pintura')
+            return redirect('listarDetallesOrden')
+        return super().get(*args, **kwargs)
+
     #Mejorar
     def post(self, *args, **kwargs):
         self.object = None

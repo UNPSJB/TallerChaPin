@@ -31,6 +31,13 @@ class Factura(models.Model):
         choices=ESTADO_CHOICES, default=CREADA)
     cuotas = models.PositiveSmallIntegerField(default=1, blank=False, null=False)
 
+    # @property
+    # def vehiculo(self):
+    #     return self.orden.vehiculo
+
+    # @property
+    # def cliente(self):
+    #     return self.orden.cliente
 
     @staticmethod
     def facturar_orden(orden):
@@ -138,9 +145,8 @@ class Pago(models.Model):
     def __str__(self):
         return f'Nro. de Factura: ({self.factura.pk})'
 
-    @property
-    def vehiculo(self):
-        return self.factura.orden.vehiculo
+    def puede_eliminarse(self):
+        return self.factura.estado == Factura.ACTIVA or self.factura.estado == Factura.CREADA
 
     @property
     def cliente(self):
@@ -154,3 +160,6 @@ class Pago(models.Model):
     
     def get_tipo(self):
         return self.get_tipo_display()
+        
+    def puede_pagar(self):
+        return self.factura.puede_pagar()

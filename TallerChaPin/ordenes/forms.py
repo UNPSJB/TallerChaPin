@@ -333,7 +333,7 @@ class OrdenTrabajoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
         ("vehiculo", "Vehiculo"),
-        ("estado", "Estado"),
+        ("get_estado", "Estado"),
     ]
 
     presupuestos__cliente = forms.ModelChoiceField(

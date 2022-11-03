@@ -249,6 +249,8 @@ class OrdenDeTrabajo(models.Model):
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 
+
+
     def iniciar_tarea(self, empleado, tarea, fecha=now()):
         if self.estado == OrdenDeTrabajo.ACTIVA:
             tarea.iniciar(empleado, fecha)
@@ -315,12 +317,11 @@ class OrdenDeTrabajo(models.Model):
             RepuestoOrdenDeTrabajo.objects.create(
                 repuesto=repuesto, orden=self, cantidad=cantidad)
 
-    #Creado para test
-    # def actualizar_estado(self):
-    #     print(self.detalles.all())
-
     def get_ultimo_presupuesto(self):
         return self.presupuestos.all().order_by('fecha').last()
+
+    def get_estado(self):
+        return self.get_estado_display()
 
     def tiene_factura(self):
         return (self.factura is not None) and (self.estado == OrdenDeTrabajo.FACTURADA)

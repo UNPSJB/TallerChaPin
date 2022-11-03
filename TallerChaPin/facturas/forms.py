@@ -6,7 +6,10 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
 from datetime import datetime
 from TallerChaPin.utils import FiltrosForm
-
+from taller.models import (
+    Cliente,
+    Vehiculo,
+)
 
 # Factura - Form
 
@@ -39,11 +42,11 @@ class FacturaForm(forms.ModelForm):
 
 class FacturaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
-        ("#","#"),
+        ("pk","#"),
         ("fecha", "Fecha"),
-        ("cliente", "Cliente"),
-        ("vehiculo", "Vehículo"),
-        ("estado", "Estado")
+        ("get_cliente_orden", "Cliente"),
+        ("get_vehiculo_orden", "Vehículo"),
+        ("get_estado", "Estado")
     ]
     orden = forms.ModelChoiceField(
         queryset=OrdenDeTrabajo.objects.all().order_by('id'), required=False, label="Orden de Trabajo")
@@ -118,10 +121,10 @@ class PagoForm(forms.ModelForm):
 class PagoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("cliente", "Cliente"),
-        ("factura","Factura"),
+        ("get_nombre_factura","Factura"),
         ("fecha", "Fecha"),
         ("monto", "Monto"),
-        ("tipo", "Tipo"),
+        ("get_tipo", "Tipo"),
         ("get_cuotas", "Nro. de Coutas")
     ]
   

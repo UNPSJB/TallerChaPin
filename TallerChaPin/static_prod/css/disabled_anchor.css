@@ -1,0 +1,4 @@
+.disabled_anchor {
+  pointer-events: none;
+  cursor: default;
+}

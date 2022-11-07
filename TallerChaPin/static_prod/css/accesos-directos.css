@@ -1,0 +1,43 @@
+.acceso{
+    text-decoration: none;
+    color:inherit;
+    padding: 1.3rem 1rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: white;
+    transition: all 0.2s ease;
+
+    margin: 1rem;
+    border-radius: .3rem;
+    height: 50%;
+    cursor: pointer;
+}
+
+.acceso:hover{
+    color: inherit;
+    transform: scale(1.05);
+}
+
+.acceso p {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.acceso h2{
+    font-size: 1.5rem;
+}
+
+.atras{
+    font-size: 2.5rem;
+}
+
+.listar{
+    color: #0D6EFD;
+}
+
+.agregar{
+    color: green;
+}

@@ -1,0 +1,21 @@
+.tablero{
+    margin-top: .5rem;
+}
+
+.card{
+    transition: all 0.2s ease;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.finalizacion{
+    font-weight: bold;
+}
+
+.filtros {
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}

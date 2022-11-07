@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'taller',
     'ordenes',
     'facturas',
+    'reportes',
     'crispy_forms',
     "crispy_bootstrap5",
     "django_extensions",

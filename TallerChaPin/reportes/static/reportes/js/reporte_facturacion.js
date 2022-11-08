@@ -9,12 +9,14 @@ const chart = new Chart(document.getElementById("facturacion"), {
     datasets: [{
       data: [86, 114, 106, 106, 107, 111],
       label: "Facturado",
-      borderColor: "#3e95cd",
+      borderColor: "rgba(43, 57, 231, 0.8)",
+      backgroundColor: "rgba(43, 57, 231, 0.3)",
       fill: true
     }, {
       data: [282, 350, 411, 502, 635, 809],
       label: "Pagado",
-      borderColor: "#8e5ea2",
+      borderColor: "rgba(18, 165, 13, 0.8)",
+      backgroundColor: "rgba(18, 165, 13, 0.3)",
       fill: true
     }]
   },
@@ -39,12 +41,9 @@ form.addEventListener('submit', (e) => {
   fetch(`get_facturacion/${selected_radio},${input_desde.value},${input_hasta.value}`)
     .then(r => r.json())
     .then(r => {
-      console.log(r)
-
       chart.data.datasets[0].data = r.facturado
       chart.data.datasets[1].data = r.pagado
       chart.data.labels = r.labels
       chart.update()
-
     })
 })

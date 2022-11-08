@@ -75,8 +75,61 @@ def getFacturacion(request, params):
                 pagado.append(pagos_diarios)
 
     elif periodicidad == "2": # Semanalmente
-        pass
+        
+        semanas_diferencia = (fecha_hasta - fecha_desde).days // 7 +1
+        anio = fecha_desde.year
+        for i in range (semanas_diferencia):
+            fecha = (fecha_desde+timedelta(days=i*7))
+            semana = fecha.isocalendar()[1]
+            anio = fecha.isocalendar()[0]
+            labels.append(f'S{semana} ({anio})')
+
+            facturacion_semanal = 0
+            facturas = Factura.objects.filter(fecha__week=semana, fecha__year=anio)
+            for f in facturas:
+                facturacion_semanal += f.total()
+            if len(facturado) > 0:
+                facturado.append(facturado[len(facturado)-1] + facturacion_semanal)
+            else:
+                facturado.append(facturacion_semanal)
+
+            pagos_semanales = 0
+            pagos = Pago.objects.filter(fecha__week=semana, fecha__year=anio)
+            for p in pagos:
+                pagos_semanales += p.monto
+            if len(pagado) > 0:
+                pagado.append(pagado[len(pagado)-1] + pagos_semanales)
+            else:
+                pagado.append(pagos_semanales)
+
     elif periodicidad == "3": # Mensualmente
-        pass
+
+        meses_diferencia = (fecha_hasta - fecha_desde).days // 30 +1
+        anio = fecha_desde.year
+        for i in range (meses_diferencia):
+            mes = (fecha_desde.month+i) % 12 + 1
+            labels.append(f'{mes}/{anio}')
+            if mes == 12: 
+                anio += 1
+
+            facturacion_mensual = 0
+            facturas = Factura.objects.filter(fecha__year=anio, fecha__month=mes)
+            for f in facturas:
+                facturacion_mensual += f.total()
+            if len(facturado) > 0:
+                facturado.append(facturado[len(facturado)-1] + facturacion_mensual)
+            else:
+                facturado.append(facturacion_mensual)
+
+            pagos_mensuales = 0
+            pagos = Pago.objects.filter(fecha__year=anio, fecha__month=mes)
+            for p in pagos:
+                pagos_mensuales += p.monto
+            if len(pagado) > 0:
+                pagado.append(pagado[len(pagado)-1] + pagos_mensuales)
+            else:
+                pagado.append(pagos_mensuales)
+
+
 
     return JsonResponse({'labels' : labels, 'facturado': facturado, 'pagado': pagado })

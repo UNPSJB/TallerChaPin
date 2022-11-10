@@ -55,7 +55,6 @@ const inlineDeleteHandler = function (e1, prefix) {
 
 const inlineFormset = function ($context) {
   const prefix = $context.data('formset');
-  console.log(`El prefix es ${prefix}`)
   const row = $('.d-none.empty-form', $context).clone(true);
   const table = $('.d-none.empty-form', $context).parents('table');
   const tbody = $('tbody', table);

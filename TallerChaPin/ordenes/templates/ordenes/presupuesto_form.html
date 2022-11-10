@@ -13,10 +13,10 @@
     <h3>{{ titulo }} </h3>
     <form action="{{ form.helper.form_action }}" method="post" id="presupuesto_form">
         {% crispy form form.helper %}
-        <div data-formset="presupuesto_materiales" id="materiales" class="oculto">
+        <div data-formset="presupuesto_materiales" id="materiales" class="">
             {% crispy presupuesto_material_formset presupuesto_material_formset_helper %}
         </div>
-        <div data-formset="presupuesto_repuestos" id="repuestos" class="oculto">
+        <div data-formset="presupuesto_repuestos" id="repuestos" class="">
             {% crispy presupuesto_repuesto_formset presupuesto_repuesto_formset_helper %}
         </div>
         <input type="submit" value="Guardar" class="btn btn-primary" id="submit_button">

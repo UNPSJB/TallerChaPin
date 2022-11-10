@@ -202,10 +202,11 @@ class PresupuestoUpdateView(UpdateView):
         initial_repuestos = [
             {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in self.get_object().presupuesto_repuestos.all().values()]
 
-        context['presupuesto_material_formset'] = PresupuestoMaterialInline(len(initial_materiales))(initial=initial_materiales)  # pasarle las lineas previas
+        context['presupuesto_material_formset'] = PresupuestoMaterialInline(max(len(initial_materiales), 1))(initial=initial_materiales)  # pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(len(initial_repuestos))(initial=initial_repuestos)  # pasarle las lineas previas
+        context['presupuesto_repuesto_formset'] = PresupuestoRepuestoInline(max(len(initial_repuestos), 1))(initial=initial_repuestos)  # pasarle las lineas previas
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
+
         context['titulo'] = "Modificar presupuesto"
         context['ayuda'] = 'presupuestos.html#modificacion-de-un-presupuesto'
         return context

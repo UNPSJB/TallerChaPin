@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block main %}
-  <div class="col-10">
+  <div class="">
     <h3>{{ titulo }}</h3>
     <div id="container_facturacion">
-      <canvas id="facturacion" width="1500" height="1500"></canvas>
+      <canvas id="facturacion" height="200"></canvas>
     </div>
   </div>
 
   <form id="form_filtros">
-    <fieldset>
+    <fieldset class="temporalidad">
       <legend>Visualización</legend>
       <label>
         <input type="radio" name="periodo" value="1" class="radio_periodo"> Diario
@@ -23,13 +23,13 @@
       </label>
     </fieldset>
 
-    <legend>Filtrar por fecha</legend>
-    <fieldset>
+    <fieldset class="fechas">
+      <legend>Filtrar por fecha</legend>
       <label for="desde">Desde</label>
-      <input type="date" name="desde" id="fecha_desde">
+      <input type="date" name="desde" id="fecha_desde" class="form-control">
       <label for="hasta">Hasta</label>
-      <input type="date" name="hasta" id="fecha_hasta">
-      <button>Filtrar</button>
+      <input type="date" name="hasta" id="fecha_hasta" class="form-control">
+      <button class="btn btn-primary submit" id="submit_filtro">Filtrar</button>
     </fieldset>
   </form>
 

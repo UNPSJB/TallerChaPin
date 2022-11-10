@@ -104,13 +104,21 @@ def getFacturacion(request, params):
 
     elif periodicidad == "3": # Mensualmente
 
-        meses_diferencia = (fecha_hasta - fecha_desde).days // 30 +1
+        meses_diferencia = 1 + (fecha_hasta.year * 12 + fecha_hasta.month - (fecha_desde.year * 12 + fecha_desde.month))
+        # print(f'DEBUG: Entre ambas fechas hay {(fecha_hasta - fecha_desde).days} días')
+        # print(f'DEBUG: Entre ambas fechas hay {meses_diferencia} meses de diferencia.')
         anio = fecha_desde.year
         for i in range (meses_diferencia):
-            mes = (fecha_desde.month+i) % 12 + 1
+            # print(f'DEBUG: inicio de loop, i={i}.')
+            mes = (fecha_desde.month+i) % 12
+            if mes == 0:
+                mes = 12
+            # print(f'DEBUG: mes es {mes}.')
             labels.append(f'{mes}/{anio}')
+            # print(f'DEBUG: agrego label {mes}/{anio}.')
             if mes == 12: 
                 anio += 1
+                # print(f'DEBUG: mes es 12 -> ahora anio es {anio}')
 
             facturacion_mensual = 0
             facturas = Factura.objects.filter(fecha__year=anio, fecha__month=mes)

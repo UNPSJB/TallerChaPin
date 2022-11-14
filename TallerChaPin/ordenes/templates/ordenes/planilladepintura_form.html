@@ -19,27 +19,24 @@
 {% block extrajs %}
 <script>
 
+    const setRequired = () => {
+        const inputs_formula = [...document.querySelectorAll('tbody input[id$=formula]')].slice(1)
+        const inputs_cantidad = [...document.querySelectorAll('tbody input[id$=cantidad]')].slice(1)
+        const inputs = inputs_formula.concat(inputs_cantidad)
 
-
-// Pongo como required el primer renglón de la tabla
-window.addEventListener('load', (event) => {
-    document.getElementById('id_detalles-0-formula').setAttribute('required', true)
-    document.getElementById('id_detalles-0-cantidad').setAttribute('required', true)
-    
-    boton_agregar = document.querySelectorAll('tfoot a')[0]
-    boton_agregar.addEventListener('click', () => {
-
-        inputs_formula = document.querySelectorAll('#id_detalles-__prefix__-formula')
-        for (i = 0; i < inputs_formula.length; ++i) {
-            if (i > 0) inputs_formula[i].setAttribute('required', true)
+        for (let input of inputs) {
+            input.setAttribute('required', true)
         }
-        
-        inputs_cantidad = document.querySelectorAll('#id_detalles-__prefix__-cantidad')
-        for (i = 0; i < inputs_cantidad.length; ++i) {
-            if (i > 0) inputs_cantidad[i].setAttribute('required', true)
-        }
-    })
-});
+    }
+
+    // Pongo como required los renglones del formset
+    window.addEventListener('load', () => {
+        setRequired()
+
+        boton_agregar = document.querySelectorAll('tfoot a')[0]
+        console.log({boton_agregar})
+        boton_agregar.addEventListener('click', setRequired)
+    });
 
 
 </script>

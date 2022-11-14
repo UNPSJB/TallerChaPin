@@ -638,14 +638,17 @@ class PlanillaDePinturaForm (forms.ModelForm):
         fields = "__all__"
         exclude = ["orden","fecha"]
 
-    def save(self, detalle_planilla, detalle_orden=None, update=False, planilla_pintura=None):
+    def save(self, nombre_color, detalle_planilla, detalle_orden=None, update=False, planilla_pintura=None):
+
         if update:
             planilla_pintura.vaciar()
             planilla = planilla_pintura
         else:
             planilla = super().save(commit=False)
             planilla.orden = detalle_orden
-            planilla.save()
+        
+        planilla.nombre_de_color = nombre_color
+        planilla.save()
 
         for detalle in detalle_planilla:
             if detalle == {}:

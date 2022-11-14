@@ -21,7 +21,6 @@ function getQuitarButton(){
 }
 
 const addInlineDeleteButton = function (row, prefix) {
-  console.log({row})
   fila = row[0]
   hijos = Array.from(fila.childNodes)
   td_quitar = hijos.filter(n => n.id?.includes("DELETE"))[0]
@@ -64,7 +63,6 @@ const inlineFormset = function ($context) {
   
   $('a', agregarRenglon).click(() => {
     const totalForms = $('#id_' + prefix + '-TOTAL_FORMS').prop('autocomplete', 'off');
-    console.log('totalForms', totalForms.val());
     let nextIndex = Number(totalForms.val());
     const newRow = row.clone(true);
 
@@ -97,7 +95,6 @@ const addQuitarButton = (prefix) => {
 
   // Agrego funcionalidad a los botones agregados
   const botones = document.querySelectorAll('a.quitar')
-  console.log({botones})
   for (let b of botones){
     b.addEventListener('click', (e) => {
       e.preventDefault()

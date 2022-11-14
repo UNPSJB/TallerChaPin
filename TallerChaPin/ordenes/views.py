@@ -585,7 +585,7 @@ class PlanillaCreateView(CreateView):
         form = PlanillaDePinturaForm(self.request.POST)        
         detalle_orden = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         if self.detalle_planilla_form.is_valid() and form.is_valid():
-            planilla = form.save(self.detalle_planilla_form.cleaned_data, detalle_orden) # VER
+            planilla = form.save(form.cleaned_data['nombre_de_color'], self.detalle_planilla_form.cleaned_data, detalle_orden) # VER
             messages.add_message(self.request, messages.SUCCESS, 'La planilla de pintura se ha registrado exitosamente')
             return redirect ('listarDetallesOrden')
         else:
@@ -626,7 +626,8 @@ class PlanillaUpdateView(UpdateView):
         form = PlanillaDePinturaForm(self.request.POST)        
         planilla = PlanillaDePintura.objects.get(pk=self.kwargs.get('pk'))
         if self.detalle_planilla_form.is_valid() and form.is_valid():
-            planilla = form.save(self.detalle_planilla_form.cleaned_data, update=True, planilla_pintura=planilla)
+            print(form.cleaned_data)
+            planilla = form.save(form.cleaned_data['nombre_de_color'], self.detalle_planilla_form.cleaned_data, update=True, planilla_pintura=planilla)
             messages.add_message(self.request, messages.SUCCESS, 'La planilla de pintura se ha registrado exitosamente')
             return redirect ('listarDetallesOrden')
         else:

@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from TallerChaPin.views import *
-from django.conf.urls import handler404, handler500
+from django.conf import settings
+from django.views.static import serve
 
 urlpatterns = [
     path('', home, name="home"),
@@ -25,12 +26,15 @@ urlpatterns = [
     path('taller/', include('taller.urls')),
     path('ordenes/', include('ordenes.urls')),
     path('facturas/', include('facturas.urls')),
+    path('reportes/', include ('reportes.urls')),
     path('taller/', template_taller, name='taller_home'),
     path('ordenes/', template_ordenes, name='ordenes_home'),
     path('facturas/', template_facturas, name='facturas_home'),
     path('listados/', template_listados, name='listados_home'),
+    path('reportes/', template_reportes, name='reportes_home'),
     path('admin/', admin.site.urls),
     re_path(r'^docs/', include('docs.urls')),
+    re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
 ]
 
 

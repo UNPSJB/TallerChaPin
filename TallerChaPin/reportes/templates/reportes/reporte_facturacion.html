@@ -1,0 +1,41 @@
+{% extends 'template_reportes_home.html' %}
+{% load static %}
+
+{% block main %}
+  <div class="">
+    <h3>{{ titulo }}</h3>
+    <div id="container_facturacion">
+      <canvas id="facturacion" height="200"></canvas>
+    </div>
+  </div>
+
+  <form id="form_filtros">
+    <fieldset class="temporalidad">
+      <legend>Visualización</legend>
+      <label>
+        <input type="radio" name="periodo" value="1" class="radio_periodo"> Diario
+      </label>
+      <label>
+        <input type="radio" name="periodo" value="2" class="radio_periodo"> Semanal
+      </label>
+      <label>
+        <input type="radio" name="periodo" value="3" class="radio_periodo"> Mensual
+      </label>
+    </fieldset>
+
+    <fieldset class="fechas">
+      <legend>Filtrar por fecha</legend>
+      <label for="desde">Desde</label>
+      <input type="date" name="desde" id="fecha_desde" class="form-control">
+      <label for="hasta">Hasta</label>
+      <input type="date" name="hasta" id="fecha_hasta" class="form-control">
+      <button class="btn btn-primary submit" id="submit_filtro">Filtrar</button>
+    </fieldset>
+  </form>
+
+  {% block extrajs %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="{% static 'reportes/js/reporte_facturacion.js' %}" type="module"></script>
+  {% endblock %}
+
+{% endblock %}

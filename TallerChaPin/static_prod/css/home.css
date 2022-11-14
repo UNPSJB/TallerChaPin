@@ -1,0 +1,114 @@
+
+.contenedor{
+    background-image: url('../images/taller-blur.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 120vh;
+}
+
+.encabezado{
+    padding: 1.5rem;
+    background-color: #0D6EFD;
+    transition: background-color .5s;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.encabezado *{
+    color: white;
+}
+
+.encabezado:hover{
+    background-color: #0B5ED7;
+    transition: background-color .5s;
+}
+
+.secciones{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.seccion{
+    padding: 1.3rem 1rem 0rem 1rem;
+    width: 30%;
+    margin: 1rem;
+    border-radius: .3rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.seccion:hover{
+    transform: scale(1.05);
+    border-radius: .3rem;
+}
+
+/* .taller{
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+}
+
+.facturas{
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+}
+
+.trabajos{
+    border-radius: .3rem;
+    margin-bottom: 5rem;
+}
+
+.taller:hover{
+    background-color: rgb(139, 183, 219);
+}
+
+.ordenes:hover{
+    background-color: rgb(241, 79, 79);
+}
+
+.facturas:hover{
+    background-color: rgb(116, 197, 113);
+}
+
+.trabajos:hover{
+    background-color: rgb(223, 152, 71);
+}
+
+.aaa:hover{
+    background-color: blue;
+} */
+
+.logo-salir{
+    font-size: 2rem;
+    transition: all 0.2s ease;
+}
+
+.logo-salir:hover{
+    transform: scale(1.15);
+    color: #C82333;
+}
+
+.logo-home{
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-bottom: 2rem;
+}
+
+.mensaje{
+    font-size: 2rem;
+    display: inline;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: #0D6EFD;
+    border-radius: .3rem;
+}

@@ -88,6 +88,14 @@ class TipoTarea(models.Model):
         validacion_nombre_unico(TipoTarea, "nombre", self.nombre)
         return super().clean()
 
+    def get_req_materiales(self):
+        return self.materiales
+    
+    def get_req_repuestos(self):
+        return self.repuestos
+    
+    def get_req_planilla(self):
+        return self.planilla
 
 class Tarea(models.Model):
     nombre = models.CharField(max_length=50)
@@ -130,6 +138,8 @@ class Repuesto(models.Model):
     def __str__(self):
         return f"{self.nombre}, {self.modelo}"
 
+    def get_tipo(self):
+        return self.get_tipo_display()
 
 class TipoMaterial(models.Model):
     GRAMO = 1
@@ -156,6 +166,8 @@ class TipoMaterial(models.Model):
     # def clean(self) -> None:
     #     validacion_nombre_unico(TipoMaterial, "nombre", self.nombre)
     #     return super().clean()
+    def get_unidad_medida(self):
+        return self.get_unidad_medida_display()
 
 
 class Material(models.Model):

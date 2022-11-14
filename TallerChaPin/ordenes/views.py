@@ -1,5 +1,3 @@
-from tkinter import E
-from turtle import update
 from django.http import Http404, JsonResponse
 # from django.http.response import HttpResponse 
 from django.urls import reverse_lazy
@@ -13,9 +11,8 @@ from datetime import date
 from django.core.exceptions import ObjectDoesNotExist
 from wkhtmltopdf.views import PDFTemplateView
 from django.contrib import messages
-from TallerChaPin.utils import ListFilterView
+from TallerChaPin.utils import ListFilterView, export_list
 import json
-from functools import reduce
 from .utils import requiere_insumo
 import os
 from django.core.exceptions import ObjectDoesNotExist
@@ -84,24 +81,7 @@ class imprimirOrdenDeTrabajo(PDFTemplateView):
         context["logo"] = os.path.abspath("./static/images/chapin2.png")
         return context
 
-# Clase repetida...
 
-
-# class ListFilterView(ListView):
-#     filtros = None
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         if self.filtros:
-#             context['filtros'] = self.filtros(self.request.GET)
-#         return context
-
-#     def get_queryset(self):
-#         qs = super().get_queryset()
-#         if self.filtros:
-#             filtros = self.filtros(self.request.GET)
-#             return filtros.apply(qs)
-#         return qs
 
 # ----------------------------- Presupuesto View ----------------------------------- #
 class PresupuestoListView(ListFilterView):
@@ -133,6 +113,8 @@ class PresupuestoDetailView(DetailView):
         except Presupuesto.DoesNotExist:
             raise Http404('No existe presupuesto')
         return render(self.request, 'ordenes/presupuesto_detail.html', {'presupuesto':presupuesto})
+
+exportar_listado_presupuestos = lambda r: export_list(r, Presupuesto, PresupuestoFiltrosForm)
 
 class PresupuestoCreateView(CreateView):
     model = Presupuesto
@@ -279,6 +261,7 @@ class OrdenTrabajoListView(ListFilterView):
         context['titulo'] = "Listado de órdenes de trabajo"
         return context
 
+exportar_listado_ordenes = lambda r: export_list(r, OrdenDeTrabajo, OrdenTrabajoFiltrosForm)
 
 class OrdenTrabajoDetailView(DetailView):
 
@@ -452,6 +435,7 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         pass
 
 
+
 # ----------------------------- Iniciar Tarea ----------------------------------- #
 
 def iniciar_tarea(request, pk):
@@ -578,6 +562,18 @@ class PlanillaCreateView(CreateView):
         context['detalle'] = DetalleOrdenDeTrabajo.objects.get(pk=self.kwargs.get('detalle'))
         return context
 
+    def get(self, *args, **kwargs):
+        pk = kwargs.get('detalle')
+        print(pk)
+        try:
+            detalleTarea = DetalleOrdenDeTrabajo.objects.get(pk=pk)
+        except DetalleOrdenDeTrabajo.DoesNotExist:
+            raise Http404('Detalle no existe')
+        if not detalleTarea.requiere_planilla():
+            messages.add_message(self.request, messages.WARNING, 'No se puede crear planilla de pintura')
+            return redirect('listarDetallesOrden')
+        return super().get(*args, **kwargs)
+
     #Mejorar
     def post(self, *args, **kwargs):
         self.object = None
@@ -702,7 +698,7 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
     def get_form_class(self, *args, **kwargs):
         orden = self.get_orden()
         return RegistrarEgresoVehiculoForm(orden)
-    #Carga el formulario pero no el titulo del formulario
+    
     def get(self, *args, **kwargs):
         form = self.get_form()
         try:

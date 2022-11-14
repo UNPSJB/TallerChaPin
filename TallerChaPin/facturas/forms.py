@@ -6,7 +6,10 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Div, HTML
 from datetime import datetime
 from TallerChaPin.utils import FiltrosForm
-
+from taller.models import (
+    Cliente,
+    Vehiculo,
+)
 
 # Factura - Form
 
@@ -41,11 +44,18 @@ class FacturaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
         ("#","#"),
         ("fecha", "Fecha"),
-        ("cliente", "Cliente"),
-        ("vehiculo", "Vehículo"),
+        ("orden__presupuestos__cliente", "Cliente"),
+        ("orden__presupuestos__vehiculo", "Vehículo"),
         ("estado", "Estado")
     ]
-    # Consultar
+
+    ATTR_CHOICES = [
+        ("pk","#"),
+        ("fecha", "Fecha"),
+        ("get_cliente_orden", "Cliente"),
+        ("get_vehiculo_orden", "Vehículo"),
+        ("get_estado", "Estado")
+    ]
     orden__presupuestos__cliente = forms.ModelChoiceField(
         queryset=Cliente.objects.all(), label="Cliente",required=False)
     orden__presupuestos__vehiculo = forms.ModelChoiceField(
@@ -117,12 +127,26 @@ class PagoForm(forms.ModelForm):
 
 class PagoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
-        ("cliente", "Cliente"),
+        ("#","#"),
+        ("factura__orden__presupuestos__cliente", "Cliente"),
         ("factura","Factura"),
         ("fecha", "Fecha"),
         ("monto", "Monto"),
         ("tipo", "Tipo"),
+        ("factura__cuotas", "Nro. de Coutas")
     ]
+    
+    ATTR_CHOICES = [
+        ("pk","#"),
+        ("cliente", "Cliente"),
+        ("get_nombre_factura","Factura"),
+        ("fecha", "Fecha"),
+        ("monto", "Monto"),
+        ("get_tipo", "Tipo"),
+        ("get_cuotas", "Nro. de Coutas")
+    ]
+
+
   
     monto = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
     tipo_choices = [('','-'*9)] + list(Pago.TIPO_PAGO)

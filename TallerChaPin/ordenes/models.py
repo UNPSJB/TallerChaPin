@@ -258,6 +258,8 @@ class OrdenDeTrabajo(models.Model):
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 
+
+
     def iniciar_tarea(self, empleado, tarea, fecha=now()):
         if self.estado == OrdenDeTrabajo.ACTIVA:
             tarea.iniciar(empleado, fecha)
@@ -326,6 +328,9 @@ class OrdenDeTrabajo(models.Model):
 
     def get_ultimo_presupuesto(self):
         return self.presupuestos.all().order_by('fecha').last()
+
+    def get_estado(self):
+        return self.get_estado_display()
 
     def tiene_factura(self):
         return (self.factura is not None) and (self.estado == OrdenDeTrabajo.FACTURADA)
@@ -481,7 +486,6 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.save()
         self.orden.actualizar_estado(OrdenDeTrabajo.INICIAR_TAREA)
 
-
     def asignar(self, empleado):
         self.empleado = empleado
         self.save()
@@ -495,16 +499,16 @@ class DetalleOrdenDeTrabajo(models.Model):
 
 
     #Este metodo no se usa?
-    def crear_planilla_de_pintura(self, material, componentes):
-        # Componentes es una lista de la forma [(formula, cantidad)...]
-        planilla = PlanillaDePintura.objects.create(
-            orden=self, nombre_de_color=material.nombre)
-        for formula, cantidad in componentes:
-            planilla.agregar(formula, cantidad)
+    # def crear_planilla_de_pintura(self, material, componentes):
+    #     # Componentes es una lista de la forma [(formula, cantidad)...]
+    #     planilla = PlanillaDePintura.objects.create(
+    #         orden=self, nombre_de_color=material.nombre)
+    #     for formula, cantidad in componentes:
+    #         planilla.agregar(formula, cantidad)
 
-    def color_de_pintura (self):
-        material = self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first() 
-        return material.nombre if material is not None else "Pintura original"
+    # def color_de_pintura (self):
+    #     material = self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first() 
+    #     return material.nombre if material is not None else "Pintura original"
 
 
     def precio(self):
@@ -661,6 +665,12 @@ class Presupuesto(models.Model):
 
         self.save()
         return self.orden
+
+    def get_confirmado(self):
+        return self.confirmado
+
+    def get_ampliado(self):
+        return self.ampliado
 
     def cantidad_detalles(self):
         return self.tareas.count() + self.materiales.count() + self.repuestos.count()

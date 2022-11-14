@@ -4,6 +4,7 @@ from .views import *
 
 urlpatterns = [
 
+    
     path('materiales/unidades_de_medida/<int:pk>', UnidadesDeMedida),
     path('cliente/vehiculos/<int:pk>', vehiculosDelCliente),
     # ----------------- MARCAS -----------------
@@ -14,7 +15,8 @@ urlpatterns = [
          MarcaUpdateView.as_view(), name="modificarMarca"),
     path('marca/eliminar/<int:pk>',
          MarcaDeleteView.as_view(), name="eliminarMarca"),
-
+    path('marcas/exportar',
+               exportar_listado_marcas, name='exportarMarcas'),
     # ----------------- TAREAS -----------------
 
     path('tarea/crear', TareaCreateView.as_view(), name="crearTarea"),
@@ -23,6 +25,8 @@ urlpatterns = [
     path('tarea/eliminar/<int:pk>',
          TareaDeleteView.as_view(), name="eliminarTarea"),
     path('tareas/listar', TareaListView.as_view(), name="listarTareas"),
+    path('tareas/exportar',
+          exportar_listado_tareas, name='exportarTareas'),
 
     # ----------------- TIPOS TAREA -----------------
 
@@ -32,7 +36,8 @@ urlpatterns = [
     path('tipo-tarea/eliminar/<int:pk>',
          TipoTareaDeleteView.as_view(), name="eliminarTipoTarea"),
     path('tipo-tarea/listar', TipoTareaListView.as_view(), name="listarTipoTarea"),
-
+    path('tipo-tarea/exportar',
+          exportar_listado_tipotareas, name='exportarTipoTareas'),
     # ----------------- REPUESTOS -----------------
 
     path('repuesto/crear', RepuestoCreateView.as_view(), name="crearRepuesto"),
@@ -41,7 +46,8 @@ urlpatterns = [
          RepuestoUpdateView.as_view(), name="modificarRepuesto"),
     path('repuesto/eliminar/<int:pk>',
          RepuestoDeleteView.as_view(), name="eliminarRepuesto"),
-
+    path('repuestos/exportar',
+          exportar_listado_repuestos, name='exportarRepuestos'),
     # ----------------- MODELO -----------------
 
     path('modelo/crear', ModeloCreateView.as_view(), name="crearModelo"),
@@ -50,7 +56,8 @@ urlpatterns = [
          ModeloUpdateView.as_view(), name="modificarModelo"),
     path('modelo/eliminar/<int:pk>',
          ModeloDeleteView.as_view(), name="eliminarModelo"),
-
+    path('modelos/exportar',
+          exportar_listado_modelos, name='exportarModelos'),
     # ----------------- MATERIALES -----------------
 
     path('materiales/listar', MaterialListView.as_view(), name="listarMateriales"),
@@ -61,7 +68,8 @@ urlpatterns = [
          MaterialUpdateView.as_view(), name="modificarMaterial"),
     path('materiales/modificarCantidad',
          MaterialCantidad, name="modificarCantidad"),
-
+    path('materiales/exportar',
+          exportar_listado_materiales, name='exportarMateriales'),
     # ----------------- TIPOS MATERIALES -----------------
 
     path('tipos-materiales/crear', TipoMaterialCreateView.as_view(),
@@ -72,7 +80,8 @@ urlpatterns = [
          TipoMaterialUpdateView .as_view(), name="modificarTipoMaterial"),
     path('tipos-materiales/eliminar/<int:pk>',
          TipoMaterialDeleteView.as_view(), name="eliminarTipoMaterial"),
-
+    path('tipo-materiales/exportar',
+          exportar_listado_tipomateriales, name='exportarTipoMateriales'),
     # ----------------- CLIENTES -----------------
 
     path('clientes/listar', ClienteListView.as_view(), name='listarClientes'),
@@ -81,7 +90,8 @@ urlpatterns = [
          ClienteUpdateView .as_view(), name="modificarCliente"),
     path('clientes/eliminar/<int:pk>',
          ClienteDeleteView.as_view(), name="eliminarCliente"),
-
+    path('clientes/exportar',
+          exportar_listado_clientes, name='exportarClientes'),
     # ----------------- VEHÍCULOS -----------------
 
     path('vehiculos/listar', VehiculoListView.as_view(), name="listarVehiculos"),
@@ -90,7 +100,8 @@ urlpatterns = [
          VehiculoUpdateView.as_view(), name="modificarVehiculo"),
     path('vehiculos/eliminar/<int:pk>',
          VehiculoDeleteView.as_view(), name="eliminarVehiculo"),
-
+    path('vehiculos/exportar',
+          exportar_listado_vehiculos, name='exportarVehiculos'),
     # ----------------- EMPLEADOS -----------------
 
     path('empleado/crear', EmpleadoCreateView.as_view(), name="crearEmpleado"),
@@ -99,4 +110,6 @@ urlpatterns = [
     path('empleado/eliminar/<int:pk>',
          EmpleadoDeleteView.as_view(), name="eliminarEmpleado"),
     path('empleados/listar', EmpleadoListView.as_view(), name="listarEmpleados"),
+    path('empleados/exportar',
+          exportar_listado_empleados, name='exportarEmpleados'),
 ]

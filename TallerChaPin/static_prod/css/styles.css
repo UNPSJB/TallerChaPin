@@ -1,0 +1,71 @@
+.custom-filter, .custom-ordering {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px
+}
+
+.filter-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.bg-transition:hover{
+    background-color: #ECECEC;
+    transition: background-color 0.25s;
+    border-radius: 0.2rem;
+}
+
+.btn-listado{
+    background-color: white;
+    border: 0;
+    padding: .3rem;
+    display: inline-block;
+    text-align: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.3rem;
+    color: black;
+}
+
+.btn-modificar:hover{
+    transition: color 0.25s;
+    color: #10770d
+}
+
+.btn-eliminar.btn-listado:hover{
+    transition: color 0.25s;
+    color: #d11a1a;
+}
+
+.btn-ver:hover{
+    transition: color 0.25s;
+    color: #10770d;
+}
+
+.btn-finalizar:hover{
+    transition: color 0.25s;
+    color: #10770d;
+}
+
+.btn-cancelar:hover{
+    transition: color 0.25s;
+    color: #d11a1a;
+}
+
+.btn-tomar:hover{
+    transition: color 0.25s;
+    color: #0D6EFD;
+}
+
+.unidad-medida {
+    width: 100%;
+    text-align: center;
+}
+
+th[for$="cantidad"]{
+    width: 100px;
+}

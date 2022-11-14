@@ -21,6 +21,8 @@ urlpatterns = [
           PresupuestoCreateView.as_view(), name="ampliarPresupuesto"),
      path('presupuesto/confirmarAmpliacion/<int:pk>', confirmar_ampliacion, name="confirmarAmpliacion"),
      path('presupuesto/tareasFinalizadas/<int:pk>', tareasFinalizadas, name="tareasFinalizadas"),
+     path('presupuestos/exportar',
+          exportar_listado_presupuestos, name='exportarPresupuestos'),
      # ------------------ Orden de Trabajo -----------------
      path('orden/crear/<int:pk>', OrdenTrabajoCreateView.as_view(), name="crearOrden"),
      path('orden/listar', OrdenTrabajoListView.as_view(), name="listarOrdenes"),
@@ -32,6 +34,8 @@ urlpatterns = [
           cancelar_orden, name="cancelarOrden"), 
      path('orden/pausar/<int:pk>', pausar_orden, name='pausarOrden'), 
      path('orden/reanudar/<int:pk>', reanudar_orden, name='reanudarOrden'),
+     path('ordenes/exportar',
+          exportar_listado_ordenes, name='exportarOrdenes'),
      # ------------------ Detalle de Orden de Trabajo -----------------
      path('detalles-orden/listar', DetalleOrdenDeTrabajoListView.as_view(),
           name="listarDetallesOrden"),

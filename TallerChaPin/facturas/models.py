@@ -5,14 +5,7 @@ from django.utils.timezone import now
 from datetime import datetime, time
 from django.db import models
 from ordenes.models import DetalleOrdenDeTrabajo, OrdenDeTrabajo
-from taller.models import (
-    Empleado,
-    Cliente,
-    Vehiculo,
-    Tarea,
-    Material,
-    Repuesto
-)
+
 
 # Aqui definimos los modelos:
 
@@ -46,7 +39,6 @@ class Factura(models.Model):
     # def cliente(self):
     #     return self.orden.cliente
 
-
     @staticmethod
     def facturar_orden(orden):
         factura = Factura.objects.create(orden=orden, fecha=now())
@@ -69,6 +61,18 @@ class Factura(models.Model):
 
     def puede_pagar(self):
         return self.adeuda()
+
+    def get_cliente_orden(self):
+        return self.orden.cliente
+
+    def get_vehiculo_orden(self):
+        return self.orden.vehiculo
+
+    def get_cuotas(self):
+        return self.cuotas
+
+    def get_estado(self):
+        return self.get_estado_display()
 
     def no_pagada(self):
         return self.orden.estado !=  OrdenDeTrabajo.FINALIZADA
@@ -139,10 +143,23 @@ class Pago(models.Model):
         choices=TIPO_PAGO, default=CONTADO)
 
     def __str__(self):
-        return f'Nº de Factura: ({self.factura.pk})'
+        return f'Nro. de Factura: ({self.factura.pk})'
 
     def puede_eliminarse(self):
         return self.factura.estado == Factura.ACTIVA or self.factura.estado == Factura.CREADA
 
+    @property
+    def cliente(self):
+        return self.factura.orden.cliente
+
+    def get_cuotas(self):
+        return self.factura.get_cuotas()
+
+    def get_nombre_factura(self):
+        return f'Nro. de Factura: ({self.factura.pk})'
+    
+    def get_tipo(self):
+        return self.get_tipo_display()
+        
     def puede_pagar(self):
         return self.factura.puede_pagar()

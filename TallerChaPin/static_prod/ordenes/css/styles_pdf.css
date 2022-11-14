@@ -1,0 +1,86 @@
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+header {
+    position: relative;
+    height: 100px;
+}
+
+header h1 {
+    position: absolute;
+    bottom: 0;
+}
+
+.img {
+    height: 100px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    right: 20px;
+}
+
+.encabezado, .total{
+    background-color: #bad5fd;
+    padding: .5rem 1rem 1rem 1rem;
+    border: 1px solid black;
+}
+
+.total{
+    margin-top: 2rem;
+    text-align: right;
+}
+
+table{
+    margin-top: 1rem;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td, th{
+    padding: .3rem;
+}
+
+th{
+    background-color: #bad5fd;
+}
+
+.descripcion{
+    width: 70%;
+}
+
+.cantidad{
+    text-align: center;
+}
+
+.subtotal{
+    width: 20%;
+    text-align: center;
+}
+
+.separador-encabezado{
+    margin-top: 1rem;
+    border-color: #91bdff;
+}
+
+.separador{
+    margin-top: 1rem;
+}
+
+.estado_orden {
+    width: 15%;
+    text-align: center;
+}
+
+.nombre_insumo, .tipo_insumo {
+    width: 45%;
+}
+
+.cantidad_insumo {
+    width: 10%;
+    text-align: center;
+}

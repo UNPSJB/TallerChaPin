@@ -21,6 +21,7 @@ function getQuitarButton(){
 }
 
 const addInlineDeleteButton = function (row, prefix) {
+  console.log({row})
   fila = row[0]
   hijos = Array.from(fila.childNodes)
   td_quitar = hijos.filter(n => n.id?.includes("DELETE"))[0]
@@ -80,14 +81,38 @@ const inlineFormset = function ($context) {
   });
   
   table.append(agregarRenglon);
+  return prefix
 };
+
+const addQuitarButton = (prefix) => {
+  
+  // Agrego los botones a los tds correspondientes
+  const tds = document.querySelectorAll('[id$=DELETE]')
+  let index = 0
+  for (let td of tds) {
+    if (td.id.includes(prefix) && !td.id.includes('__prefix__')) {
+      index !== 0 ? td.appendChild(getQuitarButton()) : index++
+    }
+  }
+
+  // Agrego funcionalidad a los botones agregados
+  const botones = document.querySelectorAll('a.quitar')
+  console.log({botones})
+  for (let b of botones){
+    b.addEventListener('click', (e) => {
+      e.preventDefault()
+      b.parentElement.parentElement.remove()
+    })
+  }
+}
 
 // Go bitch!
 $(document).ready(() => {
   $('[data-formset]').each(function (index, el) {
     $('.checkboxinput').remove(); // quita el checkbox 
     
-    inlineFormset($(el));
+    const prefix = inlineFormset($(el));
+    addQuitarButton(prefix)
   });
   
 });

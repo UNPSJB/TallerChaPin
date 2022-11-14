@@ -623,8 +623,6 @@ class PlanillaUpdateView(UpdateView):
     def post(self, *args, **kwargs):
         self.object = None
         self.detalle_planilla_form = DetallePlanillaInline()(self.request.POST)
-        print('form:')
-        print(self.detalle_planilla_form)
         form = PlanillaDePinturaForm(self.request.POST)        
         planilla = PlanillaDePintura.objects.get(pk=self.kwargs.get('pk'))
         if self.detalle_planilla_form.is_valid() and form.is_valid():

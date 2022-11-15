@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from datetime import date, datetime, timedelta
 from django.contrib import messages
 from TallerChaPin.utils import ListFilterView, export_list
+from math import floor
 from taller.models import (
     Empleado,
     Cliente,
@@ -13,8 +14,10 @@ from taller.models import (
     Tarea,
     Material,
     Repuesto,
-    Marca
+    Marca,
+    TipoTarea
 )
+from ordenes.models import DetalleOrdenDeTrabajo
 from facturas.models import Factura, Pago
 
 def ReporteMarcaVehiculos(request):
@@ -141,3 +144,33 @@ def getFacturacion(request, params):
 
 
     return JsonResponse({'labels' : labels, 'facturado': facturado, 'pagado': pagado })
+
+def ReporteHorasTrabajo(request):
+    context={}
+    context['titulo'] = "Reporte de productividad de los empleados"
+    return render (request, 'reportes/reporte_horas_trabajo.html',context)
+
+def getHorasTrabajo(request, tipo):
+    tareas_pintura = list(Tarea.objects.filter(tipo__planilla=True).values('id'))
+
+    tareas_taller = [t['id'] for t in list(Tarea.objects.filter(tipo__planilla=False).values('id'))]
+    tareas_pintura = [t['id'] for t in list(Tarea.objects.filter(tipo__planilla=True).values('id'))]
+
+    trabajos = list(DetalleOrdenDeTrabajo.objects.filter(exitosa=True).values('tarea_id', 'empleado_id', 'inicio', 'fin', 'exitosa', 'empleado_id__nombre', 'empleado_id__apellido'))
+    
+    r_taller = {}
+    for t in trabajos:
+        if t['tarea_id'] in tareas_taller:
+            empleado = t['empleado_id']
+            if r_taller.get(empleado) == None:
+                r_taller[empleado] = {'cantidad': 0, 'horas': [], 'nombre': f'{t["empleado_id__nombre"]} {t["empleado_id__apellido"]}'}
+
+            r_taller[empleado]['cantidad'] += 1
+            r_taller[empleado]['horas'].append(floor((t['fin'] - t['inicio']).total_seconds()/60/60))
+
+    for t in r_taller:
+        obj = r_taller[t]
+        obj['promedio'] = sum(obj['horas']) / len(obj['horas'])
+        obj.pop('horas')
+
+    return JsonResponse({'resultado': r_taller,'taller': tareas_taller, 'pintura': tareas_pintura, 'trabajos': trabajos})

@@ -3,10 +3,16 @@ from .views import *
 
 
 urlpatterns = [
-    path('reporte_prueba', ReporteMarcaVehiculos, name="reporteMarcasVehiculos"),
-    path('reporte_marcas_vehiculos', reporte_marcas_vehiculos_recurrentes, name="reporte_marcas_vehiculos"),
-    path('reporte_facturacion', ReporteFacturacion, name='reporte_facturacion'),
+    #-------------------Reporte de vehiculos recurrentes-------------------#
+    path('reporte_vehiculos', reporteMarcaVehiculos, name="reporte_marcas_vehiculos"),
+    path('get_marcas_vehiculos', getMarcasVehiculos),
+    #-------------------Reporte de recaudacion-------------------#
+    path('reporte_facturacion', reporteFacturacion, name='reporte_facturacion'),
     path('get_facturacion/<str:params>', getFacturacion),
-    path('reporte_productividad', ReporteHorasTrabajo, name='reporte_productividad'),
+    #-------------------Reporte de productividad-------------------#
+    path('reporte_productividad', reporteHorasTrabajo, name='reporte_productividad'),
     path('get_horas_trabajo/<str:tipo>', getHorasTrabajo),
+    #-------------------Reporte de ordenes-------------------#
+    path('reporte_ordenes', reporteOrdenes, name='reporte_ordenes'),
+    path('get_ordenes/<str:params>', getOrdenes),
 ]

@@ -10,36 +10,51 @@
   <div class="row d-flex justify-content-center">    
           <div class="col-5 mt-4">
             {% block main %}
-      
-            <h2 class="mt-3">
-              <a href="{% url 'home' %}"><i class="fas fa-arrow-left atras"></i></a>
-              Accesos directos
-            </h2>
-      
-            <div class="row mt-4 d-flex justify-content-evenly align-items-center">
-              
-              <a href="{% url 'reporteMarcasVehiculos' %}" class="col-md-3 shadow-lg acceso">
-                <h2><i class="fas fa-list"></i> Marcas de vehiculos mas recurrentes </h2>
+        
+               <div class="row mt-4 d-flex justify-content-evenly align-items-center">
+                <a href="{% url 'reporte_marcas_vehiculos' %}" class="col-md-3 shadow-lg acceso">
+                  <h2><i class="fas fa-list"></i> Marcas de vehiculos mas recurrentes </h2>
 
-              </a>
-              <div class="row mt-4 d-flex justify-content-evenly align-items-center">
-              
-              <a href="{% url 'reporte_facturacion' %}" class="col-md-3 shadow-lg acceso">
-                  <h2><i class="fas fa-list"></i> Facturación</h2>
+                </a>
+                </div>
+
+                <div class="row mt-4 d-flex justify-content-evenly align-items-center">
+                <a href="{% url 'reporte_facturacion' %}" class="col-md-3 shadow-lg acceso">
+                    <h2><i class="fas fa-list"></i> Facturación</h2>
+                    <p>
+                      <i class="fas fa-plus-circle agregar"></i> Reporte sobre la facturación en un período de tiempo determinado.
+                    </p>
+                </a>
+                </div>
+
+                <div class="row mt-4 d-flex justify-content-evenly align-items-center">
+                <a href="{% url 'reporte_productividad' %}" class="col-md-3 shadow-lg acceso">
+                  <h2><i class="fas fa-list"></i> Productividad</h2>
                   <p>
-                    <i class="fas fa-plus-circle agregar"></i> Reporte sobre la facturación en un período de tiempo determinado.
+                    <i class="fas fa-plus-circle agregar"></i> Reporte sobre la productuvidad de los empleados.
                   </p>
-              </a>
-      
+                </a>
+                </div>
+
+                <div class="row mt-4 d-flex justify-content-evenly align-items-center">
+                <a href="{% url 'reporte_ordenes' %}" class="col-md-3 shadow-lg acceso">
+                  <h2><i class="fas fa-list"></i> Ordenes</h2>
+                  <p>
+                    <i class="fas fa-plus-circle agregar"></i> Reporte de media de tiempo de ordenes de trabajo.
+                  </p>
+                </a>
+              </div>
+
           
-      {% endblock %}
-    </div>
+            {% endblock %}
+          </div>
 
     {% comment %} <div class="col-2 mt-5 mr-4">
       {% block filtros %} 
 
       {% endblock %}
     </div> {% endcomment %}
+   
   </div>
 </div>
 

@@ -1,17 +1,26 @@
 
 // Marco el radio button 'tareas taller' como predeterminado
 const radio_buttons = document.querySelectorAll('.radio_tipo_tarea')
-let selected_radio = 1
 radio_buttons[0].checked = true
 
-// Cada vez que se clickea un radio button, 'selected_radio' se modifica
+// Si rubro = 'taller' carga datos del taller, lo mismo con 'pintura'
+const cargarDatos = (rubro) => {
+  chart.data.datasets[0].data = data[rubro].data
+  chart.data.datasets[1].data = data[rubro].cantidad
+  chart.data.labels = data[rubro].labels
+  chart.update()
+}
+
+// Cada vez que se clickea un radio button, cambio los datos del gráfico
 for (let radio of radio_buttons) {
   radio.addEventListener('click', (e) => {
-    selected_radio = e.target.value
+    
+    const seleccionado = e.target.value
+    seleccionado == 1 ? cargarDatos('taller') : cargarDatos('pintura')
   })
 }
 
-let chart
+// Defino estructura del objeto con los datos
 const data = 
 { 
   taller: { 
@@ -25,6 +34,7 @@ const data =
   }
 }
 
+let chart
 window.addEventListener('load', () => {
   // Se crea el gráfico pero sin datos cargados, solo para dejarlo configurado
   chart = new Chart(document.getElementById("horas-trabajo"), {
@@ -63,17 +73,20 @@ window.addEventListener('load', () => {
   fetch(`get_horas_trabajo`)
     .then(r => r.json())
     .then(r => {
-      console.log(r)
 
+      // Cargo todos los datos necesarios en el objeto 'data'
       for (let d in r.data_taller) {
         data.taller.data.push(r.data_taller[d].promedio)
         data.taller.cantidad.push(r.data_taller[d].cantidad)
         data.taller.labels.push(r.data_taller[d].nombre)
       }
 
-      chart.data.datasets[0].data = data.taller.data
-      chart.data.datasets[1].data = data.taller.cantidad
-      chart.data.labels = data.taller.labels
-      chart.update()
+      for (let d in r.data_pintura) {
+        data.pintura.data.push(r.data_pintura[d].promedio)
+        data.pintura.cantidad.push(r.data_pintura[d].cantidad)
+        data.pintura.labels.push(r.data_pintura[d].nombre)
+      }
+      
+      cargarDatos('taller')
     })
 })

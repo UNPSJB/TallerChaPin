@@ -12,7 +12,7 @@ for (let radio of radio_buttons) {
   })
 }
 
-const form = document.getElementById('form_filtros')
+const form = document.getElementById('form_filtros_facturacion')
 const input_desde = document.getElementById('fecha_desde')
 const input_hasta = document.getElementById('fecha_hasta')
 const submit_button = document.getElementById('submit_filtro')

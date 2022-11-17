@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block main %}
-  <div class="">
+  <div>
     <h3>{{ titulo }}</h3>
-    <div id="container_facturacion">
+    <div id="container_facturacion" class="mt-4">
       <canvas id="facturacion" height="200"></canvas>
     </div>
   </div>
 
-  <form id="form_filtros">
+  <form id="form_filtros_facturacion" class="form_reportes">
     <fieldset class="temporalidad">
       <legend>Visualización</legend>
       <label>

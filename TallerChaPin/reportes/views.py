@@ -157,7 +157,6 @@ def getHorasTrabajo(request):
     tareas_pintura = [t['id'] for t in list(Tarea.objects.filter(tipo__planilla=True).values('id'))]
 
     trabajos = list(DetalleOrdenDeTrabajo.objects.filter(exitosa=True).values('tarea_id', 'empleado_id', 'inicio', 'fin', 'exitosa', 'empleado_id__nombre', 'empleado_id__apellido'))
-    
     r_taller = {}
     for t in trabajos:
         if t['tarea_id'] in tareas_taller:
@@ -168,12 +167,27 @@ def getHorasTrabajo(request):
             r_taller[empleado]['cantidad'] += 1
             r_taller[empleado]['horas'].append(floor((t['fin'] - t['inicio']).total_seconds()/60/60))
 
+    r_pintura = {}
+    for t in trabajos:
+        if t['tarea_id'] in tareas_pintura:
+            empleado = t['empleado_id']
+            if r_pintura.get(empleado) == None:
+                r_pintura[empleado] = {'cantidad': 0, 'horas': [], 'nombre': f'{t["empleado_id__nombre"]} {t["empleado_id__apellido"]}'}
+
+            r_pintura[empleado]['cantidad'] += 1
+            r_pintura[empleado]['horas'].append(floor((t['fin'] - t['inicio']).total_seconds()/60/60))
+
     for t in r_taller:
         obj = r_taller[t]
         obj['promedio'] = sum(obj['horas']) / len(obj['horas'])
         obj.pop('horas')
 
-    return JsonResponse({'data_taller': r_taller,'taller': tareas_taller, 'pintura': tareas_pintura, 'trabajos': trabajos})
+    for t in r_pintura:
+        obj = r_pintura[t]
+        obj['promedio'] = sum(obj['horas']) / len(obj['horas'])
+        obj.pop('horas')
+
+    return JsonResponse({'data_taller': r_taller, 'data_pintura': r_pintura, 'taller': tareas_taller, 'pintura': tareas_pintura, 'trabajos': trabajos})
 
 
 def reporteOrdenes(request):

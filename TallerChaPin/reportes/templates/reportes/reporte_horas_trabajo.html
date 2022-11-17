@@ -4,22 +4,24 @@
 {% block main %}
 <div class="">
   <h3>{{ titulo }}</h3>
-  <div id="container_horas-trabajo">
+  <div id="container_horas-trabajo" class="mt-4">
     <canvas id="horas-trabajo" height="200"></canvas>
   </div>
 </div>
 
-<form id="form_filtros">
-  <fieldset class="tipo-tarea">
+<form>
+  <fieldset class="form_reportes p-4">
     <legend>Visualización</legend>
-    <label>
-      <input type="radio" name="tipo" value="1"
+    <div class="d-flex justify-content-evenly">
+      <label>
+        <input type="radio" name="tipo" value="1"
         class="radio_tipo_tarea"> Tareas del taller
-    </label>
-    <label>
-      <input type="radio" name="tipo" value="2"
+      </label>
+      <label>
+        <input type="radio" name="tipo" value="2"
         class="radio_tipo_tarea"> Tareas de pintura
-    </label>
+      </label>
+    </div>
   </fieldset>
 </form>
 

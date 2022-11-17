@@ -1,11 +1,14 @@
-#form_filtros {
+#form_filtros_facturacion {
   display: grid;
   grid-template-columns: auto 2fr;
+}
+
+.form_reportes {
   margin: 2rem 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#form_filtros fieldset {
+.form_reportes fieldset {
   padding: 1rem;
 }
 

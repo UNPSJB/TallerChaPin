@@ -187,7 +187,7 @@ def getHorasTrabajo(request):
         obj['promedio'] = sum(obj['horas']) / len(obj['horas'])
         obj.pop('horas')
 
-    return JsonResponse({'data_taller': r_taller, 'data_pintura': r_pintura, 'taller': tareas_taller, 'pintura': tareas_pintura, 'trabajos': trabajos})
+    return JsonResponse({'data_taller': r_taller, 'data_pintura': r_pintura})
 
 
 def reporteOrdenes(request):
@@ -208,3 +208,35 @@ def getOrdenes(request, params):
  
  
     return JsonResponse
+
+def reporteClientes(request):
+    context = {}
+    context['titulo'] = "Reporte de clientes"
+    return render (request, 'reportes/reporte_clientes.html', context)
+
+def getClientes(request):
+
+    ordenes = OrdenDeTrabajo.objects.all()
+    
+    clientes = []
+    for o in ordenes:
+        clientes.append(o.cliente.pk)
+
+    d_clientes = {}
+    for c in clientes:
+        if d_clientes.get(c) == None:
+            d_clientes[c] = {}
+            d_clientes[c]['cantidad'] = 1
+            d_clientes[c]['facturado'] = 0
+            cliente = Cliente.objects.get(pk=c)
+            d_clientes[c]['nombre'] = f'{cliente.nombre} {cliente.apellido}'
+            d_clientes[c]['vip'] = cliente.vip()
+        else :
+            d_clientes[c]['cantidad'] += 1
+
+    facturas = Factura.objects.all()
+    for f in facturas:
+        d_clientes[f.orden.cliente.pk]['facturado'] += f.total()
+
+    
+    return JsonResponse({'d_clientes': d_clientes})

@@ -15,4 +15,7 @@ urlpatterns = [
     #-------------------Reporte de ordenes-------------------#
     path('reporte_ordenes', reporteOrdenes, name='reporte_ordenes'),
     path('get_ordenes/<str:params>', getOrdenes),
+    #-------------------Reporte de clientes -------------------#
+    path('reporte_clientes', reporteClientes, name='reporte_clientes'),
+    path('get_clientes', getClientes),
 ]

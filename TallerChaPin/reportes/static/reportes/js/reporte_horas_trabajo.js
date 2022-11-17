@@ -12,20 +12,68 @@ for (let radio of radio_buttons) {
 }
 
 let chart
-window.addEventListener('load', () => {
+const data = 
+{ 
+  taller: { 
+    data: [], 
+    labels: [], 
+    cantidad: [] 
+  }, pintura: { 
+    data: [], 
+    labels: [], 
+    cantidad: [] 
+  }
+}
 
+window.addEventListener('load', () => {
   // Se crea el gráfico pero sin datos cargados, solo para dejarlo configurado
   chart = new Chart(document.getElementById("horas-trabajo"), {
     type: 'bar',
     data: {
-      labels: ['pepe', 'pepito', 'manuel', 'manolito'],
+      labels: [],
       datasets: [{
-        data: [10, 15, 12, 10],
+        data: [],
         label: "Horas de trabajo promedio",
-        borderColor: "rgba(43, 57, 231, 0.8)",
-        backgroundColor: "rgba(43, 57, 231, 0.3)",
-      }]
+        borderColor: "rgba(245, 39, 50, 0.8)",
+        backgroundColor: "rgba(245, 39, 50, 0.8)",
+        yAxisID: 'y',
+      }, {
+          data: [],
+          label: "Tareas completadas",
+          borderColor: "rgba(71, 245, 39, 0.8)",
+          backgroundColor: "rgba(71, 245, 39, 0.8)",
+          yAxisID: 'y1',
+        }]
     },
-    options: {}
-  });
+    options: {
+      scales: {
+        y: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+        }
+    }
+  }});
+
+  fetch(`get_horas_trabajo`)
+    .then(r => r.json())
+    .then(r => {
+      console.log(r)
+
+      for (let d in r.data_taller) {
+        data.taller.data.push(r.data_taller[d].promedio)
+        data.taller.cantidad.push(r.data_taller[d].cantidad)
+        data.taller.labels.push(r.data_taller[d].nombre)
+      }
+
+      chart.data.datasets[0].data = data.taller.data
+      chart.data.datasets[1].data = data.taller.cantidad
+      chart.data.labels = data.taller.labels
+      chart.update()
+    })
 })

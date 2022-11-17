@@ -8,5 +8,5 @@ urlpatterns = [
     path('reporte_facturacion', ReporteFacturacion, name='reporte_facturacion'),
     path('get_facturacion/<str:params>', getFacturacion),
     path('reporte_productividad', ReporteHorasTrabajo, name='reporte_productividad'),
-    path('get_horas_trabajo/<str:tipo>', getHorasTrabajo),
+    path('get_horas_trabajo', getHorasTrabajo),
 ]

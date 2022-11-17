@@ -150,7 +150,7 @@ def ReporteHorasTrabajo(request):
     context['titulo'] = "Reporte de productividad de los empleados"
     return render (request, 'reportes/reporte_horas_trabajo.html',context)
 
-def getHorasTrabajo(request, tipo):
+def getHorasTrabajo(request):
     tareas_pintura = list(Tarea.objects.filter(tipo__planilla=True).values('id'))
 
     tareas_taller = [t['id'] for t in list(Tarea.objects.filter(tipo__planilla=False).values('id'))]
@@ -173,4 +173,4 @@ def getHorasTrabajo(request, tipo):
         obj['promedio'] = sum(obj['horas']) / len(obj['horas'])
         obj.pop('horas')
 
-    return JsonResponse({'resultado': r_taller,'taller': tareas_taller, 'pintura': tareas_pintura, 'trabajos': trabajos})
+    return JsonResponse({'data_taller': r_taller,'taller': tareas_taller, 'pintura': tareas_pintura, 'trabajos': trabajos})

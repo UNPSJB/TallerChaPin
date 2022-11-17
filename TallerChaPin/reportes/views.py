@@ -17,16 +17,16 @@ from taller.models import (
     Marca,
     TipoTarea
 )
-from ordenes.models import DetalleOrdenDeTrabajo
+from ordenes.models import DetalleOrdenDeTrabajo, OrdenDeTrabajo
 from facturas.models import Factura, Pago
 
-def ReporteMarcaVehiculos(request):
+def reporteMarcaVehiculos(request):
     #Agregar permisos. Esto lo ve el administrativo
     context={}
     context['titulo'] = "Reporte 1"
     return render (request, 'reportes/reporte_marcas_vehiculos_recurrentes.html',context)
 
-def reporte_marcas_vehiculos_recurrentes(request):
+def getMarcasVehiculos(request):
     #Agregar permisos. Esto lo ve dios unicamente
     marcas = list(Marca.objects.all().values('pk','nombre'))
     r = []
@@ -38,7 +38,7 @@ def reporte_marcas_vehiculos_recurrentes(request):
     return JsonResponse({'vehiculos' : r })
 
 
-def ReporteFacturacion(request):
+def reporteFacturacion(request):
     context={}
     context['titulo'] = "Reporte de facturación"
     return render (request, 'reportes/reporte_facturacion.html', context)
@@ -145,7 +145,7 @@ def getFacturacion(request, params):
 
     return JsonResponse({'labels' : labels, 'facturado': facturado, 'pagado': pagado })
 
-def ReporteHorasTrabajo(request):
+def reporteHorasTrabajo(request):
     context={}
     context['titulo'] = "Reporte de productividad de los empleados"
     return render (request, 'reportes/reporte_horas_trabajo.html',context)
@@ -174,3 +174,23 @@ def getHorasTrabajo(request):
         obj.pop('horas')
 
     return JsonResponse({'data_taller': r_taller,'taller': tareas_taller, 'pintura': tareas_pintura, 'trabajos': trabajos})
+
+
+def reporteOrdenes(request):
+    context={}
+    context['titulo'] = "Reporte de ordenes"
+    return render (request, 'reportes/reporte_ordenes.html', context)
+ 
+def getOrdenes(request, params):
+    params_f = params.split(',')
+    periodicidad = params_f[0]
+    fecha_desde = datetime.strptime(params_f[1], '%Y-%m-%d').date()
+    fecha_hasta = datetime.strptime(params_f[2], '%Y-%m-%d').date()
+    dias_diferencia = (fecha_hasta - fecha_desde).days + 1 # +1 para incluir la fecha_hasta
+   
+    labels = []
+ 
+    ordenes = OrdenDeTrabajo.objects.all().values("turno")
+ 
+ 
+    return JsonResponse

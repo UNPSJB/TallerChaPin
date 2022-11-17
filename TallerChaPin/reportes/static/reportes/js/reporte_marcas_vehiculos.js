@@ -1,4 +1,4 @@
-  fetch('reporte_marcas_vehiculos').then(r=>r.json()).then(r=> {
+  fetch('get_marcas_vehiculos').then(r=>r.json()).then(r=> {
 
     const config_torta = {
         type: 'pie',
@@ -16,5 +16,5 @@
         document.getElementById('torta'),
         config_torta
     );
-    console.log(r.vehiculos)
+
   })

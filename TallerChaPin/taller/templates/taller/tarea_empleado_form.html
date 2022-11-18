@@ -1,0 +1,37 @@
+{% extends 'template_taller.html' %}
+{% load static %}
+
+{% block main %}
+<div class="col-5 mt-4">
+  <h3>{{titulo}}</h3>
+  <p>Modificando tareas habilitadas para el empleado <span class="fw-bold">{{empleado.nombre}} {{empleado.apellido}}</span>.</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{form.nombre}}
+    {{form.tareas.label}}
+    {{form.tareas}}
+    <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+  </form>
+</div>
+
+<style>
+  .checks_tareas {
+    padding: 0;
+  }
+</style>
+
+<script>
+  const li = document.querySelectorAll('li')
+  for (let l of li) {
+    l.classList.add('form-check')
+  }
+  const checks = document.querySelectorAll('input[type=checkbox]')
+  for (let c of checks) {
+    c.classList.add('form-check-input')
+  }
+  const labels = document.querySelectorAll('li label')
+  for (let l of labels) {
+    l.classList.add('form-check-label')
+  }
+</script>
+{% endblock %}

@@ -697,6 +697,18 @@ class EmpleadoFiltrosForm(FiltrosForm):
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
+class TareaEmpleadoForm(forms.ModelForm):
+    class Meta:
+        model = Empleado
+
+        fields = ['tareas']
+        labels = {
+           'tareas': 'Tipos de tareas'
+        }
+        widgets = {
+            "tareas": forms.CheckboxSelectMultiple(attrs={'class': 'checks_tareas'}),
+        }
+
 # Cliente
 
 

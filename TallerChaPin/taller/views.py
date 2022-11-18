@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .models import *
 from .forms import *
@@ -824,4 +824,20 @@ class EmpleadoListView(ListFilterView):
         return context
 
 exportar_listado_empleados = lambda r: export_list(r, Empleado, EmpleadoFiltrosForm)
+
+def asociar_tarea_empleado(request, pk):
+    context = {}
+    empleado = get_object_or_404(Empleado, pk = pk)
+    form = TareaEmpleadoForm(request.POST or None, instance = empleado)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Tareas del empleado actualizadas correctamente')
+        return redirect('listarEmpleados')
+
+    context['empleado'] = empleado
+    context['titulo'] = 'Asociar tipos de tarea a empleado'
+    context['form'] = form
+
+    return render(request, 'taller/tarea_empleado_form.html', context)
 # ---------------------------------------------------------------- #

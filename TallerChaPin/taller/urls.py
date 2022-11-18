@@ -112,4 +112,5 @@ urlpatterns = [
     path('empleados/listar', EmpleadoListView.as_view(), name="listarEmpleados"),
     path('empleados/exportar',
           exportar_listado_empleados, name='exportarEmpleados'),
+     path('empleado/asociar_tarea/<int:pk>', asociar_tarea_empleado, name='asociarTarea'),
 ]

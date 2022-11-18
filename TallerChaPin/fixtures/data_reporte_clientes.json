@@ -1,0 +1,129 @@
+[
+  {
+    "model": "taller.Material",
+    "pk": 1,
+    "fields": {
+      "nombre": "Chapa",
+      "tipo": "1",
+      "cantidad": "1000",
+      "precio": 85
+    }
+  },
+  {
+    "model": "taller.Material",
+    "pk": 2,
+    "fields": {
+      "nombre": "Cristal",
+      "tipo": "1",
+      "cantidad": "1000",
+      "precio": 83
+    }
+  },
+  {
+    "model": "taller.Material",
+    "pk": 3,
+    "fields": {
+      "nombre": "Masilla",
+      "tipo": "1",
+      "cantidad": "1000",
+      "precio": 53
+    }
+  },
+  {
+    "model": "taller.Material",
+    "pk": 4,
+    "fields": {
+      "nombre": "Alambre",
+      "tipo": "1",
+      "cantidad": "1000",
+      "precio": 85
+    }
+  },
+  {
+    "model": "taller.Material",
+    "pk": 5,
+    "fields": {
+      "nombre": "Lija",
+      "tipo": "1",
+      "cantidad": "1000",
+      "precio": 31
+    }
+  },
+  {
+    "model": "taller.Repuesto",
+    "pk": 1,
+    "fields": {
+      "nombre": "Puerta delantera izquierda",
+      "modelo": 5,
+      "tipo": "99",
+      "cantidad": "1000",
+      "precio": 1957
+    }
+  },
+  {
+    "model": "taller.Repuesto",
+    "pk": 2,
+    "fields": {
+      "nombre": "Puerta delantera derecha",
+      "modelo": 4,
+      "tipo": "99",
+      "cantidad": "1000",
+      "precio": 3594
+    }
+  },
+  {
+    "model": "taller.Repuesto",
+    "pk": 3,
+    "fields": {
+      "nombre": "Parabrisas",
+      "modelo": 1,
+      "tipo": "99",
+      "cantidad": "1000",
+      "precio": 4386
+    }
+  },
+  {
+    "model": "taller.Repuesto",
+    "pk": 4,
+    "fields": {
+      "nombre": "Capó",
+      "modelo": 2,
+      "tipo": "99",
+      "cantidad": "1000",
+      "precio": 1478
+    }
+  },
+  {
+    "model": "taller.Repuesto",
+    "pk": 5,
+    "fields": {
+      "nombre": "Asiento delantero",
+      "modelo": 3,
+      "tipo": "99",
+      "cantidad": "1000",
+      "precio": 3983
+    }
+  },
+  {
+    "model": "taller.Repuesto",
+    "pk": 6,
+    "fields": {
+      "nombre": "Óptica derecha",
+      "modelo": 3,
+      "tipo": "99",
+      "cantidad": "1000",
+      "precio": 1301
+    }
+  },
+  {
+    "model": "taller.Repuesto",
+    "pk": 7,
+    "fields": {
+      "nombre": "Óptica izquierda",
+      "modelo": 3,
+      "tipo": "99",
+      "cantidad": "1000",
+      "precio": 1793
+    }
+  }
+]

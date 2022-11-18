@@ -125,5 +125,159 @@
       "cantidad": "1000",
       "precio": 1793
     }
+  } , {
+    "model": "taller.TipoTarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Reemplazo pieza",
+      "descripcion": "",
+      "materiales": false,
+      "repuestos": true,
+      "planilla": false
+    }
+  }, {
+    "model": "taller.TipoTarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Tarea de pintura",
+      "descripcion": "",
+      "materiales": false,
+      "repuestos": false,
+      "planilla": true
+    }
+  }, {
+    "model": "taller.TipoTarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Tarea compleja",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": true,
+      "planilla": false
+    }
+  }, {
+    "model": "taller.TipoTarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Requiere material",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  }, {
+    "model": "taller.Tarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Cambiar puerta",
+      "descripcion": "",
+      "tipo": 3,
+      "precio": 1385
+    }
+  }, {
+    "model": "taller.Tarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Pintado completo",
+      "descripcion": "",
+      "tipo": 2,
+      "precio": 2649
+    }
+  }, {
+    "model": "taller.Tarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Pintado parcial",
+      "descripcion": "",
+      "tipo": 2,
+      "precio": 2738
+    }
+  }, {
+    "model": "taller.Tarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Reparar abolladura",
+      "descripcion": "",
+      "tipo": 4,
+      "precio": 1259
+    }
+  }, {
+    "model": "taller.Tarea",
+    "pk": 5,
+    "fields": {
+      "nombre": "Cambiar optica",
+      "descripcion": "",
+      "tipo": 1,
+      "precio": 1469
+    }
+  }, {
+    "model": "taller.Tarea",
+    "pk": 6,
+    "fields": {
+      "nombre": "Cambiar asiento",
+      "descripcion": "",
+      "tipo": 1,
+      "precio": 4688
+    }
+  }, {
+    "model": "taller.Empleado",
+    "pk": 1,
+    "fields": {
+      "cuil": "48-17792096-8",
+      "legajo": "5286",
+      "nombre": "Pedro",
+      "apellido": "Martinez",
+      "tareas": [1, 3, 4]
+    }
+  }, {
+    "model": "taller.Empleado",
+    "pk": 2,
+    "fields": {
+      "cuil": "91-24475201-6",
+      "legajo": "8659",
+      "nombre": "Pablo",
+      "apellido": "Perez",
+      "tareas": [2]
+    }
+  }, {
+    "model": "taller.Empleado",
+    "pk": 3,
+    "fields": {
+      "cuil": "72-11610565-9",
+      "legajo": "9578",
+      "nombre": "Hernan",
+      "apellido": "Gonzalez",
+      "tareas": [1, 3]
+    }
+  }, {
+    "model": "taller.Empleado",
+    "pk": 4,
+    "fields": {
+      "cuil": "17-88260716-0",
+      "legajo": "3051",
+      "nombre": "Paula",
+      "apellido": "Perez",
+      "tareas": [2]
+    }
+  }, {
+    "model": "taller.Empleado",
+    "pk": 5,
+    "fields": {
+      "cuil": "71-66613660-0",
+      "legajo": "7520",
+      "nombre": "Gaston",
+      "apellido": "Galindez",
+      "tareas": [3, 4]
+    }
+  }, {
+    "model": "taller.Empleado",
+    "pk": 6,
+    "fields": {
+      "cuil": "58-11423423-1",
+      "legajo": "0889",
+      "nombre": "Marcos",
+      "apellido": "Aguero",
+      "tareas": [1]
+    }
   }
 ]

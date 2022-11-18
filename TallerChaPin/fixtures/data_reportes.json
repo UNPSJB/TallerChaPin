@@ -2490,5 +2490,14 @@
     "anio": 2022,
     "chasis": "8RGHYFN4PAP833221"
   }
-}
-]
+}, {
+  "model": "taller.vehiculo",
+  "pk": 126,
+  "fields": {
+    "cliente": 99,
+    "patente": "NN514RT",
+    "modelo": 14,
+    "anio": 2022,
+    "chasis": "8RGHYFN4PAP833221"
+  }
+}]

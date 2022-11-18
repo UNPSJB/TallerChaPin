@@ -57,8 +57,8 @@
             <span class='text-danger'>No se pueden realizar acciones hasta resolver la situación <br></span>
           {% else %}
             {% if perms.ordenes.can_asignar_trabajo and detalle_orden.puedo_asignar %}
-              <button class="btn btn-primary m-1" type="button" data-bs-toggle="modal" data-bs-target="#asignar"
-                data-id-tarea={{detalle_orden.pk}}>
+              <button class="btn btn-primary m-1 asignar" type="button" data-bs-toggle="modal" data-bs-target="#asignar"
+                data-id-tarea={{detalle_orden.pk}} data-empleados={{detalle_orden.get_empleados_aptos}}>
                 <i class="fas fa-user-plus"></i> Asignar
               </button>
             {% endif %}
@@ -71,7 +71,7 @@
 
                 {% if perms.ordenes.can_asignar_trabajo %}
                 <button class="btn btn-primary m-1" type="button" data-bs-toggle="modal" data-bs-target="#asignar"
-                  data-id-tarea={{detalle_orden.pk}}>
+                  data-id-tarea={{detalle_orden.pk}} data-empleados={{detalle_orden.get_empleados_aptos}}>
                   <i class="fas fa-user-plus"></i> Reasignar
                 </button>
                 {% endif %}

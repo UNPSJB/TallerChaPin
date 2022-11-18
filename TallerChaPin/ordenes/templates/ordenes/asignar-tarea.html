@@ -22,10 +22,30 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#id_asignar-tarea').val(btn.dataset.idTarea);
   })
 
+  $('.asignar').on('click', (e) => {
+    const empleados = e.currentTarget.dataset.empleados.split(',')
+    console.log(empleados)
+
+    const select = document.getElementById('id_asignar-empleado')
+    for (o of select.options){
+      if (o.value) {
+        if (!empleados.includes(o.value)){
+          console.log('borrando', o)
+          o.remove()
+        } else {
+          console.log('dejando', o)
+        }
+      } else {
+        console.log('sin value', o)
+      }
+    }
+  });
+
   $('#btn-asignar').on('click', (e) => {
     e.preventDefault();
     $('#asignarEmpleadoForm').submit();
   });
+
 })
 </script>
 {% endblock %}

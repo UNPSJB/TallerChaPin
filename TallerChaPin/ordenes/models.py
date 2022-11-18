@@ -497,19 +497,14 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.save()
         self.orden.actualizar_estado(exitosa and OrdenDeTrabajo.FINALIZAR_TAREA_EXITOSA or OrdenDeTrabajo.FINALIZAR_TAREA_NO_EXITOSA)
 
-
-    #Este metodo no se usa?
-    # def crear_planilla_de_pintura(self, material, componentes):
-    #     # Componentes es una lista de la forma [(formula, cantidad)...]
-    #     planilla = PlanillaDePintura.objects.create(
-    #         orden=self, nombre_de_color=material.nombre)
-    #     for formula, cantidad in componentes:
-    #         planilla.agregar(formula, cantidad)
-
-    # def color_de_pintura (self):
-    #     material = self.orden.materiales.filter(tipo__nombre__icontains = 'pintura').first() 
-    #     return material.nombre if material is not None else "Pintura original"
-
+    # Usado para el modal de asignar empleados a trabajo
+    def get_empleados_aptos(self):
+        tipo = self.tarea.tipo.pk
+        empleados = Empleado.objects.filter(tareas=tipo).values('pk')
+        string = ''
+        for e in empleados:
+            string += f'{e["pk"]},'
+        return string
 
     def precio(self):
         return self.tarea.precio

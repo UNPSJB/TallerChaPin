@@ -1,11 +1,6 @@
-from django.http import Http404, JsonResponse
-from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
-# from .models import *
-# from .forms import *
-from datetime import date, datetime, timedelta
-from django.contrib import messages
-from TallerChaPin.utils import ListFilterView, export_list
+from django.http import JsonResponse
+from django.shortcuts import render
+from datetime import datetime, timedelta
 from math import floor
 from taller.models import (
     Empleado,
@@ -19,12 +14,13 @@ from taller.models import (
 )
 from ordenes.models import DetalleOrdenDeTrabajo, OrdenDeTrabajo
 from facturas.models import Factura, Pago
+from numpy import mean
 
 def reporteMarcaVehiculos(request):
     #Agregar permisos. Esto lo ve el administrativo
     context={}
     context['titulo'] = "Reporte 1"
-    return render (request, 'reportes/reporte_marcas_vehiculos_recurrentes.html',context)
+    return render (request, 'reportes/reporte_marcas_vehiculos.html',context)
 
 def getMarcasVehiculos(request):
     #Agregar permisos. Esto lo ve dios unicamente
@@ -197,17 +193,29 @@ def reporteOrdenes(request):
  
 def getOrdenes(request, params):
     params_f = params.split(',')
-    periodicidad = params_f[0]
-    fecha_desde = datetime.strptime(params_f[1], '%Y-%m-%d').date()
-    fecha_hasta = datetime.strptime(params_f[2], '%Y-%m-%d').date()
+    fecha_desde = datetime.strptime(params_f[0], '%Y-%m-%d').date()
+    fecha_hasta = datetime.strptime(params_f[1], '%Y-%m-%d').date()
     dias_diferencia = (fecha_hasta - fecha_desde).days + 1 # +1 para incluir la fecha_hasta
-   
-    labels = []
- 
-    ordenes = OrdenDeTrabajo.objects.all().values("turno")
- 
- 
-    return JsonResponse
+    try:
+        labels = [l.reporte_id() for l in OrdenDeTrabajo.objects.all()]
+        dias_orden = []
+        media = []
+
+        for i in range(dias_diferencia):
+            fecha = (fecha_desde+timedelta(days=i))
+
+            ordenes = OrdenDeTrabajo.objects.filter(turno=fecha)
+            for o in ordenes:
+                dias_orden.append( ( o.ingreso - o.egreso).days * -1)
+
+        a = round(mean(dias_orden))
+
+        for i in range(len(dias_orden)):
+            media.append(a)
+    except:
+        print("no hay ordenes disponibles")
+    
+    return JsonResponse({'labels' : labels, 'dias_orden': dias_orden, 'media' : media})
 
 def reporteClientes(request):
     context = {}

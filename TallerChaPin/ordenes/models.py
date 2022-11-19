@@ -300,12 +300,6 @@ class OrdenDeTrabajo(models.Model):
             vehiculo=self.vehiculo
         )
 
-    def __str__(self):
-        if self.cliente and self.vehiculo:
-            return f"{self.pk} | {self.cliente.nombre} - {self.vehiculo.modelo.marca} {self.vehiculo.modelo.nombre} ({self.vehiculo.patente})"
-        else:
-            return f"{self.pk} | (inconsistencia en cliente/vehiculo)" # Agregado ya que al haber inconsistencias se rompía en /admin
-
     def actualizar_material(self, material, cantidad):
         materiales = self.orden_materiales.filter(material=material)
         if materiales.exists():
@@ -400,6 +394,15 @@ class OrdenDeTrabajo(models.Model):
                 tareas_finalizadas.append(d.tarea.pk)
         
         return tareas_finalizadas
+
+    def __str__(self):
+        if self.cliente and self.vehiculo:
+            return f"{self.pk} | {self.cliente.nombre} - {self.vehiculo.modelo.marca} {self.vehiculo.modelo.nombre} ({self.vehiculo.patente})"
+        else:
+            return f"{self.pk} | (inconsistencia en cliente/vehiculo)" # Agregado ya que al haber inconsistencias se rompía en /admin
+
+    def reporte_id(self):
+        return f"Orden Nº:{self.pk} | {self.cliente.nombre } {self.cliente.apellido}"
 
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):

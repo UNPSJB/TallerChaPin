@@ -7,67 +7,53 @@
 {% endblock %} {% block container %} {% block nav %} {% include 'nav_taller.html' with ayuda=ayuda %} {% endblock %}
 
 <div class="container-fluid">
-  <div class="row d-flex justify-content-center">    
-          <div class="col-5 mt-4">
+  <div class="row mt-4 d-flex justify-content-center align-items-center">
+          <div class="col-8 mt-4">
             {% block main %}
         
-               <div class="row mt-4 d-flex justify-content-evenly align-items-center">
+            <div class="row mt-4 d-flex justify-content-center align-items-center">
                 <a href="{% url 'reporte_marcas_vehiculos' %}" class="col-md-3 shadow-lg acceso">
-                  <h2><i class="fas fa-list"></i> Marcas de vehiculos mas recurrentes </h2>
+                  <h2><i class="fa-solid fa-chart-pie"></i> Marcas de vehiculos mas recurrentes </h2>
+                  <p>
+                    <i class="fa-solid fa-circle-info"></i> Reporte sobre las marcas de vehiculos mas recurrentes del taller.
+                  </p>
 
                 </a>
-                </div>
 
-                <div class="row mt-4 d-flex justify-content-evenly align-items-center">
                 <a href="{% url 'reporte_facturacion' %}" class="col-md-3 shadow-lg acceso">
-                    <h2><i class="fas fa-list"></i> Facturación</h2>
+                    <h2><i class="fa-solid fa-chart-pie"></i> Facturación</h2>
                     <p>
-                      <i class="fas fa-plus-circle agregar"></i> Reporte sobre la facturación en un período de tiempo determinado.
+                      <i class="fa-solid fa-circle-info"></i> Reporte sobre la facturación en un período de tiempo determinado.
                     </p>
                 </a>
-                </div>
 
-                <div class="row mt-4 d-flex justify-content-evenly align-items-center">
                 <a href="{% url 'reporte_productividad' %}" class="col-md-3 shadow-lg acceso">
-                  <h2><i class="fas fa-list"></i> Productividad</h2>
+                  <h2><i class="fa-solid fa-chart-pie"></i> Productividad</h2>
                   <p>
-                    <i class="fas fa-plus-circle agregar"></i> Reporte sobre la productuvidad de los empleados.
+                    <i class="fa-solid fa-circle-info""></i> Reporte sobre la productuvidad de los empleados.
                   </p>
                 </a>
-                </div>
 
-                <div class="row mt-4 d-flex justify-content-evenly align-items-center">
                 <a href="{% url 'reporte_ordenes' %}" class="col-md-3 shadow-lg acceso">
-                  <h2><i class="fas fa-list"></i> Ordenes</h2>
+                  <h2><i class="fa-solid fa-chart-pie"></i> Ordenes</h2>
                   <p>
-                    <i class="fas fa-plus-circle agregar"></i> Reporte de media de tiempo de ordenes de trabajo.
+                    <i class="fa-solid fa-circle-info""></i> Reporte de media de tiempo de ordenes de trabajo.
                   </p>
                 </a>
-                </div>
 
-                <div class="row mt-4 d-flex justify-content-evenly align-items-center">
                 <a href="{% url 'reporte_clientes' %}" class="col-md-3 shadow-lg acceso">
-                  <h2><i class="fas fa-list"></i> Clientes</h2>
+                  <h2><i class="fa-solid fa-chart-pie""></i> Clientes</h2>
                   <p>
-                    <i class="fas fa-plus-circle agregar"></i> Reporte de cantidad de trabajos realizados a clientes y sus facturaciones.
+                    <i class="fa-solid fa-circle-info"></i> Reporte de cantidad de trabajos realizados a clientes y sus facturaciones.
                   </p>
                 </a>
-                </div>
 
-          
+
+              </div>
             {% endblock %}
           </div>
-
-    {% comment %} <div class="col-2 mt-5 mr-4">
-      {% block filtros %} 
-
-      {% endblock %}
-    </div> {% endcomment %}
-   
-  </div>
+        </div>
 </div>
-
-{% block modals %} {% endblock %}
 
 
 

@@ -14,7 +14,9 @@
 {% block extrajs %}
 <script type="text/javascript"> 
 document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('id_asignar-empleado')
   const element = document.getElementById('asignar');
+  const opcionesDefault = [...select.options]
 
   // configuramos el contenido del modal
   element.addEventListener('shown.bs.modal', (e) => {
@@ -24,21 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $('.asignar').on('click', (e) => {
     const empleados = e.currentTarget.dataset.empleados.split(',')
-    console.log(empleados)
+    const options = [...opcionesDefault].filter(o => empleados.includes(o.value))
 
-    const select = document.getElementById('id_asignar-empleado')
-    for (o of select.options){
-      if (o.value) {
-        if (!empleados.includes(o.value)){
-          console.log('borrando', o)
-          o.remove()
-        } else {
-          console.log('dejando', o)
-        }
-      } else {
-        console.log('sin value', o)
-      }
-    }
+    select.options.length = 1
+    options.map(o => select.appendChild(o))
   });
 
   $('#btn-asignar').on('click', (e) => {

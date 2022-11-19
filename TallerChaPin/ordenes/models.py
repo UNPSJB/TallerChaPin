@@ -500,10 +500,10 @@ class DetalleOrdenDeTrabajo(models.Model):
     # Usado para el modal de asignar empleados a trabajo
     def get_empleados_aptos(self):
         tipo = self.tarea.tipo.pk
-        empleados = Empleado.objects.filter(tareas=tipo).values('pk')
-        string = ''
-        for e in empleados:
-            string += f'{e["pk"]},'
+
+        empleados = [str(e['pk']) for e in Empleado.objects.filter(tareas=tipo).values('pk')]
+        string = ','.join(empleados)
+
         return string
 
     def precio(self):

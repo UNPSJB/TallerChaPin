@@ -156,7 +156,7 @@ def getHorasTrabajo(request):
     tareas_taller = [t['id'] for t in list(Tarea.objects.filter(tipo__planilla=False).values('id'))]
     tareas_pintura = [t['id'] for t in list(Tarea.objects.filter(tipo__planilla=True).values('id'))]
 
-    trabajos = list(DetalleOrdenDeTrabajo.objects.filter(exitosa=True).values('tarea_id', 'empleado_id', 'inicio', 'fin', 'exitosa', 'empleado_id__nombre', 'empleado_id__apellido'))
+    trabajos = list(DetalleOrdenDeTrabajo.objects.filter(exitosa=True, fin__isnull=False).values('tarea_id', 'empleado_id', 'inicio', 'fin', 'exitosa', 'empleado_id__nombre', 'empleado_id__apellido'))
     r_taller = {}
     for t in trabajos:
         if t['tarea_id'] in tareas_taller:

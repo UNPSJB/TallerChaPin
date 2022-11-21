@@ -61,6 +61,10 @@ window.addEventListener('load', () => {
           type: 'linear',
           display: true,
           position: 'left',
+          title: {
+            text: 'Horas de trabajo totales',
+            display: true,
+          },
         },
         y1: {
           type: 'linear',
@@ -68,7 +72,11 @@ window.addEventListener('load', () => {
           position: 'right',
           ticks: {
             stepSize: 1,
-          }
+          },
+          title: {
+            text: 'Cantidad de trabajos realizados',
+            display: true,
+          },
         }
       }
     }

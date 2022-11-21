@@ -73,7 +73,27 @@ window.addEventListener('load', () => {
         fill: true
       }]
     },
-    options: {}
+    options: {
+      scales: {
+        y: {
+          title: {
+            text: 'Cantidad facturada',
+            display: true,
+          },
+          ticks: {
+            callback: function (value, index, ticks) {
+              return '$' + value;
+            }
+          }
+        },
+      x: {
+        title: {
+          text: 'Fecha',
+          display: true,
+        }
+      }
+      }, 
+    }
   });
 
   

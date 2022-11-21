@@ -37,13 +37,26 @@ window.addEventListener('load', () => {
       },
       scales: {
         y: {
-            beginAtZero: true
+            beginAtZero: true,
+            title: {
+              text: 'Cantidad facturada',
+              display: true,
+            },
+            ticks: {
+              callback: function (value, index, ticks) {
+                return '$' + value;
+            } 
+          }
         },
         x: {
           beginAtZero: true,
           ticks: {
             stepSize: 1
-          }
+          },
+          title: {
+            text: 'Cantidad de órdenes registradas',
+            display: true,
+          },
         }
     }
     }

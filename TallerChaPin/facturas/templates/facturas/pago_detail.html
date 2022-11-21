@@ -10,12 +10,12 @@
     <div class="wrapper wrapper-content animated fadeInRight">
 
         <div class="ibox-title">
-            <h1 class="mb-4 ">Ver Pago</h1>
+            <h1 class="mb-4 ">Ver pago</h1>
         </div>
 
         <div class="row">
 
-            <div class="col-md-6">
+            <div class="col">
                 <div class="ibox border border-primary rounded p-3 h-100 p-4">
                     <h3>
                         {{ object.factura.orden.cliente.nombre }}, {{ object.factura.orden.cliente.apellido }}
@@ -26,38 +26,40 @@
                     </span>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-3">
-                <div class="ibox border border-primary rounded p-3 h-100 d-flex justify-content-center flex-column align-items-center">
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div
+                    class="ibox border border-primary rounded p-3 h-100 d-flex justify-content-center flex-column align-items-center">
                     <div class="ibox-title">
                         <h5> Total presupuestado </h5>
                     </div>
                     <div class="ibox-content">
                         <h2 class="font-bold text-primary">
-                            <i class="fas fa-dollar-sign"></i> {{object.factura.orden.precio_total_presupuestado}}
+                            <i class="fas fa-dollar-sign"></i>
+                            {{object.factura.orden.precio_total_presupuestado}}
                         </h2>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-3">
-                <div class="ibox border border-primary rounded p-3 h-100 d-flex justify-content-center flex-column align-items-center">
+            
+            <div class="col-md-4">
+                <div
+                    class="ibox border border-primary rounded p-3 h-100 d-flex justify-content-center flex-column align-items-center">
                     <div class="ibox-title">
-                        <h5> Total </h5>
+                        <h5> Total a pagar</h5>
                     </div>
                     <div class="ibox-content">
                         <h2 class="font-bold text-primary">
-                            <i class="fas fa-dollar-sign"></i> {{object.factura.orden.precio_orden}}
+                            <i class="fas fa-dollar-sign"></i>
+                            {{object.factura.orden.precio_orden}}
                         </h2>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row mt-4">
-            <div class="col-md-9"></div>
-
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="border border-primary rounded p-3">
                     <h5>Acciones</h5>
                     <a href="" data-bs-toggle="modal" data-bs-target="#modalEliminarPago"
@@ -68,6 +70,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <div class="row mt-4">
         <div class="col-md-12 mt-2">

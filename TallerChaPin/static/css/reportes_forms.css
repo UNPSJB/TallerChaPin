@@ -29,3 +29,7 @@ button.submit {
   width: fit-content;
   align-self: flex-end;
 }
+
+canvas {
+  margin-bottom: 5rem;
+}

@@ -314,7 +314,7 @@ class OrdenTrabajoCreateView(CreateView):
             orden = presupuesto.confirmar(turno)
             return redirect('detallesOrden', orden.pk)
         else:
-            messages.add_message(self.request, messages.ERROR, form.errors)
+            messages.add_message(self.request, messages.WARNING, "La fecha ingresada no es válida.")
             return redirect('crearOrden', presupuesto.pk)
         
 class OrdenTrabajoUpdateView(UpdateView):

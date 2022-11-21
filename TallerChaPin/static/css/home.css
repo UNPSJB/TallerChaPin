@@ -1,9 +1,14 @@
+html {
+    height: 100%;
+}
+
 
 .contenedor{
+    min-height: 120vh;
     background-image: url('../images/taller-blur.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 120vh;
+    padding-bottom: 3rem;
 }
 
 .encabezado{
@@ -49,41 +54,6 @@
     transform: scale(1.05);
     border-radius: .3rem;
 }
-
-/* .taller{
-    border-top-left-radius: .3rem;
-    border-bottom-left-radius: .3rem;
-}
-
-.facturas{
-    border-top-right-radius: .3rem;
-    border-bottom-right-radius: .3rem;
-}
-
-.trabajos{
-    border-radius: .3rem;
-    margin-bottom: 5rem;
-}
-
-.taller:hover{
-    background-color: rgb(139, 183, 219);
-}
-
-.ordenes:hover{
-    background-color: rgb(241, 79, 79);
-}
-
-.facturas:hover{
-    background-color: rgb(116, 197, 113);
-}
-
-.trabajos:hover{
-    background-color: rgb(223, 152, 71);
-}
-
-.aaa:hover{
-    background-color: blue;
-} */
 
 .logo-salir{
     font-size: 2rem;

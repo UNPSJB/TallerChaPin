@@ -34,7 +34,18 @@ window.addEventListener('load', () => {
             }
           }
         }
-      }
+      },
+      scales: {
+        y: {
+            beginAtZero: true
+        },
+        x: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1
+          }
+        }
+    }
     }
   });
 

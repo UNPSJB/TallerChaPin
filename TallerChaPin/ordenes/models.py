@@ -404,6 +404,10 @@ class OrdenDeTrabajo(models.Model):
     def reporte_id(self):
         return f"Orden Nº:{self.pk} | {self.cliente.nombre } {self.cliente.apellido}"
 
+    def get_planillas_pintura(self):
+        planillas = PlanillaDePintura.objects.filter(orden__orden=self.pk)
+        return planillas
+
 class DetalleOrdenDeTrabajoManager(models.Manager):
     def para_empleado(self, empleado):
         no_tiene_empleado = models.Q(empleado__isnull=True)

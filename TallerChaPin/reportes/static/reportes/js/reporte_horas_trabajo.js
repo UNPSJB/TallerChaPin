@@ -66,9 +66,13 @@ window.addEventListener('load', () => {
           type: 'linear',
           display: true,
           position: 'right',
+          ticks: {
+            stepSize: 1,
+          }
         }
+      }
     }
-  }});
+  });
 
   fetch(`get_horas_trabajo`)
     .then(r => r.json())

@@ -19,7 +19,7 @@ from numpy import mean
 def reporteMarcaVehiculos(request):
     #Agregar permisos. Esto lo ve el administrativo
     context={}
-    context['titulo'] = "Reporte 1"
+    context['titulo'] = "Marcas de vehículos más recurrentes"
     return render (request, 'reportes/reporte_marcas_vehiculos.html',context)
 
 def getMarcasVehiculos(request):

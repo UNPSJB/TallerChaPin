@@ -73,7 +73,7 @@ def crearFactura(request, pk):
         return redirect('detallesOrden', orden.pk)
     if orden.puede_facturarse():
         factura = Factura.facturar_orden(orden)
-        messages.add_message(request, messages.SUCCESS, 'Factura Creada')
+        messages.add_message(request, messages.SUCCESS, 'Factura creada exitosamente')
         return redirect ('detallesFactura', factura.pk)
 
     messages.add_message(request, messages.WARNING, 'La orden de trabajo no esta terminada')

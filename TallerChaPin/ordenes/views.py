@@ -470,7 +470,7 @@ def finalizar_tarea(request):
     if form.is_valid():
         form.finalizar()
         messages.add_message(request, messages.SUCCESS,
-                             'La tarea finalizó exitosamente!')
+                             'La tarea finalizó exitosamente')
     else:
         messages.add_message(request, messages.ERROR, form.errors) 
     return redirect('listarDetallesOrden')
@@ -564,7 +564,6 @@ class PlanillaCreateView(CreateView):
 
     def get(self, *args, **kwargs):
         pk = kwargs.get('detalle')
-        print(pk)
         try:
             detalleTarea = DetalleOrdenDeTrabajo.objects.get(pk=pk)
         except DetalleOrdenDeTrabajo.DoesNotExist:
@@ -622,7 +621,6 @@ class PlanillaUpdateView(UpdateView):
         form = PlanillaDePinturaForm(self.request.POST)        
         planilla = PlanillaDePintura.objects.get(pk=self.kwargs.get('pk'))
         if self.detalle_planilla_form.is_valid() and form.is_valid():
-            print(form.cleaned_data)
             planilla = form.save(form.cleaned_data['nombre_de_color'], self.detalle_planilla_form.cleaned_data, update=True, planilla_pintura=planilla)
             messages.add_message(self.request, messages.SUCCESS, 'La planilla de pintura se ha registrado exitosamente')
             return redirect ('listarDetallesOrden')

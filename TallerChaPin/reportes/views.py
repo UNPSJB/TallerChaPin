@@ -196,24 +196,23 @@ def getOrdenes(request, params):
     fecha_desde = datetime.strptime(params_f[0], '%Y-%m-%d').date()
     fecha_hasta = datetime.strptime(params_f[1], '%Y-%m-%d').date()
     dias_diferencia = (fecha_hasta - fecha_desde).days + 1 # +1 para incluir la fecha_hasta
-    try:
-        labels = [l.reporte_id() for l in OrdenDeTrabajo.objects.all()]
-        dias_orden = []
-        media = []
 
-        for i in range(dias_diferencia):
-            fecha = (fecha_desde+timedelta(days=i))
+    labels = [l.reporte_id() for l in OrdenDeTrabajo.objects.all()]
+    dias_orden = []
+    media = []
 
-            ordenes = OrdenDeTrabajo.objects.filter(turno=fecha)
-            for o in ordenes:
-                dias_orden.append( ( o.ingreso - o.egreso).days * -1)
+    for i in range(dias_diferencia):
+        fecha = (fecha_desde+timedelta(days=i))
 
-        a = round(mean(dias_orden))
+        ordenes = OrdenDeTrabajo.objects.filter(turno=fecha)
+        for o in ordenes:
+            dias_orden.append( ( o.ingreso - o.egreso).days * -1)
 
-        for i in range(len(dias_orden)):
-            media.append(a)
-    except:
-        print("no hay ordenes disponibles")
+    a = round(mean(dias_orden))
+
+    for i in range(len(dias_orden)):
+        media.append(a)
+
     
     return JsonResponse({'labels' : labels, 'dias_orden': dias_orden, 'media' : media})
 

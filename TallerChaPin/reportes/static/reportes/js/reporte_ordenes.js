@@ -63,5 +63,16 @@ window.addEventListener('load', () => {
         options: {}
        
     });
+
+    const date_hoy = new Date()
+    const string_hoy = date_hoy.toISOString().slice(0, 10)
+  
+    const date_30_dias = new Date().setDate(date_hoy.getDate() - 30)
+    const string_30_dias = new Date(date_30_dias).toISOString().slice(0, 10)
+  
+    // Se carga con la vista diaria de los últimos 30 días (por defecto)
+    actualizarDatos(string_30_dias, string_hoy)
+    input_desde.value = string_30_dias
+    input_hasta.value = string_hoy
 });
  

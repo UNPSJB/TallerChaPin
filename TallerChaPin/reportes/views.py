@@ -203,10 +203,10 @@ def getOrdenes(request, params):
     # Traigo todas las órdenes que pasaron por el taller en el período ingresado
     ordenes_terminadas = OrdenDeTrabajo.objects.filter(Q(ingreso__isnull=False) & Q(egreso__isnull=False))
     ordenes = ordenes_terminadas.exclude(Q(ingreso__date__gt=fecha_hasta) | Q(egreso__date__lt=fecha_desde))
-    
+
     for o in ordenes:
         labels.append(f'{o.id} | {o.cliente.nombre} {o.cliente.apellido}')
-        duracion_orden.append((o.egreso - o.ingreso).days)
+        duracion_orden.append(int(round((o.egreso - o.ingreso).seconds / 3600, 0)))
 
     media = 0
     if len(duracion_orden) > 0:

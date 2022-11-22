@@ -230,7 +230,7 @@
             "tarea": 2,
             "empleado": 2,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-22T00:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -269,7 +269,7 @@
             "tarea": 2,
             "empleado": 2,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-22T00:14:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -282,7 +282,7 @@
             "tarea": 5,
             "empleado": 1,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-22T11:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -308,7 +308,7 @@
             "tarea": 2,
             "empleado": 2,
             "inicio": "2022-11-19T00:28:49Z",
-            "fin": "2022-11-19T02:28:49Z",
+            "fin": "2022-11-20T04:28:49Z",
             "exitosa": true,
             "observaciones": null
         }
@@ -334,7 +334,7 @@
             "tarea": 2,
             "empleado": 4,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T11:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -347,7 +347,7 @@
             "tarea": 3,
             "empleado": 2,
             "inicio": "2022-11-19T00:28:49.307Z",
-            "fin": "2022-11-19T00:28:49.307Z",
+            "fin": "2022-11-19T04:28:49.307Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -360,7 +360,7 @@
             "tarea": 3,
             "empleado": 2,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T06:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -373,7 +373,7 @@
             "tarea": 4,
             "empleado": 1,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T04:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -386,7 +386,7 @@
             "tarea": 3,
             "empleado": 2,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T04:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -399,7 +399,7 @@
             "tarea": 4,
             "empleado": 5,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T02:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -412,7 +412,7 @@
             "tarea": 6,
             "empleado": 6,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T03:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -425,7 +425,7 @@
             "tarea": 2,
             "empleado": 2,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T03:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -451,7 +451,7 @@
             "tarea": 6,
             "empleado": 6,
             "inicio": "2022-11-19T00:47:32.066Z",
-            "fin": "2022-11-19T00:47:32.066Z",
+            "fin": "2022-11-19T11:47:32.066Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -464,7 +464,7 @@
             "tarea": 1,
             "empleado": 3,
             "inicio": "2022-11-19T00:28:49.307Z",
-            "fin": "2022-11-19T00:28:49.307Z",
+            "fin": "2022-11-19T12:28:49.307Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -490,7 +490,7 @@
             "tarea": 3,
             "empleado": 2,
             "inicio": "2022-11-21T00:32:23.600Z",
-            "fin": "2022-11-21T00:32:23.600Z",
+            "fin": "2022-11-21T13:32:23.600Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -503,7 +503,7 @@
             "tarea": 4,
             "empleado": 5,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T01:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -516,7 +516,7 @@
             "tarea": 3,
             "empleado": 4,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T14:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -529,7 +529,7 @@
             "tarea": 4,
             "empleado": 1,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T04:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -542,7 +542,7 @@
             "tarea": 5,
             "empleado": 3,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T05:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -555,7 +555,7 @@
             "tarea": 1,
             "empleado": 3,
             "inicio": "2022-11-21T00:32:23.600Z",
-            "fin": "2022-11-21T00:32:23.600Z",
+            "fin": "2022-11-21T11:32:23.600Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -568,7 +568,7 @@
             "tarea": 3,
             "empleado": 2,
             "inicio": "2022-11-21T00:32:23.600Z",
-            "fin": "2022-11-21T00:32:23.600Z",
+            "fin": "2022-11-21T09:32:23.600Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -581,7 +581,7 @@
             "tarea": 2,
             "empleado": 4,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T02:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }
@@ -594,7 +594,7 @@
             "tarea": 3,
             "empleado": 4,
             "inicio": "2022-11-21T00:23:45.625Z",
-            "fin": "2022-11-21T00:23:45.625Z",
+            "fin": "2022-11-21T04:23:45.625Z",
             "exitosa": true,
             "observaciones": ""
         }

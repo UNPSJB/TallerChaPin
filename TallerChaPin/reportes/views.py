@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from datetime import datetime, timedelta
+from django.db.models import Q
 from math import floor
 from taller.models import (
     Empleado,
@@ -195,26 +196,23 @@ def getOrdenes(request, params):
     params_f = params.split(',')
     fecha_desde = datetime.strptime(params_f[0], '%Y-%m-%d').date()
     fecha_hasta = datetime.strptime(params_f[1], '%Y-%m-%d').date()
-    dias_diferencia = (fecha_hasta - fecha_desde).days + 1 # +1 para incluir la fecha_hasta
 
-    labels = [l.reporte_id() for l in OrdenDeTrabajo.objects.all()]
-    dias_orden = []
-    media = []
+    labels = []
+    duracion_orden = []
 
-    for i in range(dias_diferencia):
-        fecha = (fecha_desde+timedelta(days=i))
-
-        ordenes = OrdenDeTrabajo.objects.filter(turno=fecha)
-        for o in ordenes:
-            dias_orden.append( ( o.ingreso - o.egreso).days * -1)
-
-    a = round(mean(dias_orden))
-
-    for i in range(len(dias_orden)):
-        media.append(a)
-
+    # Traigo todas las órdenes que pasaron por el taller en el período ingresado
+    ordenes_terminadas = OrdenDeTrabajo.objects.filter(Q(ingreso__isnull=False) & Q(egreso__isnull=False))
+    ordenes = ordenes_terminadas.exclude(Q(ingreso__date__gt=fecha_hasta) | Q(egreso__date__lt=fecha_desde))
     
-    return JsonResponse({'labels' : labels, 'dias_orden': dias_orden, 'media' : media})
+    for o in ordenes:
+        labels.append(f'{o.id} | {o.cliente.nombre} {o.cliente.apellido}')
+        duracion_orden.append((o.egreso - o.ingreso).days)
+
+    media = 0
+    if len(duracion_orden) > 0:
+        media = sum(duracion_orden) / len(duracion_orden)
+
+    return JsonResponse({'labels' : labels, 'duracion_orden': duracion_orden, 'media' : media})
 
 def reporteClientes(request):
     context = {}

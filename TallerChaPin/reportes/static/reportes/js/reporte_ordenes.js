@@ -37,10 +37,11 @@ const linea_media = (media, cantidad) =>
 
 const actualizarDatos = (desde, hasta) => {
   fetch(`get_ordenes/${desde},${hasta}`)
+  
   .then(r => r.json())
   .then(r => {
     chart.data.datasets[0].data = r.duracion_orden
-    chart.data.datasets[1].data = linea_media(r.media, r.label.length)
+    chart.data.datasets[1].data = linea_media(r.media, r.labels.length)
     chart.data.labels = r.labels
     chart.update()
   })

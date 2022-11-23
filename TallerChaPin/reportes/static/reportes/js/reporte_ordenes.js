@@ -73,7 +73,22 @@ window.addEventListener('load', () => {
                 pointHitRadius: 0
               }]
         },
-        options: {}
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                text: 'Horas de trabajo',
+                display: true,
+              },
+              ticks: {
+                callback: function (value, index, ticks) {
+                  return value + ' horas';
+                }
+              }
+            }
+          }
+        }
        
     });
 

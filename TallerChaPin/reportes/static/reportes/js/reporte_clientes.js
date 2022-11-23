@@ -58,7 +58,7 @@ window.addEventListener('load', () => {
             display: true,
           },
         }
-    }
+      }
     }
   });
 

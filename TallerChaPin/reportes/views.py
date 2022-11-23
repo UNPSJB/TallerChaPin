@@ -205,13 +205,16 @@ def getOrdenes(request, params):
     ordenes = ordenes_terminadas.exclude(Q(ingreso__date__gt=fecha_hasta) | Q(egreso__date__lt=fecha_desde))
     
     for o in ordenes:
-        labels.append(f'{o.id} | {o.cliente.nombre} {o.cliente.apellido}')
-        duracion_orden.append((o.egreso - o.ingreso).days)
+        labels.append(o.reporte_id())
+        diferencia=o.egreso - o.ingreso
+        duracion_orden.append(round(diferencia.days * 24 + diferencia.seconds / 3600))
+
 
     media = 0
     if len(duracion_orden) > 0:
         media = sum(duracion_orden) / len(duracion_orden)
-
+    
+    
     return JsonResponse({'labels' : labels, 'duracion_orden': duracion_orden, 'media' : media})
 
 def reporteClientes(request):

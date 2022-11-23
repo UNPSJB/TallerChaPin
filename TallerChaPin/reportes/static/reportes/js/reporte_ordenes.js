@@ -23,13 +23,24 @@ const deshabilitar_submit = (e) => {
 }
 input_desde.addEventListener('change', deshabilitar_submit)
 input_hasta.addEventListener('change', deshabilitar_submit)
- 
+
+const linea_media = (media, cantidad) =>
+{
+  const lista = []
+  for (let i = 0; i<cantidad; i++){
+    lista.push(media)
+  } 
+  return lista
+}
+
+
+
 const actualizarDatos = (desde, hasta) => {
   fetch(`get_ordenes/${desde},${hasta}`)
   .then(r => r.json())
   .then(r => {
-    chart.data.datasets[0].data = r.dias_orden
-    chart.data.datasets[1].data = r.media
+    chart.data.datasets[0].data = r.duracion_orden
+    chart.data.datasets[1].data = linea_media(r.media, r.label.length)
     chart.data.labels = r.labels
     chart.update()
   })
@@ -41,7 +52,7 @@ form.addEventListener('submit', (e) => {
 })
  
 window.addEventListener('load', () => {
-  Chart.defaults.font.size = 16;
+  Chart.defaults.font.size = 12;
     chart = new Chart(document.getElementById("ordenes"), {
         type: 'scatter',
         data: {
@@ -57,7 +68,8 @@ window.addEventListener('load', () => {
                 label: 'Media de tiempo',
                 data: [],
                 fill: false,
-                borderColor: 'rgb(54, 162, 235)'
+                borderColor: 'rgb(54, 162, 235)',
+                pointHitRadius: 0
               }]
         },
         options: {}

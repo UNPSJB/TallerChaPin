@@ -376,14 +376,13 @@ class OrdenDeTrabajo(models.Model):
         materiales_presupuesto = list(presupuesto.presupuesto_materiales.all().values_list('material__pk', flat=True))
         for om in self.orden_materiales.all():
             if om.material.pk not in materiales_presupuesto:
-                om.delete() # TODO: en el caso en que se haya utilizado, qué se hace?
+                om.delete()
 
         # Elimino los repuestos que están en la orden pero no en el presupuesto
         repuestos_presupuesto = list(presupuesto.presupuesto_repuestos.all().values_list('repuesto__pk', flat=True))
         for rm in self.orden_repuestos.all():
             if rm.repuesto.pk not in repuestos_presupuesto:
-                rm.delete() # TODO: en el caso en que se haya utilizado, qué se hace?
-
+                rm.delete() 
         presupuesto.confirmado = True
         presupuesto.save()
         self.save()
@@ -570,6 +569,9 @@ class DetalleOrdenDeTrabajo(models.Model):
             return 'fallida'
         
         return 'iniciada'
+
+    def puedo_agregar_insumos(self):
+        return (self.tarea.tipo.materiales or self.tarea.tipo.repuestos) and self.fin is None
 
 
 

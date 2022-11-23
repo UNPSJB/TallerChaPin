@@ -149,9 +149,9 @@ class PresupuestoCreateView(CreateView):
         initial_repuestos = [
             {'repuesto': pr["repuesto_id"], "cantidad": pr["cantidad"]} for pr in base.presupuesto_repuestos.all().values()] if base is not None else [{'repuesto': None, "cantidad": 1}]
 
-        context['presupuesto_material_formset'] = self.material_form or PresupuestoMaterialInline(len(initial_materiales))(initial = initial_materiales) #pasarle las lineas previas
+        context['presupuesto_material_formset'] = self.material_form or PresupuestoMaterialInline(max(len(initial_materiales), 1))(initial = initial_materiales) #pasarle las lineas previas
         context['presupuesto_material_formset_helper'] = PresupuestoMaterialFormSetHelper()
-        context['presupuesto_repuesto_formset'] = self.repuesto_form or PresupuestoRepuestoInline(len(initial_repuestos))(initial = initial_repuestos) #pasarle las lineas previas
+        context['presupuesto_repuesto_formset'] = self.repuesto_form or PresupuestoRepuestoInline(max(len(initial_repuestos), 1))(initial = initial_repuestos) #pasarle las lineas previas
         context['presupuesto_repuesto_formset_helper'] = PresupuestoRepuestoFormSetHelper()
         
         context['titulo'] = "Registrar Presupuesto"

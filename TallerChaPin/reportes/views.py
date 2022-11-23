@@ -203,7 +203,7 @@ def getOrdenes(request, params):
     # Traigo todas las órdenes que pasaron por el taller en el período ingresado
     ordenes_terminadas = OrdenDeTrabajo.objects.filter(Q(ingreso__isnull=False) & Q(egreso__isnull=False))
     ordenes = ordenes_terminadas.exclude(Q(ingreso__date__gt=fecha_hasta) | Q(egreso__date__lt=fecha_desde))
-    
+
     for o in ordenes:
         labels.append(o.reporte_id())
         diferencia=o.egreso - o.ingreso

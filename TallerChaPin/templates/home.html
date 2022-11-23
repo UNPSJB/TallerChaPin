@@ -42,7 +42,7 @@
             {% if user.is_superuser %}
                 Administrador
             {% else %}
-                {{user.empleado}}
+                {{ user }}
             {% endif %}
         </h1>
     
@@ -88,6 +88,7 @@
             </div>
             {% endif %}
 
+            {% if perms.listados %}
             <div class="seccion shadow-lg">
                 <h2><i class="fas fa-eye"></i> Listados</h2>
                 <p>
@@ -97,7 +98,7 @@
                     <a class="btn btn-primary w-100" href="{% url 'listados_home' %}" role="button">Acceder »</a>
                 </p>
             </div>
-
+            {% endif %}
             <div class="seccion trabajos shadow-lg">
                 <h2><i class="fas fa-tools"></i> Trabajos</h2>
                 <p>
@@ -107,7 +108,7 @@
                     <a class="btn btn-primary w-100" href="{% url 'listarDetallesOrden' %}" role="button">Acceder »</a>
                 </p>
             </div>
-
+            {% if perms.reportes %}
             <div class="seccion reportes shadow-lg">
                 <h2><i class="fa-solid fa-chart-pie"></i> Reportes</h2>
                 <p>
@@ -117,7 +118,7 @@
                     <a class="btn btn-primary w-100" href="{% url 'reportes_home' %}" role="button">Acceder »</a>
                 </p>
             </div>
-            
+            {% endif %}
         </div>
 
         <!-- <div class="row mt-4 justify-content-center">

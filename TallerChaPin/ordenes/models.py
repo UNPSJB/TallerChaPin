@@ -39,7 +39,6 @@ class NoEntregoVehiculoException(Exception):
 def fecha_es_futura(fecha):
     if fecha < timezone.now():
         raise ValidationError('Fecha no válida')
-
 class OrdenDeTrabajo(models.Model):
     INICIAR_TAREA = 0
     PAUSAR_ORDEN = 1
@@ -153,6 +152,10 @@ class OrdenDeTrabajo(models.Model):
         self.save()
 
     def registrar_egreso(self, fecha):
+
+        if fecha < self.ingreso:
+            raise ValidationError('La fecha de egreso no puede ser menor a la fecha de ingreso')
+
         if self.puede_retirar_vehiculo() :
             if self.estado == OrdenDeTrabajo.PAGADA or self.cliente.vip(): 
                 self.egreso = fecha

@@ -103,7 +103,7 @@
                                 {% for repuesto in factura.orden.orden_repuestos.all %}
                                 <tr>
                                     <td>{{ repuesto.repuesto.nombre }}</td>
-                                    <td>{{ repuesto.cantidad }}</td>
+                                    <td>{{ repuesto.cantidad_utilizada }}</td>
                                     <td>{{ repuesto.repuesto.precio }}</td>
                                     <td>{{ repuesto.precio }}</td>
                                 </tr>
@@ -129,7 +129,7 @@
                                 {% for material in factura.orden.orden_materiales.all %}
                                 <tr>
                                     <td>{{ material.material.nombre }}</td>
-                                    <td>{{ material.cantidad }}</td>
+                                    <td>{{ material.cantidad_utilizada }}</td>
                                     <td>{{ material.material.precio }}</td>
                                     <td>{{ material.precio }}</td>
                                 </tr>

@@ -423,11 +423,12 @@ def RegistrarIngresoVehiculoForm(model=None):
             self.helper.layout = Layout(
                 Fieldset(
                     "",
-                    "orden",
-                    "ingreso"
+                    None if model else "orden",
+                    "ingreso",
                 ),
                 Div(Submit('submit', 'Guardar'), css_class='filter-btn-container')
             )
+
     return RegistrarIngresoVehiculoForm
 
 

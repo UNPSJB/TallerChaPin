@@ -466,6 +466,8 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         return qs
 
 
+
+
 class DetalleOrdenDeTrabajoQuerySet(models.QuerySet):
     pass
 

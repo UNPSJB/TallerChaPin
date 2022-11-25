@@ -259,7 +259,12 @@ class Empleado(models.Model):
             username=username, password=self.cuil, first_name=self.nombre, last_name=self.apellido)
         user.save()
         self.usuario = user
+        self.save()
         return user
+
+    def tiene_usuario(self):
+        print(f'Usuario es none?: {self.usuario is not None}, usuario: {self.usuario} ')
+        return self.usuario is not None
 
     def puede_hacer(self, tipo):
         return self.tareas.filter(id=tipo.id).exists()

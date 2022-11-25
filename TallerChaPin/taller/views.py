@@ -28,6 +28,20 @@ def MaterialCantidad(request):
             messages.add_message(request, messages.WARNING,'Cantidad no válida')
     return redirect('listarMateriales')
 
+def registrar_usuario(request, pk):
+    try:
+        empleado = Empleado.objects.get(pk=pk)
+    except Empleado.DoesNotExist:
+        messages.add_message(request, messages.WARNING,'Empleado no existe')
+        return redirect('listarEmpleados')
+    if not empleado.tiene_usuario():
+        empleado.crear_usuario()
+        messages.add_message(request, messages.SUCCESS,'Empleado registrado con exito')
+    else:
+        messages.add_message(request, messages.WARNING,'Empleado ya ha sido registrado')
+    return redirect('listarEmpleados')
+
+
 # ----------------------------- Marca View ----------------------------------- #
 
 

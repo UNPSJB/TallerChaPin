@@ -23,16 +23,24 @@ def reporteMarcaVehiculos(request):
     context['titulo'] = "Marcas de vehículos más recurrentes"
     return render (request, 'reportes/reporte_marcas_vehiculos.html',context)
 
-def getMarcasVehiculos(request):
-    #Agregar permisos. Esto lo ve dios unicamente
-    marcas = list(Marca.objects.all().values('pk','nombre'))
-    r = []
-    for marca in marcas:
-        cantidad = Vehiculo.objects.filter(modelo__marca = marca['pk']).count()
-        r.append({'cantidad': cantidad , 'nombre':marca['nombre']})
-    r.sort(key=lambda c : c['cantidad'], reverse=True)
+def getMarcasVehiculos(request, params):
+    params_f = params.split(',')
+    fecha_desde = datetime.strptime(params_f[0], '%Y-%m-%d').date()
+    fecha_hasta = datetime.strptime(params_f[1], '%Y-%m-%d').date()
 
-    return JsonResponse({'vehiculos' : r })
+    # Traigo todas las órdenes que pasaron por el taller en el período ingresado
+    ordenes_terminadas = OrdenDeTrabajo.objects.filter(Q(ingreso__isnull=False) & Q(egreso__isnull=False))
+    ordenes = ordenes_terminadas.exclude(Q(ingreso__date__gt=fecha_hasta) | Q(egreso__date__lt=fecha_desde))
+    
+    vehiculos = {}
+    for o in ordenes:
+        marca = o.vehiculo.modelo.marca.nombre
+        if vehiculos.get(marca) is not None:
+            vehiculos[marca] += 1
+        else:
+            vehiculos[marca] = 1
+
+    return JsonResponse({'vehiculos' : vehiculos })
 
 
 def reporteFacturacion(request):
@@ -209,11 +217,9 @@ def getOrdenes(request, params):
         diferencia=o.egreso - o.ingreso
         duracion_orden.append(round(diferencia.days * 24 + diferencia.seconds / 3600))
 
-
     media = 0
     if len(duracion_orden) > 0:
         media = sum(duracion_orden) / len(duracion_orden)
-    
     
     return JsonResponse({'labels' : labels, 'duracion_orden': duracion_orden, 'media' : media})
 

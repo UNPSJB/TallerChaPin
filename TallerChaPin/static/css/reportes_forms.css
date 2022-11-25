@@ -33,3 +33,10 @@ button.submit {
 canvas {
   margin-bottom: 5rem;
 }
+
+#error-grafico-vehiculos {
+  text-align: center;
+  padding: .5rem;
+  display: none;
+  color: red
+}

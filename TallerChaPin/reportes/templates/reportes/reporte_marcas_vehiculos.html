@@ -2,12 +2,28 @@
 {% load static %}
 
 {% block main %}
-<div class="col-10">
+<div>
     <h3>{{ titulo }}</h3>
 
     <div id="container_torta">
-        <canvas id="torta" style="display: block; box-sizing: border-box; height: 800px; width: 800px;" width="800" height="800"></canvas>
+        <canvas id="torta-vehiculos" style="display: block; box-sizing: border-box; height: 800px; width: 800px;" width="800" height="800"></canvas>
     </div>
+
+    <form id="form_vehiculos" class="form_reportes">
+        <fieldset class="fechas">
+            <legend>Filtrar por fecha</legend>
+            <label for="desde">Desde</label>
+            <input type="date" name="desde" id="fecha_desde"
+                class="form-control">
+            <label for="hasta">Hasta</label>
+            <input type="date" name="hasta" id="fecha_hasta"
+                class="form-control">
+            <span id="error-grafico-vehiculos">Error mensaje</span>
+    
+            <button class="btn btn-primary submit"
+                id="submit_filtro">Filtrar</button>
+        </fieldset>
+    </form>
 
 </div>
 {% block extrajs %}

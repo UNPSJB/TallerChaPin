@@ -40,6 +40,7 @@ const actualizarDatos = (temporalidad, desde, hasta) => {
   fetch(`get_facturacion/${temporalidad},${desde},${hasta}`)
   .then(r => r.json())
   .then(r => {
+    console.log(r)
     chart.data.datasets[0].data = r.facturado
     chart.data.datasets[1].data = r.pagado
     chart.data.labels = r.labels

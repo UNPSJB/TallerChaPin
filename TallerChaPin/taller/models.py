@@ -140,6 +140,10 @@ class Repuesto(models.Model):
 
     def get_tipo(self):
         return self.get_tipo_display()
+    
+    def decrementar_stock(self,cantidad):
+        self.cantidad -= cantidad
+        self.save()
 
 class TipoMaterial(models.Model):
     GRAMO = 1
@@ -179,7 +183,7 @@ class Material(models.Model):
     def __str__(self):
         return f"{self.nombre} ({self.tipo}) {self.tipo.get_unidad_medida_display()}"
 
-    def menos_stock(self, cantidad):
+    def decrementar_stock(self, cantidad):
         self.cantidad -= cantidad
         self.save()
 

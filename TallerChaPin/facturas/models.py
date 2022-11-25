@@ -48,9 +48,19 @@ class Factura(models.Model):
             factura.agregar_detalle(desc, precio)
         for desc, precio in [(f"{t}", t.precio()) for t in orden.detalles.all()]:
             factura.agregar_detalle(desc, precio)
+
+        #Decrementar materiales utilizados
+        for m in [m for m in orden.orden_materiales.all()]:
+            m.decrementar_materiales(m)
+
+        #Decrementar repuestos utilizados
+        for r in [r for r in orden.orden_repuestos.all()]:
+            r.decrementar_repuesto(r)
+
+        #Actualizar estado de la orden        
         orden.actualizar_estado(OrdenDeTrabajo.FACTURAR_ORDEN)
         orden.save()
-        
+       
         return factura
 
     def total(self):

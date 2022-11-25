@@ -130,12 +130,12 @@ class OrdenDeTrabajo(models.Model):
     def agregar_material(self, material, cantidad):
         if not any([d.tarea.tipo.materiales for d in self.detalles.all()]):
             raise Exception('La orden no requiere materiales')
-        return MaterialOrdenDeTrabajo.objects.create(material=material, orden=self, cantidad=cantidad)
+        return MaterialOrdenDeTrabajo.objects.create(material=material, orden=self, cantidad_presupuestada=cantidad)
 
     def agregar_repuesto(self, repuesto, cantidad):
         if not any([d.tarea.tipo.repuestos for d in self.detalles.all()]):
             raise Exception('La orden no requiere repuestos')
-        return RepuestoOrdenDeTrabajo.objects.create(repuesto=repuesto, orden=self, cantidad=cantidad)
+        return RepuestoOrdenDeTrabajo.objects.create(repuesto=repuesto, orden=self, cantidad_presupuestada=cantidad)
 
     def cambiar_turno(self, fecha):
         otras = OrdenDeTrabajo.objects.para_el_dia(fecha)
@@ -311,7 +311,7 @@ class OrdenDeTrabajo(models.Model):
         elif cantidad > 0:
             material = Material.objects.get(pk=material.pk)
             MaterialOrdenDeTrabajo.objects.create(
-                material=material, orden=self, cantidad=cantidad)
+                material=material, orden=self, cantidad_presupuestada=0 ,cantidad_utilizada=cantidad)
 
     def actualizar_repuesto(self, repuesto, cantidad):
         repuestos = self.orden_repuestos.filter(repuesto=repuesto)
@@ -321,7 +321,7 @@ class OrdenDeTrabajo(models.Model):
         elif cantidad > 0:
             repuesto = Repuesto.objects.get(pk=repuesto.pk)
             RepuestoOrdenDeTrabajo.objects.create(
-                repuesto=repuesto, orden=self, cantidad=cantidad)
+                repuesto=repuesto, orden=self, cantidad_presupuestada=0, cantidad_utilizada=cantidad)
 
     def get_ultimo_presupuesto(self):
         return self.presupuestos.all().order_by('fecha').last()
@@ -364,14 +364,15 @@ class OrdenDeTrabajo(models.Model):
         materiales_orden = list(self.orden_materiales.all().values_list('material__pk', flat=True))
         for m in presupuesto.presupuesto_materiales.all():
             if m.material.pk not in materiales_orden:
-                self.agregar_material(m.material, 0)
+                self.agregar_material(m.material, m.get_cantidad())
+                print(m.cantidad)
 
         # De los repuestos del presupuesto, solo agrego a la orden los que son nuevos
         repuestos_orden = list(self.orden_repuestos.all().values_list('repuesto__pk', flat=True))
         for r in presupuesto.presupuesto_repuestos.all():
             if r.repuesto.pk not in repuestos_orden:
-                self.agregar_repuesto(r.repuesto, 0)
-
+                self.agregar_repuesto(r.repuesto, r.get_cantidad())
+ 
         # Elimino los materiales que están en la orden pero no en el presupuesto
         materiales_presupuesto = list(presupuesto.presupuesto_materiales.all().values_list('material__pk', flat=True))
         for om in self.orden_materiales.all():
@@ -580,33 +581,43 @@ class MaterialOrdenDeTrabajo(models.Model):
         Material, on_delete=models.CASCADE, related_name='ordenes_de_trabajo')
     orden = models.ForeignKey(
         OrdenDeTrabajo, on_delete=models.CASCADE, related_name='orden_materiales')
-    cantidad = models.PositiveBigIntegerField()
+    cantidad_presupuestada = models.PositiveBigIntegerField()
+    cantidad_utilizada = models.PositiveBigIntegerField(default=0)
 
     def precio(self):
-        return self.material.precio * self.cantidad
+        return self.material.precio * self.cantidad_utilizada
 
     def actualizar(self, cantidad):
-        self.cantidad += cantidad
-        if self.cantidad >= 0:
+        self.cantidad_utilizada += cantidad
+        if self.cantidad_utilizada >= 0:
             self.save()
 
+
+    def decrementar_materiales(self, material):
+        if self.cantidad_utilizada > 0 or self.cantidad_presupuestada > 0: 
+            m = Material.objects.get(pk=material.material.pk)
+            m.decrementar_stock(self.cantidad_utilizada)
 
 class RepuestoOrdenDeTrabajo(models.Model):
     repuesto = models.ForeignKey(
         Repuesto, on_delete=models.CASCADE, related_name='ordenes_de_trabajo')
     orden = models.ForeignKey(
         OrdenDeTrabajo, on_delete=models.CASCADE, related_name='orden_repuestos')
-    cantidad = models.PositiveBigIntegerField()
+    cantidad_presupuestada = models.PositiveBigIntegerField()
+    cantidad_utilizada = models.PositiveBigIntegerField(default=0)
 
     def precio(self):
-        return self.repuesto.precio * self.cantidad
+        return self.repuesto.precio * self.cantidad_utilizada
 
     def actualizar(self, cantidad):
-        self.cantidad += cantidad
-        if self.cantidad >= 0:
+        self.cantidad_utilizada += cantidad
+        if self.cantidad_utilizada >= 0:
             self.save()
-
-# class PresupuestoAmpliado(model.Model): tentativo
+    
+    def decrementar_repuesto(self, repuesto):
+        if self.cantidad_utilizada > 0 or self.cantidad_presupuestada > 0: 
+            r = Repuesto.objects.get(pk=repuesto.repuesto.pk)
+            r.decrementar_stock(self.cantidad_utilizada)
 
 class Presupuesto(models.Model):
     cliente = models.ForeignKey(
@@ -664,9 +675,9 @@ class Presupuesto(models.Model):
         for t in self.tareas.all():
             self.orden.agregar_tarea(t)
         for m in self.presupuesto_materiales.all():
-            self.orden.agregar_material(m.material, 0)
+            self.orden.agregar_material(m.material, m.get_cantidad())
         for r in self.presupuesto_repuestos.all():
-            self.orden.agregar_repuesto(r.repuesto, 0)
+            self.orden.agregar_repuesto(r.repuesto, r.get_cantidad())
         
         self.confirmado = True
 
@@ -747,6 +758,9 @@ class PresupuestoMaterial(models.Model):
 
     def precio(self):
         return self.material.precio * self.cantidad
+    
+    def get_cantidad(self):
+        return self.cantidad
 
 class PresupuestoRepuesto(models.Model):
     repuesto = models.ForeignKey(
@@ -757,6 +771,9 @@ class PresupuestoRepuesto(models.Model):
 
     def precio(self):
         return self.repuesto.precio * self.cantidad
+
+    def get_cantidad(self):
+        return self.cantidad
 
 
 class PlanillaDePintura(models.Model):

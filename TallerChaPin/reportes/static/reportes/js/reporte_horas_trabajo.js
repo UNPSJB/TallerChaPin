@@ -62,7 +62,7 @@ window.addEventListener('load', () => {
           display: true,
           position: 'left',
           title: {
-            text: 'Horas de trabajo totales',
+            text: 'Horas de trabajo promedio',
             display: true,
           },
         },

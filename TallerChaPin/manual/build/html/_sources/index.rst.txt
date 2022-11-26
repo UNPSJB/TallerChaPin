@@ -17,3 +17,4 @@ Documentación de Taller ChaPin
    acciones_basicas
    turnos
    pdf
+   reportes

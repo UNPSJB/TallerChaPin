@@ -85,3 +85,17 @@ En esta sección se encuentran todos los listados disponibles en la aplicación:
 - 'Ver todo': muestra todos los trabajos pertenecientes a las categorías anteriores.
 
 (*) No se muestran trabajos correspondientes a vehículos que aún no ingresaron al taller.
+
+***********
+📊 Reportes
+***********
+| En esta sección es posible obtener información de utilidad gracias a los gráficos generados a partir de los datos almacenados en el sistema.
+| El sistema cuenta con cinco reportes:
+
+- Reporte de marcas de vehículos más recurrentes.
+- Reporte de facturación.
+- Reporte de productividad.
+- Reporte de órdenes.
+- Reporte de clientes.
+
+Para obtener más información sobre cada uno de los reportes, puede dirigirse al apartado :ref:`reportes`

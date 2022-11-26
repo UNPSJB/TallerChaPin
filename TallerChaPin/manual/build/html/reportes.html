@@ -1,0 +1,341 @@
+<!doctype html>
+<html class="no-js" lang="es">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Índice" href="genindex.html" /><link rel="search" title="Búsqueda" href="search.html" /><link rel="prev" title="🖨 Exportar como PDF" href="pdf.html" />
+
+    <link rel="shortcut icon" href="_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
+        <title>📊 Reportes - documentación de Taller ChaPin -</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">documentación de Taller ChaPin - </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/logos/logo-light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/logos/logo-dark.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">documentación de Taller ChaPin - </span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Búsqueda name="q" aria-label="Búsqueda">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contenido</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="login.html">🔑 Inicio de sesión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home.html">🏠 Página de inicio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaz.html">🖥 Interfaz de usuario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crear_cliente.html">🧑 Cómo crear un cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="presupuestos.html">📋 Manejo de presupuestos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acciones_basicas.html">💻 Acciones básicas sobre las entidades de la aplicación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="turnos.html">📆 Calendario de turnos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdf.html">🖨 Exportar como PDF</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">📊 Reportes</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="reportes">
+<span id="id1"></span><h1>📊 Reportes<a class="headerlink" href="#reportes" title="Enlace permanente a este encabezado">#</a></h1>
+<section id="reporte-de-vehiculos-mas-recurrentes">
+<span id="reporte-vehiculos-mas-recurrentes"></span><h2>🚗 Reporte de vehículos más recurrentes<a class="headerlink" href="#reporte-de-vehiculos-mas-recurrentes" title="Enlace permanente a este encabezado">#</a></h2>
+<p>En este reporte, el usuario puede escoger un período de tiempo y el sistema le generará un gráfico de torta indicando cuáles fueron las marcas de vehículos que ingresaron al taller entre esas fechas, junto con su cantidad.</p>
+<p>Ingresar período de tiempo:</p>
+<img alt="_images/form-reporte-vehiculos.png" class="align-center" src="_images/form-reporte-vehiculos.png" />
+<p>(*) De forma predeterminada, el reporte generado contempla los últimos 30 días.</p>
+<p>Ejemplo de reporte generado:</p>
+<img alt="_images/reporte-vehiculos.png" class="align-center" src="_images/reporte-vehiculos.png" />
+</section>
+<section id="reporte-de-facturacion">
+<span id="reporte-facturacion"></span><h2>💲 Reporte de facturación<a class="headerlink" href="#reporte-de-facturacion" title="Enlace permanente a este encabezado">#</a></h2>
+<p>En este reporte, el usuario puede escoger un período de tiempo y el sistema generará un gráfico indicando la cantidad acumulada de dinero facturado, comparado con la cantidad acumulada de pagos registrados. La diferencia entre ambos valores es generada por los clientes VIP, quienes poseen la capacidad de retirar su vehículo sin haber abonado la totalidad de su factura.</p>
+<p>Además de los campos presentados por el reporte de vehículos más recurrentes, este reporte también permite escoger la temporalidad del gráfico:</p>
+<ul class="simple">
+<li><p>Diario: cada “punto” del gráfico representa un día.</p></li>
+<li><p>Semanal: cada “punto” del gráfico representa una semana.</p></li>
+<li><p>Mensual: cada “punto” del gráfico representa un mes.</p></li>
+</ul>
+<img alt="_images/form-reporte-facturacion.png" class="align-center" src="_images/form-reporte-facturacion.png" />
+<p>(*) De forma predeterminada, el reporte generado contempla los últimos 30 días.</p>
+<p>En la siguiente imagen se muestra el resultado de ingresar el período del 17/11/2022 al 25/11/2022, con temporalidad diaria.</p>
+<img alt="_images/reporte-facturacion.png" class="align-center" src="_images/reporte-facturacion.png" />
+</section>
+<section id="reporte-de-productividad">
+<span id="reporte-productividad"></span><h2>🔨 Reporte de productividad<a class="headerlink" href="#reporte-de-productividad" title="Enlace permanente a este encabezado">#</a></h2>
+<p>En este reporte, se muestra un gráfico de barras con dos ejes verticales:</p>
+<ul class="simple">
+<li><p>Horas de trabajo promedio (izquierda): simboliza el tiempo promedio que le toma a un empleado realizar una tarea.</p></li>
+<li><p>Cantidad de tareas realizadas (derecha): simboliza la cantidad de tareas que realizó un empleado.</p></li>
+</ul>
+<p>El reporte permite escoger entre las tareas de taller y las de pintura, mostrando en cada caso, los empleados que realizaron tareas del tipo seleccionado por el usuario.</p>
+<p>Tareas del taller:</p>
+<img alt="_images/reporte-productividad-taller.png" class="align-center" src="_images/reporte-productividad-taller.png" />
+<p>Tareas de pintura:</p>
+<img alt="_images/reporte-productividad-pintura.png" class="align-center" src="_images/reporte-productividad-pintura.png" />
+</section>
+<section id="reporte-de-ordenes">
+<span id="reporte-ordenes"></span><h2>📋 Reporte de órdenes<a class="headerlink" href="#reporte-de-ordenes" title="Enlace permanente a este encabezado">#</a></h2>
+<p>En este reporte, se muestra el tiempo que tardó una orden de trabajo en realizarse, contemplando la fecha de ingreso y de egreso de cada vehículo que pasó por el taller, en un período determinado. Además, también muestra el promedio de tiempo que tarda una orden en completarse, simbolizada con una línea horizontal.</p>
+<p>Del mismo modo que algunos de los reportes ya mencionados, este reporte cuenta con dos campos que permiten escoger el período a considerar:</p>
+<img alt="_images/form-reporte-ordenes.png" class="align-center" src="_images/form-reporte-ordenes.png" />
+<p>(*) De forma predeterminada, el reporte generado contempla los últimos 30 días.</p>
+<p>A continuación se muestra el gráfico generado por el reporte para el período 25/10/2022 al 25/11/2022</p>
+<img alt="_images/reporte-ordenes.png" class="align-center" src="_images/reporte-ordenes.png" />
+<p>Como se puede observar, en el período ingresado se realizaron 17 órdenes, y el tiempo promedio es de 57 horas.</p>
+</section>
+<section id="reporte-de-clientes">
+<span id="reporte-clientes"></span><h2>🙍‍♂️ Reporte de clientes<a class="headerlink" href="#reporte-de-clientes" title="Enlace permanente a este encabezado">#</a></h2>
+<p>En este reporte, se muestra de forma gráfica la relación que existe entre la cantidad de órdenes realizadas a un cliente y la cantidad facturada de esas órdenes. El reporte también diferencia entre clientes comunes y clientes VIP, mostrando a éstos últimos de otro color.</p>
+<p>Los dos ejes principales de este reporte son:</p>
+<ul class="simple">
+<li><p>Cantidad de órdenes (eje horizontal): simboliza la cantidad de órdenes realizadas a un cliente.</p></li>
+<li><p>Cantidad facturada (eje vertical): simboliza la cantidad total facturada de un cliente.</p></li>
+</ul>
+<img alt="_images/reporte-clientes.png" class="align-center" src="_images/reporte-clientes.png" />
+<p>De este modo es posible observar que la mayoría de los clientes poseen entre una y dos órdenes, y que en general los clientes poseen menos de $10.000 facturados en total.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="pdf.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">🖨 Exportar como PDF</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Matías Barea, Ramiro Canario
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">📊 Reportes</a><ul>
+<li><a class="reference internal" href="#reporte-de-vehiculos-mas-recurrentes">🚗 Reporte de vehículos más recurrentes</a></li>
+<li><a class="reference internal" href="#reporte-de-facturacion">💲 Reporte de facturación</a></li>
+<li><a class="reference internal" href="#reporte-de-productividad">🔨 Reporte de productividad</a></li>
+<li><a class="reference internal" href="#reporte-de-ordenes">📋 Reporte de órdenes</a></li>
+<li><a class="reference internal" href="#reporte-de-clientes">🙍‍♂️ Reporte de clientes</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

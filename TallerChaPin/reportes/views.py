@@ -21,6 +21,7 @@ def reporteMarcaVehiculos(request):
     #Agregar permisos. Esto lo ve el administrativo
     context={}
     context['titulo'] = "Marcas de vehículos más recurrentes"
+    context['ayuda'] = 'reportes.html#reporte-de-vehiculos-mas-recurrentes'
     return render (request, 'reportes/reporte_marcas_vehiculos.html',context)
 
 def getMarcasVehiculos(request, params):
@@ -45,7 +46,8 @@ def getMarcasVehiculos(request, params):
 
 def reporteFacturacion(request):
     context={}
-    context['titulo'] = "Reporte de facturación"
+    context['titulo'] = "Reporte de facturación acumulada"
+    context['ayuda'] = "reportes.html#reporte-de-facturacion"
     return render (request, 'reportes/reporte_facturacion.html', context)
 
 def getFacturacion(request, params):
@@ -153,6 +155,7 @@ def getFacturacion(request, params):
 def reporteHorasTrabajo(request):
     context={}
     context['titulo'] = "Reporte de productividad de los empleados"
+    context['ayuda'] = "reportes.html#reporte-de-productividad"
     return render (request, 'reportes/reporte_horas_trabajo.html',context)
 
 def getHorasTrabajo(request):
@@ -198,6 +201,7 @@ def getHorasTrabajo(request):
 def reporteOrdenes(request):
     context={}
     context['titulo'] = "Reporte de ordenes"
+    context['ayuda'] = "reportes.html#reporte-de-ordenes"
     return render (request, 'reportes/reporte_ordenes.html', context)
  
 def getOrdenes(request, params):
@@ -226,6 +230,7 @@ def getOrdenes(request, params):
 def reporteClientes(request):
     context = {}
     context['titulo'] = "Reporte de clientes"
+    context['ayuda'] = "reportes.html#reporte-de-clientes"
     return render (request, 'reportes/reporte_clientes.html', context)
 
 def getClientes(request):

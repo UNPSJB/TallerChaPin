@@ -50,5 +50,5 @@ def template_listados(request):
     return render(request, 'template_listados_home.html', {"title": "Visualización de listados", "ayuda": "home.html#listados"})
 
 def template_reportes(request):
-    return render(request, 'template_reportes_home.html', {"title": "Visualización de Reportes", "ayuda": "home.html#reportes"})
+    return render(request, 'template_reportes_home.html', {"title": "Visualización de Reportes", "ayuda": "reportes.html"})
 

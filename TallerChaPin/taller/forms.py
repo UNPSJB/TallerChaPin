@@ -709,6 +709,19 @@ class TareaEmpleadoForm(forms.ModelForm):
             "tareas": forms.CheckboxSelectMultiple(attrs={'class': 'checks_tareas'}),
         }
 
+class RegistroEmpleadoForm(forms.ModelForm):
+    class Meta:
+        model = Empleado
+
+        fields = ['usuario']
+        # labels = {
+        #    'tareas': 'Tipos de tareas'
+        # }
+        widgets = {
+            "Grupos": forms.CheckboxSelectMultiple(attrs={'class': 'checks_permisos'}),
+        }
+
+
 # Cliente
 
 

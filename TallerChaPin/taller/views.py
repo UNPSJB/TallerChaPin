@@ -6,7 +6,8 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from TallerChaPin.utils import ListFilterView, export_list
-
+from wkhtmltopdf.views import PDFTemplateView
+import os
 # Create your views here.
 
 
@@ -27,19 +28,6 @@ def MaterialCantidad(request):
         else:
             messages.add_message(request, messages.WARNING,'Cantidad no válida')
     return redirect('listarMateriales')
-
-def registrar_usuario(request, pk):
-    try:
-        empleado = Empleado.objects.get(pk=pk)
-    except Empleado.DoesNotExist:
-        messages.add_message(request, messages.WARNING,'Empleado no existe')
-        return redirect('listarEmpleados')
-    if not empleado.tiene_usuario():
-        empleado.crear_usuario()
-        messages.add_message(request, messages.SUCCESS,'Empleado registrado con exito')
-    else:
-        messages.add_message(request, messages.WARNING,'Empleado ya ha sido registrado')
-    return redirect('listarEmpleados')
 
 
 # ----------------------------- Marca View ----------------------------------- #
@@ -854,4 +842,40 @@ def asociar_tarea_empleado(request, pk):
     context['form'] = form
 
     return render(request, 'taller/tarea_empleado_form.html', context)
+
+def registrar_usuario(request, pk):
+    try:
+        empleado = Empleado.objects.get(pk=pk)
+    except Empleado.DoesNotExist:
+        messages.add_message(request, messages.WARNING,'Empleado no existe')
+        return redirect('listarEmpleados')
+
+    if not empleado.tiene_usuario():
+        empleado.crear_usuario(grupo=None)
+        #Ver como llamar a la vista de imprimir
+        messages.add_message(request, messages.SUCCESS,'Empleado registrado con exito')
+    else:
+        messages.add_message(request, messages.WARNING,'Empleado ya ha sido registrado')
+    return redirect('listarEmpleados')
+
+class imprimirUsuarioEmpleado(PDFTemplateView):
+    template_name = 'taller/usuario_empleado_pdf.html'
+    cmd_options = {
+        'margin-top': 3,
+        'enable-local-file-access': True,
+        'quiet': False
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = kwargs.get('pk')
+        empleado = Empleado.objects.get(pk=pk)
+        # definimos el nombre del pdf con datos del usuario.
+        self.filename = f'Usuario {empleado.nombre} {empleado.apellido} ({str(date.today())}).pdf'
+
+        # pasamos el objeto empleaod para usarlo en el template.
+        context["empleado"] = empleado
+        context["styles"] = os.path.abspath(".static/css/styles_user_reg_pdf.css")
+        context["logo"] = os.path.abspath("./static/images/chapin2.png")
+        return context
 # ---------------------------------------------------------------- #

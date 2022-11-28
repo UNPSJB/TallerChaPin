@@ -1,6 +1,7 @@
 from genericpath import exists
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
+
 from django.core.exceptions import ValidationError
 from datetime import date
 from django.core.validators import MinValueValidator
@@ -253,17 +254,23 @@ class Empleado(models.Model):
     tareas = models.ManyToManyField(TipoTarea, related_name="empleados")
     usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
-    def crear_usuario(self):
+    def crear_usuario(self, grupo):
         username = (self.nombre[0] + self.apellido).lower()
         user = User.objects.create_user(
             username=username, password=self.cuil, first_name=self.nombre, last_name=self.apellido)
+        grupo = Group.objects.get(name=grupo)
+        grupo.user_set.add(user)
+        grupo.save()
         user.save()
         self.usuario = user
         self.save()
         return user
 
+    def get_grupo(self):
+        grupo = Group.objects.get(name=self.usuario.group)
+        return grupo
+
     def tiene_usuario(self):
-        print(f'Usuario es none?: {self.usuario is not None}, usuario: {self.usuario} ')
         return self.usuario is not None
 
     def puede_hacer(self, tipo):

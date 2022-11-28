@@ -107,8 +107,10 @@ urlpatterns = [
           exportar_listado_vehiculos, name='exportarVehiculos'),
      # ----------------- EMPLEADOS -----------------
 
-     path('empleado/registrar/<int:pk>',
+     path('empleado/registrar_usuario/<int:pk>',
           registrar_usuario, name="registrarEmpleado"),
+     path('empleado/imprimir_pdf/<int:pk>',
+          imprimirUsuarioEmpleado.as_view(), name="usuarioPDF"), #Vista para imprimir pdf
      path('empleado/registrar',
           EmpleadoCreateView.as_view(), name="crearEmpleado"),
      path('empleado/modificar/<int:pk>',

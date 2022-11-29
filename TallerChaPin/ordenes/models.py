@@ -439,30 +439,34 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         qs = self.filter(no_tiene_empleado & ha_ingresado).order_by('orden__turno')
         return qs
 
-    def asignados(self):
+    def asignados(self, user):
         tiene_empleado = models.Q(empleado__isnull=False)
         no_esta_iniciado = models.Q(inicio__isnull=True)
+        es_del_usuario = models.Q(empleado__usuario=user)
 
-        qs = self.filter(tiene_empleado & no_esta_iniciado).order_by(
+        qs = self.filter(tiene_empleado & no_esta_iniciado & es_del_usuario).order_by(
             'orden__turno')
         return qs
 
-    def sin_finalizar(self):
+    def sin_finalizar(self, user):
         tiene_empleado = models.Q(empleado__isnull=False)
         esta_iniciado = models.Q(inicio__isnull=False)
         no_esta_finalizado = models.Q(fin__isnull=True)
+        es_del_usuario = models.Q(empleado__usuario=user)
         qs = self.filter(tiene_empleado & no_esta_finalizado &
-                         esta_iniciado).order_by('orden__turno')
+                         esta_iniciado & es_del_usuario).order_by('orden__turno')
         return qs
 
-    def finalizados(self):
+    def finalizados(self, user):
         esta_finalizado = models.Q(fin__isnull=False)
-        qs = self.filter(esta_finalizado).order_by('orden__turno')
+        es_del_usuario = models.Q(empleado__usuario=user)
+        qs = self.filter(esta_finalizado & es_del_usuario).order_by('orden__turno')
         return qs
 
-    def todos(self):
+    def todos(self, user):
         no_ha_ingresado = models.Q(orden__ingreso__isnull=True)
-        qs = self.all().exclude(no_ha_ingresado)
+        es_del_usuario = models.Q(empleado__usuario=user)
+        qs = self.all().filter(es_del_usuario).exclude(no_ha_ingresado)
         return qs
 
 

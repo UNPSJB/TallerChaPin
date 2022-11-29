@@ -417,13 +417,16 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        user = self.request.user
+
         context['titulo'] = "Listado de detalles de orden de trabajo"
         context['ayuda'] = 'home.html#trabajos'
         context['sinAsignar'] = DetalleOrdenDeTrabajo.objects.sin_asignar()
-        context['sinFinalizar'] = DetalleOrdenDeTrabajo.objects.sin_finalizar()
-        context['asignados'] = DetalleOrdenDeTrabajo.objects.asignados()
-        context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados()
-        context['todos'] = DetalleOrdenDeTrabajo.objects.todos()
+        context['sinFinalizar'] = DetalleOrdenDeTrabajo.objects.sin_finalizar(user)
+        context['asignados'] = DetalleOrdenDeTrabajo.objects.asignados(user)
+        context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados(user)
+        context['todos'] = DetalleOrdenDeTrabajo.objects.todos(user)
         
         # Pasar formulario por contexto
         context['asignarEmpleadoForm'] = AsignarEmpleadoForm()

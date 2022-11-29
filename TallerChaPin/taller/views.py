@@ -864,7 +864,7 @@ def registrar_usuario(request, pk):
     if not empleado.tiene_usuario():
         empleado.crear_usuario(grupo=None)
         #Ver como llamar a la vista de imprimir
-        messages.add_message(request, messages.SUCCESS,'Empleado registrado con exito')
+        messages.add_message(request, messages.SUCCESS,f'Empleado "{empleado.usuario}" registrado con exito')
     else:
         messages.add_message(request, messages.WARNING,'Empleado ya ha sido registrado')
     return redirect('listarEmpleados')

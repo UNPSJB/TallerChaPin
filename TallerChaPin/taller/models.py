@@ -255,9 +255,13 @@ class Empleado(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
     def crear_usuario(self, grupo):
-        username = (self.nombre[0] + self.apellido).lower()
+        base_username = (self.nombre[0] + self.apellido).lower()
+        cantidad = User.objects.filter(username__startswith=base_username).count()
+        username = f"{base_username}{cantidad}"
+
         user = User.objects.create_user(
             username=username, password=self.cuil, first_name=self.nombre, last_name=self.apellido)
+
         if grupo is not None:
             g = Group.objects.get(name=grupo)
             g.user_set.add(user)

@@ -262,6 +262,7 @@ class Empleado(models.Model):
         g.user_set.add(user)
         g.save()
         user.save()
+
         self.usuario = user
         self.save()
         return user

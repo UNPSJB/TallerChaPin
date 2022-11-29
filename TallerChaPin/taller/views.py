@@ -824,7 +824,21 @@ class EmpleadoListView(ListFilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de empleados"
+        form = RegistroEmpleadoForm()
+        if form.is_valid():
+            context['registroEmpleadoForm'] = RegistroEmpleadoForm()
+        else:
+            print(f'errores del formulario: {form.errors}')
         return context
+    
+    def post(self, *args, **kwargs):
+        form = RegistroEmpleadoForm(self.request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listarEmpleados')
+        else:
+            messages.add_message(self.request, messages.WARNING, form.errors)
+            return redirect ('listarEmpleados')
 
 exportar_listado_empleados = lambda r: export_list(r, Empleado, EmpleadoFiltrosForm)
 
@@ -869,11 +883,13 @@ class RegistrarUsuarioCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = 'Asignar empleado a grupo'
 
+
         return context
 
     def get (self, *args, **kwargs):
         pk = kwargs.get('pk')
-        
+        form = self.get_form()
+        print(form)
         try:
             empleado = Empleado.objects.get(pk=pk)
         except Empleado.DoesNotExist:

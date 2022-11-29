@@ -8,8 +8,6 @@
 
 {% crispy form form.helper %}  
 <div id="registro"></div>
-  <h3>{{titulo}}</h3>
-</div>
 {% endblock %}
 
 {% block modal_footer %}
@@ -22,12 +20,12 @@
     const modal = document.getElementById('modalRegistrarUsuario')
     const submit_button = document.getElementById('btn-registrar')
 
-      // configuramos el contenido del modal
-      modal.addEventListener('show.bs.modal', (e) => {
-        // debugger;
-        const btn = e.explicitOriginalTarget || e.relatedTarget;
-        $('#registroUsuarioForm').attr('action', btn.dataset.bsUrl);
-      })
+    // configuramos el contenido del modal
+    modal.addEventListener('show.bs.modal', (e) => {
+      // debugger;
+      const btn = e.explicitOriginalTarget || e.relatedTarget;
+      $('#registroUsuarioForm').attr('action', btn.dataset.bsUrl);
+    })
 
     $('#btn-registrar').on('click', (e) => {
       e.preventDefault();

@@ -824,11 +824,7 @@ class EmpleadoListView(ListFilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de empleados"
-        form = RegistroEmpleadoForm()
-        if form.is_valid():
-            context['registroEmpleadoForm'] = RegistroEmpleadoForm()
-        else:
-            print(f'errores del formulario: {form.errors}')
+        context['registroEmpleadoForm'] = RegistroEmpleadoForm()
         return context
     
     def post(self, *args, **kwargs):

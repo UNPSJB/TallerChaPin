@@ -109,8 +109,10 @@ urlpatterns = [
 
      path('empleado/registrar_usuario/<int:pk>',
           registrar_usuario, name="registrarEmpleado"),
+     path('empleado/registro_usuario/<int:pk>',
+          RegistrarUsuarioCreateView.as_view(), name="registroEmpleado"),
      path('empleado/imprimir_pdf/<int:pk>',
-          imprimirUsuarioEmpleado.as_view(), name="usuarioPDF"), #Vista para imprimir pdf
+          imprimirUsuarioEmpleado.as_view(), name="usuarioPDF"),
      path('empleado/registrar',
           EmpleadoCreateView.as_view(), name="crearEmpleado"),
      path('empleado/modificar/<int:pk>',

@@ -258,9 +258,9 @@ class Empleado(models.Model):
         username = (self.nombre[0] + self.apellido).lower()
         user = User.objects.create_user(
             username=username, password=self.cuil, first_name=self.nombre, last_name=self.apellido)
-        grupo = Group.objects.get(name=grupo)
-        grupo.user_set.add(user)
-        grupo.save()
+        g = Group.objects.get(name=grupo)
+        g.user_set.add(user)
+        g.save()
         user.save()
         self.usuario = user
         self.save()

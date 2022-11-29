@@ -2,7 +2,7 @@ from audioop import reverse
 from email.policy import default
 from urllib.parse import urlencode
 from django import forms
-
+from django.contrib.auth.models import Group
 from .models import Cliente, Empleado, Marca, Modelo, Repuesto, Tarea, TipoTarea, Vehiculo
 from .models import Empleado, Marca, Material, Modelo, TipoMaterial
 from .models import Marca
@@ -710,16 +710,32 @@ class TareaEmpleadoForm(forms.ModelForm):
         }
 
 class RegistroEmpleadoForm(forms.ModelForm):
+   
     class Meta:
         model = Empleado
+        fields = '__all__'
+        exclude = ["nombre","apellido","cuil","legajo","tareas","usuario"]
 
-        fields = ['usuario']
-        # labels = {
-        #    'tareas': 'Tipos de tareas'
-        # }
-        widgets = {
-            "Grupos": forms.CheckboxSelectMultiple(attrs={'class': 'checks_permisos'}),
-        }
+    def save(self, grupo, empleado):
+        usuario = empleado.crear_usuario(grupo=grupo)
+        return empleado
+    
+    grupos = forms.ModelChoiceField(
+                         queryset= Group.objects.all() , required=False)
+
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout (
+            Fieldset(
+                "",
+                "grupos",
+            ),
+            Div(Submit('submit', 'Registrar'))
+            )
+
+
 
 
 # Cliente

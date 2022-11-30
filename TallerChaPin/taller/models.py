@@ -284,8 +284,8 @@ class Empleado(models.Model):
 
     #Ver
     def get_grupo(self):
-        grupo = self.usuario.groups.first()
-        return grupo if grupo is not None else None
+        grupos = Group.objects.filter(user = self.usuario)
+        return grupos.first() if grupos.first() is not None else None
     
     def tiene_grupo(self):
         return self.usuario.groups.first() is not None

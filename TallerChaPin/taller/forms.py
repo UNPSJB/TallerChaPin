@@ -1,5 +1,4 @@
 from audioop import reverse
-from email.policy import default
 from urllib.parse import urlencode
 from django import forms
 from django.contrib.auth.models import Group

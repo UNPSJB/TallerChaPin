@@ -1,6 +1,4 @@
-from cgi import print_exception #se usa?
 from datetime import timedelta
-from time import process_time_ns #se usa?
 from django.utils.timezone import now
 from django.utils import timezone
 from taller.models import (

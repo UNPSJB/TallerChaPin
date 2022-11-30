@@ -1,11 +1,9 @@
-from xmlrpc.client import Boolean
 from django import forms
-from django.db.models import Q, Model, fields
+from django.db.models import Q, Model
 from django.http import HttpResponse
 from decimal import Decimal
 from datetime import date
 from django.views.generic.list import ListView
-# from django_pandas.io import read_frame
 import csv
 
 

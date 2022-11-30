@@ -1,4 +1,3 @@
-from tkinter import Label
 from django.urls import reverse
 from django.utils.http import urlencode
 from django import forms

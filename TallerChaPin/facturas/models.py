@@ -1,10 +1,7 @@
-from traceback import print_tb
-from xml.dom import ValidationErr
 from django.forms import ValidationError
 from django.utils.timezone import now
-from datetime import datetime, time
 from django.db import models
-from ordenes.models import DetalleOrdenDeTrabajo, OrdenDeTrabajo
+from ordenes.models import OrdenDeTrabajo
 
 
 # Aqui definimos los modelos:

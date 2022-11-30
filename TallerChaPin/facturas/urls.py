@@ -8,10 +8,6 @@ urlpatterns = [
     path('facturas/listar', FacturaListView.as_view(), name="listarFacturas"),
     path('facturas/detalle/<int:pk>',
          FacturaDetailView.as_view(), name="detallesFactura"),
-    # path('facturas/modificar/<int:pk>',
-    #      FacturaUpdateView.as_view(), name="modificarFactura"),
-    # path('facturas/eliminar/<int:pk>',
-    #      FacturaDeleteView.as_view(), name="eliminarFactura"),
     path('facturas/exportar',
          exportar_listado_facturas, name='exportarFacturas'),
     # ----------------Pago-------------------------

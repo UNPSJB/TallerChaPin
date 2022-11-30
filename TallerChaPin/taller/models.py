@@ -1,7 +1,5 @@
-from genericpath import exists
 from django.db import models
 from django.contrib.auth.models import User, Group
-
 from django.core.exceptions import ValidationError
 from datetime import date
 from django.core.validators import MinValueValidator

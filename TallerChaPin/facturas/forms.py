@@ -1,4 +1,3 @@
-from email.policy import default
 from django import forms
 from django.forms import ChoiceField
 from .models import *

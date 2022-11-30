@@ -5,20 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{styles}}" type="text/css">
-        <title>Orden de trabajo</title>
     </head>
 
     <body>
         <header>
-            <h1>Orden de trabajo</h1>
+            <h1>Empleado de taller</h1>
             <img src="{{logo}}" alt="" height="100" class="img">
         </header>
         <div class="encabezado">
-            <h2 class="text-primary">Taller ChaPin</h2>
+            <h2 class="text-primary">Datos de empleado</h2>
             <hr class="separador-encabezado">
             <h2>Empleado {{empleado.str}}</h2>
             <span>Usuario: {{empleado.usuario}}</span> <br>
-            <span>Contraseña: {{empleado.cuil}}</span>
+            <span>Contraseña: {{empleado.cuil}}</span> <br>
+            <span>Grupo: {{empleado.get_grupo}}</span>
         </div>
         <hr class="separador">
         </div> 

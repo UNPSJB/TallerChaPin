@@ -781,8 +781,9 @@ class EmpleadoCreateView(CreateView):
         form = EmpleadoForm(self.request.POST)
 
         if form.is_valid():
-            form.save()
-            messages.add_message(self.request, messages.SUCCESS, 'Empleado registrado con éxito')
+            empleado = form.save()
+            messages.add_message(self.request, messages.SUCCESS,f'Empleado "{empleado.nombre}" registrado con exito')            
+            messages.add_message(self.request, messages.SUCCESS,f'Usuario "{empleado.usuario}" registrado con exito')
             if 'guardar' in self.request.POST:
                 return redirect('listarEmpleados')
             return redirect('crearEmpleado')
@@ -854,21 +855,6 @@ def asociar_tarea_empleado(request, pk):
 
     return render(request, 'taller/tarea_empleado_form.html', context)
 
-def registrar_usuario(request, pk):
-    try:
-        empleado = Empleado.objects.get(pk=pk)
-    except Empleado.DoesNotExist:
-        messages.add_message(request, messages.WARNING,'Empleado no existe')
-        return redirect('listarEmpleados')
-
-    if not empleado.tiene_usuario():
-        empleado.crear_usuario(grupo=None)
-        #Ver como llamar a la vista de imprimir
-        messages.add_message(request, messages.SUCCESS,'Empleado registrado con exito')
-    else:
-        messages.add_message(request, messages.WARNING,'Empleado ya ha sido registrado')
-    return redirect('listarEmpleados')
-    
 class RegistrarUsuarioCreateView(CreateView):
     
     model = Empleado
@@ -878,8 +864,6 @@ class RegistrarUsuarioCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = 'Asignar empleado a grupo'
-
-
         return context
 
     def get (self, *args, **kwargs):

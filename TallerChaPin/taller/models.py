@@ -254,23 +254,41 @@ class Empleado(models.Model):
     tareas = models.ManyToManyField(TipoTarea, related_name="empleados")
     usuario = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
-    def crear_usuario(self, grupo):
-        username = (self.nombre[0] + self.apellido).lower()
+    def crear_usuario(self):
+        base_username = (self.nombre[0] + self.apellido).lower()
+        cantidad = User.objects.filter(username__startswith=base_username).count()
+        if cantidad == 0:
+            username = f"{base_username}"
+        else:
+            username = f"{base_username}{cantidad}"
+
         user = User.objects.create_user(
             username=username, password=self.cuil, first_name=self.nombre, last_name=self.apellido)
-        if grupo is not None:
-            g = Group.objects.get(name=grupo)
-            g.user_set.add(user)
-            g.save()
-        user.save()
-
+ 
         self.usuario = user
         self.save()
         return user
 
+    def añadir_grupo(self, grupo):
+        if grupo is not None:
+            g = Group.objects.get(name=grupo)
+            g.user_set.add(self.usuario)
+            g.save()
+            self.usuario.save()
+
+    def get_tareas(self):
+        tareas = []
+        for t in self.tareas.all():
+            tareas.append(t.nombre)
+        return tareas 
+
+    #Ver
     def get_grupo(self):
-        grupo = Group.objects.get(name=self.usuario.group)
-        return grupo
+        grupo = self.usuario.groups.first()
+        return grupo if grupo is not None else None
+    
+    def tiene_grupo(self):
+        return self.usuario.groups.first() is not None
 
     def tiene_usuario(self):
         return self.usuario is not None

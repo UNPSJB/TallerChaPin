@@ -632,6 +632,7 @@ class EmpleadoForm(forms.ModelForm):
 
     def save(self, commit=True):
         empleado = super().save()
+        usuario = empleado.crear_usuario()
         # cambiar a .save(commit=False) si queremos hacer procesamiento extra antes de guardar,
         # por ej. en el caso de Cliente para asociarle un Vehículo antes de guardarlo en la db.
         return empleado
@@ -673,6 +674,9 @@ class EmpleadoFiltrosForm(FiltrosForm):
         ("apellido", "Apellido"),
         ("legajo", "Legajo"),
         ("cuil", "CUIL"),
+        ("usuario","Usuario"),
+        ("get_grupo","Grupo"),
+        ("get_tareas","Tareas que realiza")
     ]
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
     apellido = forms.CharField(
@@ -717,7 +721,7 @@ class RegistroEmpleadoForm(forms.ModelForm):
         exclude = ["nombre","apellido","cuil","legajo","tareas","usuario"]
 
     def save(self, grupo, empleado):
-        usuario = empleado.crear_usuario(grupo=grupo)
+        usuario = empleado.añadir_grupo(grupo=grupo)
         return empleado
     
     grupos = forms.ModelChoiceField(
@@ -735,7 +739,6 @@ class RegistroEmpleadoForm(forms.ModelForm):
                 "",
                 "grupos",
             ),
-            Div(Submit('submit', 'Registrar'))
             )
 
 

@@ -426,8 +426,6 @@ class DetalleOrdenDeTrabajoListView(ListFilterView):
         context['asignados'] = DetalleOrdenDeTrabajo.objects.asignados(user)
         context['finalizados'] = DetalleOrdenDeTrabajo.objects.finalizados(user)
         context['todos'] = DetalleOrdenDeTrabajo.objects.todos(user)
-
-        context['es_jefe_taller'] = user.groups.filter(name='jefe de taller').exists()
         
         # Pasar formulario por contexto
         context['asignarEmpleadoForm'] = AsignarEmpleadoForm()

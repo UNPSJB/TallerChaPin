@@ -442,8 +442,15 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_esta_iniciado = models.Q(inicio__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        qs = self.filter(tiene_empleado & no_esta_iniciado & es_del_usuario).order_by(
+        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+
+        if es_jefe_taller:
+            qs = self.filter(tiene_empleado & no_esta_iniciado).order_by(
             'orden__turno')
+        else:
+            qs = self.filter(tiene_empleado & no_esta_iniciado & es_del_usuario).order_by(
+            'orden__turno')
+
         return qs
 
     def sin_finalizar(self, user):
@@ -451,20 +458,41 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         esta_iniciado = models.Q(inicio__isnull=False)
         no_esta_finalizado = models.Q(fin__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
-        qs = self.filter(tiene_empleado & no_esta_finalizado &
-                         esta_iniciado & es_del_usuario).order_by('orden__turno')
+
+        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+
+        if es_jefe_taller:
+            qs = self.filter(tiene_empleado & no_esta_finalizado &
+                            esta_iniciado).order_by('orden__turno')
+        else:
+            qs = self.filter(tiene_empleado & no_esta_finalizado &
+                            esta_iniciado & es_del_usuario).order_by('orden__turno')
+
         return qs
 
     def finalizados(self, user):
         esta_finalizado = models.Q(fin__isnull=False)
         es_del_usuario = models.Q(empleado__usuario=user)
-        qs = self.filter(esta_finalizado & es_del_usuario).order_by('orden__turno')
+
+        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+
+        if es_jefe_taller:
+            qs = self.filter(esta_finalizado).order_by('orden__turno')
+        else:
+            qs = self.filter(esta_finalizado & es_del_usuario).order_by('orden__turno')
+
         return qs
 
     def todos(self, user):
         no_ha_ingresado = models.Q(orden__ingreso__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
-        qs = self.all().filter(es_del_usuario).exclude(no_ha_ingresado)
+
+        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+
+        if es_jefe_taller:
+            qs = self.all().exclude(no_ha_ingresado)
+        else:
+            qs = self.all().filter(es_del_usuario).exclude(no_ha_ingresado)
         return qs
 
 

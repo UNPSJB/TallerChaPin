@@ -91,8 +91,8 @@ class OrdenDeTrabajo(models.Model):
 
     class Meta:
         permissions = [
-            ('can_registrar_ingreso',
-             'Puede registrar el ingreso de un vehículo al taller'),
+            ('can_registrar_ingreso','Puede registrar el ingreso de un vehículo al taller'),
+            ('can_registrar_egreso', 'Puede registrar el egreso de un vehículo al taller'),
             ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
         ]
 

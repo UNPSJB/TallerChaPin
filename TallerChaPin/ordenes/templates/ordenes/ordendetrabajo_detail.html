@@ -47,7 +47,7 @@
         <div class="col-md-3">
           <div class="border border-primary rounded p-3">
             <h5>Acciones</h5>
-
+            {% if perms.ordenes.delete_ordendetrabajo %}
               {% if object.puede_cancelarse %}
               <a href="#" data-bs-toggle="modal"
                 data-bs-target="#modalEliminarOrden"
@@ -58,7 +58,8 @@
                 Cancelar orden de trabajo
               </a>
               {% endif %}
-
+            {% endif %}
+            {% if perms.ordenes.change_turnoorden %}
             {% if object.puede_cambiar_turno %}
               <a href="{% url 'modificarOrden' object.pk %}"
                 class="btn btn-primary m-1 w-100">
@@ -66,12 +67,14 @@
                 Modificar fecha de turno
               </a>
             {% endif %}
-
+            {% endif %}
+            {% if perms.facturas.create_factura %}
             {% if object.puede_facturarse %}
               <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
                 <i class="fas fa-check-circle"></i>
                 Facturar Orden
               </a>
+            {% endif %}
             {% endif %}
 
             {% if object.puede_pausarse %}
@@ -94,27 +97,30 @@
                 </button>
               {% endif %}
             {% endif %}
-
+            
+            {% if perms.ordenes.create_presupuesto %}
             {% if object.puede_ampliarse %}
               <a href="{% url 'ampliarPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100">
                 <i class="fa-solid fa-file-circle-plus"></i>
                 Ampliar presupuesto
               </a>
             {% endif %}
-
+            {% endif %}
+            {% if perms.ordenes.create_presupuesto %}
             {% if object.puede_ingresar_vehiculo %}
               <a href="{% url 'registrarIngresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
                 <i class="fa-solid fa-car"></i>
                 Registrar Ingreso del Vehiculo
               </a>
             {% endif %}
-
+            {% endif %}
+            {% if perms.ordenes.view_presupuesto %}
             <a href="{% url 'detallesPresupuesto' object.get_ultimo_presupuesto.pk %}"
               class="btn btn-primary m-1 w-100">
               <i class="fas fa-eye"></i>
               Ver presupuesto 
             </a>
-
+            {% endif %}
             {% if object.estado == 2 or object.estado == 6 %}
               <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>. No hay acciones disponibles.</span>
             {%endif%}
@@ -243,7 +249,9 @@
                         {% for planilla in object.get_planillas_pintura %}
                           <tr class="bg-transition">
                             <td>{{ planilla.nombre_de_color }}</td>
+                            {% if perms.ordenes.change_planilladepintura %}
                             <td><a href="{% url 'modificarPlanilla' planilla.pk %}">Ver detalle</a></td>
+                            {% endif %}
                           </tr>
                         {% empty %}
                           <tr>

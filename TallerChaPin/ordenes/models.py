@@ -12,7 +12,7 @@ from taller.models import (
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
-
+from django.contrib.auth.models import Permission
 # Create your models here.
 
 class OrdenDeTrabajoManager(models.Manager):
@@ -94,6 +94,10 @@ class OrdenDeTrabajo(models.Model):
             ('can_registrar_ingreso','Puede registrar el ingreso de un vehículo al taller'),
             ('can_registrar_egreso', 'Puede registrar el egreso de un vehículo al taller'),
             ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
+            ('can_ver_asignados', 'Puede ver listado de trabajos asignados'),
+            ('can_ver_sin_finalizar', 'Puede ver listado de trabajos sin finalizar'),
+            ('can_ver_finalizados', 'Puede ver listado de trabajos finalizados'),
+            ('can_ver_todos', 'Puede ver todos de trabajos'),
         ]
 
     def detalles_por_finalizar(self):
@@ -433,7 +437,7 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
     def sin_asignar(self):
         no_tiene_empleado = models.Q(empleado__isnull=True)
         ha_ingresado = models.Q(orden__ingreso__isnull=False)
-
+        
         qs = self.filter(no_tiene_empleado & ha_ingresado).order_by('orden__turno')
         return qs
 
@@ -442,9 +446,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_esta_iniciado = models.Q(inicio__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+        permisos = user.get_user_permissions()
 
-        if es_jefe_taller:
+        if 'ordenes.can_ver_asignados' in permisos:
             qs = self.filter(tiene_empleado & no_esta_iniciado).order_by(
             'orden__turno')
         else:
@@ -459,9 +463,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_esta_finalizado = models.Q(fin__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+        permisos = user.get_user_permissions()
 
-        if es_jefe_taller:
+        if 'ordenes.can_ver_sin_finalizar' in permisos:
             qs = self.filter(tiene_empleado & no_esta_finalizado &
                             esta_iniciado).order_by('orden__turno')
         else:
@@ -474,9 +478,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         esta_finalizado = models.Q(fin__isnull=False)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+        permisos = user.get_user_permissions()
 
-        if es_jefe_taller:
+        if 'ordenes.can_ver_finalizados' in permisos:
             qs = self.filter(esta_finalizado).order_by('orden__turno')
         else:
             qs = self.filter(esta_finalizado & es_del_usuario).order_by('orden__turno')
@@ -487,9 +491,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_ha_ingresado = models.Q(orden__ingreso__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+        permisos = user.get_user_permissions()
 
-        if es_jefe_taller:
+        if 'ordenes.can_ver_todos' in permisos:
             qs = self.all().exclude(no_ha_ingresado)
         else:
             qs = self.all().filter(es_del_usuario).exclude(no_ha_ingresado)
@@ -518,6 +522,14 @@ class DetalleOrdenDeTrabajo(models.Model):
     @classmethod
     def crear(cls, tarea):
         return cls(tarea=tarea)
+
+    class Meta:
+        permissions = [
+            ('can_ver_asignados', 'Puede ver listado de trabajos asignados'),
+            ('can_ver_sin_finalizar', 'Puede ver listado de trabajos sin finalizar'),
+            ('can_ver_finalizados', 'Puede ver listado de trabajos finalizados'),
+            ('can_ver_todos', 'Puede ver todos de trabajos'),
+        ]
 
     def precio(self):
         return self.tarea.precio

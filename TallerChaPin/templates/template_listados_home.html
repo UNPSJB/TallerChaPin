@@ -21,119 +21,141 @@
       </h2>
 
       <div class="row mt-4 d-flex justify-content-evenly align-items-center mb-4">
-
+      
+        {% if perms.taller.view_cliente %}
         <a href="{% url 'listarClientes' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-user"></i> Ver clientes</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de clientes.
           </p>
         </a>
+      {% endif %}
 
+      {% if perms.taller.view_vehiculo %}
         <a href="{% url 'listarVehiculos' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-car"></i> Ver vehículos</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de vehículos.
           </p>
         </a>
+      {% endif %}
 
+      {% if perms.taller.view_empleado %}
         <a href="{% url 'listarEmpleados' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-users"></i> Ver empleados</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de empleados.
           </p>
         </a>
-
-        <a href="{% url 'listarMarcas' %}" class="col-md-3 shadow-lg acceso">
+      {% endif %}
+      
+      {% if perms.taller.view_marca %}
+      <a href="{% url 'listarMarcas' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-car"></i> Ver marcas</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de marcas.
           </p>
         </a>
-        
+      {% endif %}
+
+        {% if perms.modelo.view_modelo %}
         <a href="{% url 'listarModelos' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-car"></i> Ver modelos</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de modelos.
           </p>
         </a>
+      {% endif %}
 
-        <a href="{% url 'listarMateriales' %}" class="col-md-3 shadow-lg acceso">
+      {% if perms.taller.view_material %}
+      <a href="{% url 'listarMateriales' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-box-open"></i> Ver materiales</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de materiales.
           </p>
         </a>
-        
+      {% endif %}
+        {% if perms.taller.view_tipomaterial %}
         <a href="{% url 'listarTipoMateriales' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-box-open"></i> Ver tipos de material</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de los tipos de material.
           </p>
         </a>
-
-        <a href="{% url 'listarRepuestos' %}" class="col-md-3 shadow-lg acceso">
+      {% endif %}
+      {% if perms.taller.view_repuesto %}
+      <a href="{% url 'listarRepuestos' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-cog"></i> Ver repuestos</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de repuestos.
           </p>
         </a>
-
+      {% endif %}
+        {% if perms.taller.view_tarea %}
         <a href="{% url 'listarTareas' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-thumbtack"></i> Ver tareas</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de tareas.
           </p>
         </a>
-
-        <a href="{% url 'listarTipoTarea' %}" class="col-md-3 shadow-lg acceso">
+      {% endif %}
+      {% if perms.taller.view_tipotarea %}
+      <a href="{% url 'listarTipoTarea' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-thumbtack"></i> Ver tipos de tarea</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de los tipos de tarea.
           </p>
         </a>
-
+      {% endif %}
+        {% if perms.ordenes.view_presupuesto %}
         <a href="{% url 'listarPresupuestos' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-file-alt"></i> Ver presupuestos</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de presupuestos.
           </p>
         </a>
-
-        <a href="{% url 'calendarioTurnos' %}" class="col-md-3 shadow-lg acceso">
+      {% endif %}
+      {% if perms.ordenes.view_turnoorden %}
+      <a href="{% url 'calendarioTurnos' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="far fa-calendar-alt"></i> Ver turnos</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de turnos.
           </p>
         </a>
-
+      {% endif %}
+      {% if perms.ordenes.view_ordendetrabajo %}
         <a href="{% url 'listarOrdenes' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-receipt"></i> Ver órdenes de trabajo</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de órdenes de trabajo.
           </p>
         </a>
-
+      {% endif %}
+      {% if perms.ordenes.view_detalleordendetrabajo %}
         <a href="{% url 'listarDetallesOrden' %}" class="col-md-3 shadow-lg acceso">
-          <h2><i class="fas fa-receipt"></i> Ver detalles de órdenes de trabajo</h2>
+          <h2><i class="fas fa-receipt"></i> Ver trabajos</h2>
           <p>
-            <i class="fas fa-th-list listar"></i> Abrir el listado de detalles de órdenes de trabajo.
+            <i class="fas fa-th-list listar"></i> Abrir el listado de trabajos a realizar y finalizados de la orden de trabajo.
           </p>
         </a>
-
+      {% endif %}
+      {% if perms.facturas.view_factura %}
         <a href="{% url 'listarFacturas' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-file-invoice-dollar"></i> Ver facturas</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de facturas.
           </p>
         </a>
+      {% endif %}
 
-        <a href="{% url 'listarPagos' %}" class="col-md-3 shadow-lg acceso">
+      {% if perms.facturas.view_pago %}
+      <a href="{% url 'listarPagos' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-money-bill-wave"></i> Ver pagos</h2>
           <p>
             <i class="fas fa-th-list listar"></i> Abrir el listado de pagos.
           </p>
         </a>
-        
+      {% endif %}
       </div>
       
       {% endblock %}

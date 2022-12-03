@@ -9,12 +9,26 @@
 
     <!-- Opciones -->
     <div class="btn-group" role="group">
-      <a type="button" class="btn btn-primary" href="{% url 'taller_home' %}"><i class="fas fa-wrench"></i> Taller</a>
+      {% if perms.taller %}
+        <a type="button" class="btn btn-primary" href="{% url 'taller_home' %}"><i class="fas fa-wrench"></i> Taller</a>
+      {% endif %}
+
       <a type="button" class="btn btn-primary" href="{% url 'ordenes_home' %}"><i class="fas fa-receipt"></i> Presupuestos</a>
-      <a type="button" class="btn btn-primary" href="{% url 'facturas_home' %}"><i class="fas fa-file-invoice-dollar"></i> Facturas</a>
-      <a type="button" class="btn btn-primary" href="{% url 'listados_home' %}"><i class="fas fa-th-list"></i> Listados</a>  
-      <a type="button" class="btn btn-primary" href="{% url 'listarDetallesOrden' %}"><i class="fas fa-tools"></i> Trabajos</a>
-      <a type="button" class="btn btn-primary" href="{% url 'reportes_home' %}"><i class="fas fa-list"></i> Reportes</a>
+      
+      {% if perms.facturas %}
+        <a type="button" class="btn btn-primary" href="{% url 'facturas_home' %}"><i class="fas fa-file-invoice-dollar"></i> Facturas</a>
+      {% endif %}
+
+        <a type="button" class="btn btn-primary" href="{% url 'listados_home' %}"><i class="fas fa-th-list"></i> Listados</a>
+
+      {% if perms.ordenes %}  
+        <a type="button" class="btn btn-primary" href="{% url 'listarDetallesOrden' %}"><i class="fas fa-tools"></i> Trabajos</a>
+      {% endif %}
+
+      {% if perms.reportes %}
+        <a type="button" class="btn btn-primary" href="{% url 'reportes_home' %}"><i class="fas fa-list"></i> Reportes</a>
+      {% endif %}
+
       </li>  
     </div>
 

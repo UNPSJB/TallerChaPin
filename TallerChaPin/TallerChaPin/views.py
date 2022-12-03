@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required 
 from django.contrib.auth import logout as django_logout, login as django_login, authenticate
 from django.urls import reverse_lazy
 from .forms import TallerAuthenticationForm
@@ -49,6 +49,7 @@ def template_facturas(request):
 def template_listados(request):
     return render(request, 'template_listados_home.html', {"title": "Visualización de listados", "ayuda": "home.html#listados"})
 
+@permission_required('content_types.can_view_reportes')
 def template_reportes(request):
     return render(request, 'template_reportes_home.html', {"title": "Visualización de Reportes", "ayuda": "reportes.html"})
 

@@ -442,9 +442,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_esta_iniciado = models.Q(inicio__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+        puede_asignar_trabajo = user.has_perm('can_asignar_trabajo')
 
-        if es_jefe_taller:
+        if puede_asignar_trabajo:
             qs = self.filter(tiene_empleado & no_esta_iniciado).order_by(
             'orden__turno')
         else:
@@ -459,9 +459,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_esta_finalizado = models.Q(fin__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+        puede_asignar_trabajo = user.has_perm('can_asignar_trabajo')
 
-        if es_jefe_taller:
+        if puede_asignar_trabajo:
             qs = self.filter(tiene_empleado & no_esta_finalizado &
                             esta_iniciado).order_by('orden__turno')
         else:
@@ -474,9 +474,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         esta_finalizado = models.Q(fin__isnull=False)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+        puede_asignar_trabajo = user.has_perm('can_asignar_trabajo')
 
-        if es_jefe_taller:
+        if puede_asignar_trabajo:
             qs = self.filter(esta_finalizado).order_by('orden__turno')
         else:
             qs = self.filter(esta_finalizado & es_del_usuario).order_by('orden__turno')
@@ -487,9 +487,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_ha_ingresado = models.Q(orden__ingreso__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        es_jefe_taller = user.groups.filter(name='jefe de taller').exists()
+        puede_asignar_trabajo = user.has_perm('can_asignar_trabajo')
 
-        if es_jefe_taller:
+        if puede_asignar_trabajo:
             qs = self.all().exclude(no_ha_ingresado)
         else:
             qs = self.all().filter(es_del_usuario).exclude(no_ha_ingresado)

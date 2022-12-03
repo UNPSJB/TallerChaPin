@@ -133,7 +133,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 14,
     "fields": {
-      "orden": 1,
+      "orden": 14,
       "tarea": 1,
       "empleado": 2,
       "inicio": "2022-02-03T11:00:00Z",
@@ -146,7 +146,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 15,
     "fields": {
-      "orden": 2,
+      "orden": 15,
       "tarea": 3,
       "empleado": 3,
       "inicio": "2022-02-04T11:00:00Z",
@@ -159,7 +159,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 16,
     "fields": {
-      "orden": 3,
+      "orden": 16,
       "tarea": 5,
       "empleado": 1,
       "inicio": "2022-02-05T11:00:00Z",
@@ -172,7 +172,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 17,
     "fields": {
-      "orden": 4,
+      "orden": 17,
       "tarea": 3,
       "empleado": 4,
       "inicio": "2022-02-06T11:00:00Z",
@@ -185,7 +185,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 18,
     "fields": {
-      "orden": 5,
+      "orden": 18,
       "tarea": 4,
       "empleado": 1,
       "inicio": "2022-02-07T11:00:00Z",
@@ -198,7 +198,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 19,
     "fields": {
-      "orden": 6,
+      "orden": 19,
       "tarea": 4,
       "empleado": 1,
       "inicio": "2022-02-08T11:00:00Z",
@@ -211,7 +211,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 20,
     "fields": {
-      "orden": 7,
+      "orden": 20,
       "tarea": 5,
       "empleado": 5,
       "inicio": "2022-02-09T11:00:00Z",
@@ -224,7 +224,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 21,
     "fields": {
-      "orden": 8,
+      "orden": 21,
       "tarea": 1,
       "empleado": 1,
       "inicio": "2022-02-10T11:00:00Z",
@@ -237,7 +237,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 22,
     "fields": {
-      "orden": 9,
+      "orden": 22,
       "tarea": 1,
       "empleado": 2,
       "inicio": "2022-02-11T11:00:00Z",
@@ -250,7 +250,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 23,
     "fields": {
-      "orden": 10,
+      "orden": 23,
       "tarea": 6,
       "empleado": 1,
       "inicio": "2022-02-12T11:00:00Z",
@@ -263,7 +263,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 24,
     "fields": {
-      "orden": 11,
+      "orden": 24,
       "tarea": 4,
       "empleado": 5,
       "inicio": "2022-02-13T11:00:00Z",
@@ -276,7 +276,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 25,
     "fields": {
-      "orden": 12,
+      "orden": 25,
       "tarea": 1,
       "empleado": 5,
       "inicio": "2022-02-14T11:00:00Z",
@@ -289,7 +289,7 @@
     "model": "ordenes.detalleordendetrabajo",
     "pk": 26,
     "fields": {
-      "orden": 13,
+      "orden": 26,
       "tarea": 2,
       "empleado": 3,
       "inicio": "2022-02-15T11:00:00Z",

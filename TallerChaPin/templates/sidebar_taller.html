@@ -14,6 +14,9 @@
     <span class="fs-5 fw-semibold">Gestion de taller</span>
   </a>
   <ul class="list-unstyled ps-0">
+    <ul class="list-unstyled ps-0">
+
+
     <!-- Clientes -->
     <li class="mb-1">
       <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
@@ -24,12 +27,16 @@
       <!-- Desplegable de clientes -->
       <div class="collapse" id="clientes-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.view_cliente %}
           <li>
             <a href="{% url 'listarClientes' %}" class="link-dark rounded">Listado de clientes</a>
           </li>
+          {% endif %}
+          {% if perms.taller.create_cliente %}
           <li>
             <a href="{% url 'crearCliente' %}" class="link-dark rounded">Registrar cliente</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>
@@ -44,12 +51,16 @@
       <!-- Desplegable de vehículos -->
       <div class="collapse" id="vehiculos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.create_vehiculo %}
           <li>
             <a href="{% url 'crearVehiculo' %}" class="link-dark rounded">Alta de vehículo</a>
           </li>
+          {% endif %}
+          {% if perms.taller.view_vehiculo %}
           <li>
             <a href="{% url 'listarVehiculos' %}" class="link-dark rounded">Listar vehículos</a>
           </li>
+        {% endif %}
         </ul>
       </div>
     </li>
@@ -64,18 +75,26 @@
       <!-- Desplegable de tareas -->
       <div class="collapse" id="tareas-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.create_tarea %}
           <li>
             <a href="{% url 'crearTarea' %}" class="link-dark rounded">Registrar una tarea</a>
           </li>
+          {% endif %}
+          {% if perms.taller.view_tarea %}
           <li>
             <a href="{% url 'listarTareas' %}" class="link-dark rounded">Listar tareas</a>
           </li>
+          {% endif %}
+          {% if perms.taller.create_tipotarea %}
           <li>
             <a href="{% url 'crearTipoTarea' %}" class="link-dark rounded">Registrar un tipo de tarea</a>
           </li>
+          {% endif %}
+          {% if perms.taller.view_tipotarea %}
           <li>
             <a href="{% url 'listarTipoTarea' %}" class="link-dark rounded">Listar tipos de tareas</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>
@@ -90,18 +109,28 @@
       <!-- Desplegable de materiales -->
       <div class="collapse" id="materiales-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.create_tipomaterial %}
+          <li>            
+            <a href="{% url 'crearTipoMaterial' %}" class="link-dark rounded"
+              >Registrar un tipo de material</a>
+          </li>
+          {% endif %}
+          {% if perms.taller.view_tipomaterial %}
+          <li>
+            <a href="{% url 'listarTipoMateriales' %}" class="link-dark rounded"
+              >Listar tipos de materiales</a>
+          </li>
+          {% endif %}
+          {% if perms.taller.create_material %}
           <li>
             <a href="{% url 'crearMaterial' %}" class="link-dark rounded">Registrar un material</a>
           </li>
+          {% endif %}
+          {% if perms.taller.view_material %}
           <li>
             <a href="{% url 'listarMateriales' %}" class="link-dark rounded">Listar Materiales</a>
           </li>
-          <li>
-            <a href="{% url 'crearTipoMaterial' %}" class="link-dark rounded">Registrar un tipo de material</a>
-          </li>
-          <li>
-            <a href="{% url 'listarTipoMateriales' %}" class="link-dark rounded">Listar tipos de materiales</a>
-          </li>
+          {% endif %}
         </ul>
       </div>
     </li>
@@ -116,12 +145,16 @@
       <!-- Desplegable de repuestos -->
       <div class="collapse" id="repuestos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.create_repuesto %}
           <li>
             <a href="{% url 'crearRepuesto' %}" class="link-dark rounded">Registrar un repuesto</a>
           </li>
+          {% endif %}
+          {% if perms.taller.view_repuesto %}
           <li>
             <a href="{% url 'listarRepuestos' %}" class="link-dark rounded">Listar repuestos</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>
@@ -136,14 +169,18 @@
       <!-- Desplegable de empleados -->
       <div class="collapse" id="empleados-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.create_empleado %}
           <li>
             <a href="{% url 'crearEmpleado' %}" class="link-dark rounded">
               Alta de empleado</a>
           </li>
+          {% endif %}
+          {% if perms.taller.view_empleado %}
           <li>
             <a href="{% url 'listarEmpleados' %}" class="link-dark rounded">
               Lista de empleados</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>
@@ -158,12 +195,20 @@
       <!-- Desplegable de modelos -->
       <div class="collapse" id="modelos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.create_modelo %}
           <li>
-            <a href="{% url 'crearModelo' %}" class="link-dark rounded">Registrar un modelo</a>
+            <a href="{% url 'crearModelo' %}" class="link-dark rounded"
+              >Registrar un modelo</a
+            >
           </li>
+          {% endif %}
+          {% if perms.taller.view_modelo %}
           <li>
-            <a href="{% url 'listarModelos' %}" class="link-dark rounded">Listar modelos</a>
+            <a href="{% url 'listarModelos' %}" class="link-dark rounded"
+              >Listar modelos</a
+            >
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>
@@ -178,12 +223,20 @@
       <!-- Desplegable de marcas -->
       <div class="collapse" id="marcas-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.create_marca %}
           <li>
-            <a href="{% url 'crearMarca' %}" class="link-dark rounded">Registrar una marca</a>
+            <a href="{% url 'crearMarca' %}" class="link-dark rounded"
+              >Registrar una marca</a
+            >
           </li>
+          {% endif %}
+          {% if perms.taller.view_marca %}
           <li>
-            <a href="{% url 'listarMarcas' %}" class="link-dark rounded">Listar marcas</a>
+            <a href="{% url 'listarMarcas' %}" class="link-dark rounded"
+              >Listar marcas</a
+            >
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>

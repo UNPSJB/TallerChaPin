@@ -20,48 +20,70 @@
       </h2>
 
       <div class="row mt-4 d-flex justify-content-evenly align-items-center">
-        
+        {% if perms.taller.create_cliente %}
         <a href="{% url 'crearCliente' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-user"></i> Registrar cliente</h2>
           <p>
             <i class="fas fa-plus-circle agregar"></i> Dar de alta un nuevo cliente.
           </p>
         </a>
-
+        {% endif %}
+        {% if perms.taller.create_vehiculo %}
         <a href="{% url 'crearVehiculo' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-car"></i> Registrar vehículo</h2>
           <p>
             <i class="fas fa-plus-circle agregar"></i> Dar de alta un nuevo vehículo a un cliente.
           </p>
         </a>
-
+        {% endif %}
+        {% if perms.taller.create_material %}
         <a href="{% url 'crearMaterial' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-box-open"></i> Registrar material</h2>
           <p>
             <i class="fas fa-plus-circle agregar"></i> Dar de alta un material.
           </p>
         </a>
-
+        {% endif %}
+        {% if perms.taller.crear_repuesto %}
         <a href="{% url 'crearRepuesto' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-cog"></i> Registrar repuesto</h2>
           <p>
             <i class="fas fa-plus-circle agregar"></i> Dar de alta un repuesto.
           </p>
         </a>
-
+        {% endif %}
+        {% if perms.taller.crear_empleado %}
         <a href="{% url 'crearEmpleado' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-user"></i> Registrar empleado</h2>
           <p>
             <i class="fas fa-plus-circle agregar"></i> Dar de alta un nuevo empleado.
           </p>
         </a>
-
+        {% endif %}
+        {% if perms.taller.crear_tarea%}
         <a href="{% url 'crearTarea' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-tools"></i></i> Crear Tarea </h2>
           <p>
             <i class="fas fa-plus-circle agregar"></i> Registrar una nueva tarea.
           </p>
         </a>
+        {% endif %}
+        {% if perms.taller.view_repuesto %}
+        <a href="{% url 'listarRepuestos' %}" class="col-md-3 shadow-lg acceso">
+            <h2><i class="fas fa-cog"></i> Ver repuestos</h2>
+            <p>
+              <i class="fas fa-th-list listar"></i> Abrir el listado de repuestos.
+            </p>
+          </a>
+        {% endif %}
+        {% if perms.taller.view_material %}
+        <a href="{% url 'listarMateriales' %}" class="col-md-3 shadow-lg acceso">
+            <h2><i class="fas fa-box-open"></i> Ver materiales</h2>
+            <p>
+              <i class="fas fa-th-list listar"></i> Abrir el listado de materiales.
+            </p>
+          </a>
+        {% endif %}
       </div>
       
       {% endblock %}

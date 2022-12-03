@@ -144,13 +144,16 @@
             <div class="col-md-3">
                 <div class="border border-primary rounded p-3">
                     <h5>Acciones</h5>
-        
-                    {% if factura.puede_pagar %} 
-                    <a href="" data-bs-toggle="modal" data-bs-target="#modalPagarFactura"
-                    data-bs-nombre="{{factura.orden.cliente}}" data-bs-url="{% url 'crearPago' factura.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn2">
-                        <i class="fas fa-check-circle"></i> Pagar</a>
+                    {% if perms.facturas.add_pago %}
+                        {% if factura.puede_pagar %} 
+                        <a href="" data-bs-toggle="modal" data-bs-target="#modalPagarFactura"
+                        data-bs-nombre="{{factura.orden.cliente}}" data-bs-url="{% url 'crearPago' factura.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn2">
+                            <i class="fas fa-check-circle"></i> Pagar</a>
+                        {% endif %}
                     {% endif %}
+                    {% if perms.ordenes.view_orden %}
                     <a href="{% url 'detallesOrden' factura.orden.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver orden </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

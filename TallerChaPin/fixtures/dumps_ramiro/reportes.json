@@ -1,0 +1,1053 @@
+[
+  {
+    "model": "taller.marca",
+    "pk": 1,
+    "fields": { "nombre": "Volkswagen", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 2,
+    "fields": { "nombre": "Peugeot", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 3,
+    "fields": { "nombre": "Toyota", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 4,
+    "fields": { "nombre": "Fiat", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 5,
+    "fields": { "nombre": "Chevrolet", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 6,
+    "fields": { "nombre": "Nissan", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 7,
+    "fields": { "nombre": "Ford", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 8,
+    "fields": { "nombre": "Jeep", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 9,
+    "fields": { "nombre": "Citroen", "descripcion": " " }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 10,
+    "fields": { "nombre": "Renault", "descripcion": " " }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 1,
+    "fields": { "nombre": "208", "descripcion": "", "marca": 2, "anio": 2020 }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 2,
+    "fields": { "nombre": "Cruze", "descripcion": "", "marca": 5, "anio": 2020 }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 3,
+    "fields": {
+      "nombre": "Cronos",
+      "descripcion": "",
+      "marca": 4,
+      "anio": 2021
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 4,
+    "fields": { "nombre": "Etios", "descripcion": "", "marca": 3, "anio": 2013 }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 5,
+    "fields": {
+      "nombre": "Corolla Cross",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2014
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 6,
+    "fields": { "nombre": "Yaris", "descripcion": "", "marca": 3, "anio": 2015 }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 7,
+    "fields": {
+      "nombre": "Corolla",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2022
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 8,
+    "fields": {
+      "nombre": "Gol Trend",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2012
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 9,
+    "fields": {
+      "nombre": "C4 Cactus",
+      "descripcion": "",
+      "marca": 9,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 10,
+    "fields": {
+      "nombre": "Sandero",
+      "descripcion": "",
+      "marca": 10,
+      "anio": 2013
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 11,
+    "fields": { "nombre": "Onix", "descripcion": "", "marca": 5, "anio": 2018 }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 12,
+    "fields": { "nombre": "Taos", "descripcion": "", "marca": 1, "anio": 2018 }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 13,
+    "fields": {
+      "nombre": "Ecosport",
+      "descripcion": "",
+      "marca": 7,
+      "anio": 2021
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 14,
+    "fields": {
+      "nombre": "Stepway",
+      "descripcion": "",
+      "marca": 10,
+      "anio": 2019
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 15,
+    "fields": {
+      "nombre": "T-Cross",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 16,
+    "fields": {
+      "nombre": "Tracker",
+      "descripcion": "",
+      "marca": 5,
+      "anio": 2022
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 17,
+    "fields": { "nombre": "Nivus", "descripcion": "", "marca": 1, "anio": 2018 }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 18,
+    "fields": { "nombre": "Sw4", "descripcion": "", "marca": 3, "anio": 2021 }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 19,
+    "fields": {
+      "nombre": "Renegade",
+      "descripcion": "",
+      "marca": 8,
+      "anio": 2017
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Reemplazo pieza",
+      "descripcion": "",
+      "materiales": false,
+      "repuestos": true,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Tarea de pintura",
+      "descripcion": "",
+      "materiales": false,
+      "repuestos": false,
+      "planilla": true
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Tarea compleja",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": true,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Requiere material",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Cambiar puerta",
+      "descripcion": "",
+      "tipo": 3,
+      "precio": "1385.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Pintado completo",
+      "descripcion": "",
+      "tipo": 2,
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Pintado parcial",
+      "descripcion": "",
+      "tipo": 2,
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Reparar abolladura",
+      "descripcion": "",
+      "tipo": 4,
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 5,
+    "fields": {
+      "nombre": "Cambiar optica",
+      "descripcion": "",
+      "tipo": 1,
+      "precio": "1469.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 6,
+    "fields": {
+      "nombre": "Cambiar asiento",
+      "descripcion": "",
+      "tipo": 1,
+      "precio": "4688.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 1,
+    "fields": {
+      "nombre": "Puerta delantera izquierda",
+      "modelo": 5,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1957.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 2,
+    "fields": {
+      "nombre": "Puerta delantera derecha",
+      "modelo": 4,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "3594.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 3,
+    "fields": {
+      "nombre": "Parabrisas",
+      "modelo": 1,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "4386.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 4,
+    "fields": {
+      "nombre": "Capo",
+      "modelo": 2,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1478.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 5,
+    "fields": {
+      "nombre": "Asiento delantero",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "3983.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 6,
+    "fields": {
+      "nombre": "Optica derecha",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1301.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 7,
+    "fields": {
+      "nombre": "Optica izquierda",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1793.00"
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 1,
+    "fields": { "nombre": "tipo1", "unidad_medida": 1 }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 2,
+    "fields": { "nombre": "tipo2", "unidad_medida": 2 }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 3,
+    "fields": { "nombre": "tipo3", "unidad_medida": 4 }
+  },
+  {
+    "model": "taller.material",
+    "pk": 1,
+    "fields": {
+      "nombre": "Chapa",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "85.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 2,
+    "fields": {
+      "nombre": "Cristal",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "83.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 3,
+    "fields": {
+      "nombre": "Masilla",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "53.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 4,
+    "fields": {
+      "nombre": "Alambre",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "85.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 5,
+    "fields": {
+      "nombre": "Lija",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "31.00"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 1,
+    "fields": {
+      "dni": "37852985",
+      "nombre": "Patricia",
+      "apellido": "Ramirez",
+      "direccion": "Centenario 993",
+      "telefono": "2804309295"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 2,
+    "fields": {
+      "dni": "44826759",
+      "nombre": "Marta",
+      "apellido": "Arias",
+      "direccion": "Lezana 279",
+      "telefono": "2804677223"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 3,
+    "fields": {
+      "dni": "86894946",
+      "nombre": "Norma",
+      "apellido": "Aguirre",
+      "direccion": "Cambrin 745",
+      "telefono": "2804365270"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 4,
+    "fields": {
+      "dni": "54093481",
+      "nombre": "Nestor",
+      "apellido": "Peralta",
+      "direccion": "Brown 868",
+      "telefono": "2804283548"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 5,
+    "fields": {
+      "dni": "50528408",
+      "nombre": "Adriana",
+      "apellido": "Cabrera",
+      "direccion": "A. P. Bell 1163",
+      "telefono": "2804818210"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 6,
+    "fields": {
+      "dni": "57459290",
+      "nombre": "Jorge",
+      "apellido": "Benitez",
+      "direccion": "Edwin Roberts 205",
+      "telefono": "2804944880"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 7,
+    "fields": {
+      "dni": "89373866",
+      "nombre": "Alejandro",
+      "apellido": "Ponce",
+      "direccion": "El Carmen 864",
+      "telefono": "2804149354"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 8,
+    "fields": {
+      "dni": "64706433",
+      "nombre": "Hector",
+      "apellido": "Moreno",
+      "direccion": "Cuba 1787",
+      "telefono": "2804617055"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 9,
+    "fields": {
+      "dni": "75326191",
+      "nombre": "Fernando",
+      "apellido": "Fernandez",
+      "direccion": "Gral. Artigas 1392",
+      "telefono": "2804167763"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 10,
+    "fields": {
+      "dni": "10355923",
+      "nombre": "Andrea",
+      "apellido": "Vazquez",
+      "direccion": "Juan Evans 1610",
+      "telefono": "2804437547"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 11,
+    "fields": {
+      "dni": "39381461",
+      "nombre": "Juan",
+      "apellido": "Munos",
+      "direccion": "Rivadavia 130",
+      "telefono": "2804476334"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 12,
+    "fields": {
+      "dni": "37051058",
+      "nombre": "Liliana",
+      "apellido": "Ponce",
+      "direccion": "Cambrin 1721",
+      "telefono": "2804916988"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 13,
+    "fields": {
+      "dni": "73054248",
+      "nombre": "Susana",
+      "apellido": "Vazquez",
+      "direccion": "Nicaragua 547",
+      "telefono": "2804284823"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 14,
+    "fields": {
+      "dni": "71450069",
+      "nombre": "Marcelo",
+      "apellido": "Ponce",
+      "direccion": "Juan Manuel de Rosas 382",
+      "telefono": "2804655816"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 15,
+    "fields": {
+      "dni": "39662168",
+      "nombre": "Antonio",
+      "apellido": "Torres",
+      "direccion": "Brasil 335",
+      "telefono": "2804202645"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 16,
+    "fields": {
+      "dni": "19810164",
+      "nombre": "Victor",
+      "apellido": "Nunes",
+      "direccion": "Edwin Roberts 573",
+      "telefono": "2804909045"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 17,
+    "fields": {
+      "dni": "15726398",
+      "nombre": "Monica",
+      "apellido": "Pereyra",
+      "direccion": "Corrientes 1565",
+      "telefono": "2804492828"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 18,
+    "fields": {
+      "dni": "11596927",
+      "nombre": "Andrea",
+      "apellido": "Caceres",
+      "direccion": "Juan Manuel de Rosas 118",
+      "telefono": "2804205179"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 19,
+    "fields": {
+      "dni": "13727436",
+      "nombre": "Hugo",
+      "apellido": "Ponce",
+      "direccion": "San David 813",
+      "telefono": "2804728840"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 20,
+    "fields": {
+      "dni": "36911818",
+      "nombre": "Claudio",
+      "apellido": "Sosa",
+      "direccion": "El Carmen 1568",
+      "telefono": "2804924670"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 21,
+    "fields": {
+      "dni": "13577155",
+      "nombre": "Ricardo",
+      "apellido": "Coronel",
+      "direccion": "Espana 1334",
+      "telefono": "2804219502"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 22,
+    "fields": {
+      "dni": "36365297",
+      "nombre": "Rosa",
+      "apellido": "Castro",
+      "direccion": "Juan Manuel de Rosas 470",
+      "telefono": "2804547142"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 23,
+    "fields": {
+      "dni": "46394379",
+      "nombre": "Oscar",
+      "apellido": "Fernandez",
+      "direccion": "9 de Julio 118",
+      "telefono": "2804758226"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 24,
+    "fields": {
+      "dni": "84056849",
+      "nombre": "Juan",
+      "apellido": "Gimenez",
+      "direccion": "Juan Evans 654",
+      "telefono": "2804854387"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 25,
+    "fields": {
+      "dni": "18460025",
+      "nombre": "Cristian",
+      "apellido": "Morales",
+      "direccion": "Crucero Gral. Belgrano 1006",
+      "telefono": "2804784454"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 1,
+    "fields": {
+      "cliente": 1,
+      "patente": "DM030LM",
+      "modelo": 11,
+      "anio": 2015,
+      "chasis": "2WZGTLB9NGD740687"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 2,
+    "fields": {
+      "cliente": 2,
+      "patente": "WW563DX",
+      "modelo": 14,
+      "anio": 2015,
+      "chasis": "2UXHEQU7VAF742306"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 3,
+    "fields": {
+      "cliente": 3,
+      "patente": "QD924LY",
+      "modelo": 13,
+      "anio": 2021,
+      "chasis": "4KBWWFT1AHN819119"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 4,
+    "fields": {
+      "cliente": 4,
+      "patente": "FZ983MK",
+      "modelo": 13,
+      "anio": 2015,
+      "chasis": "3QOQTYI5NNT136478"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 5,
+    "fields": {
+      "cliente": 5,
+      "patente": "FP211LI",
+      "modelo": 18,
+      "anio": 2018,
+      "chasis": "1SALBPF8FTF418328"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 6,
+    "fields": {
+      "cliente": 6,
+      "patente": "LB698JA",
+      "modelo": 11,
+      "anio": 2020,
+      "chasis": "7GERJHB0RQL997467"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 7,
+    "fields": {
+      "cliente": 7,
+      "patente": "KD506OT",
+      "modelo": 14,
+      "anio": 2021,
+      "chasis": "2IHADDW5UQO246086"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 8,
+    "fields": {
+      "cliente": 8,
+      "patente": "PF251GN",
+      "modelo": 7,
+      "anio": 2014,
+      "chasis": "9FPHQUR9WJJ334723"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 9,
+    "fields": {
+      "cliente": 9,
+      "patente": "MS214GQ",
+      "modelo": 6,
+      "anio": 2014,
+      "chasis": "2IEYTQH2KBR888271"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 10,
+    "fields": {
+      "cliente": 10,
+      "patente": "QZ912CQ",
+      "modelo": 7,
+      "anio": 2015,
+      "chasis": "0BJTMFZ2GBO949052"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 11,
+    "fields": {
+      "cliente": 11,
+      "patente": "JR992YB",
+      "modelo": 16,
+      "anio": 2015,
+      "chasis": "9HURHZY3WCD764971"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 12,
+    "fields": {
+      "cliente": 12,
+      "patente": "TD903GR",
+      "modelo": 4,
+      "anio": 2015,
+      "chasis": "0SGBBHV7NQE720822"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 13,
+    "fields": {
+      "cliente": 13,
+      "patente": "SO998NE",
+      "modelo": 11,
+      "anio": 2018,
+      "chasis": "5RRXMQR6NME815321"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 14,
+    "fields": {
+      "cliente": 14,
+      "patente": "GJ296OO",
+      "modelo": 9,
+      "anio": 2021,
+      "chasis": "8EQZVTF7VFT250162"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 15,
+    "fields": {
+      "cliente": 15,
+      "patente": "IH450RS",
+      "modelo": 16,
+      "anio": 2020,
+      "chasis": "9QAPYBQ5IMD470662"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 16,
+    "fields": {
+      "cliente": 16,
+      "patente": "ML997XN",
+      "modelo": 3,
+      "anio": 2019,
+      "chasis": "9KQMGFB4XFT939724"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 17,
+    "fields": {
+      "cliente": 17,
+      "patente": "TB470KP",
+      "modelo": 9,
+      "anio": 2021,
+      "chasis": "0WXKPZL1PID721374"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 18,
+    "fields": {
+      "cliente": 18,
+      "patente": "OE815MS",
+      "modelo": 1,
+      "anio": 2021,
+      "chasis": "6NJXIOO3JKX382040"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 19,
+    "fields": {
+      "cliente": 19,
+      "patente": "DH010EI",
+      "modelo": 8,
+      "anio": 2020,
+      "chasis": "4QRXKMU1PHH401480"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 20,
+    "fields": {
+      "cliente": 20,
+      "patente": "JU910NK",
+      "modelo": 5,
+      "anio": 2019,
+      "chasis": "5WQLUEJ0QFG033124"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 21,
+    "fields": {
+      "cliente": 21,
+      "patente": "TF970KL",
+      "modelo": 3,
+      "anio": 2014,
+      "chasis": "6YTCAIC0GIX526767"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 22,
+    "fields": {
+      "cliente": 22,
+      "patente": "GI749ML",
+      "modelo": 16,
+      "anio": 2014,
+      "chasis": "4ZEOGYZ3MZE898862"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 23,
+    "fields": {
+      "cliente": 23,
+      "patente": "BK324VK",
+      "modelo": 11,
+      "anio": 2019,
+      "chasis": "2VRDYDP7OVZ912486"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 24,
+    "fields": {
+      "cliente": 24,
+      "patente": "GN277VP",
+      "modelo": 11,
+      "anio": 2015,
+      "chasis": "1ATPOCX7YFR361922"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 25,
+    "fields": {
+      "cliente": 25,
+      "patente": "XC508QS",
+      "modelo": 13,
+      "anio": 2022,
+      "chasis": "4WMSVMT1ELZ872462"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 26,
+    "fields": {
+      "cliente": 1,
+      "patente": "HQ074CO",
+      "modelo": 11,
+      "anio": 2017,
+      "chasis": "6ISIOMN7BMO230579"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 27,
+    "fields": {
+      "cliente": 2,
+      "patente": "XD578GD",
+      "modelo": 11,
+      "anio": 2019,
+      "chasis": "4EXXANJ7JNN220089"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 28,
+    "fields": {
+      "cliente": 3,
+      "patente": "UI219ST",
+      "modelo": 2,
+      "anio": 2021,
+      "chasis": "9ZKWOBW1RAX663444"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 29,
+    "fields": {
+      "cliente": 4,
+      "patente": "EU433VK",
+      "modelo": 9,
+      "anio": 2018,
+      "chasis": "9MWNPXS7SWZ602615"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 30,
+    "fields": {
+      "cliente": 5,
+      "patente": "KX917TD",
+      "modelo": 3,
+      "anio": 2021,
+      "chasis": "9ZZKLJJ9USB306513"
+    }
+  }
+]

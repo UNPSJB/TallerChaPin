@@ -1,0 +1,55 @@
+[
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "turno": "2022-12-02T20:33:00Z",
+      "ingreso": "2022-12-02T20:33:00Z",
+      "egreso": "2022-12-04T20:35:00Z",
+      "estado": 6
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "orden": 1,
+      "tarea": 1,
+      "empleado": 2,
+      "inicio": "2022-12-01T23:32:53.010Z",
+      "fin": "2022-12-01T23:32:53.010Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "repuesto": 2,
+      "orden": 1,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 1,
+    "fields": {
+      "cliente": 8,
+      "vehiculo": 8,
+      "detalles": "",
+      "fecha": "2022-12-01T23:33:04.610Z",
+      "validez": 60,
+      "orden": 1,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [1]
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 1,
+    "fields": { "repuesto": 2, "presupuesto": 1, "cantidad": 1 }
+  }
+]

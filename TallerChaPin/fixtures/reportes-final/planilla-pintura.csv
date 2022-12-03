@@ -1,0 +1,4 @@
+model,pk,orden,fecha,nombre_de_color
+"ordenes.planilladepintura",1,13,"2022-02-10T08:00:00Z","color verde"
+"ordenes.planilladepintura",2,2,"2022-02-10T08:00:00Z","color verde"
+"ordenes.planilladepintura",3,4,"2022-02-10T08:00:00Z","color verde"

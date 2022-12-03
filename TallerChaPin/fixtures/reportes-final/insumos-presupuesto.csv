@@ -1,0 +1,11 @@
+model,pk,insumo,presupuesto,cantidad
+"ordenes.presupuestomaterial",1,1,5,1
+"ordenes.presupuestomaterial",2,3,6,100
+"ordenes.presupuestomaterial",3,1,11,100
+"ordenes.presupuestorepuesto",1,2,1,1
+"ordenes.presupuestorepuesto",3,6,3,1
+"ordenes.presupuestorepuesto",4,6,7,1
+"ordenes.presupuestorepuesto",5,2,8,1
+"ordenes.presupuestorepuesto",6,2,9,1
+"ordenes.presupuestorepuesto",7,5,10,1
+"ordenes.presupuestorepuesto",8,1,12,1

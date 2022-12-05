@@ -22,7 +22,9 @@
                 <span>
                     <i class="fas fa-car-side"></i> {{ presupuesto.vehiculo.patente }} ({{ presupuesto.vehiculo.modelo}}) <br>
                     <i class="fas fa-calendar"></i> {{ presupuesto.fecha }} <br>
-                    <i class="fas fa-calendar"></i> Válido hasta {{presupuesto.get_fecha_vencimiento}}
+                    <i class="fas fa-calendar"></i> Válido hasta {{presupuesto.get_fecha_vencimiento}} <br>
+                    <i class="far fa-flag"></i> Confirmado: {{ presupuesto.confirmado | yesno:"Sí,No"}} <br>
+                    <i class="far fa-flag"></i> Ampliado: {{ presupuesto.ampliado | yesno:"Si,No"}}
                 </span>
             </div>
         </div>

@@ -73,8 +73,8 @@ class OrdenDeTrabajo(models.Model):
     repuestos = models.ManyToManyField(
         Repuesto, through='RepuestoOrdenDeTrabajo')
     turno = models.DateTimeField(validators=[fecha_es_futura])
-    ingreso = models.DateTimeField(null=True, blank=True)
-    egreso = models.DateTimeField(null=True, blank=True)
+    ingreso = models.DateTimeField(null=True, blank=False)
+    egreso = models.DateTimeField(null=True, blank=False)
     estado = models.PositiveSmallIntegerField(
         choices=ESTADOS_CHOICES, default=CREADA)
     objects = OrdenDeTrabajoManager.from_queryset(OrdenDeTrabajoQuerySet)()
@@ -92,12 +92,7 @@ class OrdenDeTrabajo(models.Model):
     class Meta:
         permissions = [
             ('can_registrar_ingreso','Puede registrar el ingreso de un vehículo al taller'),
-            ('can_registrar_egreso', 'Puede registrar el egreso de un vehículo al taller'),
-            ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
-            ('can_ver_asignados', 'Puede ver listado de trabajos asignados'),
-            ('can_ver_sin_finalizar', 'Puede ver listado de trabajos sin finalizar'),
-            ('can_ver_finalizados', 'Puede ver listado de trabajos finalizados'),
-            ('can_ver_todos', 'Puede ver todos de trabajos'),
+            ('can_registrar_egreso', 'Puede registrar el egreso de un vehículo al taller')
         ]
 
     def detalles_por_finalizar(self):
@@ -525,10 +520,11 @@ class DetalleOrdenDeTrabajo(models.Model):
 
     class Meta:
         permissions = [
+            ('can_asignar_trabajo', 'Puede asignar trabajo a empleados'),
             ('can_ver_asignados', 'Puede ver listado de trabajos asignados'),
             ('can_ver_sin_finalizar', 'Puede ver listado de trabajos sin finalizar'),
             ('can_ver_finalizados', 'Puede ver listado de trabajos finalizados'),
-            ('can_ver_todos', 'Puede ver todos de trabajos'),
+            ('can_ver_todos', 'Puede ver todos de trabajos')
         ]
 
     def precio(self):

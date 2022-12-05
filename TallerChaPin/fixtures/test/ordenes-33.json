@@ -1,0 +1,1719 @@
+[
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "turno": "2022-01-03T14:27:00Z",
+      "ingreso": "2022-01-03T14:27:00Z",
+      "egreso": "2022-01-05T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 2,
+    "fields": {
+      "turno": "2022-01-06T14:27:00Z",
+      "ingreso": "2022-01-06T14:27:00Z",
+      "egreso": "2022-01-11T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 3,
+    "fields": {
+      "turno": "2022-01-09T14:27:00Z",
+      "ingreso": "2022-01-09T14:27:00Z",
+      "egreso": "2022-01-11T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 4,
+    "fields": {
+      "turno": "2022-01-12T14:27:00Z",
+      "ingreso": "2022-01-12T14:27:00Z",
+      "egreso": "2022-01-16T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 5,
+    "fields": {
+      "turno": "2022-01-15T14:27:00Z",
+      "ingreso": "2022-01-15T14:27:00Z",
+      "egreso": "2022-01-20T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 6,
+    "fields": {
+      "turno": "2022-01-18T14:27:00Z",
+      "ingreso": "2022-01-18T14:27:00Z",
+      "egreso": "2022-01-22T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 7,
+    "fields": {
+      "turno": "2022-02-02T14:27:00Z",
+      "ingreso": "2022-02-02T14:27:00Z",
+      "egreso": "2022-02-05T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 8,
+    "fields": {
+      "turno": "2022-02-06T14:27:00Z",
+      "ingreso": "2022-02-06T14:27:00Z",
+      "egreso": "2022-02-09T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 9,
+    "fields": {
+      "turno": "2022-02-10T14:27:00Z",
+      "ingreso": "2022-02-10T14:27:00Z",
+      "egreso": "2022-02-14T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 10,
+    "fields": {
+      "turno": "2022-02-14T14:27:00Z",
+      "ingreso": "2022-02-14T14:27:00Z",
+      "egreso": "2022-02-18T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 11,
+    "fields": {
+      "turno": "2022-02-18T14:27:00Z",
+      "ingreso": "2022-02-18T14:27:00Z",
+      "egreso": "2022-02-22T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 12,
+    "fields": {
+      "turno": "2022-02-22T14:27:00Z",
+      "ingreso": "2022-02-22T14:27:00Z",
+      "egreso": "2022-02-26T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 13,
+    "fields": {
+      "turno": "2022-02-26T14:27:00Z",
+      "ingreso": "2022-02-26T14:27:00Z",
+      "egreso": "2022-03-01T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 14,
+    "fields": {
+      "turno": "2022-03-04T14:27:00Z",
+      "ingreso": "2022-03-04T14:27:00Z",
+      "egreso": "2022-03-07T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 15,
+    "fields": {
+      "turno": "2022-03-08T14:27:00Z",
+      "ingreso": "2022-03-08T14:27:00Z",
+      "egreso": "2022-03-13T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 16,
+    "fields": {
+      "turno": "2022-03-12T14:27:00Z",
+      "ingreso": "2022-03-12T14:27:00Z",
+      "egreso": "2022-03-15T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 17,
+    "fields": {
+      "turno": "2022-03-16T14:27:00Z",
+      "ingreso": "2022-03-16T14:27:00Z",
+      "egreso": "2022-03-22T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 18,
+    "fields": {
+      "turno": "2022-03-20T14:27:00Z",
+      "ingreso": "2022-03-20T14:27:00Z",
+      "egreso": "2022-03-24T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 19,
+    "fields": {
+      "turno": "2022-04-10T14:27:00Z",
+      "ingreso": "2022-04-10T14:27:00Z",
+      "egreso": "2022-04-14T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 20,
+    "fields": {
+      "turno": "2022-04-13T14:27:00Z",
+      "ingreso": "2022-04-13T14:27:00Z",
+      "egreso": "2022-04-19T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 21,
+    "fields": {
+      "turno": "2022-04-17T14:27:00Z",
+      "ingreso": "2022-04-17T14:27:00Z",
+      "egreso": "2022-04-20T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 22,
+    "fields": {
+      "turno": "2022-04-21T14:27:00Z",
+      "ingreso": "2022-04-21T14:27:00Z",
+      "egreso": "2022-04-24T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 23,
+    "fields": {
+      "turno": "2022-04-25T14:27:00Z",
+      "ingreso": "2022-04-25T14:27:00Z",
+      "egreso": "2022-04-28T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 24,
+    "fields": {
+      "turno": "2022-05-06T14:27:00Z",
+      "ingreso": "2022-05-06T14:27:00Z",
+      "egreso": "2022-05-10T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 25,
+    "fields": {
+      "turno": "2022-05-12T14:27:00Z",
+      "ingreso": "2022-05-12T14:27:00Z",
+      "egreso": "2022-05-14T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 26,
+    "fields": {
+      "turno": "2022-05-18T14:27:00Z",
+      "ingreso": "2022-05-18T14:27:00Z",
+      "egreso": "2022-05-24T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 27,
+    "fields": {
+      "turno": "2022-05-24T14:27:00Z",
+      "ingreso": "2022-05-24T14:27:00Z",
+      "egreso": "2022-05-30T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 28,
+    "fields": {
+      "turno": "2022-05-30T14:27:00Z",
+      "ingreso": "2022-05-30T14:27:00Z",
+      "egreso": "2022-06-05T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 29,
+    "fields": {
+      "turno": "2022-06-04T14:27:00Z",
+      "ingreso": "2022-06-04T14:27:00Z",
+      "egreso": "2022-06-07T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 30,
+    "fields": {
+      "turno": "2022-06-07T14:27:00Z",
+      "ingreso": "2022-06-07T14:27:00Z",
+      "egreso": "2022-06-11T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 31,
+    "fields": {
+      "turno": "2022-06-10T14:27:00Z",
+      "ingreso": "2022-06-10T14:27:00Z",
+      "egreso": "2022-06-16T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 32,
+    "fields": {
+      "turno": "2022-06-13T14:27:00Z",
+      "ingreso": "2022-06-13T14:27:00Z",
+      "egreso": "2022-06-18T14:27:00Z"
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 33,
+    "fields": {
+      "turno": "2022-06-16T14:27:00Z",
+      "ingreso": "2022-06-16T14:27:00Z",
+      "egreso": "2022-06-18T14:27:00Z"
+    }
+  }, {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "orden": 1,
+      "tarea": 6,
+      "empleado": 1,
+      "inicio": "2022-01-03T16:34:04.918Z",
+      "fin": "2022-01-07T16:34:04.918Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 2,
+    "fields": {
+      "orden": 2,
+      "tarea": 3,
+      "empleado": 3,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 3,
+    "fields": {
+      "orden": 3,
+      "tarea": 3,
+      "empleado": 4,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 4,
+    "fields": {
+      "orden": 4,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 5,
+    "fields": {
+      "orden": 5,
+      "tarea": 6,
+      "empleado": 5,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 6,
+    "fields": {
+      "orden": 6,
+      "tarea": 4,
+      "empleado": 5,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 7,
+    "fields": {
+      "orden": 7,
+      "tarea": 3,
+      "empleado": 3,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 8,
+    "fields": {
+      "orden": 8,
+      "tarea": 4,
+      "empleado": 5,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 9,
+    "fields": {
+      "orden": 9,
+      "tarea": 1,
+      "empleado": 2,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 10,
+    "fields": {
+      "orden": 10,
+      "tarea": 3,
+      "empleado": 4,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 11,
+    "fields": {
+      "orden": 11,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 12,
+    "fields": {
+      "orden": 12,
+      "tarea": 4,
+      "empleado": 5,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 13,
+    "fields": {
+      "orden": 13,
+      "tarea": 6,
+      "empleado": 1,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 14,
+    "fields": {
+      "orden": 14,
+      "tarea": 6,
+      "empleado": 2,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 15,
+    "fields": {
+      "orden": 15,
+      "tarea": 5,
+      "empleado": 2,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 16,
+    "fields": {
+      "orden": 16,
+      "tarea": 3,
+      "empleado": 4,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 17,
+    "fields": {
+      "orden": 17,
+      "tarea": 3,
+      "empleado": 3,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 18,
+    "fields": {
+      "orden": 18,
+      "tarea": 5,
+      "empleado": 2,
+      "inicio": "2022-12-03T17:23:43.860Z",
+      "fin": "2022-12-03T17:23:43.860Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 19,
+    "fields": {
+      "orden": 19,
+      "tarea": 3,
+      "empleado": 3,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 20,
+    "fields": {
+      "orden": 20,
+      "tarea": 4,
+      "empleado": 5,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 21,
+    "fields": {
+      "orden": 21,
+      "tarea": 2,
+      "empleado": 3,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 22,
+    "fields": {
+      "orden": 22,
+      "tarea": 3,
+      "empleado": 3,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 23,
+    "fields": {
+      "orden": 23,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 24,
+    "fields": {
+      "orden": 24,
+      "tarea": 3,
+      "empleado": 4,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 25,
+    "fields": {
+      "orden": 25,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 26,
+    "fields": {
+      "orden": 26,
+      "tarea": 4,
+      "empleado": 5,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 27,
+    "fields": {
+      "orden": 27,
+      "tarea": 5,
+      "empleado": 1,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 28,
+    "fields": {
+      "orden": 28,
+      "tarea": 3,
+      "empleado": 4,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 29,
+    "fields": {
+      "orden": 29,
+      "tarea": 6,
+      "empleado": 5,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 30,
+    "fields": {
+      "orden": 30,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 31,
+    "fields": {
+      "orden": 31,
+      "tarea": 3,
+      "empleado": 3,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 32,
+    "fields": {
+      "orden": 32,
+      "tarea": 3,
+      "empleado": 3,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 33,
+    "fields": {
+      "orden": 33,
+      "tarea": 5,
+      "empleado": 2,
+      "inicio": "2022-12-03T18:04:29.896Z",
+      "fin": "2022-12-03T18:04:29.896Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "material": 2,
+      "orden": 4,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 2,
+    "fields": {
+      "material": 4,
+      "orden": 6,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 3,
+    "fields": {
+      "material": 2,
+      "orden": 8,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 4,
+    "fields": {
+      "material": 2,
+      "orden": 9,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 5,
+    "fields": {
+      "material": 2,
+      "orden": 11,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 6,
+    "fields": {
+      "material": 2,
+      "orden": 12,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 7,
+    "fields": {
+      "material": 2,
+      "orden": 20,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 8,
+    "fields": {
+      "material": 2,
+      "orden": 23,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 9,
+    "fields": {
+      "material": 3,
+      "orden": 25,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 10,
+    "fields": {
+      "material": 1,
+      "orden": 26,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 11,
+    "fields": {
+      "material": 2,
+      "orden": 30,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "repuesto": 5,
+      "orden": 1,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 2,
+    "fields": {
+      "repuesto": 2,
+      "orden": 5,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 3,
+    "fields": {
+      "repuesto": 6,
+      "orden": 9,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 4,
+    "fields": {
+      "repuesto": 5,
+      "orden": 13,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 5,
+    "fields": {
+      "repuesto": 5,
+      "orden": 14,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 6,
+    "fields": {
+      "repuesto": 6,
+      "orden": 15,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 7,
+    "fields": {
+      "repuesto": 6,
+      "orden": 18,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 8,
+    "fields": {
+      "repuesto": 2,
+      "orden": 27,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 9,
+    "fields": {
+      "repuesto": 5,
+      "orden": 29,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 10,
+    "fields": {
+      "repuesto": 3,
+      "orden": 33,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 1,
+    "fields": {
+      "cliente": 3,
+      "vehiculo": 3,
+      "detalles": "",
+      "fecha": "2021-12-31T16:28:13.706Z",
+      "validez": 60,
+      "orden": 1,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [6]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 2,
+    "fields": {
+      "cliente": 2,
+      "vehiculo": 2,
+      "detalles": "",
+      "fecha": "2022-12-03T17:24:45.589Z",
+      "validez": 60,
+      "orden": 2,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 3,
+    "fields": {
+      "cliente": 3,
+      "vehiculo": 3,
+      "detalles": "",
+      "fecha": "2022-12-03T17:25:05.027Z",
+      "validez": 60,
+      "orden": 3,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 4,
+    "fields": {
+      "cliente": 4,
+      "vehiculo": 4,
+      "detalles": "",
+      "fecha": "2022-12-03T17:25:28.669Z",
+      "validez": 60,
+      "orden": 4,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 5,
+    "fields": {
+      "cliente": 5,
+      "vehiculo": 5,
+      "detalles": "",
+      "fecha": "2022-12-03T17:25:45.981Z",
+      "validez": 60,
+      "orden": 5,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [6]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 6,
+    "fields": {
+      "cliente": 7,
+      "vehiculo": 7,
+      "detalles": "",
+      "fecha": "2022-12-03T17:26:02.428Z",
+      "validez": 60,
+      "orden": 6,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 7,
+    "fields": {
+      "cliente": 8,
+      "vehiculo": 8,
+      "detalles": "",
+      "fecha": "2022-12-03T17:26:17.590Z",
+      "validez": 60,
+      "orden": 7,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 8,
+    "fields": {
+      "cliente": 9,
+      "vehiculo": 9,
+      "detalles": "",
+      "fecha": "2022-12-03T17:26:34.451Z",
+      "validez": 60,
+      "orden": 8,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 9,
+    "fields": {
+      "cliente": 10,
+      "vehiculo": 10,
+      "detalles": "",
+      "fecha": "2022-12-03T17:26:50.363Z",
+      "validez": 60,
+      "orden": 9,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [1]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 10,
+    "fields": {
+      "cliente": 11,
+      "vehiculo": 11,
+      "detalles": "",
+      "fecha": "2022-12-03T17:27:03.952Z",
+      "validez": 60,
+      "orden": 10,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 11,
+    "fields": {
+      "cliente": 17,
+      "vehiculo": 17,
+      "detalles": "",
+      "fecha": "2022-12-03T17:27:23.745Z",
+      "validez": 60,
+      "orden": 11,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 12,
+    "fields": {
+      "cliente": 18,
+      "vehiculo": 18,
+      "detalles": "",
+      "fecha": "2022-12-03T17:27:40.842Z",
+      "validez": 60,
+      "orden": 12,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 13,
+    "fields": {
+      "cliente": 19,
+      "vehiculo": 19,
+      "detalles": "",
+      "fecha": "2022-12-03T17:27:59.007Z",
+      "validez": 60,
+      "orden": 13,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [6]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 14,
+    "fields": {
+      "cliente": 20,
+      "vehiculo": 20,
+      "detalles": "",
+      "fecha": "2022-12-03T17:28:26.040Z",
+      "validez": 60,
+      "orden": 14,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [6]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 15,
+    "fields": {
+      "cliente": 21,
+      "vehiculo": 21,
+      "detalles": "",
+      "fecha": "2022-12-03T17:28:42.924Z",
+      "validez": 60,
+      "orden": 15,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [5]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 16,
+    "fields": {
+      "cliente": 55,
+      "vehiculo": 55,
+      "detalles": "",
+      "fecha": "2022-12-03T17:29:00.111Z",
+      "validez": 60,
+      "orden": 16,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 17,
+    "fields": {
+      "cliente": 40,
+      "vehiculo": 40,
+      "detalles": "",
+      "fecha": "2022-12-03T17:29:23.940Z",
+      "validez": 60,
+      "orden": 17,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 18,
+    "fields": {
+      "cliente": 41,
+      "vehiculo": 41,
+      "detalles": "",
+      "fecha": "2022-12-03T17:29:38.472Z",
+      "validez": 60,
+      "orden": 18,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [5]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 19,
+    "fields": {
+      "cliente": 100,
+      "vehiculo": 100,
+      "detalles": "",
+      "fecha": "2022-12-03T18:04:49.686Z",
+      "validez": 60,
+      "orden": 19,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 20,
+    "fields": {
+      "cliente": 99,
+      "vehiculo": 99,
+      "detalles": "",
+      "fecha": "2022-12-03T18:08:58.927Z",
+      "validez": 60,
+      "orden": 20,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 21,
+    "fields": {
+      "cliente": 2,
+      "vehiculo": 2,
+      "detalles": "",
+      "fecha": "2022-12-03T18:09:16.079Z",
+      "validez": 60,
+      "orden": 21,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [2]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 22,
+    "fields": {
+      "cliente": 79,
+      "vehiculo": 79,
+      "detalles": "",
+      "fecha": "2022-12-03T18:09:32.198Z",
+      "validez": 60,
+      "orden": 22,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 23,
+    "fields": {
+      "cliente": 98,
+      "vehiculo": 98,
+      "detalles": "",
+      "fecha": "2022-12-03T18:09:47.542Z",
+      "validez": 60,
+      "orden": 23,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 24,
+    "fields": {
+      "cliente": 96,
+      "vehiculo": 96,
+      "detalles": "",
+      "fecha": "2022-12-03T18:10:00.214Z",
+      "validez": 60,
+      "orden": 24,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 25,
+    "fields": {
+      "cliente": 6,
+      "vehiculo": 6,
+      "detalles": "",
+      "fecha": "2022-12-03T18:10:15.190Z",
+      "validez": 60,
+      "orden": 25,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 26,
+    "fields": {
+      "cliente": 100,
+      "vehiculo": 100,
+      "detalles": "",
+      "fecha": "2022-12-03T18:13:19.566Z",
+      "validez": 60,
+      "orden": 26,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 27,
+    "fields": {
+      "cliente": 11,
+      "vehiculo": 11,
+      "detalles": "",
+      "fecha": "2022-12-03T18:13:52.281Z",
+      "validez": 60,
+      "orden": 27,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [5]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 28,
+    "fields": {
+      "cliente": 58,
+      "vehiculo": 58,
+      "detalles": "",
+      "fecha": "2022-12-03T18:14:17.989Z",
+      "validez": 60,
+      "orden": 28,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 29,
+    "fields": {
+      "cliente": 62,
+      "vehiculo": 62,
+      "detalles": "",
+      "fecha": "2022-12-03T18:14:33.910Z",
+      "validez": 60,
+      "orden": 29,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [6]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 30,
+    "fields": {
+      "cliente": 13,
+      "vehiculo": 13,
+      "detalles": "",
+      "fecha": "2022-12-03T18:14:47.973Z",
+      "validez": 60,
+      "orden": 30,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [4]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 31,
+    "fields": {
+      "cliente": 80,
+      "vehiculo": 80,
+      "detalles": "",
+      "fecha": "2022-12-03T18:15:01.610Z",
+      "validez": 60,
+      "orden": 31,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 32,
+    "fields": {
+      "cliente": 9,
+      "vehiculo": 9,
+      "detalles": "",
+      "fecha": "2022-12-03T18:15:19.467Z",
+      "validez": 60,
+      "orden": 32,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [3]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 33,
+    "fields": {
+      "cliente": 51,
+      "vehiculo": 51,
+      "detalles": "",
+      "fecha": "2022-12-03T18:15:37.236Z",
+      "validez": 60,
+      "orden": 33,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [5]
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 1,
+    "fields": { "material": 2, "presupuesto": 4, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 2,
+    "fields": { "material": 4, "presupuesto": 6, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 3,
+    "fields": { "material": 2, "presupuesto": 8, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 4,
+    "fields": { "material": 2, "presupuesto": 9, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 5,
+    "fields": { "material": 2, "presupuesto": 11, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 6,
+    "fields": { "material": 2, "presupuesto": 12, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 7,
+    "fields": { "material": 2, "presupuesto": 20, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 8,
+    "fields": { "material": 2, "presupuesto": 23, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 9,
+    "fields": { "material": 3, "presupuesto": 25, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 10,
+    "fields": { "material": 1, "presupuesto": 26, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 11,
+    "fields": { "material": 2, "presupuesto": 30, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 1,
+    "fields": { "repuesto": 5, "presupuesto": 1, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 2,
+    "fields": { "repuesto": 2, "presupuesto": 5, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 3,
+    "fields": { "repuesto": 6, "presupuesto": 9, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 4,
+    "fields": { "repuesto": 5, "presupuesto": 13, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 5,
+    "fields": { "repuesto": 5, "presupuesto": 14, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 6,
+    "fields": { "repuesto": 6, "presupuesto": 15, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 7,
+    "fields": { "repuesto": 6, "presupuesto": 18, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 8,
+    "fields": { "repuesto": 2, "presupuesto": 27, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 9,
+    "fields": { "repuesto": 5, "presupuesto": 29, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 10,
+    "fields": { "repuesto": 3, "presupuesto": 33, "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 1,
+    "fields": {
+      "orden": 2,
+      "fecha": "2022-12-03T17:30:55.887Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 2,
+    "fields": {
+      "orden": 3,
+      "fecha": "2022-12-03T17:31:00.815Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 3,
+    "fields": {
+      "orden": 7,
+      "fecha": "2022-12-03T17:31:09.606Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 4,
+    "fields": {
+      "orden": 10,
+      "fecha": "2022-12-03T17:31:19.438Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 5,
+    "fields": {
+      "orden": 16,
+      "fecha": "2022-12-03T17:31:27.710Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 6,
+    "fields": {
+      "orden": 17,
+      "fecha": "2022-12-03T17:31:33.541Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 7,
+    "fields": {
+      "orden": 19,
+      "fecha": "2022-12-03T18:16:48.189Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 8,
+    "fields": {
+      "orden": 24,
+      "fecha": "2022-12-03T18:16:55.547Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 9,
+    "fields": {
+      "orden": 28,
+      "fecha": "2022-12-03T18:17:02.049Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 10,
+    "fields": {
+      "orden": 21,
+      "fecha": "2022-12-03T18:17:09.485Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 11,
+    "fields": {
+      "orden": 31,
+      "fecha": "2022-12-03T18:17:17.156Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 12,
+    "fields": {
+      "orden": 32,
+      "fecha": "2022-12-03T18:17:22.492Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 13,
+    "fields": {
+      "orden": 22,
+      "fecha": "2022-12-03T18:17:31.860Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 1,
+    "fields": { "planilla": 1, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 2,
+    "fields": { "planilla": 2, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 3,
+    "fields": { "planilla": 3, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 4,
+    "fields": { "planilla": 4, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 5,
+    "fields": { "planilla": 5, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 6,
+    "fields": { "planilla": 6, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 7,
+    "fields": { "planilla": 7, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 8,
+    "fields": { "planilla": 8, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 9,
+    "fields": { "planilla": 9, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 10,
+    "fields": { "planilla": 10, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 11,
+    "fields": { "planilla": 11, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 12,
+    "fields": { "planilla": 12, "formula": "1", "cantidad": 1 }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 13,
+    "fields": { "planilla": 13, "formula": "1", "cantidad": 1 }
+  }
+]

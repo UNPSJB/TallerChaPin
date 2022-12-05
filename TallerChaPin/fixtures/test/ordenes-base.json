@@ -1,0 +1,88 @@
+[
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "turno": "2022-01-03T13:28:00Z",
+      "ingreso": "2022-01-03T13:28:00Z",
+      "egreso": "2022-01-08T13:35:00Z",
+      "estado": 6
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "orden": 1,
+      "tarea": 6,
+      "empleado": 1,
+      "inicio": "2022-01-03T16:34:04.918Z",
+      "fin": "2022-01-07T16:34:04.918Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "repuesto": 5,
+      "orden": 1,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 1,
+    "fields": {
+      "cliente": 3,
+      "vehiculo": 3,
+      "detalles": "",
+      "fecha": "2021-12-31T16:28:13.706Z",
+      "validez": 60,
+      "orden": 1,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [6]
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 1,
+    "fields": { "repuesto": 5, "presupuesto": 1, "cantidad": 1 }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 1,
+    "fields": { "orden": 1, "fecha": "2022-01-08", "estado": 3, "cuotas": 1 }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 1,
+    "fields": {
+      "factura": 1,
+      "descripcion": "RepuestoOrdenDeTrabajo object (1)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 2,
+    "fields": {
+      "factura": 1,
+      "descripcion": "DetalleOrdenDeTrabajo object (1)",
+      "precio": "4688.00"
+    }
+  },
+  {
+    "model": "facturas.pago",
+    "pk": 1,
+    "fields": {
+      "factura": 1,
+      "fecha": "2022-01-08",
+      "monto": "4688.00",
+      "tipo": 0
+    }
+  }
+]

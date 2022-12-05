@@ -20,6 +20,7 @@
     <tbody>
       {% for presupuesto in object_list %}
       <tr>
+        <td>{{presupuesto.fecha}} </td>
         <td>{{ presupuesto.cliente }}</td>
         <td>{{ presupuesto.vehiculo }}</td>
         <td>{{ presupuesto.validez}}</td>

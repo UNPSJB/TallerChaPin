@@ -210,6 +210,7 @@ class PresupuestoRepuestoFormSetHelper(FormHelper):
 
 class PresupuestoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ('fecha', 'Fecha'),
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
         ("validez","Validez (días)"),
@@ -217,6 +218,7 @@ class PresupuestoFiltrosForm(FiltrosForm):
         ("ampliado","Ampliado")
     ]
     ATTR_CHOICES = [
+        ('fecha', 'Fecha'),
         ("cliente", "Cliente"),
         ("vehiculo", "Vehículo"),
         ("validez","Validez (días)"),

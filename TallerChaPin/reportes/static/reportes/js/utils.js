@@ -1,7 +1,38 @@
-// import colorLib from '@kurkle/color';
-// import { DateTime } from 'luxon';
-// import 'chartjs-adapter-luxon';
-// import { valueOrDefault } from '../../dist/helpers.mjs';
+
+export function loadTable(head, rows){
+  const table_head = document.getElementById('reportes-table-head')
+  table_head.innerHTML = ''
+  for (let column_header of head) {
+    const th = document.createElement('th')
+    th.innerText = column_header
+    table_head.appendChild(th)
+  }
+
+  const table_body = document.getElementById('reportes-table-body')
+  table_body.innerHTML = ''
+  if (rows.length > 0) {
+    for (let row of rows) {
+      const tr = document.createElement('tr')
+      table_body.appendChild(tr)
+      for (let value of row) {
+        const td = document.createElement('td')
+        td.innerText = value
+        tr.appendChild(td)
+      }
+    } 
+  } else {
+    const tr = document.createElement('tr')
+    table_body.appendChild(tr)
+    for (let i = 0; i < head.length; i++) {
+      const td = document.createElement('td')
+      td.innerText = 'n/a'
+      tr.appendChild(td)
+    }
+  }
+
+
+  console.log({head, rows})
+}
 
 var _seed = Date.now();
 

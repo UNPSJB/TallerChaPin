@@ -1,3 +1,4 @@
+import { loadTable } from "./utils.js"
 
 // Marco el radio button 'tareas taller' como predeterminado
 const radio_buttons = document.querySelectorAll('.radio_tipo_tarea')
@@ -32,6 +33,23 @@ const data =
     labels: [], 
     cantidad: [] 
   }
+}
+
+const actualizarTabla = (data) => {
+
+  console.log(data)
+  const taller = data.data_taller
+  const pintura = data.data_pintura
+
+  const rows = []
+  for (let d in taller) {
+    rows.push(['Taller', taller[d].nombre, taller[d].cantidad, `${taller[d].promedio} hs`])
+  }
+  for (let d in pintura) {
+    rows.push(['Pintura', pintura[d].nombre, pintura[d].cantidad, `${pintura[d].promedio} hs`])
+  }
+
+  loadTable(['Tipo', 'Empleado', 'Tareas realizadas', 'Promedio'], rows)
 }
 
 let chart
@@ -100,5 +118,6 @@ window.addEventListener('load', () => {
       }
       
       cargarDatos('taller')
+      actualizarTabla(r)
     })
 })

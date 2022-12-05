@@ -1,3 +1,4 @@
+import { loadTable } from "./utils.js"
 let chart
 
 // Marco el radio button 'Diario' como predeterminado
@@ -36,15 +37,29 @@ const deshabilitar_submit = (e) => {
 input_desde.addEventListener('change', deshabilitar_submit)
 input_hasta.addEventListener('change', deshabilitar_submit)
 
+
+const actualizarTabla = (data) => {
+
+  console.log(data)
+
+  const rows = []
+  for (let d in data.labels) {
+    rows.push([data.labels[d], `$${data.facturado[d]}`, `$${data.pagado[d]}`])
+  }
+
+  console.log(rows)
+  loadTable(['Fecha', 'Facturación acumulada', 'Pagos acumulados'], rows)
+}
+
 const actualizarDatos = (temporalidad, desde, hasta) => {
   fetch(`get_facturacion/${temporalidad},${desde},${hasta}`)
   .then(r => r.json())
   .then(r => {
-    console.log(r)
     chart.data.datasets[0].data = r.facturado
     chart.data.datasets[1].data = r.pagado
     chart.data.labels = r.labels
     chart.update()
+    actualizarTabla(r)
   })
 }
 

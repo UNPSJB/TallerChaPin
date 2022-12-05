@@ -2,13 +2,19 @@
 {% load static %}
 
 {% block main %}
+<link rel="stylesheet" href="{% static 'reportes/css/styles_torta.css' %}" />
 <div>
     <h3>{{ titulo }}</h3>
 
-    <div id="container_torta">
-        <canvas id="torta-vehiculos" style="display: block; box-sizing: border-box; height: 800px; width: 800px;" width="800" height="800"></canvas>
-    </div>
+    <div class="container_data">
 
+        <div id="container_torta">
+            <canvas id="torta-vehiculos" style="display: block; box-sizing: border-box; height: 800px; width: 800px;" width="800" height="800"></canvas>
+        </div>
+        
+        {% include "./tabla_datos.html" %}
+    </div>
+        
     <form id="form_vehiculos" class="form_reportes">
         <fieldset class="fechas">
             <legend>Filtrar por fecha</legend>
@@ -28,6 +34,6 @@
 </div>
 {% block extrajs %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-<script src="{% static 'reportes/js/reporte_marcas_vehiculos.js' %}"></script>
+<script src="{% static 'reportes/js/reporte_marcas_vehiculos.js' %}" type="module"></script>
 {% endblock %}
 {% endblock %}

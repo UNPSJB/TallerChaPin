@@ -1,3 +1,17 @@
+import { loadTable } from "./utils.js"
+
+const actualizarTabla = (data) => {
+
+  console.log(data)
+
+  const rows = []
+  for (let d in data) {
+    rows.push([data[d].cantidad, `$${data[d].facturado}`, data[d].nombre, data[d].vip? 'Sí' : 'No'])
+  }
+
+  loadTable(['Órdenes', 'Facturado', 'Cliente', 'Vip'], rows)
+}
+
 let chart
 window.addEventListener('load', () => {
   // Se crea el gráfico pero sin datos cargados, solo para dejarlo configurado
@@ -82,5 +96,6 @@ window.addEventListener('load', () => {
       chart.data.datasets[1].data = data.clientes_vip
       chart.data.datasets[1].labels = labels.clientes_vip
       chart.update()      
+      actualizarTabla(r.d_clientes)
     })
 })

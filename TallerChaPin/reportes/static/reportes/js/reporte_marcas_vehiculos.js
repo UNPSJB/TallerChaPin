@@ -1,10 +1,13 @@
-form = document.getElementById('form_vehiculos')
-input_desde = document.getElementById('fecha_desde')
-input_hasta = document.getElementById('fecha_hasta')
-submit_button = document.getElementById('submit_filtro')
-mensaje_error = document.getElementById('error-grafico-vehiculos')
+import {loadTable} from "./utils.js"
 
-deshabilitar_submit = (e) => {
+
+const form = document.getElementById('form_vehiculos')
+const input_desde = document.getElementById('fecha_desde')
+const input_hasta = document.getElementById('fecha_hasta')
+const submit_button = document.getElementById('submit_filtro')
+const mensaje_error = document.getElementById('error-grafico-vehiculos')
+
+const deshabilitar_submit = (e) => {
   const desde = new Date(input_desde.value)
   const hasta = new Date(input_hasta.value)
 
@@ -23,7 +26,17 @@ deshabilitar_submit = (e) => {
 input_desde.addEventListener('change', deshabilitar_submit)
 input_hasta.addEventListener('change', deshabilitar_submit)
 
-actualizarDatos = (desde, hasta) => {
+const actualizarTabla = (data) => {
+
+  const rows = []
+  for (let d in data) {
+    rows.push([d, data[d]])
+  }
+
+  loadTable(['Marca', 'Cantidad'], rows)
+}
+
+const actualizarDatos = (desde, hasta) => {
   fetch(`get_marcas_vehiculos/${desde},${hasta}`)
     .then(r => r.json())
     .then(r => {
@@ -36,6 +49,7 @@ actualizarDatos = (desde, hasta) => {
         window.myCharts.data.labels = Object.keys(r.vehiculos)
       }
       window.myCharts.update()
+      actualizarTabla(r.vehiculos)
     })
 }
 
@@ -44,10 +58,10 @@ form.addEventListener('submit', (e) => {
   actualizarDatos(input_desde.value, input_hasta.value)
 })
 
-date_hoy = new Date()
-string_hoy = new Date().toISOString().slice(0, 10)
-date_30_dias = new Date().setDate(date_hoy.getDate() - 30)
-string_30_dias = new Date(date_30_dias).toISOString().slice(0, 10)
+const date_hoy = new Date()
+const string_hoy = new Date().toISOString().slice(0, 10)
+const date_30_dias = new Date().setDate(date_hoy.getDate() - 30)
+const string_30_dias = new Date(date_30_dias).toISOString().slice(0, 10)
 
 window.addEventListener('load', () => {
 

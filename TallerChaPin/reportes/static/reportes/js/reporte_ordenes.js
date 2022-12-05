@@ -1,3 +1,4 @@
+import { loadTable } from "./utils.js"
 let chart
  
 const form = document.getElementById('form_filtros')
@@ -33,7 +34,17 @@ const linea_media = (media, cantidad) =>
   return lista
 }
 
+const actualizarTabla = (data) => {
 
+  console.log(data)
+
+  const rows = []
+  for (let d in data.labels) {
+    rows.push([data.labels[d], `${data.duracion_orden[d]} hs`])
+  }
+
+  loadTable(['Orden', 'Duración'], rows)
+}
 
 const actualizarDatos = (desde, hasta) => {
   fetch(`get_ordenes/${desde},${hasta}`)
@@ -44,6 +55,7 @@ const actualizarDatos = (desde, hasta) => {
     chart.data.datasets[1].data = linea_media(r.media, r.labels.length)
     chart.data.labels = r.labels
     chart.update()
+    actualizarTabla(r)
   })
 }
  

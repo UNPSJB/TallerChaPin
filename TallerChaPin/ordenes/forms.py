@@ -309,8 +309,7 @@ class OrdenForm(forms.ModelForm):
 
         # }
         widgets = {
-            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
-
+            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M'), 'value': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
         }
 
     def save(self, tareas, repuestos, materiales):
@@ -408,7 +407,7 @@ def RegistrarIngresoVehiculoForm(model=None):
             exclude = ["egreso", "estado", "turno", "materiales", "repuestos"]
 
             widgets = {
-                "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
+                "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M'), 'value': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
             }
 
         def save(self, commit=True):
@@ -452,7 +451,7 @@ def RegistrarEgresoVehiculoForm(model=None):
             exclude = ["ingreso", "estado", "turno", "materiales", "repuestos"]
 
             widgets = {
-                "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
+                "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M'), 'value': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
             }
 
         def save(self, commit=True):

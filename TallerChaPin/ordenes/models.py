@@ -35,7 +35,8 @@ class NoEntregoVehiculoException(Exception):
         self.estado = estado
 
 def fecha_es_futura(fecha):
-    if fecha < timezone.now():
+    ahora = timezone.now() - timedelta(hours=4)
+    if fecha < ahora:
         raise ValidationError('Fecha no válida')
 class OrdenDeTrabajo(models.Model):
     INICIAR_TAREA = 0

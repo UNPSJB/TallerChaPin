@@ -31,16 +31,20 @@
       <!-- Desplegable de presupuestos -->
       <div class="collapse" id="presupuestos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.ordenes.view_presupuesto %}
           <li>
             <a href="{% url 'listarPresupuestos' %}" class="link-dark rounded"
               >Listar presupuestos</a
             >
           </li>
+          {% endif %}
+          {% if perms.ordenes.create_presupuesto %}
           <li>
             <a href="{% url 'crearPresupuesto' %}" class="link-dark rounded"
               >Crear presupuesto</a
             >
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>
@@ -57,16 +61,20 @@
       <!-- Desplegable de turnos-->
       <div class="collapse" id="turnos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.ordenes.view_ordenturno %}
           <li>
             <a href="{% url 'calendarioTurnos' %}" class="link-dark rounded"
               >Calendario de turnos</a
             >
           </li>
+          {% endif %}
+          {% if perms.ordenes.view_ordendetrabajo %}
           <li>
             <a href="{% url 'listarOrdenes' %}" class="link-dark rounded"
               >Listar Órdenes de trabajo </a
             >
           </li>
+          {% endif %}
           {% if perms.ordenes.can_registrar_ingreso %}
           <li>
             <a
@@ -76,6 +84,7 @@
             >
           </li>
           {% endif %}
+          {% if perms.ordenes.can_registrar_egreso %}
           <li>
             <a
               href="{% url 'registrarEgresoVehiculo' %}"
@@ -83,6 +92,7 @@
               >Registrar entrega de vehiculo</a
             >
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>

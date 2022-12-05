@@ -31,21 +31,27 @@
       <!-- Desplegable de pagos -->
       <div class="collapse" id="pagos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.ordenes.view_ordendetrabajo %}
           <li>
             <a href="{% url 'listarOrdenes' %}" class="link-dark rounded"
               >Facturar Órdenes
             </a>
           </li>
+          {% endif %}
+          {% if perms.facturas.view_factura %}
           <li>
             <a href="{% url 'listarFacturas' %}" class="link-dark rounded"
               >Listado de facturas</a
             >
           </li>
+          {% endif %}
+          {% if perms.facturas.view_pago %}
           <li>
             <a href="{% url 'listarPagos' %}" class="link-dark rounded"
               >Listado de pagos</a
             >
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>
@@ -60,15 +66,17 @@
       >
         Clientes
       </button>
-
+      
       <!-- Desplegable de clientes -->
       <div class="collapse" id="clientes-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% if perms.taller.view_cliente %}
           <li>
             <a href="{% url 'listarClientes' %}" class="link-dark rounded"
               >Listado de clientes</a
             >
           </li>
+          {% endif %}
         </ul>
       </div>
     </li>

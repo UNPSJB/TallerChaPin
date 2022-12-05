@@ -153,22 +153,26 @@
             <div class="ibox-content">
               <div>
                 <div class="table-responsive">
-                  <table class="table table-hover">
+                  <table class="table">
                     <thead>
                       <tr>
                         <th scope="col">Tarea</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Observaciones</th>
-                        <th scope="col">Empleado asignado</th>
+                        <th scope="col">Empleado</th>
+                        <th scope="col">Inicio</th>
+                        <th scope="col">Fin</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for detalle in object.detalles.all %}
-                        <tr class="bg-transition">
+                        <tr class="{% if detalle.fin and detalle.exitosa %} table-success {% elif not detalle.exitosa%} table-danger {% endif %}">
                           <td>{{detalle.tarea.nombre}}</td>
                           <td>{{detalle.tarea.tipo}}</td>
                           <td>{{detalle.observaciones|default_if_none:""}}</td>
                           <td>{{detalle.empleado|default_if_none:"S/Asignar"}}</td>
+                          <td>{% firstof detalle.inicio '' %}</td>
+                          <td>{% firstof detalle.fin '' %}</td>
                         </tr>
                       {% endfor %}
                     </tbody>
@@ -200,6 +204,7 @@
                             <td>No hay repuestos</td>
                             <td>n/a</td>
                             <td>n/a</td>
+                            <td>n/a</td>
                           </tr>
                         {% endfor %}
                       </tbody>
@@ -228,6 +233,7 @@
                         {% empty %}
                           <tr>
                             <td>No hay materiales </td>
+                            <td>n/a</td>
                             <td>n/a</td>
                             <td>n/a</td>
                           </tr>

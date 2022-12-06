@@ -243,6 +243,7 @@ def confirmar_ampliacion(request, pk):
     orden = presupuesto.orden
 
     orden.aplicar_ampliacion(presupuesto)
+    orden.actualizar_estado(orden.REANUDAR_ORDEN)
 
     messages.add_message(request, messages.SUCCESS, 'La ampliación se ha aplicado correctamente.')
     return redirect ('detallesOrden', presupuesto.orden.pk)
@@ -471,8 +472,13 @@ def finalizar_tarea(request):
     form = FinalizarTareaForm(request.POST)
     if form.is_valid():
         form.finalizar()
-        messages.add_message(request, messages.SUCCESS,
-                             'La tarea finalizó exitosamente')
+        exitosa = form.cleaned_data['exitosa'] == 1
+        if exitosa:
+            messages.add_message(request, messages.SUCCESS,
+                                'La tarea finalizó exitosamente')
+        else: 
+            messages.add_message(request, messages.WARNING, 
+                                'La tarea finalizó de forma no exitosa')
     else:
         messages.add_message(request, messages.ERROR, form.errors) 
     return redirect('listarDetallesOrden')

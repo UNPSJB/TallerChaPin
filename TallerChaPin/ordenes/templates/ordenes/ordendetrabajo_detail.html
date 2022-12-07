@@ -68,7 +68,7 @@
               </a>
             {% endif %}
             {% endif %}
-            {% if perms.facturas.create_factura %}
+            {% if perms.facturas.add_factura %}
             {% if object.puede_facturarse %}
               <a href="{% url 'crearFactura' object.pk %}" class="btn btn-success m-1 w-100">
                 <i class="fas fa-check-circle"></i>
@@ -98,7 +98,7 @@
               {% endif %}
             {% endif %}
             
-            {% if perms.ordenes.create_presupuesto %}
+            {% if perms.ordenes.add_presupuesto %}
             {% if object.puede_ampliarse %}
               <a href="{% url 'ampliarPresupuesto' object.get_ultimo_presupuesto.pk %}" class="btn btn-primary m-1 w-100">
                 <i class="fa-solid fa-file-circle-plus"></i>
@@ -106,7 +106,7 @@
               </a>
             {% endif %}
             {% endif %}
-            {% if perms.ordenes.create_presupuesto %}
+            {% if perms.ordenes.add_presupuesto %}
             {% if object.puede_ingresar_vehiculo %}
               <a href="{% url 'registrarIngresoVehiculo' object.pk %}" class="btn btn-primary m-1 w-100">
                 <i class="fa-solid fa-car"></i>

@@ -38,7 +38,7 @@
             >
           </li>
           {% endif %}
-          {% if perms.ordenes.create_presupuesto %}
+          {% if perms.ordenes.add_presupuesto %}
           <li>
             <a href="{% url 'crearPresupuesto' %}" class="link-dark rounded"
               >Crear presupuesto</a

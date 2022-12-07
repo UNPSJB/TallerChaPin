@@ -20,7 +20,7 @@
       </h2>
 
       <div class="row mt-4 d-flex justify-content-evenly align-items-center">
-        {% if perms.taller.create_cliente %}
+        {% if perms.taller.add_cliente %}
         <a href="{% url 'crearCliente' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-user"></i> Registrar cliente</h2>
           <p>
@@ -28,7 +28,7 @@
           </p>
         </a>
         {% endif %}
-        {% if perms.taller.create_vehiculo %}
+        {% if perms.taller.add_vehiculo %}
         <a href="{% url 'crearVehiculo' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-car"></i> Registrar vehículo</h2>
           <p>
@@ -36,7 +36,7 @@
           </p>
         </a>
         {% endif %}
-        {% if perms.taller.create_material %}
+        {% if perms.taller.add_material %}
         <a href="{% url 'crearMaterial' %}" class="col-md-3 shadow-lg acceso">
           <h2><i class="fas fa-box-open"></i> Registrar material</h2>
           <p>

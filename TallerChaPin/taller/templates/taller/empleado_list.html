@@ -24,6 +24,7 @@
         <td>{{ empleado.apellido }}</td> 
         <td>{{ empleado.legajo}}</td>
         <td>{{ empleado.cuil }}</td>
+        <td>{{ empleado.get_grupo }}</td>
         <td>
           {% if perms.taller.change_empleado %}
           <a href="{% url 'modificarEmpleado' empleado.pk %}" class= "btn-modificar btn-listado">

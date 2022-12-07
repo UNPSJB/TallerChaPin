@@ -49,7 +49,7 @@ def template_facturas(request):
 def template_listados(request):
     return render(request, 'template_listados_home.html', {"title": "Visualización de listados", "ayuda": "home.html#listados"})
 
-@permission_required('content_types.can_view_reportes')
+@permission_required('contenttypes.can_view_reportes')
 def template_reportes(request):
     return render(request, 'template_reportes_home.html', {"title": "Visualización de Reportes", "ayuda": "reportes.html"})
 

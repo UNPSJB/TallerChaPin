@@ -71,7 +71,7 @@
       <!-- Desplegable de tareas -->
       <div class="collapse" id="tareas-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          {% if perms.taller.create_tarea %}
+          {% if perms.taller.add_tarea %}
           <li>
             <a href="{% url 'crearTarea' %}" class="link-dark rounded">Registrar una tarea</a>
           </li>
@@ -81,7 +81,7 @@
             <a href="{% url 'listarTareas' %}" class="link-dark rounded">Listar tareas</a>
           </li>
           {% endif %}
-          {% if perms.taller.create_tipotarea %}
+          {% if perms.taller.add_tipotarea %}
           <li>
             <a href="{% url 'crearTipoTarea' %}" class="link-dark rounded">Registrar un tipo de tarea</a>
           </li>
@@ -109,7 +109,7 @@
       <!-- Desplegable de materiales -->
       <div class="collapse" id="materiales-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          {% if perms.taller.create_tipomaterial %}
+          {% if perms.taller.add_tipomaterial %}
           <li>            
             <a href="{% url 'crearTipoMaterial' %}" class="link-dark rounded"
               >Registrar un tipo de material</a>
@@ -187,7 +187,7 @@
       <!-- Desplegable de modelos -->
       <div class="collapse" id="modelos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          {% if perms.taller.create_modelo %}
+          {% if perms.taller.add_modelo %}
           <li>
             <a href="{% url 'crearModelo' %}" class="link-dark rounded"
               >Registrar un modelo</a
@@ -219,7 +219,7 @@
       <!-- Desplegable de marcas -->
       <div class="collapse" id="marcas-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          {% if perms.taller.create_marca %}
+          {% if perms.taller.add_marca %}
           <li>
             <a href="{% url 'crearMarca' %}" class="link-dark rounded"
               >Registrar una marca</a

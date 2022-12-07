@@ -348,6 +348,11 @@ class OrdenDeTrabajo(models.Model):
         tareas_presupuesto = presupuesto.tareas.all()
         detalles_orden = self.detalles.all()
 
+        # Elimino las tareas no exitosas
+        for d in detalles_orden:
+            if not d.exitosa:
+                d.delete()
+
         # De las tareas del presupuesto, agrego las que no existen
         for t in tareas_presupuesto:
             if t.pk not in detalles_orden.values_list('tarea', flat=True):

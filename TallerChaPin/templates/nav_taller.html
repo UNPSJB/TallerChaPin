@@ -46,15 +46,9 @@
     <ul class="navbar-nav sesion dropstart">
       <li class="nav-item dropdown active">
         <a class="nav-link text-light" href="#" id="dropDownSesion" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fas fa-user-circle"></i> Sesión
+          <i class="fas fa-user-circle"></i> {{user}} ({% firstof user.groups.first 'sin grupo' %})
         </a>
         <ul class="dropdown-menu text" aria-labelledby="dropDownSesion">
-                  {% if user.is_authenticated %}
-                      <li><span class="dropdown-item-text"><i class="fas fa-user"></i>
-                        {% if user.is_superuser %} Administrador  {% else %} {{ user.first_name }} {{ user.last_name }} {% endif %} |
-                        {% if user.groups.first is not None %} {{ user.groups.first }} {% else %} n/a {% endif %}</span></li>
-                  {% endif %}  
-          <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
         </ul>
       </li>

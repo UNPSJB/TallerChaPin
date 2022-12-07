@@ -19,6 +19,7 @@
   <ul class="list-unstyled ps-0">
     <!-- Pagos -->
     <li class="mb-1">
+      {% if perms.facturas.view_pago %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -29,6 +30,7 @@
       </button>
 
       <!-- Desplegable de pagos -->
+      
       <div class="collapse" id="pagos-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           {% if perms.ordenes.view_ordendetrabajo %}
@@ -54,10 +56,13 @@
           {% endif %}
         </ul>
       </div>
+      {% endif %}
     </li>
 
     <!-- Clientes -->
+    
     <li class="mb-1">
+      {% if perms.taller.view_cliente %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -68,6 +73,7 @@
       </button>
       
       <!-- Desplegable de clientes -->
+      
       <div class="collapse" id="clientes-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           {% if perms.taller.view_cliente %}
@@ -79,6 +85,8 @@
           {% endif %}
         </ul>
       </div>
+      
     </li>
+    {% endif %}
   </ul>
 </div>

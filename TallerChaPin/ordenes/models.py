@@ -35,7 +35,8 @@ class NoEntregoVehiculoException(Exception):
         self.estado = estado
 
 def fecha_es_futura(fecha):
-    if fecha < timezone.now():
+    ahora = timezone.now() - timedelta(hours=4)
+    if fecha < ahora:
         raise ValidationError('Fecha no válida')
 class OrdenDeTrabajo(models.Model):
     INICIAR_TAREA = 0
@@ -346,6 +347,11 @@ class OrdenDeTrabajo(models.Model):
     def aplicar_ampliacion(self, presupuesto):
         tareas_presupuesto = presupuesto.tareas.all()
         detalles_orden = self.detalles.all()
+
+        # Elimino las tareas no exitosas
+        for d in detalles_orden:
+            if not d.exitosa:
+                d.delete()
 
         # De las tareas del presupuesto, agrego las que no existen
         for t in tareas_presupuesto:

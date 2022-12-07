@@ -21,6 +21,7 @@
 
       <!-- Clientes -->
       <li class="mb-1">
+        {% if perms.taller.view_cliente %}
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
           data-bs-target="#clientes-collapse" aria-expanded="false">
           Clientes
@@ -36,10 +37,12 @@
             {% endif %}
           </ul>
         </div>
+        {% endif %}
       </li>
     
     <!-- Vehículos -->
     <li class="mb-1">
+      {% if perms.taller.view_vehiculo %}
       <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
         data-bs-target="#vehiculos-collapse" aria-expanded="false">
         Vehículos
@@ -55,10 +58,12 @@
         {% endif %}
         </ul>
       </div>
+      {% endif %}
     </li>
 
     <!-- Tareas -->
     <li class="mb-1">
+      {% if perms.taller.view_tarea %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -93,10 +98,12 @@
           {% endif %}
         </ul>
       </div>
+      {% endif %}
     </li>
 
     <!-- Materiales -->
     <li class="mb-1">
+      {% if perms.taller.view_material %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -128,10 +135,12 @@
           {% endif %}
         </ul>
       </div>
+      {% endif %}
     </li>
 
     <!-- Repuestos -->
     <li class="mb-1">
+      {% if perms.taller.view_repuesto %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -151,10 +160,12 @@
           {% endif %}
         </ul>
       </div>
+      {% endif %}
     </li>
 
    <!-- Empleados -->
    <li class="mb-1">
+    {% if perms.taller.view_empleado %}
     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
       data-bs-target="#empleados-collapse" aria-expanded="false">
       Empleados
@@ -171,10 +182,12 @@
         {% endif %}
       </ul>
     </div>
+    {% endif %}
     </li>
 
     <!-- Modelos -->
     <li class="mb-1">
+      {% if perms.taller.view_modelo %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -203,10 +216,12 @@
           {% endif %}
         </ul>
       </div>
+      {% endif %}
     </li>
 
     <!-- Marcas -->
     <li class="mb-1">
+      {% if perms.taller.view_marca %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -236,5 +251,6 @@
         </ul>
       </div>
     </li>
+    {% endif %}
   </ul>
 </div>

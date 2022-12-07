@@ -19,6 +19,7 @@
   <ul class="list-unstyled ps-0">
     <!-- Presupuestos -->
     <li class="mb-1">
+      {% if perms.ordenes.view_presupuesto %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -47,8 +48,10 @@
           {% endif %}
         </ul>
       </div>
+      {% endif %}
     </li>
     <li class="mb-1">
+      {% if perms.ordenes.view_turnoorden %}
       <button
         class="btn btn-toggle align-items-center rounded collapsed"
         data-bs-toggle="collapse"
@@ -96,5 +99,6 @@
         </ul>
       </div>
     </li>
+    {% endif %}
   </ul>
 </div>

@@ -766,6 +766,8 @@ class EmpleadoCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar empleado"
+        context['grupo'] = GrupoEmpleadoForm()
+        
         return context
     
     def form_valid(self, form):
@@ -778,16 +780,17 @@ class EmpleadoCreateView(CreateView):
 
     def post(self, *args, **kwargs):
         self.object = None
-        form = EmpleadoForm(self.request.POST)
-
-        if form.is_valid():
-            empleado = form.save()
-            messages.add_message(self.request, messages.SUCCESS,f'Empleado "{empleado.nombre}" registrado con exito')            
-            messages.add_message(self.request, messages.SUCCESS,f'Usuario "{empleado.usuario}" registrado con exito')
+        formEmpleado = self.get_form()
+        formGrupo = GrupoEmpleadoForm(self.request.POST)
+        if formEmpleado.is_valid() and formGrupo.is_valid():
+            empleado = formEmpleado.save()
+            grupo = formGrupo.cleaned_data.get('grupo')
+            e = formGrupo.save(grupo, empleado)
+            messages.add_message(self.request, messages.SUCCESS,f'Empleado "{empleado.nombre}" registrado con exito\nUsuario "{empleado.usuario}"\nGrupo "{e.get_grupo()}"')
             if 'guardar' in self.request.POST:
                 return redirect('listarEmpleados')
             return redirect('crearEmpleado')
-        return self.form_invalid(form=form)
+        return self.form_invalid(form=formEmpleado)
 
 
 class EmpleadoUpdateView(UpdateView):
@@ -806,7 +809,7 @@ class EmpleadoUpdateView(UpdateView):
 
     def form_invalid(self, form):
         messages.add_message(self.request, messages.ERROR, form.errors)
-        return super().form_invalid(form)  
+        return super().form_invalid(form)
 
 class EmpleadoDeleteView(DeleteView):
     model = Empleado
@@ -825,17 +828,17 @@ class EmpleadoListView(ListFilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de empleados"
-        context['registroEmpleadoForm'] = RegistroEmpleadoForm()
+        # context['registroEmpleadoForm'] = RegistroEmpleadoForm()
         return context
     
-    def post(self, *args, **kwargs):
-        form = RegistroEmpleadoForm(self.request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('listarEmpleados')
-        else:
-            messages.add_message(self.request, messages.WARNING, form.errors)
-            return redirect ('listarEmpleados')
+    # def post(self, *args, **kwargs):
+    #     form = RegistroEmpleadoForm(self.request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('listarEmpleados')
+    #     else:
+    #         messages.add_message(self.request, messages.WARNING, form.errors)
+    #         return redirect ('listarEmpleados')
 
 exportar_listado_empleados = lambda r: export_list(r, Empleado, EmpleadoFiltrosForm)
 
@@ -855,42 +858,42 @@ def asociar_tarea_empleado(request, pk):
 
     return render(request, 'taller/tarea_empleado_form.html', context)
 
-class RegistrarUsuarioCreateView(CreateView):
+# class RegistrarUsuarioCreateView(CreateView):
     
-    model = Empleado
-    form_class = RegistroEmpleadoForm
-    success_url = reverse_lazy('listarEmpleados')
+#     model = Empleado
+#     form_class = RegistroEmpleadoForm
+#     success_url = reverse_lazy('listarEmpleados')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['titulo'] = 'Asignar empleado a grupo'
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['titulo'] = 'Asignar empleado a grupo'
+#         return context
 
-    def get (self, *args, **kwargs):
-        pk = kwargs.get('pk')
-        form = self.get_form()
-        print(form)
-        try:
-            empleado = Empleado.objects.get(pk=pk)
-        except Empleado.DoesNotExist:
-            raise Http404('Empleado no existe')
-        if empleado.tiene_usuario():
-            messages.add_message(self.request, messages.WARNING,'Empleado ya ha sido registrado')
-            return redirect('listarEmpleados')
-        return super().get(*args,**kwargs)
+#     def get (self, *args, **kwargs):
+#         pk = kwargs.get('pk')
+#         form = self.get_form()
+#         print(form)
+#         try:
+#             empleado = Empleado.objects.get(pk=pk)
+#         except Empleado.DoesNotExist:
+#             raise Http404('Empleado no existe')
+#         if empleado.tiene_usuario():
+#             messages.add_message(self.request, messages.WARNING,'Empleado ya ha sido registrado')
+#             return redirect('listarEmpleados')
+#         return super().get(*args,**kwargs)
 
-    def post(self, *args, **kwargs):
-        self.object = None
-        pk = kwargs.get('pk')
-        empleado = Empleado.objects.get(pk=pk)
-        form = RegistroEmpleadoForm(self.request.POST)
-        if form.is_valid():
-            grupo = form.cleaned_data.get('grupos')
-            e = form.save(grupo, empleado)
-            return redirect('usuarioPDF', empleado.pk)
-        else:
-            messages.add_message(self.request, messages.WARNING, form.errors)
-        return self.form_invalid(form=form)
+#     def post(self, *args, **kwargs):
+#         self.object = None
+#         pk = kwargs.get('pk')
+#         empleado = Empleado.objects.get(pk=pk)
+#         form = RegistroEmpleadoForm(self.request.POST)
+#         if form.is_valid():
+#             grupo = form.cleaned_data.get('grupos')
+#             e = form.save(grupo, empleado)
+#             return redirect('usuarioPDF', empleado.pk)
+#         else:
+#             messages.add_message(self.request, messages.WARNING, form.errors)
+#         return self.form_invalid(form=form)
 
 
 class imprimirUsuarioEmpleado(PDFTemplateView):

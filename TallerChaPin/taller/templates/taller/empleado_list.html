@@ -40,11 +40,11 @@
                 d="M352 320c88.4 0 160-71.6 160-160c0-15.3-2.2-30.1-6.2-44.2c-3.1-10.8-16.4-13.2-24.3-5.3l-76.8 76.8c-3 3-7.1 4.7-11.3 4.7H336c-8.8 0-16-7.2-16-16V118.6c0-4.2 1.7-8.3 4.7-11.3l76.8-76.8c7.9-7.9 5.4-21.2-5.3-24.3C382.1 2.2 367.3 0 352 0C263.6 0 192 71.6 192 160c0 19.1 3.4 37.5 9.5 54.5L19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L297.5 310.5c17 6.2 35.4 9.5 54.5 9.5zM80 456c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z" />
             </svg>
           
-          {% if empleado.tiene_usuario and not empleado.tiene_grupo %}
+          {% comment %} {% if empleado.tiene_usuario and not empleado.tiene_grupo %}
           <a href="" data-bs-toggle="modal" data-bs-target="#modalRegistrarUsuario"
-              data-bs-nombre="{{empleado.nombre}}" data-bs-url="{% url 'registroEmpleado' empleado.pk %}" class="btn-registrar btn-listado" id="liveAlertBtn2">
+              data-bs-nombre="{{empleado.nombre}}" data-bs-url="{% url '' empleado.pk %}" class="btn-registrar btn-listado" id="liveAlertBtn2">
               <i class="fa-solid fa-user" ></i> </a>
-          {% endif %}
+          {% endif %} {% endcomment %}
           {% endif %}
           {% if perms.taller.delete_empleado %}
           <a 
@@ -99,7 +99,7 @@
 
 {% block modals %} 
 {% include './empleado_confirm_delete.html' with idModal='modalEliminarEmpleado' %}
-{% include './registro_empleado_form.html' with idModal='modalRegistrarUsuario' form=registroEmpleadoForm %}
+{% comment %} {% include './registro_empleado_form.html' with idModal='modalRegistrarUsuario' form=registroEmpleadoForm %} {% endcomment %}
 {% endblock %}
 
 {% block extrajs %} 

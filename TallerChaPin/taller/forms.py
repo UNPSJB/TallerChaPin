@@ -622,8 +622,9 @@ class EmpleadoForm(forms.ModelForm):
     class Meta:
         model = Empleado
         # opcionalmente '__all__' en lugar de la lista.
-        fields = ['nombre', 'apellido', 'cuil', 'legajo']
-        exclude = ['usuario']  # añadir campos a excluir
+        fields = '__all__'
+        exclude = ["usuario", "tareas"]
+        
 
         widgets = {
             "cuil": forms.TextInput(attrs={'pattern': '(\d{2}-\d{8}-\d{1})', 'placeholder': '##-########-#'})
@@ -657,8 +658,8 @@ class EmpleadoForm(forms.ModelForm):
         )
     # TODO: implementar clean() para sanitización de datos y verificacion de errores.
 
-# Empleado - Filtro
 
+# Empleado - Filtro
 
 class EmpleadoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
@@ -666,6 +667,7 @@ class EmpleadoFiltrosForm(FiltrosForm):
         ("apellido", "Apellido"),
         ("legajo", "Legajo"),
         ("cuil", "CUIL"),
+        ("grupo", "Grupo")
     ]
 
     ATTR_CHOICES = [
@@ -697,6 +699,7 @@ class EmpleadoFiltrosForm(FiltrosForm):
                 "legajo",
                 "cuil",
             ),
+            
             Div(Submit('submit', 'Filtrar'), css_class='filter-btn-container')
         )
 
@@ -712,37 +715,37 @@ class TareaEmpleadoForm(forms.ModelForm):
             "tareas": forms.CheckboxSelectMultiple(attrs={'class': 'checks_tareas'}),
         }
 
-class RegistroEmpleadoForm(forms.ModelForm):
+class GrupoEmpleadoForm(forms.ModelForm):
    
     class Meta:
         model = Empleado
-        fields = '__all__'
-        exclude = ["nombre","apellido","cuil","legajo","tareas","usuario"]
+        fields =  '__all__'
+        exclude = ["nombre", "apellido","cuil","legajo","usuario","tareas"]
+
 
     def save(self, grupo, empleado):
         usuario = empleado.añadir_grupo(grupo=grupo)
         return empleado
     
-    grupos = forms.ModelChoiceField(
+    grupo = forms.ModelChoiceField(
                          queryset= Group.objects.all() , required=False)
 
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.form_id = 'registroUsuarioForm'
-        self.helper.form_action = 'registroEmpleado'
         self.helper.layout = Layout (
             Fieldset(
                 "",
-                "grupos",
+                "grupo",
             ),
+            # Div(HTML(
+            #     '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
+            # HTML(
+            #     '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
             )
 
-
-
-
+EmpleadoForm.base_fields.update(GrupoEmpleadoForm.base_fields)
 # Cliente
 
 

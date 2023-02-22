@@ -7,8 +7,6 @@
 
 {% crispy form form.helper %}
 <div id="factura-resumen"></div>
-<h3> Monto total por pagar: {{ object.total}} </h3>
-<h3> Saldo restante por pagar: {{ object.saldo }} </h3>
 <input id='input_saldo' type="hidden" data-saldo='{{ object.saldo }}'/>
 {% endblock %}
 

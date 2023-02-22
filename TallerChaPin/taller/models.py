@@ -280,10 +280,12 @@ class Empleado(models.Model):
             tareas.append(t.nombre)
         return tareas 
 
-    #Ver
     def get_grupo(self):
         grupos = Group.objects.filter(user = self.usuario)
         return grupos.first() if grupos.first() is not None else None
+
+    def es_admin(self):
+        return self.usuario.groups.filter(name='Administrativo').exists()
     
     def tiene_grupo(self):
         return self.usuario.groups.first() is not None

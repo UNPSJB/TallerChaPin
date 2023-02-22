@@ -119,7 +119,7 @@ class Factura(models.Model):
 
     def saldo(self):
         saldo = self.total() - (self.pagos.aggregate(total=models.Sum('monto'))['total'] or 0) 
-        return saldo
+        return round(saldo, 2 )
  
 
 #-------------------------- DETALLE FACTURA -------------------------------#

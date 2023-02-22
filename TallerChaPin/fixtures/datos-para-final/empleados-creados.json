@@ -1,0 +1,5118 @@
+[
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2023-02-21T15:18:28.662Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "Empleado",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2023-02-21T15:18:36.459Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "2",
+      "object_repr": "Jefe Taller",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2023-02-21T15:18:43.559Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "3",
+      "object_repr": "Administrativo",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2023-02-21T15:18:50.776Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "4",
+      "object_repr": "Oficial Pintor",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2023-02-21T15:18:57.128Z",
+      "user": 1,
+      "content_type": 3,
+      "object_id": "5",
+      "object_repr": "Empleado pintura",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2023-02-21T15:21:15.624Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "5",
+      "object_repr": "aadmin",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2023-02-21T15:21:30.703Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "3",
+      "object_repr": "eprimero",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2023-02-21T15:21:36.917Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "4",
+      "object_repr": "esegundo",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2023-02-21T15:21:43.989Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "2",
+      "object_repr": "jtaller",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+      "action_time": "2023-02-21T15:21:50.716Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "6",
+      "object_repr": "opintor",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+      "action_time": "2023-02-21T15:21:58.583Z",
+      "user": 1,
+      "content_type": 4,
+      "object_id": "7",
+      "object_repr": "payudante",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add marca",
+      "content_type": 7,
+      "codename": "add_marca"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change marca",
+      "content_type": 7,
+      "codename": "change_marca"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete marca",
+      "content_type": 7,
+      "codename": "delete_marca"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view marca",
+      "content_type": 7,
+      "codename": "view_marca"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add modelo",
+      "content_type": 8,
+      "codename": "add_modelo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change modelo",
+      "content_type": 8,
+      "codename": "change_modelo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete modelo",
+      "content_type": 8,
+      "codename": "delete_modelo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view modelo",
+      "content_type": 8,
+      "codename": "view_modelo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add tipo tarea",
+      "content_type": 9,
+      "codename": "add_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change tipo tarea",
+      "content_type": 9,
+      "codename": "change_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete tipo tarea",
+      "content_type": 9,
+      "codename": "delete_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view tipo tarea",
+      "content_type": 9,
+      "codename": "view_tipotarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add tarea",
+      "content_type": 10,
+      "codename": "add_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change tarea",
+      "content_type": 10,
+      "codename": "change_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete tarea",
+      "content_type": 10,
+      "codename": "delete_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view tarea",
+      "content_type": 10,
+      "codename": "view_tarea"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add repuesto",
+      "content_type": 11,
+      "codename": "add_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change repuesto",
+      "content_type": 11,
+      "codename": "change_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete repuesto",
+      "content_type": 11,
+      "codename": "delete_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view repuesto",
+      "content_type": 11,
+      "codename": "view_repuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add tipo material",
+      "content_type": 12,
+      "codename": "add_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change tipo material",
+      "content_type": 12,
+      "codename": "change_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete tipo material",
+      "content_type": 12,
+      "codename": "delete_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view tipo material",
+      "content_type": 12,
+      "codename": "view_tipomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add material",
+      "content_type": 13,
+      "codename": "add_material"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change material",
+      "content_type": 13,
+      "codename": "change_material"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete material",
+      "content_type": 13,
+      "codename": "delete_material"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view material",
+      "content_type": 13,
+      "codename": "view_material"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add cliente",
+      "content_type": 14,
+      "codename": "add_cliente"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change cliente",
+      "content_type": 14,
+      "codename": "change_cliente"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete cliente",
+      "content_type": 14,
+      "codename": "delete_cliente"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view cliente",
+      "content_type": 14,
+      "codename": "view_cliente"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+      "name": "Can add vehiculo",
+      "content_type": 15,
+      "codename": "add_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+      "name": "Can change vehiculo",
+      "content_type": 15,
+      "codename": "change_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+      "name": "Can delete vehiculo",
+      "content_type": 15,
+      "codename": "delete_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+      "name": "Can view vehiculo",
+      "content_type": 15,
+      "codename": "view_vehiculo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+      "name": "Can add empleado",
+      "content_type": 16,
+      "codename": "add_empleado"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+      "name": "Can change empleado",
+      "content_type": 16,
+      "codename": "change_empleado"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+      "name": "Can delete empleado",
+      "content_type": 16,
+      "codename": "delete_empleado"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+      "name": "Can view empleado",
+      "content_type": 16,
+      "codename": "view_empleado"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+      "name": "Can add orden de trabajo",
+      "content_type": 17,
+      "codename": "add_ordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+      "name": "Can change orden de trabajo",
+      "content_type": 17,
+      "codename": "change_ordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+      "name": "Can delete orden de trabajo",
+      "content_type": 17,
+      "codename": "delete_ordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+      "name": "Can view orden de trabajo",
+      "content_type": 17,
+      "codename": "view_ordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+      "name": "Puede registrar el ingreso de un veh�culo al taller",
+      "content_type": 17,
+      "codename": "can_registrar_ingreso"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+      "name": "Puede registrar el egreso de un veh�culo al taller",
+      "content_type": 17,
+      "codename": "can_registrar_egreso"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+      "name": "Can add detalle orden de trabajo",
+      "content_type": 18,
+      "codename": "add_detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+      "name": "Can change detalle orden de trabajo",
+      "content_type": 18,
+      "codename": "change_detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+      "name": "Can delete detalle orden de trabajo",
+      "content_type": 18,
+      "codename": "delete_detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+      "name": "Can view detalle orden de trabajo",
+      "content_type": 18,
+      "codename": "view_detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+      "name": "Puede asignar trabajo a empleados",
+      "content_type": 18,
+      "codename": "can_asignar_trabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+      "name": "Puede ver listado de trabajos asignados",
+      "content_type": 18,
+      "codename": "can_ver_asignados"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+      "name": "Puede ver listado de trabajos sin finalizar",
+      "content_type": 18,
+      "codename": "can_ver_sin_finalizar"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+      "name": "Puede ver listado de trabajos finalizados",
+      "content_type": 18,
+      "codename": "can_ver_finalizados"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+      "name": "Puede ver todos de trabajos",
+      "content_type": 18,
+      "codename": "can_ver_todos"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+      "name": "Can add material orden de trabajo",
+      "content_type": 19,
+      "codename": "add_materialordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+      "name": "Can change material orden de trabajo",
+      "content_type": 19,
+      "codename": "change_materialordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+      "name": "Can delete material orden de trabajo",
+      "content_type": 19,
+      "codename": "delete_materialordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+      "name": "Can view material orden de trabajo",
+      "content_type": 19,
+      "codename": "view_materialordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+      "name": "Can add repuesto orden de trabajo",
+      "content_type": 20,
+      "codename": "add_repuestoordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+      "name": "Can change repuesto orden de trabajo",
+      "content_type": 20,
+      "codename": "change_repuestoordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+      "name": "Can delete repuesto orden de trabajo",
+      "content_type": 20,
+      "codename": "delete_repuestoordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+      "name": "Can view repuesto orden de trabajo",
+      "content_type": 20,
+      "codename": "view_repuestoordendetrabajo"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+      "name": "Can add presupuesto",
+      "content_type": 21,
+      "codename": "add_presupuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 89,
+    "fields": {
+      "name": "Can change presupuesto",
+      "content_type": 21,
+      "codename": "change_presupuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 90,
+    "fields": {
+      "name": "Can delete presupuesto",
+      "content_type": 21,
+      "codename": "delete_presupuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 91,
+    "fields": {
+      "name": "Can view presupuesto",
+      "content_type": 21,
+      "codename": "view_presupuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 92,
+    "fields": {
+      "name": "Can add presupuesto material",
+      "content_type": 22,
+      "codename": "add_presupuestomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 93,
+    "fields": {
+      "name": "Can change presupuesto material",
+      "content_type": 22,
+      "codename": "change_presupuestomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 94,
+    "fields": {
+      "name": "Can delete presupuesto material",
+      "content_type": 22,
+      "codename": "delete_presupuestomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 95,
+    "fields": {
+      "name": "Can view presupuesto material",
+      "content_type": 22,
+      "codename": "view_presupuestomaterial"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 96,
+    "fields": {
+      "name": "Can add presupuesto repuesto",
+      "content_type": 23,
+      "codename": "add_presupuestorepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 97,
+    "fields": {
+      "name": "Can change presupuesto repuesto",
+      "content_type": 23,
+      "codename": "change_presupuestorepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 98,
+    "fields": {
+      "name": "Can delete presupuesto repuesto",
+      "content_type": 23,
+      "codename": "delete_presupuestorepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 99,
+    "fields": {
+      "name": "Can view presupuesto repuesto",
+      "content_type": 23,
+      "codename": "view_presupuestorepuesto"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 100,
+    "fields": {
+      "name": "Can add planilla de pintura",
+      "content_type": 24,
+      "codename": "add_planilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 101,
+    "fields": {
+      "name": "Can change planilla de pintura",
+      "content_type": 24,
+      "codename": "change_planilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 102,
+    "fields": {
+      "name": "Can delete planilla de pintura",
+      "content_type": 24,
+      "codename": "delete_planilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 103,
+    "fields": {
+      "name": "Can view planilla de pintura",
+      "content_type": 24,
+      "codename": "view_planilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 104,
+    "fields": {
+      "name": "Can add detalle planilla de pintura",
+      "content_type": 25,
+      "codename": "add_detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 105,
+    "fields": {
+      "name": "Can change detalle planilla de pintura",
+      "content_type": 25,
+      "codename": "change_detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 106,
+    "fields": {
+      "name": "Can delete detalle planilla de pintura",
+      "content_type": 25,
+      "codename": "delete_detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 107,
+    "fields": {
+      "name": "Can view detalle planilla de pintura",
+      "content_type": 25,
+      "codename": "view_detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 108,
+    "fields": {
+      "name": "Can add turno orden",
+      "content_type": 26,
+      "codename": "add_turnoorden"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 109,
+    "fields": {
+      "name": "Can change turno orden",
+      "content_type": 26,
+      "codename": "change_turnoorden"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 110,
+    "fields": {
+      "name": "Can delete turno orden",
+      "content_type": 26,
+      "codename": "delete_turnoorden"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 111,
+    "fields": {
+      "name": "Can view turno orden",
+      "content_type": 26,
+      "codename": "view_turnoorden"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 112,
+    "fields": {
+      "name": "Can add factura",
+      "content_type": 27,
+      "codename": "add_factura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 113,
+    "fields": {
+      "name": "Can change factura",
+      "content_type": 27,
+      "codename": "change_factura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 114,
+    "fields": {
+      "name": "Can delete factura",
+      "content_type": 27,
+      "codename": "delete_factura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 115,
+    "fields": {
+      "name": "Can view factura",
+      "content_type": 27,
+      "codename": "view_factura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 116,
+    "fields": {
+      "name": "Can add detalle factura",
+      "content_type": 28,
+      "codename": "add_detallefactura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 117,
+    "fields": {
+      "name": "Can change detalle factura",
+      "content_type": 28,
+      "codename": "change_detallefactura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 118,
+    "fields": {
+      "name": "Can delete detalle factura",
+      "content_type": 28,
+      "codename": "delete_detallefactura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 119,
+    "fields": {
+      "name": "Can view detalle factura",
+      "content_type": 28,
+      "codename": "view_detallefactura"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 120,
+    "fields": {
+      "name": "Can add pago",
+      "content_type": 29,
+      "codename": "add_pago"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 121,
+    "fields": {
+      "name": "Can change pago",
+      "content_type": 29,
+      "codename": "change_pago"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 122,
+    "fields": {
+      "name": "Can delete pago",
+      "content_type": 29,
+      "codename": "delete_pago"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 123,
+    "fields": {
+      "name": "Can view pago",
+      "content_type": 29,
+      "codename": "view_pago"
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "Empleado",
+      "permissions": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        5,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        116,
+        117,
+        118,
+        119,
+        112,
+        113,
+        114,
+        115,
+        120,
+        121,
+        122,
+        123,
+        71,
+        75,
+        76,
+        78,
+        77,
+        79,
+        72,
+        73,
+        74,
+        104,
+        105,
+        106,
+        107,
+        80,
+        81,
+        82,
+        83,
+        65,
+        70,
+        69,
+        66,
+        67,
+        68,
+        100,
+        101,
+        102,
+        103,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        84,
+        85,
+        86,
+        87,
+        108,
+        109,
+        110,
+        111,
+        21,
+        22,
+        23,
+        24,
+        53,
+        54,
+        55,
+        56,
+        61,
+        62,
+        63,
+        64,
+        25,
+        26,
+        27,
+        28,
+        49,
+        50,
+        51,
+        52,
+        29,
+        30,
+        31,
+        32,
+        41,
+        42,
+        43,
+        44,
+        37,
+        38,
+        39,
+        40,
+        45,
+        46,
+        47,
+        48,
+        33,
+        34,
+        35,
+        36,
+        57,
+        58,
+        59,
+        60
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "Jefe Taller",
+      "permissions": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        5,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        116,
+        117,
+        118,
+        119,
+        112,
+        113,
+        114,
+        115,
+        120,
+        121,
+        122,
+        123,
+        71,
+        75,
+        76,
+        78,
+        77,
+        79,
+        72,
+        73,
+        74,
+        104,
+        105,
+        106,
+        107,
+        80,
+        81,
+        82,
+        83,
+        65,
+        70,
+        69,
+        66,
+        67,
+        68,
+        100,
+        101,
+        102,
+        103,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        84,
+        85,
+        86,
+        87,
+        108,
+        109,
+        110,
+        111,
+        21,
+        22,
+        23,
+        24,
+        53,
+        54,
+        55,
+        56,
+        61,
+        62,
+        63,
+        64,
+        25,
+        26,
+        27,
+        28,
+        49,
+        50,
+        51,
+        52,
+        29,
+        30,
+        31,
+        32,
+        41,
+        42,
+        43,
+        44,
+        37,
+        38,
+        39,
+        40,
+        45,
+        46,
+        47,
+        48,
+        33,
+        34,
+        35,
+        36,
+        57,
+        58,
+        59,
+        60
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+      "name": "Administrativo",
+      "permissions": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        5,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        116,
+        117,
+        118,
+        119,
+        112,
+        113,
+        114,
+        115,
+        120,
+        121,
+        122,
+        123,
+        71,
+        75,
+        76,
+        78,
+        77,
+        79,
+        72,
+        73,
+        74,
+        104,
+        105,
+        106,
+        107,
+        80,
+        81,
+        82,
+        83,
+        65,
+        70,
+        69,
+        66,
+        67,
+        68,
+        100,
+        101,
+        102,
+        103,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        84,
+        85,
+        86,
+        87,
+        108,
+        109,
+        110,
+        111,
+        21,
+        22,
+        23,
+        24,
+        53,
+        54,
+        55,
+        56,
+        61,
+        62,
+        63,
+        64,
+        25,
+        26,
+        27,
+        28,
+        49,
+        50,
+        51,
+        52,
+        29,
+        30,
+        31,
+        32,
+        41,
+        42,
+        43,
+        44,
+        37,
+        38,
+        39,
+        40,
+        45,
+        46,
+        47,
+        48,
+        33,
+        34,
+        35,
+        36,
+        57,
+        58,
+        59,
+        60
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 4,
+    "fields": {
+      "name": "Oficial Pintor",
+      "permissions": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        5,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        116,
+        117,
+        118,
+        119,
+        112,
+        113,
+        114,
+        115,
+        120,
+        121,
+        122,
+        123,
+        71,
+        75,
+        76,
+        78,
+        77,
+        79,
+        72,
+        73,
+        74,
+        104,
+        105,
+        106,
+        107,
+        80,
+        81,
+        82,
+        83,
+        65,
+        70,
+        69,
+        66,
+        67,
+        68,
+        100,
+        101,
+        102,
+        103,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        84,
+        85,
+        86,
+        87,
+        108,
+        109,
+        110,
+        111,
+        21,
+        22,
+        23,
+        24,
+        53,
+        54,
+        55,
+        56,
+        61,
+        62,
+        63,
+        64,
+        25,
+        26,
+        27,
+        28,
+        49,
+        50,
+        51,
+        52,
+        29,
+        30,
+        31,
+        32,
+        41,
+        42,
+        43,
+        44,
+        37,
+        38,
+        39,
+        40,
+        45,
+        46,
+        47,
+        48,
+        33,
+        34,
+        35,
+        36,
+        57,
+        58,
+        59,
+        60
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 5,
+    "fields": {
+      "name": "Empleado pintura",
+      "permissions": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        5,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        116,
+        117,
+        118,
+        119,
+        112,
+        113,
+        114,
+        115,
+        120,
+        121,
+        122,
+        123,
+        71,
+        75,
+        76,
+        78,
+        77,
+        79,
+        72,
+        73,
+        74,
+        104,
+        105,
+        106,
+        107,
+        80,
+        81,
+        82,
+        83,
+        65,
+        70,
+        69,
+        66,
+        67,
+        68,
+        100,
+        101,
+        102,
+        103,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        84,
+        85,
+        86,
+        87,
+        108,
+        109,
+        110,
+        111,
+        21,
+        22,
+        23,
+        24,
+        53,
+        54,
+        55,
+        56,
+        61,
+        62,
+        63,
+        64,
+        25,
+        26,
+        27,
+        28,
+        49,
+        50,
+        51,
+        52,
+        29,
+        30,
+        31,
+        32,
+        41,
+        42,
+        43,
+        44,
+        37,
+        38,
+        39,
+        40,
+        45,
+        46,
+        47,
+        48,
+        33,
+        34,
+        35,
+        36,
+        57,
+        58,
+        59,
+        60
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$7CVUqYk39MxJiqrl7Wd4HU$co8YX+dj7SooORB+lLWikaSlY5jNqjVeBeWKFKz4XDk=",
+      "last_login": "2023-02-21T15:11:19.751Z",
+      "is_superuser": true,
+      "username": "ramiro",
+      "first_name": "",
+      "last_name": "",
+      "email": "ram@rmairo.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-02-21T15:11:03.460Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$WKEJYrO876Z2zCRl76AtHv$yBMfilA39njpajRqA3uRYXXu95DxQGpNnGe2YIyIESU=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "jtaller",
+      "first_name": "Jefe",
+      "last_name": "Taller",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-21T15:15:48Z",
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$Dj7QnoMyOFxKMZEcYllRrg$DDpCmdg8w5tUUZGsL8bzix5aqJJrrYraBzBW5MPsfTs=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "eprimero",
+      "first_name": "Empleado",
+      "last_name": "primero",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-21T15:16:09Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$Wa45tAW5kte9Suv9ZYajiI$9PLmOaHkpTPYL94mwwLSc6Zcq+K6gFoEz37E51uqKiY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "esegundo",
+      "first_name": "Empleado",
+      "last_name": "segundo",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-21T15:16:25Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$e5hSGYhxjzqjmLwt6sFqfP$XJDFca6bYjDrNPMjq2a/3nlIEdPvStsEfaxGjkkaHxg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "aadmin",
+      "first_name": "administrativo",
+      "last_name": "admin",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-21T15:16:45Z",
+      "groups": [
+        3
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$WMuR8qu4ugPnH8ls5xFPyc$Qcb03j2BklyT0SruTJ6OtJAwJWEK4LJuX4zDlel+dP8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "opintor",
+      "first_name": "oficial",
+      "last_name": "pintor",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-21T15:16:59Z",
+      "groups": [
+        4
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$FSle1p8oLz2rDEStVmYENQ$YH3pJTcq2PYW/BhD9t/ZAh4E9ebx0KHsvmO+qoSb0TQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "payudante",
+      "first_name": "pintor",
+      "last_name": "ayudante",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-02-21T15:17:21Z",
+      "groups": [
+        5
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "taller",
+      "model": "marca"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "taller",
+      "model": "modelo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "taller",
+      "model": "tipotarea"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "taller",
+      "model": "tarea"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "taller",
+      "model": "repuesto"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "taller",
+      "model": "tipomaterial"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "taller",
+      "model": "material"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+      "app_label": "taller",
+      "model": "cliente"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+      "app_label": "taller",
+      "model": "vehiculo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+      "app_label": "taller",
+      "model": "empleado"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "ordendetrabajo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 18,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 19,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "materialordendetrabajo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 20,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "repuestoordendetrabajo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 21,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "presupuesto"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 22,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "presupuestomaterial"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 23,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "presupuestorepuesto"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 24,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "planilladepintura"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 25,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 26,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "turnoorden"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 27,
+    "fields": {
+      "app_label": "facturas",
+      "model": "factura"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 28,
+    "fields": {
+      "app_label": "facturas",
+      "model": "detallefactura"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 29,
+    "fields": {
+      "app_label": "facturas",
+      "model": "pago"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "94sj89hgqwcgltc9nkep0ff66w1l8nf0",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSEypTxcuu83EIYZpGogKe3K-O_apAvd3nPOfYkQt7WErfMSZhIXocTpd8OYHlx3QPdYb02mVtdlRrkr8qBdTo34eT3cv4MSe_nWIw1gGWPWhihp9IgpmzMCE2nNxiuAgRIQ2ux8Vo4tWBiZHLPKgxPvDxcKOQE:1pUUIZ:n7SGQFAoWGrTWuOeibWuJXZjxOS1XuIBjLBWtpwATvY",
+      "expire_date": "2023-03-07T15:11:19.763Z"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 1,
+    "fields": {
+      "nombre": "Volkswagen",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 2,
+    "fields": {
+      "nombre": "Peugeot",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 3,
+    "fields": {
+      "nombre": "Toyota",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 4,
+    "fields": {
+      "nombre": "Fiat",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 5,
+    "fields": {
+      "nombre": "Chevrolet",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 6,
+    "fields": {
+      "nombre": "Nissan",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 7,
+    "fields": {
+      "nombre": "Ford",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 8,
+    "fields": {
+      "nombre": "Jeep",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 9,
+    "fields": {
+      "nombre": "Citroen",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 10,
+    "fields": {
+      "nombre": "Renault",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 1,
+    "fields": {
+      "nombre": "208",
+      "descripcion": "",
+      "marca": 2,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 2,
+    "fields": {
+      "nombre": "Cruze",
+      "descripcion": "",
+      "marca": 5,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 3,
+    "fields": {
+      "nombre": "Cronos",
+      "descripcion": "",
+      "marca": 4,
+      "anio": 2021
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 4,
+    "fields": {
+      "nombre": "Etios",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2013
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 5,
+    "fields": {
+      "nombre": "Corolla Cross",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2014
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 6,
+    "fields": {
+      "nombre": "Yaris",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2015
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 7,
+    "fields": {
+      "nombre": "Corolla",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2022
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 8,
+    "fields": {
+      "nombre": "Gol Trend",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2012
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 9,
+    "fields": {
+      "nombre": "C4 Cactus",
+      "descripcion": "",
+      "marca": 9,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 10,
+    "fields": {
+      "nombre": "Sandero",
+      "descripcion": "",
+      "marca": 10,
+      "anio": 2013
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 11,
+    "fields": {
+      "nombre": "Onix",
+      "descripcion": "",
+      "marca": 5,
+      "anio": 2018
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 12,
+    "fields": {
+      "nombre": "Taos",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2018
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 13,
+    "fields": {
+      "nombre": "Ecosport",
+      "descripcion": "",
+      "marca": 7,
+      "anio": 2021
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 14,
+    "fields": {
+      "nombre": "Stepway",
+      "descripcion": "",
+      "marca": 10,
+      "anio": 2019
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 15,
+    "fields": {
+      "nombre": "T-Cross",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 16,
+    "fields": {
+      "nombre": "Tracker",
+      "descripcion": "",
+      "marca": 5,
+      "anio": 2022
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 17,
+    "fields": {
+      "nombre": "Nivus",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2018
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 18,
+    "fields": {
+      "nombre": "Sw4",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2021
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 19,
+    "fields": {
+      "nombre": "Renegade",
+      "descripcion": "",
+      "marca": 8,
+      "anio": 2017
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Reemplazo pieza",
+      "descripcion": "",
+      "materiales": false,
+      "repuestos": true,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Tarea de pintura",
+      "descripcion": "",
+      "materiales": false,
+      "repuestos": false,
+      "planilla": true
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Tarea compleja",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": true,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Requiere material",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 5,
+    "fields": {
+      "nombre": "Reparacion de pieza",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Cambiar puerta",
+      "descripcion": "",
+      "tipo": 3,
+      "precio": "1385.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Pintado completo",
+      "descripcion": "",
+      "tipo": 2,
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Pintado parcial",
+      "descripcion": "",
+      "tipo": 2,
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Reparar abolladura",
+      "descripcion": "",
+      "tipo": 4,
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 5,
+    "fields": {
+      "nombre": "Cambiar optica",
+      "descripcion": "",
+      "tipo": 1,
+      "precio": "1469.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 6,
+    "fields": {
+      "nombre": "Cambiar asiento",
+      "descripcion": "",
+      "tipo": 1,
+      "precio": "4688.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 7,
+    "fields": {
+      "nombre": "Reparar optica",
+      "descripcion": "",
+      "tipo": 5,
+      "precio": "2000.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 8,
+    "fields": {
+      "nombre": "Reparar paragolpe",
+      "descripcion": "",
+      "tipo": 5,
+      "precio": "5000.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 1,
+    "fields": {
+      "nombre": "Puerta delantera izquierda",
+      "modelo": 5,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1957.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 2,
+    "fields": {
+      "nombre": "Puerta delantera derecha",
+      "modelo": 4,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "3594.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 3,
+    "fields": {
+      "nombre": "Parabrisas",
+      "modelo": 1,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "4386.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 4,
+    "fields": {
+      "nombre": "Capo",
+      "modelo": 2,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1478.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 5,
+    "fields": {
+      "nombre": "Asiento delantero",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "3983.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 6,
+    "fields": {
+      "nombre": "Optica derecha",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1301.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 7,
+    "fields": {
+      "nombre": "Optica izquierda",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1793.00"
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 1,
+    "fields": {
+      "nombre": "tipo1",
+      "unidad_medida": 1
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 2,
+    "fields": {
+      "nombre": "tipo2",
+      "unidad_medida": 2
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 3,
+    "fields": {
+      "nombre": "tipo3",
+      "unidad_medida": 4
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 1,
+    "fields": {
+      "nombre": "Chapa",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "85.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 2,
+    "fields": {
+      "nombre": "Cristal",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "83.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 3,
+    "fields": {
+      "nombre": "Masilla",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "53.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 4,
+    "fields": {
+      "nombre": "Alambre",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "85.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 5,
+    "fields": {
+      "nombre": "Lija",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "31.00"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 1,
+    "fields": {
+      "dni": "37852985",
+      "nombre": "Patricia",
+      "apellido": "Ramirez",
+      "direccion": "Centenario 993",
+      "telefono": "2804309295"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 2,
+    "fields": {
+      "dni": "44826759",
+      "nombre": "Marta",
+      "apellido": "Arias",
+      "direccion": "Lezana 279",
+      "telefono": "2804677223"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 3,
+    "fields": {
+      "dni": "86894946",
+      "nombre": "Norma",
+      "apellido": "Aguirre",
+      "direccion": "Cambrin 745",
+      "telefono": "2804365270"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 4,
+    "fields": {
+      "dni": "54093481",
+      "nombre": "Nestor",
+      "apellido": "Peralta",
+      "direccion": "Brown 868",
+      "telefono": "2804283548"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 5,
+    "fields": {
+      "dni": "50528408",
+      "nombre": "Adriana",
+      "apellido": "Cabrera",
+      "direccion": "A. P. Bell 1163",
+      "telefono": "2804818210"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 6,
+    "fields": {
+      "dni": "57459290",
+      "nombre": "Jorge",
+      "apellido": "Benitez",
+      "direccion": "Edwin Roberts 205",
+      "telefono": "2804944880"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 7,
+    "fields": {
+      "dni": "89373866",
+      "nombre": "Alejandro",
+      "apellido": "Ponce",
+      "direccion": "El Carmen 864",
+      "telefono": "2804149354"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 8,
+    "fields": {
+      "dni": "64706433",
+      "nombre": "Hector",
+      "apellido": "Moreno",
+      "direccion": "Cuba 1787",
+      "telefono": "2804617055"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 9,
+    "fields": {
+      "dni": "75326191",
+      "nombre": "Fernando",
+      "apellido": "Fernandez",
+      "direccion": "Gral. Artigas 1392",
+      "telefono": "2804167763"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 10,
+    "fields": {
+      "dni": "10355923",
+      "nombre": "Andrea",
+      "apellido": "Vazquez",
+      "direccion": "Juan Evans 1610",
+      "telefono": "2804437547"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 11,
+    "fields": {
+      "dni": "39381461",
+      "nombre": "Juan",
+      "apellido": "Munos",
+      "direccion": "Rivadavia 130",
+      "telefono": "2804476334"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 12,
+    "fields": {
+      "dni": "37051058",
+      "nombre": "Liliana",
+      "apellido": "Ponce",
+      "direccion": "Cambrin 1721",
+      "telefono": "2804916988"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 13,
+    "fields": {
+      "dni": "73054248",
+      "nombre": "Susana",
+      "apellido": "Vazquez",
+      "direccion": "Nicaragua 547",
+      "telefono": "2804284823"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 14,
+    "fields": {
+      "dni": "71450069",
+      "nombre": "Marcelo",
+      "apellido": "Ponce",
+      "direccion": "Juan Manuel de Rosas 382",
+      "telefono": "2804655816"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 15,
+    "fields": {
+      "dni": "39662168",
+      "nombre": "Antonio",
+      "apellido": "Torres",
+      "direccion": "Brasil 335",
+      "telefono": "2804202645"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 16,
+    "fields": {
+      "dni": "19810164",
+      "nombre": "Victor",
+      "apellido": "Nunes",
+      "direccion": "Edwin Roberts 573",
+      "telefono": "2804909045"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 17,
+    "fields": {
+      "dni": "15726398",
+      "nombre": "Monica",
+      "apellido": "Pereyra",
+      "direccion": "Corrientes 1565",
+      "telefono": "2804492828"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 18,
+    "fields": {
+      "dni": "11596927",
+      "nombre": "Andrea",
+      "apellido": "Caceres",
+      "direccion": "Juan Manuel de Rosas 118",
+      "telefono": "2804205179"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 19,
+    "fields": {
+      "dni": "13727436",
+      "nombre": "Hugo",
+      "apellido": "Ponce",
+      "direccion": "San David 813",
+      "telefono": "2804728840"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 20,
+    "fields": {
+      "dni": "36911818",
+      "nombre": "Claudio",
+      "apellido": "Sosa",
+      "direccion": "El Carmen 1568",
+      "telefono": "2804924670"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 21,
+    "fields": {
+      "dni": "13577155",
+      "nombre": "Ricardo",
+      "apellido": "Coronel",
+      "direccion": "Espana 1334",
+      "telefono": "2804219502"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 22,
+    "fields": {
+      "dni": "36365297",
+      "nombre": "Rosa",
+      "apellido": "Castro",
+      "direccion": "Juan Manuel de Rosas 470",
+      "telefono": "2804547142"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 23,
+    "fields": {
+      "dni": "46394379",
+      "nombre": "Oscar",
+      "apellido": "Fernandez",
+      "direccion": "9 de Julio 118",
+      "telefono": "2804758226"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 24,
+    "fields": {
+      "dni": "84056849",
+      "nombre": "Juan",
+      "apellido": "Gimenez",
+      "direccion": "Juan Evans 654",
+      "telefono": "2804854387"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 25,
+    "fields": {
+      "dni": "18460025",
+      "nombre": "Cristian",
+      "apellido": "Morales",
+      "direccion": "Crucero Gral. Belgrano 1006",
+      "telefono": "2804784454"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 26,
+    "fields": {
+      "dni": "36040360",
+      "nombre": "Carmen",
+      "apellido": "�lvarez",
+      "direccion": "28 de Julio 1168",
+      "telefono": "2804435897"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 27,
+    "fields": {
+      "dni": "50193047",
+      "nombre": "Laura",
+      "apellido": "Romero",
+      "direccion": "Paran� 792",
+      "telefono": "2804684533"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 28,
+    "fields": {
+      "dni": "80327986",
+      "nombre": "Jos�",
+      "apellido": "Navarro",
+      "direccion": "Edison 1355",
+      "telefono": "2804480760"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 29,
+    "fields": {
+      "dni": "20653865",
+      "nombre": "Rosa",
+      "apellido": "Ortiz",
+      "direccion": "Brasil 166",
+      "telefono": "2804190450"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 30,
+    "fields": {
+      "dni": "75193358",
+      "nombre": "Manuel",
+      "apellido": "Ram�rez",
+      "direccion": "Mitre 142",
+      "telefono": "2804328551"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 31,
+    "fields": {
+      "dni": "63387231",
+      "nombre": "Daniel",
+      "apellido": "Morales",
+      "direccion": "Zapiola 375",
+      "telefono": "2804000655"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 32,
+    "fields": {
+      "dni": "47091520",
+      "nombre": "Walter",
+      "apellido": "Moreno",
+      "direccion": "9 de Julio 351",
+      "telefono": "2804358557"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 33,
+    "fields": {
+      "dni": "43005220",
+      "nombre": "Andrea",
+      "apellido": "Arias",
+      "direccion": "25 de Mayo 937",
+      "telefono": "2804060348"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 34,
+    "fields": {
+      "dni": "65763186",
+      "nombre": "Miguel",
+      "apellido": "V�zquez",
+      "direccion": "Rivadavia 1452",
+      "telefono": "2804220517"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 35,
+    "fields": {
+      "dni": "66911577",
+      "nombre": "Olga",
+      "apellido": "Fern�ndez",
+      "direccion": "Pje. Portugal 417",
+      "telefono": "2804421730"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 36,
+    "fields": {
+      "dni": "13725273",
+      "nombre": "�scar",
+      "apellido": "L�pez",
+      "direccion": "Cuba 623",
+      "telefono": "2804597136"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 37,
+    "fields": {
+      "dni": "89089934",
+      "nombre": "Graciela",
+      "apellido": "Gonz�lez",
+      "direccion": "Musters 1163",
+      "telefono": "2804904704"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 38,
+    "fields": {
+      "dni": "22613636",
+      "nombre": "Daniel",
+      "apellido": "V�zquez",
+      "direccion": "Piedrabuena 165",
+      "telefono": "2804171275"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 39,
+    "fields": {
+      "dni": "11129067",
+      "nombre": "Mar�a",
+      "apellido": "Cabrera",
+      "direccion": "Paraguay 1503",
+      "telefono": "2804468208"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 40,
+    "fields": {
+      "dni": "48229532",
+      "nombre": "Olga",
+      "apellido": "Aguirre",
+      "direccion": "25 de Mayo 1270",
+      "telefono": "2804075136"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 41,
+    "fields": {
+      "dni": "58970195",
+      "nombre": "Juan",
+      "apellido": "L�pez",
+      "direccion": "Lezana 327",
+      "telefono": "2804341373"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 42,
+    "fields": {
+      "dni": "16385973",
+      "nombre": "�ngel",
+      "apellido": "Villalba",
+      "direccion": "San David 624",
+      "telefono": "2804348607"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 43,
+    "fields": {
+      "dni": "67651993",
+      "nombre": "Roberto",
+      "apellido": "Torres",
+      "direccion": "Zapiola 1581",
+      "telefono": "2804442975"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 44,
+    "fields": {
+      "dni": "77593580",
+      "nombre": "M�nica",
+      "apellido": "Medina",
+      "direccion": "Brasil 1191",
+      "telefono": "2804218701"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 45,
+    "fields": {
+      "dni": "37019187",
+      "nombre": "�scar",
+      "apellido": "Carrizo",
+      "direccion": "Lezana 236",
+      "telefono": "2804133558"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 46,
+    "fields": {
+      "dni": "16254419",
+      "nombre": "Diego",
+      "apellido": "Villalba",
+      "direccion": "Rivadavia 1079",
+      "telefono": "2804476305"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 47,
+    "fields": {
+      "dni": "32320958",
+      "nombre": "Mart�n",
+      "apellido": "C�ceres",
+      "direccion": "Corrientes 593",
+      "telefono": "2804277751"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 48,
+    "fields": {
+      "dni": "41347347",
+      "nombre": "Juana",
+      "apellido": "Carrizo",
+      "direccion": "9 de Julio 1652",
+      "telefono": "2804859866"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 49,
+    "fields": {
+      "dni": "44012587",
+      "nombre": "Cristian",
+      "apellido": "Ramos",
+      "direccion": "9 de Julio 1912",
+      "telefono": "2804402477"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 50,
+    "fields": {
+      "dni": "50915486",
+      "nombre": "Norma",
+      "apellido": "P�rez",
+      "direccion": "Mitre 428",
+      "telefono": "2804016663"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 51,
+    "fields": {
+      "dni": "23209650",
+      "nombre": "Silvia",
+      "apellido": "R�os",
+      "direccion": "Piedrabuena 209",
+      "telefono": "2804000196"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 52,
+    "fields": {
+      "dni": "33930755",
+      "nombre": "Pablo",
+      "apellido": "Castro",
+      "direccion": "Pje. Portugal 1649",
+      "telefono": "2804378983"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 53,
+    "fields": {
+      "dni": "75009171",
+      "nombre": "Mar�a",
+      "apellido": "G�mez",
+      "direccion": "Corrientes 1271",
+      "telefono": "2804003578"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 54,
+    "fields": {
+      "dni": "38943385",
+      "nombre": "Ana",
+      "apellido": "Silva",
+      "direccion": "9 de Julio 1970",
+      "telefono": "2804639700"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 55,
+    "fields": {
+      "dni": "22859278",
+      "nombre": "Pedro",
+      "apellido": "Rodriguez",
+      "direccion": "Lezana 1652",
+      "telefono": "2804652513"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 56,
+    "fields": {
+      "dni": "67920610",
+      "nombre": "�ngel",
+      "apellido": "V�zquez",
+      "direccion": "Juan Manuel de Rosas 633",
+      "telefono": "2804832509"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 57,
+    "fields": {
+      "dni": "35936236",
+      "nombre": "Jorge",
+      "apellido": "Flores",
+      "direccion": "Brown 1803",
+      "telefono": "2804880447"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 58,
+    "fields": {
+      "dni": "80031529",
+      "nombre": "Sandra",
+      "apellido": "G�mez",
+      "direccion": "Musters 163",
+      "telefono": "2804440744"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 59,
+    "fields": {
+      "dni": "46053098",
+      "nombre": "Carmen",
+      "apellido": "Arias",
+      "direccion": "San Mart�n 1684",
+      "telefono": "2804965634"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 60,
+    "fields": {
+      "dni": "85867617",
+      "nombre": "Sandra",
+      "apellido": "D�az",
+      "direccion": "Edison 1242",
+      "telefono": "2804874833"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 61,
+    "fields": {
+      "dni": "45792498",
+      "nombre": "Hugo",
+      "apellido": "Morales",
+      "direccion": "Av. Rawson 647",
+      "telefono": "2804683346"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 62,
+    "fields": {
+      "dni": "31294428",
+      "nombre": "Cristian",
+      "apellido": "Cardozo",
+      "direccion": "Edwin Roberts 1897",
+      "telefono": "2804770419"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 63,
+    "fields": {
+      "dni": "68658312",
+      "nombre": "Teresa",
+      "apellido": "Peralta",
+      "direccion": "Maip� 932",
+      "telefono": "2804349829"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 64,
+    "fields": {
+      "dni": "61721849",
+      "nombre": "Marcelo",
+      "apellido": "Fern�ndez",
+      "direccion": "25 de Mayo 1543",
+      "telefono": "2804707432"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 65,
+    "fields": {
+      "dni": "37265452",
+      "nombre": "Laura",
+      "apellido": "Peralta",
+      "direccion": "Av. Rawson 1500",
+      "telefono": "2804530634"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 66,
+    "fields": {
+      "dni": "75232580",
+      "nombre": "Marta",
+      "apellido": "Ruiz",
+      "direccion": "Juan Evans 518",
+      "telefono": "2804134452"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 67,
+    "fields": {
+      "dni": "54596660",
+      "nombre": "Marcela",
+      "apellido": "P�rez",
+      "direccion": "Juan Manuel de Rosas 1679",
+      "telefono": "2804493381"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 68,
+    "fields": {
+      "dni": "37068762",
+      "nombre": "Gustavo",
+      "apellido": "Ju�rez",
+      "direccion": "Brown 511",
+      "telefono": "2804182823"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 69,
+    "fields": {
+      "dni": "81702302",
+      "nombre": "Carlos",
+      "apellido": "P�rez",
+      "direccion": "Pellegrini 1355",
+      "telefono": "2804541222"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 70,
+    "fields": {
+      "dni": "52909828",
+      "nombre": "Laura",
+      "apellido": "G�mez",
+      "direccion": "A. P. Bell 1208",
+      "telefono": "2804965324"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 71,
+    "fields": {
+      "dni": "77321006",
+      "nombre": "Marcelo",
+      "apellido": "�lvarez",
+      "direccion": "28 de Julio 1397",
+      "telefono": "2804289549"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 72,
+    "fields": {
+      "dni": "89268405",
+      "nombre": "Silvia",
+      "apellido": "Luna",
+      "direccion": "Luis Feldman 875",
+      "telefono": "2804472238"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 73,
+    "fields": {
+      "dni": "58743396",
+      "nombre": "Marcelo",
+      "apellido": "Benitez",
+      "direccion": "Centenario 1061",
+      "telefono": "2804977477"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 74,
+    "fields": {
+      "dni": "22513840",
+      "nombre": "Ram�n",
+      "apellido": "Coronel",
+      "direccion": "Centenario 1076",
+      "telefono": "2804981068"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 75,
+    "fields": {
+      "dni": "82063879",
+      "nombre": "�scar",
+      "apellido": "S�nchez",
+      "direccion": "Luis Feldman 1573",
+      "telefono": "2804775693"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 76,
+    "fields": {
+      "dni": "84145889",
+      "nombre": "Andrea",
+      "apellido": "G�mez",
+      "direccion": "Juan Evans 391",
+      "telefono": "2804253741"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 77,
+    "fields": {
+      "dni": "38961317",
+      "nombre": "Carmen",
+      "apellido": "L�pez",
+      "direccion": "Paran� 958",
+      "telefono": "2804424292"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 78,
+    "fields": {
+      "dni": "48115007",
+      "nombre": "Laura",
+      "apellido": "V�zquez",
+      "direccion": "Edwin Roberts 915",
+      "telefono": "2804052975"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 79,
+    "fields": {
+      "dni": "57558651",
+      "nombre": "Silvia",
+      "apellido": "Su�rez",
+      "direccion": "San David 1153",
+      "telefono": "2804794093"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 80,
+    "fields": {
+      "dni": "78614997",
+      "nombre": "Lidia",
+      "apellido": "Castro",
+      "direccion": "28 de Julio 592",
+      "telefono": "2804075526"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 81,
+    "fields": {
+      "dni": "49781798",
+      "nombre": "Rosa",
+      "apellido": "D�az",
+      "direccion": "Paraguay 1518",
+      "telefono": "2804988104"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 82,
+    "fields": {
+      "dni": "75189598",
+      "nombre": "Alicia",
+      "apellido": "Pereyra",
+      "direccion": "San Mart�n 541",
+      "telefono": "2804103422"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 83,
+    "fields": {
+      "dni": "38593204",
+      "nombre": "Carmen",
+      "apellido": "Vargas",
+      "direccion": "Rivadavia 1089",
+      "telefono": "2804988323"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 84,
+    "fields": {
+      "dni": "77172423",
+      "nombre": "Juan",
+      "apellido": "Pereyra",
+      "direccion": "Tte. Garc�a 1084",
+      "telefono": "2804054540"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 85,
+    "fields": {
+      "dni": "36248952",
+      "nombre": "Ram�n",
+      "apellido": "Guti�rrez",
+      "direccion": "Maip� 1152",
+      "telefono": "2804824527"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 86,
+    "fields": {
+      "dni": "72879705",
+      "nombre": "Jorge",
+      "apellido": "R�os",
+      "direccion": "Brasil 915",
+      "telefono": "2804916886"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 87,
+    "fields": {
+      "dni": "52332940",
+      "nombre": "Daniel",
+      "apellido": "Gonz�lez",
+      "direccion": "Tte. Garc�a 653",
+      "telefono": "2804427651"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 88,
+    "fields": {
+      "dni": "76730214",
+      "nombre": "Julio",
+      "apellido": "P�rez",
+      "direccion": "Musters 1041",
+      "telefono": "2804812292"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 89,
+    "fields": {
+      "dni": "15948257",
+      "nombre": "Marta",
+      "apellido": "Silva",
+      "direccion": "Lezana 424",
+      "telefono": "2804854623"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 90,
+    "fields": {
+      "dni": "69743801",
+      "nombre": "Pablo",
+      "apellido": "Coronel",
+      "direccion": "Edwin Roberts 885",
+      "telefono": "2804882030"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 91,
+    "fields": {
+      "dni": "40622906",
+      "nombre": "Miguel",
+      "apellido": "Mart�nez",
+      "direccion": "Brasil 1133",
+      "telefono": "2804651538"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 92,
+    "fields": {
+      "dni": "20556506",
+      "nombre": "H�ctor",
+      "apellido": "Herrera",
+      "direccion": "Brasil 1755",
+      "telefono": "2804011233"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 93,
+    "fields": {
+      "dni": "16568288",
+      "nombre": "Norma",
+      "apellido": "G�mez",
+      "direccion": "San David 428",
+      "telefono": "2804560043"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 94,
+    "fields": {
+      "dni": "11661387",
+      "nombre": "Jos�",
+      "apellido": "Vega",
+      "direccion": "Juan Manuel de Rosas 1079",
+      "telefono": "2804121532"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 95,
+    "fields": {
+      "dni": "71318774",
+      "nombre": "Rosa",
+      "apellido": "Gonz�lez",
+      "direccion": "San Mart�n 253",
+      "telefono": "2804639437"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 96,
+    "fields": {
+      "dni": "31971387",
+      "nombre": "Sergio",
+      "apellido": "Ruiz",
+      "direccion": "Per� 1088",
+      "telefono": "2804526533"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 97,
+    "fields": {
+      "dni": "15853208",
+      "nombre": "Ramona",
+      "apellido": "Torres",
+      "direccion": "28 de Julio 1503",
+      "telefono": "2804072181"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 98,
+    "fields": {
+      "dni": "40163715",
+      "nombre": "Cristian",
+      "apellido": "Quiroga",
+      "direccion": "Edison 652",
+      "telefono": "2804566418"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 99,
+    "fields": {
+      "dni": "83961718",
+      "nombre": "Luis",
+      "apellido": "Cabrera",
+      "direccion": "Edison 1936",
+      "telefono": "2804507601"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 100,
+    "fields": {
+      "dni": "48505338",
+      "nombre": "Claudia",
+      "apellido": "Luna",
+      "direccion": "Mitre 275",
+      "telefono": "2804702818"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 1,
+    "fields": {
+      "cliente": 1,
+      "patente": "DM030LM",
+      "modelo": 11,
+      "anio": 2015,
+      "chasis": "2WZGTLB9NGD740687"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 2,
+    "fields": {
+      "cliente": 2,
+      "patente": "WW563DX",
+      "modelo": 14,
+      "anio": 2015,
+      "chasis": "2UXHEQU7VAF742306"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 3,
+    "fields": {
+      "cliente": 3,
+      "patente": "QD924LY",
+      "modelo": 13,
+      "anio": 2021,
+      "chasis": "4KBWWFT1AHN819119"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 4,
+    "fields": {
+      "cliente": 4,
+      "patente": "FZ983MK",
+      "modelo": 13,
+      "anio": 2015,
+      "chasis": "3QOQTYI5NNT136478"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 5,
+    "fields": {
+      "cliente": 5,
+      "patente": "FP211LI",
+      "modelo": 18,
+      "anio": 2018,
+      "chasis": "1SALBPF8FTF418328"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 6,
+    "fields": {
+      "cliente": 6,
+      "patente": "LB698JA",
+      "modelo": 11,
+      "anio": 2020,
+      "chasis": "7GERJHB0RQL997467"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 7,
+    "fields": {
+      "cliente": 7,
+      "patente": "KD506OT",
+      "modelo": 14,
+      "anio": 2021,
+      "chasis": "2IHADDW5UQO246086"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 8,
+    "fields": {
+      "cliente": 8,
+      "patente": "PF251GN",
+      "modelo": 7,
+      "anio": 2014,
+      "chasis": "9FPHQUR9WJJ334723"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 9,
+    "fields": {
+      "cliente": 9,
+      "patente": "MS214GQ",
+      "modelo": 6,
+      "anio": 2014,
+      "chasis": "2IEYTQH2KBR888271"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 10,
+    "fields": {
+      "cliente": 10,
+      "patente": "QZ912CQ",
+      "modelo": 7,
+      "anio": 2015,
+      "chasis": "0BJTMFZ2GBO949052"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 11,
+    "fields": {
+      "cliente": 11,
+      "patente": "JR992YB",
+      "modelo": 16,
+      "anio": 2015,
+      "chasis": "9HURHZY3WCD764971"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 12,
+    "fields": {
+      "cliente": 12,
+      "patente": "TD903GR",
+      "modelo": 4,
+      "anio": 2015,
+      "chasis": "0SGBBHV7NQE720822"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 13,
+    "fields": {
+      "cliente": 13,
+      "patente": "SO998NE",
+      "modelo": 11,
+      "anio": 2018,
+      "chasis": "5RRXMQR6NME815321"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 14,
+    "fields": {
+      "cliente": 14,
+      "patente": "GJ296OO",
+      "modelo": 9,
+      "anio": 2021,
+      "chasis": "8EQZVTF7VFT250162"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 15,
+    "fields": {
+      "cliente": 15,
+      "patente": "IH450RS",
+      "modelo": 16,
+      "anio": 2020,
+      "chasis": "9QAPYBQ5IMD470662"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 16,
+    "fields": {
+      "cliente": 16,
+      "patente": "ML997XN",
+      "modelo": 3,
+      "anio": 2019,
+      "chasis": "9KQMGFB4XFT939724"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 17,
+    "fields": {
+      "cliente": 17,
+      "patente": "TB470KP",
+      "modelo": 9,
+      "anio": 2021,
+      "chasis": "0WXKPZL1PID721374"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 18,
+    "fields": {
+      "cliente": 18,
+      "patente": "OE815MS",
+      "modelo": 1,
+      "anio": 2021,
+      "chasis": "6NJXIOO3JKX382040"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 19,
+    "fields": {
+      "cliente": 19,
+      "patente": "DH010EI",
+      "modelo": 8,
+      "anio": 2020,
+      "chasis": "4QRXKMU1PHH401480"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 20,
+    "fields": {
+      "cliente": 20,
+      "patente": "JU910NK",
+      "modelo": 5,
+      "anio": 2019,
+      "chasis": "5WQLUEJ0QFG033124"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 21,
+    "fields": {
+      "cliente": 21,
+      "patente": "TF970KL",
+      "modelo": 3,
+      "anio": 2014,
+      "chasis": "6YTCAIC0GIX526767"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 22,
+    "fields": {
+      "cliente": 22,
+      "patente": "GI749ML",
+      "modelo": 16,
+      "anio": 2014,
+      "chasis": "4ZEOGYZ3MZE898862"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 23,
+    "fields": {
+      "cliente": 23,
+      "patente": "BK324VK",
+      "modelo": 11,
+      "anio": 2019,
+      "chasis": "2VRDYDP7OVZ912486"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 24,
+    "fields": {
+      "cliente": 24,
+      "patente": "GN277VP",
+      "modelo": 11,
+      "anio": 2015,
+      "chasis": "1ATPOCX7YFR361922"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 25,
+    "fields": {
+      "cliente": 25,
+      "patente": "XC508QS",
+      "modelo": 13,
+      "anio": 2022,
+      "chasis": "4WMSVMT1ELZ872462"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 26,
+    "fields": {
+      "cliente": 26,
+      "patente": "HQ074CO",
+      "modelo": 11,
+      "anio": 2017,
+      "chasis": "6ISIOMN7BMO230579"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 27,
+    "fields": {
+      "cliente": 27,
+      "patente": "XD578GD",
+      "modelo": 11,
+      "anio": 2019,
+      "chasis": "4EXXANJ7JNN220089"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 28,
+    "fields": {
+      "cliente": 28,
+      "patente": "UI219ST",
+      "modelo": 2,
+      "anio": 2021,
+      "chasis": "9ZKWOBW1RAX663444"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 29,
+    "fields": {
+      "cliente": 29,
+      "patente": "EU433VK",
+      "modelo": 9,
+      "anio": 2018,
+      "chasis": "9MWNPXS7SWZ602615"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 30,
+    "fields": {
+      "cliente": 30,
+      "patente": "KX917TD",
+      "modelo": 3,
+      "anio": 2021,
+      "chasis": "9ZZKLJJ9USB306513"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 31,
+    "fields": {
+      "cliente": 31,
+      "patente": "PH656KH",
+      "modelo": 15,
+      "anio": 2018,
+      "chasis": "0CSZHCE8AJA492454"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 32,
+    "fields": {
+      "cliente": 32,
+      "patente": "BK564TI",
+      "modelo": 3,
+      "anio": 2022,
+      "chasis": "0HNCRSH8XOW785302"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 33,
+    "fields": {
+      "cliente": 33,
+      "patente": "EB376ZV",
+      "modelo": 18,
+      "anio": 2021,
+      "chasis": "8FQJTSV7CZW635176"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 34,
+    "fields": {
+      "cliente": 34,
+      "patente": "WN547AI",
+      "modelo": 3,
+      "anio": 2016,
+      "chasis": "2ATFLKW7TGL833575"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 35,
+    "fields": {
+      "cliente": 35,
+      "patente": "LU975CE",
+      "modelo": 12,
+      "anio": 2019,
+      "chasis": "2DHEERM0OTU199331"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 36,
+    "fields": {
+      "cliente": 36,
+      "patente": "QB747WF",
+      "modelo": 1,
+      "anio": 2016,
+      "chasis": "5ZJTSYP1RZD150833"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 37,
+    "fields": {
+      "cliente": 37,
+      "patente": "WO708TD",
+      "modelo": 18,
+      "anio": 2016,
+      "chasis": "8BCKIFM8AFM316657"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 38,
+    "fields": {
+      "cliente": 38,
+      "patente": "CE924OK",
+      "modelo": 19,
+      "anio": 2020,
+      "chasis": "1EXNOWA1LVM804602"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 39,
+    "fields": {
+      "cliente": 39,
+      "patente": "WY167GP",
+      "modelo": 5,
+      "anio": 2016,
+      "chasis": "0MFODKA1LSX989659"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 40,
+    "fields": {
+      "cliente": 40,
+      "patente": "XK965VK",
+      "modelo": 11,
+      "anio": 2022,
+      "chasis": "2FBYFNS5UVG348911"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 41,
+    "fields": {
+      "cliente": 41,
+      "patente": "DW602SH",
+      "modelo": 15,
+      "anio": 2021,
+      "chasis": "3ATZMPW1CMB238777"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 42,
+    "fields": {
+      "cliente": 42,
+      "patente": "DF968CC",
+      "modelo": 6,
+      "anio": 2014,
+      "chasis": "4SZABPP7PFR598360"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 43,
+    "fields": {
+      "cliente": 43,
+      "patente": "EU491TG",
+      "modelo": 6,
+      "anio": 2022,
+      "chasis": "3AMZPZD5DBU177973"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 44,
+    "fields": {
+      "cliente": 44,
+      "patente": "TQ785WI",
+      "modelo": 18,
+      "anio": 2016,
+      "chasis": "3SZEIZG4SQA098101"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 45,
+    "fields": {
+      "cliente": 45,
+      "patente": "TD558AB",
+      "modelo": 6,
+      "anio": 2019,
+      "chasis": "6WPTHKX9NOV046104"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 46,
+    "fields": {
+      "cliente": 46,
+      "patente": "VH069UZ",
+      "modelo": 7,
+      "anio": 2015,
+      "chasis": "6HUFRTL7DCZ918148"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 47,
+    "fields": {
+      "cliente": 47,
+      "patente": "TJ884OK",
+      "modelo": 12,
+      "anio": 2017,
+      "chasis": "0MQHCER8TDZ950715"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 48,
+    "fields": {
+      "cliente": 48,
+      "patente": "MD100ZS",
+      "modelo": 12,
+      "anio": 2019,
+      "chasis": "0AOTMBB1JKV486857"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 49,
+    "fields": {
+      "cliente": 49,
+      "patente": "GC063NF",
+      "modelo": 2,
+      "anio": 2019,
+      "chasis": "1MHAUCA1XYK265119"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 50,
+    "fields": {
+      "cliente": 50,
+      "patente": "XD697HB",
+      "modelo": 7,
+      "anio": 2017,
+      "chasis": "6DFFXFR4UNW277680"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 51,
+    "fields": {
+      "cliente": 51,
+      "patente": "SK047CC",
+      "modelo": 14,
+      "anio": 2018,
+      "chasis": "0NSKSCJ3LTI226942"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 52,
+    "fields": {
+      "cliente": 52,
+      "patente": "KU512PL",
+      "modelo": 13,
+      "anio": 2016,
+      "chasis": "7HLTECE2SNW550713"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 53,
+    "fields": {
+      "cliente": 53,
+      "patente": "GC351EJ",
+      "modelo": 16,
+      "anio": 2016,
+      "chasis": "0EBQCJW5AGV346595"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 54,
+    "fields": {
+      "cliente": 54,
+      "patente": "GD098ZE",
+      "modelo": 4,
+      "anio": 2016,
+      "chasis": "0UGXJXE5CRE038513"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 55,
+    "fields": {
+      "cliente": 55,
+      "patente": "HH860HB",
+      "modelo": 16,
+      "anio": 2018,
+      "chasis": "6XRGQXJ6OLZ932952"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 56,
+    "fields": {
+      "cliente": 56,
+      "patente": "SX527JY",
+      "modelo": 10,
+      "anio": 2021,
+      "chasis": "1SLOYXW8KJW981047"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 57,
+    "fields": {
+      "cliente": 57,
+      "patente": "FF928XR",
+      "modelo": 15,
+      "anio": 2020,
+      "chasis": "8ODSHFB6QIE584192"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 58,
+    "fields": {
+      "cliente": 58,
+      "patente": "AM809VD",
+      "modelo": 9,
+      "anio": 2018,
+      "chasis": "2HDEMIP0NGN021589"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 59,
+    "fields": {
+      "cliente": 59,
+      "patente": "SU746GY",
+      "modelo": 12,
+      "anio": 2015,
+      "chasis": "2DURHMZ1HLG572375"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 60,
+    "fields": {
+      "cliente": 60,
+      "patente": "LF561PL",
+      "modelo": 12,
+      "anio": 2019,
+      "chasis": "0UXPBLM3CFT256651"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 61,
+    "fields": {
+      "cliente": 61,
+      "patente": "KH906AN",
+      "modelo": 19,
+      "anio": 2014,
+      "chasis": "2JBQQVH8EQT604388"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 62,
+    "fields": {
+      "cliente": 62,
+      "patente": "WE661BO",
+      "modelo": 15,
+      "anio": 2022,
+      "chasis": "8DRESCU3MMP634662"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 63,
+    "fields": {
+      "cliente": 63,
+      "patente": "QK911LV",
+      "modelo": 3,
+      "anio": 2021,
+      "chasis": "1GWYASG0FUK114744"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 64,
+    "fields": {
+      "cliente": 64,
+      "patente": "YD947HY",
+      "modelo": 18,
+      "anio": 2021,
+      "chasis": "3ATUMZE0IAQ222539"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 65,
+    "fields": {
+      "cliente": 65,
+      "patente": "TB454FT",
+      "modelo": 16,
+      "anio": 2021,
+      "chasis": "0EJMSZN0LGM093068"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 66,
+    "fields": {
+      "cliente": 66,
+      "patente": "LY142EY",
+      "modelo": 12,
+      "anio": 2014,
+      "chasis": "7LOAUMO1WMJ673104"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 67,
+    "fields": {
+      "cliente": 67,
+      "patente": "II309NB",
+      "modelo": 6,
+      "anio": 2015,
+      "chasis": "2APGBKS6EDL267925"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 68,
+    "fields": {
+      "cliente": 68,
+      "patente": "WD726CL",
+      "modelo": 6,
+      "anio": 2019,
+      "chasis": "7MVRFTM2RBP261606"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 69,
+    "fields": {
+      "cliente": 69,
+      "patente": "WZ530XQ",
+      "modelo": 12,
+      "anio": 2021,
+      "chasis": "7IAYGIO7HHI588906"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 70,
+    "fields": {
+      "cliente": 70,
+      "patente": "IO214AY",
+      "modelo": 14,
+      "anio": 2018,
+      "chasis": "4RAEVVN1YEV404214"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 71,
+    "fields": {
+      "cliente": 71,
+      "patente": "UH173XZ",
+      "modelo": 4,
+      "anio": 2022,
+      "chasis": "4ZUFHNA7FCS944683"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 72,
+    "fields": {
+      "cliente": 72,
+      "patente": "QK149JG",
+      "modelo": 14,
+      "anio": 2020,
+      "chasis": "7ORDPIM4LCF524555"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 73,
+    "fields": {
+      "cliente": 73,
+      "patente": "FG408QK",
+      "modelo": 1,
+      "anio": 2020,
+      "chasis": "5XYPXYB5MQJ075047"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 74,
+    "fields": {
+      "cliente": 74,
+      "patente": "KZ814MA",
+      "modelo": 8,
+      "anio": 2015,
+      "chasis": "7XSTUBM8TVM295505"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 75,
+    "fields": {
+      "cliente": 75,
+      "patente": "UY082YE",
+      "modelo": 5,
+      "anio": 2014,
+      "chasis": "7QTISZK8VNU772506"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 76,
+    "fields": {
+      "cliente": 76,
+      "patente": "AB287YT",
+      "modelo": 1,
+      "anio": 2021,
+      "chasis": "9WLQMOL8QIM337473"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 77,
+    "fields": {
+      "cliente": 77,
+      "patente": "MG549PP",
+      "modelo": 4,
+      "anio": 2017,
+      "chasis": "5EQTKIB0JGN275463"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 78,
+    "fields": {
+      "cliente": 78,
+      "patente": "IQ085RX",
+      "modelo": 8,
+      "anio": 2019,
+      "chasis": "1BJVVQD5LIE446537"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 79,
+    "fields": {
+      "cliente": 79,
+      "patente": "FA966VV",
+      "modelo": 12,
+      "anio": 2020,
+      "chasis": "1RBKHYU0PSA588998"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 80,
+    "fields": {
+      "cliente": 80,
+      "patente": "HR231QB",
+      "modelo": 12,
+      "anio": 2016,
+      "chasis": "2REOPZS7HAI880240"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 81,
+    "fields": {
+      "cliente": 81,
+      "patente": "EA232CF",
+      "modelo": 16,
+      "anio": 2019,
+      "chasis": "7NHPLIU6ABG211925"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 82,
+    "fields": {
+      "cliente": 82,
+      "patente": "VQ361OJ",
+      "modelo": 9,
+      "anio": 2017,
+      "chasis": "3UZCENZ2YUP853827"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 83,
+    "fields": {
+      "cliente": 83,
+      "patente": "YD954CO",
+      "modelo": 4,
+      "anio": 2020,
+      "chasis": "0YWERKI8DLJ545147"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 84,
+    "fields": {
+      "cliente": 84,
+      "patente": "PM281HJ",
+      "modelo": 11,
+      "anio": 2019,
+      "chasis": "1TLQMLB3XNW716579"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 85,
+    "fields": {
+      "cliente": 85,
+      "patente": "IH802LD",
+      "modelo": 15,
+      "anio": 2016,
+      "chasis": "8VSDBNT2MNS395639"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 86,
+    "fields": {
+      "cliente": 86,
+      "patente": "OI273RG",
+      "modelo": 14,
+      "anio": 2017,
+      "chasis": "0EEWQEF9GDQ147300"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 87,
+    "fields": {
+      "cliente": 87,
+      "patente": "RZ730TR",
+      "modelo": 14,
+      "anio": 2017,
+      "chasis": "6MDLELD7GRL051802"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 88,
+    "fields": {
+      "cliente": 88,
+      "patente": "TO791LO",
+      "modelo": 14,
+      "anio": 2022,
+      "chasis": "4CSVZPR5QID028723"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 89,
+    "fields": {
+      "cliente": 89,
+      "patente": "GR847ER",
+      "modelo": 14,
+      "anio": 2018,
+      "chasis": "1LLHOJG0WQG219483"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 90,
+    "fields": {
+      "cliente": 90,
+      "patente": "ES731RP",
+      "modelo": 11,
+      "anio": 2016,
+      "chasis": "1FYGKGL4AXC390391"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 91,
+    "fields": {
+      "cliente": 91,
+      "patente": "TY200WD",
+      "modelo": 13,
+      "anio": 2016,
+      "chasis": "9VXSJHK2ZZK279471"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 92,
+    "fields": {
+      "cliente": 92,
+      "patente": "ND695YH",
+      "modelo": 17,
+      "anio": 2017,
+      "chasis": "5BGPVWH8YNF024565"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 93,
+    "fields": {
+      "cliente": 93,
+      "patente": "NJ814QQ",
+      "modelo": 9,
+      "anio": 2016,
+      "chasis": "9QMESZU7XJX608861"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 94,
+    "fields": {
+      "cliente": 94,
+      "patente": "OM746CI",
+      "modelo": 8,
+      "anio": 2021,
+      "chasis": "7VAJVTR2GJJ580607"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 95,
+    "fields": {
+      "cliente": 95,
+      "patente": "CB799TO",
+      "modelo": 17,
+      "anio": 2018,
+      "chasis": "1PNXTEX0IPX060214"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 96,
+    "fields": {
+      "cliente": 96,
+      "patente": "OU895RC",
+      "modelo": 2,
+      "anio": 2021,
+      "chasis": "5LKSRSY7DRD669407"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 97,
+    "fields": {
+      "cliente": 97,
+      "patente": "NH715QZ",
+      "modelo": 3,
+      "anio": 2019,
+      "chasis": "2RVGKXF3SDZ775807"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 98,
+    "fields": {
+      "cliente": 98,
+      "patente": "WH452JZ",
+      "modelo": 12,
+      "anio": 2018,
+      "chasis": "8INEFBS5NLV599986"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 99,
+    "fields": {
+      "cliente": 99,
+      "patente": "FY152KI",
+      "modelo": 8,
+      "anio": 2021,
+      "chasis": "0IXZVQQ7YDZ517714"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 100,
+    "fields": {
+      "cliente": 100,
+      "patente": "GW031MJ",
+      "modelo": 4,
+      "anio": 2014,
+      "chasis": "1DKAQJG7YCT333915"
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 1,
+    "fields": {
+      "cuil": "23-34778578-9",
+      "legajo": 1000,
+      "nombre": "Jefe",
+      "apellido": "Taller",
+      "usuario": 2,
+      "tareas": []
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 2,
+    "fields": {
+      "cuil": "23-87776353-9",
+      "legajo": 1001,
+      "nombre": "Empleado",
+      "apellido": "primero",
+      "usuario": 3,
+      "tareas": []
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 3,
+    "fields": {
+      "cuil": "23-74663728-9",
+      "legajo": 1002,
+      "nombre": "Empleado",
+      "apellido": "segundo",
+      "usuario": 4,
+      "tareas": []
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 4,
+    "fields": {
+      "cuil": "12-34446372-9",
+      "legajo": 1003,
+      "nombre": "administrativo",
+      "apellido": "admin",
+      "usuario": 5,
+      "tareas": []
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 5,
+    "fields": {
+      "cuil": "23-34444463-9",
+      "legajo": 1004,
+      "nombre": "oficial",
+      "apellido": "pintor",
+      "usuario": 6,
+      "tareas": []
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 6,
+    "fields": {
+      "cuil": "23-34776384-9",
+      "legajo": 1005,
+      "nombre": "pintor",
+      "apellido": "ayudante",
+      "usuario": 7,
+      "tareas": []
+    }
+  }
+]

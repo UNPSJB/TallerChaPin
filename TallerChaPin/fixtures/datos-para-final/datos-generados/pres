@@ -1,0 +1,701 @@
+{
+  "model": "ordenes.presupuesto",
+  "pk": 1,
+  "fields": {
+    "cliente": 5,
+    "vehiculo": 5,
+    "detalles": "",
+    "fecha": "2023-01-15",
+    "validez": 60,
+    "orden": 1,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [1]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 2,
+  "fields": {
+    "cliente": 2,
+    "vehiculo": 2,
+    "detalles": "",
+    "fecha": "2023-01-21",
+    "validez": 60,
+    "orden": 2,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [1]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 7,
+  "fields": {
+    "cliente": 8,
+    "vehiculo": 8,
+    "detalles": "",
+    "fecha": "2023-01-27",
+    "validez": 60,
+    "orden": 3,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [1]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 8,
+  "fields": {
+    "cliente": 9,
+    "vehiculo": 9,
+    "detalles": "",
+    "fecha": "2023-02-03",
+    "validez": 60,
+    "orden": 4,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 9,
+  "fields": {
+    "cliente": 10,
+    "vehiculo": 10,
+    "detalles": "",
+    "fecha": "2023-02-12",
+    "validez": 60,
+    "orden": 5,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 10,
+  "fields": {
+    "cliente": 12,
+    "vehiculo": 12,
+    "detalles": "",
+    "fecha": "2023-02-17",
+    "validez": 60,
+    "orden": 6,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [7]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 11,
+  "fields": {
+    "cliente": 12,
+    "vehiculo": 12,
+    "detalles": "",
+    "fecha": "2023-02-26",
+    "validez": 60,
+    "orden": 7,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 12,
+  "fields": {
+    "cliente": 15,
+    "vehiculo": 15,
+    "detalles": "",
+    "fecha": "2023-03-04",
+    "validez": 60,
+    "orden": 8,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [1]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 13,
+  "fields": {
+    "cliente": 7,
+    "vehiculo": 7,
+    "detalles": "",
+    "fecha": "2023-03-11",
+    "validez": 60,
+    "orden": 9,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 14,
+  "fields": {
+    "cliente": 48,
+    "vehiculo": 48,
+    "detalles": "",
+    "fecha": "2023-03-19",
+    "validez": 60,
+    "orden": 10,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [7]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 15,
+  "fields": {
+    "cliente": 41,
+    "vehiculo": 41,
+    "detalles": "",
+    "fecha": "2023-03-25",
+    "validez": 60,
+    "orden": 11,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [8]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 16,
+  "fields": {
+    "cliente": 47,
+    "vehiculo": 47,
+    "detalles": "",
+    "fecha": "2023-04-02",
+    "validez": 60,
+    "orden": 12,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 17,
+  "fields": {
+    "cliente": 6,
+    "vehiculo": 6,
+    "detalles": "",
+    "fecha": "2023-04-09",
+    "validez": 60,
+    "orden": 13,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [3]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 18,
+  "fields": {
+    "cliente": 9,
+    "vehiculo": 9,
+    "detalles": "",
+    "fecha": "2023-04-15",
+    "validez": 60,
+    "orden": 14,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [3]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 19,
+  "fields": {
+    "cliente": 12,
+    "vehiculo": 12,
+    "detalles": "",
+    "fecha": "2023-04-23",
+    "validez": 60,
+    "orden": 15,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 20,
+  "fields": {
+    "cliente": 57,
+    "vehiculo": 57,
+    "detalles": "",
+    "fecha": "2023-04-22",
+    "validez": 60,
+    "orden": 16,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 21,
+  "fields": {
+    "cliente": 40,
+    "vehiculo": 40,
+    "detalles": "",
+    "fecha": "2023-04-30",
+    "validez": 60,
+    "orden": 17,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [2]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 22,
+  "fields": {
+    "cliente": 76,
+    "vehiculo": 76,
+    "detalles": "",
+    "fecha": "2023-05-07",
+    "validez": 60,
+    "orden": 18,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 23,
+  "fields": {
+    "cliente": 61,
+    "vehiculo": 61,
+    "detalles": "",
+    "fecha": "2023-05-14",
+    "validez": 60,
+    "orden": 19,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 24,
+  "fields": {
+    "cliente": 94,
+    "vehiculo": 94,
+    "detalles": "",
+    "fecha": "2023-05-21",
+    "validez": 60,
+    "orden": 20,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [3]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 25,
+  "fields": {
+    "cliente": 98,
+    "vehiculo": 98,
+    "detalles": "",
+    "fecha": "2023-05-28",
+    "validez": 60,
+    "orden": 21,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [2]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 26,
+  "fields": {
+    "cliente": 100,
+    "vehiculo": 100,
+    "detalles": "",
+    "fecha": "2023-06-03",
+    "validez": 60,
+    "orden": 22,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 27,
+  "fields": {
+    "cliente": 65,
+    "vehiculo": 65,
+    "detalles": "",
+    "fecha": "2023-06-10",
+    "validez": 60,
+    "orden": 23,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [3]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 28,
+  "fields": {
+    "cliente": 57,
+    "vehiculo": 57,
+    "detalles": "",
+    "fecha": "2023-06-18",
+    "validez": 60,
+    "orden": 24,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [7]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 29,
+  "fields": {
+    "cliente": 67,
+    "vehiculo": 67,
+    "detalles": "",
+    "fecha": "2023-06-24",
+    "validez": 60,
+    "orden": 25,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [6]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 30,
+  "fields": {
+    "cliente": 95,
+    "vehiculo": 95,
+    "detalles": "",
+    "fecha": "2023-06-25",
+    "validez": 60,
+    "orden": 26,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [7]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 31,
+  "fields": {
+    "cliente": 44,
+    "vehiculo": 44,
+    "detalles": "",
+    "fecha": "2023-07-01",
+    "validez": 60,
+    "orden": 27,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [7]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 32,
+  "fields": {
+    "cliente": 77,
+    "vehiculo": 77,
+    "detalles": "",
+    "fecha": "2023-07-09",
+    "validez": 60,
+    "orden": 28,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 33,
+  "fields": {
+    "cliente": 60,
+    "vehiculo": 60,
+    "detalles": "",
+    "fecha": "2023-07-14",
+    "validez": 60,
+    "orden": 29,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [6]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 34,
+  "fields": {
+    "cliente": 59,
+    "vehiculo": 59,
+    "detalles": "",
+    "fecha": "2023-07-21",
+    "validez": 60,
+    "orden": 30,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 35,
+  "fields": {
+    "cliente": 10,
+    "vehiculo": 10,
+    "detalles": "",
+    "fecha": "2023-07-28",
+    "validez": 60,
+    "orden": 31,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 36,
+  "fields": {
+    "cliente": 2,
+    "vehiculo": 2,
+    "detalles": "",
+    "fecha": "2023-08-05",
+    "validez": 60,
+    "orden": 32,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [8]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 37,
+  "fields": {
+    "cliente": 12,
+    "vehiculo": 12,
+    "detalles": "",
+    "fecha": "2023-08-13",
+    "validez": 60,
+    "orden": 33,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 38,
+  "fields": {
+    "cliente": 64,
+    "vehiculo": 64,
+    "detalles": "",
+    "fecha": "2023-08-20",
+    "validez": 60,
+    "orden": 34,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 39,
+  "fields": {
+    "cliente": 49,
+    "vehiculo": 49,
+    "detalles": "",
+    "fecha": "2023-08-25",
+    "validez": 60,
+    "orden": 35,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [7]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 40,
+  "fields": {
+    "cliente": 10,
+    "vehiculo": 10,
+    "detalles": "",
+    "fecha": "2023-09-02",
+    "validez": 60,
+    "orden": 36,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 41,
+  "fields": {
+    "cliente": 95,
+    "vehiculo": 95,
+    "detalles": "",
+    "fecha": "2023-09-08",
+    "validez": 60,
+    "orden": 37,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 42,
+  "fields": {
+    "cliente": 2,
+    "vehiculo": 2,
+    "detalles": "",
+    "fecha": "2023-09-17",
+    "validez": 60,
+    "orden": 38,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [3]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 43,
+  "fields": {
+    "cliente": 60,
+    "vehiculo": 60,
+    "detalles": "",
+    "fecha": "2023-09-23",
+    "validez": 60,
+    "orden": 39,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [3]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 44,
+  "fields": {
+    "cliente": 14,
+    "vehiculo": 14,
+    "detalles": "",
+    "fecha": "2023-09-22",
+    "validez": 60,
+    "orden": 40,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [8]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 45,
+  "fields": {
+    "cliente": 93,
+    "vehiculo": 93,
+    "detalles": "",
+    "fecha": "2023-10-01",
+    "validez": 60,
+    "orden": 41,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [6]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 46,
+  "fields": {
+    "cliente": 10,
+    "vehiculo": 10,
+    "detalles": "",
+    "fecha": "2023-10-07",
+    "validez": 60,
+    "orden": 42,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [6]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 47,
+  "fields": {
+    "cliente": 95,
+    "vehiculo": 95,
+    "detalles": "",
+    "fecha": "2023-10-13",
+    "validez": 60,
+    "orden": 43,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 48,
+  "fields": {
+    "cliente": 59,
+    "vehiculo": 59,
+    "detalles": "",
+    "fecha": "2023-10-22",
+    "validez": 60,
+    "orden": 44,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [5]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 49,
+  "fields": {
+    "cliente": 95,
+    "vehiculo": 95,
+    "detalles": "",
+    "fecha": "2023-10-29",
+    "validez": 60,
+    "orden": 45,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 50,
+  "fields": {
+    "cliente": 96,
+    "vehiculo": 96,
+    "detalles": "",
+    "fecha": "2023-10-27",
+    "validez": 60,
+    "orden": 46,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [4]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 51,
+  "fields": {
+    "cliente": 95,
+    "vehiculo": 95,
+    "detalles": "",
+    "fecha": "2023-11-03",
+    "validez": 60,
+    "orden": 47,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [3]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 52,
+  "fields": {
+    "cliente": 13,
+    "vehiculo": 13,
+    "detalles": "",
+    "fecha": "2023-11-12",
+    "validez": 60,
+    "orden": 48,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [6]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 53,
+  "fields": {
+    "cliente": 1,
+    "vehiculo": 1,
+    "detalles": "",
+    "fecha": "2023-11-11",
+    "validez": 60,
+    "orden": 49,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [6]
+  }
+}, {
+  "model": "ordenes.presupuesto",
+  "pk": 54,
+  "fields": {
+    "cliente": 10,
+    "vehiculo": 10,
+    "detalles": "",
+    "fecha": "2023-11-17",
+    "validez": 60,
+    "orden": 50,
+    "ampliado": "False",
+    "confirmado": "True",
+    "tareas": [6]
+  }
+}

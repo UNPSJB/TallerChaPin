@@ -1,0 +1,6142 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$xyq0UuOo9Q1IMIPTg1jRQS$PWq7BemoUUL5hPDDsrJbbve/rDV6KqWtcaB3OCXYGdw=",
+      "last_login": "2022-11-21T15:53:51.052Z",
+      "is_superuser": true,
+      "username": "ramiro",
+      "first_name": "",
+      "last_name": "",
+      "email": "ramiro@r.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2022-11-21T15:53:40.459Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "taller",
+      "model": "marca"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "taller",
+      "model": "modelo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "taller",
+      "model": "tipotarea"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "taller",
+      "model": "tarea"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "taller",
+      "model": "repuesto"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "taller",
+      "model": "tipomaterial"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "taller",
+      "model": "material"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+      "app_label": "taller",
+      "model": "cliente"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+      "app_label": "taller",
+      "model": "vehiculo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+      "app_label": "taller",
+      "model": "empleado"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "ordendetrabajo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 18,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "detalleordendetrabajo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 19,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "materialordendetrabajo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 20,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "repuestoordendetrabajo"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 21,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "presupuesto"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 22,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "presupuestomaterial"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 23,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "presupuestorepuesto"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 24,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "planilladepintura"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 25,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "detalleplanilladepintura"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 26,
+    "fields": {
+      "app_label": "ordenes",
+      "model": "turnoorden"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 27,
+    "fields": {
+      "app_label": "facturas",
+      "model": "factura"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 28,
+    "fields": {
+      "app_label": "facturas",
+      "model": "detallefactura"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 29,
+    "fields": {
+      "app_label": "facturas",
+      "model": "pago"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "58p4ossc3lrhueghzjccuhzjhqhdrn4b",
+    "fields": {
+      "session_data": ".eJxVjDEOwjAMRe-SGUVNHePAyM4ZItsJpIBSqWknxN1ppQ6wvvf-f5vIy1zi0vIUh2TOxpnDLxPWZ66bSA-u99HqWOdpELsldrfNXseUX5e9_Tso3Mq6hkAIpD15VhACDF0P2tFJFJWPXoGDZvF0wxUllN4pgRdSQXSE5vMFznc3nw:1ox97H:m5E7-q_6oNdX1MTjp2VnQGyG2_5aAvl27tciZkQQ4-U",
+      "expire_date": "2022-12-05T15:53:51.105Z"
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 1,
+    "fields": {
+      "nombre": "Volkswagen",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 2,
+    "fields": {
+      "nombre": "Peugeot",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 3,
+    "fields": {
+      "nombre": "Toyota",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 4,
+    "fields": {
+      "nombre": "Fiat",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 5,
+    "fields": {
+      "nombre": "Chevrolet",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 6,
+    "fields": {
+      "nombre": "Nissan",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 7,
+    "fields": {
+      "nombre": "Ford",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 8,
+    "fields": {
+      "nombre": "Jeep",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 9,
+    "fields": {
+      "nombre": "Citroen",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.marca",
+    "pk": 10,
+    "fields": {
+      "nombre": "Renault",
+      "descripcion": " "
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 1,
+    "fields": {
+      "nombre": "208",
+      "descripcion": "",
+      "marca": 2,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 2,
+    "fields": {
+      "nombre": "Cruze",
+      "descripcion": "",
+      "marca": 5,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 3,
+    "fields": {
+      "nombre": "Cronos",
+      "descripcion": "",
+      "marca": 4,
+      "anio": 2021
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 4,
+    "fields": {
+      "nombre": "Etios",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2013
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 5,
+    "fields": {
+      "nombre": "Corolla Cross",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2014
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 6,
+    "fields": {
+      "nombre": "Yaris",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2015
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 7,
+    "fields": {
+      "nombre": "Corolla",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2022
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 8,
+    "fields": {
+      "nombre": "Gol Trend",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2012
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 9,
+    "fields": {
+      "nombre": "C4 Cactus",
+      "descripcion": "",
+      "marca": 9,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 10,
+    "fields": {
+      "nombre": "Sandero",
+      "descripcion": "",
+      "marca": 10,
+      "anio": 2013
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 11,
+    "fields": {
+      "nombre": "Onix",
+      "descripcion": "",
+      "marca": 5,
+      "anio": 2018
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 12,
+    "fields": {
+      "nombre": "Taos",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2018
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 13,
+    "fields": {
+      "nombre": "Ecosport",
+      "descripcion": "",
+      "marca": 7,
+      "anio": 2021
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 14,
+    "fields": {
+      "nombre": "Stepway",
+      "descripcion": "",
+      "marca": 10,
+      "anio": 2019
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 15,
+    "fields": {
+      "nombre": "T-Cross",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2020
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 16,
+    "fields": {
+      "nombre": "Tracker",
+      "descripcion": "",
+      "marca": 5,
+      "anio": 2022
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 17,
+    "fields": {
+      "nombre": "Nivus",
+      "descripcion": "",
+      "marca": 1,
+      "anio": 2018
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 18,
+    "fields": {
+      "nombre": "Sw4",
+      "descripcion": "",
+      "marca": 3,
+      "anio": 2021
+    }
+  },
+  {
+    "model": "taller.modelo",
+    "pk": 19,
+    "fields": {
+      "nombre": "Renegade",
+      "descripcion": "",
+      "marca": 8,
+      "anio": 2017
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Reemplazo pieza",
+      "descripcion": "",
+      "materiales": false,
+      "repuestos": true,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Tarea de pintura",
+      "descripcion": "",
+      "materiales": false,
+      "repuestos": false,
+      "planilla": true
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Tarea compleja",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": true,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tipotarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Requiere material",
+      "descripcion": "",
+      "materiales": true,
+      "repuestos": false,
+      "planilla": false
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 1,
+    "fields": {
+      "nombre": "Cambiar puerta",
+      "descripcion": "",
+      "tipo": 3,
+      "precio": "1385.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 2,
+    "fields": {
+      "nombre": "Pintado completo",
+      "descripcion": "",
+      "tipo": 2,
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 3,
+    "fields": {
+      "nombre": "Pintado parcial",
+      "descripcion": "",
+      "tipo": 2,
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 4,
+    "fields": {
+      "nombre": "Reparar abolladura",
+      "descripcion": "",
+      "tipo": 4,
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 5,
+    "fields": {
+      "nombre": "Cambiar optica",
+      "descripcion": "",
+      "tipo": 1,
+      "precio": "1469.00"
+    }
+  },
+  {
+    "model": "taller.tarea",
+    "pk": 6,
+    "fields": {
+      "nombre": "Cambiar asiento",
+      "descripcion": "",
+      "tipo": 1,
+      "precio": "4688.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 1,
+    "fields": {
+      "nombre": "Puerta delantera izquierda",
+      "modelo": 5,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1957.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 2,
+    "fields": {
+      "nombre": "Puerta delantera derecha",
+      "modelo": 4,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "3594.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 3,
+    "fields": {
+      "nombre": "Parabrisas",
+      "modelo": 1,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "4386.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 4,
+    "fields": {
+      "nombre": "Capo",
+      "modelo": 2,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1478.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 5,
+    "fields": {
+      "nombre": "Asiento delantero",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "3983.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 6,
+    "fields": {
+      "nombre": "Optica derecha",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1301.00"
+    }
+  },
+  {
+    "model": "taller.repuesto",
+    "pk": 7,
+    "fields": {
+      "nombre": "Optica izquierda",
+      "modelo": 3,
+      "tipo": 99,
+      "cantidad": 1000,
+      "precio": "1793.00"
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 1,
+    "fields": {
+      "nombre": "tipomat2",
+      "unidad_medida": 1
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 2,
+    "fields": {
+      "nombre": "tipo6",
+      "unidad_medida": 2
+    }
+  },
+  {
+    "model": "taller.tipomaterial",
+    "pk": 3,
+    "fields": {
+      "nombre": "tipomat4",
+      "unidad_medida": 4
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 1,
+    "fields": {
+      "nombre": "Chapa",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "85.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 2,
+    "fields": {
+      "nombre": "Cristal",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "83.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 3,
+    "fields": {
+      "nombre": "Masilla",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "53.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 4,
+    "fields": {
+      "nombre": "Alambre",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "85.00"
+    }
+  },
+  {
+    "model": "taller.material",
+    "pk": 5,
+    "fields": {
+      "nombre": "Lija",
+      "tipo": 1,
+      "cantidad": 1000,
+      "precio": "31.00"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 1,
+    "fields": {
+      "dni": "37852985",
+      "nombre": "Patricia",
+      "apellido": "Ramirez",
+      "direccion": "Centenario 993",
+      "telefono": "2804309295"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 2,
+    "fields": {
+      "dni": "44826759",
+      "nombre": "Marta",
+      "apellido": "Arias",
+      "direccion": "Lezana 279",
+      "telefono": "2804677223"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 3,
+    "fields": {
+      "dni": "86894946",
+      "nombre": "Norma",
+      "apellido": "Aguirre",
+      "direccion": "Cambrin 745",
+      "telefono": "2804365270"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 4,
+    "fields": {
+      "dni": "54093481",
+      "nombre": "Nestor",
+      "apellido": "Peralta",
+      "direccion": "Brown 868",
+      "telefono": "2804283548"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 5,
+    "fields": {
+      "dni": "50528408",
+      "nombre": "Adriana",
+      "apellido": "Cabrera",
+      "direccion": "A. P. Bell 1163",
+      "telefono": "2804818210"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 6,
+    "fields": {
+      "dni": "57459290",
+      "nombre": "Jorge",
+      "apellido": "Benitez",
+      "direccion": "Edwin Roberts 205",
+      "telefono": "2804944880"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 7,
+    "fields": {
+      "dni": "89373866",
+      "nombre": "Alejandro",
+      "apellido": "Ponce",
+      "direccion": "El Carmen 864",
+      "telefono": "2804149354"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 8,
+    "fields": {
+      "dni": "64706433",
+      "nombre": "Hector",
+      "apellido": "Moreno",
+      "direccion": "Cuba 1787",
+      "telefono": "2804617055"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 9,
+    "fields": {
+      "dni": "75326191",
+      "nombre": "Fernando",
+      "apellido": "Fernandez",
+      "direccion": "Gral. Artigas 1392",
+      "telefono": "2804167763"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 10,
+    "fields": {
+      "dni": "10355923",
+      "nombre": "Andrea",
+      "apellido": "Vazquez",
+      "direccion": "Juan Evans 1610",
+      "telefono": "2804437547"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 11,
+    "fields": {
+      "dni": "39381461",
+      "nombre": "Juan",
+      "apellido": "Munos",
+      "direccion": "Rivadavia 130",
+      "telefono": "2804476334"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 12,
+    "fields": {
+      "dni": "37051058",
+      "nombre": "Liliana",
+      "apellido": "Ponce",
+      "direccion": "Cambrin 1721",
+      "telefono": "2804916988"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 13,
+    "fields": {
+      "dni": "73054248",
+      "nombre": "Susana",
+      "apellido": "Vazquez",
+      "direccion": "Nicaragua 547",
+      "telefono": "2804284823"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 14,
+    "fields": {
+      "dni": "71450069",
+      "nombre": "Marcelo",
+      "apellido": "Ponce",
+      "direccion": "Juan Manuel de Rosas 382",
+      "telefono": "2804655816"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 15,
+    "fields": {
+      "dni": "39662168",
+      "nombre": "Antonio",
+      "apellido": "Torres",
+      "direccion": "Brasil 335",
+      "telefono": "2804202645"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 16,
+    "fields": {
+      "dni": "19810164",
+      "nombre": "Victor",
+      "apellido": "Nunes",
+      "direccion": "Edwin Roberts 573",
+      "telefono": "2804909045"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 17,
+    "fields": {
+      "dni": "15726398",
+      "nombre": "Monica",
+      "apellido": "Pereyra",
+      "direccion": "Corrientes 1565",
+      "telefono": "2804492828"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 18,
+    "fields": {
+      "dni": "11596927",
+      "nombre": "Andrea",
+      "apellido": "Caceres",
+      "direccion": "Juan Manuel de Rosas 118",
+      "telefono": "2804205179"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 19,
+    "fields": {
+      "dni": "13727436",
+      "nombre": "Hugo",
+      "apellido": "Ponce",
+      "direccion": "San David 813",
+      "telefono": "2804728840"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 20,
+    "fields": {
+      "dni": "36911818",
+      "nombre": "Claudio",
+      "apellido": "Sosa",
+      "direccion": "El Carmen 1568",
+      "telefono": "2804924670"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 21,
+    "fields": {
+      "dni": "13577155",
+      "nombre": "Ricardo",
+      "apellido": "Coronel",
+      "direccion": "Espana 1334",
+      "telefono": "2804219502"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 22,
+    "fields": {
+      "dni": "36365297",
+      "nombre": "Rosa",
+      "apellido": "Castro",
+      "direccion": "Juan Manuel de Rosas 470",
+      "telefono": "2804547142"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 23,
+    "fields": {
+      "dni": "46394379",
+      "nombre": "Oscar",
+      "apellido": "Fernandez",
+      "direccion": "9 de Julio 118",
+      "telefono": "2804758226"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 24,
+    "fields": {
+      "dni": "84056849",
+      "nombre": "Juan",
+      "apellido": "Gimenez",
+      "direccion": "Juan Evans 654",
+      "telefono": "2804854387"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 25,
+    "fields": {
+      "dni": "18460025",
+      "nombre": "Cristian",
+      "apellido": "Morales",
+      "direccion": "Crucero Gral. Belgrano 1006",
+      "telefono": "2804784454"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 26,
+    "fields": {
+      "dni": "36040360",
+      "nombre": "Carmen",
+      "apellido": "Alvarez",
+      "direccion": "28 de Julio 1168",
+      "telefono": "2804435897"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 27,
+    "fields": {
+      "dni": "50193047",
+      "nombre": "Laura",
+      "apellido": "Romero",
+      "direccion": "Parana 792",
+      "telefono": "2804684533"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 28,
+    "fields": {
+      "dni": "80327986",
+      "nombre": "Jose",
+      "apellido": "Navarro",
+      "direccion": "Edison 1355",
+      "telefono": "2804480760"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 29,
+    "fields": {
+      "dni": "20653865",
+      "nombre": "Rosa",
+      "apellido": "Ortiz",
+      "direccion": "Brasil 166",
+      "telefono": "2804190450"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 30,
+    "fields": {
+      "dni": "75193358",
+      "nombre": "Manuel",
+      "apellido": "Ramirez",
+      "direccion": "Mitre 142",
+      "telefono": "2804328551"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 31,
+    "fields": {
+      "dni": "63387231",
+      "nombre": "Daniel",
+      "apellido": "Morales",
+      "direccion": "Zapiola 375",
+      "telefono": "2804000655"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 32,
+    "fields": {
+      "dni": "47091520",
+      "nombre": "Walter",
+      "apellido": "Moreno",
+      "direccion": "9 de Julio 351",
+      "telefono": "2804358557"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 33,
+    "fields": {
+      "dni": "43005220",
+      "nombre": "Andrea",
+      "apellido": "Arias",
+      "direccion": "25 de Mayo 937",
+      "telefono": "2804060348"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 34,
+    "fields": {
+      "dni": "65763186",
+      "nombre": "Miguel",
+      "apellido": "Vazquez",
+      "direccion": "Rivadavia 1452",
+      "telefono": "2804220517"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 35,
+    "fields": {
+      "dni": "66911577",
+      "nombre": "Olga",
+      "apellido": "Fernandez",
+      "direccion": "Pje. Portugal 417",
+      "telefono": "2804421730"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 36,
+    "fields": {
+      "dni": "13725273",
+      "nombre": "Oscar",
+      "apellido": "Lopez",
+      "direccion": "Cuba 623",
+      "telefono": "2804597136"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 37,
+    "fields": {
+      "dni": "89089934",
+      "nombre": "Graciela",
+      "apellido": "Gonzalez",
+      "direccion": "Musters 1163",
+      "telefono": "2804904704"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 38,
+    "fields": {
+      "dni": "22613636",
+      "nombre": "Daniel",
+      "apellido": "Vazquez",
+      "direccion": "Piedrabuena 165",
+      "telefono": "2804171275"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 39,
+    "fields": {
+      "dni": "11129067",
+      "nombre": "Maria",
+      "apellido": "Cabrera",
+      "direccion": "Paraguay 1503",
+      "telefono": "2804468208"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 40,
+    "fields": {
+      "dni": "48229532",
+      "nombre": "Olga",
+      "apellido": "Aguirre",
+      "direccion": "25 de Mayo 1270",
+      "telefono": "2804075136"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 41,
+    "fields": {
+      "dni": "58970195",
+      "nombre": "Juan",
+      "apellido": "Lopez",
+      "direccion": "Lezana 327",
+      "telefono": "2804341373"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 42,
+    "fields": {
+      "dni": "16385973",
+      "nombre": "Angel",
+      "apellido": "Villalba",
+      "direccion": "San David 624",
+      "telefono": "2804348607"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 43,
+    "fields": {
+      "dni": "67651993",
+      "nombre": "Roberto",
+      "apellido": "Torres",
+      "direccion": "Zapiola 1581",
+      "telefono": "2804442975"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 44,
+    "fields": {
+      "dni": "77593580",
+      "nombre": "Monica",
+      "apellido": "Medina",
+      "direccion": "Brasil 1191",
+      "telefono": "2804218701"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 45,
+    "fields": {
+      "dni": "37019187",
+      "nombre": "Oscar",
+      "apellido": "Carrizo",
+      "direccion": "Lezana 236",
+      "telefono": "2804133558"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 46,
+    "fields": {
+      "dni": "16254419",
+      "nombre": "Diego",
+      "apellido": "Villalba",
+      "direccion": "Rivadavia 1079",
+      "telefono": "2804476305"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 47,
+    "fields": {
+      "dni": "32320958",
+      "nombre": "Martin",
+      "apellido": "Caceres",
+      "direccion": "Corrientes 593",
+      "telefono": "2804277751"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 48,
+    "fields": {
+      "dni": "41347347",
+      "nombre": "Juana",
+      "apellido": "Carrizo",
+      "direccion": "9 de Julio 1652",
+      "telefono": "2804859866"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 49,
+    "fields": {
+      "dni": "44012587",
+      "nombre": "Cristian",
+      "apellido": "Ramos",
+      "direccion": "9 de Julio 1912",
+      "telefono": "2804402477"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 50,
+    "fields": {
+      "dni": "50915486",
+      "nombre": "Norma",
+      "apellido": "Perez",
+      "direccion": "Mitre 428",
+      "telefono": "2804016663"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 51,
+    "fields": {
+      "dni": "23209650",
+      "nombre": "Silvia",
+      "apellido": "Rios",
+      "direccion": "Piedrabuena 209",
+      "telefono": "2804000196"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 52,
+    "fields": {
+      "dni": "33930755",
+      "nombre": "Pablo",
+      "apellido": "Castro",
+      "direccion": "Pje. Portugal 1649",
+      "telefono": "2804378983"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 53,
+    "fields": {
+      "dni": "75009171",
+      "nombre": "Maria",
+      "apellido": "Gomez",
+      "direccion": "Corrientes 1271",
+      "telefono": "2804003578"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 54,
+    "fields": {
+      "dni": "38943385",
+      "nombre": "Ana",
+      "apellido": "Silva",
+      "direccion": "9 de Julio 1970",
+      "telefono": "2804639700"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 55,
+    "fields": {
+      "dni": "22859278",
+      "nombre": "Pedro",
+      "apellido": "Rodriguez",
+      "direccion": "Lezana 1652",
+      "telefono": "2804652513"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 56,
+    "fields": {
+      "dni": "67920610",
+      "nombre": "Angel",
+      "apellido": "Vazquez",
+      "direccion": "Juan Manuel de Rosas 633",
+      "telefono": "2804832509"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 57,
+    "fields": {
+      "dni": "35936236",
+      "nombre": "Jorge",
+      "apellido": "Flores",
+      "direccion": "Brown 1803",
+      "telefono": "2804880447"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 58,
+    "fields": {
+      "dni": "80031529",
+      "nombre": "Sandra",
+      "apellido": "Gomez",
+      "direccion": "Musters 163",
+      "telefono": "2804440744"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 59,
+    "fields": {
+      "dni": "46053098",
+      "nombre": "Carmen",
+      "apellido": "Arias",
+      "direccion": "San Martin 1684",
+      "telefono": "2804965634"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 60,
+    "fields": {
+      "dni": "85867617",
+      "nombre": "Sandra",
+      "apellido": "Diaz",
+      "direccion": "Edison 1242",
+      "telefono": "2804874833"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 61,
+    "fields": {
+      "dni": "45792498",
+      "nombre": "Hugo",
+      "apellido": "Morales",
+      "direccion": "Av. Rawson 647",
+      "telefono": "2804683346"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 62,
+    "fields": {
+      "dni": "31294428",
+      "nombre": "Cristian",
+      "apellido": "Cardozo",
+      "direccion": "Edwin Roberts 1897",
+      "telefono": "2804770419"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 63,
+    "fields": {
+      "dni": "68658312",
+      "nombre": "Teresa",
+      "apellido": "Peralta",
+      "direccion": "Maipu 932",
+      "telefono": "2804349829"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 64,
+    "fields": {
+      "dni": "61721849",
+      "nombre": "Marcelo",
+      "apellido": "Fernandez",
+      "direccion": "25 de Mayo 1543",
+      "telefono": "2804707432"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 65,
+    "fields": {
+      "dni": "37265452",
+      "nombre": "Laura",
+      "apellido": "Peralta",
+      "direccion": "Av. Rawson 1500",
+      "telefono": "2804530634"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 66,
+    "fields": {
+      "dni": "75232580",
+      "nombre": "Marta",
+      "apellido": "Ruiz",
+      "direccion": "Juan Evans 518",
+      "telefono": "2804134452"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 67,
+    "fields": {
+      "dni": "54596660",
+      "nombre": "Marcela",
+      "apellido": "Perez",
+      "direccion": "Juan Manuel de Rosas 1679",
+      "telefono": "2804493381"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 68,
+    "fields": {
+      "dni": "37068762",
+      "nombre": "Gustavo",
+      "apellido": "Juarez",
+      "direccion": "Brown 511",
+      "telefono": "2804182823"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 69,
+    "fields": {
+      "dni": "81702302",
+      "nombre": "Carlos",
+      "apellido": "Perez",
+      "direccion": "Pellegrini 1355",
+      "telefono": "2804541222"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 70,
+    "fields": {
+      "dni": "52909828",
+      "nombre": "Laura",
+      "apellido": "Gomez",
+      "direccion": "A. P. Bell 1208",
+      "telefono": "2804965324"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 71,
+    "fields": {
+      "dni": "77321006",
+      "nombre": "Marcelo",
+      "apellido": "Alvarez",
+      "direccion": "28 de Julio 1397",
+      "telefono": "2804289549"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 72,
+    "fields": {
+      "dni": "89268405",
+      "nombre": "Silvia",
+      "apellido": "Luna",
+      "direccion": "Luis Feldman 875",
+      "telefono": "2804472238"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 73,
+    "fields": {
+      "dni": "58743396",
+      "nombre": "Marcelo",
+      "apellido": "Benitez",
+      "direccion": "Centenario 1061",
+      "telefono": "2804977477"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 74,
+    "fields": {
+      "dni": "22513840",
+      "nombre": "Ramin",
+      "apellido": "Coronel",
+      "direccion": "Centenario 1076",
+      "telefono": "2804981068"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 75,
+    "fields": {
+      "dni": "82063879",
+      "nombre": "Oscar",
+      "apellido": "Sanchez",
+      "direccion": "Luis Feldman 1573",
+      "telefono": "2804775693"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 76,
+    "fields": {
+      "dni": "84145889",
+      "nombre": "Andrea",
+      "apellido": "Gomez",
+      "direccion": "Juan Evans 391",
+      "telefono": "2804253741"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 77,
+    "fields": {
+      "dni": "38961317",
+      "nombre": "Carmen",
+      "apellido": "Lopez",
+      "direccion": "Parana 958",
+      "telefono": "2804424292"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 78,
+    "fields": {
+      "dni": "48115007",
+      "nombre": "Laura",
+      "apellido": "Vazquez",
+      "direccion": "Edwin Roberts 915",
+      "telefono": "2804052975"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 79,
+    "fields": {
+      "dni": "57558651",
+      "nombre": "Silvia",
+      "apellido": "Suarez",
+      "direccion": "San David 1153",
+      "telefono": "2804794093"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 80,
+    "fields": {
+      "dni": "78614997",
+      "nombre": "Lidia",
+      "apellido": "Castro",
+      "direccion": "28 de Julio 592",
+      "telefono": "2804075526"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 81,
+    "fields": {
+      "dni": "49781798",
+      "nombre": "Rosa",
+      "apellido": "Diaz",
+      "direccion": "Paraguay 1518",
+      "telefono": "2804988104"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 82,
+    "fields": {
+      "dni": "75189598",
+      "nombre": "Alicia",
+      "apellido": "Pereyra",
+      "direccion": "San Martin 541",
+      "telefono": "2804103422"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 83,
+    "fields": {
+      "dni": "38593204",
+      "nombre": "Carmen",
+      "apellido": "Vargas",
+      "direccion": "Rivadavia 1089",
+      "telefono": "2804988323"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 84,
+    "fields": {
+      "dni": "77172423",
+      "nombre": "Juan",
+      "apellido": "Pereyra",
+      "direccion": "Tte. Garcia 1084",
+      "telefono": "2804054540"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 85,
+    "fields": {
+      "dni": "36248952",
+      "nombre": "Ramin",
+      "apellido": "Gutierrez",
+      "direccion": "Maipu 1152",
+      "telefono": "2804824527"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 86,
+    "fields": {
+      "dni": "72879705",
+      "nombre": "Jorge",
+      "apellido": "Rios",
+      "direccion": "Brasil 915",
+      "telefono": "2804916886"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 87,
+    "fields": {
+      "dni": "52332940",
+      "nombre": "Daniel",
+      "apellido": "Gonzalez",
+      "direccion": "Tte. Garcia 653",
+      "telefono": "2804427651"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 88,
+    "fields": {
+      "dni": "76730214",
+      "nombre": "Julio",
+      "apellido": "Perez",
+      "direccion": "Musters 1041",
+      "telefono": "2804812292"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 89,
+    "fields": {
+      "dni": "15948257",
+      "nombre": "Marta",
+      "apellido": "Silva",
+      "direccion": "Lezana 424",
+      "telefono": "2804854623"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 90,
+    "fields": {
+      "dni": "69743801",
+      "nombre": "Pablo",
+      "apellido": "Coronel",
+      "direccion": "Edwin Roberts 885",
+      "telefono": "2804882030"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 91,
+    "fields": {
+      "dni": "40622906",
+      "nombre": "Miguel",
+      "apellido": "Martinez",
+      "direccion": "Brasil 1133",
+      "telefono": "2804651538"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 92,
+    "fields": {
+      "dni": "20556506",
+      "nombre": "Hector",
+      "apellido": "Herrera",
+      "direccion": "Brasil 1755",
+      "telefono": "2804011233"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 93,
+    "fields": {
+      "dni": "16568288",
+      "nombre": "Norma",
+      "apellido": "Gomez",
+      "direccion": "San David 428",
+      "telefono": "2804560043"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 94,
+    "fields": {
+      "dni": "11661387",
+      "nombre": "Jose",
+      "apellido": "Vega",
+      "direccion": "Juan Manuel de Rosas 1079",
+      "telefono": "2804121532"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 95,
+    "fields": {
+      "dni": "71318774",
+      "nombre": "Rosa",
+      "apellido": "Gonzalez",
+      "direccion": "San Martin 253",
+      "telefono": "2804639437"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 96,
+    "fields": {
+      "dni": "31971387",
+      "nombre": "Sergio",
+      "apellido": "Ruiz",
+      "direccion": "Peru 1088",
+      "telefono": "2804526533"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 97,
+    "fields": {
+      "dni": "15853208",
+      "nombre": "Ramona",
+      "apellido": "Torres",
+      "direccion": "28 de Julio 1503",
+      "telefono": "2804072181"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 98,
+    "fields": {
+      "dni": "40163715",
+      "nombre": "Cristian",
+      "apellido": "Quiroga",
+      "direccion": "Edison 652",
+      "telefono": "2804566418"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 99,
+    "fields": {
+      "dni": "83961718",
+      "nombre": "Luis",
+      "apellido": "Cabrera",
+      "direccion": "Edison 1936",
+      "telefono": "2804507601"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 100,
+    "fields": {
+      "dni": "48505338",
+      "nombre": "Claudia",
+      "apellido": "Luna",
+      "direccion": "Mitre 275",
+      "telefono": "2804702818"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 101,
+    "fields": {
+      "dni": "43079527",
+      "nombre": "Ramiro",
+      "apellido": "Canario",
+      "direccion": "Calle 123",
+      "telefono": "tel123"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 102,
+    "fields": {
+      "dni": "43079528",
+      "nombre": "Ramiro",
+      "apellido": "Canario",
+      "direccion": "Calle 123",
+      "telefono": "tel123"
+    }
+  },
+  {
+    "model": "taller.cliente",
+    "pk": 103,
+    "fields": {
+      "dni": "12312377",
+      "nombre": "borrar",
+      "apellido": "borradito",
+      "direccion": "a",
+      "telefono": "a"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 1,
+    "fields": {
+      "cliente": 1,
+      "patente": "DM030LM",
+      "modelo": 11,
+      "anio": 2015,
+      "chasis": "2WZGTLB9NGD740687"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 2,
+    "fields": {
+      "cliente": 2,
+      "patente": "WW563DX",
+      "modelo": 14,
+      "anio": 2015,
+      "chasis": "2UXHEQU7VAF742306"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 3,
+    "fields": {
+      "cliente": 3,
+      "patente": "QD924LY",
+      "modelo": 13,
+      "anio": 2021,
+      "chasis": "4KBWWFT1AHN819119"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 4,
+    "fields": {
+      "cliente": 4,
+      "patente": "FZ983MK",
+      "modelo": 13,
+      "anio": 2015,
+      "chasis": "3QOQTYI5NNT136478"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 5,
+    "fields": {
+      "cliente": 5,
+      "patente": "FP211LI",
+      "modelo": 18,
+      "anio": 2018,
+      "chasis": "1SALBPF8FTF418328"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 6,
+    "fields": {
+      "cliente": 6,
+      "patente": "LB698JA",
+      "modelo": 11,
+      "anio": 2020,
+      "chasis": "7GERJHB0RQL997467"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 7,
+    "fields": {
+      "cliente": 7,
+      "patente": "KD506OT",
+      "modelo": 14,
+      "anio": 2021,
+      "chasis": "2IHADDW5UQO246086"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 8,
+    "fields": {
+      "cliente": 8,
+      "patente": "PF251GN",
+      "modelo": 7,
+      "anio": 2014,
+      "chasis": "9FPHQUR9WJJ334723"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 9,
+    "fields": {
+      "cliente": 9,
+      "patente": "MS214GQ",
+      "modelo": 6,
+      "anio": 2014,
+      "chasis": "2IEYTQH2KBR888271"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 10,
+    "fields": {
+      "cliente": 10,
+      "patente": "QZ912CQ",
+      "modelo": 7,
+      "anio": 2015,
+      "chasis": "0BJTMFZ2GBO949052"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 11,
+    "fields": {
+      "cliente": 11,
+      "patente": "JR992YB",
+      "modelo": 16,
+      "anio": 2015,
+      "chasis": "9HURHZY3WCD764971"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 12,
+    "fields": {
+      "cliente": 12,
+      "patente": "TD903GR",
+      "modelo": 4,
+      "anio": 2015,
+      "chasis": "0SGBBHV7NQE720822"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 13,
+    "fields": {
+      "cliente": 13,
+      "patente": "SO998NE",
+      "modelo": 11,
+      "anio": 2018,
+      "chasis": "5RRXMQR6NME815321"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 14,
+    "fields": {
+      "cliente": 14,
+      "patente": "GJ296OO",
+      "modelo": 9,
+      "anio": 2021,
+      "chasis": "8EQZVTF7VFT250162"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 15,
+    "fields": {
+      "cliente": 15,
+      "patente": "IH450RS",
+      "modelo": 16,
+      "anio": 2020,
+      "chasis": "9QAPYBQ5IMD470662"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 16,
+    "fields": {
+      "cliente": 16,
+      "patente": "ML997XN",
+      "modelo": 3,
+      "anio": 2019,
+      "chasis": "9KQMGFB4XFT939724"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 17,
+    "fields": {
+      "cliente": 17,
+      "patente": "TB470KP",
+      "modelo": 9,
+      "anio": 2021,
+      "chasis": "0WXKPZL1PID721374"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 18,
+    "fields": {
+      "cliente": 18,
+      "patente": "OE815MS",
+      "modelo": 1,
+      "anio": 2021,
+      "chasis": "6NJXIOO3JKX382040"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 19,
+    "fields": {
+      "cliente": 19,
+      "patente": "DH010EI",
+      "modelo": 8,
+      "anio": 2020,
+      "chasis": "4QRXKMU1PHH401480"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 20,
+    "fields": {
+      "cliente": 20,
+      "patente": "JU910NK",
+      "modelo": 5,
+      "anio": 2019,
+      "chasis": "5WQLUEJ0QFG033124"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 21,
+    "fields": {
+      "cliente": 21,
+      "patente": "TF970KL",
+      "modelo": 3,
+      "anio": 2014,
+      "chasis": "6YTCAIC0GIX526767"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 22,
+    "fields": {
+      "cliente": 22,
+      "patente": "GI749ML",
+      "modelo": 16,
+      "anio": 2014,
+      "chasis": "4ZEOGYZ3MZE898862"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 23,
+    "fields": {
+      "cliente": 23,
+      "patente": "BK324VK",
+      "modelo": 11,
+      "anio": 2019,
+      "chasis": "2VRDYDP7OVZ912486"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 24,
+    "fields": {
+      "cliente": 24,
+      "patente": "GN277VP",
+      "modelo": 11,
+      "anio": 2015,
+      "chasis": "1ATPOCX7YFR361922"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 25,
+    "fields": {
+      "cliente": 25,
+      "patente": "XC508QS",
+      "modelo": 13,
+      "anio": 2022,
+      "chasis": "4WMSVMT1ELZ872462"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 26,
+    "fields": {
+      "cliente": 26,
+      "patente": "HQ074CO",
+      "modelo": 11,
+      "anio": 2017,
+      "chasis": "6ISIOMN7BMO230579"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 27,
+    "fields": {
+      "cliente": 27,
+      "patente": "XD578GD",
+      "modelo": 11,
+      "anio": 2019,
+      "chasis": "4EXXANJ7JNN220089"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 28,
+    "fields": {
+      "cliente": 28,
+      "patente": "UI219ST",
+      "modelo": 2,
+      "anio": 2021,
+      "chasis": "9ZKWOBW1RAX663444"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 29,
+    "fields": {
+      "cliente": 29,
+      "patente": "EU433VK",
+      "modelo": 9,
+      "anio": 2018,
+      "chasis": "9MWNPXS7SWZ602615"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 30,
+    "fields": {
+      "cliente": 30,
+      "patente": "KX917TD",
+      "modelo": 3,
+      "anio": 2021,
+      "chasis": "9ZZKLJJ9USB306513"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 31,
+    "fields": {
+      "cliente": 31,
+      "patente": "PH656KH",
+      "modelo": 15,
+      "anio": 2018,
+      "chasis": "0CSZHCE8AJA492454"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 32,
+    "fields": {
+      "cliente": 32,
+      "patente": "BK564TI",
+      "modelo": 3,
+      "anio": 2022,
+      "chasis": "0HNCRSH8XOW785302"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 33,
+    "fields": {
+      "cliente": 33,
+      "patente": "EB376ZV",
+      "modelo": 18,
+      "anio": 2021,
+      "chasis": "8FQJTSV7CZW635176"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 34,
+    "fields": {
+      "cliente": 34,
+      "patente": "WN547AI",
+      "modelo": 3,
+      "anio": 2016,
+      "chasis": "2ATFLKW7TGL833575"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 35,
+    "fields": {
+      "cliente": 35,
+      "patente": "LU975CE",
+      "modelo": 12,
+      "anio": 2019,
+      "chasis": "2DHEERM0OTU199331"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 36,
+    "fields": {
+      "cliente": 36,
+      "patente": "QB747WF",
+      "modelo": 1,
+      "anio": 2016,
+      "chasis": "5ZJTSYP1RZD150833"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 37,
+    "fields": {
+      "cliente": 37,
+      "patente": "WO708TD",
+      "modelo": 18,
+      "anio": 2016,
+      "chasis": "8BCKIFM8AFM316657"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 38,
+    "fields": {
+      "cliente": 38,
+      "patente": "CE924OK",
+      "modelo": 19,
+      "anio": 2020,
+      "chasis": "1EXNOWA1LVM804602"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 39,
+    "fields": {
+      "cliente": 39,
+      "patente": "WY167GP",
+      "modelo": 5,
+      "anio": 2016,
+      "chasis": "0MFODKA1LSX989659"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 40,
+    "fields": {
+      "cliente": 40,
+      "patente": "XK965VK",
+      "modelo": 11,
+      "anio": 2022,
+      "chasis": "2FBYFNS5UVG348911"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 41,
+    "fields": {
+      "cliente": 41,
+      "patente": "DW602SH",
+      "modelo": 15,
+      "anio": 2021,
+      "chasis": "3ATZMPW1CMB238777"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 42,
+    "fields": {
+      "cliente": 42,
+      "patente": "DF968CC",
+      "modelo": 6,
+      "anio": 2014,
+      "chasis": "4SZABPP7PFR598360"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 43,
+    "fields": {
+      "cliente": 43,
+      "patente": "EU491TG",
+      "modelo": 6,
+      "anio": 2022,
+      "chasis": "3AMZPZD5DBU177973"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 44,
+    "fields": {
+      "cliente": 44,
+      "patente": "TQ785WI",
+      "modelo": 18,
+      "anio": 2016,
+      "chasis": "3SZEIZG4SQA098101"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 45,
+    "fields": {
+      "cliente": 45,
+      "patente": "TD558AB",
+      "modelo": 6,
+      "anio": 2019,
+      "chasis": "6WPTHKX9NOV046104"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 46,
+    "fields": {
+      "cliente": 46,
+      "patente": "VH069UZ",
+      "modelo": 7,
+      "anio": 2015,
+      "chasis": "6HUFRTL7DCZ918148"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 47,
+    "fields": {
+      "cliente": 47,
+      "patente": "TJ884OK",
+      "modelo": 12,
+      "anio": 2017,
+      "chasis": "0MQHCER8TDZ950715"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 48,
+    "fields": {
+      "cliente": 48,
+      "patente": "MD100ZS",
+      "modelo": 12,
+      "anio": 2019,
+      "chasis": "0AOTMBB1JKV486857"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 49,
+    "fields": {
+      "cliente": 49,
+      "patente": "GC063NF",
+      "modelo": 2,
+      "anio": 2019,
+      "chasis": "1MHAUCA1XYK265119"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 50,
+    "fields": {
+      "cliente": 50,
+      "patente": "XD697HB",
+      "modelo": 7,
+      "anio": 2017,
+      "chasis": "6DFFXFR4UNW277680"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 51,
+    "fields": {
+      "cliente": 51,
+      "patente": "SK047CC",
+      "modelo": 14,
+      "anio": 2018,
+      "chasis": "0NSKSCJ3LTI226942"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 52,
+    "fields": {
+      "cliente": 52,
+      "patente": "KU512PL",
+      "modelo": 13,
+      "anio": 2016,
+      "chasis": "7HLTECE2SNW550713"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 53,
+    "fields": {
+      "cliente": 53,
+      "patente": "GC351EJ",
+      "modelo": 16,
+      "anio": 2016,
+      "chasis": "0EBQCJW5AGV346595"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 54,
+    "fields": {
+      "cliente": 54,
+      "patente": "GD098ZE",
+      "modelo": 4,
+      "anio": 2016,
+      "chasis": "0UGXJXE5CRE038513"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 55,
+    "fields": {
+      "cliente": 55,
+      "patente": "HH860HB",
+      "modelo": 16,
+      "anio": 2018,
+      "chasis": "6XRGQXJ6OLZ932952"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 56,
+    "fields": {
+      "cliente": 56,
+      "patente": "SX527JY",
+      "modelo": 10,
+      "anio": 2021,
+      "chasis": "1SLOYXW8KJW981047"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 57,
+    "fields": {
+      "cliente": 57,
+      "patente": "FF928XR",
+      "modelo": 15,
+      "anio": 2020,
+      "chasis": "8ODSHFB6QIE584192"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 58,
+    "fields": {
+      "cliente": 58,
+      "patente": "AM809VD",
+      "modelo": 9,
+      "anio": 2018,
+      "chasis": "2HDEMIP0NGN021589"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 59,
+    "fields": {
+      "cliente": 59,
+      "patente": "SU746GY",
+      "modelo": 12,
+      "anio": 2015,
+      "chasis": "2DURHMZ1HLG572375"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 60,
+    "fields": {
+      "cliente": 60,
+      "patente": "LF561PL",
+      "modelo": 12,
+      "anio": 2019,
+      "chasis": "0UXPBLM3CFT256651"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 61,
+    "fields": {
+      "cliente": 61,
+      "patente": "KH906AN",
+      "modelo": 19,
+      "anio": 2014,
+      "chasis": "2JBQQVH8EQT604388"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 62,
+    "fields": {
+      "cliente": 62,
+      "patente": "WE661BO",
+      "modelo": 15,
+      "anio": 2022,
+      "chasis": "8DRESCU3MMP634662"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 63,
+    "fields": {
+      "cliente": 63,
+      "patente": "QK911LV",
+      "modelo": 3,
+      "anio": 2021,
+      "chasis": "1GWYASG0FUK114744"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 64,
+    "fields": {
+      "cliente": 64,
+      "patente": "YD947HY",
+      "modelo": 18,
+      "anio": 2021,
+      "chasis": "3ATUMZE0IAQ222539"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 65,
+    "fields": {
+      "cliente": 65,
+      "patente": "TB454FT",
+      "modelo": 16,
+      "anio": 2021,
+      "chasis": "0EJMSZN0LGM093068"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 66,
+    "fields": {
+      "cliente": 66,
+      "patente": "LY142EY",
+      "modelo": 12,
+      "anio": 2014,
+      "chasis": "7LOAUMO1WMJ673104"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 67,
+    "fields": {
+      "cliente": 67,
+      "patente": "II309NB",
+      "modelo": 6,
+      "anio": 2015,
+      "chasis": "2APGBKS6EDL267925"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 68,
+    "fields": {
+      "cliente": 68,
+      "patente": "WD726CL",
+      "modelo": 6,
+      "anio": 2019,
+      "chasis": "7MVRFTM2RBP261606"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 69,
+    "fields": {
+      "cliente": 69,
+      "patente": "WZ530XQ",
+      "modelo": 12,
+      "anio": 2021,
+      "chasis": "7IAYGIO7HHI588906"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 70,
+    "fields": {
+      "cliente": 70,
+      "patente": "IO214AY",
+      "modelo": 14,
+      "anio": 2018,
+      "chasis": "4RAEVVN1YEV404214"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 71,
+    "fields": {
+      "cliente": 71,
+      "patente": "UH173XZ",
+      "modelo": 4,
+      "anio": 2022,
+      "chasis": "4ZUFHNA7FCS944683"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 72,
+    "fields": {
+      "cliente": 72,
+      "patente": "QK149JG",
+      "modelo": 14,
+      "anio": 2020,
+      "chasis": "7ORDPIM4LCF524555"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 73,
+    "fields": {
+      "cliente": 73,
+      "patente": "FG408QK",
+      "modelo": 1,
+      "anio": 2020,
+      "chasis": "5XYPXYB5MQJ075047"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 74,
+    "fields": {
+      "cliente": 74,
+      "patente": "KZ814MA",
+      "modelo": 8,
+      "anio": 2015,
+      "chasis": "7XSTUBM8TVM295505"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 75,
+    "fields": {
+      "cliente": 75,
+      "patente": "UY082YE",
+      "modelo": 5,
+      "anio": 2014,
+      "chasis": "7QTISZK8VNU772506"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 76,
+    "fields": {
+      "cliente": 76,
+      "patente": "AB287YT",
+      "modelo": 1,
+      "anio": 2021,
+      "chasis": "9WLQMOL8QIM337473"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 77,
+    "fields": {
+      "cliente": 77,
+      "patente": "MG549PP",
+      "modelo": 4,
+      "anio": 2017,
+      "chasis": "5EQTKIB0JGN275463"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 78,
+    "fields": {
+      "cliente": 78,
+      "patente": "IQ085RX",
+      "modelo": 8,
+      "anio": 2019,
+      "chasis": "1BJVVQD5LIE446537"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 79,
+    "fields": {
+      "cliente": 79,
+      "patente": "FA966VV",
+      "modelo": 12,
+      "anio": 2020,
+      "chasis": "1RBKHYU0PSA588998"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 80,
+    "fields": {
+      "cliente": 80,
+      "patente": "HR231QB",
+      "modelo": 12,
+      "anio": 2016,
+      "chasis": "2REOPZS7HAI880240"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 81,
+    "fields": {
+      "cliente": 81,
+      "patente": "EA232CF",
+      "modelo": 16,
+      "anio": 2019,
+      "chasis": "7NHPLIU6ABG211925"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 82,
+    "fields": {
+      "cliente": 82,
+      "patente": "VQ361OJ",
+      "modelo": 9,
+      "anio": 2017,
+      "chasis": "3UZCENZ2YUP853827"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 83,
+    "fields": {
+      "cliente": 83,
+      "patente": "YD954CO",
+      "modelo": 4,
+      "anio": 2020,
+      "chasis": "0YWERKI8DLJ545147"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 84,
+    "fields": {
+      "cliente": 84,
+      "patente": "PM281HJ",
+      "modelo": 11,
+      "anio": 2019,
+      "chasis": "1TLQMLB3XNW716579"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 85,
+    "fields": {
+      "cliente": 85,
+      "patente": "IH802LD",
+      "modelo": 15,
+      "anio": 2016,
+      "chasis": "8VSDBNT2MNS395639"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 86,
+    "fields": {
+      "cliente": 86,
+      "patente": "OI273RG",
+      "modelo": 14,
+      "anio": 2017,
+      "chasis": "0EEWQEF9GDQ147300"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 87,
+    "fields": {
+      "cliente": 87,
+      "patente": "RZ730TR",
+      "modelo": 14,
+      "anio": 2017,
+      "chasis": "6MDLELD7GRL051802"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 88,
+    "fields": {
+      "cliente": 88,
+      "patente": "TO791LO",
+      "modelo": 14,
+      "anio": 2022,
+      "chasis": "4CSVZPR5QID028723"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 89,
+    "fields": {
+      "cliente": 89,
+      "patente": "GR847ER",
+      "modelo": 14,
+      "anio": 2018,
+      "chasis": "1LLHOJG0WQG219483"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 90,
+    "fields": {
+      "cliente": 90,
+      "patente": "ES731RP",
+      "modelo": 11,
+      "anio": 2016,
+      "chasis": "1FYGKGL4AXC390391"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 91,
+    "fields": {
+      "cliente": 91,
+      "patente": "TY200WD",
+      "modelo": 13,
+      "anio": 2016,
+      "chasis": "9VXSJHK2ZZK279471"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 92,
+    "fields": {
+      "cliente": 92,
+      "patente": "ND695YH",
+      "modelo": 17,
+      "anio": 2017,
+      "chasis": "5BGPVWH8YNF024565"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 93,
+    "fields": {
+      "cliente": 93,
+      "patente": "NJ814QQ",
+      "modelo": 9,
+      "anio": 2016,
+      "chasis": "9QMESZU7XJX608861"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 94,
+    "fields": {
+      "cliente": 94,
+      "patente": "OM746CI",
+      "modelo": 8,
+      "anio": 2021,
+      "chasis": "7VAJVTR2GJJ580607"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 95,
+    "fields": {
+      "cliente": 95,
+      "patente": "CB799TO",
+      "modelo": 17,
+      "anio": 2018,
+      "chasis": "1PNXTEX0IPX060214"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 96,
+    "fields": {
+      "cliente": 96,
+      "patente": "OU895RC",
+      "modelo": 2,
+      "anio": 2021,
+      "chasis": "5LKSRSY7DRD669407"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 97,
+    "fields": {
+      "cliente": 97,
+      "patente": "NH715QZ",
+      "modelo": 3,
+      "anio": 2019,
+      "chasis": "2RVGKXF3SDZ775807"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 98,
+    "fields": {
+      "cliente": 98,
+      "patente": "WH452JZ",
+      "modelo": 12,
+      "anio": 2018,
+      "chasis": "8INEFBS5NLV599986"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 99,
+    "fields": {
+      "cliente": 99,
+      "patente": "FY152KI",
+      "modelo": 8,
+      "anio": 2021,
+      "chasis": "0IXZVQQ7YDZ517714"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 100,
+    "fields": {
+      "cliente": 100,
+      "patente": "GW031MJ",
+      "modelo": 4,
+      "anio": 2014,
+      "chasis": "1DKAQJG7YCT333915"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 101,
+    "fields": {
+      "cliente": 36,
+      "patente": "LO968XN",
+      "modelo": 8,
+      "anio": 2018,
+      "chasis": "0HYTNXA8ZPS472371"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 102,
+    "fields": {
+      "cliente": 18,
+      "patente": "IF869PB",
+      "modelo": 11,
+      "anio": 2014,
+      "chasis": "2APFJCK8NVU962736"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 103,
+    "fields": {
+      "cliente": 49,
+      "patente": "HU076MW",
+      "modelo": 6,
+      "anio": 2014,
+      "chasis": "4EDNXSQ8XJM469627"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 104,
+    "fields": {
+      "cliente": 20,
+      "patente": "JP597FP",
+      "modelo": 16,
+      "anio": 2021,
+      "chasis": "0YRDPTP6EUJ448428"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 105,
+    "fields": {
+      "cliente": 8,
+      "patente": "NZ889AM",
+      "modelo": 4,
+      "anio": 2022,
+      "chasis": "3JFRJXK6HZR803718"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 106,
+    "fields": {
+      "cliente": 50,
+      "patente": "LA580SW",
+      "modelo": 15,
+      "anio": 2022,
+      "chasis": "9VGQPSR7UUC234257"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 107,
+    "fields": {
+      "cliente": 13,
+      "patente": "MJ078JP",
+      "modelo": 19,
+      "anio": 2018,
+      "chasis": "2TFCOJE2FMN406761"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 108,
+    "fields": {
+      "cliente": 70,
+      "patente": "YT017SK",
+      "modelo": 19,
+      "anio": 2021,
+      "chasis": "4POLEZY2OTJ750242"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 109,
+    "fields": {
+      "cliente": 16,
+      "patente": "HD352LC",
+      "modelo": 12,
+      "anio": 2022,
+      "chasis": "7KPCBHT1FZS936988"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 110,
+    "fields": {
+      "cliente": 9,
+      "patente": "DO918ON",
+      "modelo": 17,
+      "anio": 2016,
+      "chasis": "6RZXLVL8WJU327278"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 111,
+    "fields": {
+      "cliente": 12,
+      "patente": "MU909ZG",
+      "modelo": 3,
+      "anio": 2016,
+      "chasis": "4EOFWUN2HFJ750453"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 112,
+    "fields": {
+      "cliente": 46,
+      "patente": "OE857ME",
+      "modelo": 9,
+      "anio": 2022,
+      "chasis": "4HIRPUD9BAO886286"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 113,
+    "fields": {
+      "cliente": 22,
+      "patente": "AV117YA",
+      "modelo": 12,
+      "anio": 2015,
+      "chasis": "1RRGOJB5RKO883173"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 114,
+    "fields": {
+      "cliente": 63,
+      "patente": "FB373JH",
+      "modelo": 1,
+      "anio": 2021,
+      "chasis": "9UPIBDJ9SHB014820"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 115,
+    "fields": {
+      "cliente": 83,
+      "patente": "XE032FW",
+      "modelo": 11,
+      "anio": 2016,
+      "chasis": "8NKKSTQ2SGD964842"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 116,
+    "fields": {
+      "cliente": 80,
+      "patente": "GB733JT",
+      "modelo": 9,
+      "anio": 2015,
+      "chasis": "0GJUCVR9LLO588609"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 117,
+    "fields": {
+      "cliente": 37,
+      "patente": "QE335MJ",
+      "modelo": 15,
+      "anio": 2022,
+      "chasis": "9RIMUKB2YOT318951"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 118,
+    "fields": {
+      "cliente": 85,
+      "patente": "OP172XL",
+      "modelo": 9,
+      "anio": 2022,
+      "chasis": "3DFJQHL4CEY795713"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 119,
+    "fields": {
+      "cliente": 79,
+      "patente": "IT141BY",
+      "modelo": 14,
+      "anio": 2015,
+      "chasis": "0EFTRZT9QXY762994"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 120,
+    "fields": {
+      "cliente": 80,
+      "patente": "BN172PU",
+      "modelo": 4,
+      "anio": 2018,
+      "chasis": "1IQUAHE0FOJ136605"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 121,
+    "fields": {
+      "cliente": 43,
+      "patente": "QX296GQ",
+      "modelo": 16,
+      "anio": 2016,
+      "chasis": "2NKOJFQ0ZPV171846"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 122,
+    "fields": {
+      "cliente": 1,
+      "patente": "CJ581IN",
+      "modelo": 6,
+      "anio": 2020,
+      "chasis": "0IDVACO9DYE136392"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 123,
+    "fields": {
+      "cliente": 71,
+      "patente": "ZS895GL",
+      "modelo": 10,
+      "anio": 2022,
+      "chasis": "6TOWDEM2ZFR336845"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 124,
+    "fields": {
+      "cliente": 66,
+      "patente": "QD883QH",
+      "modelo": 9,
+      "anio": 2015,
+      "chasis": "2JZEKKT1PPA644243"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 125,
+    "fields": {
+      "cliente": 99,
+      "patente": "NN514EE",
+      "modelo": 14,
+      "anio": 2022,
+      "chasis": "8RGHYFN4PAP833221"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 126,
+    "fields": {
+      "cliente": 99,
+      "patente": "NN514RT",
+      "modelo": 14,
+      "anio": 2022,
+      "chasis": "8RGHYFN4PAP833221"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 127,
+    "fields": {
+      "cliente": 2,
+      "patente": "PA999SJ",
+      "modelo": 3,
+      "anio": 2020,
+      "chasis": "ASDASD"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 128,
+    "fields": {
+      "cliente": 101,
+      "patente": "PA123PI",
+      "modelo": 17,
+      "anio": 2025,
+      "chasis": "9812312309"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 129,
+    "fields": {
+      "cliente": 102,
+      "patente": "PA123PA",
+      "modelo": 17,
+      "anio": 2020,
+      "chasis": "ADASDAS"
+    }
+  },
+  {
+    "model": "taller.vehiculo",
+    "pk": 130,
+    "fields": {
+      "cliente": 103,
+      "patente": "AA000KD",
+      "modelo": 16,
+      "anio": 2020,
+      "chasis": "ASDAD"
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 1,
+    "fields": {
+      "cuil": "48-17792096-8",
+      "legajo": 5286,
+      "nombre": "Pedro",
+      "apellido": "Martinez",
+      "usuario": null,
+      "tareas": [
+        1,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 2,
+    "fields": {
+      "cuil": "91-24475201-6",
+      "legajo": 8659,
+      "nombre": "Pablo",
+      "apellido": "Perez",
+      "usuario": null,
+      "tareas": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 3,
+    "fields": {
+      "cuil": "72-11610565-9",
+      "legajo": 9578,
+      "nombre": "Hernan",
+      "apellido": "Gonzalez",
+      "usuario": null,
+      "tareas": [
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 4,
+    "fields": {
+      "cuil": "17-88260716-0",
+      "legajo": 3051,
+      "nombre": "Paula",
+      "apellido": "Perez",
+      "usuario": null,
+      "tareas": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 5,
+    "fields": {
+      "cuil": "71-66613660-0",
+      "legajo": 7520,
+      "nombre": "Gaston",
+      "apellido": "Galindez",
+      "usuario": null,
+      "tareas": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "taller.empleado",
+    "pk": 6,
+    "fields": {
+      "cuil": "58-11423423-1",
+      "legajo": 889,
+      "nombre": "Marcos",
+      "apellido": "Aguero",
+      "usuario": null,
+      "tareas": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 89,
+    "fields": {
+      "turno": "2022-11-23T21:14:00Z",
+      "ingreso": "2022-11-18T21:14:00Z",
+      "egreso": "2022-11-22T21:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 90,
+    "fields": {
+      "turno": "2022-11-24T21:15:00Z",
+      "ingreso": "2022-11-18T21:15:00Z",
+      "egreso": "2022-11-21T21:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 91,
+    "fields": {
+      "turno": "2022-11-18T21:15:00Z",
+      "ingreso": "2022-11-18T21:16:00Z",
+      "egreso": "2022-11-21T18:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 92,
+    "fields": {
+      "turno": "2022-11-18T21:17:00Z",
+      "ingreso": "2022-11-25T21:17:00Z",
+      "egreso": "2022-11-28T13:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 93,
+    "fields": {
+      "turno": "2022-11-26T21:17:00Z",
+      "ingreso": "2022-11-18T21:17:00Z",
+      "egreso": "2022-11-21T20:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 94,
+    "fields": {
+      "turno": "2022-11-18T21:17:00Z",
+      "ingreso": "2022-11-18T21:17:00Z",
+      "egreso": "2022-11-20T14:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 95,
+    "fields": {
+      "turno": "2022-11-26T21:18:00Z",
+      "ingreso": "2022-11-24T21:18:00Z",
+      "egreso": "2022-11-27T22:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 96,
+    "fields": {
+      "turno": "2022-11-18T21:18:00Z",
+      "ingreso": "2022-11-20T21:18:00Z",
+      "egreso": "2022-11-22T21:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 97,
+    "fields": {
+      "turno": "2022-12-02T21:18:00Z",
+      "ingreso": "2022-11-26T21:18:00Z",
+      "egreso": "2022-11-29T18:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 98,
+    "fields": {
+      "turno": "2022-12-03T21:19:00Z",
+      "ingreso": "2022-11-18T21:19:00Z",
+      "egreso": "2022-11-20T15:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 99,
+    "fields": {
+      "turno": "2022-12-04T21:19:00Z",
+      "ingreso": "2022-11-20T21:19:00Z",
+      "egreso": "2022-11-24T17:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 100,
+    "fields": {
+      "turno": "2022-12-04T21:20:00Z",
+      "ingreso": "2022-11-18T21:20:00Z",
+      "egreso": "2022-11-20T11:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 101,
+    "fields": {
+      "turno": "2022-11-18T21:20:00Z",
+      "ingreso": "2022-11-18T21:20:00Z",
+      "egreso": "2022-11-20T12:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 102,
+    "fields": {
+      "turno": "2022-11-25T21:20:00Z",
+      "ingreso": "2022-11-18T21:20:00Z",
+      "egreso": "2022-11-19T21:14:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 103,
+    "fields": {
+      "turno": "2022-12-03T21:20:00Z",
+      "ingreso": "2022-12-02T21:34:00Z",
+      "egreso": "2022-12-04T18:34:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 104,
+    "fields": {
+      "turno": "2022-12-03T21:21:00Z",
+      "ingreso": "2022-11-19T23:21:00Z",
+      "egreso": "2022-11-22T14:34:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 105,
+    "fields": {
+      "turno": "2022-11-25T21:21:00Z",
+      "ingreso": "2022-11-23T21:21:00Z",
+      "egreso": "2022-11-25T17:34:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 106,
+    "fields": {
+      "turno": "2022-12-08T21:21:00Z",
+      "ingreso": "2022-11-26T21:35:00Z",
+      "egreso": "2022-11-29T16:34:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 107,
+    "fields": {
+      "turno": "2022-12-01T21:22:00Z",
+      "ingreso": "2022-11-27T21:35:00Z",
+      "egreso": "2022-11-29T13:34:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 108,
+    "fields": {
+      "turno": "2022-12-02T21:22:00Z",
+      "ingreso": "2022-11-18T21:22:00Z",
+      "egreso": "2022-11-21T13:34:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 109,
+    "fields": {
+      "turno": "2022-11-18T21:23:00Z",
+      "ingreso": "2022-11-19T21:25:00Z",
+      "egreso": "2022-11-23T17:34:00Z",
+      "estado": 5
+    }
+  },
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 110,
+    "fields": {
+      "turno": "2022-11-25T13:12:00Z",
+      "ingreso": null,
+      "egreso": null,
+      "estado": 0
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 186,
+    "fields": {
+      "orden": 89,
+      "tarea": 1,
+      "empleado": 5,
+      "inicio": "2022-11-19T00:47:32Z",
+      "fin": "2022-11-19T12:47:32Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 187,
+    "fields": {
+      "orden": 90,
+      "tarea": 2,
+      "empleado": 2,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-22T00:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 188,
+    "fields": {
+      "orden": 91,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-19T11:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 189,
+    "fields": {
+      "orden": 92,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-19T10:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 190,
+    "fields": {
+      "orden": 93,
+      "tarea": 2,
+      "empleado": 2,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-22T00:14:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 191,
+    "fields": {
+      "orden": 93,
+      "tarea": 5,
+      "empleado": 1,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-22T11:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 192,
+    "fields": {
+      "orden": 94,
+      "tarea": 1,
+      "empleado": 3,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-20T11:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 193,
+    "fields": {
+      "orden": 94,
+      "tarea": 2,
+      "empleado": 2,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-20T04:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 194,
+    "fields": {
+      "orden": 94,
+      "tarea": 3,
+      "empleado": 2,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-19T03:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 195,
+    "fields": {
+      "orden": 95,
+      "tarea": 2,
+      "empleado": 4,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T11:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 196,
+    "fields": {
+      "orden": 96,
+      "tarea": 3,
+      "empleado": 2,
+      "inicio": "2022-11-19T00:28:49.307Z",
+      "fin": "2022-11-19T04:28:49.307Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 197,
+    "fields": {
+      "orden": 97,
+      "tarea": 3,
+      "empleado": 2,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T06:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 198,
+    "fields": {
+      "orden": 97,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T04:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 199,
+    "fields": {
+      "orden": 98,
+      "tarea": 3,
+      "empleado": 2,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T04:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 200,
+    "fields": {
+      "orden": 99,
+      "tarea": 4,
+      "empleado": 5,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T02:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 201,
+    "fields": {
+      "orden": 99,
+      "tarea": 6,
+      "empleado": 6,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T03:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 202,
+    "fields": {
+      "orden": 100,
+      "tarea": 2,
+      "empleado": 2,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T03:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 203,
+    "fields": {
+      "orden": 101,
+      "tarea": 2,
+      "empleado": 2,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-19T15:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 204,
+    "fields": {
+      "orden": 101,
+      "tarea": 6,
+      "empleado": 6,
+      "inicio": "2022-11-19T00:47:32.066Z",
+      "fin": "2022-11-19T11:47:32.066Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 205,
+    "fields": {
+      "orden": 102,
+      "tarea": 1,
+      "empleado": 3,
+      "inicio": "2022-11-19T00:28:49.307Z",
+      "fin": "2022-11-19T12:28:49.307Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 206,
+    "fields": {
+      "orden": 102,
+      "tarea": 2,
+      "empleado": 4,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-19T12:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 207,
+    "fields": {
+      "orden": 103,
+      "tarea": 3,
+      "empleado": 2,
+      "inicio": "2022-11-21T00:32:23.600Z",
+      "fin": "2022-11-21T13:32:23.600Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 208,
+    "fields": {
+      "orden": 104,
+      "tarea": 4,
+      "empleado": 5,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T01:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 209,
+    "fields": {
+      "orden": 105,
+      "tarea": 3,
+      "empleado": 4,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T14:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 210,
+    "fields": {
+      "orden": 105,
+      "tarea": 4,
+      "empleado": 1,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T04:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 211,
+    "fields": {
+      "orden": 105,
+      "tarea": 5,
+      "empleado": 3,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T05:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 212,
+    "fields": {
+      "orden": 106,
+      "tarea": 1,
+      "empleado": 3,
+      "inicio": "2022-11-21T00:32:23.600Z",
+      "fin": "2022-11-21T11:32:23.600Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 213,
+    "fields": {
+      "orden": 107,
+      "tarea": 3,
+      "empleado": 2,
+      "inicio": "2022-11-21T00:32:23.600Z",
+      "fin": "2022-11-21T09:32:23.600Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 214,
+    "fields": {
+      "orden": 108,
+      "tarea": 2,
+      "empleado": 4,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T02:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 215,
+    "fields": {
+      "orden": 108,
+      "tarea": 3,
+      "empleado": 4,
+      "inicio": "2022-11-21T00:23:45.625Z",
+      "fin": "2022-11-21T04:23:45.625Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 216,
+    "fields": {
+      "orden": 109,
+      "tarea": 1,
+      "empleado": 3,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-21T17:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 217,
+    "fields": {
+      "orden": 109,
+      "tarea": 2,
+      "empleado": 4,
+      "inicio": "2022-11-19T00:28:49Z",
+      "fin": "2022-11-21T06:28:49Z",
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 218,
+    "fields": {
+      "orden": 110,
+      "tarea": 1,
+      "empleado": null,
+      "inicio": null,
+      "fin": null,
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 219,
+    "fields": {
+      "orden": 110,
+      "tarea": 2,
+      "empleado": null,
+      "inicio": null,
+      "fin": null,
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 220,
+    "fields": {
+      "orden": 110,
+      "tarea": 3,
+      "empleado": null,
+      "inicio": null,
+      "fin": null,
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 221,
+    "fields": {
+      "orden": 110,
+      "tarea": 4,
+      "empleado": null,
+      "inicio": null,
+      "fin": null,
+      "exitosa": true,
+      "observaciones": null
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 77,
+    "fields": {
+      "material": 4,
+      "orden": 89,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 78,
+    "fields": {
+      "material": 2,
+      "orden": 94,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 79,
+    "fields": {
+      "material": 2,
+      "orden": 96,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 80,
+    "fields": {
+      "material": 2,
+      "orden": 97,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 81,
+    "fields": {
+      "material": 2,
+      "orden": 98,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 82,
+    "fields": {
+      "material": 2,
+      "orden": 102,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 83,
+    "fields": {
+      "material": 3,
+      "orden": 103,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 84,
+    "fields": {
+      "material": 2,
+      "orden": 105,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 85,
+    "fields": {
+      "material": 3,
+      "orden": 106,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 86,
+    "fields": {
+      "material": 4,
+      "orden": 107,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 87,
+    "fields": {
+      "material": 3,
+      "orden": 108,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 88,
+    "fields": {
+      "material": 1,
+      "orden": 109,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 89,
+    "fields": {
+      "material": 2,
+      "orden": 109,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 90,
+    "fields": {
+      "material": 3,
+      "orden": 110,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 75,
+    "fields": {
+      "repuesto": 5,
+      "orden": 90,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 76,
+    "fields": {
+      "repuesto": 2,
+      "orden": 93,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 77,
+    "fields": {
+      "repuesto": 7,
+      "orden": 94,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 78,
+    "fields": {
+      "repuesto": 4,
+      "orden": 95,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 79,
+    "fields": {
+      "repuesto": 3,
+      "orden": 100,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 80,
+    "fields": {
+      "repuesto": 4,
+      "orden": 101,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 81,
+    "fields": {
+      "repuesto": 5,
+      "orden": 102,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 82,
+    "fields": {
+      "repuesto": 5,
+      "orden": 105,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 83,
+    "fields": {
+      "repuesto": 5,
+      "orden": 108,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 84,
+    "fields": {
+      "repuesto": 7,
+      "orden": 108,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 85,
+    "fields": {
+      "repuesto": 5,
+      "orden": 109,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 86,
+    "fields": {
+      "repuesto": 7,
+      "orden": 109,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 87,
+    "fields": {
+      "repuesto": 5,
+      "orden": 110,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 298,
+    "fields": {
+      "cliente": 1,
+      "vehiculo": 122,
+      "detalles": "",
+      "fecha": "2022-11-18T00:14:11.552Z",
+      "validez": 60,
+      "orden": 89,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 299,
+    "fields": {
+      "cliente": 2,
+      "vehiculo": 2,
+      "detalles": "",
+      "fecha": "2022-11-18T00:15:20.183Z",
+      "validez": 60,
+      "orden": 90,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 300,
+    "fields": {
+      "cliente": 7,
+      "vehiculo": 7,
+      "detalles": "",
+      "fecha": "2022-11-18T00:15:42.941Z",
+      "validez": 60,
+      "orden": 91,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 301,
+    "fields": {
+      "cliente": 15,
+      "vehiculo": 15,
+      "detalles": "",
+      "fecha": "2022-11-18T00:17:00.308Z",
+      "validez": 60,
+      "orden": 92,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 302,
+    "fields": {
+      "cliente": 15,
+      "vehiculo": 15,
+      "detalles": "",
+      "fecha": "2022-11-18T00:17:20.963Z",
+      "validez": 60,
+      "orden": 93,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        2,
+        5
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 303,
+    "fields": {
+      "cliente": 97,
+      "vehiculo": 97,
+      "detalles": "",
+      "fecha": "2022-11-18T00:17:44.780Z",
+      "validez": 60,
+      "orden": 94,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 304,
+    "fields": {
+      "cliente": 9,
+      "vehiculo": 110,
+      "detalles": "",
+      "fecha": "2022-11-18T00:18:04.186Z",
+      "validez": 60,
+      "orden": 95,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 305,
+    "fields": {
+      "cliente": 3,
+      "vehiculo": 3,
+      "detalles": "",
+      "fecha": "2022-11-18T00:18:26.401Z",
+      "validez": 60,
+      "orden": 96,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 306,
+    "fields": {
+      "cliente": 8,
+      "vehiculo": 105,
+      "detalles": "",
+      "fecha": "2022-11-18T00:18:47.865Z",
+      "validez": 60,
+      "orden": 97,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 307,
+    "fields": {
+      "cliente": 4,
+      "vehiculo": 126,
+      "detalles": "",
+      "fecha": "2022-11-18T00:19:06.840Z",
+      "validez": 60,
+      "orden": 98,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 308,
+    "fields": {
+      "cliente": 2,
+      "vehiculo": 2,
+      "detalles": "",
+      "fecha": "2022-11-18T00:19:43.431Z",
+      "validez": 60,
+      "orden": 99,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 309,
+    "fields": {
+      "cliente": 4,
+      "vehiculo": 4,
+      "detalles": "",
+      "fecha": "2022-11-18T00:19:59.377Z",
+      "validez": 60,
+      "orden": 100,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 310,
+    "fields": {
+      "cliente": 44,
+      "vehiculo": 44,
+      "detalles": "",
+      "fecha": "2022-11-18T00:20:14.712Z",
+      "validez": 60,
+      "orden": 101,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        2,
+        6
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 311,
+    "fields": {
+      "cliente": 9,
+      "vehiculo": 110,
+      "detalles": "",
+      "fecha": "2022-11-18T00:20:33.793Z",
+      "validez": 60,
+      "orden": 102,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 312,
+    "fields": {
+      "cliente": 13,
+      "vehiculo": 13,
+      "detalles": "",
+      "fecha": "2022-11-18T00:20:49.374Z",
+      "validez": 60,
+      "orden": 103,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 313,
+    "fields": {
+      "cliente": 1,
+      "vehiculo": 122,
+      "detalles": "",
+      "fecha": "2022-11-18T00:21:00.947Z",
+      "validez": 60,
+      "orden": 104,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 314,
+    "fields": {
+      "cliente": 13,
+      "vehiculo": 13,
+      "detalles": "",
+      "fecha": "2022-11-18T00:21:20.590Z",
+      "validez": 60,
+      "orden": 105,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 315,
+    "fields": {
+      "cliente": 7,
+      "vehiculo": 7,
+      "detalles": "",
+      "fecha": "2022-11-18T00:21:45.328Z",
+      "validez": 60,
+      "orden": 106,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 316,
+    "fields": {
+      "cliente": 1,
+      "vehiculo": 122,
+      "detalles": "",
+      "fecha": "2022-11-18T00:22:26.371Z",
+      "validez": 60,
+      "orden": 107,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 317,
+    "fields": {
+      "cliente": 1,
+      "vehiculo": 122,
+      "detalles": "",
+      "fecha": "2022-11-18T00:22:45.838Z",
+      "validez": 60,
+      "orden": 108,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 318,
+    "fields": {
+      "cliente": 3,
+      "vehiculo": 3,
+      "detalles": "",
+      "fecha": "2022-11-18T00:23:28.527Z",
+      "validez": 60,
+      "orden": 109,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 319,
+    "fields": {
+      "cliente": 8,
+      "vehiculo": 105,
+      "detalles": "probando planillas",
+      "fecha": "2022-11-21T16:12:29.971Z",
+      "validez": 60,
+      "orden": 110,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 320,
+    "fields": {
+      "cliente": 6,
+      "vehiculo": 6,
+      "detalles": "",
+      "fecha": "2022-11-21T19:43:02.273Z",
+      "validez": 60,
+      "orden": null,
+      "ampliado": false,
+      "confirmado": false,
+      "tareas": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 321,
+    "fields": {
+      "cliente": 6,
+      "vehiculo": 6,
+      "detalles": "",
+      "fecha": "2022-11-22T19:06:57.177Z",
+      "validez": 60,
+      "orden": null,
+      "ampliado": false,
+      "confirmado": false,
+      "tareas": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 240,
+    "fields": {
+      "material": 4,
+      "presupuesto": 298,
+      "cantidad": 100
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 241,
+    "fields": {
+      "material": 2,
+      "presupuesto": 303,
+      "cantidad": 199
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 242,
+    "fields": {
+      "material": 2,
+      "presupuesto": 305,
+      "cantidad": 566
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 243,
+    "fields": {
+      "material": 2,
+      "presupuesto": 306,
+      "cantidad": 787
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 244,
+    "fields": {
+      "material": 2,
+      "presupuesto": 307,
+      "cantidad": 10
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 245,
+    "fields": {
+      "material": 2,
+      "presupuesto": 311,
+      "cantidad": 10
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 246,
+    "fields": {
+      "material": 3,
+      "presupuesto": 312,
+      "cantidad": 100
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 247,
+    "fields": {
+      "material": 2,
+      "presupuesto": 314,
+      "cantidad": 111
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 248,
+    "fields": {
+      "material": 3,
+      "presupuesto": 315,
+      "cantidad": 111
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 249,
+    "fields": {
+      "material": 4,
+      "presupuesto": 316,
+      "cantidad": 41
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 250,
+    "fields": {
+      "material": 3,
+      "presupuesto": 317,
+      "cantidad": 19
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 251,
+    "fields": {
+      "material": 1,
+      "presupuesto": 318,
+      "cantidad": 12
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 252,
+    "fields": {
+      "material": 2,
+      "presupuesto": 318,
+      "cantidad": 188
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 253,
+    "fields": {
+      "material": 3,
+      "presupuesto": 319,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 254,
+    "fields": {
+      "material": 4,
+      "presupuesto": 320,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 255,
+    "fields": {
+      "material": 2,
+      "presupuesto": 321,
+      "cantidad": 13
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 164,
+    "fields": {
+      "repuesto": 5,
+      "presupuesto": 299,
+      "cantidad": 3
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 165,
+    "fields": {
+      "repuesto": 2,
+      "presupuesto": 302,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 166,
+    "fields": {
+      "repuesto": 7,
+      "presupuesto": 303,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 167,
+    "fields": {
+      "repuesto": 4,
+      "presupuesto": 304,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 168,
+    "fields": {
+      "repuesto": 3,
+      "presupuesto": 309,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 169,
+    "fields": {
+      "repuesto": 4,
+      "presupuesto": 310,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 170,
+    "fields": {
+      "repuesto": 5,
+      "presupuesto": 311,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 171,
+    "fields": {
+      "repuesto": 5,
+      "presupuesto": 314,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 172,
+    "fields": {
+      "repuesto": 5,
+      "presupuesto": 317,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 173,
+    "fields": {
+      "repuesto": 7,
+      "presupuesto": 317,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 174,
+    "fields": {
+      "repuesto": 5,
+      "presupuesto": 318,
+      "cantidad": 2
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 175,
+    "fields": {
+      "repuesto": 7,
+      "presupuesto": 318,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 176,
+    "fields": {
+      "repuesto": 5,
+      "presupuesto": 319,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 177,
+    "fields": {
+      "repuesto": 5,
+      "presupuesto": 321,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 39,
+    "fields": {
+      "orden": 193,
+      "fecha": "2022-11-19T00:37:46.697Z",
+      "nombre_de_color": "color"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 40,
+    "fields": {
+      "orden": 194,
+      "fecha": "2022-11-19T00:38:00.966Z",
+      "nombre_de_color": "hola"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 41,
+    "fields": {
+      "orden": 196,
+      "fecha": "2022-11-19T00:38:10.276Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 42,
+    "fields": {
+      "orden": 203,
+      "fecha": "2022-11-19T00:38:23.142Z",
+      "nombre_de_color": "a"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 43,
+    "fields": {
+      "orden": 217,
+      "fecha": "2022-11-19T00:38:31.788Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 44,
+    "fields": {
+      "orden": 206,
+      "fecha": "2022-11-19T00:38:41.669Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 45,
+    "fields": {
+      "orden": 187,
+      "fecha": "2022-11-21T00:26:08.115Z",
+      "nombre_de_color": "color verde"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 46,
+    "fields": {
+      "orden": 209,
+      "fecha": "2022-11-21T00:26:21.869Z",
+      "nombre_de_color": "color naranja"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 47,
+    "fields": {
+      "orden": 190,
+      "fecha": "2022-11-21T00:26:39.477Z",
+      "nombre_de_color": "color marron"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 48,
+    "fields": {
+      "orden": 195,
+      "fecha": "2022-11-21T00:27:36.171Z",
+      "nombre_de_color": "color1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 49,
+    "fields": {
+      "orden": 197,
+      "fecha": "2022-11-21T00:27:47.698Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 50,
+    "fields": {
+      "orden": 214,
+      "fecha": "2022-11-21T00:27:53.187Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 51,
+    "fields": {
+      "orden": 215,
+      "fecha": "2022-11-21T00:28:00.730Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 52,
+    "fields": {
+      "orden": 199,
+      "fecha": "2022-11-21T00:28:06.003Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 53,
+    "fields": {
+      "orden": 202,
+      "fecha": "2022-11-21T00:28:15.899Z",
+      "nombre_de_color": "2"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 54,
+    "fields": {
+      "orden": 207,
+      "fecha": "2022-11-21T00:34:27.127Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.planilladepintura",
+    "pk": 55,
+    "fields": {
+      "orden": 213,
+      "fecha": "2022-11-21T00:35:31.653Z",
+      "nombre_de_color": "1"
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 154,
+    "fields": {
+      "planilla": 39,
+      "formula": "1",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 155,
+    "fields": {
+      "planilla": 39,
+      "formula": "2",
+      "cantidad": 2
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 156,
+    "fields": {
+      "planilla": 40,
+      "formula": "a",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 157,
+    "fields": {
+      "planilla": 41,
+      "formula": "a",
+      "cantidad": 2
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 158,
+    "fields": {
+      "planilla": 42,
+      "formula": "2",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 159,
+    "fields": {
+      "planilla": 43,
+      "formula": "2",
+      "cantidad": 2
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 160,
+    "fields": {
+      "planilla": 44,
+      "formula": "2",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 161,
+    "fields": {
+      "planilla": 45,
+      "formula": "verde",
+      "cantidad": 100
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 162,
+    "fields": {
+      "planilla": 46,
+      "formula": "naranjin",
+      "cantidad": 180
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 167,
+    "fields": {
+      "planilla": 47,
+      "formula": "marron",
+      "cantidad": 120
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 168,
+    "fields": {
+      "planilla": 47,
+      "formula": "negro",
+      "cantidad": 40
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 169,
+    "fields": {
+      "planilla": 48,
+      "formula": "1",
+      "cantidad": 100
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 170,
+    "fields": {
+      "planilla": 49,
+      "formula": "1",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 171,
+    "fields": {
+      "planilla": 50,
+      "formula": "11",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 172,
+    "fields": {
+      "planilla": 51,
+      "formula": "1",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 173,
+    "fields": {
+      "planilla": 52,
+      "formula": "1",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 176,
+    "fields": {
+      "planilla": 53,
+      "formula": "2",
+      "cantidad": 2
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 177,
+    "fields": {
+      "planilla": 53,
+      "formula": "1",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 178,
+    "fields": {
+      "planilla": 54,
+      "formula": "1",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.detalleplanilladepintura",
+    "pk": 179,
+    "fields": {
+      "planilla": 55,
+      "formula": "1",
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 102,
+    "fields": {
+      "orden": 92,
+      "fecha": "2022-11-19",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 103,
+    "fields": {
+      "orden": 89,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 104,
+    "fields": {
+      "orden": 90,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 105,
+    "fields": {
+      "orden": 91,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 106,
+    "fields": {
+      "orden": 93,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 107,
+    "fields": {
+      "orden": 94,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 108,
+    "fields": {
+      "orden": 95,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 109,
+    "fields": {
+      "orden": 96,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 110,
+    "fields": {
+      "orden": 97,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 111,
+    "fields": {
+      "orden": 98,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 112,
+    "fields": {
+      "orden": 99,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 113,
+    "fields": {
+      "orden": 100,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 114,
+    "fields": {
+      "orden": 101,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 115,
+    "fields": {
+      "orden": 102,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 116,
+    "fields": {
+      "orden": 109,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 117,
+    "fields": {
+      "orden": 108,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 118,
+    "fields": {
+      "orden": 105,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 119,
+    "fields": {
+      "orden": 104,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 120,
+    "fields": {
+      "orden": 103,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 121,
+    "fields": {
+      "orden": 107,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.factura",
+    "pk": 122,
+    "fields": {
+      "orden": 106,
+      "fecha": "2022-11-21",
+      "estado": 0,
+      "cuotas": 1
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 702,
+    "fields": {
+      "factura": 102,
+      "descripcion": "DetalleOrdenDeTrabajo object (189)",
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 703,
+    "fields": {
+      "factura": 103,
+      "descripcion": "MaterialOrdenDeTrabajo object (77)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 704,
+    "fields": {
+      "factura": 103,
+      "descripcion": "DetalleOrdenDeTrabajo object (186)",
+      "precio": "1385.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 705,
+    "fields": {
+      "factura": 104,
+      "descripcion": "RepuestoOrdenDeTrabajo object (75)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 706,
+    "fields": {
+      "factura": 104,
+      "descripcion": "DetalleOrdenDeTrabajo object (187)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 707,
+    "fields": {
+      "factura": 105,
+      "descripcion": "DetalleOrdenDeTrabajo object (188)",
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 708,
+    "fields": {
+      "factura": 106,
+      "descripcion": "RepuestoOrdenDeTrabajo object (76)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 709,
+    "fields": {
+      "factura": 106,
+      "descripcion": "DetalleOrdenDeTrabajo object (190)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 710,
+    "fields": {
+      "factura": 106,
+      "descripcion": "DetalleOrdenDeTrabajo object (191)",
+      "precio": "1469.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 711,
+    "fields": {
+      "factura": 107,
+      "descripcion": "MaterialOrdenDeTrabajo object (78)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 712,
+    "fields": {
+      "factura": 107,
+      "descripcion": "RepuestoOrdenDeTrabajo object (77)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 713,
+    "fields": {
+      "factura": 107,
+      "descripcion": "DetalleOrdenDeTrabajo object (192)",
+      "precio": "1385.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 714,
+    "fields": {
+      "factura": 107,
+      "descripcion": "DetalleOrdenDeTrabajo object (193)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 715,
+    "fields": {
+      "factura": 107,
+      "descripcion": "DetalleOrdenDeTrabajo object (194)",
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 716,
+    "fields": {
+      "factura": 108,
+      "descripcion": "RepuestoOrdenDeTrabajo object (78)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 717,
+    "fields": {
+      "factura": 108,
+      "descripcion": "DetalleOrdenDeTrabajo object (195)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 718,
+    "fields": {
+      "factura": 109,
+      "descripcion": "MaterialOrdenDeTrabajo object (79)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 719,
+    "fields": {
+      "factura": 109,
+      "descripcion": "DetalleOrdenDeTrabajo object (196)",
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 720,
+    "fields": {
+      "factura": 110,
+      "descripcion": "MaterialOrdenDeTrabajo object (80)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 721,
+    "fields": {
+      "factura": 110,
+      "descripcion": "DetalleOrdenDeTrabajo object (197)",
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 722,
+    "fields": {
+      "factura": 110,
+      "descripcion": "DetalleOrdenDeTrabajo object (198)",
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 723,
+    "fields": {
+      "factura": 111,
+      "descripcion": "MaterialOrdenDeTrabajo object (81)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 724,
+    "fields": {
+      "factura": 111,
+      "descripcion": "DetalleOrdenDeTrabajo object (199)",
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 725,
+    "fields": {
+      "factura": 112,
+      "descripcion": "DetalleOrdenDeTrabajo object (200)",
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 726,
+    "fields": {
+      "factura": 112,
+      "descripcion": "DetalleOrdenDeTrabajo object (201)",
+      "precio": "4688.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 727,
+    "fields": {
+      "factura": 113,
+      "descripcion": "RepuestoOrdenDeTrabajo object (79)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 728,
+    "fields": {
+      "factura": 113,
+      "descripcion": "DetalleOrdenDeTrabajo object (202)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 729,
+    "fields": {
+      "factura": 114,
+      "descripcion": "RepuestoOrdenDeTrabajo object (80)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 730,
+    "fields": {
+      "factura": 114,
+      "descripcion": "DetalleOrdenDeTrabajo object (203)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 731,
+    "fields": {
+      "factura": 114,
+      "descripcion": "DetalleOrdenDeTrabajo object (204)",
+      "precio": "4688.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 732,
+    "fields": {
+      "factura": 115,
+      "descripcion": "MaterialOrdenDeTrabajo object (82)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 733,
+    "fields": {
+      "factura": 115,
+      "descripcion": "RepuestoOrdenDeTrabajo object (81)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 734,
+    "fields": {
+      "factura": 115,
+      "descripcion": "DetalleOrdenDeTrabajo object (205)",
+      "precio": "1385.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 735,
+    "fields": {
+      "factura": 115,
+      "descripcion": "DetalleOrdenDeTrabajo object (206)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 736,
+    "fields": {
+      "factura": 116,
+      "descripcion": "MaterialOrdenDeTrabajo object (88)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 737,
+    "fields": {
+      "factura": 116,
+      "descripcion": "MaterialOrdenDeTrabajo object (89)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 738,
+    "fields": {
+      "factura": 116,
+      "descripcion": "RepuestoOrdenDeTrabajo object (85)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 739,
+    "fields": {
+      "factura": 116,
+      "descripcion": "RepuestoOrdenDeTrabajo object (86)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 740,
+    "fields": {
+      "factura": 116,
+      "descripcion": "DetalleOrdenDeTrabajo object (216)",
+      "precio": "1385.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 741,
+    "fields": {
+      "factura": 116,
+      "descripcion": "DetalleOrdenDeTrabajo object (217)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 742,
+    "fields": {
+      "factura": 117,
+      "descripcion": "MaterialOrdenDeTrabajo object (87)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 743,
+    "fields": {
+      "factura": 117,
+      "descripcion": "RepuestoOrdenDeTrabajo object (83)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 744,
+    "fields": {
+      "factura": 117,
+      "descripcion": "RepuestoOrdenDeTrabajo object (84)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 745,
+    "fields": {
+      "factura": 117,
+      "descripcion": "DetalleOrdenDeTrabajo object (214)",
+      "precio": "2649.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 746,
+    "fields": {
+      "factura": 117,
+      "descripcion": "DetalleOrdenDeTrabajo object (215)",
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 747,
+    "fields": {
+      "factura": 118,
+      "descripcion": "MaterialOrdenDeTrabajo object (84)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 748,
+    "fields": {
+      "factura": 118,
+      "descripcion": "RepuestoOrdenDeTrabajo object (82)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 749,
+    "fields": {
+      "factura": 118,
+      "descripcion": "DetalleOrdenDeTrabajo object (209)",
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 750,
+    "fields": {
+      "factura": 118,
+      "descripcion": "DetalleOrdenDeTrabajo object (210)",
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 751,
+    "fields": {
+      "factura": 118,
+      "descripcion": "DetalleOrdenDeTrabajo object (211)",
+      "precio": "1469.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 752,
+    "fields": {
+      "factura": 119,
+      "descripcion": "DetalleOrdenDeTrabajo object (208)",
+      "precio": "1259.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 753,
+    "fields": {
+      "factura": 120,
+      "descripcion": "MaterialOrdenDeTrabajo object (83)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 754,
+    "fields": {
+      "factura": 120,
+      "descripcion": "DetalleOrdenDeTrabajo object (207)",
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 755,
+    "fields": {
+      "factura": 121,
+      "descripcion": "MaterialOrdenDeTrabajo object (86)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 756,
+    "fields": {
+      "factura": 121,
+      "descripcion": "DetalleOrdenDeTrabajo object (213)",
+      "precio": "2738.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 757,
+    "fields": {
+      "factura": 122,
+      "descripcion": "MaterialOrdenDeTrabajo object (85)",
+      "precio": "0.00"
+    }
+  },
+  {
+    "model": "facturas.detallefactura",
+    "pk": 758,
+    "fields": {
+      "factura": 122,
+      "descripcion": "DetalleOrdenDeTrabajo object (212)",
+      "precio": "1385.00"
+    }
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "model": "ordenes.ordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "turno": "2023-02-21T13:08:00Z",
+      "ingreso": "2023-02-21T13:09:00Z",
+      "egreso": "2023-02-21T13:14:00Z",
+      "estado": 6
+    }
+  },
+  {
+    "model": "ordenes.detalleordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "orden": 1,
+      "tarea": 1,
+      "empleado": 2,
+      "inicio": "2023-02-21T16:12:06.542Z",
+      "fin": "2023-02-21T16:12:06.542Z",
+      "exitosa": true,
+      "observaciones": ""
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "material": 3,
+      "orden": 1,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 0
+    }
+  },
+  {
+    "model": "ordenes.materialordendetrabajo",
+    "pk": 2,
+    "fields": {
+      "material": 1,
+      "orden": 1,
+      "cantidad_presupuestada": 0,
+      "cantidad_utilizada": 20
+    }
+  },
+  {
+    "model": "ordenes.repuestoordendetrabajo",
+    "pk": 1,
+    "fields": {
+      "repuesto": 1,
+      "orden": 1,
+      "cantidad_presupuestada": 1,
+      "cantidad_utilizada": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuesto",
+    "pk": 1,
+    "fields": {
+      "cliente": 5,
+      "vehiculo": 5,
+      "detalles": "",
+      "fecha": "2023-02-21T16:09:07.997Z",
+      "validez": 60,
+      "orden": 1,
+      "ampliado": false,
+      "confirmado": true,
+      "tareas": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "ordenes.presupuestomaterial",
+    "pk": 1,
+    "fields": {
+      "material": 3,
+      "presupuesto": 1,
+      "cantidad": 1
+    }
+  },
+  {
+    "model": "ordenes.presupuestorepuesto",
+    "pk": 1,
+    "fields": {
+      "repuesto": 1,
+      "presupuesto": 1,
+      "cantidad": 1
+    }
+  }
+]

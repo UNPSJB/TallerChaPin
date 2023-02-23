@@ -85,6 +85,29 @@
             {% endfor %}
         </table>
     {%endif%}
+    
+    {% if factura.orden.get_planillas_pintura %}
+        <h4>Planillas de pintura</h4>
+        <table>
+            <tr>
+            <th class="nombre">Color</th>
+            <th class="detalle">Detalle asociado</th>
+            </tr>
+        <tbody>
+            {% for planilla in factura.orden.get_planillas_pintura %}
+            <tr>
+                <td>{{ planilla.nombre_de_color }}</td>         
+                <td>{{ planilla.orden.tarea.nombre }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td> - </td>
+                <td> - </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
 
 
     <div class="total">

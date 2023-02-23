@@ -6,7 +6,6 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
-
     <div class="wrapper wrapper-content animated fadeInRight">
 
         <div class="ibox-title">
@@ -14,8 +13,7 @@
         </div>
 
         <div class="row">
-
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="ibox border border-primary rounded p-3 h-100 p-4">
                     <h3>
                         {{ factura.orden.cliente.nombre }}, {{ factura.orden.cliente.apellido }}
@@ -63,17 +61,35 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-3">
+                <div class="border border-primary rounded p-3">
+                    <h5>Acciones</h5>
+                    {% if perms.facturas.add_pago %}
+                        {% if factura.puede_pagar %} 
+                        <a href="" data-bs-toggle="modal" data-bs-target="#modalPagarFactura"
+                        data-bs-nombre="{{factura.orden.cliente}}" data-bs-url="{% url 'crearPago' factura.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn2">
+                            <i class="fas fa-check-circle"></i> Pagar</a>
+                        {% endif %}
+                    {% endif %}
+                    {% if perms.ordenes.view_orden %}
+                    <a href="{% url 'detallesOrden' factura.orden.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver orden </a>
+                    {% endif %}
+                </div>
+            </div>
+
         </div>
 
+        
         <div class="row mt-4">
             <div class="col-md-9">
                 <div class="table-responsive">
-                    <table class="table table-hover {% if filtros %} sortable{% endif %}">
+                    <table class="table table-hover {% if filtros %} sortable {% endif %}">
                         <thead>
                             <tr>
                                 <th scope="col">Tarea</th>
                                 <th scope="col">Precio</th>
-
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -82,12 +98,12 @@
                                 <td>{{ detalle.tarea.nombre }}</td>
                                 <td>{{ detalle.tarea.precio }}</td>
                             </tr>
-
+                            
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
-
+                
                 {% if factura.orden.orden_repuestos.all.exists %}
                     <div class="table-responsive">
                         <table class="table table-hover {% if filtros %} sortable{% endif %}">
@@ -139,21 +155,36 @@
                         </table>
                     </div>
                 {%endif%}
-            </div>
+            
 
-            <div class="col-md-3">
-                <div class="border border-primary rounded p-3">
-                    <h5>Acciones</h5>
-                    {% if perms.facturas.add_pago %}
-                        {% if factura.puede_pagar %} 
-                        <a href="" data-bs-toggle="modal" data-bs-target="#modalPagarFactura"
-                        data-bs-nombre="{{factura.orden.cliente}}" data-bs-url="{% url 'crearPago' factura.pk %}" class="btn btn-success m-1 w-100" id="liveAlertBtn2">
-                            <i class="fas fa-check-circle"></i> Pagar</a>
-                        {% endif %}
-                    {% endif %}
-                    {% if perms.ordenes.view_orden %}
-                    <a href="{% url 'detallesOrden' factura.orden.pk %}" class="btn btn-primary m-1 w-100"><i class="fas fa-eye"></i> Ver orden </a>
-                    {% endif %}
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">Color</th>
+                        <th scope="col">Detalle asociado</th>
+                        <th scope="col">Ver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for planilla in factura.orden.get_planillas_pintura %}
+                        <tr class="bg-transition">
+                            <td>{{ planilla.nombre_de_color }}</td>
+                            {% if perms.ordenes.change_planilladepintura %}
+                            <td>{{planilla.orden.tarea.nombre}}</td>
+                            <td><a href="{% url 'modificarPlanilla' planilla.pk %}">Ver detalle</a></td>
+                            {% endif %}
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td>No hay planillas de pintura</td>
+                            <td>n/a</td>
+                            <td>n/a</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
                 </div>
             </div>
         </div>

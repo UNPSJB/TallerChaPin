@@ -282,6 +282,9 @@ class Empleado(models.Model):
     def get_grupos(self):
         grupos = Group.objects.filter(user = self.usuario)
         return ', '.join([g.name for g in grupos]) if grupos is not None else None
+
+    def es_admin(self):
+        return self.usuario.groups.filter(name='Administrativo').exists()
     
     def tiene_grupo(self):
         return self.usuario.groups.first() is not None

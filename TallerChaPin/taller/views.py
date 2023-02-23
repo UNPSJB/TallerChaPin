@@ -514,9 +514,9 @@ class MaterialCreateView(CreateView):
         messages.add_message(self.request, messages.SUCCESS, 'Material registrado con éxito')
         return super().form_valid(form)
 
-    def form_invalid(self, form):
-        messages.add_message(self.request, messages.ERROR, form.errors)
-        return super().form_invalid(form)   
+    # def form_invalid(self, form):
+    #     messages.add_message(self.request, messages.ERROR, form.errors) 
+    #     return super().form_invalid(form)   
 
     def post(self, *args, **kwargs):
         self.object = None

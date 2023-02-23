@@ -30,3 +30,6 @@ html_theme_options = {
     "light_logo": "logos/logo-light.png",
     "dark_logo": "logos/logo-dark.png",
 }
+
+extensions = ['rst2pdf.pdfbuilder']
+pdf_documents = [('index', u'rst2pdf', u'Documentación de Taller ChaPin', u'Matías Barea, Ramiro Canario'),]

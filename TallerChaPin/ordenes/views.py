@@ -472,7 +472,10 @@ def finalizar_tarea(request):
     form = FinalizarTareaForm(request.POST)
     if form.is_valid():
         form.finalizar()
-        exitosa = form.cleaned_data['exitosa'] == 1
+        exitosa = form.cleaned_data['exitosa'] == '1'
+        print('exitosa:')
+        print(exitosa)
+        print(form.cleaned_data['exitosa'])
         if exitosa:
             messages.add_message(request, messages.SUCCESS,
                                 'La tarea finalizó exitosamente')

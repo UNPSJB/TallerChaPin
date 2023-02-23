@@ -227,6 +227,7 @@
                       <thead>
                         <tr>
                           <th scope="col">Color</th>
+                          <th scope="col">Detalle asociado</th>
                           <th scope="col">Ver</th>
                         </tr>
                       </thead>
@@ -235,12 +236,14 @@
                           <tr class="bg-transition">
                             <td>{{ planilla.nombre_de_color }}</td>
                             {% if perms.ordenes.change_planilladepintura %}
+                            <td>{{planilla.orden.tarea.nombre}}</td>
                             <td><a href="{% url 'modificarPlanilla' planilla.pk %}">Ver detalle</a></td>
                             {% endif %}
                           </tr>
                         {% empty %}
                           <tr>
                             <td>No hay planillas de pintura</td>
+                            <td>n/a</td>
                             <td>n/a</td>
                           </tr>
                         {% endfor %}

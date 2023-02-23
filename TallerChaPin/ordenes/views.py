@@ -472,7 +472,7 @@ def finalizar_tarea(request):
     form = FinalizarTareaForm(request.POST)
     if form.is_valid():
         form.finalizar()
-        exitosa = form.cleaned_data['exitosa'] == 1
+        exitosa = form.cleaned_data['exitosa'] == '1'
         if exitosa:
             messages.add_message(request, messages.SUCCESS,
                                 'La tarea finalizó exitosamente')
@@ -636,7 +636,13 @@ class PlanillaUpdateView(UpdateView):
             messages.add_message(self.request, messages.ERROR, form.errors)
         return self.form_invalid(form=form)
 
+def PlanillaDeleteView(request, pk):
+    planilla = PlanillaDePintura.objects.get(pk=pk)
+    orden = planilla.orden.orden
 
+    planilla.eliminar()
+    messages.add_message(request, messages.SUCCESS, "La planilla de pintura ha sido eliminada correctamente.")
+    return redirect('detallesOrden', orden.pk)
 # ----------------------------- Ingreso de Vehiculo View ----------------------------------- #
 
 class RegistrarIngresoVehiculoCreateView(CreateView):

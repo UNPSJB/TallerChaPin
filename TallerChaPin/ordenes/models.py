@@ -834,6 +834,13 @@ class PlanillaDePintura(models.Model):
     def agregar(self, formula, cantidad):
         return DetallePlanillaDePintura.objects.create(planilla=self, formula=formula, cantidad=cantidad)
 
+    def eliminar(self):
+        self.delete()
+
+    def puedo_eliminar_planilla(self):
+        detalle = self.orden
+        return detalle.fin is None
+
 class DetallePlanillaDePintura(models.Model):
     planilla = models.ForeignKey(
         PlanillaDePintura, related_name="detalles", on_delete=models.CASCADE)

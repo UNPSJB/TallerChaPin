@@ -10,6 +10,8 @@ project = 'Taller ChaPin'
 copyright = '2022, Matías Barea, Ramiro Canario'
 author = 'Matías Barea, Ramiro Canario'
 
+html_title = 'Documentación de Taller ChaPin'
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 

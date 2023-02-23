@@ -64,7 +64,7 @@
                     <h5>Acciones</h5>
                     {% if perms.facturas.delete_pago %}
                     <a href="" data-bs-toggle="modal" data-bs-target="#modalEliminarPago"
-                        data-bs-nombre="{{object.orden.cliente}}" data-bs-url="{% url 'eliminarPago' object.pk %}"
+                        data-bs-nombre="{{ pago.factura.orden.cliente.nombre  }}" data-bs-url="{% url 'eliminarPago' object.pk %}"
                         class="btn-eliminar btn btn-danger m-1 w-100"><i class="fas fa-trash-alt"></i>
                         Eliminar Pago</a>
                     {% endif %}

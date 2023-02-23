@@ -5,6 +5,8 @@ const getMensaje = (target, nombre) => {
       return `¿Estás seguro/a de querer <strong>eliminar</strong> la orden de trabajo del cliente "${nombre}"?`
     case "#modalEliminarPresupuesto":
       return `¿Estás seguro/a de querer <strong>eliminar</strong> el presupuesto del cliente "${nombre}"?`
+    case "#modalEliminarPago":
+      return `¿Estás seguro/a de querer <strong>eliminar</strong> el pago del cliente "${nombre}"?`
     default:
       return `¿Estás seguro/a de querer <strong>eliminar</strong> "${nombre}" ?`
   }

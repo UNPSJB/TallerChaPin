@@ -54,6 +54,8 @@ urlpatterns = [
           PlanillaCreateView.as_view(), name="cargarPlanillaParaTarea"),
      path('planilla/modificar/<int:pk>',
           PlanillaUpdateView.as_view(), name="modificarPlanilla"),
+     path('planilla/eliminar/<int:pk>',
+          PlanillaDeleteView, name="eliminarPlanilla"),
      # ----------------- Ingreso y Entrega de vehiculo -----------------
      path('ordenesTurnos/registrarIngresoVehiculo',
           RegistrarIngresoVehiculoCreateView.as_view(), name="registrarIngresoVehiculo"),

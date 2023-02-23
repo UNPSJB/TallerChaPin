@@ -267,23 +267,21 @@ class Empleado(models.Model):
         self.save()
         return user
 
-    def añadir_grupo(self, grupo):
-        if grupo is not None:
-            g = Group.objects.get(name=grupo)
-            g.user_set.add(self.usuario)
-            g.save()
+     
+    def añadir_grupos(self, grupos):
+        if grupos:
+            grupos_obj = [Group.objects.get(name=g) for g in grupos]
+            self.usuario.groups.add(*grupos_obj)
             self.usuario.save()
+            
 
     def get_tareas(self):
-        tareas = []
-        for t in self.tareas.all():
-            tareas.append(t.nombre)
-        return tareas 
-
-    #Ver
-    def get_grupo(self):
+        tareas = self.tareas.all()
+        return ' | '.join([t.nombre for t in tareas]) if tareas is not None else None
+    
+    def get_grupos(self):
         grupos = Group.objects.filter(user = self.usuario)
-        return grupos.first() if grupos.first() is not None else None
+        return ', '.join([g.name for g in grupos]) if grupos is not None else None
     
     def tiene_grupo(self):
         return self.usuario.groups.first() is not None

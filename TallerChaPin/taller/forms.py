@@ -630,12 +630,23 @@ class EmpleadoForm(forms.ModelForm):
             "cuil": forms.TextInput(attrs={'pattern': '(\d{2}-\d{8}-\d{1})', 'placeholder': '##-########-#'})
         }
 
-    def save(self, commit=True):
-        empleado = super().save()
-        usuario = empleado.crear_usuario()
-        # cambiar a .save(commit=False) si queremos hacer procesamiento extra antes de guardar,
-        # por ej. en el caso de Cliente para asociarle un Vehículo antes de guardarlo en la db.
+    def save(self, is_new_instance=False, commit=True):
+        empleado = super().save(commit=False)
+        if is_new_instance:
+            empleado.crear_usuario()
+            empleado.añadir_grupos(grupos=self.cleaned_data['grupos'])
+        else:
+            empleado.usuario.groups.clear() #Ver por que entra aca
+            empleado.usuario.groups.add(*self.cleaned_data['grupos'])
+        if commit:
+            empleado.save()
+            empleado.usuario.save()
         return empleado
+
+
+    grupos = forms.ModelMultipleChoiceField(
+                         queryset= Group.objects.all(), widget=forms.CheckboxSelectMultiple, required=True)
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -650,6 +661,7 @@ class EmpleadoForm(forms.ModelForm):
                 "apellido",
                 "cuil",
                 "legajo",
+                "grupos",
             ),
             Div(HTML(
                 '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
@@ -667,7 +679,6 @@ class EmpleadoFiltrosForm(FiltrosForm):
         ("apellido", "Apellido"),
         ("legajo", "Legajo"),
         ("cuil", "CUIL"),
-        ("grupo", "Grupo")
     ]
 
     ATTR_CHOICES = [
@@ -676,7 +687,7 @@ class EmpleadoFiltrosForm(FiltrosForm):
         ("legajo", "Legajo"),
         ("cuil", "CUIL"),
         ("usuario","Usuario"),
-        ("get_grupo","Grupo"),
+        ("get_grupos","Grupos"),
         ("get_tareas","Tareas que realiza")
     ]
     nombre = forms.CharField(required=False, label='Nombre', max_length=100)
@@ -715,37 +726,6 @@ class TareaEmpleadoForm(forms.ModelForm):
             "tareas": forms.CheckboxSelectMultiple(attrs={'class': 'checks_tareas'}),
         }
 
-class GrupoEmpleadoForm(forms.ModelForm):
-   
-    class Meta:
-        model = Empleado
-        fields =  '__all__'
-        exclude = ["nombre", "apellido","cuil","legajo","usuario","tareas"]
-
-
-    def save(self, grupo, empleado):
-        usuario = empleado.añadir_grupo(grupo=grupo)
-        return empleado
-    
-    grupo = forms.ModelChoiceField(
-                         queryset= Group.objects.all() , required=False)
-
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.layout = Layout (
-            Fieldset(
-                "",
-                "grupo",
-            ),
-            # Div(HTML(
-            #     '<input name="continuar" type="submit" class="btn btn-primary mt-3" value="Guardar y continuar"/>'),
-            # HTML(
-            #     '<input name="guardar" type="submit" class="btn btn-primary mt-3" value="Guardar y salir"/>'))
-            )
-
-EmpleadoForm.base_fields.update(GrupoEmpleadoForm.base_fields)
 # Cliente
 
 

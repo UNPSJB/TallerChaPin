@@ -14,6 +14,8 @@
         {% for sortable in filtros.sortables %}
           <th class="sortable bg-transition pointer" scope="col" data-s-field={{sortable.0}}>{{sortable.1}}</th>
         {% endfor %}
+        <th scope="col">Grupos</th>
+        <th scope="col">Tareas que realiza</th>
         <th scope="col">Opciones</th>
       </tr>
     </thead>
@@ -24,7 +26,8 @@
         <td>{{ empleado.apellido }}</td> 
         <td>{{ empleado.legajo}}</td>
         <td>{{ empleado.cuil }}</td>
-        <td>{{ empleado.get_grupo }}</td>
+        <td>{{ empleado.get_grupos }}</td>
+        <td>{{ empleado.get_tareas }}</td>
         <td>
           {% if perms.taller.change_empleado %}
           <a href="{% url 'modificarEmpleado' empleado.pk %}" class= "btn-modificar btn-listado">

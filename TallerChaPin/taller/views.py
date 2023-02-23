@@ -766,8 +766,6 @@ class EmpleadoCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Registrar empleado"
-        context['grupo'] = GrupoEmpleadoForm()
-        
         return context
     
     def form_valid(self, form):
@@ -781,12 +779,12 @@ class EmpleadoCreateView(CreateView):
     def post(self, *args, **kwargs):
         self.object = None
         formEmpleado = self.get_form()
-        formGrupo = GrupoEmpleadoForm(self.request.POST)
-        if formEmpleado.is_valid() and formGrupo.is_valid():
-            empleado = formEmpleado.save()
-            grupo = formGrupo.cleaned_data.get('grupo')
-            e = formGrupo.save(grupo, empleado)
-            messages.add_message(self.request, messages.SUCCESS,f'Empleado "{empleado.nombre}" registrado con exito\nUsuario "{empleado.usuario}"\nGrupo "{e.get_grupo()}"')
+
+        if formEmpleado.is_valid():
+            empleado = formEmpleado.save(is_new_instance=True)
+            
+            messages.add_message(self.request, messages.SUCCESS,f'Empleado "{empleado.nombre}" registrado con exito\nUsuario "{empleado.usuario}"\nGrupo "{empleado.get_grupos()}"')
+            
             if 'guardar' in self.request.POST:
                 return redirect('listarEmpleados')
             return redirect('crearEmpleado')
@@ -802,9 +800,16 @@ class EmpleadoUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Modificar empleado"
         return context
+    
+    def get_initial(self):
+        initial = super().get_initial()
+        usuario = self.object.usuario
+        grupos = Group.objects.filter(user=usuario)
+        initial['grupos'] = [g.pk for g in grupos]
+        return initial
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Empleado modificado con éxito')
+        messages.success(self.request, f'Empleado "{self.object.nombre}" actualizado con éxito')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -828,17 +833,7 @@ class EmpleadoListView(ListFilterView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = "Listado de empleados"
-        # context['registroEmpleadoForm'] = RegistroEmpleadoForm()
         return context
-    
-    # def post(self, *args, **kwargs):
-    #     form = RegistroEmpleadoForm(self.request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('listarEmpleados')
-    #     else:
-    #         messages.add_message(self.request, messages.WARNING, form.errors)
-    #         return redirect ('listarEmpleados')
 
 exportar_listado_empleados = lambda r: export_list(r, Empleado, EmpleadoFiltrosForm)
 

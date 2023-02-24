@@ -694,7 +694,9 @@ class EmpleadoFiltrosForm(FiltrosForm):
     apellido = forms.CharField(
         required=False, label='Apellido', max_length=100)
     legajo = forms.IntegerField(required=False)
-    cuil = forms.IntegerField(required=False)
+    cuil = forms.CharField(
+        widget=forms.TextInput(attrs={'pattern': '(\d{2}-\d{8}-\d{1})', 'placeholder': '##-########-#'}),
+        required=False, label='CUIL')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

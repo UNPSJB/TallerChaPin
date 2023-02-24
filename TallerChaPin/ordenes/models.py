@@ -13,6 +13,7 @@ from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import Permission
+# from facturas.models import Factura
 # Create your models here.
 
 class OrdenDeTrabajoManager(models.Manager):
@@ -329,6 +330,9 @@ class OrdenDeTrabajo(models.Model):
 
     def tiene_factura(self):
         return (self.factura is not None) and (self.estado == OrdenDeTrabajo.FACTURADA)
+    
+    def get_factura(self):
+        return self.factura.get(pk=self.pk)
 
     def pagado(self):
         return self.estado == OrdenDeTrabajo.PAGADA

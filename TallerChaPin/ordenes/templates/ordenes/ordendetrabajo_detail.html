@@ -76,6 +76,17 @@
                 </a>
               {% endif %}
             {% endif %}
+
+            {% if perms.ordenes.view_factura %}
+            {% if object.get_factura is not None %}
+            <a href="{% url 'detallesFactura' object.get_factura.pk %}"
+              class="btn btn-primary m-1 w-100">
+              <i class="fas fa-eye"></i>
+              Ver factura 
+            </a>
+            {% endif %}
+            {% endif %}
+
             
             {% if perms.ordenes.add_presupuesto %}
               {% if object.puede_ampliarse %}

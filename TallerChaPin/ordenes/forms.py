@@ -337,6 +337,8 @@ class OrdenForm(forms.ModelForm):
 
 class OrdenTrabajoFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
+        ("pk", '#'),
+        ("turno", "Fecha"),
         ("presupuestos__cliente", "Cliente"),
         ("presupuestos__vehiculo", "Vehiculo"),
         ("estado", "Estado"),

@@ -20,6 +20,8 @@
     <tbody>
       {% for orden in object_list %}
       <tr>
+        <td>{{ orden.pk }}</td>
+        <td>{{ orden.turno }}</td>
         <td>{{ orden.cliente }}</td>
         <td>{{ orden.vehiculo }}</td>
         <td>{{ orden.get_estado_display}}</td>

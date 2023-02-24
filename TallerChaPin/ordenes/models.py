@@ -481,9 +481,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         permisos = user.get_user_permissions()
 
         if 'ordenes.can_ver_finalizados' in permisos:
-            qs = self.filter(esta_finalizado).order_by('orden__turno')
+            qs = self.filter(esta_finalizado).order_by('-fin')
         else:
-            qs = self.filter(esta_finalizado & es_del_usuario).order_by('orden__turno')
+            qs = self.filter(esta_finalizado & es_del_usuario).order_by('-fin')
 
         return qs
 
@@ -494,9 +494,9 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         permisos = user.get_user_permissions()
 
         if 'ordenes.can_ver_todos' in permisos:
-            qs = self.all().exclude(no_ha_ingresado)
+            qs = self.all().exclude(no_ha_ingresado).order_by('-fin')
         else:
-            qs = self.all().filter(es_del_usuario).exclude(no_ha_ingresado)
+            qs = self.all().filter(es_del_usuario).exclude(no_ha_ingresado).order_by('-fin')
         return qs
 
 

@@ -41,10 +41,11 @@
     */
     $('#id_tipo').on('change',(e) => {
       let opcion = $(e.currentTarget).val();
-      if (opcion == 2) {
+      console.log({opcion})
+      if (opcion === '2') { // Crédito
         $('#select_cuota').prop('disabled',false);
         $('#id_monto').prop('readonly', true)
-        $('#id_monto').val(input_saldo.dataset.saldo)
+        $('#id_monto').val(parseFloat(input_saldo.dataset.saldo))
       } else {
         $('#select_cuota').prop('disabled',true);
         $('#id_monto').prop('readonly', false)

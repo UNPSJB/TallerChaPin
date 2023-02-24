@@ -78,7 +78,7 @@
             {% endif %}
 
             {% if perms.ordenes.view_factura %}
-            {% if object.get_factura is not None %}
+            {% if object.tiene_factura %}
             <a href="{% url 'detallesFactura' object.get_factura.pk %}"
               class="btn btn-primary m-1 w-100">
               <i class="fas fa-eye"></i>

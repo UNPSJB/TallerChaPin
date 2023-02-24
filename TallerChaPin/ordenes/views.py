@@ -721,7 +721,6 @@ class RegistrarEgresoVehiculoCreateView(CreateView):
             if not orden.puede_retirar_vehiculo():
                 messages.add_message(self.request, messages.ERROR, "No se puede registrar retiro del vehiculo.")
                 return redirect('detallesPresupuesto',orden.pk)
-        print(form)
         return render(self.request, 'ordenes/registraringresovehiculo_form.html', {'form' : form,
                                                                                     'titulo' : "Registrar egreso de Vehiculo"})
     

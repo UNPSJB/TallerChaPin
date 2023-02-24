@@ -853,44 +853,6 @@ def asociar_tarea_empleado(request, pk):
 
     return render(request, 'taller/tarea_empleado_form.html', context)
 
-# class RegistrarUsuarioCreateView(CreateView):
-    
-#     model = Empleado
-#     form_class = RegistroEmpleadoForm
-#     success_url = reverse_lazy('listarEmpleados')
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['titulo'] = 'Asignar empleado a grupo'
-#         return context
-
-#     def get (self, *args, **kwargs):
-#         pk = kwargs.get('pk')
-#         form = self.get_form()
-#         print(form)
-#         try:
-#             empleado = Empleado.objects.get(pk=pk)
-#         except Empleado.DoesNotExist:
-#             raise Http404('Empleado no existe')
-#         if empleado.tiene_usuario():
-#             messages.add_message(self.request, messages.WARNING,'Empleado ya ha sido registrado')
-#             return redirect('listarEmpleados')
-#         return super().get(*args,**kwargs)
-
-#     def post(self, *args, **kwargs):
-#         self.object = None
-#         pk = kwargs.get('pk')
-#         empleado = Empleado.objects.get(pk=pk)
-#         form = RegistroEmpleadoForm(self.request.POST)
-#         if form.is_valid():
-#             grupo = form.cleaned_data.get('grupos')
-#             e = form.save(grupo, empleado)
-#             return redirect('usuarioPDF', empleado.pk)
-#         else:
-#             messages.add_message(self.request, messages.WARNING, form.errors)
-#         return self.form_invalid(form=form)
-
-
 class imprimirUsuarioEmpleado(PDFTemplateView):
     template_name = 'taller/usuario_empleado_pdf.html'
     cmd_options = {

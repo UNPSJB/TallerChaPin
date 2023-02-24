@@ -368,7 +368,6 @@ class OrdenDeTrabajo(models.Model):
         for m in presupuesto.presupuesto_materiales.all():
             if m.material.pk not in materiales_orden:
                 self.agregar_material(m.material, m.get_cantidad())
-                print(m.cantidad)
 
         # De los repuestos del presupuesto, solo agrego a la orden los que son nuevos
         repuestos_orden = list(self.orden_repuestos.all().values_list('repuesto__pk', flat=True))

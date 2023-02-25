@@ -329,10 +329,10 @@ class OrdenDeTrabajo(models.Model):
         return self.get_estado_display()
 
     def tiene_factura(self):
-        return (self.factura is not None) and (self.estado == OrdenDeTrabajo.FACTURADA)
+        return self.factura.exists()
     
     def get_factura(self):
-        return self.factura.get(pk=self.pk)
+        return self.factura.get(orden=self)
 
     def pagado(self):
         return self.estado == OrdenDeTrabajo.PAGADA

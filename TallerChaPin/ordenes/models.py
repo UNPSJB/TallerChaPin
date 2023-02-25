@@ -261,12 +261,12 @@ class OrdenDeTrabajo(models.Model):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 
 
-
-    def iniciar_tarea(self, empleado, tarea, fecha=now()):
-        if self.estado == OrdenDeTrabajo.ACTIVA:
-            tarea.iniciar(empleado, fecha)
-            self.estado = OrdenDeTrabajo.INICIADA
-            self.save()
+    # Esta funcion no esta siendo utilizada
+    # def iniciar_tarea(self, empleado, tarea, fecha=now()):
+    #         if self.estado == OrdenDeTrabajo.ACTIVA:
+    #         tarea.iniciar(empleado, fecha)
+    #         self.estado = OrdenDeTrabajo.INICIADA
+    #         self.save()
     
     # Ver si de verdad lo necesitamos
     def finalizar_tarea(self, detalle, exitosa, observacion, materiales=None, repuestos=None, fecha=now()):
@@ -539,9 +539,9 @@ class DetalleOrdenDeTrabajo(models.Model):
     def precio(self):
         return self.tarea.precio
 
-    def iniciar(self, empleado, fecha=now()):
+    def iniciar(self, empleado, fecha=None):
         self.empleado = empleado
-        self.inicio = fecha
+        self.inicio = fecha or now() #Comprueba si fecha es 'None' entonces devuelve la hora actual.
         self.save()
         self.orden.actualizar_estado(OrdenDeTrabajo.INICIAR_TAREA)
 
@@ -549,10 +549,10 @@ class DetalleOrdenDeTrabajo(models.Model):
         self.empleado = empleado
         self.save()
 
-    def finalizar(self, exitosa, observaciones, fecha=now()):
+    def finalizar(self, exitosa, observaciones, fecha=None):
         self.exitosa = exitosa
         self.observaciones = observaciones
-        self.fin = fecha
+        self.fin = fecha or now() #Comprueba si fecha es 'None' entonces devuelve la hora actual.
         self.save()
         self.orden.actualizar_estado(exitosa and OrdenDeTrabajo.FINALIZAR_TAREA_EXITOSA or OrdenDeTrabajo.FINALIZAR_TAREA_NO_EXITOSA)
 

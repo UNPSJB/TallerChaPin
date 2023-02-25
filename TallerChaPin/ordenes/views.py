@@ -463,7 +463,7 @@ def asignar_empleado(request):
                              'La tarea se asignó a un empleado exitosamente')
     else:
         messages.add_message(request, messages.WARNING,
-                             'El formulario tiene errores.')
+                             'No se asignó ningun empleado.')
     return redirect('listarDetallesOrden')
 
 # ----------------------------- Finalizar Tarea ----------------------------------- #

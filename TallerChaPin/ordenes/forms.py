@@ -305,11 +305,9 @@ class OrdenForm(forms.ModelForm):
         fields = "__all__"
         exclude = ["egreso", "estado", "ingreso", "materiales", "repuestos"]
 
-        # labels = {
-
-        # }
         widgets = {
-            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M'), 'value': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
+            # "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M'), 'value': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
+            "turno": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
         }
 
     def save(self, tareas, repuestos, materiales):
@@ -332,6 +330,8 @@ class OrdenForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         # self.helper.form_tag = False
+        self.fields['turno'].widget.attrs['min'] = datetime.now().strftime('%Y-%m-%dT%H:%M')
+        self.fields['turno'].widget.attrs['value'] = datetime.now().strftime('%Y-%m-%dT%H:%M')
         self.helper.add_input(Submit('submit', 'Guardar'))
 
 
@@ -409,7 +409,8 @@ def RegistrarIngresoVehiculoForm(model=None):
             exclude = ["egreso", "estado", "turno", "materiales", "repuestos"]
 
             widgets = {
-                "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M'), 'value': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
+                # "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M'), 'value': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
+                "ingreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
             }
 
         def save(self, commit=True):
@@ -422,6 +423,8 @@ def RegistrarIngresoVehiculoForm(model=None):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.helper = FormHelper()
+            self.fields['ingreso'].widget.attrs['min'] = datetime.now().strftime('%Y-%m-%dT%H:%M')
+            self.fields['ingreso'].widget.attrs['value'] = datetime.now().strftime('%Y-%m-%dT%H:%M')
             self.helper.layout = Layout(
                 Fieldset(
                     "",
@@ -453,9 +456,8 @@ def RegistrarEgresoVehiculoForm(model=None):
             exclude = ["ingreso", "estado", "turno", "materiales", "repuestos"]
 
             widgets = {
-                "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local', 'min': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M'), 'value': datetime.strftime(datetime.now(),'%Y-%m-%dT%H:%M')})
+                "egreso": forms.DateTimeInput(format=('%d/%m/%Y %H:%M'), attrs={'type': 'datetime-local'})
             }
-
         def save(self, commit=True):
             registrarEgresoVehiculo = super().save(commit=bool(model))
             if model:
@@ -466,6 +468,8 @@ def RegistrarEgresoVehiculoForm(model=None):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.helper = FormHelper()
+            self.fields['egreso'].widget.attrs['min'] = datetime.now().strftime('%Y-%m-%dT%H:%M')
+            self.fields['egreso'].widget.attrs['value'] = datetime.now().strftime('%Y-%m-%dT%H:%M')
             self.helper.layout = Layout(
                 Fieldset(
                     "",

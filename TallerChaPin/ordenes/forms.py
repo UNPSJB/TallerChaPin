@@ -562,6 +562,13 @@ class FinalizarTareaForm(forms.Form):
         choices=[(1, 'exitosa'), (2, 'no exitosa')],
         widget=forms.RadioSelect,
         label="Finalización:")
+
+    fecha= forms.DateTimeField(
+        input_formats=['%Y-%m-%dT%H:%M'],
+        widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        label='Fecha:',
+        required=False,)
+    
     observaciones = forms.CharField(
         widget=forms.Textarea(),
         label='Observaciones:', 
@@ -580,6 +587,7 @@ class FinalizarTareaForm(forms.Form):
             Fieldset(
                 "",
                 "exitosa",
+                "fecha",
                 "observaciones",
                 "tarea",
             )
@@ -588,11 +596,12 @@ class FinalizarTareaForm(forms.Form):
     def finalizar(self):
         exitosa = self.cleaned_data.get('exitosa')
         exitosa = int(exitosa) == 1
+        fecha = self.cleaned_data.get('fecha')
         observaciones = self.cleaned_data.get('observaciones')
         detalle_tarea_pk = self.cleaned_data.get('tarea')
         detalle = ordenes.DetalleOrdenDeTrabajo.objects.get(
             pk=detalle_tarea_pk)
-        detalle.finalizar(exitosa, observaciones)
+        detalle.finalizar(exitosa, observaciones, fecha)
 
 # Asignar Cantidad
 

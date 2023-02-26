@@ -15,7 +15,7 @@ import json
 from .utils import requiere_insumo
 import os
 from django.core.exceptions import ObjectDoesNotExist
-
+import pytz
 
 def requerimientos_tareas(request):
     """
@@ -468,17 +468,30 @@ def asignar_empleado(request):
 
 # ----------------------------- Finalizar Tarea ----------------------------------- #
 
-def finalizar_tarea(request):
+def finalizar_tarea(request):    
+    tarea_id = request.POST.get('finalizar-tarea')
+    tarea = ordenes.DetalleOrdenDeTrabajo.objects.get(pk=tarea_id)
+
+    fecha_inicio = tarea.inicio
+    
+    fecha_fin = datetime.strptime(request.POST.get('finalizar-fecha'), '%Y-%m-%dT%H:%M')
+    fecha_f = pytz.timezone('America/Buenos_Aires').localize(fecha_fin)
+
     form = FinalizarTareaForm(request.POST)
+
     if form.is_valid():
-        form.finalizar()
-        exitosa = form.cleaned_data['exitosa'] == '1'
-        if exitosa:
-            messages.add_message(request, messages.SUCCESS,
-                                'La tarea finalizó exitosamente')
-        else: 
+        if fecha_inicio > fecha_f:
             messages.add_message(request, messages.WARNING, 
-                                'La tarea finalizó de forma no exitosa')
+                    f'La fecha de finalizacion de la tarea no puede ser anterior a la de inicio. Fecha de inicio: {fecha_inicio.strftime("%Y-%m-%d")}')
+        else:
+            form.finalizar()
+            exitosa = form.cleaned_data['exitosa'] == '1'
+            if exitosa:
+                messages.add_message(request, messages.SUCCESS,
+                                    'La tarea finalizó exitosamente')
+            else: 
+                messages.add_message(request, messages.WARNING, 
+                                    'La tarea finalizó de forma no exitosa')
     else:
         messages.add_message(request, messages.ERROR, form.errors) 
     return redirect('listarDetallesOrden')

@@ -23,6 +23,8 @@ urlpatterns = [
      path('presupuesto/tareasFinalizadas/<int:pk>', tareasFinalizadas, name="tareasFinalizadas"),
      path('presupuestos/exportar',
           exportar_listado_presupuestos, name='exportarPresupuestos'),
+     path('presupuestos/getRepuestos/<int:pk_vehiculo>', get_repuestos_modelo),
+     
      # ------------------ Orden de Trabajo -----------------
      path('orden/crear/<int:pk>', OrdenTrabajoCreateView.as_view(), name="crearOrden"),
      path('orden/listar', OrdenTrabajoListView.as_view(), name="listarOrdenes"),

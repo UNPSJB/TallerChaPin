@@ -201,6 +201,46 @@
             check.removeAttribute('disabled')
         });
     })
+    
+    
+    window.addEventListener('load', () => {
+    
+        btn_add_repuesto = document.querySelector('#repuestos a')
+
+        btn_add_repuesto?.addEventListener('click', () => {
+            if (select_vehiculos.value) actualizarRepuestos(select_vehiculos.value, soloUltimo=true)
+        })  
+
+    })
+
+    select_vehiculos.addEventListener('change', () => {
+        if (select_vehiculos.value) actualizarRepuestos(select_vehiculos.value)
+    })
+
+    function actualizarRepuestos(vehiculo, soloUltimo = false) {
+        
+        if (soloUltimo) {
+            selects_repuestos = [...document.querySelectorAll('select[name^=presupuesto_repuestos]')].slice(-1)
+        } else {
+            selects_repuestos = [...document.querySelectorAll('select[name^=presupuesto_repuestos]')].slice(1)
+        }
+        selects_repuestos.map(s => s.options.length = 1)
+
+        fetch(`/ordenes/presupuestos/getRepuestos/${vehiculo}`)
+            .then(response => response.json())
+            .then(response => {
+                for (let s of selects_repuestos) {
+                    for (let r of response.repuestos) {
+                        option = document.createElement("option")
+                        option.value = r.id
+                        option.text = `${r.nombre}, ${r.modelo__nombre}`
+                        s.add(option)
+                    }
+                }
+            })
+            
+
+    }
 
 </script>
 {% endblock %}

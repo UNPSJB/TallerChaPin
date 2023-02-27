@@ -1,9 +1,11 @@
+
 from django.http import Http404, JsonResponse
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+
 from .models import *
 from .forms import *
 from datetime import date
@@ -26,6 +28,12 @@ def requerimientos_tareas(request):
     pks = json.load(request)['tareas']
     tareas = [Tarea.objects.get(pk=pk) for pk in pks]
     return JsonResponse(requiere_insumo(tareas))
+
+def get_repuestos_modelo(request, pk_vehiculo):
+    vehiculo = Vehiculo.objects.get(pk=pk_vehiculo)
+    repuestos = list(Repuesto.objects.filter(modelo=vehiculo.modelo.pk).values('id', 'nombre', 'modelo__nombre'))
+
+    return JsonResponse({'repuestos': repuestos})
 
 def tareasFinalizadas(request, pk):
 

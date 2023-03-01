@@ -35,6 +35,13 @@ def get_repuestos_modelo(request, pk_vehiculo):
 
     return JsonResponse({'repuestos': repuestos})
 
+def get_repuestos_modelo_ampliacion(request, pk_presupuesto):
+    presupuesto = Presupuesto.objects.get(pk=pk_presupuesto)
+    vehiculo = presupuesto.vehiculo
+    repuestos = list(Repuesto.objects.filter(modelo=vehiculo.modelo.pk).values('id', 'nombre', 'modelo__nombre'))
+
+    return JsonResponse({'repuestos': repuestos})
+
 def tareasFinalizadas(request, pk):
 
     orden = Presupuesto.objects.get(pk=pk).orden

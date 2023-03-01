@@ -30,6 +30,7 @@
 
     const select_cliente = document.getElementById('id_cliente')
     const select_vehiculos = document.getElementById('id_vehiculo')
+    let repuestos = [] // Array de pks de repuestos pertenecientes al modelo del vehiculo
 
     function get_base_url(){
         const url = window.location.href
@@ -102,6 +103,7 @@
 
         if (estoy_ampliando()){
             deshabilitar_tareas_iniciadas()
+            actualizarRepuestosModAmp('', 'ampliar')
         }
         
         if (estoy_modificando()) {
@@ -123,7 +125,7 @@
     })
 
     function hay_cliente_cargado(){
-        return select_cliente.value
+        return select_cliente?.value
     }
 
     function cargarVehiculosCliente(modificando = false) {
@@ -146,7 +148,7 @@
             if (modificando) {
                 const pk = document.getElementById('pk_vehiculo').dataset.vehiculo
                 select_vehiculos.value = pk
-                actualizarRepuestosModificacion(select_vehiculos.value)
+                actualizarRepuestosModAmp(select_vehiculos.value)
             }
         })
 
@@ -161,7 +163,6 @@
         fetch(`${url_base}/ordenes/presupuesto/tareasFinalizadas/${pk}`)
             .then(response => response.json())
             .then(r => {
-                console.log(r)
                 const tareas_a_deshabilitar = r.tareas_finalizadas
 
                 checks_tareas.forEach(check => {
@@ -205,18 +206,21 @@
     
     
     window.addEventListener('load', () => {
-        console.log('load')
         btn_add_repuesto = document.querySelector('#repuestos a.btn')
-
-        console.log({btn_add_repuesto})
         btn_add_repuesto?.addEventListener('click', () => {
-            console.log('click! add')
-            if (select_vehiculos.value) actualizarRepuestos(select_vehiculos.value, soloUltimo=true)
+
+            if (select_vehiculos?.value) {
+                // Si estoy creando/modificando
+                actualizarRepuestos(select_vehiculos.value, soloUltimo = true)
+            } else {
+                // Si estoy ampliando
+                actualizarRepuestos('', soloUltimo = true)
+            }
         })  
 
     })
 
-    select_vehiculos.addEventListener('change', () => {
+    select_vehiculos?.addEventListener('change', () => {
         if (select_vehiculos.value) actualizarRepuestos(select_vehiculos.value)
     })
 
@@ -224,38 +228,48 @@
 
         if (soloUltimo) {
             selects_repuestos = [...document.querySelectorAll('select[name^=presupuesto_repuestos]')].slice(-1)
+            agregarOptionsRepuestos(selects_repuestos, repuestos)
         } else {
             selects_repuestos = [...document.querySelectorAll('select[name^=presupuesto_repuestos]')].slice(1)
+            fetch(`/ordenes/presupuestos/getRepuestos/${vehiculo}`)
+                .then(r => r.json())
+                .then(r => {
+                    repuestos = r.repuestos
+                    agregarOptionsRepuestos(selects_repuestos, repuestos)
+                })    
         }
-        selects_repuestos.map(s => s.options.length = 1)
-
-        fetch(`/ordenes/presupuestos/getRepuestos/${vehiculo}`)
-            .then(response => response.json())
-            .then(response => {
-                for (let s of selects_repuestos) {
-                    for (let r of response.repuestos) {
-                        option = document.createElement("option")
-                        option.value = r.id
-                        option.text = `${r.nombre}, ${r.modelo__nombre}`
-                        s.add(option)
-                    }
-                }
-            })
-            
-
     }
 
-    function actualizarRepuestosModificacion(vehiculo) {
+    function agregarOptionsRepuestos(selects_repuestos, repuestos) {
+        selects_repuestos.map(s => s.options.length = 1)
+
+        for (let s of selects_repuestos) {
+            for (let r of repuestos) {
+                option = document.createElement("option")
+                option.value = r.id
+                option.text = `${r.nombre}, ${r.modelo__nombre}`
+                s.add(option)
+            }
+        }
+    }
+
+    function actualizarRepuestosModAmp(vehiculo, accion) {
 
         selects_repuestos = [...document.querySelectorAll('select[name^=presupuesto_repuestos]')].slice(1)
         // Elimino todos los options de todos los selects que no sean del modelo seleccionado
 
-        fetch(`/ordenes/presupuestos/getRepuestos/${vehiculo}`)
+        url = ''
+        if (accion === 'ampliar') {
+            presupuesto = window.location.href.split('/').slice(-1)
+            url = `/ordenes/presupuestos/getRepuestosAmpliacion/${presupuesto}`
+        } else {
+            url = `/ordenes/presupuestos/getRepuestos/${vehiculo}`
+        }
+
+        fetch(url)
             .then(response => response.json())
             .then(response => {
                 ids_repuestos = response.repuestos.map(r => r.id)
-                    
-                console.log(ids_repuestos)
                 for (let s of selects_repuestos) {
                     options = [...s.options].slice(1) // Ignoro la primera (--------)
 
@@ -265,6 +279,7 @@
                         } 
                     }
                 }
+                repuestos = response.repuestos
             })
     }
 

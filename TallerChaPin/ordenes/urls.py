@@ -24,6 +24,7 @@ urlpatterns = [
      path('presupuestos/exportar',
           exportar_listado_presupuestos, name='exportarPresupuestos'),
      path('presupuestos/getRepuestos/<int:pk_vehiculo>', get_repuestos_modelo),
+      path('presupuestos/getRepuestosAmpliacion/<int:pk_presupuesto>', get_repuestos_modelo_ampliacion),
      
      # ------------------ Orden de Trabajo -----------------
      path('orden/crear/<int:pk>', OrdenTrabajoCreateView.as_view(), name="crearOrden"),

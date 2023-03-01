@@ -146,6 +146,7 @@
             if (modificando) {
                 const pk = document.getElementById('pk_vehiculo').dataset.vehiculo
                 select_vehiculos.value = pk
+                actualizarRepuestosModificacion(select_vehiculos.value)
             }
         })
 
@@ -204,10 +205,12 @@
     
     
     window.addEventListener('load', () => {
-    
-        btn_add_repuesto = document.querySelector('#repuestos a')
+        console.log('load')
+        btn_add_repuesto = document.querySelector('#repuestos a.btn')
 
+        console.log({btn_add_repuesto})
         btn_add_repuesto?.addEventListener('click', () => {
+            console.log('click! add')
             if (select_vehiculos.value) actualizarRepuestos(select_vehiculos.value, soloUltimo=true)
         })  
 
@@ -218,7 +221,7 @@
     })
 
     function actualizarRepuestos(vehiculo, soloUltimo = false) {
-        
+
         if (soloUltimo) {
             selects_repuestos = [...document.querySelectorAll('select[name^=presupuesto_repuestos]')].slice(-1)
         } else {
@@ -240,6 +243,29 @@
             })
             
 
+    }
+
+    function actualizarRepuestosModificacion(vehiculo) {
+
+        selects_repuestos = [...document.querySelectorAll('select[name^=presupuesto_repuestos]')].slice(1)
+        // Elimino todos los options de todos los selects que no sean del modelo seleccionado
+
+        fetch(`/ordenes/presupuestos/getRepuestos/${vehiculo}`)
+            .then(response => response.json())
+            .then(response => {
+                ids_repuestos = response.repuestos.map(r => r.id)
+                    
+                console.log(ids_repuestos)
+                for (let s of selects_repuestos) {
+                    options = [...s.options].slice(1) // Ignoro la primera (--------)
+
+                    for (let o of options) {
+                        if (!ids_repuestos.includes(parseInt(o.value))) {
+                            o.remove()
+                        } 
+                    }
+                }
+            })
     }
 
 </script>

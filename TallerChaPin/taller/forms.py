@@ -485,8 +485,8 @@ class TipoTareaForm(forms.ModelForm):
                 "planilla",
             ),
             Div(HTML(
-                '<input type="submit" class="btn btn-primary mt-3" name= "accion" value="Guardar y continuar registrando"/>')),
-            Div(HTML(
+                '<input type="submit" class="btn btn-primary mt-3" name= "accion" value="Guardar y continuar registrando"/>'),
+            HTML(
                 '<input type="submit" class="btn btn-primary mt-3" name= "accion" value="Guardar y salir"/>'))
         )
 

@@ -8,7 +8,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
 
       <div class="ibox-title">
-        <h1 class="mb-4">Ver Orden de trabajo</h1>
+        <h1 class="mb-4">Orden de trabajo: #{{ object.pk }}</h1>
       </div>
 
       <div class="row">
@@ -112,7 +112,7 @@
               </a>
             {% endif %}
             {% if object.estado == 2 or object.estado == 6 %}
-              <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>. No hay acciones disponibles.</span>
+              <span>La orden de trabajo ha sido <b>{{object.get_estado_display}}</b>.</span>
             {%endif%}
 
             {% if object.puede_retirar_vehiculo %}

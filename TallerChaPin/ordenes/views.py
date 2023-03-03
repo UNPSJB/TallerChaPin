@@ -488,7 +488,6 @@ def finalizar_tarea(request):
     tarea = ordenes.DetalleOrdenDeTrabajo.objects.get(pk=tarea_id)
 
     fecha_inicio = tarea.inicio
-    
     fecha_fin = datetime.strptime(request.POST.get('finalizar-fecha'), '%Y-%m-%dT%H:%M')
     fecha_f = pytz.timezone('America/Buenos_Aires').localize(fecha_fin)
 

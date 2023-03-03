@@ -114,7 +114,8 @@
                                         </p>
                                     </td>
                                     <td width="65" class="align-middle">
-                                        <input type="text" class="form-control" placeholder="{{ material.cantidad }}" disabled>
+                                        <input type="text" class="form-control" 
+                                            placeholder="{{ material.cantidad }} {{material.material.tipo.get_unidad_medida}}" disabled>
                                     </td>
                                     <td class="align-middle">
                                         <h4 class="text-right">

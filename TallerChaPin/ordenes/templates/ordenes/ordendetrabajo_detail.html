@@ -215,8 +215,8 @@
                       <tbody>
                         {% for material in object.orden_materiales.all %}
                           <tr class="bg-transition">
-                            <td>{{ material.cantidad_presupuestada }} {{ material.tipo.get_unidad_medida_display }}</td>
-                            <td>{{ material.cantidad_utilizada }} {{ material.tipo.get_unidad_medida_display }}</td>
+                            <td>{{ material.cantidad_presupuestada }} {{ material.material.tipo.get_unidad_medida }}</td>
+                            <td>{{ material.cantidad_utilizada }} {{ material.material.tipo.get_unidad_medida }}</td>
                             <td>{{material.material.nombre}}</td>
                             <td>{{material.material.tipo}}</td>
                           </tr>

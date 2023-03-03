@@ -2,9 +2,9 @@
 const getMensaje = (target, nombre) => {
   switch (target) {
     case "#modalEliminarOrden":
-      return `¿Estás seguro/a de querer <strong>eliminar</strong> la orden de trabajo del cliente "${nombre}"?`
+      return `¿Estás seguro/a de querer <strong>Cancelar</strong> la orden de trabajo del cliente "${nombre}"?`
     case "#modalEliminarPresupuesto":
-      return `¿Estás seguro/a de querer <strong>eliminar</strong> el presupuesto del cliente "${nombre}"?`
+      return `¿Estás seguro/a de querer <strong>Cancelar</strong> el presupuesto del cliente "${nombre}"?`
     case "#modalEliminarPago":
       return `¿Estás seguro/a de querer <strong>eliminar</strong> el pago del cliente "${nombre}"?`
     default:

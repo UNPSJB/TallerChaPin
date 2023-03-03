@@ -269,31 +269,31 @@ class OrdenDeTrabajo(models.Model):
     #         self.save()
     
     # Ver si de verdad lo necesitamos
-    def finalizar_tarea(self, detalle, exitosa, observacion, materiales=None, repuestos=None, fecha=now()):
-        # Materiales y repuestos son listas de la forma [(material, cantidad)...]
-        if detalle.tarea.tipo.materiales and materiales is None:
-            raise Exception('Tarea requiere materiales')
-        elif detalle.tarea.tipo.materiales:
-            for material, cantidad in materiales:
-                self.orden_materiales.filter(
-                    pk=material).update(cantidad=cantidad)
-        if detalle.tarea.tipo.repuestos and repuestos is None:
-            raise Exception('Tarea requiere repuestos')
-        elif detalle.tarea.tipo.repuestos:
-            for repuesto, cantidad in repuestos:
-                self.orden_repuestos.filter(
-                    pk=repuesto).update(cantidad=cantidad)
-        if detalle.tarea.tipo.planilla and not detalle.planillas.exists():
-            raise Exception('La orden requiere planilla de pintura')
-        if self.estado == OrdenDeTrabajo.INICIADA:
-            detalle.finalizar(exitosa, observacion, fecha)
-            un_problema = any([not d.exitosa for d in self.detalles.all()])
-            todo_terminado = all([d.fin != None for d in self.detalles.all()])
-            if un_problema:
-                self.estado = OrdenDeTrabajo.PAUSADA
-            elif todo_terminado:
-                self.estado = OrdenDeTrabajo.REALIZADA  # VER ESTO
-            self.save()
+    # def finalizar_tarea(self, detalle, exitosa, observacion, materiales=None, repuestos=None, fecha=now()):
+    #     # Materiales y repuestos son listas de la forma [(material, cantidad)...]
+    #     if detalle.tarea.tipo.materiales and materiales is None:
+    #         raise Exception('Tarea requiere materiales')
+    #     elif detalle.tarea.tipo.materiales:
+    #         for material, cantidad in materiales:
+    #             self.orden_materiales.filter(
+    #                 pk=material).update(cantidad=cantidad)
+    #     if detalle.tarea.tipo.repuestos and repuestos is None:
+    #         raise Exception('Tarea requiere repuestos')
+    #     elif detalle.tarea.tipo.repuestos:
+    #         for repuesto, cantidad in repuestos:
+    #             self.orden_repuestos.filter(
+    #                 pk=repuesto).update(cantidad=cantidad)
+    #     if detalle.tarea.tipo.planilla and not detalle.planillas.exists():
+    #         raise Exception('La orden requiere planilla de pintura')
+    #     if self.estado == OrdenDeTrabajo.INICIADA:
+    #         detalle.finalizar(exitosa, observacion, fecha)
+    #         un_problema = any([not d.exitosa for d in self.detalles.all()])
+    #         todo_terminado = all([d.fin != None for d in self.detalles.all()])
+    #         if un_problema:
+    #             self.estado = OrdenDeTrabajo.PAUSADA
+    #         elif todo_terminado:
+    #             self.estado = OrdenDeTrabajo.REALIZADA  # VER ESTO
+    #         self.save()
 
     def ampliar_presupuesto(self):
         return Presupuesto.objects.create(

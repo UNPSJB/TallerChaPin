@@ -12,8 +12,7 @@ from taller.models import (
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.contrib.auth.models import Permission
-# from facturas.models import Factura
+
 # Create your models here.
 
 class OrdenDeTrabajoManager(models.Manager):
@@ -260,15 +259,16 @@ class OrdenDeTrabajo(models.Model):
     def tareas_para_empleado(self, empleado):
         return [d for d in self.detalles.all() if empleado.puede_hacer(d.tarea.tipo)]
 
+    # Esta funcion no esta siendo utilizada 
 
-    # Esta funcion no esta siendo utilizada
     # def iniciar_tarea(self, empleado, tarea, fecha=now()):
     #         if self.estado == OrdenDeTrabajo.ACTIVA:
     #         tarea.iniciar(empleado, fecha)
     #         self.estado = OrdenDeTrabajo.INICIADA
     #         self.save()
     
-    # Ver si de verdad lo necesitamos
+    # Esta funcion no esta siendo utilizada 
+
     # def finalizar_tarea(self, detalle, exitosa, observacion, materiales=None, repuestos=None, fecha=now()):
     #     # Materiales y repuestos son listas de la forma [(material, cantidad)...]
     #     if detalle.tarea.tipo.materiales and materiales is None:
@@ -292,7 +292,7 @@ class OrdenDeTrabajo(models.Model):
     #         if un_problema:
     #             self.estado = OrdenDeTrabajo.PAUSADA
     #         elif todo_terminado:
-    #             self.estado = OrdenDeTrabajo.REALIZADA  # VER ESTO
+    #             self.estado = OrdenDeTrabajo.REALIZADA  
     #         self.save()
 
     def ampliar_presupuesto(self):
@@ -450,9 +450,8 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_esta_iniciado = models.Q(inicio__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        permisos = user.get_user_permissions()
-
-        if 'ordenes.can_ver_asignados' in permisos:
+        usuario_permisos = set(user.get_all_permissions())
+        if 'ordenes.can_ver_asignados' in [p for p in usuario_permisos]:
             qs = self.filter(tiene_empleado & no_esta_iniciado).order_by(
             'orden__turno')
         else:
@@ -467,9 +466,8 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_esta_finalizado = models.Q(fin__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        permisos = user.get_user_permissions()
-
-        if 'ordenes.can_ver_sin_finalizar' in permisos:
+        usuario_permisos = set(user.get_all_permissions())
+        if 'ordenes.can_ver_sin_finalizar' in [p for p in usuario_permisos]:
             qs = self.filter(tiene_empleado & no_esta_finalizado &
                             esta_iniciado).order_by('orden__turno')
         else:
@@ -482,9 +480,8 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         esta_finalizado = models.Q(fin__isnull=False)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        permisos = user.get_user_permissions()
-
-        if 'ordenes.can_ver_finalizados' in permisos:
+        usuario_permisos = set(user.get_all_permissions())
+        if 'ordenes.can_ver_finalizados' in [p for p in usuario_permisos]:
             qs = self.filter(esta_finalizado).order_by('-fin')
         else:
             qs = self.filter(esta_finalizado & es_del_usuario).order_by('-fin')
@@ -495,9 +492,8 @@ class DetalleOrdenDeTrabajoManager(models.Manager):
         no_ha_ingresado = models.Q(orden__ingreso__isnull=True)
         es_del_usuario = models.Q(empleado__usuario=user)
 
-        permisos = user.get_user_permissions()
-
-        if 'ordenes.can_ver_todos' in permisos:
+        usuario_permisos = set(user.get_all_permissions())
+        if 'ordenes.can_ver_todos' in [p for p in usuario_permisos]:
             qs = self.all().exclude(no_ha_ingresado).order_by('-fin')
         else:
             qs = self.all().filter(es_del_usuario).exclude(no_ha_ingresado).order_by('-fin')

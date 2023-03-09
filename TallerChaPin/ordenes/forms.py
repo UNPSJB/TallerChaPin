@@ -581,6 +581,7 @@ class FinalizarTareaForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.fields['fecha'].widget.attrs['value'] = datetime.now().strftime('%Y-%m-%dT%H:%M')
+        self.fields['fecha'].widget.attrs['max'] = datetime.now().strftime('%Y-%m-%dT%H:%M')
         self.helper.form_method = 'post'
         self.helper.form_id = 'finalizarTareaForm'
         self.helper.form_action = 'finalizarTarea'

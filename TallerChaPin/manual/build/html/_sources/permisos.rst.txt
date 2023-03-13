@@ -25,6 +25,7 @@
 - Registrar ingresos y egresos de vehículos
 - Iniciar y finalizar trabajos, crear planillas de pintura
 - Manipular facturas y pagos
+- Ver reportes
 
 *****************
 🛠️ Jefe de taller

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Índice" href="genindex.html" /><link rel="search" title="Búsqueda" href="search.html" /><link rel="next" title="📆 Calendario de turnos" href="turnos.html" /><link rel="prev" title="📋 Manejo de presupuestos" href="presupuestos.html" />
+<link rel="index" title="Índice" href="genindex.html" /><link rel="search" title="Búsqueda" href="search.html" /><link rel="prev" title="📊 Reportes" href="reportes.html" />
 
     <link rel="shortcut icon" href="_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
-        <title>💻 Acciones básicas sobre las entidades de la aplicación - Documentación de Taller ChaPin</title>
+        <title>🔐 Usuarios y permisos - Documentación de Taller ChaPin</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -166,11 +166,11 @@
 <li class="toctree-l1"><a class="reference internal" href="interfaz.html">🖥 Interfaz de usuario</a></li>
 <li class="toctree-l1"><a class="reference internal" href="crear_cliente.html">🧑 Cómo crear un cliente</a></li>
 <li class="toctree-l1"><a class="reference internal" href="presupuestos.html">📋 Manejo de presupuestos</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">💻 Acciones básicas sobre las entidades de la aplicación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acciones_basicas.html">💻 Acciones básicas sobre las entidades de la aplicación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="turnos.html">📆 Calendario de turnos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pdf.html">🖨 Exportar como PDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reportes.html">📊 Reportes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="permisos.html">🔐 Usuarios y permisos</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">🔐 Usuarios y permisos</a></li>
 </ul>
 
 </div>
@@ -205,204 +205,58 @@
           </label>
         </div>
         <article role="main">
-          <section id="acciones-basicas-sobre-las-entidades-de-la-aplicacion">
-<h1>💻 Acciones básicas sobre las entidades de la aplicación<a class="headerlink" href="#acciones-basicas-sobre-las-entidades-de-la-aplicacion" title="Enlace permanente a este encabezado">#</a></h1>
-<p>Para el control de los datos de la aplicación, se requiere la creación de distintas entidades, las cuales son:</p>
+          <section id="usuarios-y-permisos">
+<span id="permisos"></span><h1>🔐 Usuarios y permisos<a class="headerlink" href="#usuarios-y-permisos" title="Enlace permanente a este encabezado">#</a></h1>
+<div class="line-block">
+<div class="line">Cada empleado dado de alta en la aplicación contará con un usuario. Al dar de alta un empleado, el sistema mostrará un mensaje indicando el nombre de usuario asignado. La contraseña del usuario será su número de CUIL (con guiones incluidos).</div>
+</div>
+<div class="line-block">
+<div class="line">Cada usuario puede estar asignado a uno o más grupos. La aplicación cuenta con ciertos grupos predefinidos. A continuación se menciona cada uno de ellos junto con los permisos que tiene asociados.</div>
+</div>
+<section id="administrativo">
+<h2>💻 Administrativo<a class="headerlink" href="#administrativo" title="Enlace permanente a este encabezado">#</a></h2>
 <ul class="simple">
-<li><p>Clientes.</p></li>
-<li><p>Vehículos.</p></li>
-<li><p>Empleados.</p></li>
-<li><p>Marcas.</p></li>
-<li><p>Modelos.</p></li>
-<li><p>Materiales.</p></li>
-<li><p>Tipos de materiales.</p></li>
-<li><p>Repuestos.</p></li>
-<li><p>Tareas.</p></li>
-<li><p>Tipos de tarea.</p></li>
-<li><p>Presupuestos.</p></li>
-<li><p>Ordenes de trabajo.</p></li>
-<li><p>Detalles de órdenes de trabajo.</p></li>
-<li><p>Facturas.</p></li>
-<li><p>Pagos.</p></li>
+<li><p>Registrar, modificar y eliminar clientes</p></li>
+<li><p>Registrar, modificar y eliminar vehículos</p></li>
+<li><p>Registrar, modificar y eliminar materiales y tipos de materiales</p></li>
+<li><p>Registrar, modificar y eliminar repuestos</p></li>
+<li><p>Registrar, modificar y eliminar tareas y tipos de tarea</p></li>
+<li><p>Registrar, modificar y eliminar empleados</p></li>
+<li><p>Registrar, modificar y eliminar modelos</p></li>
+<li><p>Registrar, modificar y eliminar marcas</p></li>
+<li><p>Manipular presupuestos</p></li>
+<li><p>Manipular órdenes de trabajo</p></li>
+<li><p>Registrar ingresos y egresos de vehículos</p></li>
+<li><p>Iniciar y finalizar trabajos, crear planillas de pintura</p></li>
+<li><p>Manipular facturas y pagos</p></li>
 </ul>
-<p>Todas ellas poseen distintas acciones básicas, como lo son la <strong>creación</strong>, <strong>modificación</strong> y <strong>eliminación</strong>.
-A continuación se detallará la forma de realizar cada una de estas operaciones en forma general.</p>
-<section id="creacion">
-<h2>➕ Creación<a class="headerlink" href="#creacion" title="Enlace permanente a este encabezado">#</a></h2>
-<div class="table-wrapper docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Entidad</p></th>
-<th class="head"><p>Forma de creación</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Cliente</p></td>
-<td><p>Taller &gt; Registrar cliente</p></td>
-</tr>
-<tr class="row-odd"><td><p>Vehículo</p></td>
-<td><p>Taller &gt; Registrar vehículo</p></td>
-</tr>
-<tr class="row-even"><td><p>Empleado</p></td>
-<td><p>Taller &gt; Registrar empleado</p></td>
-</tr>
-<tr class="row-odd"><td><p>Marca</p></td>
-<td><p>Taller &gt; Marcas &gt; Registrar una marca</p></td>
-</tr>
-<tr class="row-even"><td><p>Modelo</p></td>
-<td><p>Taller &gt; Modelos &gt; Registrar un modelo</p></td>
-</tr>
-<tr class="row-odd"><td><p>Material</p></td>
-<td><p>Taller &gt; Registrar material</p></td>
-</tr>
-<tr class="row-even"><td><p>Tipo de material</p></td>
-<td><p>Taller &gt; Materiales &gt; Registrar un tipo de material</p></td>
-</tr>
-<tr class="row-odd"><td><p>Repuesto</p></td>
-<td><p>Taller &gt; Registrar repuesto</p></td>
-</tr>
-<tr class="row-even"><td><p>Tarea</p></td>
-<td><p>Taller &gt; Crear tarea</p></td>
-</tr>
-<tr class="row-odd"><td><p>Tipo de tarea</p></td>
-<td><p>Taller &gt; Tareas &gt; Registrar un tipo de tarea</p></td>
-</tr>
-<tr class="row-even"><td><p>Presupuesto</p></td>
-<td><p>Presupuestos &gt; Crear presupuesto</p></td>
-</tr>
-<tr class="row-odd"><td><p>Orden de trabajo</p></td>
-<td><p>Se crea automáticamente al confirmar un presupuesto.</p></td>
-</tr>
-<tr class="row-even"><td><p>Detalle de orden de trabajo</p></td>
-<td><p>Se crea junto con la orden de trabajo.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Factura</p></td>
-<td><p>Se crea al facturar una orden.</p></td>
-</tr>
-<tr class="row-even"><td><p>Pago</p></td>
-<td><p>Se crea al pagar una factura.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 </section>
-<section id="modificacion">
-<h2>✏ Modificación<a class="headerlink" href="#modificacion" title="Enlace permanente a este encabezado">#</a></h2>
-<div class="table-wrapper docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Entidad</p></th>
-<th class="head"><p>Forma de modificación</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Cliente</p></td>
-<td><p>Listados &gt; ver clientes &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Vehículo</p></td>
-<td><p>Listados &gt; ver vehículos &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Empleado</p></td>
-<td><p>Listados &gt; ver empleados &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Marca</p></td>
-<td><p>Listados &gt; ver marcas &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Modelo</p></td>
-<td><p>Listados &gt; ver modelos &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Material</p></td>
-<td><p>Listados &gt; ver materiales &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Tipo de material</p></td>
-<td><p>Listados &gt; ver tipos de material &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Repuesto</p></td>
-<td><p>Listados &gt; ver repuestos &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Tarea</p></td>
-<td><p>Listados &gt; ver tareas &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Tipo de tarea</p></td>
-<td><p>Listados &gt; ver tipos de tarea &gt; <em>sìmbolo de editar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Presupuesto</p></td>
-<td><p>Ver <a class="reference internal" href="presupuestos.html#modificar-presupuesto"><span class="std std-ref">✏ Modificación de un presupuesto</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Orden de trabajo</p></td>
-<td><p>Ver <a class="reference internal" href="presupuestos.html#ampliar-presupuesto"><span class="std std-ref">➕ Ampliación de un presupuesto</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p>Detalle de orden de trabajo</p></td>
-<td><p><em>Acción no disponible</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Factura</p></td>
-<td><p><em>Acción no disponible</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Pago</p></td>
-<td><p><em>Acción no disponible</em></p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<section id="jefe-de-taller">
+<h2>🛠️ Jefe de taller<a class="headerlink" href="#jefe-de-taller" title="Enlace permanente a este encabezado">#</a></h2>
+<ul class="simple">
+<li><p>Ver clientes, vehículos, tareas, tipos de tarea, materiales, repuestos, empleados, modelos, marcas y facturas</p></li>
+<li><p>Manipular presupuestos</p></li>
+<li><p>Registrar ingresos y egresos de vehículos</p></li>
+<li><p>Iniciar, finalizar y asignar trabajos, crear planillas de pintura</p></li>
+<li><p>Manipular trabajos</p></li>
+</ul>
 </section>
-<section id="eliminacion">
-<h2>🗑 Eliminación<a class="headerlink" href="#eliminacion" title="Enlace permanente a este encabezado">#</a></h2>
-<div class="table-wrapper docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Entidad</p></th>
-<th class="head"><p>Forma de eliminación</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Cliente</p></td>
-<td><p>Listados &gt; ver clientes &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Vehículo</p></td>
-<td><p>Listados &gt; ver vehículos &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Empleado</p></td>
-<td><p>Listados &gt; ver empleados &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Marca</p></td>
-<td><p>Listados &gt; ver marcas &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Modelo</p></td>
-<td><p>Listados &gt; ver modelos &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Material</p></td>
-<td><p>Listados &gt; ver materiales &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Tipo de material</p></td>
-<td><p>Listados &gt; ver tipos de material &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Repuesto</p></td>
-<td><p>Listados &gt; ver repuestos &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Tarea</p></td>
-<td><p>Listados &gt; ver tareas &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Tipo de tarea</p></td>
-<td><p>Listados &gt; ver tipos de tarea &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Presupuesto</p></td>
-<td><p>Ver <a class="reference internal" href="presupuestos.html#cancelar-presupuesto"><span class="std std-ref">🗑 Cancelación de un presupuesto</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Orden de trabajo</p></td>
-<td><p>Ver <strong>cancelar orden</strong></p></td>
-</tr>
-<tr class="row-even"><td><p>Detalle de orden de trabajo</p></td>
-<td><p><em>Acción no disponible</em></p></td>
-</tr>
-<tr class="row-odd"><td><p>Factura</p></td>
-<td><p>Listados &gt; ver facturas &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-<tr class="row-even"><td><p>Pago</p></td>
-<td><p>Listados &gt; ver pagos &gt; <em>sìmbolo de eliminar</em></p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<section id="oficial-pintor">
+<h2>🖌️ Oficial pintor<a class="headerlink" href="#oficial-pintor" title="Enlace permanente a este encabezado">#</a></h2>
+<p>Posee todos los mismos permisos que el jefe de taller, excepto que no puede asignar trabajos.</p>
+</section>
+<section id="empleado">
+<h2>🔨 Empleado<a class="headerlink" href="#empleado" title="Enlace permanente a este encabezado">#</a></h2>
+<ul class="simple">
+<li><p>Registrar ingreso y egreso de vehículos</p></li>
+<li><p>Ver y realizar operaciones sobre los trabajos que posee asignados</p></li>
+<li><p>Agregar insumos utilizados a trabajos</p></li>
+<li><p>Ver presupuestos</p></li>
+</ul>
+</section>
+<section id="empleado-de-pintura">
+<h2>🖌️ Empleado de pintura<a class="headerlink" href="#empleado-de-pintura" title="Enlace permanente a este encabezado">#</a></h2>
+<p>Posee los mismos permisos que un empleado, excepto que puede manipular planillas de pintura.</p>
 </section>
 </section>
 
@@ -411,23 +265,15 @@ A continuación se detallará la forma de realizar cada una de estas operaciones
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="turnos.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">📆 Calendario de turnos</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="presupuestos.html">
+          
+          <a class="prev-page" href="reportes.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">📋 Manejo de presupuestos</div>
+                <div class="title">📊 Reportes</div>
                 
               </div>
             </a>
@@ -463,10 +309,12 @@ A continuación se detallará la forma de realizar cada una de estas operaciones
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">💻 Acciones básicas sobre las entidades de la aplicación</a><ul>
-<li><a class="reference internal" href="#creacion">➕ Creación</a></li>
-<li><a class="reference internal" href="#modificacion">✏ Modificación</a></li>
-<li><a class="reference internal" href="#eliminacion">🗑 Eliminación</a></li>
+<li><a class="reference internal" href="#">🔐 Usuarios y permisos</a><ul>
+<li><a class="reference internal" href="#administrativo">💻 Administrativo</a></li>
+<li><a class="reference internal" href="#jefe-de-taller">🛠️ Jefe de taller</a></li>
+<li><a class="reference internal" href="#oficial-pintor">🖌️ Oficial pintor</a></li>
+<li><a class="reference internal" href="#empleado">🔨 Empleado</a></li>
+<li><a class="reference internal" href="#empleado-de-pintura">🖌️ Empleado de pintura</a></li>
 </ul>
 </li>
 </ul>

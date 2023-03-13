@@ -9,6 +9,7 @@ Documentación de Taller ChaPin
 .. toctree::
    :caption: Contenido
 
+   como_ejecutar
    login
    home
    interfaz
@@ -18,3 +19,4 @@ Documentación de Taller ChaPin
    turnos
    pdf
    reportes
+   permisos

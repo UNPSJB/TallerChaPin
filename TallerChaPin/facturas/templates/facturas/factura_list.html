@@ -20,7 +20,7 @@
     <tbody>
       {% for factura in object_list %}
       <tr>
-        <td>{{ factura.pk }}</td>
+        <td>{{ factura.orden.pk }}</td>
         <td>{{ factura.fecha }}</td>
         <td>{{ factura.orden.cliente }}</td>
         <td>{{ factura.orden.vehiculo }}</td>

@@ -41,7 +41,7 @@ class FacturaForm(forms.ModelForm):
 
 class FacturaFiltrosForm(FiltrosForm):
     ORDEN_CHOICES = [
-        ("#","#"),
+        ("pk","#"),
         ("fecha", "Fecha"),
         ("orden__presupuestos__cliente", "Cliente"),
         ("orden__presupuestos__vehiculo", "Vehículo"),

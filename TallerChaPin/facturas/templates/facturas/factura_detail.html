@@ -155,8 +155,6 @@
                     </div>
                 {%endif%}
             
-
-
                 <div class="table-responsive">
                     <table class="table table-hover">
                     <thead>
@@ -185,6 +183,39 @@
                     </tbody>
                     </table>
                 </div>
+
+                {% if factura.pagos.all.exists %}
+                <div class="table-responsive">
+                    <table class="table table-hover {% if filtros %} sortable{% endif %}">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Pago realizado</th>
+                                <th scope="col">Monto</th>
+                                <th scope="col">Tipo de pago</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pago in factura.pagos.all %}
+                            <tr>
+                                <td>{{ pago.pk }}</td>
+                                <td>{{ pago.monto }}</td>
+                                <td>{{ pago.monto }}</td>
+                                <td>{{ pago.get_tipo_display }}</td>
+                                <td><a href="{% url 'detallesPago' pago.pk %}">Ver detalle</a></td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                            <td>No hay pagos realizados</td>
+                            <td>n/a</td>
+                            <td>n/a</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {%endif%}
             </div>
         </div>
     </div>

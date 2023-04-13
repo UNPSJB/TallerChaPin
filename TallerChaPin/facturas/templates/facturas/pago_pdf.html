@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ styles }}" type="text/css">
+    <title>Comprobante de pago</title>
+    
+</head>
+
+<body>
+    <header>
+        <h1>Comprobante N° {{ pago.pk }}</h1>
+        <img src="{{logo}}" alt="" height="100" class="img">
+    </header>
+    <div class="encabezado">
+        <h2 class="text-primary">Taller ChaPin</h2>
+        <span>Dirección: Calle Falsa 123, Trelew, Chubut.</span> <br>
+        <hr class="separador-encabezado">
+        <h2>Nro. Factura: B0000{{ pago.factura.pk }}</h2>
+        <span>Fecha de emisión: {{ pago.fecha }}</span> <br>
+        <hr class="separador-encabezado">
+        <h2>Cliente</h2>
+        <span>
+            {{ pago.factura.orden.cliente.nombre }} {{ pago.factura.orden.cliente.apellido }}</span> <br>
+        </span>
+    </div>
+
+    <hr class="separador">
+
+    <div class="total">
+        <h2>Total: ${{ pago.monto }}</h2>
+        <h2>Cantidad de Cuotas: {{ pago.factura.get_coutas }}</h2>
+        <h2>Modo de pago: {{ pago.get_tipo_display }}</h2>
+    </div>
+
+</body>
+
+</html>

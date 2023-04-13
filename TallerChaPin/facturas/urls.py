@@ -13,13 +13,17 @@ urlpatterns = [
     # ----------------Pago-------------------------
     path('pagos/crear/<int:pk>', PagoCreateView.as_view(), name="crearPago"),
     path('pagos/detalle/<int:pk>', PagoDetailView.as_view(), name="detallesPago"),
-    path('pagos/modificar/<int:pk>', PagoUpdateView.as_view(), name="modificarPago"), # Solo se puede modificar el modo de pago... 
-    path('pagos/listar', PagoListView.as_view(), name="listarPagos"), 
+    # Solo se puede modificar el modo de pago...
+    path('pagos/modificar/<int:pk>',
+         PagoUpdateView.as_view(), name="modificarPago"),
+    path('pagos/listar', PagoListView.as_view(), name="listarPagos"),
     path('pagos/eliminar/<int:pk>', PagoDeleteView.as_view(), name="eliminarPago"),
     path('pagos/exportar',
-          exportar_listado_pagos, name='exportarPagos'),
+         exportar_listado_pagos, name='exportarPagos'),
     # ----------------PDF-------------------------
     path('factura/pdf/<int:pk>', imprimirFactura.as_view(),
-          name='imprimirFactura'),
+         name='imprimirFactura'),
+    path('pago/pdf/<int:pk>', imprimirPago.as_view(),
+         name='imprimirPago'),
 
 ]

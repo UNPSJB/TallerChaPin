@@ -33,17 +33,25 @@
                 <div
                     class="ibox border border-primary rounded p-3 h-100 d-flex justify-content-center flex-column align-items-center">
                     <div class="ibox-title">
-                        <h5> Total presupuestado </h5>
+                        <h5> Total pagado </h5>
                     </div>
                     <div class="ibox-content">
                         <h2 class="font-bold text-primary">
                             <i class="fas fa-dollar-sign"></i>
-                            {{object.factura.orden.precio_total_presupuestado}}
+                            {{ object.monto }}
+                        </h2>
+                    </div>
+                    <div class="ibox-title">
+                        <h5> Saldo restante </h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h2 class="font-bold text-primary">
+                            <i class="fas fa-dollar-sign"></i> {{pago.factura.saldo}}
                         </h2>
                     </div>
                 </div>
             </div>
-            
+        
             <div class="col-md-4">
                 <div
                     class="ibox border border-primary rounded p-3 h-100 d-flex justify-content-center flex-column align-items-center">
@@ -81,7 +89,7 @@
         <div class="col-md-12 mt-2">
             <div class="ibox-content">
                 <div class="ibox-content mb-4">
-                    <a href="{% url 'imprimirFactura' object.pk %}" class="btn btn-primary pull-right"><i
+                    <a href="{% url 'imprimirPago' object.pk %}" class="btn btn-primary pull-right"><i
                             class="fa fa-print" aria-hidden="true"></i>
                         Imprimir</a>
                 </div>

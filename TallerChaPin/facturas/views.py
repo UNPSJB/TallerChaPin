@@ -111,6 +111,9 @@ class imprimirFactura(PDFTemplateView):
         context["styles"] = os.path.abspath("./ordenes/static/ordenes/css/styles_pdf.css")
         context["logo"] = os.path.abspath("./static/images/chapin2.png")
         return context
+    
+
+
         
 # ----------------------------- Pago View ----------------------------------- #
 
@@ -215,3 +218,28 @@ class PagoDeleteView(DeleteView):
             messages.add_message(self.request, messages.WARNING, f'El Pago "{self.pk}" no se puede eliminar porque está en uso.')
         finally:
             return redirect(success_url)
+
+
+
+class imprimirPago(PDFTemplateView):
+    template_name = 'facturas/pago_pdf.html'
+    cmd_options = {
+        'margin-top': 3,
+        'enable-local-file-access': True,
+        'quiet': False
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = kwargs.get('pk')
+        pago = Pago.objects.get(pk=pk)
+        cliente = pago.factura.orden.get_ultimo_presupuesto().cliente
+
+        # definimos el nombre del pdf con datos del cliente.
+        self.filename = f'comprobante N°{pago.pk}-{cliente.nombre}_{cliente.apellido}-({str(date.today())}).pdf'
+
+        # pasamos el objeto factura para usarlo en el template.
+        context["pago"] = pago
+        context["styles"] = os.path.abspath("./ordenes/static/ordenes/css/styles_pdf.css")
+        context["logo"] = os.path.abspath("./static/images/chapin2.png")
+        return context
